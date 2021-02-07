@@ -1,0 +1,310 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --font-family: 'Quicksand';
+  --color-bg-main: #3F3E3E;
+  --padding-section: 1.875rem;
+  --padding-block: 1.875rem;
+  --font-size-main: 5rem;
+  --color-font-bright: #FFFFFF;
+  --color-font-dark: #000000;
+  --color-bg-secondary: #C4C4C4;
+}
+
+html {
+  font-family: var(--font-family), sans-serif;
+}
+
+body {
+  background-color: var(--color-bg-main);
+}
+
+.section-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+  height: 100vh;
+  padding: var(--padding-section);
+}
+
+.section-1 .lhs {
+  -ms-flex-preferred-size: 55%;
+      flex-basis: 55%;
+  background-color: var(--color-bg-secondary);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.section-1 .lhs .some {
+  font-size: var(--font-size-main);
+}
+
+.section-1 .rhs {
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.section-1 .rhs .title {
+  font-weight: 500;
+  font-size: var(--font-size-main);
+  color: var(--color-font-bright);
+}
+
+.section-1 .rhs .subtitle {
+  font-weight: 300;
+  font-size: var(--font-size-main);
+  color: var(--color-font-bright);
+}
+
+.section-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+  height: 100vh;
+  padding: var(--padding-section);
+}
+
+.section-2 .lhs {
+  -ms-flex-preferred-size: 55%;
+      flex-basis: 55%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  padding-right: var(--padding-block);
+}
+
+.section-2 .lhs .text {
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--color-font-dark);
+  text-align: end;
+}
+
+.section-2 .lhs :not(:first-child) {
+  margin-top: 4rem;
+}
+
+.section-2 .rhs {
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
+  background-color: #C4C4C4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.section-2 .rhs .some {
+  font-size: var(--font-size-main);
+}
+
+.section-3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+  height: 100vh;
+  padding: var(--padding-section);
+}
+
+.section-3 .lhs {
+  -ms-flex-preferred-size: 55%;
+      flex-basis: 55%;
+  background-color: var(--color-bg-secondary);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.section-3 .lhs .some {
+  font-size: var(--font-size-main);
+}
+
+.section-3 .rhs {
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  padding-left: var(--padding-block);
+}
+
+.section-3 .rhs .text-title {
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--color-font-dark);
+}
+
+.section-3 .rhs .text {
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--color-font-dark);
+}
+
+.section-3 .rhs :not(:first-child) {
+  margin-top: 4rem;
+}
+
+.section-4 {
+  width: 100%;
+  height: 100vh;
+  padding: var(--padding-section);
+}
+
+.section-4 .plate {
+  background-color: var(--color-bg-secondary);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 224px;
+}
+
+.section-4 .plate .some {
+  font-size: var(--font-size-main);
+}
+/*# sourceMappingURL=index.css.map */
