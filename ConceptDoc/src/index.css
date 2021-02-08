@@ -103,17 +103,14 @@ body {
   background-color: var(--color-bg-main);
 }
 
-/*transition test*/
-
-.scroll-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+.fp-section {
+  position: relative;
+  -webkit-box-sizing: border-box; /* Safari<=5 Android<=3 */
+  -moz-box-sizing: border-box; /* <=28 */
+  box-sizing: border-box;
 }
 
-/*end of transition test*/
-
-.section-1 {
+#section-1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -122,11 +119,10 @@ body {
           align-items: stretch;
   width: 100%;
   height: 100vh;
-  padding: var(--padding-section);
-  scroll-snap-align: center;
+  padding: 1.875rem;
 }
 
-.section-1 .lhs {
+#section-1 .lhs {
   -ms-flex-preferred-size: 55%;
       flex-basis: 55%;
   background-color: var(--color-bg-secondary);
@@ -141,11 +137,11 @@ body {
           justify-content: center;
 }
 
-.section-1 .lhs .some {
+#section-1 .lhs .some {
   font-size: var(--font-size-main);
 }
 
-.section-1 .rhs {
+#section-1 .rhs {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
   display: -webkit-box;
@@ -163,21 +159,21 @@ body {
           align-items: center;
 }
 
-.section-1 .rhs .title {
+#section-1 .rhs .title {
   font-weight: 500;
   font-size: var(--font-size-main);
   margin-left: 2%;
   color: var(--color-font-header-bright);
 }
 
-.section-1 .rhs .subtitle {
+#section-1 .rhs .subtitle {
   font-weight: 300;
   font-size: var(--font-size-main);
   margin-left: 2%;
   color: var(--color-font-header-bright);
 }
 
-.section-2 {
+#section-2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -187,10 +183,9 @@ body {
   width: 100%;
   height: 100vh;
   padding: var(--padding-section);
-  scroll-snap-align: center;
 }
 
-.section-2 .lhs {
+#section-2 .lhs {
   -ms-flex-preferred-size: 55%;
       flex-basis: 55%;
   display: -webkit-box;
@@ -206,7 +201,7 @@ body {
   padding-right: var(--padding-block);
 }
 
-.section-2 .lhs .text {
+#section-2 .lhs .text {
   font-weight: 500;
   font-size: 2.5rem;
   color: var(--color-font-bright);
@@ -216,11 +211,11 @@ body {
   transform: translateY(-50%);
 }
 
-.section-2 .lhs :not(:first-child) {
+#section-2 .lhs :not(:first-child) {
   margin-top: 4rem;
 }
 
-.section-2 .rhs {
+#section-2 .rhs {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
   background-color: #C4C4C4;
@@ -235,11 +230,11 @@ body {
           justify-content: center;
 }
 
-.section-2 .rhs .some {
+#section-2 .rhs .some {
   font-size: var(--font-size-main);
 }
 
-.section-3 {
+#section-3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -252,7 +247,7 @@ body {
   scroll-snap-align: center;
 }
 
-.section-3 .lhs {
+#section-3 .lhs {
   -ms-flex-preferred-size: 55%;
       flex-basis: 55%;
   background-color: var(--color-bg-secondary);
@@ -267,11 +262,11 @@ body {
           justify-content: center;
 }
 
-.section-3 .lhs .some {
+#section-3 .lhs .some {
   font-size: var(--font-size-main);
 }
 
-.section-3 .rhs {
+#section-3 .rhs {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
   display: -webkit-box;
@@ -287,36 +282,36 @@ body {
   padding-left: var(--padding-block);
 }
 
-.section-3 .rhs .text-vcenter {
+#section-3 .rhs .text-vcenter {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.section-3 .rhs .text-title {
+#section-3 .rhs .text-title {
   font-weight: 600;
   font-size: 2.5rem;
   color: var(--color-font-header-bright);
 }
 
-.section-3 .rhs .text {
+#section-3 .rhs .text {
   font-weight: 500;
   font-size: 2.5rem;
   color: var(--color-font-bright);
 }
 
-.section-3 .rhs :not(:first-child) {
+#section-3 .rhs :not(:first-child) {
   margin-top: 2rem;
 }
 
-.section-4 {
+#section-4 {
   width: 100%;
   height: 100vh;
   padding: var(--padding-section);
   scroll-snap-align: center;
 }
 
-.section-4 .plate {
+#section-4 .plate {
   background-color: var(--color-bg-secondary);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -328,13 +323,14 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   height: 224px;
+  width: 100%;
 }
 
-.section-4 .plate .some {
+#section-4 .plate .some {
   font-size: var(--font-size-main);
 }
 
-.section-4 .text {
+#section-4 .text {
   font-weight: 400;
   font-size: 2.5rem;
   text-align: center;

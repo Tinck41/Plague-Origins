@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./fullpage.css">
+    
     <title>Plague: Origins</title>
 </head>
 <body>
-    <main class="scroll-container">
-        <div class="section-1">
+    <div class="fullpage">
+        <div class = "section active" id="section-1">
             <div class="lhs">
                 <div class="some">лого</div>
             </div>
@@ -19,7 +21,7 @@
             </div>
         </div>
 
-        <div class="section-2">
+        <div class = "section" id="section-2">
             <div class="lhs">
                 <div class="text">
                     Камера: 2.5D<br>
@@ -35,7 +37,7 @@
             </div>
         </div>
 
-        <div class="section-3">
+        <div class = "section" id="section-3">
             <div class="lhs">
                 <div class="some">хаб</div>
             </div>
@@ -54,7 +56,7 @@
             </div>
         </div>
 
-        <div class="section-4">
+        <div class="section" id="section-4">
             <div class="plate">
                 <div class="some">панорама локации(?)</div>
             </div>
@@ -63,9 +65,21 @@
                 Glushkov Valery - Team Leader<br>
                 Ambroseva Vlada - Main artist<br>
                 Mikhaylov Gavriil - Main programmer<br>
-                Mukhin Dmitry - programmer<br>
+                Mukhin Dmitry - Programmer<br>
             </div>
         </div>
-    </main>
+    </div>
+    <script type="text/javascript" src="fullpage.extensions.min.js"></script>
+    <script type="text/javascript" src="fullpage.js"></script>
+    <script type="text/javascript">
+        new fullpage('#fullpage', {
+            //options here
+            autoScrolling:true,
+            scrollHorizontally: true
+        });
+
+        //methods
+        fullpage_api.setAllowScrolling(false);
+    </script>
 </body>
 </html>
