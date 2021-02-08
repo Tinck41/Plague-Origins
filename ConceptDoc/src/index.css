@@ -89,7 +89,8 @@ select {
   --padding-section: 1.875rem;
   --padding-block: 1.875rem;
   --font-size-main: 5rem;
-  --color-font-bright: #FFFFFF;
+  --color-font-bright: #E1E1E1;
+  --color-font-header-bright: #FFFFFF;
   --color-font-dark: #000000;
   --color-bg-secondary: #C4C4C4;
 }
@@ -102,6 +103,16 @@ body {
   background-color: var(--color-bg-main);
 }
 
+/*transition test*/
+
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+/*end of transition test*/
+
 .section-1 {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -112,6 +123,7 @@ body {
   width: 100%;
   height: 100vh;
   padding: var(--padding-section);
+  scroll-snap-align: center;
 }
 
 .section-1 .lhs {
@@ -154,13 +166,15 @@ body {
 .section-1 .rhs .title {
   font-weight: 500;
   font-size: var(--font-size-main);
-  color: var(--color-font-bright);
+  margin-left: 2%;
+  color: var(--color-font-header-bright);
 }
 
 .section-1 .rhs .subtitle {
   font-weight: 300;
   font-size: var(--font-size-main);
-  color: var(--color-font-bright);
+  margin-left: 2%;
+  color: var(--color-font-header-bright);
 }
 
 .section-2 {
@@ -173,6 +187,7 @@ body {
   width: 100%;
   height: 100vh;
   padding: var(--padding-section);
+  scroll-snap-align: center;
 }
 
 .section-2 .lhs {
@@ -194,8 +209,11 @@ body {
 .section-2 .lhs .text {
   font-weight: 500;
   font-size: 2.5rem;
-  color: var(--color-font-dark);
+  color: var(--color-font-bright);
   text-align: end;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .section-2 .lhs :not(:first-child) {
@@ -231,6 +249,7 @@ body {
   width: 100%;
   height: 100vh;
   padding: var(--padding-section);
+  scroll-snap-align: center;
 }
 
 .section-3 .lhs {
@@ -268,26 +287,33 @@ body {
   padding-left: var(--padding-block);
 }
 
+.section-3 .rhs .text-vcenter {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .section-3 .rhs .text-title {
   font-weight: 600;
   font-size: 2.5rem;
-  color: var(--color-font-dark);
+  color: var(--color-font-header-bright);
 }
 
 .section-3 .rhs .text {
   font-weight: 500;
   font-size: 2.5rem;
-  color: var(--color-font-dark);
+  color: var(--color-font-bright);
 }
 
 .section-3 .rhs :not(:first-child) {
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .section-4 {
   width: 100%;
   height: 100vh;
   padding: var(--padding-section);
+  scroll-snap-align: center;
 }
 
 .section-4 .plate {
@@ -306,5 +332,23 @@ body {
 
 .section-4 .plate .some {
   font-size: var(--font-size-main);
+}
+
+.section-4 .text {
+  font-weight: 400;
+  font-size: 2.5rem;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--color-font-bright);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  top: 20%;
 }
 /*# sourceMappingURL=index.css.map */
