@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap");
 /* Указываем box sizing */
 *,
 *::before,
@@ -84,13 +85,14 @@ select {
 }
 
 :root {
-  --font-family: 'Quicksand';
+  --font-family-title: 'Quicksand';
+  --font-family: 'Raleway';
   --color-bg-main: #3F3E3E;
   --padding-section: 1.875rem;
   --padding-block: 1.875rem;
   --font-size-main: 5rem;
-  --color-font-bright: #E1E1E1;
   --color-font-header-bright: #FFFFFF;
+  --color-font-bright: #E1E1E1;
   --color-font-dark: #000000;
   --color-bg-secondary: #C4C4C4;
 }
@@ -103,14 +105,7 @@ body {
   background-color: var(--color-bg-main);
 }
 
-.fp-section {
-  position: relative;
-  -webkit-box-sizing: border-box; /* Safari<=5 Android<=3 */
-  -moz-box-sizing: border-box; /* <=28 */
-  box-sizing: border-box;
-}
-
-#section-1 {
+.section-1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -118,11 +113,12 @@ body {
       -ms-flex-align: stretch;
           align-items: stretch;
   width: 100%;
-  height: 100vh;
-  padding: 1.875rem;
+  height: 100%;
+  padding: var(--padding-section);
 }
 
-#section-1 .lhs {
+.section-1 .lhs {
+  height: 100%;
   -ms-flex-preferred-size: 55%;
       flex-basis: 55%;
   background-color: var(--color-bg-secondary);
@@ -137,11 +133,12 @@ body {
           justify-content: center;
 }
 
-#section-1 .lhs .some {
+.section-1 .lhs .some {
   font-size: var(--font-size-main);
 }
 
-#section-1 .rhs {
+.section-1 .rhs {
+  height: 100%;
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
   display: -webkit-box;
@@ -157,23 +154,23 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: var(--padding-block);
+  font-family: var(--font-family-title);
 }
 
-#section-1 .rhs .title {
+.section-1 .rhs .title {
   font-weight: 500;
   font-size: var(--font-size-main);
-  margin-left: 2%;
-  color: var(--color-font-header-bright);
+  color: var(--color-font-bright);
 }
 
-#section-1 .rhs .subtitle {
+.section-1 .rhs .subtitle {
   font-weight: 300;
   font-size: var(--font-size-main);
-  margin-left: 2%;
-  color: var(--color-font-header-bright);
+  color: var(--color-font-bright);
 }
 
-#section-2 {
+.section-2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -181,11 +178,11 @@ body {
       -ms-flex-align: stretch;
           align-items: stretch;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding: var(--padding-section);
 }
 
-#section-2 .lhs {
+.section-2 .lhs {
   -ms-flex-preferred-size: 55%;
       flex-basis: 55%;
   display: -webkit-box;
@@ -198,24 +195,30 @@ body {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding-right: var(--padding-block);
+  text-align: end;
 }
 
-#section-2 .lhs .text {
+.section-2 .lhs .text-title {
   font-weight: 500;
   font-size: 2.5rem;
   color: var(--color-font-bright);
-  text-align: end;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-#section-2 .lhs :not(:first-child) {
-  margin-top: 4rem;
+.section-2 .lhs .text {
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: var(--color-font-bright);
 }
 
-#section-2 .rhs {
+.section-2 .lhs :not(:first-child) {
+  margin-top: 2rem;
+}
+
+.section-2 .rhs {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
   background-color: #C4C4C4;
@@ -230,11 +233,11 @@ body {
           justify-content: center;
 }
 
-#section-2 .rhs .some {
+.section-2 .rhs .some {
   font-size: var(--font-size-main);
 }
 
-#section-3 {
+.section-3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -242,12 +245,11 @@ body {
       -ms-flex-align: stretch;
           align-items: stretch;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding: var(--padding-section);
-  scroll-snap-align: center;
 }
 
-#section-3 .lhs {
+.section-3 .lhs {
   -ms-flex-preferred-size: 55%;
       flex-basis: 55%;
   background-color: var(--color-bg-secondary);
@@ -262,11 +264,11 @@ body {
           justify-content: center;
 }
 
-#section-3 .lhs .some {
+.section-3 .lhs .some {
   font-size: var(--font-size-main);
 }
 
-#section-3 .rhs {
+.section-3 .rhs {
   -ms-flex-preferred-size: 45%;
       flex-basis: 45%;
   display: -webkit-box;
@@ -279,39 +281,35 @@ body {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding-left: var(--padding-block);
 }
 
-#section-3 .rhs .text-vcenter {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#section-3 .rhs .text-title {
-  font-weight: 600;
-  font-size: 2.5rem;
-  color: var(--color-font-header-bright);
-}
-
-#section-3 .rhs .text {
+.section-3 .rhs .text-title {
   font-weight: 500;
   font-size: 2.5rem;
   color: var(--color-font-bright);
 }
 
-#section-3 .rhs :not(:first-child) {
+.section-3 .rhs .text {
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: var(--color-font-bright);
+}
+
+.section-3 .rhs :not(:first-child) {
   margin-top: 2rem;
 }
 
-#section-4 {
+.section-4 {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding: var(--padding-section);
-  scroll-snap-align: center;
 }
 
-#section-4 .plate {
+.section-4 .plate {
   background-color: var(--color-bg-secondary);
   display: -webkit-box;
   display: -ms-flexbox;
@@ -323,28 +321,18 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   height: 224px;
-  width: 100%;
 }
 
-#section-4 .plate .some {
+.section-4 .plate .some {
   font-size: var(--font-size-main);
 }
 
-#section-4 .text {
-  font-weight: 400;
+.section-4 .text {
+  font-weight: 300;
   font-size: 2.5rem;
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   color: var(--color-font-bright);
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  position: relative;
-  top: 20%;
+  text-align: center;
+  font-family: var(--font-family-title);
+  margin-top: 10rem;
 }
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=examples.css.map */

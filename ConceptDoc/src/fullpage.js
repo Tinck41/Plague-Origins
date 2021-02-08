@@ -124,7 +124,7 @@
             scrollingSpeed: 700,
             autoScrolling: true,
             fitToSection: true,
-            fitToSectionDelay: 1000,
+            fitToSectionDelay: 500,
             easing: 'easeInOutCubic',
             easingcss3: 'ease',
             loopBottom: false,
@@ -291,7 +291,7 @@
             if(options.autoScrolling && !options.scrollBar){
                 css($htmlBody, {
                     'overflow': 'hidden',
-                    'height': '100%'
+                    'height': '100vh'
                 });
 
                 setRecordHistory(originals.recordHistory, 'internal');
@@ -511,10 +511,10 @@
 
                 //adjusting the height of the table-cell for IE and Firefox
                 if(options.verticalCentered){
-                    css($(TABLE_CELL_SEL, section), {'height': getTableHeight(section) + 'px'});
+                    css($(TABLE_CELL_SEL, section), {'height': '100vh'});
                 }
 
-                css(section, {'height': windowsHeight + 'px'});
+                css(section, {'height': '100vh'});
 
                 //adjusting the position fo the FULL WIDTH slides...
                 if (slides.length > 1) {
@@ -878,7 +878,7 @@
         */
         function prepareDom(){
             css(container, {
-                'height': '100%',
+                'height': '100vh',
                 'position': 'relative'
             });
 
@@ -993,14 +993,14 @@
             }
             startingSection = $(SECTION_ACTIVE_SEL)[0];
 
-            css(section, {'height': windowsHeight + 'px'});
+            css(section, {'height': '100vh'});
 
             if(options.paddingTop){
-                css(section, {'padding-top': options.paddingTop});
+                css(section, {'padding-top': options.paddingTop + 'rem'});
             }
 
             if(options.paddingBottom){
-                css(section, {'padding-bottom': options.paddingBottom});
+                css(section, {'padding-bottom': options.paddingBottom + 'rem'});
             }
 
             if (typeof options.sectionsColor[index] !==  'undefined') {
