@@ -11,35 +11,17 @@ body {
     background-color: var(--color-bg-main);
 }
 
-.section-1 {
-    display: flex;
-    align-items: stretch;
+.section-1 .rhs{
+    
     width: 100%;
     height: 100%;
+    margin: 0 auto;
     padding: var(--padding-section);
-    .lhs {
-        height: 100%;
-        flex-basis: 55%;
-        background-color: var(--color-bg-secondary);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .some {
-            font-size: var(--font-size-main);
-        }
-    }
-    .rhs {
-        height: 100%;
-        flex-basis: 45%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-left: var(--padding-block);
-        font-family: var(--font-family-title);
+    font-family: var(--font-family-title);
+    text-align: center;
         .title {
             font-weight: 500;
-            font-size: var(--font-size-main);
+            font-size: var(--font-size-title);
             color: var(--color-font-bright);
         }
         .subtitle {
@@ -47,17 +29,17 @@ body {
             font-size: var(--font-size-main);
             color: var(--color-font-bright);
         }
-    }
 }
 
 .section-2 {
     display: flex;
     align-items: stretch;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: var(--padding-section);
     .lhs {
-        flex-basis: 55%;
+        height: 100%;
+        flex-basis: 50%;
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -79,13 +61,14 @@ body {
         }
     }
     .rhs {
-        flex-basis: 45%;
-        background-color: #C4C4C4;
+        height: 100%;
+        flex-basis: 55%;
+        //background-color: #C4C4C4;
         display: flex;
-        align-items: center;
-        justify-content: center;
         .some {
-            font-size: var(--font-size-main);
+            height: auto;
+            margin-right: 0;
+            margin-left: auto;
         }
     }
 }
@@ -94,7 +77,7 @@ body {
     display: flex;
     align-items: stretch;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: var(--padding-section);
     .lhs {
         flex-basis: 55%;
@@ -103,7 +86,7 @@ body {
         align-items: center;
         justify-content: center;
         .some {
-            font-size: var(--font-size-main);
+            height: 100%;
         }
     }
     .rhs {
@@ -135,13 +118,14 @@ body {
     padding: var(--padding-section);
 
     .plate {
+        margin-top: 2rem;
         background-color: var(--color-bg-secondary);
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 224px;
+        height: 43vh;
         .some {
-            font-size: var(--font-size-main);
+            height: 100%;
         }
     }
     .text {
@@ -150,6 +134,6 @@ body {
         color: var(--color-font-bright);
         text-align: center;
         font-family: var(--font-family-title);
-        margin-top: 10rem;
+        margin-top: 5rem;
     }
 }
