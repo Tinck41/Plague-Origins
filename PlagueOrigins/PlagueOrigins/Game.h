@@ -1,6 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
+#include "Player.h"
 
 class Game
 {
@@ -8,6 +9,8 @@ private:
 	sf::RenderWindow* window;
 	sf::Event ev;
 	sf::Clock dtClock;
+
+	Player* player = new Player();
 
 	float dt;
 
