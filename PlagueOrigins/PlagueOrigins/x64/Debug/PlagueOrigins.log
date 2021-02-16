@@ -1,2 +1,4 @@
-﻿  Game.cpp
+﻿  main.cpp
+  Unit.cpp
+  Generating Code...
   PlagueOrigins.vcxproj -> D:\prog\Plague-Origins\PlagueOrigins\x64\Debug\PlagueOrigins.exe

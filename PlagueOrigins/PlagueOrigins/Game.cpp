@@ -97,6 +97,7 @@ void Game::update()
 
 	//update player
 	player->update(dt);
+	player2->update(dt);
 }
 
 void Game::render()
@@ -105,6 +106,7 @@ void Game::render()
 
 	//Render obj
 	this->player->render(this->window);
+	this->player2->render(this->window);
 
 	this->window->display();
 }

@@ -6,34 +6,37 @@
 #include <SFML/Network.hpp>
 
 #include <iostream>
-#include "Unit.h"
 
-class Player : public Unit
+class Unit
 {
-private: 
+private:
 	//Variables
 	int speed;
 	float dx;
 	float dy;
 
 	//Game objects
-	sf::RectangleShape playerShape;
-	sf::Sprite playerSprite;
+	sf::RectangleShape unitShape;
+	sf::Sprite unitSprite;
 
 	void initVariables();
-	void spawnPlayer(float x, float y);
+	void spawnUnit();
 public:
 	//Variables
+	bool isWPressed;
+	bool isAPressed;
+	bool isSPressed;
+	bool isDPressed;
 
 	//Constructors/Destructors
-	Player(float x, float y);
+	Unit();
 	//virtual ~Player();
 
 	//Functions
-	
+
 	void update(float dt);
 
-	void move(float dt);
+	void move(sf::RectangleShape rShape, float dt);
 
 	void render(sf::RenderTarget* target);
 

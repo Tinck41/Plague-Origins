@@ -10,7 +10,8 @@ private:
 	sf::Event ev;
 	sf::Clock dtClock;
 
-	Player* player = new Player();
+	Player* player = new Player(10.0f, 10.0f);
+	Player* player2 = new Player(50.0f, 50.0f);
 
 	float dt;
 
