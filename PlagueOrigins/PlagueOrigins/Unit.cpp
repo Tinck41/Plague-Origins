@@ -95,7 +95,7 @@ void Unit::move(sf::RectangleShape rShape, float dt)
 	}
 
 	//Unit move
-	unitShape.move(sf::Vector2f(dx * speed * dt, dy * speed * dt));
+	rShape.move(sf::Vector2f(dx * speed * dt, dy * speed * dt));
 	//UnitSprite.move(sf::Vector2f(dx * speed * dt, dy * speed * dt));
 }
 
