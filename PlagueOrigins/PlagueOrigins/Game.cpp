@@ -14,7 +14,7 @@ void Game::initWindow()
 {
 	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Plague: Origins", sf::Style::Titlebar | sf::Style::Close);
 
-	this->window->setFramerateLimit(600);
+	this->window->setFramerateLimit(60);
 }
 
 void Game::initVariables()
