@@ -6,6 +6,7 @@
 #include <SFML/Network.hpp>
 
 #include <iostream>
+#include "MovementComponent.h"
 
 class Unit
 {
@@ -16,29 +17,24 @@ private:
 	float dy;
 
 	//Game objects
-	sf::RectangleShape unitShape;
-	sf::Sprite unitSprite;
+	sf::RectangleShape shape;
 
 	void initVariables();
 	void spawnUnit();
-public:
-	//Variables
-	bool isWPressed;
-	bool isAPressed;
-	bool isSPressed;
-	bool isDPressed;
+protected:
+	MovementComponent* movementComponent;
 
+public:
 	//Constructors/Destructors
 	Unit();
 	//virtual ~Player();
 
 	//Functions
+	void createMovementComponent(sf::RectangleShape& shape, int speed);
 
-	void update(float dt);
+	virtual void update(const float& dt) = 0;
 
-	void move(sf::RectangleShape rShape, float dt);
-
-	void render(sf::RenderTarget* target);
+	virtual void render(sf::RenderTarget* target) = 0;
 
 };
 

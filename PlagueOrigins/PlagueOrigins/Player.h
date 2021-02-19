@@ -17,8 +17,7 @@ private:
 	float dy;
 
 	//Game objects
-	sf::RectangleShape playerShape;
-	sf::Sprite playerSprite;
+	sf::RectangleShape shape;
 
 	void initVariables();
 	void spawnPlayer(float x, float y);
@@ -31,9 +30,7 @@ public:
 
 	//Functions
 	
-	void update(float dt);
-
-	void move(float dt);
+	void update(const float& dt);
 
 	void render(sf::RenderTarget* target);
 

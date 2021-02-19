@@ -4,43 +4,32 @@ Player::Player(float x, float y) : Unit()
 {
 	initVariables();
 	spawnPlayer(x,y);
+	createMovementComponent(this->shape, this->speed);
 }
 
 void Player::spawnPlayer(float x, float y)
 {
-	//preparation for sprite
-	playerSprite.setPosition(x, y);
-	playerSprite.setScale(sf::Vector2f(0.5f, 0.5f));
-
-	//rectangle as draft
-	playerShape.setPosition(x, y);
-	playerShape.setSize(sf::Vector2f(100.0f, 100.0f));
-	playerShape.setScale(sf::Vector2f(0.5f, 0.5f));
-	playerShape.setFillColor(sf::Color::Red);
+	//create movement component based on shape
+	shape.setPosition(x, y);
+	shape.setSize(sf::Vector2f(100.0f, 100.0f));
+	shape.setScale(sf::Vector2f(0.5f, 0.5f));
+	shape.setFillColor(sf::Color::Red);
 }
 
 void Player::initVariables()
 {
-	isWPressed = false;
-	isAPressed = false;
-	isSPressed = false;
-	isDPressed = false;
 	speed = 200;
 	dx = 0; //move x direction
 	dy = 0; //move y direction
 }
 
-void Player::update(float dt)
+void Player::update(const float& dt)
 {
-	this->move(dt);
-}
-
-void Player::move(float dt)
-{
-	Unit::move(playerShape, dt);
+	this->movementComponent->update(dt);
+	this->shape = movementComponent->getShape();
 }
 
 void Player::render(sf::RenderTarget* target)
 {
-	target->draw(playerShape);
+	target->draw(this->shape);
 }
