@@ -3,6 +3,7 @@
 Game::Game()
 {
 	initWindow();
+	initVariables();
 }
 
 Game::~Game()
@@ -12,13 +13,13 @@ Game::~Game()
 
 void Game::initWindow()
 {
-	this->window = new sf::RenderWindow(sf::VideoMode(600, 800), "Plague: Origins", sf::Style::Titlebar | sf::Style::Close);
-
+	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Plague: Origins", sf::Style::Titlebar | sf::Style::Close);
 	this->window->setFramerateLimit(60);
 }
 
 void Game::initVariables()
 {
+	this->screenHandler = new ScreenHandler();
 	this->dt = 0.f;
 }
 
@@ -33,13 +34,8 @@ void Game::updateSFMLEvents()
 {
 	while (this->window->pollEvent(this->ev))
 	{
-		switch (this->ev.type)
-		{
-		case sf::Event::Closed:
+		if (this->ev.type == sf::Event::Closed) {
 			this->window->close();
-			break;
-		default:
-			break;
 		}
 	}
 }
@@ -47,13 +43,14 @@ void Game::updateSFMLEvents()
 void Game::update()
 {
 	updateSFMLEvents();
+	this->screenHandler->update();
 }
 
 void Game::render()
 {
 	this->window->clear();
-
-	//Render obj
+	// Render
+	this->screenHandler->render(*window);
 
 	this->window->display();
 }

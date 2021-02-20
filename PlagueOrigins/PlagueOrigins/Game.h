@@ -1,36 +1,37 @@
 #pragma once
 
 #include "stdafx.h"
+#include "ScreenHandler.hpp"
 
 class Game
 {
 private:
-	sf::RenderWindow* window;
+	ScreenHandler *screenHandler;
+	sf::RenderWindow *window;
 	sf::Event ev;
 	sf::Clock dtClock;
 
 	float dt;
 
-	//Init
+	// Инициализация
 	void initWindow();
 	void initVariables();
 public:
-	//Constructor/Destructor
+	// Конструктор
 	Game();
+
+	// Деструктор
 	~Game();
 
-	//Functions
-	
-
-	//Update
+	// Обновление
 	void updateDt();
 	void updateSFMLEvents();
 	void update();
 
-	//Render
+	// Рендер
 	void render();
 
-	//Core
+	// Ядро
 	void run();
 };
 
