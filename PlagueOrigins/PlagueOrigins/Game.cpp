@@ -1,13 +1,27 @@
+#include "stdafx.h"
 #include "Game.h"
 
 Game::Game()
 {
 	initWindow();
+	initMap();
 }
 
 Game::~Game()
 {
 	delete this->window;
+}
+
+void Game::initMap()
+{
+	this->tileMapSource = "./Assets/Map/map.tmx";
+
+	if (this->mapLoader.load(tileMapSource))
+	{
+		this->map = this->mapLoader.parseTileMap();
+	}
+
+	this->map.loadLayers();
 }
 
 void Game::initWindow()
@@ -54,6 +68,7 @@ void Game::render()
 	this->window->clear();
 
 	//Render obj
+	this->map.render(*this->window);
 
 	this->window->display();
 }
