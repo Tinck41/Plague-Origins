@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "SFML/Graphics/RenderWindow.hpp"
 
 Player::Player(float x, float y) : Unit()
 {
@@ -29,7 +30,7 @@ void Player::update(const float& dt)
 	this->shape = movementComponent->getShape();
 }
 
-void Player::render(sf::RenderTarget* target)
+void Player::render(sf::RenderWindow& window)
 {
-	target->draw(this->shape);
+	window.draw(this->shape);
 }

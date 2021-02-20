@@ -1,12 +1,14 @@
 #pragma once
-#include "Screen.hpp"
+#include "Screen.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 
 class MainMenuScreen :
     public Screen
 {
 public:
-    void update();
+    MainMenuScreen();
+    ~MainMenuScreen();
+    void update(const float& dt);
     void render(sf::RenderWindow&);
 };
 

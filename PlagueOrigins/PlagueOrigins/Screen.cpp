@@ -1,9 +1,1 @@
-#include "Screen.hpp"
-
-void Screen::update()
-{
-}
-
-void Screen::render(sf::RenderWindow&)
-{
-}
+#include "Screen.h"

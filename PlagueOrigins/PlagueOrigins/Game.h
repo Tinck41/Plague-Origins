@@ -1,7 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
-#include "ScreenHandler.hpp"
+#include "ScreenHandler.h"
 #include "Player.h"
 #include "TileMap.h"
 #include "TileMapLoader.h"
@@ -17,16 +17,8 @@ private:
 	sf::Clock dtClock;
 	float dt;
 
-	// Инициализация
-	Player* player = new Player(10.0f, 10.0f);
-
-	//Game map
-	const char* tileMapSource;
-	TileMapLoader mapLoader;
-	TileMap map;
-
-	//Init
-	void initMap();
+	// Init
+	// initMap();
 	void initWindow();
 	void initVariables();
 public:

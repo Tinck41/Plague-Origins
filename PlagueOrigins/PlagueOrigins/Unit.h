@@ -4,7 +4,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
-
+#include "SFML/Graphics/RenderWindow.hpp"
 #include <iostream>
 #include "MovementComponent.h"
 
@@ -32,9 +32,9 @@ public:
 	//Functions
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
 
-	virtual void update(const float& dt) = 0;
+	virtual void update(const float& dt);
 
-	virtual void render(sf::RenderTarget* target) = 0;
+	virtual void render(sf::RenderWindow* window);
 
 };
 

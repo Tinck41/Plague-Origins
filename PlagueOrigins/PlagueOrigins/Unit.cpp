@@ -1,4 +1,5 @@
 #include "Unit.h"
+#include "SFML/Graphics/RenderWindow.hpp"
 
 Unit::Unit()
 {
@@ -24,6 +25,14 @@ void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
 {
 	//create movement component based on shape
 	this->movementComponent = new MovementComponent(shape, speed);
+}
+
+void Unit::update(const float& dt)
+{
+}
+
+void Unit::render(sf::RenderWindow* window)
+{
 }
 
 //void Unit::update(const float& dt)

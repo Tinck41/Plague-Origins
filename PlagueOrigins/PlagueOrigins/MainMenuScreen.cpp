@@ -1,6 +1,14 @@
-#include "MainMenuScreen.hpp"
+#include "MainMenuScreen.h"
 
-void MainMenuScreen::update()
+MainMenuScreen::MainMenuScreen()
+{
+}
+
+MainMenuScreen::~MainMenuScreen()
+{
+}
+
+void MainMenuScreen::update(const float &dt)
 {
 }
 
