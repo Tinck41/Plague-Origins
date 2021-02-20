@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "TileMapLoader.h"
 
 bool TileMapLoader::load(const char* path)

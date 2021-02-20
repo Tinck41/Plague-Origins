@@ -1,8 +1,9 @@
+#include "stdafx.h"
+
 #include "ScreenHandler.h"
 #include "GameScreen.h"
 #include "MainMenuScreen.h"
-#include <iostream>
-#include <SFML/Graphics/RenderWindow.hpp>
+
 
 ScreenHandler::ScreenHandler()
 {

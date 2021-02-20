@@ -1,13 +1,18 @@
 #pragma once
+
+#include "stdafx.h"
+
 #include "Screen.h"
 #include "GameScreen.h"
 #include "MainMenuScreen.h"
-#include "stdafx.h"
 
 class ScreenHandler
 {
 public:
 	Screen* currentScreen;
+
+	GameScreen* gameScreen;
+	MainMenuScreen* mainMenuScreen;
 
 	ScreenHandler();
 	~ScreenHandler();

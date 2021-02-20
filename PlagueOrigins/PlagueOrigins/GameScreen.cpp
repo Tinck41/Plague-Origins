@@ -1,5 +1,4 @@
 #include "GameScreen.h"
-#include <iostream>
 
 GameScreen::GameScreen()
 {

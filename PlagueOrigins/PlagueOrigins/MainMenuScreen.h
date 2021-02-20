@@ -1,6 +1,6 @@
 #pragma once
+
 #include "Screen.h"
-#include "SFML/Graphics/RenderWindow.hpp"
 
 class MainMenuScreen :
     public Screen

@@ -1,10 +1,9 @@
 #pragma once
-#include "stdafx.h"
-#include "ScreenHandler.h"
+
+#include "Screen.h"
 #include "Player.h"
 #include "TileMap.h"
 #include "TileMapLoader.h"
-#include "SFML/Graphics/RenderWindow.hpp"
 
 class GameScreen :
     public Screen
