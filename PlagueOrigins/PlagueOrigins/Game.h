@@ -1,5 +1,7 @@
 #pragma once
 
+#include "stdafx.h"
+#include "Player.h"
 #include "TileMap.h"
 #include "TileMapLoader.h"
 
@@ -12,6 +14,8 @@ private:
 	//Delta time
 	sf::Clock dtClock;
 	float dt;
+
+	Player* player = new Player(10.0f, 10.0f);
 
 	//Game map
 	const char* tileMapSource;

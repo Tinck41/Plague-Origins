@@ -26,7 +26,7 @@ void Game::initMap()
 
 void Game::initWindow()
 {
-	this->window = new sf::RenderWindow(sf::VideoMode(600, 800), "Plague: Origins", sf::Style::Titlebar | sf::Style::Close);
+	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Plague: Origins", sf::Style::Titlebar | sf::Style::Close);
 
 	this->window->setFramerateLimit(60);
 }
@@ -52,6 +52,12 @@ void Game::updateSFMLEvents()
 		case sf::Event::Closed:
 			this->window->close();
 			break;
+		case sf::Event::KeyPressed:
+			if (ev.key.code == sf::Keyboard::Key::Escape)
+			{
+				this->window->close();
+			}
+			break;
 		default:
 			break;
 		}
@@ -61,6 +67,9 @@ void Game::updateSFMLEvents()
 void Game::update()
 {
 	updateSFMLEvents();
+
+	//update player
+	player->update(dt);
 }
 
 void Game::render()
@@ -69,6 +78,7 @@ void Game::render()
 
 	//Render obj
 	this->map.render(*this->window);
+	this->player->render(this->window);
 
 	this->window->display();
 }
