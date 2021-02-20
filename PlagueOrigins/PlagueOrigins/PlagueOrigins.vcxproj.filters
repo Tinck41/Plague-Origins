@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Tilemap">
+      <UniqueIdentifier>{25c12430-c638-4a5b-9691-10aa53537966}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -21,14 +24,28 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ScreenHandler.cpp">
+    <ClCompile Include="Player.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Screen.cpp">
+    <ClCompile Include="Unit.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenuScreen.cpp">
+    <ClCompile Include="MovementComponent.cpp">
       <Filter>Исходные файлы</Filter>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMapLoader.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLayer.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Файлы заголовков</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -38,14 +55,25 @@
     <ClInclude Include="Game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="ScreenHandler.hpp">
+    <ClInclude Include="Player.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Screen.hpp">
+    <ClInclude Include="Unit.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenuScreen.hpp">
+    <ClInclude Include="MovementComponent.h">
       <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLayer.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMapLoader.h">
+      <Filter>Tilemap</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
