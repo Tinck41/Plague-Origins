@@ -2,45 +2,31 @@
 
 GameScreen::GameScreen()
 {
-	initVariables();
-	initMap();
+	setup();
 }
 
-GameScreen::~GameScreen()
+void GameScreen::setup()
 {
-}
-
-void GameScreen::initMap()
-{
-	this->tileMapSource = "./Assets/Map/map.tmx";
-
-	if (this->mapLoader.load(tileMapSource))
+	this->player = new Player(10.0f, 10.0f);
+	if (this->mapLoader.load("./Assets/Map/map.tmx"))
 	{
-		this->map = this->mapLoader.parseTileMap();
+		this->map = mapLoader.parseTileMap();
 	}
-
 	this->map.loadLayers();
-}
-
-void GameScreen::initVariables()
-{
 }
 
 void GameScreen::update(const float& dt)
 {
-	//update player
 	this->player->update(dt);
 }
 
-void GameScreen::render(sf::RenderWindow& window)
+ScreenType GameScreen::render(sf::RenderWindow& window)
 {
-	//Render obj
 	this->map.render(window);
 	this->player->render(window);
+	return ScreenType::GAME;
 }
 
-void GameScreen::temporary()
+GameScreen::~GameScreen()
 {
-	initVariables();
-	initMap();
 }

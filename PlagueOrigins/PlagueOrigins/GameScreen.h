@@ -5,31 +5,23 @@
 #include "TileMap.h"
 #include "TileMapLoader.h"
 
+extern Config CONFIG;
+
 class GameScreen :
     public Screen
 {
 private:
-	// Инициализация
-	Player* player = new Player(10.0f, 10.0f);
-
-	//Game map
-	const char* tileMapSource;
+	Player* player;
 	TileMapLoader mapLoader;
 	TileMap map;
 
-	void initMap();
-	void initVariables();
+	void setup();
 public:
-	// Конструктор
 	GameScreen();
-
-	// Деструктор
 	~GameScreen();
 
     void update(const float& dt);
-    void render(sf::RenderWindow&);
-
-	void temporary();
+	ScreenType render(sf::RenderWindow&);
 };
 
 

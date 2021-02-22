@@ -4,45 +4,45 @@
 #include "GameScreen.h"
 #include "MainMenuScreen.h"
 
-
-ScreenHandler::ScreenHandler()
+ScreenHandler::ScreenHandler(ScreenType initialScreenType)
 {
-	initVariables();
-	showGameScreen();
+	show(initialScreenType);
 }
 
-ScreenHandler::~ScreenHandler()
+void ScreenHandler::show(ScreenType screenType)
 {
-}
-
-void ScreenHandler::initVariables()
-{
-	
-}
-
-void ScreenHandler::showMainMenuScreen()
-{
-	delete this->currentScreen;
-	this->currentScreen = new MainMenuScreen();
-}
-
-void ScreenHandler::showLoadingScreen()
-{
-}
-
-void ScreenHandler::showGameScreen()
-{
-	delete this->currentScreen;
-	this->currentScreen = new GameScreen();
+	switch (screenType) {
+	case ScreenType::GAME:
+		this->screen = new GameScreen();
+		this->currentScreenType = ScreenType::GAME;
+		break;
+	case ScreenType::MAIN_MENU:
+		this->screen = new MainMenuScreen();
+		this->currentScreenType = ScreenType::MAIN_MENU;
+		break;
+	case ScreenType::LOADING:
+		this->screen = NULL;
+		this->currentScreenType = ScreenType::LOADING;
+		break;
+	default:
+		break;
+	}
 }
 
 void ScreenHandler::render(sf::RenderWindow& window)
 {
-	this->currentScreen->render(window);
+	this->nextScreenType = this->screen->render(window);
+	if (nextScreenType != currentScreenType) 
+	{
+		show(nextScreenType);
+	}
 }
 
 void ScreenHandler::update(const float& dt)
 {
-	this->currentScreen->update(dt);
-	//std::cout << "Screen handler update invoked" << std::endl;
+	this->screen->update(dt);
+}
+
+ScreenHandler::~ScreenHandler()
+{
 }

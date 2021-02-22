@@ -1,49 +1,40 @@
-#include "stdafx.h"
-
 #include "Game.h"
-#include <iostream>
 
 Game::Game()
 {
-	initWindow();
-	initVariables();
+	setup();
 }
 
 Game::~Game()
 {
-	delete this->window;
 }
 
-void Game::initWindow()
+void Game::setup()
 {
-	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Plague: Origins", sf::Style::Titlebar | sf::Style::Close);
-	this->window->setFramerateLimit(60);
+	this->window = new sf::RenderWindow(sf::VideoMode(CONFIG.WINDOW_WIDTH, CONFIG.WINDOW_HEIGHT), CONFIG.WINDOW_TITLE, CONFIG.IS_FULLSCREEN ? sf::Style::Fullscreen : sf::Style::Close);
+	this->window->setFramerateLimit(CONFIG.FPS_LIMIT);
+
+	this->screenHandler = new ScreenHandler(ScreenType::MAIN_MENU);
+	this->deltaTime = 0.f;
 }
 
-void Game::initVariables()
+void Game::updateDeltaTime()
 {
-	this->screenHandler = new ScreenHandler();
-	this->dt = 0.f;
+	this->deltaTime = deltaTimeClock.restart().asSeconds();
 }
 
-void Game::updateDt()
+void Game::resolveSFMLEvents()
 {
-	/*Updates the dt variable with the time it takes to update and render one frame.*/
-
-	this->dt = this->dtClock.restart().asSeconds();
-}
-
-void Game::updateSFMLEvents()
-{
-	while (this->window->pollEvent(this->ev))
+	sf::Event event;
+	while (this->window->pollEvent(event))
 	{
-		switch (this->ev.type)
+		switch (event.type)
 		{
 		case sf::Event::Closed:
 			this->window->close();
 			break;
 		case sf::Event::KeyPressed:
-			if (ev.key.code == sf::Keyboard::Key::Escape)
+			if (event.key.code == sf::Keyboard::Key::Escape)
 			{
 				this->window->close();
 			}
@@ -56,16 +47,14 @@ void Game::updateSFMLEvents()
 
 void Game::update()
 {
-	updateSFMLEvents();
-	this->screenHandler->update(this->dt);
+	resolveSFMLEvents();
+	this->screenHandler->update(deltaTime);
 }
 
 void Game::render()
 {
 	this->window->clear();
-	// Render
 	this->screenHandler->render(*window);
-
 	this->window->display();
 }
 
@@ -73,8 +62,8 @@ void Game::run()
 {
 	while (this->window->isOpen())
 	{
-		this->updateDt();
-		this->update();
-		this->render();
+		updateDeltaTime();
+		update();
+		render();
 	}
 }

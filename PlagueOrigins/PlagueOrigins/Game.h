@@ -1,42 +1,27 @@
 #pragma once
 
-#include "stdafx.h"
 #include "ScreenHandler.h"
-#include "Player.h"
-#include "TileMap.h"
-#include "TileMapLoader.h"
+#include "stdafx.h"
+
+extern Config CONFIG;
 
 class Game
 {
 private:
-	ScreenHandler *screenHandler;
-	sf::RenderWindow *window;
-	sf::Event ev;
-	
-	//Delta time
-	sf::Clock dtClock;
-	float dt;
+	ScreenHandler* screenHandler;
+	sf::RenderWindow* window;
 
-	// Init
-	// initMap();
-	void initWindow();
-	void initVariables();
+	sf::Clock deltaTimeClock;
+	float deltaTime;
+
+	void setup();
+	void updateDeltaTime();    // Обновляет deltaTime временем отрисовки одного кадра
+	void resolveSFMLEvents();  // Обрабатывает события SFML
+	void update();
+	void render();
 public:
-	// Конструктор
 	Game();
-
-	// Деструктор
 	~Game();
 
-	// Обновление
-	void updateDt();
-	void updateSFMLEvents();
-	void update();
-
-	// Рендер
-	void render();
-
-	// Ядро
 	void run();
 };
-

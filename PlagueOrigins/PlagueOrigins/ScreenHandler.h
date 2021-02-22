@@ -8,20 +8,16 @@
 
 class ScreenHandler
 {
+private:
+	Screen* screen;
+	ScreenType currentScreenType;
+	ScreenType nextScreenType;
 public:
-	Screen* currentScreen;
-
-	GameScreen* gameScreen;
-	MainMenuScreen* mainMenuScreen;
-
-	ScreenHandler();
+	ScreenHandler(ScreenType initialScreenType);
 	~ScreenHandler();
 
-	void showMainMenuScreen();
-	void showLoadingScreen();
-	void initVariables();
-	void showGameScreen();
-	void render(sf::RenderWindow& window);
-	void update(const float& dt);
+	void show(ScreenType);
+	void render(sf::RenderWindow&);
+	void update(const float&);
 };
 
