@@ -17,6 +17,8 @@ private:
 
 	void setup();
 public:
+	static const ScreenType screenType = ScreenType::GAME;
+
 	GameScreen();
 	~GameScreen();
 

@@ -7,54 +7,40 @@
 
 ScreenHandler::ScreenHandler(ScreenType initialScreenType)
 {
-	this->screens = std::vector<Screen*>
-	{
-		new MainMenuScreen(),
-		new GameScreen(),
-		new PauseScreen()
-	};
+	initScreens();
 	show(initialScreenType);
+}
+
+void ScreenHandler::initScreens()
+{
+	this->screens = std::map<ScreenType, Screen*>
+	{
+		{ GameScreen::screenType, new GameScreen() },
+		{ MainMenuScreen::screenType, new MainMenuScreen() },
+		{ PauseScreen::screenType, new PauseScreen() }
+	};
 }
 
 void ScreenHandler::show(ScreenType screenType)
 {
-	switch (screenType) {
-	case ScreenType::MAIN_MENU:
-		this->currentScreen = this->screens.at(0);
-		this->currentScreenType = ScreenType::MAIN_MENU;
-		break;
-	case ScreenType::GAME:
-		this->currentScreen = this->screens.at(1);
-		this->currentScreenType = ScreenType::GAME;
-		break;
-	case ScreenType::PAUSE:
-		this->currentScreen = this->screens.at(2);
-		this->currentScreenType = ScreenType::PAUSE;
-		break;
-	case ScreenType::LOADING:
-		this->currentScreenType = ScreenType::LOADING;
-		break;
-	case ScreenType::EXIT:
-		this->currentScreenType = ScreenType::EXIT;
-		break;
-	default:
-		break;
-	}
+	this->currentScreenType = screenType;
+	this->currentScreen = this->screens[screenType];
 }
 
 void ScreenHandler::update(const float& dt)
 {
+	if (!currentScreen) return;
 	this->currentScreen->update(dt);
 }
 
 void ScreenHandler::render(sf::RenderWindow& window)
 {
-	this->nextScreenType = this->currentScreen->render(window);
 	if (currentScreenType == ScreenType::EXIT) 
 	{
 		window.close();
 		return;
 	}
+	this->nextScreenType = this->currentScreen->render(window);
 	if (nextScreenType != currentScreenType) 
 	{
 		show(nextScreenType);

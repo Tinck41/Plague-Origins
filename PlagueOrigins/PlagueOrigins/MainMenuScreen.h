@@ -13,6 +13,8 @@ private:
     Button newGameButton;
     Button exitGameButton;
 public:
+    static const ScreenType screenType = ScreenType::MAIN_MENU;
+
     MainMenuScreen();
     ~MainMenuScreen();
 

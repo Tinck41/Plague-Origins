@@ -12,8 +12,11 @@ private:
     Button mainMenuButton;
     Button exitButton;
 public:
+    static const ScreenType screenType = ScreenType::PAUSE;
+
     PauseScreen();
     ~PauseScreen();
+
     void update(const float&);
     ScreenType render(sf::RenderWindow&);
 };

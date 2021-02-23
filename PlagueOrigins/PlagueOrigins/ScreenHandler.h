@@ -13,7 +13,8 @@ private:
 	ScreenType currentScreenType;
 	ScreenType nextScreenType;
 
-	std::vector<Screen*> screens;
+	std::map<ScreenType, Screen*> screens;
+	void initScreens();
 public:
 	ScreenHandler(ScreenType initialScreenType);
 	~ScreenHandler();

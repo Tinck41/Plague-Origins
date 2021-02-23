@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-enum ScreenType {
+enum class ScreenType {
 	LOADING,
 	PAUSE,
 	GAME,
