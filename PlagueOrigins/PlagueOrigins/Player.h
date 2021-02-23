@@ -4,7 +4,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
-
+#include "SFML/Graphics/RenderWindow.hpp"
 #include <iostream>
 #include "Unit.h"
 
@@ -32,7 +32,7 @@ public:
 	
 	void update(const float& dt);
 
-	void render(sf::RenderTarget* target);
+	void render(sf::RenderWindow& window);
 
 };
 
