@@ -34,10 +34,10 @@ void Game::resolveSFMLEvents()
 			this->window->close();
 			break;
 		case sf::Event::KeyPressed:
-			if (event.key.code == sf::Keyboard::Key::Escape)
+			/*if (event.key.code == sf::Keyboard::Key::Escape)
 			{
 				this->window->close();
-			}
+			}*/
 			break;
 		default:
 			break;

@@ -19,10 +19,10 @@ Button::Button(
 	this->height = height;
 	this->state = ButtonState::DEFAULT;
 	this->borderWidth = 3.0;
-	this->borderColor = sf::Color(120, 120, 120);
-	this->fontColor = sf::Color(25, 123, 23);
-	this->bodyColor = sf::Color(32, 124, 0);
-	this->hoverFontColor = sf::Color(120, 120, 120);
+    this->borderColor = sf::Color::White;
+    this->fontColor = sf::Color::White;
+    this->bodyColor = sf::Color::Black;
+    this->hoverFontColor = sf::Color::Red;
 
 	this->body.setPosition(this->x, this->y);
 	this->body.setFillColor(this->bodyColor);
@@ -30,10 +30,9 @@ Button::Button(
     this->body.setOutlineColor(this->borderColor);
 	this->body.setOutlineThickness(this->borderWidth);
 
-    this->label.setFont(CONFIG.MAIN_FONT);
-	// this->label.setCharacterSize(25);
+    this->label = sf::Text(label, CONFIG.MAIN_FONT);
 	this->label.setOrigin((int)(this->label.getLocalBounds().width / 2), (int)(this->label.getLocalBounds().height / 2));
-	this->label.setPosition(this->x + (int)(this->width / 2), this->y + (int)(this->height / 2));
+	this->label.setPosition(this->x + (int)(this->width / 2), this->y + (int)(this->height / 2 - 7.5));
 }
 
 void Button::render(sf::RenderWindow& window)

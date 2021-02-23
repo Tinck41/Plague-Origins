@@ -4,8 +4,10 @@
 
 enum ScreenType {
 	LOADING,
+	PAUSE,
 	GAME,
-	MAIN_MENU
+	MAIN_MENU,
+	EXIT
 };
 
 class Screen

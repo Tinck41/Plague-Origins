@@ -1,21 +1,19 @@
 #pragma once
-
 #include "Screen.h"
 #include "Button.h"
-#include "stdafx.h"
 
 extern Config CONFIG;
 
-class MainMenuScreen :
+class PauseScreen :
     public Screen
 {
 private:
-    Button newGameButton;
-    Button exitGameButton;
+    Button continueButton;
+    Button mainMenuButton;
+    Button exitButton;
 public:
-    MainMenuScreen();
-    ~MainMenuScreen();
-
+    PauseScreen();
+    ~PauseScreen();
     void update(const float&);
     ScreenType render(sf::RenderWindow&);
 };

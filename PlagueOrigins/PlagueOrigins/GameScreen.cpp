@@ -22,6 +22,10 @@ void GameScreen::update(const float& dt)
 
 ScreenType GameScreen::render(sf::RenderWindow& window)
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+	{
+		return ScreenType::PAUSE;
+	}
 	this->map.render(window);
 	this->player->render(window);
 	return ScreenType::GAME;
