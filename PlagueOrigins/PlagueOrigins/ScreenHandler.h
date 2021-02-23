@@ -9,9 +9,11 @@
 class ScreenHandler
 {
 private:
-	Screen* screen;
+	Screen* currentScreen;
 	ScreenType currentScreenType;
 	ScreenType nextScreenType;
+
+	std::vector<Screen*> screens;
 public:
 	ScreenHandler(ScreenType initialScreenType);
 	~ScreenHandler();
