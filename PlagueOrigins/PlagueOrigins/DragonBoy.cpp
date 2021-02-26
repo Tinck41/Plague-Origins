@@ -17,14 +17,18 @@ int qmain()
 	dragonBones::SFMLFactory factory;
 
 	sf::Texture texture;
-	texture.loadFromFile("./Assets/Animations/Hero/heroRunRight_tex.png");
 
-	factory.loadDragonBonesData("./Assets/Animations/Hero/heroRunRight_ske.json");
-	factory.loadTextureAtlasData("./Assets/Animations/Hero/heroRunRight_tex.json", &texture);
+	//load
+	texture.loadFromFile("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.png");
 
-	auto armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunRight");
-	armatureDisplay->getAnimation()->play("animtion0");
-	armatureDisplay->setPosition({ 512.f, 440.f });
+	factory.loadDragonBonesData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_ske.json");
+	factory.loadTextureAtlasData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.json", &texture);
+
+	//dragonBones::SFMLArmatureDisplay* armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+
+	//play
+	/*armatureDisplay->getAnimation()->play("Idle");
+	armatureDisplay->setPosition({ 512.f, 440.f });*/
 
 	sf::Clock clock;
 
@@ -40,7 +44,11 @@ int qmain()
 		}
 
 		factory.update(deltaTime);
+		dragonBones::SFMLArmatureDisplay* armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 
+		//play
+		armatureDisplay->getAnimation()->play("Idle");
+		armatureDisplay->setPosition({ 512.f, 440.f });
 		window.clear();
 		window.draw(*armatureDisplay);
 		window.display();

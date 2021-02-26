@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "MovementComponent.h"
+#include "AnimationComponent.h"
 
 class Unit
 {
@@ -18,11 +19,14 @@ private:
 
 	//Game objects
 	sf::RectangleShape shape;
+	sf::Texture texture;
+	sf::View view;
 
 	void initVariables();
 	void spawnUnit();
 protected:
 	MovementComponent* movementComponent;
+	AnimationComponent* animationComponent;
 
 public:
 	//Constructors/Destructors
@@ -31,6 +35,7 @@ public:
 
 	//Functions
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
+	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory, dragonBones::SFMLArmatureDisplay* armatureDisplay);
 
 	virtual void update(const float& dt) = 0;
 

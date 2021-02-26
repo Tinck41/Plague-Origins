@@ -1,0 +1,5 @@
+ArmatureheroIdle
+Idle
+
+ArmatureheroRunEW
+RunEW

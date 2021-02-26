@@ -1,3 +1,5 @@
-﻿  MovementComponent.cpp
+﻿  Player.cpp
+D:\prog\Plague-Origins\PlagueOrigins\AdditionalLibraries\DragonBones\dragonBones\parser\JSONDataParser.h(85,42): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\prog\Plague-Origins\PlagueOrigins\AdditionalLibraries\DragonBones\dragonBones\parser\JSONDataParser.h(120,50): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   Animation.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   PlagueOrigins.vcxproj -> D:\prog\Plague-Origins\PlagueOrigins\x64\Debug\PlagueOrigins.exe

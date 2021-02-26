@@ -1,29 +1,44 @@
 #pragma once
 
+#include <dragonBones/SFMLFactory.h>
+#include <dragonBones/SFMLArmatureDisplay.h>
+
 #include "stdafx.h"
 
 class AnimationComponent
 {
 private:
-	sf::Texture texture;
+	
+	//Variables
 	bool done;
 	int state;
+	enum key
+	{
+		IDLE, RUN_UP, RUN_LEFT, RUN_DOWN, RUN_RIGHT, ROLL
+	};
+
+	//Game objects
+	sf::Texture texture;
+	sf::RectangleShape shape;
+	dragonBones::SFMLFactory& factory;
+	dragonBones::SFMLArmatureDisplay* armatureIdle;
+	dragonBones::SFMLArmatureDisplay* armatureRunUp;
+	dragonBones::SFMLArmatureDisplay* armatureRunRight;
+	dragonBones::SFMLArmatureDisplay* armatureRunDown;
+	dragonBones::SFMLArmatureDisplay* armatureRunLeft;
+	dragonBones::SFMLArmatureDisplay* armatureRoll;
 
 public:
 	//Constructor/Destructor
-	AnimationComponent(sf::Texture texture);
+	AnimationComponent(sf::RectangleShape shape, dragonBones::SFMLFactory& factory);
 	~AnimationComponent();
 
 	//Accessors
 	const bool& isDone() const;
-	void getAnimation();
-	void getAnimationState();
 
 	//Functions
-	void addAnimation(const std::string key,
-		float animation_timer,
-		int start_frame_x, int start_frame_y, int frames_x, int frames_y, int width, int height);
+	dragonBones::SFMLArmatureDisplay* initAnimation(int key, float posX, float posY);
 
-	const bool& play(const std::string key, const float& dt);
+	dragonBones::SFMLArmatureDisplay* playAnimation(int key, const float& dt, float posX, float posY);
 
 };

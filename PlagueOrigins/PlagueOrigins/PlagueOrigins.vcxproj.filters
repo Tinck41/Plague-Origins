@@ -169,7 +169,4 @@
       <UniqueIdentifier>{934550d1-269d-4d4e-9d4b-ab24393326d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Animations\Hero\heroRunRight_ske.json" />
-  </ItemGroup>
 </Project>

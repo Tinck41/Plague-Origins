@@ -10,12 +10,14 @@ class Game
 private:
 	sf::RenderWindow* window;
 	sf::Event ev;
+	sf::View camera;
+
 	
 	//Delta time
 	sf::Clock dtClock;
 	float dt;
 
-	Player* player = new Player(10.0f, 10.0f);
+	Player* player = new Player(400.0f, 400.0f);
 
 	//Game map
 	const char* tileMapSource;

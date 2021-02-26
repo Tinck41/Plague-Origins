@@ -18,6 +18,7 @@ void Unit::spawnUnit()
 void Unit::initVariables()
 {
 	this->movementComponent = NULL;
+	//this->animationComponent = NULL;
 }
 
 void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
@@ -26,12 +27,7 @@ void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
 	this->movementComponent = new MovementComponent(shape, speed);
 }
 
-//void Unit::update(const float& dt)
-//{
-//	this->movementComponent->update(dt);
-//}
-//
-//void Unit::render(sf::RenderTarget* target)
-//{
-//	target->draw(shape);
-//}
+void Unit::createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory, dragonBones::SFMLArmatureDisplay* armatureDisplay)
+{
+	this->animationComponent = new AnimationComponent(shape, factory, armatureDisplay);
+}
