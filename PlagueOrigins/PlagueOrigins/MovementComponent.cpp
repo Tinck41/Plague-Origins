@@ -1,9 +1,9 @@
 #pragma once
 #include "MovementComponent.h"
 
-MovementComponent::MovementComponent(sf::RectangleShape& shape, int speed)
+MovementComponent::MovementComponent(sf::RectangleShape& shape, int speed) :
+	shape(shape)
 {
-	this->shape = shape;
 	this->speed = speed;
 	dx = 0;
 	dy = 0;

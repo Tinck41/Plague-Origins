@@ -18,6 +18,7 @@ void GameScreen::update(const float& dt)
 {
 	this->player.update(dt);
 	this->map.update(this->player);
+	std::cout << this->player.getPosition().x << " " << this->player.getPosition().y << "\n";
 }
 
 ScreenType GameScreen::render(sf::RenderWindow& window)

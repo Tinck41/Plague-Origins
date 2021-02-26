@@ -5,7 +5,7 @@
 class MovementComponent
 {
 private:
-	sf::RectangleShape shape;
+	sf::RectangleShape& shape;
 
 	int speed; 
 	int dx;

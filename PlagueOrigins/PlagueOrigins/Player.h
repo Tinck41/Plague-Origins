@@ -37,6 +37,8 @@ public:
 	void render(sf::RenderWindow& window);
 
 	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
+
+	sf::Vector2f getPosition() { return this->shape.getPosition(); }
 };
 
 
