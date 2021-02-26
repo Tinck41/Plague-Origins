@@ -7,6 +7,7 @@
 #include "SFML/Graphics/RenderWindow.hpp"
 #include <iostream>
 #include "MovementComponent.h"
+#include "ColliderComponent.h"
 
 class Unit
 {
@@ -23,7 +24,7 @@ private:
 	void spawnUnit();
 protected:
 	MovementComponent* movementComponent;
-
+	ColliderComponent* colliderComponent;
 public:
 	//Constructors/Destructors
 	Unit();
@@ -31,11 +32,11 @@ public:
 
 	//Functions
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
+	void createColliderComponent(sf::RectangleShape& shape);
 
 	virtual void update(const float& dt);
 
 	virtual void render(sf::RenderWindow* window);
-
 };
 
 

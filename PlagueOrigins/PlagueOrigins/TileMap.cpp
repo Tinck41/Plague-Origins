@@ -17,9 +17,15 @@ TileMap::~TileMap()
 	this->layers.clear();
 }
 
-void TileMap::update()
+void TileMap::update(Player& player)
 {
-
+	for (auto object : this->objects)
+	{
+		for (auto rect : object)
+		{
+			this->getCollider(rect).checkCollision(player.getCollider(), 1.0f);
+		}
+	}
 }
 
 void TileMap::render(sf::RenderTarget& target)
@@ -38,4 +44,9 @@ void TileMap::loadLayers()
 	{
 		layer.load();
 	}
+}
+
+ColliderComponent TileMap::getCollider(sf::RectangleShape& rect)
+{
+	return ColliderComponent(rect);
 }

@@ -1,11 +1,20 @@
 #include "Player.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 
+Player::Player()
+{
+}
+
 Player::Player(float x, float y) : Unit()
 {
 	initVariables();
 	spawnPlayer(x,y);
 	createMovementComponent(this->shape, this->speed);
+	createColliderComponent(this->shape);
+}
+
+Player::~Player()
+{
 }
 
 void Player::spawnPlayer(float x, float y)

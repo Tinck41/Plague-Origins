@@ -33,10 +33,10 @@ TileMap TileMapLoader::parseTileMap()
 
 	root->QueryUnsignedAttribute("height", &this->mapSize.y);
 	root->QueryUnsignedAttribute("width", &this->mapSize.x);
-	root->QueryUnsignedAttribute("tileheight", &this->tileSize.x);
-	this->tileSize.y = this->tileSize.x;
+	root->QueryUnsignedAttribute("tilewidth", &this->tileSize.x);
+	root->QueryUnsignedAttribute("tileheight", &this->tileSize.y);
 
-	// Reading tileset info
+	// Reading tilesets info
 	for (tinyxml2::XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
 		if (static_cast<std::string>(e->Value()) == "tileset")
@@ -45,7 +45,7 @@ TileMap TileMapLoader::parseTileMap()
 		}
 	}
 
-	// Reading layer data (array of tileId)
+	// Reading layers data (array of tileId)
 	for (tinyxml2::XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
 		if (static_cast<std::string>(e->Value()) == "layer")
@@ -54,8 +54,18 @@ TileMap TileMapLoader::parseTileMap()
 		}
 	}
 
+	// Reading objects data (collision)
+	for (tinyxml2::XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
+	{
+		if (static_cast<std::string>(e->Value()) == "objectgroup")
+		{
+			parseObjects(e);
+		}
+	}
+
 	this->tileMap.setSize(this->mapSize);
 	this->tileMap.setLayers(this->layers);
+	this->tileMap.setObjects(this->objects);
 
 	return this->tileMap;
 }
@@ -97,7 +107,7 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 	std::istringstream iss(matrix);
 	std::string id;
 
-	std::vector<unsigned> m_layer;
+	std::vector<unsigned> _layer;
 	unsigned tilesetId = 0;
 	bool tilesetNotChoosen = true;
 
@@ -126,17 +136,42 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 
 				tileId = tileId + this->tilesetTileCount[tilesetId] - this->tilesetLastId[tilesetId] - 1;
 			}
-			m_layer.push_back(tileId);
+			_layer.push_back(tileId);
 		}
 	}
 
 	if (!this->tilesets.empty())
 	{
-		TileLayer layer(layerName, m_layer, this->layerSize, this->tileSize, this->tilesets[tilesetId]);
+		TileLayer layer(layerName, _layer, this->layerSize, this->tileSize, this->tilesets[tilesetId]);
 		this->layers.push_back(layer);
 	}
 	else
 	{
 		std::cout << "ERROR: trying to push layer with empty tileset" << "\n";
 	}
+}
+
+void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
+{
+	std::vector<sf::RectangleShape> _objects;
+
+	for (tinyxml2::XMLElement* e = xmlElement->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
+	{
+		sf::RectangleShape rect;
+		sf::Vector2f rectPosition;
+		sf::Vector2f rectSize;
+
+		e->QueryFloatAttribute("x", &rectPosition.x);
+		e->QueryFloatAttribute("y", &rectPosition.y);
+
+		e->QueryFloatAttribute("width", &rectSize.x);
+		e->QueryFloatAttribute("height", &rectSize.y);
+
+		rect.setPosition(rectPosition);
+		rect.setSize(rectSize);
+
+		_objects.push_back(rect);
+	}
+
+	this->objects.push_back(_objects);
 }

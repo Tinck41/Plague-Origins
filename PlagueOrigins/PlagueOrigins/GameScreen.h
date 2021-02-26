@@ -11,7 +11,7 @@ class GameScreen :
     public Screen
 {
 private:
-	Player* player;
+	Player player{ 595.0f, 350.0f };
 	TileMapLoader mapLoader;
 	TileMap map;
 

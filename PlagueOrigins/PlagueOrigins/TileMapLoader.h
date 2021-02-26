@@ -24,10 +24,12 @@ private:
 
 	std::vector<sf::Texture> tilesets;
 	std::vector<TileLayer> layers;
+	std::vector<std::vector<sf::RectangleShape>> objects;
 
 	// Functions
 	void parseTileSet(tinyxml2::XMLElement* xmlElement);
 	void parseTileLayer(tinyxml2::XMLElement* xmlElement);
+	void parseObjects(tinyxml2::XMLElement* xmlElement);
 public:
 	// Constructor/Destructor
 	TileMapLoader();

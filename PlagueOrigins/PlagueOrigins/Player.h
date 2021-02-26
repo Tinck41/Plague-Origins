@@ -25,7 +25,9 @@ public:
 	//Variables
 
 	//Constructors/Destructors
+	Player();
 	Player(float x, float y);
+	~Player();
 	//virtual ~Player();
 
 	//Functions
@@ -34,6 +36,7 @@ public:
 
 	void render(sf::RenderWindow& window);
 
+	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
 };
 
 
