@@ -5,10 +5,10 @@ Player::Player(float x, float y) : Unit()
 	initVariables();
 	spawnPlayer(x,y);
 	createMovementComponent(this->shape, this->speed);
-	createAnimationComponent(this->shape, this->factory, this->armatureDisplay);
-	//this->armatureDisplay = animationComponent->addAnimation(IDLE,this->shape.getPosition().x, this->shape.getPosition().y);
-	this->armatureDisplay = animationComponent->addAnimation(RUN_RIGHT, this->shape.getPosition().x, this->shape.getPosition().y);
+	createAnimationComponent(this->shape, this->factory);
+	animationComponent->initArmature();
 	this->states.transform.scale(0.2f, 0.2f);
+	this->armatureDisplay = this->animationComponent->playAnimation(IDLE, this->shape.getPosition().x, this->shape.getPosition().y);
 }
 
 void Player::spawnPlayer(float x, float y)
@@ -25,11 +25,18 @@ void Player::initVariables()
 	speed = 200;
 	dx = 0; //move x direction
 	dy = 0; //move y direction
+	isStateChanged = false;
 }
 
 void Player::update(const float& dt)
 {
 	this->movementComponent->update(dt);
+	if (this->movementComponent->stateChanged())
+	{
+		//std::cout << "STATE CHANGED" << std::endl;
+		this->armatureDisplay = this->animationComponent->playAnimation(movementComponent->getState(), this->shape.getPosition().x, this->shape.getPosition().y);
+	}
+	this->armatureDisplay->setPosition(this->movementComponent->getPos());
 	//std::cout << "PLAYER: shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
 	//this->armatureDisplay = animationComponent->play(movementComponent->getState(),dt,this->shape.getPosition().x, this->shape.getPosition().y);
 	this->factory.update(dt);

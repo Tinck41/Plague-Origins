@@ -121,6 +121,8 @@
       <Filter>dragonBonesCPP</Filter>
     </ClCompile>
     <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="AnimationLayer.cpp" />
+    <ClCompile Include="AnimationComponentDEADBRAINTIME.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />

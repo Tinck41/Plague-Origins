@@ -27,7 +27,7 @@ void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
 	this->movementComponent = new MovementComponent(shape, speed);
 }
 
-void Unit::createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory, dragonBones::SFMLArmatureDisplay* armatureDisplay)
+void Unit::createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory)
 {
-	this->animationComponent = new AnimationComponent(shape, factory, armatureDisplay);
+	this->animationComponent = new AnimationComponent(shape, factory);
 }

@@ -11,25 +11,49 @@
 
 int qmain()
 {
-	sf::RenderWindow window(sf::VideoMode(1024, 768), "My window");
+	sf::RenderWindow window(sf::VideoMode(1200, 800), "My window");
 	window.setFramerateLimit(60);
 
 	dragonBones::SFMLFactory factory;
 
 	sf::Texture texture;
+	sf::RenderStates states;
+	states.transform.scale(0.2f, 0.2f);
 
 	//load
-	texture.loadFromFile("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.png");
+	texture.loadFromFile("./CharacterAnimation03_tex.png");
 
-	factory.loadDragonBonesData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_ske.json");
-	factory.loadTextureAtlasData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.json", &texture);
+	factory.loadDragonBonesData("./CharacterAnimation03_ske.json");
+	factory.loadTextureAtlasData("./CharacterAnimation03_tex.json", &texture);
 
-	//dragonBones::SFMLArmatureDisplay* armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+	dragonBones::SFMLArmatureDisplay* armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature");
 
 	//play
-	/*armatureDisplay->getAnimation()->play("Idle");
-	armatureDisplay->setPosition({ 512.f, 440.f });*/
+	int count = 0;
+	armatureDisplay->getAnimation()->play("Run");
+	armatureDisplay->setPosition({ 1000.f, 2000.f });
+	armatureDisplay->getEventDispatcher()->addDBEventListener(dragonBones::EventObject::LOOP_COMPLETE, [&](dragonBones::EventObject* event)
+		{
+			auto attackState = armatureDisplay->getAnimation()->getState("JumpUp");
+			if (!attackState)
+			{
+				attackState = armatureDisplay->getAnimation()->fadeIn("JumpUp", 0.1f, 1, 1);
+				attackState->resetToPose = false;
+				attackState->autoFadeOutTime = 5.0f;
+			}
+			
 
+		});
+	armatureDisplay->getEventDispatcher()->addDBEventListener(dragonBones::EventObject::LOOP_COMPLETE, [&](dragonBones::EventObject* event)
+		{
+			auto dState = armatureDisplay->getAnimation()->getState("JumpDown");
+			if (!dState)
+			{
+				dState = armatureDisplay->getAnimation()->fadeIn("JumpDown", 0.1f, 1, 1);
+				dState->resetToPose = false;
+				dState->autoFadeOutTime = 5.0f;
+			}
+		});
 	sf::Clock clock;
 
 	while (window.isOpen())
@@ -44,13 +68,9 @@ int qmain()
 		}
 
 		factory.update(deltaTime);
-		dragonBones::SFMLArmatureDisplay* armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 
-		//play
-		armatureDisplay->getAnimation()->play("Idle");
-		armatureDisplay->setPosition({ 512.f, 440.f });
 		window.clear();
-		window.draw(*armatureDisplay);
+		window.draw(*armatureDisplay, states);
 		window.display();
 	}
 	

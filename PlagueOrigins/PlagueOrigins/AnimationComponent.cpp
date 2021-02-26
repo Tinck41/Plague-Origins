@@ -1,98 +1,63 @@
 #include "AnimationComponent.h"
 
 //Constructor/Destructor
-AnimationComponent::AnimationComponent(sf::RectangleShape shape, dragonBones::SFMLFactory& factory) :
-	factory(factory)
+AnimationComponent::AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory) :
+	factory(factory), shape(shape)
 {
-	this->shape = shape;
 }
 
 AnimationComponent::~AnimationComponent()
 {
 }
 
-
-const bool& AnimationComponent::isDone() const
-{
-	return true;
-	// TODO: insert return statement here
-}
-
-dragonBones::SFMLArmatureDisplay* AnimationComponent::initAnimation(int key, float posX, float posY)
+void AnimationComponent::initArmature()
 {
 	//IDLE:
-	this->texture.loadFromFile("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.png");
-	this->factory.loadDragonBonesData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_ske.json");
-	this->factory.loadTextureAtlasData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.json", &texture);
-	this->armatureIdle = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 
-	this->armatureIdle->getAnimation()->play("Idle");
-	this->armatureIdle->setPosition(sf::Vector2f(posX, posY));
+	this->texture.loadFromFile("./Assets/Animations/Hero/heroAnim/heroAnim_tex.png");
 
-	//RUN_UP:
-
-
-	//RUN_RIGHT:
 	this->factory.clear();
-	this->texture.loadFromFile("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.png");
-	this->factory.loadDragonBonesData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_ske.json");
-	this->factory.loadTextureAtlasData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.json", &texture);
-	this->armatureRunRight = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+	this->factory.loadDragonBonesData("./Assets/Animations/Hero/heroAnim/heroAnim_ske.json");
+	this->factory.loadTextureAtlasData("./Assets/Animations/Hero/heroAnim/heroAnim_tex.json", &texture);
 
-	this->armatureRunRight->getAnimation()->play("RunEW");
-	this->armatureRunRight->setPosition(sf::Vector2f(posX, posY));
-
-	//RUN_DOWN:
-	this->texture.loadFromFile("./Assets/Animations/Hero/RunS/heroRunS_tex.png");
-	this->factory.loadDragonBonesData("./Assets/Animations/Hero/RunS/heroRunS_ske.json");
-	this->factory.loadTextureAtlasData("./Assets/Animations/Hero/RunS/heroRunS_tex.json", &texture);
-	this->armatureRunDown = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunS");
-
-	this->armatureRunDown->getAnimation()->play("RunS");
-	this->armatureRunDown->setPosition(sf::Vector2f(posX, posY));
+	this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 	
-	//RUN_LEFT:
-	this->factory.clear();
-	this->texture.loadFromFile("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.png");
-	this->factory.loadDragonBonesData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_ske.json");
-	this->factory.loadTextureAtlasData("./Assets/Animations/Hero/IdleRunEW/heroIdleRunEW_tex.json", &texture);
-	this->armatureRunLeft = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
-	this->armatureRunLeft->getArmature()->setFlipX(true);
 
-	
-	//ROLL:
-		/*
-
-			WIP
-
-		*/
 }
 
-dragonBones::SFMLArmatureDisplay* AnimationComponent::playAnimation(int key, const float& dt, float posX, float posY)
+dragonBones::SFMLArmatureDisplay* AnimationComponent::playAnimation(int key, float posX, float posY)
 {
 	switch (key)
 	{
 	case IDLE:
-		
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+
+
+		this->armatureDisplay->getAnimation()->play("Idle");
 		break;
 	case RUN_UP:
-		/*
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
 
-			WIP
 
-		*/
+		this->armatureDisplay->getAnimation()->play("RunN");
 		break;
 	case RUN_RIGHT:
-		this->armatureRunRight->getAnimation()->play("RunEW");
-		this->armatureRunRight->setPosition(sf::Vector2f(posX, posY));
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+
+
+		this->armatureDisplay->getAnimation()->play("RunEW");
 		break;
 	case RUN_DOWN:
-		this->armatureRunDown->getAnimation()->play("RunS");
-		this->armatureRunDown->setPosition(sf::Vector2f(posX, posY));
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunS");
+
+
+		this->armatureDisplay->getAnimation()->play("RunS");
 		break;
 	case RUN_LEFT:
-		this->armatureRunLeft->getAnimation()->play("RunEW");
-		this->armatureRunLeft->setPosition(sf::Vector2f(posX, posY));
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+
+		this->armatureDisplay->getArmature()->setFlipX(true);
+		this->armatureDisplay->getAnimation()->play("RunEW");
 		break;
 	case ROLL:
 		/*
@@ -104,3 +69,5 @@ dragonBones::SFMLArmatureDisplay* AnimationComponent::playAnimation(int key, con
 	}
 	return armatureDisplay;
 }
+
+

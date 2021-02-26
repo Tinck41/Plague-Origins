@@ -16,9 +16,11 @@ private:
 	int speed;
 	float dx;
 	float dy;
+	bool isStateChanged;
+
 	enum key
 	{
-		IDLE, RUN_UP, RUN_LEFT, RUN_DOWN, RUN_RIGHT, ROLL
+		NONE, IDLE, RUN_UP, RUN_LEFT, RUN_DOWN, RUN_RIGHT, ROLL
 	};
 
 	//Game objects

@@ -35,7 +35,7 @@ public:
 
 	//Functions
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
-	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory, dragonBones::SFMLArmatureDisplay* armatureDisplay);
+	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);
 
 	virtual void update(const float& dt) = 0;
 

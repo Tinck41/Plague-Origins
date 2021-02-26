@@ -10,7 +10,7 @@ private:
 
 	enum key
 	{
-		IDLE, RUN_UP, RUN_LEFT, RUN_DOWN, RUN_RIGHT, ROLL
+		NONE, IDLE, RUN_UP, RUN_LEFT, RUN_DOWN, RUN_RIGHT, ROLL
 	};
 
 	int speed; 
@@ -19,6 +19,8 @@ private:
 	int dy;
 	bool roll;
 	int state;
+	int prevState;
+	bool isStateChanged;
 
 public:
 
@@ -28,11 +30,11 @@ public:
 	virtual ~MovementComponent();
 
 	//Accessors
-	sf::RectangleShape getShape();
-	sf::Texture getTexture();
 	int getState();
+	sf::Vector2f getPos();
 
 	//Functions
 	void move(const float& dt);
 	void update(const float& dt);
+	bool stateChanged();
 };
