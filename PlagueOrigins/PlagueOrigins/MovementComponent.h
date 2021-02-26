@@ -11,6 +11,7 @@ private:
 	int dx;
 	int dy;
 	bool roll;
+	std::string state;
 
 public:
 
@@ -20,6 +21,7 @@ public:
 
 	//Accessors
 	sf::RectangleShape getShape();
+	std::string getState();
 
 	//Functions
 	void move(const float& dt);

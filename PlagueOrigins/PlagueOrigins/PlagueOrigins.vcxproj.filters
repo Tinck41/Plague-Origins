@@ -1,79 +1,175 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Исходные файлы">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MovementComponent.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="TileLayer.cpp" />
+    <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="TileMapLoader.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
+    <ClCompile Include="DragonBoy.cpp" />
+    <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="dragonBones\SFMLArmatureProxy.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="dragonBones\SFMLFactory.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="dragonBones\SFMLSlot.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\JSONDataParser.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\DataParser.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\BinaryDataParser.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\UserData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\SkinData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\TextureAtlasData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\DragonBonesData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\DisplayData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\ConstraintData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\CanvasData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\BoundingBoxData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\ArmatureData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\AnimationData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\AnimationConfig.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\geom\Transform.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\geom\Point.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\factory\BaseFactory.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\event\EventObject.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\core\DragonBones.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\core\BaseObject.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\TransformObject.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Slot.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\DeformVertices.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Constraint.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Bone.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Armature.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\WorldClock.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\TimelineState.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\BaseTimelineState.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\AnimationState.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\Animation.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="MovementComponent.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Unit.h" />
+    <ClInclude Include="TileLayer.h" />
+    <ClInclude Include="TileMap.h" />
+    <ClInclude Include="TileMapLoader.h" />
+    <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="dragonBones\SFMLArmatureDisplay.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLArmatureProxy.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLDisplay.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLEventDispatcher.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLFactory.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLNode.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLSlot.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLTextureAtlasData.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLTextureData.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="dragonBones">
+      <UniqueIdentifier>{d1ad2e5a-43cc-482d-a6c2-a7ab190cb02a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Файлы ресурсов">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Tilemap">
-      <UniqueIdentifier>{25c12430-c638-4a5b-9691-10aa53537966}</UniqueIdentifier>
+    <Filter Include="dragonBonesCPP">
+      <UniqueIdentifier>{934550d1-269d-4d4e-9d4b-ab24393326d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="Unit.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MovementComponent.cpp">
-      <Filter>Исходные файлы</Filter>
-    <ClCompile Include="tinyxml2.cpp">
-      <Filter>Tilemap</Filter>
-    </ClCompile>
-    <ClCompile Include="TileMapLoader.cpp">
-      <Filter>Tilemap</Filter>
-    </ClCompile>
-    <ClCompile Include="TileLayer.cpp">
-      <Filter>Tilemap</Filter>
-    </ClCompile>
-    <ClCompile Include="TileMap.cpp">
-      <Filter>Tilemap</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Файлы заголовков</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="Unit.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="MovementComponent.h">
-      <Filter>Файлы заголовков</Filter>
-    <ClInclude Include="tinyxml2.h">
-      <Filter>Tilemap</Filter>
-    </ClInclude>
-    <ClInclude Include="TileLayer.h">
-      <Filter>Tilemap</Filter>
-    </ClInclude>
-    <ClInclude Include="TileMap.h">
-      <Filter>Tilemap</Filter>
-    </ClInclude>
-    <ClInclude Include="TileMapLoader.h">
-      <Filter>Tilemap</Filter>
-    </ClInclude>
+    <None Include="Assets\Animations\Hero\heroRunRight_ske.json" />
   </ItemGroup>
 </Project>
