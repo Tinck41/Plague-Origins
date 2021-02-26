@@ -21,14 +21,14 @@ void Player::spawnPlayer(float x, float y)
 {
 	//create movement component based on shape
 	shape.setPosition(x, y);
-	shape.setSize(sf::Vector2f(100.0f, 100.0f));
-	shape.setScale(sf::Vector2f(0.5f, 0.5f));
+	shape.setSize(sf::Vector2f(100.0f, 200.0f));
+	//shape.setScale(sf::Vector2f(0.5f, 0.5f));
 	shape.setFillColor(sf::Color::Red);
 }
 
 void Player::initVariables()
 {
-	speed = 200;
+	speed = 600;
 	dx = 0; //move x direction
 	dy = 0; //move y direction
 }

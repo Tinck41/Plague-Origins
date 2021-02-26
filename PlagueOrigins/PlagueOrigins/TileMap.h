@@ -33,6 +33,8 @@ public:
 
 	// Render
 	void render(sf::RenderTarget& target);
+	void renderFirstLayer(sf::RenderTarget& target);
+	void renderSecondLayer(sf::RenderTarget& target);
 
 	// Functions
 	void loadLayers();

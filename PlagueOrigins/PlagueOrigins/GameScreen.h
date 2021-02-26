@@ -16,6 +16,8 @@ private:
 	TileMapLoader mapLoader;
 	TileMap map;
 
+	sf::View camera;
+
 	void setup();
 public:
 	static const ScreenType screenType = ScreenType::GAME;

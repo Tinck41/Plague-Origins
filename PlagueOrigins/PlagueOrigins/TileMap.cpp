@@ -37,6 +37,19 @@ void TileMap::render(sf::RenderTarget& target)
 	}
 }
 
+void TileMap::renderFirstLayer(sf::RenderTarget& target)
+{
+	target.draw(this->layers[0]);
+}
+
+void TileMap::renderSecondLayer(sf::RenderTarget& target)
+{
+	for (int i = 1; i < this->layers.size(); i++)
+	{
+		target.draw(layers[i]);
+	}
+}
+
 void TileMap::loadLayers()
 {
 	// Load all layers to the vertex arrays

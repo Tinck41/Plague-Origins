@@ -20,7 +20,7 @@ void MovementComponent::move(const float& dt)
 	dx = 0;
 	dy = 0;
 	roll = false;
-	speed = 200;
+	speed = 600;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 	{
