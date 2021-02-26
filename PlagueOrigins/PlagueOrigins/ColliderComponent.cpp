@@ -12,7 +12,7 @@ ColliderComponent::~ColliderComponent()
 {
 }
 
-bool ColliderComponent::checkCollision(ColliderComponent& other, float push)
+bool ColliderComponent::checkCollision(ColliderComponent other, float push)
 {
 	sf::Vector2f otherPosition = other.getPosition();
 	sf::Vector2f otherHalfSize = other.getHalfSize();
@@ -26,7 +26,7 @@ bool ColliderComponent::checkCollision(ColliderComponent& other, float push)
 
 	if (intersectX < 0.0f && intersectY < 0.0f)
 	{
-		std::cout << "COLLISION" << std::endl;
+		std::cout << deltaX << " " << deltaY << std::endl;
 
 		push = std::min(std::max(push, 0.0f), 1.0f);
 
