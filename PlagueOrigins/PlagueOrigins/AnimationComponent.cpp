@@ -12,14 +12,14 @@ AnimationComponent::~AnimationComponent()
 
 void AnimationComponent::initArmature(sf::Vector2f vec)
 {
-	//IDLE:
-
+	//LOAD
 	this->texture.loadFromFile("./Assets/Animations/Hero/heroAnim/heroAnim_tex.png");
 
 	this->factory.clear();
 	this->factory.loadDragonBonesData("./Assets/Animations/Hero/heroAnim/heroAnim_ske.json");
 	this->factory.loadTextureAtlasData("./Assets/Animations/Hero/heroAnim/heroAnim_tex.json", &texture);
 
+	//IDLE:
 	this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 	
 	this->armatureDisplay->setPosition(vec);

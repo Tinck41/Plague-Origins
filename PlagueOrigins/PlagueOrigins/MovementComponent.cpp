@@ -15,16 +15,6 @@ MovementComponent::MovementComponent(sf::RectangleShape& shape, int speed) :
 	prevState = NONE;
 }
 
-//TEXTURE
-//MovementComponent::MovementComponent(sf::Texture& texture, int speed) :
-//	texture(texture)
-//{
-//	this->speed = speed;
-//	dx = 0;
-//	dy = 0;
-//	roll = false;
-//}
-
 MovementComponent::~MovementComponent()
 {
 
@@ -33,18 +23,16 @@ MovementComponent::~MovementComponent()
 void MovementComponent::move(const float& dt)
 {
 	//reset
-	dx = 0;
-	dy = 0;
+	this->dx = 0;
+	this->dy = 0;
 	roll = false;
 	speed = 600;
-
-	
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 	{
 		//std::cout << "W is pressed\n";
 		//std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
-		dy = -1;
+		this->dy = -1;
 		prevState = state;
 		state = RUN_UP;
 		//std::cout << prevState << " " << state << std::endl;
@@ -53,7 +41,7 @@ void MovementComponent::move(const float& dt)
 	{
 		//std::cout << "S is pressed\n";
 		//std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
-		dy = 1;
+		this->dy = 1;
 		prevState = state;
 		state = RUN_DOWN;
 		//std::cout << prevState << " " << state << std::endl;
@@ -62,7 +50,7 @@ void MovementComponent::move(const float& dt)
 	{
 		//std::cout << "A is pressed\n";
 		//std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
-		dx = -1;
+		this->dx = -1;
 		prevState = state;
 		state = RUN_LEFT;
 		//std::cout << prevState << " " << state << std::endl;
@@ -71,18 +59,18 @@ void MovementComponent::move(const float& dt)
 	{
 		//std::cout << "D is pressed\n";
 		//std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
-		dx = 1;
+		this->dx = 1;
 		prevState = state;
 		state = RUN_RIGHT;
 		//std::cout << prevState << " " << state << std::endl;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && !roll)// && (!dx && !dy || !dx || !dy))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && !roll)// && (!this->dx && !this->dy || !this->dx || !this->dy))
 	{
 		//std::cout << "Do a barrel roll\n";
-		speed = 800;
+		speed = 1200;
 		roll = true;
 		prevState = state;
-		state = ROLL;
+		state = RUN_RIGHT;
 	}
 	if (this->dx == 0 && this->dy == 0)
 	{
@@ -90,13 +78,11 @@ void MovementComponent::move(const float& dt)
 		state = IDLE;
 		//std::cout << prevState << " " << state << std::endl;
 	}
-	//if (prevState != state)
-	//	stateChanged();
 
-	if (!dx && !dy) 
+	if (!this->dx && !this->dy) 
 		speed = sqrSpeed;
 
-	this->shape.move(sf::Vector2f(dx * speed * dt, dy * speed * dt));
+	this->shape.move(sf::Vector2f(this->dx * this->speed * dt, this->dy * this->speed * dt));
 }
 
 

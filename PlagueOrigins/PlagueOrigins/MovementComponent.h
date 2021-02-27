@@ -6,7 +6,6 @@ class MovementComponent
 {
 private:
 	sf::RectangleShape& shape;
-	sf::Texture texture;
 
 	enum key
 	{

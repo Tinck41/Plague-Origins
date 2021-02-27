@@ -28,7 +28,7 @@ void Player::spawnPlayer(float x, float y)
 {
 	//create movement component based on shape
 	shape.setPosition(x, y);
-	shape.setSize(sf::Vector2f(100.0f, 100.0f));
+	shape.setSize(sf::Vector2f(100.0f, 150.0f));
 	//shape.setScale(sf::Vector2f(0.5f, 0.5f));
 	shape.setFillColor(sf::Color::Red);
 }
@@ -44,8 +44,8 @@ void Player::initVariables()
 void Player::update(const float& dt)
 {
 	this->movementComponent->update(dt);
-	posX = this->shape.getPosition().x;
-	posY = this->shape.getPosition().y;
+	posX = this->shape.getPosition().x + this->colliderComponent->getHalfSize().x;
+	posY = this->shape.getPosition().y + this->colliderComponent->getHalfSize().y;
 
 	if (this->movementComponent->stateChanged())
 	{
@@ -57,12 +57,12 @@ void Player::update(const float& dt)
 	
 	this->armatureDisplay->setPosition(sf::Vector2f((1/scale)*posX,(1/scale)*posY));
 	//std::cout << "PLAYER: shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
-	//this->armatureDisplay = animationComponent->play(movementComponent->getState(),dt,this->shape.getPosition().x, this->shape.getPosition().y);
 	this->factory.update(dt);
 }
-
+	
 void Player::render(sf::RenderWindow& target)
 {
+	//draw hitbox
 	//target.draw(this->shape);
 	target.draw(*armatureDisplay, states);
 }
