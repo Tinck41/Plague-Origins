@@ -46,8 +46,129 @@
     <ClCompile Include="PauseScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
+    <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="dragonBones\SFMLArmatureProxy.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="dragonBones\SFMLFactory.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="dragonBones\SFMLSlot.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp">
+      <Filter>dragonBones</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\JSONDataParser.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\DataParser.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\BinaryDataParser.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\UserData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\SkinData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\TextureAtlasData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\DragonBonesData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\DisplayData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\ConstraintData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\CanvasData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\BoundingBoxData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\ArmatureData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\AnimationData.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\AnimationConfig.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\geom\Transform.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\geom\Point.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\factory\BaseFactory.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\event\EventObject.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\core\DragonBones.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\core\BaseObject.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\TransformObject.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Slot.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\DeformVertices.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Constraint.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Bone.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Armature.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\WorldClock.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\TimelineState.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\BaseTimelineState.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\AnimationState.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\Animation.cpp">
+      <Filter>dragonBonesCPP</Filter>
+    </ClCompile>
     <ClCompile Include="ColliderComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="IStateHandler.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateHandler.cpp">
+      <Filter>Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,8 +216,48 @@
     <ClInclude Include="PauseScreen.h">
       <Filter>Screens</Filter>
     </ClInclude>
+    <ClInclude Include="dragonBones\SFMLArmatureDisplay.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLArmatureProxy.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLDisplay.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLEventDispatcher.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLFactory.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLNode.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLSlot.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLTextureAtlasData.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="dragonBones\SFMLTextureData.h">
+      <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
     <ClInclude Include="ColliderComponent.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="PauseScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="IStateHandler.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateHandler.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +278,12 @@
     </Filter>
     <Filter Include="Precompiled headers">
       <UniqueIdentifier>{0119cf1b-9154-4c88-ad28-497bfb1f65d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dragonBones">
+      <UniqueIdentifier>{d1ad2e5a-43cc-482d-a6c2-a7ab190cb02a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dragonBonesCPP">
+      <UniqueIdentifier>{934550d1-269d-4d4e-9d4b-ab24393326d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

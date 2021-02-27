@@ -7,9 +7,16 @@ Player::Player()
 
 Player::Player(float x, float y) : Unit()
 {
+	scale = 0.2f;
+	this->posX = x;
+	this->posY = y;
 	initVariables();
 	spawnPlayer(x,y);
 	createMovementComponent(this->shape, this->speed);
+	createAnimationComponent(this->shape, this->factory);
+	animationComponent->initArmature(sf::Vector2f(x,y));
+	this->states.transform.scale(scale, scale);
+	this->armatureDisplay = this->animationComponent->playAnimation(IDLE, this->shape.getPosition().x, this->shape.getPosition().y);
 	createColliderComponent(this->shape);
 }
 
@@ -21,7 +28,7 @@ void Player::spawnPlayer(float x, float y)
 {
 	//create movement component based on shape
 	shape.setPosition(x, y);
-	shape.setSize(sf::Vector2f(100.0f, 200.0f));
+	shape.setSize(sf::Vector2f(100.0f, 100.0f));
 	//shape.setScale(sf::Vector2f(0.5f, 0.5f));
 	shape.setFillColor(sf::Color::Red);
 }
@@ -31,15 +38,31 @@ void Player::initVariables()
 	speed = 600;
 	dx = 0; //move x direction
 	dy = 0; //move y direction
+	isStateChanged = false;
 }
 
 void Player::update(const float& dt)
 {
 	this->movementComponent->update(dt);
-	this->shape = movementComponent->getShape();
+	posX = this->shape.getPosition().x;
+	posY = this->shape.getPosition().y;
+
+	if (this->movementComponent->stateChanged())
+	{
+		std::cout << "STATE CHANGED" << std::endl;
+		std::cout << "ARM POS:" << armatureDisplay->getPosition().x << " " << armatureDisplay->getPosition().y << std::endl;
+		std::cout << "SHAPE POS:" << this->shape.getPosition().x << " " << this->shape.getPosition().y << std::endl;
+		this->armatureDisplay = this->animationComponent->playAnimation(movementComponent->getState(), this->shape.getPosition().x, this->shape.getPosition().y);
+	}
+	
+	this->armatureDisplay->setPosition(sf::Vector2f((1/scale)*posX,(1/scale)*posY));
+	//std::cout << "PLAYER: shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
+	//this->armatureDisplay = animationComponent->play(movementComponent->getState(),dt,this->shape.getPosition().x, this->shape.getPosition().y);
+	this->factory.update(dt);
 }
 
-void Player::render(sf::RenderWindow& window)
+void Player::render(sf::RenderWindow& target)
 {
-	window.draw(this->shape);
+	//target.draw(this->shape);
+	target.draw(*armatureDisplay, states);
 }

@@ -69,7 +69,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\$(ProjectName)</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(PlatformName)\$(Configuration)</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -91,7 +96,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\DragonBones\;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,17 +128,54 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;$(SolutionDir)\AdditionalLibraries\DragonBones;./.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;$(SolutionDir)\AdditionalLibraries\DragonBones;./.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\Animation.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\AnimationState.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\BaseTimelineState.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\TimelineState.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\WorldClock.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Armature.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Bone.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Constraint.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\DeformVertices.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\Slot.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\armature\TransformObject.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\core\BaseObject.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\core\DragonBones.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\event\EventObject.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\factory\BaseFactory.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\geom\Point.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\geom\Transform.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\AnimationConfig.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\AnimationData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\ArmatureData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\BoundingBoxData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\CanvasData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\ConstraintData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\DisplayData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\DragonBonesData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\SkinData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\TextureAtlasData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\model\UserData.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\BinaryDataParser.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\DataParser.cpp" />
+    <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\JSONDataParser.cpp" />
+    <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp" />
+    <ClCompile Include="dragonBones\SFMLArmatureProxy.cpp" />
+    <ClCompile Include="dragonBones\SFMLFactory.cpp" />
+    <ClCompile Include="dragonBones\SFMLSlot.cpp" />
+    <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Config.cpp" />
@@ -144,8 +186,10 @@
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerStateHandler.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenHandler.cpp" />
+    <ClCompile Include="IStateHandler.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -157,6 +201,16 @@
     <ClCompile Include="tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationComponent.h" />
+    <ClInclude Include="dragonBones\SFMLArmatureDisplay.h" />
+    <ClInclude Include="dragonBones\SFMLArmatureProxy.h" />
+    <ClInclude Include="dragonBones\SFMLDisplay.h" />
+    <ClInclude Include="dragonBones\SFMLEventDispatcher.h" />
+    <ClInclude Include="dragonBones\SFMLFactory.h" />
+    <ClInclude Include="dragonBones\SFMLNode.h" />
+    <ClInclude Include="dragonBones\SFMLSlot.h" />
+    <ClInclude Include="dragonBones\SFMLTextureAtlasData.h" />
+    <ClInclude Include="dragonBones\SFMLTextureData.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Config.h" />
@@ -166,8 +220,10 @@
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerStateHandler.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenHandler.h" />
+    <ClInclude Include="IStateHandler.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="TileLayer.h" />
