@@ -10,7 +10,7 @@ class Config {
 public:
 	Config();
 	unsigned int WINDOW_WIDTH = 800;
-	unsigned int WINDOW_HEIGHT = 600;
+	unsigned int WINDOW_HEIGHT = 800;
 	unsigned int FPS_LIMIT = 60;
 	bool IS_FULLSCREEN = false;
 	

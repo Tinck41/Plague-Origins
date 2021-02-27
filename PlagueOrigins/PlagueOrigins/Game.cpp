@@ -11,7 +11,11 @@ Game::~Game()
 
 void Game::setup()
 {
-	this->window = new sf::RenderWindow(sf::VideoMode(CONFIG.WINDOW_WIDTH, CONFIG.WINDOW_HEIGHT), CONFIG.WINDOW_TITLE, CONFIG.IS_FULLSCREEN ? sf::Style::Fullscreen : sf::Style::Close);
+	this->window = new sf::RenderWindow(
+		CONFIG.IS_FULLSCREEN ? sf::VideoMode::getDesktopMode() : sf::VideoMode(CONFIG.WINDOW_WIDTH, CONFIG.WINDOW_HEIGHT),
+		CONFIG.WINDOW_TITLE, 
+		CONFIG.IS_FULLSCREEN ? sf::Style::Fullscreen : sf::Style::Close
+	);
 	this->window->setFramerateLimit(CONFIG.FPS_LIMIT);
 
 	this->screenHandler = new ScreenHandler(ScreenType::MAIN_MENU);
