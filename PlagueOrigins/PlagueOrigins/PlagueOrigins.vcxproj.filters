@@ -46,8 +46,6 @@
     <ClCompile Include="PauseScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
-
-    <ClCompile Include="DragonBoy.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
@@ -162,8 +160,6 @@
     <ClCompile Include="AnimationComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationLayer.cpp" />
-    <ClCompile Include="AnimationComponentDEADBRAINTIME.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="PauseScreen.cpp">
       <Filter>Screens</Filter>
@@ -220,7 +216,6 @@
     <ClInclude Include="PauseScreen.h">
       <Filter>Screens</Filter>
     </ClInclude>
-    
     <ClInclude Include="dragonBones\SFMLArmatureDisplay.h">
       <Filter>dragonBones</Filter>
     </ClInclude>

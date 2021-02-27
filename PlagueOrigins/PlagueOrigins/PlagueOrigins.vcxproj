@@ -69,7 +69,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\$(ProjectName)</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(PlatformName)\$(Configuration)</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -123,14 +128,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;$(SolutionDir)\AdditionalLibraries\DragonBones;./.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;$(SolutionDir)\AdditionalLibraries\DragonBones;./.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -166,14 +171,11 @@
     <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\DataParser.cpp" />
     <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\parser\JSONDataParser.cpp" />
     <ClCompile Include="AnimationComponent.cpp" />
-    <ClCompile Include="AnimationComponentDEADBRAINTIME.cpp" />
-    <ClCompile Include="AnimationLayer.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureProxy.cpp" />
     <ClCompile Include="dragonBones\SFMLFactory.cpp" />
     <ClCompile Include="dragonBones\SFMLSlot.cpp" />
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp" />
-    <ClCompile Include="DragonBoy.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Config.cpp" />
