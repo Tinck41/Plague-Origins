@@ -15,8 +15,8 @@ private:
 	float deltaTime;
 
 	void setup();
-	void updateDeltaTime();    // ��������� deltaTime �������� ��������� ������ �����
-	void resolveSFMLEvents();  // ������������ ������� SFML
+	void updateDeltaTime();
+	void resolveSFMLEvents();
 	void update();
 	void render();
 public:

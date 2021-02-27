@@ -43,8 +43,8 @@ void Player::update(const float& dt)
 	this->factory.update(dt);
 }
 
-void Player::render(sf::RenderTarget* target)
+void Player::render(sf::RenderWindow& target)
 {
-	target->draw(this->shape);
-	target->draw(*armatureDisplay, states);
+	target.draw(this->shape);
+	target.draw(*armatureDisplay, states);
 }

@@ -47,7 +47,6 @@ void Game::update()
 
 void Game::render()
 {
-	this->window->setView(this->camera);
 	this->window->clear();
 	this->screenHandler->render(*window);
 	this->window->display();

@@ -43,8 +43,7 @@ public:
 	
 	void update(const float& dt);
 
-	void render(sf::RenderWindow& window);
-
+	void render(sf::RenderWindow& target);
 };
 
 
