@@ -2,9 +2,9 @@
 
 PauseScreen::PauseScreen()
 {
-	this->continueButton = Button(CONFIG.WINDOW_WIDTH / 2 - 90, CONFIG.WINDOW_HEIGHT / 2 - 25, 180, 50, 3, "Continue");
-	this->mainMenuButton = Button(CONFIG.WINDOW_WIDTH / 2 - 90, CONFIG.WINDOW_HEIGHT / 2 + 50, 180, 50, 3, "Main Menu");
-	this->exitButton = Button(CONFIG.WINDOW_WIDTH / 2 - 90, CONFIG.WINDOW_HEIGHT / 2 + 125, 180, 50, 3, "Exit");
+	this->continueButton = Button(CONFIG.getWidth() / 2 - 90, CONFIG.getHeight() / 2 - 25, 180, 50, 3, "Continue");
+	this->mainMenuButton = Button(CONFIG.getWidth() / 2 - 90, CONFIG.getHeight() / 2 + 50, 180, 50, 3, "Main Menu");
+	this->exitButton = Button(CONFIG.getWidth() / 2 - 90, CONFIG.getHeight() / 2 + 125, 180, 50, 3, "Exit");
 }
 
 PauseScreen::~PauseScreen()
