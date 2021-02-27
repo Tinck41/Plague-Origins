@@ -1,9 +1,9 @@
 #pragma once
 #include "MovementComponent.h"
 
-MovementComponent::MovementComponent(sf::RectangleShape& shape, int speed)
+MovementComponent::MovementComponent(sf::RectangleShape& shape, int speed) :
+	shape(shape)
 {
-	this->shape = shape;
 	this->speed = speed;
 	dx = 0;
 	dy = 0;
@@ -20,35 +20,35 @@ void MovementComponent::move(const float& dt)
 	dx = 0;
 	dy = 0;
 	roll = false;
-	speed = 200;
+	speed = 600;
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 	{
-		std::cout << "W is pressed\n";
-		std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
+		//std::cout << "W is pressed\n";
+		//std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
 		dy = -1;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
 	{
-		std::cout << "S is pressed\n";
-		std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
+		//std::cout << "S is pressed\n";
+		//std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
 		dy = 1;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 	{
-		std::cout << "A is pressed\n";
-		std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
+		//std::cout << "A is pressed\n";
+		//std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
 		dx = -1;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 	{
-		std::cout << "D is pressed\n";
-		std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
+		//std::cout << "D is pressed\n";
+		//std::cout << "shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
 		dx = 1;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && !roll)// && (!dx && !dy || !dx || !dy))
 	{
-		std::cout << "Do a barrel roll\n";
+		//std::cout << "Do a barrel roll\n";
 		speed = 800;
 		roll = true;
 	}
