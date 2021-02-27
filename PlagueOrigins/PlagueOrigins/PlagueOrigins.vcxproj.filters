@@ -164,7 +164,16 @@
     </ClCompile>
     <ClCompile Include="AnimationLayer.cpp" />
     <ClCompile Include="AnimationComponentDEADBRAINTIME.cpp" />
-
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="IStateHandler.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateHandler.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -244,6 +253,16 @@
     </ClInclude>
     <ClInclude Include="ColliderComponent.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="PauseScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="IStateHandler.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateHandler.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
