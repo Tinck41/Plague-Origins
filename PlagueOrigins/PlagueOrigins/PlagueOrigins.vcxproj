@@ -175,6 +175,7 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp" />
     <ClCompile Include="DragonBoy.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameScreen.cpp" />
@@ -207,6 +208,7 @@
     <ClInclude Include="dragonBones\SFMLTextureAtlasData.h" />
     <ClInclude Include="dragonBones\SFMLTextureData.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameScreen.h" />

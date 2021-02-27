@@ -5,7 +5,6 @@
 MovementComponent::MovementComponent(sf::RectangleShape& shape, int speed) :
 	shape(shape)
 {
-	//this->shape = shape;
 	this->speed = speed;
 	sqrSpeed = sqrt(speed);
 	dx = 0;
@@ -37,7 +36,7 @@ void MovementComponent::move(const float& dt)
 	dx = 0;
 	dy = 0;
 	roll = false;
-	speed = 200;
+	speed = 600;
 
 	
 
@@ -79,7 +78,7 @@ void MovementComponent::move(const float& dt)
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && !roll)// && (!dx && !dy || !dx || !dy))
 	{
-		std::cout << "Do a barrel roll\n";
+		//std::cout << "Do a barrel roll\n";
 		speed = 800;
 		roll = true;
 		prevState = state;

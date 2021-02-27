@@ -28,6 +28,11 @@ void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
 	this->movementComponent = new MovementComponent(shape, speed);
 }
 
+void Unit::createColliderComponent(sf::RectangleShape& shape)
+{
+	this->colliderComponent = new ColliderComponent(shape);
+}
+
 void Unit::update(const float& dt)
 {
 }

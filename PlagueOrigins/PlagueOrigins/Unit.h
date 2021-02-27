@@ -8,6 +8,7 @@
 #include <iostream>
 #include "MovementComponent.h"
 #include "AnimationComponent.h"
+#include "ColliderComponent.h"
 
 class Unit
 {
@@ -28,6 +29,7 @@ protected:
 	MovementComponent* movementComponent;
 	AnimationComponent* animationComponent;
 
+	ColliderComponent* colliderComponent;
 public:
 	//Constructors/Destructors
 	Unit();
@@ -36,11 +38,11 @@ public:
 	//Functions
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
 	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);
+	void createColliderComponent(sf::RectangleShape& shape);
 
 	virtual void update(const float& dt);
 
 	virtual void render(sf::RenderWindow* window);
-
 };
 
 

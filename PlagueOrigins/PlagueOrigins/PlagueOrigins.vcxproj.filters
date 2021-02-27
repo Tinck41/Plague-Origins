@@ -156,7 +156,12 @@
     <ClCompile Include="..\AdditionalLibraries\DragonBones\dragonBones\animation\Animation.cpp">
       <Filter>dragonBonesCPP</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="ColliderComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
     <ClCompile Include="AnimationLayer.cpp" />
     <ClCompile Include="AnimationComponentDEADBRAINTIME.cpp" />
 
@@ -234,8 +239,12 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationComponent.h" />
-
+    <ClInclude Include="AnimationComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

@@ -36,14 +36,19 @@ public:
 	//Variables
 
 	//Constructors/Destructors
+	Player();
 	Player(float x, float y);
+	~Player();
 	//virtual ~Player();
 
 	//Functions
 	
 	void update(const float& dt);
-
 	void render(sf::RenderWindow& target);
+
+	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
+
+	sf::Vector2f getPosition() { return this->shape.getPosition(); }
 };
 
 

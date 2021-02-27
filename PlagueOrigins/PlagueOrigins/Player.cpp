@@ -1,6 +1,10 @@
 #include "Player.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 
+Player::Player()
+{
+}
+
 Player::Player(float x, float y) : Unit()
 {
 	initVariables();
@@ -10,6 +14,11 @@ Player::Player(float x, float y) : Unit()
 	animationComponent->initArmature();
 	this->states.transform.scale(0.2f, 0.2f);
 	this->armatureDisplay = this->animationComponent->playAnimation(IDLE, this->shape.getPosition().x, this->shape.getPosition().y);
+	createColliderComponent(this->shape);
+}
+
+Player::~Player()
+{
 }
 
 void Player::spawnPlayer(float x, float y)
@@ -23,7 +32,7 @@ void Player::spawnPlayer(float x, float y)
 
 void Player::initVariables()
 {
-	speed = 200;
+	speed = 600;
 	dx = 0; //move x direction
 	dy = 0; //move y direction
 	isStateChanged = false;
