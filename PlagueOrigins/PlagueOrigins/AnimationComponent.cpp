@@ -10,7 +10,7 @@ AnimationComponent::~AnimationComponent()
 {
 }
 
-void AnimationComponent::initArmature()
+void AnimationComponent::initArmature(sf::Vector2f vec)
 {
 	//IDLE:
 
@@ -22,6 +22,7 @@ void AnimationComponent::initArmature()
 
 	this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 	
+	this->armatureDisplay->setPosition(vec);
 
 }
 

@@ -47,7 +47,7 @@ void MovementComponent::move(const float& dt)
 		dy = -1;
 		prevState = state;
 		state = RUN_UP;
-		std::cout << prevState << " " << state << std::endl;
+		//std::cout << prevState << " " << state << std::endl;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
 	{
@@ -56,7 +56,7 @@ void MovementComponent::move(const float& dt)
 		dy = 1;
 		prevState = state;
 		state = RUN_DOWN;
-		std::cout << prevState << " " << state << std::endl;
+		//std::cout << prevState << " " << state << std::endl;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 	{
@@ -65,7 +65,7 @@ void MovementComponent::move(const float& dt)
 		dx = -1;
 		prevState = state;
 		state = RUN_LEFT;
-		std::cout << prevState << " " << state << std::endl;
+		//std::cout << prevState << " " << state << std::endl;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 	{
@@ -74,7 +74,7 @@ void MovementComponent::move(const float& dt)
 		dx = 1;
 		prevState = state;
 		state = RUN_RIGHT;
-		std::cout << prevState << " " << state << std::endl;
+		//std::cout << prevState << " " << state << std::endl;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && !roll)// && (!dx && !dy || !dx || !dy))
 	{
@@ -88,10 +88,10 @@ void MovementComponent::move(const float& dt)
 	{
 		prevState = state;
 		state = IDLE;
-		std::cout << prevState << " " << state << std::endl;
+		//std::cout << prevState << " " << state << std::endl;
 	}
-	if (prevState != state)
-		stateChanged();
+	//if (prevState != state)
+	//	stateChanged();
 
 	if (!dx && !dy) 
 		speed = sqrSpeed;

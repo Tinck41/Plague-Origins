@@ -13,10 +13,13 @@ class Player : public Unit
 private: 
 	//Variables
 	sf::RenderStates states;
+	float posX;
+	float posY;
 	int speed;
 	float dx;
 	float dy;
 	bool isStateChanged;
+	float scale;
 
 	enum key
 	{

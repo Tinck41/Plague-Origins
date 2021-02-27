@@ -31,7 +31,7 @@ public:
 	~AnimationComponent();
 
 	//Functions
-	void initArmature();
+	void initArmature(sf::Vector2f vec);
 
 	dragonBones::SFMLArmatureDisplay* playAnimation(int key, float posX, float posY);
 
