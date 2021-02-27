@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "SFML/Graphics/RenderWindow.hpp"
 
 Player::Player(float x, float y) : Unit()
 {

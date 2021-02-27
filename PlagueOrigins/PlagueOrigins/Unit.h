@@ -4,7 +4,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Network.hpp>
-
+#include "SFML/Graphics/RenderWindow.hpp"
 #include <iostream>
 #include "MovementComponent.h"
 #include "AnimationComponent.h"
@@ -37,9 +37,9 @@ public:
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
 	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);
 
-	virtual void update(const float& dt) = 0;
+	virtual void update(const float& dt);
 
-	virtual void render(sf::RenderTarget* target) = 0;
+	virtual void render(sf::RenderWindow* window);
 
 };
 

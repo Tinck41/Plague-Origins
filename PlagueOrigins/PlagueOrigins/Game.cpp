@@ -1,72 +1,37 @@
-#include "stdafx.h"
 #include "Game.h"
 
 Game::Game()
 {
-	initWindow();
-	initMap();
+	setup();
 }
 
 Game::~Game()
 {
-	delete this->window;
 }
 
-void Game::initMap()
+void Game::setup()
 {
-	this->camera = this->window->getDefaultView();
+	this->window = new sf::RenderWindow(sf::VideoMode(CONFIG.WINDOW_WIDTH, CONFIG.WINDOW_HEIGHT), CONFIG.WINDOW_TITLE, CONFIG.IS_FULLSCREEN ? sf::Style::Fullscreen : sf::Style::Close);
+	this->window->setFramerateLimit(CONFIG.FPS_LIMIT);
 
-	this->tileMapSource = "./Assets/Map/map.tmx";
+	this->screenHandler = new ScreenHandler(ScreenType::MAIN_MENU);
+	this->deltaTime = 0.f;
+}
 
-	if (this->mapLoader.load(tileMapSource))
+void Game::updateDeltaTime()
+{
+	this->deltaTime = deltaTimeClock.restart().asSeconds();
+}
+
+void Game::resolveSFMLEvents()
+{
+	sf::Event event;
+	while (this->window->pollEvent(event))
 	{
-		this->map = this->mapLoader.parseTileMap();
-	}
-
-	this->map.loadLayers();
-}
-
-void Game::initWindow()
-{
-	this->window = new sf::RenderWindow(sf::VideoMode(1024, 768), "Plague: Origins", sf::Style::Titlebar | sf::Style::Close);
-
-	this->window->setFramerateLimit(60);
-}
-
-void Game::initVariables()
-{
-	this->dt = 0.f;
-}
-
-void Game::updateDt()
-{
-	/*Updates the dt variable with the time it takes to update and render one frame.*/
-
-	this->dt = this->dtClock.restart().asSeconds();
-}
-
-void Game::updateSFMLEvents()
-{
-	while (this->window->pollEvent(this->ev))
-	{
-		switch (this->ev.type)
+		switch (event.type)
 		{
 		case sf::Event::Closed:
 			this->window->close();
-			break;
-		case sf::Event::KeyPressed:
-			if (ev.key.code == sf::Keyboard::Key::Escape)
-			{
-				this->window->close();
-			}
-			if (ev.key.code == sf::Keyboard::Key::Q)
-			{
-				camera.zoom(1.05f);
-			}
-			if (ev.key.code == sf::Keyboard::Key::E)
-			{
-				camera.zoom(0.95f);
-			}
 			break;
 		default:
 			break;
@@ -76,21 +41,15 @@ void Game::updateSFMLEvents()
 
 void Game::update()
 {
-	updateSFMLEvents();
-
-	//update player
-	player->update(dt);
+	resolveSFMLEvents();
+	this->screenHandler->update(deltaTime);
 }
 
 void Game::render()
 {
 	this->window->setView(this->camera);
 	this->window->clear();
-
-	//Render obj
-	this->map.render(*this->window);
-	this->player->render(this->window);
-
+	this->screenHandler->render(*window);
 	this->window->display();
 }
 
@@ -98,8 +57,8 @@ void Game::run()
 {
 	while (this->window->isOpen())
 	{
-		this->updateDt();
-		this->update();
-		this->render();
+		updateDeltaTime();
+		update();
+		render();
 	}
 }

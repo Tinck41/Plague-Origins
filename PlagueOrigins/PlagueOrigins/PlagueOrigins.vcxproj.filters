@@ -3,14 +3,50 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MovementComponent.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Unit.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="TileLayer.cpp" />
-    <ClCompile Include="TileMap.cpp" />
-    <ClCompile Include="TileMapLoader.cpp" />
-    <ClCompile Include="tinyxml2.cpp" />
+    <ClCompile Include="GameScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenHandler.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMapLoader.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="TileLayer.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Precompiled headers</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="PauseScreen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+
     <ClCompile Include="DragonBoy.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp">
       <Filter>dragonBones</Filter>
@@ -123,17 +159,54 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="AnimationLayer.cpp" />
     <ClCompile Include="AnimationComponentDEADBRAINTIME.cpp" />
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
-    <ClInclude Include="MovementComponent.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Unit.h" />
-    <ClInclude Include="TileLayer.h" />
-    <ClInclude Include="TileMap.h" />
-    <ClInclude Include="TileMapLoader.h" />
-    <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="GameScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Screen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenHandler.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMapLoader.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileLayer.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Precompiled headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="PauseScreen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
+    
     <ClInclude Include="dragonBones\SFMLArmatureDisplay.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
@@ -162,8 +235,27 @@
       <Filter>dragonBones</Filter>
     </ClInclude>
     <ClInclude Include="AnimationComponent.h" />
+
   </ItemGroup>
   <ItemGroup>
+    <Filter Include="Tilemap">
+      <UniqueIdentifier>{21d0d665-d5fd-476b-9854-c1e6dd498104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Components">
+      <UniqueIdentifier>{01076e94-73a4-4480-9a01-cd14f83a50f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{4f92a80e-d257-48ae-9d77-c66caf5216ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{1fcba0f1-1f32-429a-9704-53362dc6872b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{9f262fea-7a25-46f1-816d-19c6bfeea4f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Precompiled headers">
+      <UniqueIdentifier>{0119cf1b-9154-4c88-ad28-497bfb1f65d3}</UniqueIdentifier>
+    </Filter>
     <Filter Include="dragonBones">
       <UniqueIdentifier>{d1ad2e5a-43cc-482d-a6c2-a7ab190cb02a}</UniqueIdentifier>
     </Filter>
