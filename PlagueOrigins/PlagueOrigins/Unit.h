@@ -1,11 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
-#include "SFML/Graphics/RenderWindow.hpp"
-#include <iostream>
 #include "MovementComponent.h"
 #include "AnimationComponent.h"
 #include "ColliderComponent.h"

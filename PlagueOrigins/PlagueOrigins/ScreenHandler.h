@@ -1,10 +1,9 @@
 #pragma once
 
-#include "stdafx.h"
-
 #include "Screen.h"
 #include "GameScreen.h"
 #include "MainMenuScreen.h"
+#include "PauseScreen.h"
 
 class ScreenHandler
 {

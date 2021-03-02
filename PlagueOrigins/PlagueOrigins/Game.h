@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ScreenHandler.h"
-#include "stdafx.h"
 
 extern Config CONFIG;
 

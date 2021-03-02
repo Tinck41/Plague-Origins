@@ -3,6 +3,7 @@
  ** @author Patryk (PsychoX) Ludwikowski <psychoxivi@gmail.com>
  ** @license MIT License
  **/
+#include "stdafx.h"
 
 #include "SFMLSlot.h"
 

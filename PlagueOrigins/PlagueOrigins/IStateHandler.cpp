@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "IStateHandler.h"
 
 void IStateHandler::pushState(State suggestedState)

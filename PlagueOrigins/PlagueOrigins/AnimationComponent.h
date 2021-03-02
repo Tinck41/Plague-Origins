@@ -1,10 +1,5 @@
 #pragma once
 
-#include <dragonBones/SFMLFactory.h>
-#include <dragonBones/SFMLArmatureDisplay.h>
-
-#include "stdafx.h"
-
 class AnimationComponent
 {
 private:

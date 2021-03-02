@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "AnimationComponent.h"
 
 //Constructor/Destructor

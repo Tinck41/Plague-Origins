@@ -1,9 +1,6 @@
 #include "stdafx.h"
 
 #include "ScreenHandler.h"
-#include "GameScreen.h"
-#include "MainMenuScreen.h"
-#include "PauseScreen.h"
 
 ScreenHandler::ScreenHandler(ScreenType initialScreenType)
 {

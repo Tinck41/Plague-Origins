@@ -2,6 +2,8 @@
  ** @author Piotr Krupa (piotrkrupa06@gmail.com)
  ** @license MIT License
  **/
+#include "stdafx.h"
+
 #include "SFMLTextureAtlasData.h"
 
 #include <memory>

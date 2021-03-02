@@ -1,4 +1,5 @@
 #include "stdafx.h"
+
 #include "TileLayer.h"
 
 void TileLayer::draw(sf::RenderTarget& target, sf::RenderStates states) const

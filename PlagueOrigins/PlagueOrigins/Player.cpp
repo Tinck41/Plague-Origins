@@ -1,5 +1,6 @@
+#include "stdafx.h"
+
 #include "Player.h"
-#include "SFML/Graphics/RenderWindow.hpp"
 
 Player::Player()
 {

@@ -1,6 +1,4 @@
 #pragma once
-#include "stdafx.h"
-
 /**
 	Stores the configuration of the game.
 

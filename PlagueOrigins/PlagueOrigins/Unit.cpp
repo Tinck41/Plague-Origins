@@ -1,5 +1,6 @@
+#include "stdafx.h"
+
 #include "Unit.h"
-#include "SFML/Graphics/RenderWindow.hpp"
 
 Unit::Unit()
 {

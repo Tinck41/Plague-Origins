@@ -1,6 +1,7 @@
 #pragma once
+#include "stdafx.h"
+
 #include "MovementComponent.h"
-#include <cmath>
 
 MovementComponent::MovementComponent(sf::RectangleShape& shape, int speed) :
 	shape(shape)

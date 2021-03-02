@@ -1,3 +1,5 @@
+#include "stdafx.h"
+
 #include "PlayerStateHandler.h"
 
 PlayerStateHandler::PlayerStateHandler(Player& player) :

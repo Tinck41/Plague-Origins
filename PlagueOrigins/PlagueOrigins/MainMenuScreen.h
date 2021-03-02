@@ -2,7 +2,6 @@
 
 #include "Screen.h"
 #include "Button.h"
-#include "stdafx.h"
 
 extern Config CONFIG;
 
