@@ -20,7 +20,7 @@ void GameScreen::update(const float& dt)
 {
 	this->player.update(dt);
 	this->map.update(this->player);
-	this->camera.setSize(sf::Vector2f(CONFIG.getWidth() * 2, CONFIG.getHeight() * 2));
+	this->camera.setSize(sf::Vector2f(CONFIG.getWidth(), CONFIG.getHeight()));
 	this->camera.setCenter(this->player.getPosition());
 }
 
