@@ -1,17 +1,15 @@
 #pragma once
 
+#include "PlayerStates.h"
+
 class AnimationComponent
 {
 private:
-	
 	//Variables
 	bool done;
 	int state;
 
-	enum key
-	{
-		NONE, IDLE, RUN_UP, RUN_LEFT, RUN_DOWN, RUN_RIGHT, ROLL
-	};
+	unsigned curState;
 
 	//Game objects
 	sf::Texture texture;
@@ -19,7 +17,8 @@ private:
 	dragonBones::SFMLFactory& factory;
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
 
-
+	void setMovementAnimation(unsigned state);
+	void setIdleAnimation(unsigned state);
 public:
 	//Constructor/Destructor
 	AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);
@@ -28,6 +27,6 @@ public:
 	//Functions
 	void initArmature(sf::Vector2f vec);
 
-	dragonBones::SFMLArmatureDisplay* playAnimation(int key, float posX, float posY);
+	dragonBones::SFMLArmatureDisplay* playAnimation(unsigned globalState, unsigned localState);
 
 };

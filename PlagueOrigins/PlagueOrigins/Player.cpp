@@ -2,6 +2,8 @@
 
 #include "Player.h"
 
+
+
 Player::Player()
 {
 }
@@ -9,15 +11,13 @@ Player::Player()
 Player::Player(float x, float y) : Unit()
 {
 	scale = 0.2f;
-	this->posX = x;
-	this->posY = y;
 	initVariables();
 	spawnPlayer(x,y);
 	createMovementComponent(this->shape, this->speed);
 	createAnimationComponent(this->shape, this->factory);
 	animationComponent->initArmature(sf::Vector2f(x,y));
 	this->states.transform.scale(scale, scale);
-	this->armatureDisplay = this->animationComponent->playAnimation(IDLE, this->shape.getPosition().x, this->shape.getPosition().y);
+	this->armatureDisplay = this->animationComponent->playAnimation(IDLE, idleDown);
 	createColliderComponent(this->shape);
 }
 
@@ -47,19 +47,17 @@ void Player::update(const float& dt)
 	this->inputHandler.update();
 
 	this->movementComponent->move(dt, this->inputHandler.getDirection());
-
-	posX = this->shape.getPosition().x + this->colliderComponent->getHalfSize().x;
-	posY = this->shape.getPosition().y + this->colliderComponent->getHalfSize().y;
+	this->armatureDisplay = this->animationComponent->playAnimation(this->inputHandler.getGlobalState(), this->inputHandler.getLocalState());
 	
-	if (this->movementComponent->stateChanged())
-	{
-		/*std::cout << "STATE CHANGED" << std::endl;
-		std::cout << "ARM POS:" << armatureDisplay->getPosition().x << " " << armatureDisplay->getPosition().y << std::endl;
-		std::cout << "SHAPE POS:" << this->shape.getPosition().x << " " << this->shape.getPosition().y << std::endl;*/
-		this->armatureDisplay = this->animationComponent->playAnimation(movementComponent->getState(), this->shape.getPosition().x, this->shape.getPosition().y);
-	}
+	//if (this->movementComponent->stateChanged())
+	//{
+	//	/*std::cout << "STATE CHANGED" << std::endl;
+	//	std::cout << "ARM POS:" << armatureDisplay->getPosition().x << " " << armatureDisplay->getPosition().y << std::endl;
+	//	std::cout << "SHAPE POS:" << this->shape.getPosition().x << " " << this->shape.getPosition().y << std::endl;*/
+	//	this->armatureDisplay = this->animationComponent->playAnimation(movementComponent->getState(), this->shape.getPosition().x, this->shape.getPosition().y);
+	//}
 	
-	this->armatureDisplay->setPosition(sf::Vector2f((1/scale)*posX,(1/scale)*posY));
+	this->armatureDisplay->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
 	//std::cout << "PLAYER: shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
 	this->factory.update(dt);
 }

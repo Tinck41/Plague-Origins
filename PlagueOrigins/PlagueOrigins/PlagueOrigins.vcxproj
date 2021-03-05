@@ -200,6 +200,7 @@
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStateHandler.h" />
+    <ClInclude Include="PlayerStates.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenHandler.h" />
     <ClInclude Include="IStateHandler.h" />

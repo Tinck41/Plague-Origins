@@ -2,6 +2,7 @@
 
 #include "Unit.h"
 #include "InputHandler.h"
+#include "PlayerStates.h"
 
 class Player : public Unit
 {
@@ -17,12 +18,6 @@ private:
 	float scale;
 
 	InputHandler inputHandler;
-	
-
-	enum key
-	{
-		NONE, IDLE, RUN_UP, RUN_LEFT, RUN_DOWN, RUN_RIGHT, ROLL
-	};
 
 	//Game objects
 	sf::RectangleShape shape;

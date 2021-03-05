@@ -13,7 +13,56 @@ AnimationComponent::~AnimationComponent()
 
 }
 
-//State, substate
+void AnimationComponent::setMovementAnimation(unsigned state)
+{
+	this->curState = state;
+
+	switch (state)
+	{
+	case moveUp:
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
+		this->armatureDisplay->getAnimation()->play("RunN");
+		break;
+	case moveRight:
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+		this->armatureDisplay->getAnimation()->play("RunEW");
+		break;
+	case moveDown:
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunS");
+		this->armatureDisplay->getAnimation()->play("RunS");
+		break;
+	case moveLeft:
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+		this->armatureDisplay->getArmature()->setFlipX(true);
+		this->armatureDisplay->getAnimation()->play("RunEW");
+		break;
+	}
+}
+
+void AnimationComponent::setIdleAnimation(unsigned state)
+{
+	this->curState = state;
+
+	switch (state)
+	{
+	case idleUp:
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+		this->armatureDisplay->getAnimation()->play("Idle");
+		break;
+	case idleRight:
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+		this->armatureDisplay->getAnimation()->play("Idle");
+		break;
+	case idleDown:
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+		this->armatureDisplay->getAnimation()->play("Idle");
+		break;
+	case idleLeft:
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+		this->armatureDisplay->getAnimation()->play("Idle");
+		break;
+	}
+}
 
 void AnimationComponent::initArmature(sf::Vector2f vec)
 {
@@ -30,37 +79,26 @@ void AnimationComponent::initArmature(sf::Vector2f vec)
 	this->armatureDisplay->setPosition(vec);
 }
 
-dragonBones::SFMLArmatureDisplay* AnimationComponent::playAnimation(int key, float posX, float posY)
+dragonBones::SFMLArmatureDisplay* AnimationComponent::playAnimation(unsigned globalState, unsigned localState)
 {
-	this->armatureDisplay->getArmature()->dispose();
-	switch (key)
+	if (this->curState != localState)
 	{
-	case IDLE:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
-		break;
-	case RUN_UP:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
-		this->armatureDisplay->getAnimation()->play("RunN");
-		break;
-	case RUN_RIGHT:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
-		this->armatureDisplay->getAnimation()->play("RunEW");
-		break;
-	case RUN_DOWN:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunS");
-		this->armatureDisplay->getAnimation()->play("RunS");
-		break;
-	case RUN_LEFT:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
-		this->armatureDisplay->getArmature()->setFlipX(true);
-		this->armatureDisplay->getAnimation()->play("RunEW");
-		break;
-	case ROLL:
-		/*
-			WIP
-		*/
-		break;
+		if (this->armatureDisplay->getArmature() != NULL)
+			this->armatureDisplay->getArmature()->dispose();
+
+		switch (globalState)
+		{
+		case IDLE:
+			this->setIdleAnimation(localState);
+			break;
+		case MOVE:
+			this->setMovementAnimation(localState);
+			break;
+		case DASH:
+			break;
+		case ATTACK:
+			break;
+		}
 	}
-	return armatureDisplay;
+	return this->armatureDisplay;
 }

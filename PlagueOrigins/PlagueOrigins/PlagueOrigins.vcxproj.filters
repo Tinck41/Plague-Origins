@@ -170,6 +170,9 @@
     </ClInclude>
     <ClInclude Include="Test.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="PlayerStates.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

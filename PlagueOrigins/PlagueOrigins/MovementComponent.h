@@ -9,7 +9,7 @@ private:
 	{
 		NONE, IDLE, RUN_UP, RUN_LEFT, RUN_DOWN, RUN_RIGHT, ROLL
 	};
-
+	
 	int initialSpeed;
 	int speed;
 	bool roll;
