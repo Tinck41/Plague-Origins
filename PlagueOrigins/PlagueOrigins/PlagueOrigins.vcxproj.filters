@@ -77,6 +77,8 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -166,6 +168,8 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
+    <ClInclude Include="Test.h" />
+    <ClInclude Include="InputHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

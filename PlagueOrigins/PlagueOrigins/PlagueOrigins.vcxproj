@@ -155,6 +155,7 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenHandler.cpp" />
     <ClCompile Include="IStateHandler.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -192,6 +194,7 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="PauseScreen.h" />
@@ -201,6 +204,7 @@
     <ClInclude Include="ScreenHandler.h" />
     <ClInclude Include="IStateHandler.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Test.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="TileMap.h" />

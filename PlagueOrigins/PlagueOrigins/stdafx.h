@@ -16,6 +16,7 @@
 #include <fstream>
 #include <cmath>
 #include <queue>
+#include <deque>
 
 //SFML
 #include <SFML\System.hpp>

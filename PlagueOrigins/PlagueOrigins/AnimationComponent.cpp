@@ -10,7 +10,10 @@ AnimationComponent::AnimationComponent(sf::RectangleShape& shape, dragonBones::S
 
 AnimationComponent::~AnimationComponent()
 {
+
 }
+
+//State, substate
 
 void AnimationComponent::initArmature(sf::Vector2f vec)
 {
@@ -25,7 +28,6 @@ void AnimationComponent::initArmature(sf::Vector2f vec)
 	this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 	
 	this->armatureDisplay->setPosition(vec);
-
 }
 
 dragonBones::SFMLArmatureDisplay* AnimationComponent::playAnimation(int key, float posX, float posY)

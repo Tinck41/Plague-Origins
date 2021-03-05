@@ -44,15 +44,18 @@ void Player::initVariables()
 
 void Player::update(const float& dt)
 {
-	this->movementComponent->update(dt);
+	this->inputHandler.update();
+
+	this->movementComponent->move(dt, this->inputHandler.getDirection());
+
 	posX = this->shape.getPosition().x + this->colliderComponent->getHalfSize().x;
 	posY = this->shape.getPosition().y + this->colliderComponent->getHalfSize().y;
-
+	
 	if (this->movementComponent->stateChanged())
 	{
-		std::cout << "STATE CHANGED" << std::endl;
+		/*std::cout << "STATE CHANGED" << std::endl;
 		std::cout << "ARM POS:" << armatureDisplay->getPosition().x << " " << armatureDisplay->getPosition().y << std::endl;
-		std::cout << "SHAPE POS:" << this->shape.getPosition().x << " " << this->shape.getPosition().y << std::endl;
+		std::cout << "SHAPE POS:" << this->shape.getPosition().x << " " << this->shape.getPosition().y << std::endl;*/
 		this->armatureDisplay = this->animationComponent->playAnimation(movementComponent->getState(), this->shape.getPosition().x, this->shape.getPosition().y);
 	}
 	

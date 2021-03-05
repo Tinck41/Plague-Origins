@@ -10,10 +10,8 @@ private:
 		NONE, IDLE, RUN_UP, RUN_LEFT, RUN_DOWN, RUN_RIGHT, ROLL
 	};
 
-	int speed; 
-	int sqrSpeed;
-	int dx;
-	int dy;
+	int initialSpeed;
+	int speed;
 	bool roll;
 	int state;
 	int prevState;
@@ -31,7 +29,7 @@ public:
 	sf::Vector2f getPos();
 
 	//Functions
-	void move(const float& dt);
+	void move(const float& dt, sf::Vector2f dir);
 	void update(const float& dt);
 	bool stateChanged();
 };

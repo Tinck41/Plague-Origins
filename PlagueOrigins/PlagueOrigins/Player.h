@@ -1,5 +1,7 @@
 #pragma once
+
 #include "Unit.h"
+#include "InputHandler.h"
 
 class Player : public Unit
 {
@@ -13,6 +15,9 @@ private:
 	float dy;
 	bool isStateChanged;
 	float scale;
+
+	InputHandler inputHandler;
+	
 
 	enum key
 	{
