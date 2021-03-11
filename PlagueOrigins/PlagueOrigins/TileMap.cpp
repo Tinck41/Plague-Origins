@@ -7,15 +7,10 @@ TileMap::TileMap()
 
 }
 
-TileMap::TileMap(std::vector<TileLayer> layers, sf::Vector2u size)
-{
-	this->layers = layers;
-	this->size = size;
-}
-
 TileMap::~TileMap()
 {
 	this->layers.clear();
+	this->objects.clear();
 }
 
 void TileMap::update(Player& player)
@@ -48,15 +43,6 @@ void TileMap::renderSecondLayer(sf::RenderTarget& target)
 	for (int i = 1; i < this->layers.size(); i++)
 	{
 		target.draw(layers[i]);
-	}
-}
-
-void TileMap::loadLayers()
-{
-	// Load all layers to the vertex arrays
-	for (auto& layer : this->layers)
-	{
-		layer.load();
 	}
 }
 

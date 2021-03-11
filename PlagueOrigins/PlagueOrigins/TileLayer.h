@@ -17,6 +17,7 @@ private:
 
 	// Functions
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	void load();
 public:
 	// Constructor/Destructor
 	TileLayer(const char* name, std::vector<unsigned> layer, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset);
@@ -25,8 +26,5 @@ public:
 
 	// Update
 	void update();
-
-	// Functions
-	void load();
 };
 

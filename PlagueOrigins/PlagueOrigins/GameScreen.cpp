@@ -9,11 +9,10 @@ GameScreen::GameScreen()
 
 void GameScreen::setup()
 {
-	if (this->mapLoader.load("./Assets/Map/map.tmx"))
+	if (this->mapLoader.load("./Assets/Map/map1.tmx"))
 	{
-		this->map = mapLoader.parseTileMap();
+		this->map = mapLoader.getTileMap();
 	}
-	this->map.loadLayers();
 }
 
 void GameScreen::update(const float& dt)

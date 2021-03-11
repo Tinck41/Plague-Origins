@@ -16,8 +16,12 @@ private:
 	// Functions
 public:
 	// Constructor/Destructor
+	TileMap(
+		std::vector<TileLayer> layers,
+		sf::Vector2u size,
+		std::vector<std::vector<sf::RectangleShape>> objects
+	);
 	TileMap();
-	TileMap(std::vector<TileLayer> layers, sf::Vector2u size);
 	~TileMap();
 
 	// Setters
@@ -37,6 +41,5 @@ public:
 	void renderSecondLayer(sf::RenderTarget& target);
 
 	// Functions
-	void loadLayers();
 	ColliderComponent getCollider(sf::RectangleShape& rect);
 };
