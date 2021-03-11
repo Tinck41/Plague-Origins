@@ -2,12 +2,15 @@
 
 #include "IStateHandler.h"
 
-//void IStateHandler::pushState(State suggestedState)
-//{
-//	State newState = getNextState(suggestedState);
-//	stateWillSet(newState);
-//	setState(newState, currentState);
-//	this->previousState = this->currentState;
-//	this->currentState = newState;
-//	stateDidSet();
-//}
+void IStateHandler::pushState(globalState suggestedGlobalState, localState suggestedLocalState)
+{
+	globalState newGlobalState = getNextGlobalState(suggestedGlobalState);
+	localState newLocalState = getNextLocalState(suggestedLocalState);
+	stateWillSet(newGlobalState, newLocalState);
+	setState(newGlobalState, newLocalState, currentGlobalState, currentLocalState);
+	this->previousLocalState = this->currentLocalState;
+	this->previousGlobalState = this->currentGlobalState;
+	this->currentGlobalState = newGlobalState;
+	this->currentLocalState = newLocalState;
+	stateDidSet();
+}

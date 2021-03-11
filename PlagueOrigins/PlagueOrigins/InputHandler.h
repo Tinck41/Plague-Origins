@@ -10,6 +10,8 @@ private:
 	unsigned globalState = 0;
 	unsigned localState = 1;
 
+	bool isMoving = false;
+
 	void getMovementInput();
 	void getDashInput();
 	void getAttackInput();
