@@ -6,25 +6,25 @@
 
 void InputHandler::getMovementInput()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+	if (InputBooleans::isWPressed)
 	{
 		this->direction.y = -1;
 		this->globalState = globalState::MOVE;
 		this->localState = localState::moveUp;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+	else if (InputBooleans::isSPressed)
 	{
 		this->direction.y = 1;
 		this->globalState = globalState::MOVE;
 		this->localState = localState::moveDown;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+	if (InputBooleans::isAPressed)
 	{
 		this->direction.x = -1;
 		this->globalState = globalState::MOVE;
 		this->localState = localState::moveLeft;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+	else if (InputBooleans::isDPressed)
 	{
 		this->direction.x = 1;
 		this->globalState = globalState::MOVE;

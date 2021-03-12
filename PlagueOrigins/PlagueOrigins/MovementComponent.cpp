@@ -11,6 +11,8 @@ MovementComponent::MovementComponent(sf::RectangleShape& shape, int speed) :
 	isStateChanged = false;
 	state = NONE;
 	prevState = NONE;
+
+	currentSpeed = 0;
 }
 
 MovementComponent::~MovementComponent()
@@ -20,7 +22,7 @@ MovementComponent::~MovementComponent()
 
 void MovementComponent::move(const float& dt, sf::Vector2f dir)
 {
-	this->speed = this->initialSpeed;
+	this->currentSpeed = this->initialSpeed;
 
 	if (dir.y == -1 && dir.x == 0)
 	{
@@ -50,12 +52,11 @@ void MovementComponent::move(const float& dt, sf::Vector2f dir)
 
 	if (dir.x != 0 && dir.y != 0)
 	{
-		speed /= sqrt(2);
+		currentSpeed /= sqrt(2);
 	}
 
-	this->shape.move(sf::Vector2f(dir.x * this->speed * dt, dir.y * this->speed * dt));
+	this->shape.move(sf::Vector2f(dir.x * this->currentSpeed * dt, dir.y * this->currentSpeed * dt));
 }
-
 
 void MovementComponent::update(const float& dt)
 {

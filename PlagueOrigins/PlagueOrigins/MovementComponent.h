@@ -11,7 +11,7 @@ private:
 	};
 	
 	int initialSpeed;
-	int speed;
+	int currentSpeed;
 	bool roll;
 	int state;
 	int prevState;
