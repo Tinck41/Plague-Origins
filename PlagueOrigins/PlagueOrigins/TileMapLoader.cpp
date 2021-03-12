@@ -65,9 +65,7 @@ void TileMapLoader::parseTileMap()
 		}
 	}
 
-	this->tileMap.setSize(this->mapSize);
-	this->tileMap.setLayers(this->layers);
-	this->tileMap.setObjects(this->objects);
+	this->tileMap = TileMap(this->layers, this->mapSize, this->objects);
 }
 
 void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)

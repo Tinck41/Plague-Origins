@@ -33,9 +33,9 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 		return ScreenType::PAUSE;
 	}
 	window.setView(this->camera);
-	this->map.renderFirstLayer(window);
+	this->map.renderUnderPlayerLayers(window);
 	this->player.render(window);
-	this->map.renderSecondLayer(window);
+	this->map.renderOverPlayerLayers(window);
 	return ScreenType::GAME;
 }
 

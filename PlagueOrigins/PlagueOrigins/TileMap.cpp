@@ -2,6 +2,13 @@
 
 #include "TileMap.h"
 
+TileMap::TileMap(std::vector<TileLayer> layers, sf::Vector2u size, std::vector<std::vector<sf::RectangleShape>> objects)
+{
+	this->layers = layers;
+	this->size = size;
+	this->objects = objects;
+}
+
 TileMap::TileMap()
 {
 
@@ -24,26 +31,22 @@ void TileMap::update(Player& player)
 	}
 }
 
-void TileMap::render(sf::RenderTarget& target)
+void TileMap::render(sf::RenderTarget& target, unsigned firstLayerId, unsigned lastLayerId)
 {
-	// Draw all vertex arrays
-	for (auto& layer : this->layers)
+	for (int i = firstLayerId; i < lastLayerId; i++)
 	{
-		target.draw(layer);
+		target.draw(this->layers[i]);
 	}
 }
 
-void TileMap::renderFirstLayer(sf::RenderTarget& target)
+void TileMap::renderUnderPlayerLayers(sf::RenderTarget& target)
 {
-	target.draw(this->layers[0]);
+	this->render(target, 0, 2);
 }
 
-void TileMap::renderSecondLayer(sf::RenderTarget& target)
+void TileMap::renderOverPlayerLayers(sf::RenderTarget& target)
 {
-	for (int i = 1; i < this->layers.size(); i++)
-	{
-		target.draw(layers[i]);
-	}
+	this->render(target, 2, this->layers.size());
 }
 
 ColliderComponent TileMap::getCollider(sf::RectangleShape& rect)
