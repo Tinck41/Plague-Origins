@@ -11,7 +11,7 @@ private:
 public:
 	Config();
 	unsigned int FPS_LIMIT = 60;
-	bool IS_FULLSCREEN = true;
+	bool IS_FULLSCREEN = false;
 
 	unsigned int getHeight()
 	{

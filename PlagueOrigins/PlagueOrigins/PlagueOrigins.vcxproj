@@ -156,7 +156,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="InputBooleans.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="DirectionFinder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
@@ -196,7 +196,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="InputBooleans.h" />
-    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="PauseScreen.h" />

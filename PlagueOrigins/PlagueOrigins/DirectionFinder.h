@@ -3,7 +3,7 @@
 #include "PlayerStates.h"
 #include "InputBooleans.h"
 
-class InputHandler
+class DirectionFinder
 {
 private:
 	sf::Vector2f direction;

@@ -1,8 +1,10 @@
 #pragma once
 
 #include "Unit.h"
-#include "InputHandler.h"
+#include "DirectionFinder.h"
 #include "PlayerStates.h"
+#include "IStateHandler.h"
+#include "PlayerStateHandler.h"
 
 class Player : public Unit
 {
@@ -12,12 +14,12 @@ private:
 	float posX;
 	float posY;
 	int speed;
-	float dx;
-	float dy;
 	bool isStateChanged;
 	float scale;
 
-	InputHandler inputHandler;
+	InputBooleans inputBooleans;
+	DirectionFinder directionFinder;
+	PlayerStateHandler playerStateHandler;
 
 	//Game objects
 	sf::RectangleShape shape;

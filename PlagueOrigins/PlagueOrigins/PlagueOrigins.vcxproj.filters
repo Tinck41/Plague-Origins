@@ -78,7 +78,8 @@
       <Filter>dragonBones</Filter>
     </ClCompile>
     <ClCompile Include="Test.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="InputBooleans.cpp" />
+    <ClCompile Include="DirectionFinder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -169,10 +170,11 @@
       <Filter>dragonBones</Filter>
     </ClInclude>
     <ClInclude Include="Test.h" />
-    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="PlayerStates.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="InputBooleans.h" />
+    <ClInclude Include="DirectionFinder.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

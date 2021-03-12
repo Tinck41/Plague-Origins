@@ -4,6 +4,17 @@
 
 #include "InputBooleans.h"
 
+bool InputBooleans::isWPressed = false;
+bool InputBooleans::isAPressed = false;
+bool InputBooleans::isSPressed = false;
+bool InputBooleans::isDPressed = false;
+bool InputBooleans::isQPressed = false;
+bool InputBooleans::isEPressed = false;
+bool InputBooleans::isEscapePressed = false;
+bool InputBooleans::isSpacePressed = false;
+bool InputBooleans::isM1Pressed = false;
+bool InputBooleans::isM2Pressed = false;
+
 InputBooleans::InputBooleans()
 {
 	this->isWPressed = false;

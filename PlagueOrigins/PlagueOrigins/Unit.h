@@ -21,12 +21,10 @@ private:
 protected:
 	MovementComponent* movementComponent;
 	AnimationComponent* animationComponent;
-
 	ColliderComponent* colliderComponent;
 public:
 	//Constructors/Destructors
 	Unit();
-	//virtual ~Player();
 
 	//Functions
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
