@@ -16,8 +16,6 @@ public:
 	static bool isM1Pressed;
 	static bool isM2Pressed;
 
-	InputBooleans();
-
 	/*
 		check input based on context (move, dash, attack, utility e.g. menus, misc things)
 	*/

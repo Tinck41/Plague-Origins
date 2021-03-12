@@ -2,17 +2,10 @@
 
 #include "Player.h"
 
-
-
-Player::Player()
-{
-}
-
 Player::Player(float x, float y) : Unit()
 {
-	scale = 0.2f;
 	initVariables();
-	spawnPlayer(x,y);
+	createHitbox(x, y);
 
 	//create components
 	createMovementComponent(this->shape, this->speed);
@@ -21,28 +14,24 @@ Player::Player(float x, float y) : Unit()
 		this->states.transform.scale(scale, scale);
 		this->armatureDisplay = this->animationComponent->playAnimation(IDLE, idleDown);
 	createColliderComponent(this->shape);
-
-	//create PlayerState
-	//playerStateHandler = new PlayerStateHandler(*this);
 }
 
 Player::~Player()
 {
 }
 
-void Player::spawnPlayer(float x, float y)
+//create hitbox (shape)
+void Player::createHitbox(float x, float y)
 {
-	//create movement component based on shape
 	shape.setPosition(x, y);
 	shape.setSize(sf::Vector2f(100.0f, 150.0f));
-	//shape.setScale(sf::Vector2f(0.5f, 0.5f));
 	shape.setFillColor(sf::Color::Red);
 }
 
 void Player::initVariables()
 {
 	speed = 600;
-	isStateChanged = false;
+	scale = 0.2f;
 }
 
 void Player::update(const float& dt)

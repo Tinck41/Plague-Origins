@@ -1,9 +1,9 @@
 #pragma once
-
 #include "stdafx.h"
 
 #include "InputBooleans.h"
 
+//initializing static variables to prevent error
 bool InputBooleans::isWPressed = false;
 bool InputBooleans::isAPressed = false;
 bool InputBooleans::isSPressed = false;
@@ -14,21 +14,6 @@ bool InputBooleans::isEscapePressed = false;
 bool InputBooleans::isSpacePressed = false;
 bool InputBooleans::isM1Pressed = false;
 bool InputBooleans::isM2Pressed = false;
-
-InputBooleans::InputBooleans()
-{
-	this->isWPressed = false;
-	this->isAPressed = false;
-	this->isSPressed = false;
-	this->isDPressed = false;
-	this->isQPressed = false;
-	this->isEPressed = false;
-	this->isEscapePressed = false;
-	this->isSpacePressed = false;
-	this->isM1Pressed = false;
-	this->isM2Pressed = false;
-}
-
 
 /*
 	CHECK FUNCTIONS
@@ -142,8 +127,8 @@ void InputBooleans::checkUtilityInput()
 void InputBooleans::update()
 {
 	this->checkMovementInput();
-	this->checkDashInput();
-	this->checkAttackInput();
+	//this->checkDashInput();
+	//this->checkAttackInput();
 	this->checkUtilityInput();
 }
 

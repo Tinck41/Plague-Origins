@@ -1,9 +1,6 @@
 #pragma once
-
 #include "Unit.h"
 #include "DirectionFinder.h"
-#include "PlayerStates.h"
-#include "IStateHandler.h"
 #include "PlayerStateHandler.h"
 
 class Player : public Unit
@@ -11,10 +8,7 @@ class Player : public Unit
 private: 
 	//Variables
 	sf::RenderStates states;
-	float posX;
-	float posY;
 	int speed;
-	bool isStateChanged;
 	float scale;
 
 	InputBooleans inputBooleans;
@@ -29,18 +23,13 @@ private:
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
 
 	void initVariables();
-	void spawnPlayer(float x, float y);
+	void createHitbox(float x, float y);
 public:
-	//Variables
-
 	//Constructors/Destructors
-	Player();
 	Player(float x, float y);
 	~Player();
-	//virtual ~Player();
 
 	//Functions
-	
 	void update(const float& dt);
 	void render(sf::RenderWindow& target);
 
