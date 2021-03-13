@@ -4,7 +4,7 @@
 #include "TileLayer.h"
 #include "tinyxml2.h"
 
-struct tilesetParameters
+struct TilesetParameters
 {
 	unsigned firstId;
 	unsigned lastId;
@@ -26,7 +26,7 @@ private:
 
 	// Tilemap components
 	std::vector<sf::Texture> tilesets;
-	std::vector<tilesetParameters> tilesetInfo;
+	std::vector<TilesetParameters> tilesetInfo;
 	std::vector<TileLayer> layers;
 	std::vector<std::vector<sf::RectangleShape>> objects;
 

@@ -70,14 +70,13 @@ void TileMapLoader::parseTileMap()
 
 void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)
 {
-	//unsigned firstId = 0, lastId = 0, tileCount = 0;
-	tilesetParameters _tilesetInfo;
+	TilesetParameters tilesetInfo;
 
-	xmlElement->QueryUnsignedAttribute("firstgid", &_tilesetInfo.firstId);
-	xmlElement->QueryUnsignedAttribute("tilecount", &_tilesetInfo.tileCount);
-	_tilesetInfo.lastId = _tilesetInfo.firstId + _tilesetInfo.tileCount - 2;
+	xmlElement->QueryUnsignedAttribute("firstgid", &tilesetInfo.firstId);
+	xmlElement->QueryUnsignedAttribute("tilecount", &tilesetInfo.tileCount);
+	tilesetInfo.lastId = tilesetInfo.firstId + tilesetInfo.tileCount - 2;
 
-	this->tilesetInfo.push_back(_tilesetInfo);
+	this->tilesetInfo.push_back(tilesetInfo);
 
 	tinyxml2::XMLElement* image = xmlElement->FirstChildElement();
 	const char* source;
@@ -150,7 +149,7 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 
 void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 {
-	std::vector<sf::RectangleShape> _objects;
+	std::vector<sf::RectangleShape> objects;
 
 	for (tinyxml2::XMLElement* e = xmlElement->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
@@ -167,8 +166,8 @@ void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 		rect.setPosition(rectPosition);
 		rect.setSize(rectSize);
 
-		_objects.push_back(rect);
+		objects.push_back(rect);
 	}
 
-	this->objects.push_back(_objects);
+	this->objects.push_back(objects);
 }

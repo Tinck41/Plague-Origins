@@ -16,7 +16,7 @@ private:
 	// Functions
 	void render(sf::RenderTarget& target, unsigned firstLayerId, unsigned lastLayerId);
 public:
-	// Constructor/Destructor
+	// Constructors/Destructor
 	TileMap(
 		std::vector<TileLayer> layers,
 		sf::Vector2u size,
@@ -24,9 +24,6 @@ public:
 	);
 	TileMap();
 	~TileMap();
-
-	// Getters
-	//std::vector<TileLayer> getLayers() { return this->layers; } Это зачем?
 
 	// Update
 	void update(Player& player);
