@@ -160,6 +160,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerStateHandler.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="MovementComponent.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStateHandler.h" />

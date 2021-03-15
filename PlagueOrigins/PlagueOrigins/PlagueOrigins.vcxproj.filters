@@ -80,6 +80,9 @@
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="InputBooleans.cpp" />
     <ClCompile Include="DirectionFinder.cpp" />
+    <ClCompile Include="NPC.cpp">
+      <Filter>NPC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -175,6 +178,9 @@
     </ClInclude>
     <ClInclude Include="InputBooleans.h" />
     <ClInclude Include="DirectionFinder.h" />
+    <ClInclude Include="NPC.h">
+      <Filter>NPC</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
@@ -197,6 +203,9 @@
     </Filter>
     <Filter Include="dragonBones">
       <UniqueIdentifier>{a6bd0dee-e4b1-402b-8f93-ba09b20e93a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NPC">
+      <UniqueIdentifier>{a1a0d428-cfaf-4678-b070-602f086a98e6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

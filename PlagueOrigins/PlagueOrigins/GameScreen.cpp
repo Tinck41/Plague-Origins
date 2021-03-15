@@ -18,9 +18,12 @@ void GameScreen::setup()
 
 void GameScreen::update(const float& dt)
 {
+	//
+	this->npc.update(dt);
+	//
 	this->player.update(dt);
 	this->map.update(this->player);
-	this->camera.setSize(sf::Vector2f(CONFIG.getWidth(), CONFIG.getHeight()));
+	this->camera.setSize(sf::Vector2f(CONFIG.getWidth() * 2, CONFIG.getHeight() * 2));
 	this->camera.setCenter(this->player.getPosition());
 }
 
@@ -36,6 +39,9 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 	window.setView(this->camera);
 	this->map.renderFirstLayer(window);
 	this->player.render(window);
+	//
+	this->npc.render(window);
+	//
 	this->map.renderSecondLayer(window);
 	return ScreenType::GAME;
 }

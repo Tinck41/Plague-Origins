@@ -2,6 +2,7 @@
 
 #include "Screen.h"
 #include "Player.h"
+#include "NPC.h"
 #include "TileMap.h"
 #include "TileMapLoader.h"
 #include "ColliderComponent.h"
@@ -13,6 +14,7 @@ class GameScreen :
 {
 private:
 	Player player{ 615.0f, 350.0f };
+	NPC npc{ 1000.0f, 200.0f };
 	TileMapLoader mapLoader;
 	TileMap map;
 
