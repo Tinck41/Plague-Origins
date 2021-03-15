@@ -3,3 +3,8 @@ Attack
 
 ArmatureheroRunEW & RunN
 Idle
+
+-------enemy
+ArmatureDogEW
+Idle
+Run
