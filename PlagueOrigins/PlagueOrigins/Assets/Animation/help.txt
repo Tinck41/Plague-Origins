@@ -1,0 +1,5 @@
+ArmatureheroAttackE
+Attack
+
+ArmatureheroRunEW & RunN
+Idle
