@@ -26,7 +26,7 @@ bool ColliderComponent::checkCollision(ColliderComponent other, float push)
 
 	if (intersectX < 0.0f && intersectY < 0.0f)
 	{
-		std::cout << otherPosition.x << " " << otherPosition.y << std::endl;
+		//std::cout << otherPosition.x << " " << otherPosition.y << std::endl;
 
 		push = std::min(std::max(push, 0.0f), 1.0f);
 

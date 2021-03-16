@@ -147,6 +147,7 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
+    <ClCompile Include="ColliderLayer.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureProxy.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ColliderComponent.h" />
+    <ClInclude Include="ColliderLayer.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="dragonBones\SFMLArmatureDisplay.h" />
     <ClInclude Include="dragonBones\SFMLArmatureProxy.h" />

@@ -149,24 +149,20 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 
 void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 {
-	std::vector<sf::RectangleShape> objects;
+	std::vector<ColliderLayer> objects;
 
 	for (tinyxml2::XMLElement* e = xmlElement->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
-		sf::RectangleShape rect;
-		sf::Vector2f rectPosition;
-		sf::Vector2f rectSize;
+		sf::Vector2f objPosition;
+		sf::Vector2f objSize;
 
-		e->QueryFloatAttribute("x", &rectPosition.x);
-		e->QueryFloatAttribute("y", &rectPosition.y);
+		e->QueryFloatAttribute("x", &objPosition.x);
+		e->QueryFloatAttribute("y", &objPosition.y);
 
-		e->QueryFloatAttribute("width", &rectSize.x);
-		e->QueryFloatAttribute("height", &rectSize.y);
+		e->QueryFloatAttribute("width", &objSize.x);
+		e->QueryFloatAttribute("height", &objSize.y);
 
-		rect.setPosition(rectPosition);
-		rect.setSize(rectSize);
-
-		objects.push_back(rect);
+		objects.push_back(ColliderLayer(objPosition, objSize));
 	}
 
 	this->objects.push_back(objects);

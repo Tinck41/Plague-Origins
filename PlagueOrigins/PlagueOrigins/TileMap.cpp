@@ -2,7 +2,7 @@
 
 #include "TileMap.h"
 
-TileMap::TileMap(std::vector<TileLayer> layers, sf::Vector2u size, std::vector<std::vector<sf::RectangleShape>> objects)
+TileMap::TileMap(std::vector<TileLayer> layers, sf::Vector2u size, std::vector<std::vector<ColliderLayer>> objects)
 {
 	this->layers = layers;
 	this->size = size;
@@ -22,11 +22,13 @@ TileMap::~TileMap()
 
 void TileMap::update(Player& player)
 {
-	for (auto object : this->objects)
+	ColliderComponent playerCollider = player.getCollider();
+
+	for (auto& objectsLayer : objects)
 	{
-		for (auto rect : object)
+		for (auto& object : objectsLayer)
 		{
-			this->getCollider(rect).checkCollision(player.getCollider(), 1.0f);
+			object.getCollider().checkCollision(playerCollider, 1.0f);
 		}
 	}
 }
@@ -47,9 +49,4 @@ void TileMap::renderUnderPlayerLayers(sf::RenderTarget& target)
 void TileMap::renderOverPlayerLayers(sf::RenderTarget& target)
 {
 	this->render(target, 2, this->layers.size());
-}
-
-ColliderComponent TileMap::getCollider(sf::RectangleShape& rect)
-{
-	return ColliderComponent(rect);
 }
