@@ -77,7 +77,7 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
-    <ClCompile Include="ColliderLayer.cpp">
+    <ClCompile Include="MapCollider.cpp">
       <Filter>Tilemap</Filter>
     </ClCompile>
     <ClCompile Include="InputHandler.cpp">
@@ -175,7 +175,7 @@
     <ClInclude Include="PlayerStates.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="ColliderLayer.h">
+    <ClInclude Include="MapCollider.h">
       <Filter>Tilemap</Filter>
     </ClInclude>
     <ClInclude Include="InputHandler.h">

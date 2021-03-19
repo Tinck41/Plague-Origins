@@ -1,7 +1,7 @@
 #pragma once
 
 #include "TileLayer.h"
-#include "ColliderLayer.h";
+#include "MapCollider.h";
 #include "Player.h"
 
 class TileMap
@@ -10,8 +10,8 @@ private:
 	// Variables
 	sf::Vector2u size;
 
-	std::vector<TileLayer> layers;
-	std::vector<std::vector<ColliderLayer>> objects;
+	std::vector<TileLayer> tileLayer;
+	std::vector<std::vector<MapCollider>> colliderLayer;
 
 	// Functions
 	void render(sf::RenderTarget& target, unsigned firstLayerId, unsigned lastLayerId);
@@ -20,13 +20,13 @@ public:
 	TileMap(
 		std::vector<TileLayer> layers,
 		sf::Vector2u size,
-		std::vector<std::vector<ColliderLayer>> objects
+		std::vector<std::vector<MapCollider>> objects
 	);
 	TileMap();
 	~TileMap();
 
 	// Getters
-	std::vector<std::vector<ColliderLayer>> getObjects() { return this->objects; }
+	std::vector<std::vector<MapCollider>> getObjects() { return this->colliderLayer; }
 
 	// Update
 	void update(Player& player);

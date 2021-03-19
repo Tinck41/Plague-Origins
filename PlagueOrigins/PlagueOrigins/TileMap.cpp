@@ -2,11 +2,11 @@
 
 #include "TileMap.h"
 
-TileMap::TileMap(std::vector<TileLayer> layers, sf::Vector2u size, std::vector<std::vector<ColliderLayer>> objects)
+TileMap::TileMap(std::vector<TileLayer> layers, sf::Vector2u size, std::vector<std::vector<MapCollider>> objects)
 {
-	this->layers = layers;
+	this->tileLayer = layers;
 	this->size = size;
-	this->objects = objects;
+	this->colliderLayer = objects;
 }
 
 TileMap::TileMap()
@@ -16,19 +16,19 @@ TileMap::TileMap()
 
 TileMap::~TileMap()
 {
-	this->layers.clear();
-	this->objects.clear();
+	this->tileLayer.clear();
+	this->colliderLayer.clear();
 }
 
 void TileMap::update(Player& player)
 {
 	ColliderComponent playerCollider = player.getCollider();
 
-	for (auto& objectsLayer : objects)
+	for (auto& layer : this->colliderLayer)
 	{
-		for (auto& object : objectsLayer)
+		for (auto& collider : layer)
 		{
-			object.getCollider().checkCollision(playerCollider, 1.0f);
+			collider.getCollider().checkCollision(playerCollider, 1.0f);
 		}
 	}
 }
@@ -37,7 +37,7 @@ void TileMap::render(sf::RenderTarget& target, unsigned firstLayerId, unsigned l
 {
 	for (int i = firstLayerId; i < lastLayerId; i++)
 	{
-		target.draw(this->layers[i]);
+		target.draw(this->tileLayer[i]);
 	}
 }
 
@@ -48,5 +48,5 @@ void TileMap::renderUnderPlayerLayers(sf::RenderTarget& target)
 
 void TileMap::renderOverPlayerLayers(sf::RenderTarget& target)
 {
-	this->render(target, 2, this->layers.size());
+	this->render(target, 2, this->tileLayer.size());
 }

@@ -2,7 +2,7 @@
 
 #include "TileMap.h"
 #include "TileLayer.h"
-#include "ColliderLayer.h";
+#include "MapCollider.h";
 #include "tinyxml2.h"
 
 struct TilesetParameters
@@ -28,8 +28,8 @@ private:
 	// Tilemap components
 	std::vector<sf::Texture> tilesets;
 	std::vector<TilesetParameters> tilesetInfo;
-	std::vector<TileLayer> layers;
-	std::vector<std::vector<ColliderLayer>> objects;
+	std::vector<TileLayer> tileLayer;
+	std::vector<std::vector<MapCollider>> colliderLayer;
 
 	// Functions
 	void parseTileMap();

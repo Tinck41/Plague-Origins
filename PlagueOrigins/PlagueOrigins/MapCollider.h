@@ -2,14 +2,14 @@
 
 #include "ColliderComponent.h"
 
-class ColliderLayer
+class MapCollider
 {
 private:
 	sf::RectangleShape object;
 public:
-	ColliderLayer(sf::Vector2f position, sf::Vector2f size);
-	ColliderLayer();
-	~ColliderLayer();
+	MapCollider(sf::Vector2f position, sf::Vector2f size);
+	MapCollider();
+	~MapCollider();
 
 	ColliderComponent getCollider() { return ColliderComponent(this->object); }
 };

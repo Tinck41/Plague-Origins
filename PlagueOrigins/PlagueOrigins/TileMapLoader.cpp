@@ -24,8 +24,8 @@ TileMapLoader::~TileMapLoader()
 {
 	this->tilesets.clear();
 	this->tilesetInfo.clear();
-	this->layers.clear();
-	this->objects.clear();
+	this->tileLayer.clear();
+	this->colliderLayer.clear();
 }
 
 void TileMapLoader::parseTileMap()
@@ -65,7 +65,7 @@ void TileMapLoader::parseTileMap()
 		}
 	}
 
-	this->tileMap = TileMap(this->layers, this->mapSize, this->objects);
+	this->tileMap = TileMap(this->tileLayer, this->mapSize, this->colliderLayer);
 }
 
 void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)
@@ -139,7 +139,7 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 	if (!this->tilesets.empty())
 	{
 		TileLayer layer(layerName, _layer, this->layerSize, this->tileSize, this->tilesets[tilesetId]);
-		this->layers.push_back(layer);
+		this->tileLayer.push_back(layer);
 	}
 	else
 	{
@@ -149,7 +149,7 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 
 void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 {
-	std::vector<ColliderLayer> objects;
+	std::vector<MapCollider> objects;
 
 	for (tinyxml2::XMLElement* e = xmlElement->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
@@ -162,8 +162,8 @@ void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 		e->QueryFloatAttribute("width", &objSize.x);
 		e->QueryFloatAttribute("height", &objSize.y);
 
-		objects.push_back(ColliderLayer(objPosition, objSize));
+		objects.push_back(MapCollider(objPosition, objSize));
 	}
 
-	this->objects.push_back(objects);
+	this->colliderLayer.push_back(objects);
 }

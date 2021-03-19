@@ -9,7 +9,7 @@ GameScreen::GameScreen()
 
 void GameScreen::setup()
 {
-	if (this->mapLoader.load("./Assets/Map/map1.tmx"))
+	if (this->mapLoader.load("./Assets/Map/map.tmx"))
 	{
 		this->map = mapLoader.getTileMap();
 	}
