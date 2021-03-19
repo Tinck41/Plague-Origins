@@ -80,9 +80,9 @@
     <ClCompile Include="MapCollider.cpp">
       <Filter>Tilemap</Filter>
     </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="InputBooleans.cpp" />
+    <ClCompile Include="DirectionFinder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -172,15 +172,15 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerStates.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="MapCollider.h">
       <Filter>Tilemap</Filter>
     </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Player</Filter>
+    <ClInclude Include="Test.h" />
+    <ClInclude Include="PlayerStates.h">
+      <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="InputBooleans.h" />
+    <ClInclude Include="DirectionFinder.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

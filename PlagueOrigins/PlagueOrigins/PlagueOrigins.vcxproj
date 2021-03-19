@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -156,7 +156,8 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameScreen.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="InputBooleans.cpp" />
+    <ClCompile Include="DirectionFinder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
@@ -195,7 +196,8 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameScreen.h" />
-    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="InputBooleans.h" />
+    <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="MainMenuScreen.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="PauseScreen.h" />

@@ -10,7 +10,8 @@ enum globalState
 
 enum localState
 {
-	idleUp, idleDown, idleLeft, idleRight,
-	moveUp, moveDown, moveLeft, moveRight,
+	idleUp, idleRight, idleDown, idleLeft,
+	moveUp, moveRight, moveDown, moveLeft,
+	dashUp, dashRight, dashDown, dashLeft,
 	attackFirst, attackSecond
 };
