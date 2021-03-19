@@ -11,9 +11,8 @@ void GameScreen::setup()
 {
 	if (this->mapLoader.load("./Assets/Map/map.tmx"))
 	{
-		this->map = mapLoader.parseTileMap();
+		this->map = mapLoader.getTileMap();
 	}
-	this->map.loadLayers();
 }
 
 void GameScreen::update(const float& dt)
@@ -34,9 +33,9 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 		return ScreenType::PAUSE;
 	}
 	window.setView(this->camera);
-	this->map.renderFirstLayer(window);
+	this->map.renderUnderPlayerLayers(window);
 	this->player.render(window);
-	this->map.renderSecondLayer(window);
+	this->map.renderOverPlayerLayers(window);
 	return ScreenType::GAME;
 }
 

@@ -4,7 +4,6 @@
 #include "Player.h"
 #include "TileMap.h"
 #include "TileMapLoader.h"
-#include "ColliderComponent.h"
 
 extern Config CONFIG;
 
@@ -13,7 +12,9 @@ class GameScreen :
 {
 private:
 	Player player{ 615.0f, 350.0f };
+
 	TileMapLoader mapLoader;
+
 	TileMap map;
 
 	sf::View camera;

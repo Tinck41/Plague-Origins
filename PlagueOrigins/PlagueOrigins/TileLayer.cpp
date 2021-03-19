@@ -14,30 +14,6 @@ void TileLayer::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(this->vertices, states);
 }
 
-TileLayer::TileLayer(const char* name, std::vector<unsigned> layer, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset)
-{
-	this->name = name;
-	this->layer = layer;
-	this->size = size;
-	this->tileSize = tileSize;
-	this->tileset = tileset;
-}
-
-TileLayer::TileLayer()
-{
-
-}
-
-TileLayer::~TileLayer()
-{
-	this->layer.clear();
-	this->vertices.clear();
-}
-
-void TileLayer::update()
-{
-}
-
 void TileLayer::load()
 {
 	this->vertices.setPrimitiveType(sf::Quads);
@@ -71,3 +47,29 @@ void TileLayer::load()
 		}
 	}
 }
+
+TileLayer::TileLayer(const char* name, std::vector<unsigned> layer, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset)
+{
+	this->name = name;
+	this->layer = layer;
+	this->size = size;
+	this->tileSize = tileSize;
+	this->tileset = tileset;
+
+	this->load();
+}
+
+TileLayer::TileLayer()
+{
+}
+
+TileLayer::~TileLayer()
+{
+	this->layer.clear();
+	this->vertices.clear();
+}
+
+void TileLayer::update()
+{
+}
+

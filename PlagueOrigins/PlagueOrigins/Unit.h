@@ -34,6 +34,7 @@ public:
 	virtual void update(const float& dt);
 
 	virtual void render(sf::RenderWindow* window);
+
 };
 
 

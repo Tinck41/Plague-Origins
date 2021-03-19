@@ -33,9 +33,8 @@ public:
 	void update(const float& dt);
 	void render(sf::RenderWindow& target);
 
-	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
-
 	sf::Vector2f getPosition() { return this->shape.getPosition(); }
+	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
 };
 
 

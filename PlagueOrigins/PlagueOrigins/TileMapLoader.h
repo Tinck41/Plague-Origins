@@ -2,7 +2,15 @@
 
 #include "TileMap.h"
 #include "TileLayer.h"
+#include "MapCollider.h";
 #include "tinyxml2.h"
+
+struct TilesetParameters
+{
+	unsigned firstId;
+	unsigned lastId;
+	unsigned tileCount;
+};
 
 class TileMapLoader
 {
@@ -17,16 +25,14 @@ private:
 	sf::Vector2u layerSize;
 	sf::Vector2u tileSize;
 
-	// Tileset additional info
-	std::vector<unsigned> tilesetFirstId;
-	std::vector<unsigned> tilesetLastId;
-	std::vector<unsigned> tilesetTileCount;
-
+	// Tilemap components
 	std::vector<sf::Texture> tilesets;
-	std::vector<TileLayer> layers;
-	std::vector<std::vector<sf::RectangleShape>> objects;
+	std::vector<TilesetParameters> tilesetInfo;
+	std::vector<TileLayer> tileLayer;
+	std::vector<std::vector<MapCollider>> colliderLayer;
 
 	// Functions
+	void parseTileMap();
 	void parseTileSet(tinyxml2::XMLElement* xmlElement);
 	void parseTileLayer(tinyxml2::XMLElement* xmlElement);
 	void parseObjects(tinyxml2::XMLElement* xmlElement);
@@ -35,8 +41,10 @@ public:
 	TileMapLoader();
 	~TileMapLoader();
 
+	// Getters
+	TileMap getTileMap() { return this->tileMap; }
+
 	// Functions
 	bool load(const char* path);
-	TileMap parseTileMap();
 };
 

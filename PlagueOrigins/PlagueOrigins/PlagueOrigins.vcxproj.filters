@@ -77,6 +77,9 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
+    <ClCompile Include="MapCollider.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="InputBooleans.cpp" />
     <ClCompile Include="DirectionFinder.cpp" />
@@ -168,6 +171,9 @@
     </ClInclude>
     <ClInclude Include="dragonBones\SFMLTextureData.h">
       <Filter>dragonBones</Filter>
+    </ClInclude>
+    <ClInclude Include="MapCollider.h">
+      <Filter>Tilemap</Filter>
     </ClInclude>
     <ClInclude Include="Test.h" />
     <ClInclude Include="PlayerStates.h">
