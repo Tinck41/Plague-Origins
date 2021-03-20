@@ -1,4 +1,7 @@
 #pragma once
+
+#include "PlayerAnimationStates.h"
+
 class AnimationComponent
 {
 private:
@@ -6,7 +9,8 @@ private:
 	bool done;
 	int state;
 
-	unsigned curState;
+	animationName currentAnimation;
+	sf::Vector2f currentDirection = sf::Vector2f(0.f, 0.f);
 
 	//Game objects
 	sf::Texture texture;
@@ -14,8 +18,9 @@ private:
 	dragonBones::SFMLFactory& factory;
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
 
-	void setMovementAnimation(unsigned state);
-	void setIdleAnimation(unsigned state);
+	void playAnimation();
+	void playMovementAnimation();
+	void playIdleAnimation();
 public:
 	//Constructor/Destructor
 	AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);
@@ -24,6 +29,9 @@ public:
 	//Functions
 	void initArmature(sf::Vector2f vec);
 
-	dragonBones::SFMLArmatureDisplay* playAnimation(unsigned globalState, unsigned localState);
+	void setAnimation(animationName newAnimation, sf::Vector2f newDirection);
+	void setAnimation(animationName newAnimation);
 
+	// Getters
+	dragonBones::SFMLArmatureDisplay* getArmatureDisplay() { return this->armatureDisplay; }
 };

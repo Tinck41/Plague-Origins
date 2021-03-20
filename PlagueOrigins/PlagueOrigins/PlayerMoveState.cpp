@@ -8,15 +8,17 @@ PlayerMoveState::PlayerMoveState(FiniteStateMachine& stateMachine, Player& owner
 
 void PlayerMoveState::enter()
 {
-	this->owner.setArmature(this->owner.getAnimator()->playAnimation(1, 4));
+	this->owner.getAnimator()->setAnimation(animationName::MOVE, this->owner.getInput().getDirection());
 }
 
 void PlayerMoveState::execute()
 {
-	std::cout << "MOVE" << "\n";
+	std::cout << "MOVE" << " " << this->owner.getInput().getDirection().x << " " << this->owner.getInput().getDirection().y << "\n";
 
 	if (owner.getInput().getDirection() == sf::Vector2f(0, 0))
 		this->stateMachine.changeState(new PlayerIdleState(this->stateMachine, this->owner));
+
+	this->owner.getAnimator()->setAnimation(animationName::MOVE, this->owner.getInput().getDirection());
 }
 
 void PlayerMoveState::exit()

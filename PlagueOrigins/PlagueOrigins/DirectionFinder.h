@@ -10,8 +10,6 @@ class DirectionFinder
 private:
 	sf::Vector2f direction;
 
-	unsigned localState = 1;
-
 	bool isMoving = false;
 
 	void getMovementInput();
@@ -20,7 +18,6 @@ private:
 	//void getSpellInput();
 public:
 	sf::Vector2f getDirection() { return this->direction; }
-	unsigned getLocalState() { return this->localState; }
 
 	void update();
 };

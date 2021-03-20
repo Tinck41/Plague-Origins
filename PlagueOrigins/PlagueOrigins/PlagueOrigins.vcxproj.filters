@@ -197,6 +197,9 @@
     <ClInclude Include="PlayerMoveState.h">
       <Filter>States\PlayerStates</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerAnimationStates.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

@@ -8,15 +8,16 @@ PlayerIdleState::PlayerIdleState(FiniteStateMachine& stateMachine, Player& owner
 
 void PlayerIdleState::enter()
 {
-	this->owner.setArmature(this->owner.getAnimator()->playAnimation(0, 1));
+	this->owner.getAnimator()->setAnimation(animationName::IDLE, this->owner.getInput().getDirection());
 }
 
 void PlayerIdleState::execute()
 {
-	std::cout << "IDLE" << "\n";
-
+	std::cout << "IDLE" << " " << this->owner.getInput().getDirection().x << " " << this->owner.getInput().getDirection().y << "\n";
 	if (owner.getInput().getDirection() != sf::Vector2f(0, 0))
 		this->stateMachine.changeState(new PlayerMoveState(this->stateMachine, this->owner));
+
+	this->owner.getAnimator()->setAnimation(animationName::IDLE, this->owner.getInput().getDirection());
 }
 
 void PlayerIdleState::exit()

@@ -186,6 +186,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="FiniteStateMachine.h" />
+    <ClInclude Include="PlayerAnimationStates.h" />
     <ClInclude Include="PlayerIdleState.h" />
     <ClInclude Include="MapCollider.h" />
     <ClInclude Include="Config.h" />

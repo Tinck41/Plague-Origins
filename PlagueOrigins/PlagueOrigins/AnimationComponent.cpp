@@ -13,55 +13,61 @@ AnimationComponent::~AnimationComponent()
 
 }
 
-void AnimationComponent::setMovementAnimation(unsigned state)
+void AnimationComponent::playAnimation()
 {
-	this->curState = state;
-
-	switch (state)
+	switch (this->currentAnimation)
 	{
-	case 4:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
-		this->armatureDisplay->getAnimation()->play("RunN");
+	case(animationName::IDLE) :
+		this->playIdleAnimation();
 		break;
-	case 3:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
-		this->armatureDisplay->getAnimation()->play("RunEW");
+	case(animationName::MOVE):
+		this->playMovementAnimation();
 		break;
-	case 1:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunS");
-		this->armatureDisplay->getAnimation()->play("RunS");
-		break;
-	case 2:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
-		this->armatureDisplay->getArmature()->setFlipX(true);
-		this->armatureDisplay->getAnimation()->play("RunEW");
+	default:
 		break;
 	}
 }
 
-void AnimationComponent::setIdleAnimation(unsigned state)
+void AnimationComponent::playMovementAnimation()
 {
-	this->curState = state;
-
-	switch (state)
+	if (this->currentDirection.y == -1.f)
 	{
-	case 0:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
-		break;
-	case 3:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
-		break;
-	case 1:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
-		break;
-	case 2:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
-		break;
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
+		this->armatureDisplay->getAnimation()->play("RunN");
 	}
+	else if (this->currentDirection.y == 1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunS");
+		this->armatureDisplay->getAnimation()->play("RunS");
+	}
+
+	if (this->currentDirection.x == 1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+		this->armatureDisplay->getAnimation()->play("RunEW");
+	}
+	else if (this->currentDirection.x == -1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+		this->armatureDisplay->getArmature()->setFlipX(true);
+		this->armatureDisplay->getAnimation()->play("RunEW");
+	}
+}
+
+void AnimationComponent::playIdleAnimation()
+{
+	this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+	this->armatureDisplay->getAnimation()->play("Idle");
+
+	//this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+	//this->armatureDisplay->getAnimation()->play("Idle");
+
+	//this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+	//this->armatureDisplay->getAnimation()->play("Idle");
+
+	//this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+	//this->armatureDisplay->getAnimation()->play("Idle");
+
 }
 
 void AnimationComponent::initArmature(sf::Vector2f vec)
@@ -79,26 +85,26 @@ void AnimationComponent::initArmature(sf::Vector2f vec)
 	this->armatureDisplay->setPosition(vec);
 }
 
-dragonBones::SFMLArmatureDisplay* AnimationComponent::playAnimation(unsigned globalState, unsigned localState)
+void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f newDirection)
 {
-	if (this->curState != localState)
+	if (this->currentDirection != newDirection)
 	{
+		this->currentDirection = newDirection;
+		this->currentAnimation = newAnimation;
+
 		if (this->armatureDisplay->getArmature() != NULL)
 			this->armatureDisplay->getArmature()->dispose();
 
-		switch (globalState)
-		{
-		case 0:
-			this->setIdleAnimation(localState);
-			break;
-		case 1:
-			this->setMovementAnimation(localState);
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		}
+		this->playAnimation();
 	}
-	return this->armatureDisplay;
+}
+
+void AnimationComponent::setAnimation(animationName newAnimation)
+{
+		this->currentAnimation = newAnimation;
+
+		if (this->armatureDisplay->getArmature() != NULL)
+			this->armatureDisplay->getArmature()->dispose();
+
+		this->playAnimation();
 }
