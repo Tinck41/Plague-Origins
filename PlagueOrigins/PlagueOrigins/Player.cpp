@@ -2,6 +2,10 @@
 
 #include "Player.h"
 
+#include "FiniteStateMachine.h"
+#include "PlayerIdleState.h"
+#include "PlayerMoveState.h"
+
 Player::Player(float x, float y) : Unit()
 {
 	initVariables();
@@ -12,8 +16,10 @@ Player::Player(float x, float y) : Unit()
 	createAnimationComponent(this->shape, this->factory);
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
-		this->armatureDisplay = this->animationComponent->playAnimation(IDLE, idleDown);
+		this->armatureDisplay = this->animationComponent->playAnimation(0, 1);
 	createColliderComponent(this->shape);
+
+	this->playerStateMachine.changeState(this->initState);
 }
 
 Player::~Player()
@@ -32,6 +38,8 @@ void Player::initVariables()
 {
 	speed = 600;
 	scale = 0.2f;
+
+	this->initState = new PlayerIdleState(this->playerStateMachine, *this);
 }
 
 void Player::update(const float& dt)
@@ -39,13 +47,14 @@ void Player::update(const float& dt)
 	//update utility
 	this->inputBooleans.update();
 	this->directionFinder.update();
-	this->playerStateHandler.update(dt);
+	//this->playerStateHandler.update(dt);
+	this->playerStateMachine.executeStateUpdate();
 
 	//Moving
 	this->movementComponent->move(dt, this->directionFinder.getDirection());
 	
 	//Animation things
-	this->armatureDisplay = this->animationComponent->playAnimation(this->playerStateHandler.getGlobalState(), this->directionFinder.getLocalState());
+	//this->armatureDisplay = this->animationComponent->playAnimation(this->playerStateHandler.getGlobalState(), this->directionFinder.getLocalState());
 	this->armatureDisplay->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
 	this->factory.update(dt);
 }

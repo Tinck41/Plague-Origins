@@ -10,7 +10,7 @@ private:
 	int speed;
 	float dx;
 	float dy;
-
+	
 	//Game objects
 	sf::RectangleShape shape;
 	sf::Texture texture;

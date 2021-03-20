@@ -19,7 +19,7 @@ void Unit::spawnUnit()
 
 void Unit::initVariables()
 {
-	this->movementComponent = NULL;
+	//this->movementComponent = NULL;
 	//this->animationComponent = NULL;
 }
 

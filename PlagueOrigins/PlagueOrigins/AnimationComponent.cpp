@@ -19,19 +19,19 @@ void AnimationComponent::setMovementAnimation(unsigned state)
 
 	switch (state)
 	{
-	case moveUp:
+	case 4:
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
 		this->armatureDisplay->getAnimation()->play("RunN");
 		break;
-	case moveRight:
+	case 3:
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
 		this->armatureDisplay->getAnimation()->play("RunEW");
 		break;
-	case moveDown:
+	case 1:
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunS");
 		this->armatureDisplay->getAnimation()->play("RunS");
 		break;
-	case moveLeft:
+	case 2:
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
 		this->armatureDisplay->getArmature()->setFlipX(true);
 		this->armatureDisplay->getAnimation()->play("RunEW");
@@ -45,19 +45,19 @@ void AnimationComponent::setIdleAnimation(unsigned state)
 
 	switch (state)
 	{
-	case idleUp:
+	case 0:
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 		this->armatureDisplay->getAnimation()->play("Idle");
 		break;
-	case idleRight:
+	case 3:
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 		this->armatureDisplay->getAnimation()->play("Idle");
 		break;
-	case idleDown:
+	case 1:
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 		this->armatureDisplay->getAnimation()->play("Idle");
 		break;
-	case idleLeft:
+	case 2:
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 		this->armatureDisplay->getAnimation()->play("Idle");
 		break;
@@ -88,15 +88,15 @@ dragonBones::SFMLArmatureDisplay* AnimationComponent::playAnimation(unsigned glo
 
 		switch (globalState)
 		{
-		case IDLE:
+		case 0:
 			this->setIdleAnimation(localState);
 			break;
-		case MOVE:
+		case 1:
 			this->setMovementAnimation(localState);
 			break;
-		case DASH:
+		case 2:
 			break;
-		case ATTACK:
+		case 3:
 			break;
 		}
 	}

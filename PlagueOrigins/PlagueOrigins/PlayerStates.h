@@ -1,5 +1,8 @@
 #pragma once
 
+#include "PlayerIdleState.h"
+#include "PlayerMoveState.h"
+
 enum globalState
 {
 	IDLE,

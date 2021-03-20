@@ -5,7 +5,6 @@
 ColliderComponent::ColliderComponent(sf::RectangleShape& body) :
 	body(body)
 {
-	
 }
 
 ColliderComponent::~ColliderComponent()

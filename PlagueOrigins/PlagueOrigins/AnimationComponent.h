@@ -1,7 +1,4 @@
 #pragma once
-
-#include "PlayerStates.h"
-
 class AnimationComponent
 {
 private:
