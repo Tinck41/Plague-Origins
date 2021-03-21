@@ -9,3 +9,5 @@ Idle
 ArmatureDogEW
 Idle
 Run
+Attack
+Attack1
