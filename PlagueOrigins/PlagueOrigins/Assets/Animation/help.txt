@@ -1,7 +1,7 @@
-ArmatureheroAttackE & ArmatureheroAttackS
+ArmatureheroAttackE & ArmatureheroAttackS & ArmatureheroAttackN
 Attack
 
-ArmatureheroRunEW & RunN
+ArmatureheroRunEW & ArmatureheroRunN
 Idle
 
 -------enemy
