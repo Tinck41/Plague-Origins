@@ -11,3 +11,9 @@ Idle
 Run
 Attack
 Attack1
+
+ArmatureDogS
+Idle
+Run
+Attack
+Attack1
