@@ -71,8 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(PlatformName)\$(Configuration)</OutDir>
-    <IncludePath>S:\Programs\Visual Leak Detector\include;$(IncludePath)</IncludePath>
-    <LibraryPath>S:\Programs\Visual Leak Detector\lib\Win64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(PlatformName)\$(Configuration)</OutDir>
@@ -151,6 +151,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
+    <ClCompile Include="NPCDog.cpp" />
     <ClCompile Include="PlayerAttackState.cpp" />
     <ClCompile Include="PlayerIdleState.cpp" />
     <ClCompile Include="MapCollider.cpp" />
@@ -192,6 +193,7 @@
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GlobalFactory.h" />
+    <ClInclude Include="NPCDog.h" />
     <ClInclude Include="PlayerAnimationStates.h" />
     <ClInclude Include="PlayerAttackState.h" />
     <ClInclude Include="PlayerIdleState.h" />

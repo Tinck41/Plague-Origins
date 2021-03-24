@@ -27,7 +27,7 @@ private:
 	sf::RectangleShape shape;
 
 	//dragonBones
-	dragonBones::SFMLFactory factory;
+	//dragonBones::SFMLFactory factory;
 	//std::unique_ptr<dragonBones::SFMLArmatureDisplay> armatureDisplay;
 
 	void initVariables();

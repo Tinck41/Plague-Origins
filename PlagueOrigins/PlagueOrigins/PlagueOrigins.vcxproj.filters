@@ -92,6 +92,7 @@
       <Filter>States\PlayerStates</Filter>
     </ClCompile>
     <ClCompile Include="GlobalFactory.cpp" />
+    <ClCompile Include="NPCDog.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -208,6 +209,7 @@
       <Filter>States\PlayerStates</Filter>
     </ClInclude>
     <ClInclude Include="GlobalFactory.h" />
+    <ClInclude Include="NPCDog.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
