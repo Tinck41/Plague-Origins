@@ -10,14 +10,18 @@ class DirectionFinder
 private:
 	sf::Vector2f direction;
 
+	InputBooleans inputBooleans;
+
 	bool isMoving = false;
+	bool isAttacking = false;
 
 	void getMovementInput();
 	//void getDashInput();
-	//void getAttackInput();
+	void getAttackInput();
 	//void getSpellInput();
 public:
 	sf::Vector2f getDirection() { return this->direction; }
+	bool getAttack() { return isAttacking; }
 
 	void update();
 };

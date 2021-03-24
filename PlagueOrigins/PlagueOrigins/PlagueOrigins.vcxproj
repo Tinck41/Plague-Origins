@@ -71,6 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(PlatformName)\$(Configuration)</OutDir>
+    <IncludePath>S:\Programs\Visual Leak Detector\include;$(IncludePath)</IncludePath>
+    <LibraryPath>S:\Programs\Visual Leak Detector\lib\Win64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(PlatformName)\$(Configuration)</OutDir>
@@ -103,6 +105,7 @@
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -147,6 +150,7 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
+    <ClCompile Include="PlayerAttackState.cpp" />
     <ClCompile Include="PlayerIdleState.cpp" />
     <ClCompile Include="MapCollider.cpp" />
     <ClCompile Include="Config.cpp" />
@@ -187,6 +191,7 @@
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="PlayerAnimationStates.h" />
+    <ClInclude Include="PlayerAttackState.h" />
     <ClInclude Include="PlayerIdleState.h" />
     <ClInclude Include="MapCollider.h" />
     <ClInclude Include="Config.h" />

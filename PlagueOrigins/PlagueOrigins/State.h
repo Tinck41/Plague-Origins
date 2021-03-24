@@ -3,8 +3,11 @@
 class State
 {
 public:
-	virtual void enter() {}
-	virtual void execute() {}
-	virtual void exit() {}
+	State() {}
+	virtual ~State() {}
+
+	virtual void enter() = 0;
+	virtual void update(const float& dt) = 0;
+	virtual void exit() = 0;
 };
 

@@ -10,7 +10,7 @@ private:
 	int state;
 
 	animationName currentAnimation;
-	sf::Vector2f currentDirection = sf::Vector2f(0.f, 0.f);
+	sf::Vector2f currentDirection = sf::Vector2f(0.f, 1.f);
 
 	//Game objects
 	sf::Texture texture;
@@ -21,6 +21,7 @@ private:
 	void playAnimation();
 	void playMovementAnimation();
 	void playIdleAnimation();
+	void playAttackAnimation();
 public:
 	//Constructor/Destructor
 	AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);
@@ -33,5 +34,8 @@ public:
 	void setAnimation(animationName newAnimation);
 
 	// Getters
-	dragonBones::SFMLArmatureDisplay* getArmatureDisplay() { return this->armatureDisplay; }
+	dragonBones::SFMLArmatureDisplay* getArmatureDisplay() 
+	{ 
+		return this->armatureDisplay; 
+	}
 };

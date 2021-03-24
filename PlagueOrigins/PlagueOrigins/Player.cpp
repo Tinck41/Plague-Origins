@@ -4,7 +4,6 @@
 
 #include "FiniteStateMachine.h"
 #include "PlayerIdleState.h"
-#include "PlayerMoveState.h"
 
 Player::Player(float x, float y) : Unit()
 {
@@ -18,12 +17,12 @@ Player::Player(float x, float y) : Unit()
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
 		this->animationComponent->setAnimation(animationName::IDLE);
-		this->armatureDisplay = this->animationComponent->getArmatureDisplay();
+		//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
 
 	createColliderComponent(this->shape);
 
 	// init State-Machine
-	this->playerStateMachine.changeState(this->initState);
+	this->playerStateMachine->changeState(this->initState);
 }
 
 Player::~Player()
@@ -43,22 +42,21 @@ void Player::initVariables()
 	this->speed = 600;
 	this->scale = 0.2f;
 
-	this->initState = new PlayerIdleState(this->playerStateMachine, *this);
+	this->playerStateMachine = new FiniteStateMachine();
+	this->initState = new PlayerIdleState(*this);
 }
 
 void Player::update(const float& dt)
 {
 	// update utility
-	this->inputBooleans.update();
 	this->directionFinder.update();
-	this->playerStateMachine.executeStateUpdate();
+	this->playerStateMachine->executeStateUpdate(dt);
 
 	// Moving
-	this->movementComponent->move(dt, this->directionFinder.getDirection());
 
 	// Animation things
-	this->armatureDisplay = this->animationComponent->getArmatureDisplay();
-	this->armatureDisplay->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
+	//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
+	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
 	this->factory.update(dt);
 }
 	
@@ -66,5 +64,5 @@ void Player::render(sf::RenderWindow& target)
 {
 	// draw hitbox
 	//target.draw(this->shape);
-	target.draw(*armatureDisplay, states);
+	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }

@@ -128,7 +128,7 @@ void InputBooleans::update()
 {
 	this->checkMovementInput();
 	//this->checkDashInput();
-	//this->checkAttackInput();
+	this->checkAttackInput();
 	this->checkUtilityInput();
 }
 

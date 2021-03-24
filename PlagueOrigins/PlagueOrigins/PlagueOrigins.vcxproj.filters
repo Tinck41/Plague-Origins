@@ -88,6 +88,9 @@
     <ClCompile Include="PlayerMoveState.cpp">
       <Filter>States\PlayerStates</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerAttackState.cpp">
+      <Filter>States\PlayerStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="PlayerAnimationStates.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAttackState.h">
+      <Filter>States\PlayerStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

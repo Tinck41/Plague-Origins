@@ -5,31 +5,33 @@
 class FiniteStateMachine
 {
 private:
-	State* currentState;
-	State* previousState;
+	// TO DO: smart_ptr
+	State* ñurrentState;
 public:
+	~FiniteStateMachine()
+	{
+		delete ñurrentState;
+	}
+
 	void changeState(State* newState)
 	{
-		if (this->currentState != nullptr)
-			this->currentState->exit();
+		if (ñurrentState != nullptr)
+		{
+			ñurrentState->exit();
+			delete ñurrentState;
+		}
 
-		this->previousState = this->currentState;
-		this->currentState = newState;
+		ñurrentState = newState;
 
-		this->currentState->enter();
+		ñurrentState->enter();
 	}
 
-	void executeStateUpdate()
+	void executeStateUpdate(const float& dt)
 	{
-		if (this->currentState != nullptr)
-			this->currentState->execute();
-	}
-
-	void switchToPreviousState()
-	{
-		this->currentState->exit();
-		this->currentState = this->previousState;
-		this->currentState->enter();
+		if (ñurrentState != nullptr)
+		{
+			ñurrentState->update(dt);
+		}
 	}
 };
 

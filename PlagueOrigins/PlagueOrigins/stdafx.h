@@ -8,6 +8,7 @@
 #include <set>
 #include <thread>
 #include <utility>
+#include <memory>
 #include <vector>
 #include <list>
 #include <stack>

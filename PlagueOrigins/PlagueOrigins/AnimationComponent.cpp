@@ -17,11 +17,14 @@ void AnimationComponent::playAnimation()
 {
 	switch (this->currentAnimation)
 	{
-	case(animationName::IDLE) :
+	case(animationName::IDLE):
 		this->playIdleAnimation();
 		break;
 	case(animationName::MOVE):
 		this->playMovementAnimation();
+		break;
+	case(animationName::ATTACK):
+		this->playAttackAnimation();
 		break;
 	default:
 		break;
@@ -56,44 +59,84 @@ void AnimationComponent::playMovementAnimation()
 
 void AnimationComponent::playIdleAnimation()
 {
-	this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-	this->armatureDisplay->getAnimation()->play("Idle");
+	if (this->currentDirection.y == -1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
+		this->armatureDisplay->getAnimation()->play("Idle");
+	}
+	else if (this->currentDirection.y == 1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
+		this->armatureDisplay->getAnimation()->play("Idle");
+	}
 
+	if (this->currentDirection.x == 1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+		this->armatureDisplay->getAnimation()->play("Idle");
+	}
+	else if (this->currentDirection.x == -1.f)
+	{	
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+		this->armatureDisplay->getArmature()->setFlipX(true);
+		this->armatureDisplay->getAnimation()->play("Idle");
+	}
 	//this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
 	//this->armatureDisplay->getAnimation()->play("Idle");
+}
 
-	//this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-	//this->armatureDisplay->getAnimation()->play("Idle");
+void AnimationComponent::playAttackAnimation()
+{
+	if (this->currentDirection.y == -1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
+		this->armatureDisplay->getAnimation()->play("Idle", 1);
+	}
+	else if (this->currentDirection.y == 1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroAttackS");
+		this->armatureDisplay->getAnimation()->play("Attack", 1);
+	}
 
-	//this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-	//this->armatureDisplay->getAnimation()->play("Idle");
-
+	if (this->currentDirection.x == 1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroAttackE");
+		this->armatureDisplay->getAnimation()->play("Attack", 1);
+	}
+	else if (this->currentDirection.x == -1.f)
+	{
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroAttackE");
+		this->armatureDisplay->getArmature()->setFlipX(true);
+		this->armatureDisplay->getAnimation()->play("Attack", 1);
+	}
 }
 
 void AnimationComponent::initArmature(sf::Vector2f vec)
 {
 	//LOAD
-	this->texture.loadFromFile("./Assets/Animations/Hero/heroAnim/heroAnim_tex.png");
+	this->texture.loadFromFile("./Assets/AnimationNew/heroAnim/heroAnim_tex.png");
 
 	this->factory.clear();
-	this->factory.loadDragonBonesData("./Assets/Animations/Hero/heroAnim/heroAnim_ske.json");
-	this->factory.loadTextureAtlasData("./Assets/Animations/Hero/heroAnim/heroAnim_tex.json", &texture);
+	this->factory.loadDragonBonesData("./Assets/AnimationNew/heroAnim/heroAnim_ske.json");
+	this->factory.loadTextureAtlasData("./Assets/AnimationNew/heroAnim/heroAnim_tex.json", &texture);
 
 	//IDLE:
-	this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-	
-	this->armatureDisplay->setPosition(vec);
+	////this->armatureDisplay = std::make_unique <dragonBones::SFMLArmatureDisplay>("ArmatureheroIdle");
+	armatureDisplay = nullptr;
+	//this->armatureDisplay->setPosition(vec);
 }
 
 void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f newDirection)
 {
-	if (this->currentDirection != newDirection)
+	if (currentDirection != newDirection || currentAnimation != newAnimation)
 	{
 		this->currentDirection = newDirection;
 		this->currentAnimation = newAnimation;
 
-		if (this->armatureDisplay->getArmature() != NULL)
+		if (this->armatureDisplay != nullptr)
+		{
 			this->armatureDisplay->getArmature()->dispose();
+		}
 
 		this->playAnimation();
 	}
@@ -101,10 +144,15 @@ void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f n
 
 void AnimationComponent::setAnimation(animationName newAnimation)
 {
+	if (newAnimation != currentAnimation) 
+	{
 		this->currentAnimation = newAnimation;
 
-		if (this->armatureDisplay->getArmature() != NULL)
+		if (this->armatureDisplay != nullptr)
+		{
 			this->armatureDisplay->getArmature()->dispose();
+		}
 
 		this->playAnimation();
+	}
 }

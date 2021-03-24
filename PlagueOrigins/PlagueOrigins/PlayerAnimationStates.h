@@ -2,6 +2,7 @@
 
 enum animationName
 {
+	NONE,
 	IDLE,
 	MOVE,
 	DASH,

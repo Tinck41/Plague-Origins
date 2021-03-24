@@ -24,10 +24,23 @@ void DirectionFinder::getMovementInput()
 	}
 }
 
+void DirectionFinder::getAttackInput()
+{
+	if (InputBooleans::isM1Pressed)
+	{
+		this->isAttacking = true;
+	}
+}
+
 void DirectionFinder::update()
 {
 	this->direction.x = 0.f;
 	this->direction.y = 0.f;
 
+	this->isAttacking = false;
+
+	this->inputBooleans.update();
+
 	this->getMovementInput();
+	this->getAttackInput();
 }
