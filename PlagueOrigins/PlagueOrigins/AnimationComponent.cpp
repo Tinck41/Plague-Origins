@@ -114,11 +114,7 @@ void AnimationComponent::playAttackAnimation()
 void AnimationComponent::initArmature(sf::Vector2f vec)
 {
 	//LOAD
-	this->texture.loadFromFile("./Assets/AnimationNew/heroAnim/heroAnim_tex.png");
-
-	this->factory.clear();
-	this->factory.loadDragonBonesData("./Assets/AnimationNew/heroAnim/heroAnim_ske.json");
-	this->factory.loadTextureAtlasData("./Assets/AnimationNew/heroAnim/heroAnim_tex.json", &texture);
+	
 
 	//IDLE:
 	////this->armatureDisplay = std::make_unique <dragonBones::SFMLArmatureDisplay>("ArmatureheroIdle");

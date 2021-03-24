@@ -91,6 +91,7 @@
     <ClCompile Include="PlayerAttackState.cpp">
       <Filter>States\PlayerStates</Filter>
     </ClCompile>
+    <ClCompile Include="GlobalFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="PlayerAttackState.h">
       <Filter>States\PlayerStates</Filter>
     </ClInclude>
+    <ClInclude Include="GlobalFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

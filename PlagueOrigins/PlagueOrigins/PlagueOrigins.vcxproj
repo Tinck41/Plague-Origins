@@ -150,6 +150,7 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
+    <ClCompile Include="GlobalFactory.cpp" />
     <ClCompile Include="PlayerAttackState.cpp" />
     <ClCompile Include="PlayerIdleState.cpp" />
     <ClCompile Include="MapCollider.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="FiniteStateMachine.h" />
+    <ClInclude Include="GlobalFactory.h" />
     <ClInclude Include="PlayerAnimationStates.h" />
     <ClInclude Include="PlayerAttackState.h" />
     <ClInclude Include="PlayerIdleState.h" />

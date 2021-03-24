@@ -2,6 +2,7 @@
 
 #include "Player.h"
 
+#include "GlobalFactory.h"
 #include "FiniteStateMachine.h"
 #include "PlayerIdleState.h"
 
@@ -13,7 +14,7 @@ Player::Player(float x, float y) : Unit()
 	// create components
 	createMovementComponent(this->shape, this->speed);
 
-	createAnimationComponent(this->shape, this->factory);
+	createAnimationComponent(this->shape, GlobalFactory::factory);
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
 		this->animationComponent->setAnimation(animationName::IDLE);

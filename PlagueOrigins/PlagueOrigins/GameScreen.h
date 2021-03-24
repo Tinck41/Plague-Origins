@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "TileMap.h"
 #include "TileMapLoader.h"
+#include "GlobalFactory.h"
 
 extern Config CONFIG;
 
@@ -11,6 +12,8 @@ class GameScreen :
     public Screen
 {
 private:
+	GlobalFactory gFactory;
+
 	Player player{ 615.0f, 350.0f };
 
 	TileMapLoader mapLoader;
