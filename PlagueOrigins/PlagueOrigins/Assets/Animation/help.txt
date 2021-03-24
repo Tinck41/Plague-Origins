@@ -1,0 +1,19 @@
+ArmatureheroAttackE & ArmatureheroAttackS & ArmatureheroAttackN
+Attack
+
+ArmatureheroRunEW & ArmatureheroRunN
+Idle
+
+-------enemy
+
+ArmatureDogEW
+Idle
+Run
+Attack
+Attack1
+
+ArmatureDogS
+Idle
+Run
+Attack
+Attack1
