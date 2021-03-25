@@ -86,6 +86,7 @@ void AnimationComponent::playIdleAnimation()
 
 void AnimationComponent::playAttackAnimation()
 {
+	
 	if (this->currentDirection.y == -1.f)
 	{
 		this->postfix = this->setPostfix(this->prefix, "U");
@@ -131,7 +132,8 @@ void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f n
 
 		if (this->armatureDisplay != nullptr)
 		{
-			this->armatureDisplay = nullptr;
+			this->armatureDisplay->getArmature()->~Armature();
+			delete armatureDisplay;
 		}
 
 		this->playAnimation();
