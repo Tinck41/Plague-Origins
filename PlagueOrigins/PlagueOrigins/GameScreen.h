@@ -12,7 +12,7 @@ class GameScreen :
     public Screen
 {
 private:
-	GlobalFactory gFactory;
+	//GlobalFactory gFactory;
 
 	Player player{ 615.0f, 350.0f };
 	NPCDog npcDog{ 500.0f, 350.0f };

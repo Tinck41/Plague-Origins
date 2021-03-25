@@ -4,6 +4,7 @@
 #include "FiniteStateMachine.h"
 #include "DirectionFinder.h"
 //#include "PlayerStateHandler.h"
+#include "GlobalFactory.h"
 
 class PlayerIdleState;
 class PlayerMoveState;
@@ -26,15 +27,16 @@ private:
 	//Game objects
 	sf::RectangleShape shape;
 
+	GlobalFactory& gFactory;
 	//dragonBones
-	//dragonBones::SFMLFactory& factory = GlobalFactory::factorySet();
+	dragonBones::SFMLFactory& factory;
 	//std::unique_ptr<dragonBones::SFMLArmatureDisplay> armatureDisplay;
 
 	void initVariables();
 	void createHitbox(float x, float y);
 public:
 	//Constructors/Destructors
-	Player(float x, float y, dragonBones::SFMLFactory& factory);
+	Player(float x, float y);
 	Player();
 	~Player();
 

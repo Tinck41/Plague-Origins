@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "NPCDog.h"
 
-NPCDog::NPCDog(float x, float y)
+NPCDog::NPCDog(float x, float y) : gFactory(GlobalFactory::Instance()), factory(gFactory.factory)
 {
 	initVariables();
 	createHitbox(x, y);
@@ -10,7 +10,7 @@ NPCDog::NPCDog(float x, float y)
 	// create components
 	createMovementComponent(this->shape, this->speed);
 
-	createAnimationComponent(this->shape, dragonBones::SFMLFactory::get(), "Dog");
+	createAnimationComponent(this->shape, this->factory, "Dog");
 	//animationComponent->initArmature(sf::Vector2f(x, y));
 	//this->states.transform.scale(scale, scale);
 	//this->animationComponent->setAnimation(animationName::IDLE);

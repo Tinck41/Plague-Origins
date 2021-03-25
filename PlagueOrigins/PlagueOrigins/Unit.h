@@ -29,7 +29,7 @@ public:
 
 	//Functions
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
-	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory* zf, std::string prefix);
+	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix);
 	void createColliderComponent(sf::RectangleShape& shape);
 
 	virtual void update(const float& dt);

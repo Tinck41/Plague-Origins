@@ -19,7 +19,8 @@ class NPCDog :
 	std::vector<sf::Vector2f> waypoints;
 	sf::Vector2f direction;
 
-	//dragonBones::SFMLFactory& factory = GlobalFactory::factorySet();
+	GlobalFactory& gFactory;
+	dragonBones::SFMLFactory& factory;
 
 	//Game objects
 	sf::RectangleShape shape;

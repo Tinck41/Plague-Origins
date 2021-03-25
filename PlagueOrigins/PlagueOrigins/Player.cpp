@@ -6,7 +6,7 @@
 #include "FiniteStateMachine.h"
 #include "PlayerIdleState.h"
 
-Player::Player(float x, float y, dragonBones::SFMLFactory& factory) : factory(factory)
+Player::Player(float x, float y) : gFactory(GlobalFactory::Instance()), factory(gFactory.factory)
 {
 	initVariables();
 	createHitbox(x, y);
@@ -14,7 +14,7 @@ Player::Player(float x, float y, dragonBones::SFMLFactory& factory) : factory(fa
 	// create components
 	createMovementComponent(this->shape, this->speed);
 
-	createAnimationComponent(this->shape,factory, "hero");
+	createAnimationComponent(this->shape, this->factory, "hero");
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
 		this->animationComponent->setAnimation(animationName::IDLE);

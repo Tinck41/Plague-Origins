@@ -3,11 +3,11 @@
 #include "AnimationComponent.h"
 
 //Constructor/Destructor
-AnimationComponent::AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory* zf, std::string prefix) : shape(shape)
+AnimationComponent::AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix) : factory(zf), shape(shape)
 {
 	//this->factory.clear();
 	this->prefix = prefix;
-	this->factory = zf;
+	//this->factory = zf;
 }
 
 AnimationComponent::~AnimationComponent()
@@ -116,7 +116,7 @@ void AnimationComponent::playAttackAnimation()
 
 void AnimationComponent::updateFactory(float dt)
 {
-	this->factory->update(dt);
+	this->factory.update(dt);
 	//this->zf->get()->update(dt);
 }
 
