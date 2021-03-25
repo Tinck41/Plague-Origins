@@ -39,7 +39,7 @@ void DirectionFinder::update()
 
 	this->isAttacking = false;
 
-	this->inputBooleans.update();
+	//this->inputBooleans.update();
 
 	this->getMovementInput();
 	this->getAttackInput();

@@ -9,6 +9,7 @@ class Game
 private:
 	ScreenHandler* screenHandler;
 	sf::RenderWindow* window;
+	InputBooleans inputBooleans;
 
 	sf::Clock deltaTimeClock;
 	float deltaTime;

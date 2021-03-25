@@ -10,7 +10,7 @@ class DirectionFinder
 private:
 	sf::Vector2f direction;
 
-	InputBooleans inputBooleans;
+	//InputBooleans inputBooleans;
 
 	bool isMoving = false;
 	bool isAttacking = false;

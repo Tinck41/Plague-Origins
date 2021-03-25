@@ -48,6 +48,8 @@ void Game::resolveSFMLEvents()
 void Game::update()
 {
 	resolveSFMLEvents();
+	if (this->window->hasFocus())
+		this->inputBooleans.update();
 	this->screenHandler->update(deltaTime);
 }
 
