@@ -5,12 +5,7 @@ public:
 	dragonBones::SFMLFactory factory;
 	static GlobalFactory& Instance();
 private:
-	sf::Texture heroAttackU;
-	sf::Texture heroAttackR;
-	sf::Texture heroAttackD;
-	sf::Texture heroMoveU;
-	sf::Texture heroMoveR;
-	sf::Texture heroMoveD;
+	sf::Texture heroAnim;
 	sf::Texture dogAnim;
 	
 	GlobalFactory();

@@ -44,7 +44,7 @@ sf::Vector2f NPCDog::getWaypoint(int pointN)
 void NPCDog::initVariables()
 {
 	this->speed = 200;
-	this->scale = 0.5f;
+	this->scale = 0.3f;
 	this->pointN = 0;
 	this->direction = { .0f, .0f };
 	fillWaypoints();
@@ -55,12 +55,6 @@ void NPCDog::createHitbox(float x, float y)
 	this->shape.setPosition(x, y);
 	this->shape.setSize(sf::Vector2f(100.0f, 150.0f));
 	this->shape.setFillColor(sf::Color::Red);
-}
-
-void NPCDog::patrol()
-{
-
-
 }
 
 void NPCDog::findRoute(sf::Vector2f dest)
@@ -88,7 +82,6 @@ void NPCDog::findRoute(sf::Vector2f dest)
 
 void NPCDog::update(const float& dt)
 {
-	std::cout << this->shape.getPosition().x << " " << this->shape.getPosition().y << std::endl;
 	//get direction
 	this->findRoute(this->getWaypoint(this->pointN));
 	//moving
@@ -100,6 +93,6 @@ void NPCDog::update(const float& dt)
 
 void NPCDog::render(sf::RenderWindow& target)
 {
-	target.draw(this->shape);
+	//target.draw(this->shape);
 	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }

@@ -30,7 +30,6 @@ class NPCDog :
 
 	void initVariables();
 	void createHitbox(float x, float y);
-	void patrol();
 	void findRoute(sf::Vector2f dest);
 public:
 	//Constructors/Destructors

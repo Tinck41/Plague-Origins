@@ -17,8 +17,8 @@ void GameScreen::setup()
 
 void GameScreen::update(const float& dt)
 {
-	this->player.update(dt);
 	this->npcDog.update(dt);
+	this->player.update(dt);
 	this->map.update(this->player);
 	this->camera.setSize(sf::Vector2f(CONFIG.getWidth(), CONFIG.getHeight()));
 	this->camera.setCenter(this->player.getPosition());
@@ -35,8 +35,10 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 	}
 	window.setView(this->camera);
 	this->map.renderUnderPlayerLayers(window);
-	this->player.render(window);
+
 	this->npcDog.render(window);
+	this->player.render(window);
+
 	this->map.renderOverPlayerLayers(window);
 	return ScreenType::GAME;
 }
