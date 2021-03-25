@@ -20,7 +20,7 @@ void PlayerAttackState::enter()
 
 void PlayerAttackState::update(const float& dt)
 {
-	std::cout << "ATTACK" << " " << this->owner.getInput().getDirection().x << " " << this->owner.getInput().getDirection().y << "\n";
+	//std::cout << "ATTACK" << " " << this->owner.getInput().getDirection().x << " " << this->owner.getInput().getDirection().y << "\n";
 
 	if (owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted())
 	{

@@ -27,8 +27,6 @@ void NPCDog::fillWaypoints()
 {
 	this->waypoints.push_back(this->point0);
 	this->waypoints.push_back(this->point1);
-	//this->waypoints.push_back(this->point2);
-	//this->waypoints.push_back(this->point3);
 }
 
 sf::Vector2f NPCDog::getWaypoint(int pointN)
@@ -39,10 +37,6 @@ sf::Vector2f NPCDog::getWaypoint(int pointN)
 		return this->waypoints[0];
 	case 1:
 		return this->waypoints[1];
-	case 2:
-		return this->waypoints[2];
-	case 3:
-		return this->waypoints[3];
 	}
 
 	return sf::Vector2f();
@@ -50,10 +44,11 @@ sf::Vector2f NPCDog::getWaypoint(int pointN)
 
 void NPCDog::initVariables()
 {
-	this->speed = 600;
+	this->speed = 200;
 	this->scale = 0.2f;
 	this->pointN = 0;
 	this->direction = { .0f, .0f };
+	fillWaypoints();
 }
 
 void NPCDog::createHitbox(float x, float y)
@@ -83,7 +78,7 @@ void NPCDog::findRoute(sf::Vector2f dest)
 		this->direction.y = -1.0f;
 
 	//if patrol point is done
-	if ((currentPos.x >= dest.x - 3.0f && currentPos.x <= dest.x + 3.0f) && (currentPos.y >= dest.y - 3.0f && currentPos.y <= dest.y + 3.0f))
+	if ((currentPos.x >= dest.x - 5.0f && currentPos.x <= dest.x + 5.0f) && (currentPos.y >= dest.y - 5.0f && currentPos.y <= dest.y + 5.0f))
 		this->pointN++;
 	if (pointN > 1)
 		pointN = 0;

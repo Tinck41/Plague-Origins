@@ -20,7 +20,7 @@ void PlayerIdleState::enter()
 
 void PlayerIdleState::update(const float& dt)
 {
-	std::cout << "IDLE" << " " << this->owner.getInput().getDirection().x << " " << this->owner.getInput().getDirection().y << "\n";
+	//std::cout << "IDLE" << " " << this->owner.getInput().getDirection().x << " " << this->owner.getInput().getDirection().y << "\n";
 	
 	if (owner.getInput().getAttack())
 	{

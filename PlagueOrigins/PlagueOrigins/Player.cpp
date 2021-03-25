@@ -14,7 +14,7 @@ Player::Player(float x, float y) : gFactory(GlobalFactory::Instance()), factory(
 	// create components
 	createMovementComponent(this->shape, this->speed);
 
-	createAnimationComponent(this->shape, this->factory, "hero");
+	createAnimationComponent(this->shape, this->factory, "Hero");
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
 		this->animationComponent->setAnimation(animationName::IDLE);

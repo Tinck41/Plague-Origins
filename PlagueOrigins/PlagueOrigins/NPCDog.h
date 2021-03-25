@@ -11,8 +11,8 @@ class NPCDog :
 
 	int pointN;
 	//waypoints of rectangle patrol path TEST
-	sf::Vector2f point0 = sf::Vector2f(1000.0f, 200.0f);
-	sf::Vector2f point1 = sf::Vector2f(1000.0f, 1000.0f);
+	sf::Vector2f point0 = sf::Vector2f(1500.0f, 700.0f);
+	sf::Vector2f point1 = sf::Vector2f(2000.0f, 700.0f);
 	//sf::Vector2f point2 = sf::Vector2f(3000.0f, 3000.0f);
 	//sf::Vector2f point3 = sf::Vector2f(2000.0f, 3000.0f);
 

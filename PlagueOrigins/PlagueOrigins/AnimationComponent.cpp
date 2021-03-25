@@ -37,78 +37,68 @@ void AnimationComponent::playMovementAnimation()
 {
 	if (this->currentDirection.y == -1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
-		this->armatureDisplay->getAnimation()->play("RunN");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroMoveU");
 	}
 	else if (this->currentDirection.y == 1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunS");
-		this->armatureDisplay->getAnimation()->play("RunS");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroMoveD");
 	}
-
 	if (this->currentDirection.x == 1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
-		this->armatureDisplay->getAnimation()->play("RunEW");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroMoveR");
 	}
 	else if (this->currentDirection.x == -1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroMoveR");
 		this->armatureDisplay->getArmature()->setFlipX(true);
-		this->armatureDisplay->getAnimation()->play("RunEW");
 	}
+	this->armatureDisplay->getAnimation()->play("Run");
 }
 
 void AnimationComponent::playIdleAnimation()
 {
 	if (this->currentDirection.y == -1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
-		this->armatureDisplay->getAnimation()->play("Idle");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroMoveU");
 	}
 	else if (this->currentDirection.y == 1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroMoveD");
 	}
-
 	if (this->currentDirection.x == 1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
-		this->armatureDisplay->getAnimation()->play("Idle");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroMoveR");
 	}
 	else if (this->currentDirection.x == -1.f)
 	{	
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroMoveR");
 		this->armatureDisplay->getArmature()->setFlipX(true);
-		this->armatureDisplay->getAnimation()->play("Idle");
 	}
-	//this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-	//this->armatureDisplay->getAnimation()->play("Idle");
+	this->armatureDisplay->getAnimation()->play("Idle");
 }
 
 void AnimationComponent::playAttackAnimation()
 {
 	if (this->currentDirection.y == -1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroAttackU");
 		//this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
-		this->armatureDisplay->getAnimation()->play("Idle", 1);
+		this->armatureDisplay->getAnimation()->play("Attack", 1);
 	}
 	else if (this->currentDirection.y == 1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroAttackS");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroAttackD");
 		this->armatureDisplay->getAnimation()->play("Attack", 1);
 	}
 
 	if (this->currentDirection.x == 1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroAttackE");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroAttackR");
 		this->armatureDisplay->getAnimation()->play("Attack", 1);
 	}
 	else if (this->currentDirection.x == -1.f)
 	{
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroAttackE");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureHeroAttackR");
 		this->armatureDisplay->getArmature()->setFlipX(true);
 		this->armatureDisplay->getAnimation()->play("Attack", 1);
 	}
@@ -117,32 +107,11 @@ void AnimationComponent::playAttackAnimation()
 void AnimationComponent::updateFactory(float dt)
 {
 	this->factory.update(dt);
-	//this->zf->get()->update(dt);
 }
 
 void AnimationComponent::initArmature(sf::Vector2f vec)
 {
-	//LOAD
-	//this->factory.clear();
-	//this->texture1.loadFromFile("./Assets/AnimationSep2/heroAnim/heroAnimAttack_tex.png");
-	//this->factory.loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_ske.json");
-	//this->factory.loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_tex.json", &texture1);
-	//this->texture2.loadFromFile("./Assets/AnimationSep2/heroAnim/heroAnimRun_tex.png");
-	//this->factory.loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimRun_ske.json");
-	//this->factory.loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimRun_tex.json", &texture2);
-	//this->texture3.loadFromFile("./Assets/Animation/enemyAnim/enemyAnim_tex.png");
-	//this->factory.loadDragonBonesData("./Assets/Animation/enemyAnim/enemyAnim_ske.json");
-	//this->factory.loadTextureAtlasData("./Assets/Animation/enemyAnim/enemyAnim_tex.json", &texture3);
-
-	//this->texture.loadFromFile("./Assets/AnimationSep/heroAnim/heroAnimAttack_tex.png");
-	//this->zf->get()->loadDragonBonesData("./Assets/AnimationSep/heroAnim/heroAnimAttack_ske.json");
-	//this->zf->get()->loadTextureAtlasData("./Assets/AnimationSep/heroAnim/heroAnimAttack_tex.json", &texture);
-	//this->texture.loadFromFile("./Assets/AnimationSep/heroAnim/heroAnimRun_tex.png");
-	//this->zf->get()->loadDragonBonesData("./Assets/AnimationSep/heroAnim/heroAnimRun_ske.json");
-	//this->zf->get()->loadTextureAtlasData("./Assets/AnimationSep/heroAnim/heroAnimRun_tex.json", &texture);
-
 	//IDLE:
-	////this->armatureDisplay = std::make_unique <dragonBones::SFMLArmatureDisplay>("ArmatureheroIdle");
 	armatureDisplay = nullptr;
 	//this->armatureDisplay->setPosition(vec);
 }
@@ -185,7 +154,7 @@ std::string AnimationComponent::enumToString(animationName name)
 	if (name == 1)
 		return "Idle";
 	if (name == 2)
-		return "Run";
+		return "Move";
 	if (name == 3)
 		return "Dash";
 	if (name == 4)

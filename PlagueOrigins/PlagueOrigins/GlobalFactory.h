@@ -3,13 +3,16 @@ class GlobalFactory
 {
 public:
 	dragonBones::SFMLFactory factory;
-	dragonBones::SFMLFactory& factorySet();
 	static GlobalFactory& Instance();
-protected:
-	sf::Texture texture1;
-	sf::Texture texture2;
-	sf::Texture texture3;
 private:
+	sf::Texture heroAttackU;
+	sf::Texture heroAttackR;
+	sf::Texture heroAttackD;
+	sf::Texture heroMoveU;
+	sf::Texture heroMoveR;
+	sf::Texture heroMoveD;
+	sf::Texture dogAnim;
+	
 	GlobalFactory();
 	GlobalFactory(const GlobalFactory& root) = delete;
 	GlobalFactory& operator = (const GlobalFactory&) = delete;

@@ -4,35 +4,32 @@
 
 GlobalFactory::GlobalFactory()
 {
-	texture1.loadFromFile("./Assets/AnimationSep2/heroAnim/heroAnimAttack_tex.png");
-	texture2.loadFromFile("./Assets/AnimationSep2/heroAnim/heroAnimRun_tex.png");
-	texture3.loadFromFile("./Assets/Animation/enemyAnim/enemyAnim_tex.png");
-	factory.loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_ske.json");
-	factory.loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_tex.json", &texture1);
+	heroAttackU.loadFromFile("./Assets/AnimationSep/heroAnim/heroAttackU_tex.png");
+	heroAttackR.loadFromFile("./Assets/AnimationSep/heroAnim/heroAttackR_tex.png");
+	heroAttackD.loadFromFile("./Assets/AnimationSep/heroAnim/heroAttackD_tex.png");
+	heroMoveU.loadFromFile("./Assets/AnimationSep/heroAnim/heroMoveU_tex.png");
+	heroMoveR.loadFromFile("./Assets/AnimationSep/heroAnim/heroMoveR_tex.png");
+	heroMoveD.loadFromFile("./Assets/AnimationSep/heroAnim/heroMoveD_tex.png");
+	dogAnim.loadFromFile("./Assets/Animation/dogAnim/dogAnim_tex.png");
 
-	factory.loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimRun_ske.json");
-	factory.loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimRun_tex.json", &texture2);
-
-	factory.loadDragonBonesData("./Assets/Animation/enemyAnim/enemyAnim_ske.json");
-	factory.loadTextureAtlasData("./Assets/Animation/enemyAnim/enemyAnim_tex.json", &texture3);
-}
-
-
-
-dragonBones::SFMLFactory& GlobalFactory::factorySet()
-{
-	dragonBones::SFMLFactory fact;
+	//HERO
+	factory.loadDragonBonesData("./Assets/AnimationSep/heroAnim/heroAttackU_ske.json");
+	factory.loadTextureAtlasData("./Assets/AnimationSep/heroAnim/heroAttackU_tex.json", &heroAttackU);
+	factory.loadDragonBonesData("./Assets/AnimationSep/heroAnim/heroAttackR_ske.json");
+	factory.loadTextureAtlasData("./Assets/AnimationSep/heroAnim/heroAttackR_tex.json", &heroAttackR);
+	factory.loadDragonBonesData("./Assets/AnimationSep/heroAnim/heroAttackD_ske.json");
+	factory.loadTextureAtlasData("./Assets/AnimationSep/heroAnim/heroAttackD_tex.json", &heroAttackD);
 	
-	fact.loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_ske.json");
-	fact.loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_tex.json", &texture1);
-
-	fact.loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimRun_ske.json");
-	fact.loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimRun_tex.json", &texture2);
-
-	fact.loadDragonBonesData("./Assets/Animation/enemyAnim/enemyAnim_ske.json");
-	fact.loadTextureAtlasData("./Assets/Animation/enemyAnim/enemyAnim_tex.json", &texture3);
-
-	return fact;
+	factory.loadDragonBonesData("./Assets/AnimationSep/heroAnim/heroMoveU_ske.json");
+	factory.loadTextureAtlasData("./Assets/AnimationSep/heroAnim/heroMoveU_tex.json", &heroMoveU);
+	factory.loadDragonBonesData("./Assets/AnimationSep/heroAnim/heroMoveR_ske.json");
+	factory.loadTextureAtlasData("./Assets/AnimationSep/heroAnim/heroMoveR_tex.json", &heroMoveR);
+	factory.loadDragonBonesData("./Assets/AnimationSep/heroAnim/heroMoveD_ske.json");
+	factory.loadTextureAtlasData("./Assets/AnimationSep/heroAnim/heroMoveD_tex.json", &heroMoveD);
+	
+	//DOG
+	factory.loadDragonBonesData("./Assets/Animation/dogAnim/dogAnim_ske.json");
+	factory.loadTextureAtlasData("./Assets/Animation/dogAnim/dogAnim_tex.json", &dogAnim);
 }
 
 GlobalFactory& GlobalFactory::Instance()

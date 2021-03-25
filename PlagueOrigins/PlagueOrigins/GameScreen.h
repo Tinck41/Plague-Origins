@@ -15,7 +15,7 @@ private:
 	//GlobalFactory gFactory;
 
 	Player player{ 615.0f, 350.0f };
-	NPCDog npcDog{ 500.0f, 350.0f };
+	NPCDog npcDog{ 1500.0f, 700.0f };
 
 	TileMapLoader mapLoader;
 
