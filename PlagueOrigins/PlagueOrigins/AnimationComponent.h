@@ -9,6 +9,8 @@ private:
 	bool done;
 	int state;
 	std::string prefix;
+	std::string armatureName;
+	std::string postfix;
 
 	animationName currentAnimation;
 	sf::Vector2f currentDirection = sf::Vector2f(0.f, 1.f);
@@ -26,7 +28,7 @@ private:
 	void playMovementAnimation();
 	void playIdleAnimation();
 	void playAttackAnimation();
-	std::string enumToString(animationName name);
+	std::string setPostfix(std::string prefix, std::string dir);
 public:
 	//Constructor/Destructor
 	//AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);

@@ -18,7 +18,6 @@ Player::Player(float x, float y) : gFactory(GlobalFactory::Instance()), factory(
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
 		this->animationComponent->setAnimation(animationName::IDLE);
-		//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
 
 	createColliderComponent(this->shape);
 

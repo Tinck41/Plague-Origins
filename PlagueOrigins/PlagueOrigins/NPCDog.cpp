@@ -11,10 +11,9 @@ NPCDog::NPCDog(float x, float y) : gFactory(GlobalFactory::Instance()), factory(
 	createMovementComponent(this->shape, this->speed);
 
 	createAnimationComponent(this->shape, this->factory, "Dog");
-	//animationComponent->initArmature(sf::Vector2f(x, y));
-	//this->states.transform.scale(scale, scale);
-	//this->animationComponent->setAnimation(animationName::IDLE);
-	//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
+		animationComponent->initArmature(sf::Vector2f(x, y));
+		this->states.transform.scale(scale, scale);
+		this->animationComponent->setAnimation(animationName::MOVE);
 
 	createColliderComponent(this->shape);
 }
@@ -45,7 +44,7 @@ sf::Vector2f NPCDog::getWaypoint(int pointN)
 void NPCDog::initVariables()
 {
 	this->speed = 200;
-	this->scale = 0.2f;
+	this->scale = 0.5f;
 	this->pointN = 0;
 	this->direction = { .0f, .0f };
 	fillWaypoints();
@@ -77,6 +76,9 @@ void NPCDog::findRoute(sf::Vector2f dest)
 	else if (currentPos.y > dest.y)
 		this->direction.y = -1.0f;
 
+	if (this->direction.x != 0 || this->direction.y != 0)
+		this->animationComponent->setAnimation(animationName::MOVE, this->direction);
+
 	//if patrol point is done
 	if ((currentPos.x >= dest.x - 5.0f && currentPos.x <= dest.x + 5.0f) && (currentPos.y >= dest.y - 5.0f && currentPos.y <= dest.y + 5.0f))
 		this->pointN++;
@@ -91,9 +93,13 @@ void NPCDog::update(const float& dt)
 	this->findRoute(this->getWaypoint(this->pointN));
 	//moving
 	this->movementComponent->move(dt, this->direction);
+	//animation
+	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
+	this->animationComponent->updateFactory(dt);
 }
 
 void NPCDog::render(sf::RenderWindow& target)
 {
 	target.draw(this->shape);
+	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }
