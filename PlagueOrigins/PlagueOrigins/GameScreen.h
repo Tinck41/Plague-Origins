@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "TileMap.h"
 #include "TileMapLoader.h"
-#include "GlobalFactory.h"
+#include "NPCDog.h"
 
 extern Config CONFIG;
 
@@ -15,6 +15,7 @@ private:
 	GlobalFactory gFactory;
 
 	Player player{ 615.0f, 350.0f };
+	NPCDog npcDog{ 500.0f, 350.0f };
 
 	TileMapLoader mapLoader;
 

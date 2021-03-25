@@ -4,7 +4,7 @@
 #include "PlayerStates.h"
 
 class PlayerAttackState : 
-	public State
+	virtual public State
 {
 private:
 	FiniteStateMachine* stateMachine;

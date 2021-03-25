@@ -27,14 +27,14 @@ private:
 	sf::RectangleShape shape;
 
 	//dragonBones
-	//dragonBones::SFMLFactory factory;
+	//dragonBones::SFMLFactory& factory = GlobalFactory::factorySet();
 	//std::unique_ptr<dragonBones::SFMLArmatureDisplay> armatureDisplay;
 
 	void initVariables();
 	void createHitbox(float x, float y);
 public:
 	//Constructors/Destructors
-	Player(float x, float y);
+	Player(float x, float y, dragonBones::SFMLFactory& factory);
 	Player();
 	~Player();
 

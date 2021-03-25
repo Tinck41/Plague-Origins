@@ -1,17 +1,35 @@
+#pragma once
 #include "stdafx.h"
 #include "GlobalFactory.h"
 
-dragonBones::SFMLFactory GlobalFactory::factory;
-
 GlobalFactory::GlobalFactory()
 {
-	//HERO
-	//this->texture.loadFromFile("./Assets/AnimationNew/heroAnim/heroAnim_tex.png");
-	//this->factory.loadDragonBonesData("./Assets/AnimationNew/heroAnim/heroAnim_ske.json");
-	//this->factory.loadTextureAtlasData("./Assets/AnimationNew/heroAnim/heroAnim_tex.json", &texture);
+	texture1.loadFromFile("./Assets/AnimationSep2/heroAnim/heroAnimAttack_tex.png");
+	texture2.loadFromFile("./Assets/AnimationSep2/heroAnim/heroAnimRun_tex.png");
+	texture3.loadFromFile("./Assets/Animation/enemyAnim/enemyAnim_tex.png");
+	//this->zf = fact.get();
+	
+	//this->zf->addDragonBonesData(fact.getDragonBonesData("heroAnimAttack"), "heroAnimAttack");
+	//this->zf->loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_ske.json");
+	//this->zf->loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_tex.json", &texture1);
+	//this->zf->loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimRun_ske.json");
+	//this->zf->loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimRun_tex.json", &texture2);
+	//this->zf->loadDragonBonesData("./Assets/Animation/enemyAnim/enemyAnim_ske.json");
+	//this->zf->loadTextureAtlasData("./Assets/Animation/enemyAnim/enemyAnim_tex.json", &texture3);
+}
 
-	//ENEMY
-	//this->texture.loadFromFile("./Assets/AnimationNew/enemyAnim/enemyAnim_tex.png");
-	//this->factory.loadDragonBonesData("./Assets/AnimationNew/enemyAnim/enemyAnim_ske.json");
-	//this->factory.loadTextureAtlasData("./Assets/AnimationNew/enemyAnim/enemyAnim_tex.json", &texture);
+dragonBones::SFMLFactory& GlobalFactory::factorySet()
+{
+	dragonBones::SFMLFactory fact;
+	
+	fact.loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_ske.json");
+	fact.loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimAttack_tex.json", &texture1);
+
+	fact.loadDragonBonesData("./Assets/AnimationSep2/heroAnim/heroAnimRun_ske.json");
+	fact.loadTextureAtlasData("./Assets/AnimationSep2/heroAnim/heroAnimRun_tex.json", &texture2);
+
+	fact.loadDragonBonesData("./Assets/Animation/enemyAnim/enemyAnim_ske.json");
+	fact.loadTextureAtlasData("./Assets/Animation/enemyAnim/enemyAnim_tex.json", &texture3);
+
+	return fact;
 }

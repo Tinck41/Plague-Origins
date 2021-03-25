@@ -1,12 +1,12 @@
+#pragma once
 #include "stdafx.h"
 
 #include "Player.h"
 
-#include "GlobalFactory.h"
 #include "FiniteStateMachine.h"
 #include "PlayerIdleState.h"
 
-Player::Player(float x, float y) : Unit()
+Player::Player(float x, float y, dragonBones::SFMLFactory& factory) : factory(factory)
 {
 	initVariables();
 	createHitbox(x, y);
@@ -14,7 +14,7 @@ Player::Player(float x, float y) : Unit()
 	// create components
 	createMovementComponent(this->shape, this->speed);
 
-	createAnimationComponent(this->shape);
+	createAnimationComponent(this->shape,factory, "hero");
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
 		this->animationComponent->setAnimation(animationName::IDLE);
@@ -59,6 +59,7 @@ void Player::update(const float& dt)
 	//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
 	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
 	this->animationComponent->updateFactory(dt);
+	//GlobalFactory::zf->update(dt);
 }
 	
 void Player::render(sf::RenderWindow& target)
