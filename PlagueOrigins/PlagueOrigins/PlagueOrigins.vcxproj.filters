@@ -93,6 +93,10 @@
     </ClCompile>
     <ClCompile Include="GlobalFactory.cpp" />
     <ClCompile Include="NPCDog.cpp" />
+    <ClCompile Include="CombatComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -210,6 +214,10 @@
     </ClInclude>
     <ClInclude Include="GlobalFactory.h" />
     <ClInclude Include="NPCDog.h" />
+    <ClInclude Include="CombatComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

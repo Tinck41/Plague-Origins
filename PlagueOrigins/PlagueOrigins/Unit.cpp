@@ -2,10 +2,8 @@
 
 #include "Unit.h"
 
-Unit::Unit()
+Unit::Unit() : gObjects(GameObjects::Instance())
 {
-	initVariables();
-	//spawnUnit();
 }
 
 void Unit::spawnUnit()
@@ -32,6 +30,11 @@ void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
 void Unit::createColliderComponent(sf::RectangleShape& shape)
 {
 	this->colliderComponent = new ColliderComponent(shape);
+}
+
+void Unit::createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage)
+{
+	combatComponent = new CombatComponent(shape, hitpoints, damage);
 }
 
 void Unit::update(const float& dt)

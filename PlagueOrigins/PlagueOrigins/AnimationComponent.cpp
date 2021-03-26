@@ -3,7 +3,8 @@
 #include "AnimationComponent.h"
 
 //Constructor/Destructor
-AnimationComponent::AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix) : factory(zf), shape(shape)
+AnimationComponent::AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix) : 
+	factory(zf), shape(shape)
 {
 	this->prefix = prefix;
 	this->armatureName = "Armature" + prefix;
@@ -148,7 +149,8 @@ void AnimationComponent::setAnimation(animationName newAnimation)
 
 		if (this->armatureDisplay != nullptr)
 		{
-			this->armatureDisplay->getArmature()->dispose();
+			this->armatureDisplay->getArmature()->~Armature();
+			delete armatureDisplay;
 		}
 
 		this->playAnimation();

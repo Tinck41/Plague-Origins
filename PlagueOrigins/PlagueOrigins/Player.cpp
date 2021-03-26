@@ -6,14 +6,15 @@
 #include "FiniteStateMachine.h"
 #include "PlayerIdleState.h"
 
-Player::Player(float x, float y) : gFactory(GlobalFactory::Instance()), factory(gFactory.factory)
+Player::Player(float x, float y) : 
+	gFactory(GlobalFactory::Instance()), factory(gFactory.factory), gObjects(GameObjects::Instance())
 {
+	gObjects.registerObject(this, objects::player);
+	id = 1;
 	initVariables();
-	createHitbox(x, y);
 
 	// create components
 	createMovementComponent(this->shape, this->speed);
-
 	createAnimationComponent(this->shape, this->factory, "Hero");
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
@@ -23,6 +24,8 @@ Player::Player(float x, float y) : gFactory(GlobalFactory::Instance()), factory(
 
 	// init State-Machine
 	this->playerStateMachine->changeState(this->initState);
+	createHitbox(x, y);
+	createCombatComponent(shape, hitpoints, damage);
 }
 
 Player::~Player()
@@ -39,6 +42,9 @@ void Player::createHitbox(float x, float y)
 
 void Player::initVariables()
 {
+	hitpoints = 20;
+	damage = 5;
+
 	this->speed = 600;
 	this->scale = 0.2f;
 
@@ -53,6 +59,7 @@ void Player::update(const float& dt)
 	this->playerStateMachine->executeStateUpdate(dt);
 
 	// Moving
+	combatComponent->update(directionFinder.getDirection(), dt);
 
 	// Animation things
 	//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
@@ -64,6 +71,7 @@ void Player::update(const float& dt)
 void Player::render(sf::RenderWindow& target)
 {
 	// draw hitbox
-	//target.draw(this->shape);
+	combatComponent->render(target);
+	target.draw(this->shape);
 	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }

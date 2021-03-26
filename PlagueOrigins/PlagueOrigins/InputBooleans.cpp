@@ -75,19 +75,23 @@ void InputBooleans::checkDashInput()
 void InputBooleans::checkAttackInput()
 {
 	//check
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isM1Pressed)
 	{
 		this->isM1Pressed = true;
+	}
+	else if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && isM1Pressed || !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+	{
+		this->isM1Pressed = false;
 	}
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
 	{
 		this->isM2Pressed = true;
 	}
 	//reset
-	if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-	{
-		this->isM1Pressed = false;
-	}
+	//if ()
+	//{
+	//	this->isM1Pressed = false;
+	//}
 	if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
 	{
 		this->isM2Pressed = false;

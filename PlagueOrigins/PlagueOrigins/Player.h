@@ -18,6 +18,9 @@ private:
 	int speed;
 	float scale;
 
+	float hitpoints;
+	float damage;
+
 	DirectionFinder directionFinder;
 	//PlayerStateHandler playerStateHandler;
 
@@ -27,6 +30,7 @@ private:
 	//Game objects
 	sf::RectangleShape shape;
 
+	GameObjects& gObjects;
 	GlobalFactory& gFactory;
 	//dragonBones
 	dragonBones::SFMLFactory& factory;
@@ -48,6 +52,7 @@ public:
 	void render(sf::RenderWindow& target);
 
 	// Getters
+	sf::RectangleShape getShape() override { return shape; } 
 	sf::Vector2f getPosition() { return this->shape.getPosition(); }
 	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
 	DirectionFinder getInput() { return this->directionFinder; }

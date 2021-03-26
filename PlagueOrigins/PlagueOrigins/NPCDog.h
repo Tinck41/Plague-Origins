@@ -8,6 +8,8 @@ class NPCDog :
 	sf::RenderStates states;
 	int speed;
 	float scale;
+	float hitpoints;
+	float damage;
 
 	int pointN;
 	//waypoints of rectangle patrol path TEST
@@ -19,6 +21,7 @@ class NPCDog :
 	std::vector<sf::Vector2f> waypoints;
 	sf::Vector2f direction;
 
+	GameObjects& gObjects;
 	GlobalFactory& gFactory;
 	dragonBones::SFMLFactory& factory;
 
@@ -44,6 +47,7 @@ public:
 	void render(sf::RenderWindow & target);
 
 	// Getters
+	sf::RectangleShape getShape() override { return shape; }
 	sf::Vector2f getPosition() { return this->shape.getPosition(); }
 	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
 	AnimationComponent* getAnimator() { return this->animationComponent; }

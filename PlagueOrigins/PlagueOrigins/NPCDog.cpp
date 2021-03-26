@@ -2,8 +2,10 @@
 #include "stdafx.h"
 #include "NPCDog.h"
 
-NPCDog::NPCDog(float x, float y) : gFactory(GlobalFactory::Instance()), factory(gFactory.factory)
+NPCDog::NPCDog(float x, float y) : 
+	gFactory(GlobalFactory::Instance()), factory(gFactory.factory), gObjects(GameObjects::Instance())
 {
+	gObjects.registerObject(this, objects::enemies);
 	initVariables();
 	createHitbox(x, y);
 
@@ -16,6 +18,7 @@ NPCDog::NPCDog(float x, float y) : gFactory(GlobalFactory::Instance()), factory(
 		this->animationComponent->setAnimation(animationName::MOVE);
 
 	createColliderComponent(this->shape);
+	createCombatComponent(shape, hitpoints, damage);
 }
 
 NPCDog::~NPCDog()
@@ -43,6 +46,8 @@ sf::Vector2f NPCDog::getWaypoint(int pointN)
 
 void NPCDog::initVariables()
 {
+	hitpoints = 20;
+	damage = 0;
 	this->speed = 200;
 	this->scale = 0.3f;
 	this->pointN = 0;
@@ -89,10 +94,12 @@ void NPCDog::update(const float& dt)
 	//animation
 	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
 	this->animationComponent->updateFactory(dt);
+
+	combatComponent->update(direction, dt);
 }
 
 void NPCDog::render(sf::RenderWindow& target)
 {
-	//target.draw(this->shape);
+	target.draw(this->shape);
 	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }
