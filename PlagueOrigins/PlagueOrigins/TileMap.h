@@ -9,6 +9,7 @@ class TileMap
 private:
 	// Variables
 	sf::Vector2u size;
+	sf::Vector2u tileSize;
 
 	std::vector<TileLayer> tileLayer;
 	std::vector<std::vector<MapCollider>> colliderLayer;
@@ -19,14 +20,17 @@ public:
 	// Constructors/Destructor
 	TileMap(
 		std::vector<TileLayer> layers,
-		sf::Vector2u size,
-		std::vector<std::vector<MapCollider>> objects
+		std::vector<std::vector<MapCollider>> objects,
+		sf::Vector2u mapSize,
+		sf::Vector2u tileSize
 	);
 	TileMap();
 	~TileMap();
 
 	// Getters
 	std::vector<std::vector<MapCollider>> getObjects() { return this->colliderLayer; }
+	sf::Vector2u getSize() { return size; }
+	sf::Vector2u getTileSize() { return tileSize; }
 
 	// Update
 	void update(Player& player);

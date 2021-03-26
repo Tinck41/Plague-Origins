@@ -42,7 +42,7 @@ public:
 	~TileMapLoader();
 
 	// Getters
-	TileMap getTileMap() { return this->tileMap; }
+	TileMap getTileMap() { return tileMap; }
 
 	// Functions
 	bool load(const char* path);
