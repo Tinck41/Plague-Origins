@@ -7,13 +7,7 @@ Run
 
 -------------enemies---------------
 
-ArmatureDogR
-Idle
-Run
-Attack0
-Attack1
-
-ArmatureDogD
+ArmatureDogR && ArmatureDogD && ArmatureDogU
 Idle
 Run
 Attack0
