@@ -3,9 +3,11 @@
 #include "AnimationComponent.h"
 
 //Constructor/Destructor
-AnimationComponent::AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory) :
-	factory(factory), shape(shape)
+AnimationComponent::AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix) : 
+	factory(zf), shape(shape)
 {
+	this->prefix = prefix;
+	this->armatureName = "Armature" + prefix;
 }
 
 AnimationComponent::~AnimationComponent()
@@ -13,92 +15,164 @@ AnimationComponent::~AnimationComponent()
 
 }
 
-void AnimationComponent::setMovementAnimation(unsigned state)
+void AnimationComponent::playAnimation()
 {
-	this->curState = state;
-
-	switch (state)
+	switch (this->currentAnimation)
 	{
-	case moveUp:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunN");
-		this->armatureDisplay->getAnimation()->play("RunN");
+	case(animationName::IDLE):
+		this->playIdleAnimation();
 		break;
-	case moveRight:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
-		this->armatureDisplay->getAnimation()->play("RunEW");
+	case(animationName::MOVE):
+		this->playMovementAnimation();
 		break;
-	case moveDown:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunS");
-		this->armatureDisplay->getAnimation()->play("RunS");
+	case(animationName::ATTACK):
+		this->playAttackAnimation();
 		break;
-	case moveLeft:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroRunEW");
-		this->armatureDisplay->getArmature()->setFlipX(true);
-		this->armatureDisplay->getAnimation()->play("RunEW");
+	default:
 		break;
 	}
 }
 
-void AnimationComponent::setIdleAnimation(unsigned state)
+void AnimationComponent::playMovementAnimation()
 {
-	this->curState = state;
-
-	switch (state)
+	if (this->currentDirection.y == -1.f)
 	{
-	case idleUp:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
-		break;
-	case idleRight:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
-		break;
-	case idleDown:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
-		break;
-	case idleLeft:
-		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-		this->armatureDisplay->getAnimation()->play("Idle");
-		break;
+		this->postfix = this->setPostfix(this->prefix, "U");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
 	}
+	else if (this->currentDirection.y == 1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "D");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	if (this->currentDirection.x == 1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "R");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	else if (this->currentDirection.x == -1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "R");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+		this->armatureDisplay->getArmature()->setFlipX(true);
+	}
+	this->armatureDisplay->getAnimation()->play("Run");
+}
+
+void AnimationComponent::playIdleAnimation()
+{
+	if (this->currentDirection.y == -1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "U");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	else if (this->currentDirection.y == 1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "D");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	if (this->currentDirection.x == 1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "R");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	else if (this->currentDirection.x == -1.f)
+	{	
+		this->postfix = this->setPostfix(this->prefix, "R");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+		this->armatureDisplay->getArmature()->setFlipX(true);
+	}
+	this->armatureDisplay->getAnimation()->play("Idle");
+}
+
+void AnimationComponent::playAttackAnimation()
+{
+	
+	if (this->currentDirection.y == -1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "U");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	else if (this->currentDirection.y == 1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "D");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	if (this->currentDirection.x == 1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "R");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	else if (this->currentDirection.x == -1.f)
+	{
+		this->postfix = this->setPostfix(this->prefix, "R");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+		this->armatureDisplay->getArmature()->setFlipX(true);
+	}
+	this->armatureDisplay->getAnimation()->play("Attack", 1);
+}
+
+void AnimationComponent::updateFactory(float dt)
+{
+	this->factory.update(dt);
 }
 
 void AnimationComponent::initArmature(sf::Vector2f vec)
 {
-	//LOAD
-	this->texture.loadFromFile("./Assets/Animations/Hero/heroAnim/heroAnim_tex.png");
-
-	this->factory.clear();
-	this->factory.loadDragonBonesData("./Assets/Animations/Hero/heroAnim/heroAnim_ske.json");
-	this->factory.loadTextureAtlasData("./Assets/Animations/Hero/heroAnim/heroAnim_tex.json", &texture);
-
 	//IDLE:
-	this->armatureDisplay = new dragonBones::SFMLArmatureDisplay("ArmatureheroIdle");
-	
-	this->armatureDisplay->setPosition(vec);
+	armatureDisplay = nullptr;
+	//this->armatureDisplay->setPosition(vec);
 }
 
-dragonBones::SFMLArmatureDisplay* AnimationComponent::playAnimation(unsigned globalState, unsigned localState)
+void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f newDirection)
 {
-	if (this->curState != localState)
+	if (currentDirection != newDirection || currentAnimation != newAnimation)
 	{
-		if (this->armatureDisplay->getArmature() != NULL)
-			this->armatureDisplay->getArmature()->dispose();
+		this->currentDirection = newDirection;
+		this->currentAnimation = newAnimation;
 
-		switch (globalState)
+		if (this->armatureDisplay != nullptr)
 		{
-		case IDLE:
-			this->setIdleAnimation(localState);
-			break;
-		case MOVE:
-			this->setMovementAnimation(localState);
-			break;
-		case DASH:
-			break;
-		case ATTACK:
-			break;
+			this->armatureDisplay->getArmature()->~Armature();
+			delete armatureDisplay;
 		}
+
+		this->playAnimation();
 	}
-	return this->armatureDisplay;
+}
+
+void AnimationComponent::setAnimation(animationName newAnimation)
+{
+	if (newAnimation != currentAnimation) 
+	{
+		this->currentAnimation = newAnimation;
+
+		if (this->armatureDisplay != nullptr)
+		{
+			this->armatureDisplay->getArmature()->~Armature();
+			delete armatureDisplay;
+		}
+
+		this->playAnimation();
+	}
+}
+
+std::string AnimationComponent::setPostfix(std::string prefix, std::string dir)
+{
+	if (prefix == "Dog")
+	{
+		if (dir == "U")
+			return "D";
+		if (dir == "R")
+			return dir;
+		if (dir == "D")
+			return dir;
+	}
+	if (prefix == "Hero")
+	{
+		if (this->currentAnimation == animationName::IDLE || this->currentAnimation == animationName::MOVE)
+			return "Move" + dir;
+		if (this->currentAnimation == animationName::ATTACK)
+			return "Attack" + dir;
+	}
 }

@@ -26,7 +26,10 @@ public:
 	SFMLArmatureDisplay(const std::string& armatureName, const std::string& dragonBonesName = "", const std::string& skinName = "", const std::string& textureAtlasName = "");
 	~SFMLArmatureDisplay();
 
-	void setPosition(const sf::Vector2f& pos) { _pos = pos; }
+	void setPosition(const sf::Vector2f& pos) 
+	{ 
+		_pos = pos; 
+	}
 	const sf::Vector2f& getPosition() { return _pos; }
 
 	Armature* getArmature() const;

@@ -1,5 +1,4 @@
 #pragma once
-#include "PlayerStates.h"
 #include "InputBooleans.h"
 
 /*
@@ -11,17 +10,18 @@ class DirectionFinder
 private:
 	sf::Vector2f direction;
 
-	unsigned localState = 1;
+	//InputBooleans inputBooleans;
 
 	bool isMoving = false;
+	bool isAttacking = false;
 
 	void getMovementInput();
 	//void getDashInput();
-	//void getAttackInput();
+	void getAttackInput();
 	//void getSpellInput();
 public:
 	sf::Vector2f getDirection() { return this->direction; }
-	unsigned getLocalState() { return this->localState; }
+	bool getAttack() { return isAttacking; }
 
 	void update();
 };

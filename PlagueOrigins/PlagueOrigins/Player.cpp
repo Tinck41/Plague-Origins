@@ -1,58 +1,77 @@
+#pragma once
 #include "stdafx.h"
 
 #include "Player.h"
 
-Player::Player(float x, float y) : Unit()
-{
-	initVariables();
-	createHitbox(x, y);
+#include "FiniteStateMachine.h"
+#include "PlayerIdleState.h"
 
-	//create components
+Player::Player(float x, float y) : 
+	gFactory(GlobalFactory::Instance()), factory(gFactory.factory), gObjects(GameObjects::Instance())
+{
+	gObjects.registerObject(this, objects::player);
+	id = 1;
+	initVariables();
+
+	// create components
 	createMovementComponent(this->shape, this->speed);
-	createAnimationComponent(this->shape, this->factory);
+	createAnimationComponent(this->shape, this->factory, "Hero");
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
-		this->armatureDisplay = this->animationComponent->playAnimation(IDLE, idleDown);
+		this->animationComponent->setAnimation(animationName::IDLE);
+
 	createColliderComponent(this->shape);
+
+	// init State-Machine
+	this->playerStateMachine->changeState(this->initState);
+	createHitbox(x, y);
+	createCombatComponent(shape, hitpoints, damage);
 }
 
 Player::~Player()
 {
 }
 
-//create hitbox (shape)
+// create hitbox (shape)
 void Player::createHitbox(float x, float y)
 {
-	shape.setPosition(x, y);
-	shape.setSize(sf::Vector2f(100.0f, 150.0f));
-	shape.setFillColor(sf::Color::Red);
+	this->shape.setPosition(x, y);
+	this->shape.setSize(sf::Vector2f(100.0f, 150.0f));
+	this->shape.setFillColor(sf::Color::Red);
 }
 
 void Player::initVariables()
 {
-	speed = 600;
-	scale = 0.2f;
+	hitpoints = 20;
+	damage = 5;
+
+	this->speed = 600;
+	this->scale = 0.2f;
+
+	this->playerStateMachine = new FiniteStateMachine();
+	this->initState = new PlayerIdleState(*this);
 }
 
 void Player::update(const float& dt)
 {
-	//update utility
-	this->inputBooleans.update();
+	// update utility
 	this->directionFinder.update();
-	this->playerStateHandler.update(dt);
+	this->playerStateMachine->executeStateUpdate(dt);
 
-	//Moving
-	this->movementComponent->move(dt, this->directionFinder.getDirection());
-	
-	//Animation things
-	this->armatureDisplay = this->animationComponent->playAnimation(this->playerStateHandler.getGlobalState(), this->directionFinder.getLocalState());
-	this->armatureDisplay->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
-	this->factory.update(dt);
+	// Moving
+	combatComponent->update(directionFinder.getDirection(), dt);
+
+	// Animation things
+	//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
+	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
+	this->animationComponent->updateFactory(dt);
+	//GlobalFactory::zf->update(dt);
 }
 	
 void Player::render(sf::RenderWindow& target)
 {
-	//draw hitbox
-	//target.draw(this->shape);
-	target.draw(*armatureDisplay, states);
+	// draw hitbox
+	combatComponent->render(target);
+	target.draw(this->shape);
+	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }

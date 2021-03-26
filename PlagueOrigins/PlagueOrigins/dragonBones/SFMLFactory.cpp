@@ -115,8 +115,7 @@ sf::Texture* SFMLFactory::getTextureDisplay(const std::string& textureName, cons
 	return nullptr;
 }
 
-void SFMLFactory::update(float lastUpdate)
-{
+void SFMLFactory::update(float lastUpdate){
 	_dragonBonesInstance->advanceTime(lastUpdate);
 }
 

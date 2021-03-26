@@ -2,10 +2,8 @@
 
 #include "Unit.h"
 
-Unit::Unit()
+Unit::Unit() : gObjects(GameObjects::Instance())
 {
-	initVariables();
-	//spawnUnit();
 }
 
 void Unit::spawnUnit()
@@ -19,7 +17,7 @@ void Unit::spawnUnit()
 
 void Unit::initVariables()
 {
-	this->movementComponent = NULL;
+	//this->movementComponent = NULL;
 	//this->animationComponent = NULL;
 }
 
@@ -34,6 +32,11 @@ void Unit::createColliderComponent(sf::RectangleShape& shape)
 	this->colliderComponent = new ColliderComponent(shape);
 }
 
+void Unit::createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage)
+{
+	combatComponent = new CombatComponent(shape, hitpoints, damage);
+}
+
 void Unit::update(const float& dt)
 {
 }
@@ -42,7 +45,7 @@ void Unit::render(sf::RenderWindow* window)
 {
 }
 
-void Unit::createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory)
+void Unit::createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix)
 {
-	this->animationComponent = new AnimationComponent(shape, factory);
+	this->animationComponent = new AnimationComponent(shape, zf, prefix);
 }

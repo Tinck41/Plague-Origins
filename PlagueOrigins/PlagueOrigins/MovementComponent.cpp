@@ -23,6 +23,5 @@ void MovementComponent::move(const float& dt, sf::Vector2f dir)
 	{
 		this->currentSpeed /= sqrt(2);
 	}
-
 	this->shape.move(sf::Vector2f(dir.x * this->currentSpeed * dt, dir.y * this->currentSpeed * dt));
 }
