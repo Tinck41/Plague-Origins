@@ -4,13 +4,13 @@
 
 bool TileMapLoader::load(const char* path)
 {
-	this->xmlTileMap.LoadFile(path);
-	if (this->xmlTileMap.Error())
+	xmlTileMap.LoadFile(path);
+	if (xmlTileMap.Error())
 	{
 		return false;
 	}
 
-	this->parseTileMap();
+	parseTileMap();
 
 	return true;
 }
@@ -31,12 +31,12 @@ TileMapLoader::~TileMapLoader()
 void TileMapLoader::parseTileMap()
 {
 	// Taking the root element with all info about map
-	tinyxml2::XMLElement* root = this->xmlTileMap.RootElement();
+	tinyxml2::XMLElement* root = xmlTileMap.RootElement();
 
-	root->QueryUnsignedAttribute("height", &this->mapSize.y);
-	root->QueryUnsignedAttribute("width", &this->mapSize.x);
-	root->QueryUnsignedAttribute("tilewidth", &this->tileSize.x);
-	root->QueryUnsignedAttribute("tileheight", &this->tileSize.y);
+	root->QueryUnsignedAttribute("height", &mapSize.y);
+	root->QueryUnsignedAttribute("width", &mapSize.x);
+	root->QueryUnsignedAttribute("tilewidth", &tileSize.x);
+	root->QueryUnsignedAttribute("tileheight", &tileSize.y);
 
 	// Reading tilesets info
 	for (tinyxml2::XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
@@ -65,7 +65,7 @@ void TileMapLoader::parseTileMap()
 		}
 	}
 
-	this->tileMap = TileMap(this->tileLayer, this->mapSize, this->colliderLayer);
+	this->tileMap = TileMap(tileLayer, colliderLayer, mapSize, tileSize);
 }
 
 void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)
@@ -86,7 +86,7 @@ void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)
 	sf::Texture tileset;
 	tileset.loadFromFile("./Assets" + static_cast<std::string>(subSource));
 
-	this->tilesets.push_back(tileset);
+	tilesets.push_back(tileset);
 }
 
 void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
@@ -96,8 +96,8 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 	tinyxml2::XMLElement* data = xmlElement->FirstChildElement();
 
 	xmlElement->QueryStringAttribute("name", &layerName);
-	xmlElement->QueryUnsignedAttribute("height", &this->layerSize.y);
-	xmlElement->QueryUnsignedAttribute("width", &this->layerSize.x);
+	xmlElement->QueryUnsignedAttribute("height", &layerSize.y);
+	xmlElement->QueryUnsignedAttribute("width", &layerSize.x);
 
 	std::string matrix(data->GetText());
 	std::istringstream iss(matrix);
@@ -121,25 +121,25 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 				tileId--;
 
 				if (tilesetNotChoosen)
-					for (size_t i = 0; i < this->tilesetInfo.size(); i++)
+					for (size_t i = 0; i < tilesetInfo.size(); i++)
 					{
-						if (tileId >= this->tilesetInfo[i].firstId && tileId <= this->tilesetInfo[i].lastId)
+						if (tileId >= tilesetInfo[i].firstId && tileId <= tilesetInfo[i].lastId)
 						{
 							tilesetId = i;
 							tilesetNotChoosen = false;
 						}
 					}
 
-				tileId = tileId + this->tilesetInfo[tilesetId].tileCount - this->tilesetInfo[tilesetId].lastId - 1;
+				tileId = tileId + tilesetInfo[tilesetId].tileCount - tilesetInfo[tilesetId].lastId - 1;
 			}
 			_layer.push_back(tileId);
 		}
 	}
 
-	if (!this->tilesets.empty())
+	if (!tilesets.empty())
 	{
-		TileLayer layer(layerName, _layer, this->layerSize, this->tileSize, this->tilesets[tilesetId]);
-		this->tileLayer.push_back(layer);
+		TileLayer layer(layerName, _layer, layerSize, tileSize, tilesets[tilesetId]);
+		tileLayer.push_back(layer);
 	}
 	else
 	{
@@ -165,5 +165,5 @@ void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 		objects.push_back(MapCollider(objPosition, objSize));
 	}
 
-	this->colliderLayer.push_back(objects);
+	colliderLayer.push_back(objects);
 }

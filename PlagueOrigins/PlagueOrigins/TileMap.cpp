@@ -2,11 +2,12 @@
 
 #include "TileMap.h"
 
-TileMap::TileMap(std::vector<TileLayer> layers, sf::Vector2u size, std::vector<std::vector<MapCollider>> objects)
+TileMap::TileMap(std::vector<TileLayer> layers, std::vector<std::vector<MapCollider>> objects, sf::Vector2u mapSize, sf::Vector2u tileSize)
 {
 	this->tileLayer = layers;
-	this->size = size;
 	this->colliderLayer = objects;
+	this->size = mapSize;
+	this->tileSize = tileSize;
 }
 
 TileMap::TileMap()
