@@ -3,8 +3,6 @@
 #include "Screen.h"
 #include "Button.h"
 
-extern Config CONFIG;
-
 class MainMenuScreen :
     public Screen
 {

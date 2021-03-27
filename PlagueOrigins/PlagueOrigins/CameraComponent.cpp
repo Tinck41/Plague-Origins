@@ -4,7 +4,7 @@
 CameraComponent::CameraComponent()
 {
 	camera = new sf::View();
-	screenSize = sf::Vector2f(CONFIG.getWidth(), CONFIG.getHeight());
+	screenSize = sf::Vector2f(config.width(), config.height());
 	reset();
 }
 

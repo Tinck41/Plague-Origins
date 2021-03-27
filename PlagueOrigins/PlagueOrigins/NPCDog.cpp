@@ -46,10 +46,10 @@ sf::Vector2f NPCDog::getWaypoint(int pointN)
 
 void NPCDog::initVariables()
 {
-	hitpoints = 20;
-	damage = 0;
-	this->speed = 200;
-	this->scale = 0.3f;
+	hitpoints = config.dogHitpoints;
+	damage = config.dogDamage;
+	this->speed = config.dogSpeed;
+	this->scale = config.dogScale;
 	this->pointN = 0;
 	this->direction = { .0f, .0f };
 	fillWaypoints();
@@ -58,7 +58,7 @@ void NPCDog::initVariables()
 void NPCDog::createHitbox(float x, float y)
 {
 	this->shape.setPosition(x, y);
-	this->shape.setSize(sf::Vector2f(100.0f, 150.0f));
+	this->shape.setSize(sf::Vector2f(config.dogHitboxWidth, config.dogHitboxHeight));
 	this->shape.setFillColor(sf::Color::Red);
 }
 

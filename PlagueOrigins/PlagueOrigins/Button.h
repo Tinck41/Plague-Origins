@@ -1,7 +1,5 @@
 #pragma once
 
-extern Config CONFIG;
-
 enum ButtonState {
 	DEFAULT,
 	CLICKED,

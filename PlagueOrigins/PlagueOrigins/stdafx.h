@@ -31,3 +31,5 @@
 #include <dragonBones/SFMLArmatureDisplay.h>
 
 #include "Config.h"
+
+extern Config config;
