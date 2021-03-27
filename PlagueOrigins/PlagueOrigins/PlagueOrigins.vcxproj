@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CombatComponent.cpp" />
     <ClCompile Include="GameObjects.cpp" />
@@ -167,7 +168,7 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="InputBooleans.cpp" />
     <ClCompile Include="DirectionFinder.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
@@ -192,6 +193,7 @@
   <ItemGroup>
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="CombatComponent.h" />
     <ClInclude Include="FiniteStateMachine.h" />

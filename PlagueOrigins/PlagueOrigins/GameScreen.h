@@ -5,6 +5,7 @@
 #include "TileMap.h"
 #include "TileMapLoader.h"
 #include "NPCDog.h"
+#include "CameraComponent.h"
 
 extern Config CONFIG;
 
@@ -18,12 +19,9 @@ private:
 	NPCDog npcDog{ 1500.0f, 700.0f };
 
 	TileMapLoader mapLoader;
-
 	TileMap map;
 
-	sf::View camera;
-
-	void setup();
+	CameraComponent* cameraComponent;
 public:
 	static const ScreenType screenType = ScreenType::GAME;
 

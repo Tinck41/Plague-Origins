@@ -21,6 +21,11 @@ TileMap::~TileMap()
 	this->colliderLayer.clear();
 }
 
+sf::Vector2u TileMap::getSize()
+{
+	return sf::Vector2u(size.x * tileSize.x, size.y * tileSize.y);
+}
+
 void TileMap::update(Player& player)
 {
 	ColliderComponent playerCollider = player.getCollider();

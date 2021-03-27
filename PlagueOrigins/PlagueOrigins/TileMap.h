@@ -29,8 +29,7 @@ public:
 
 	// Getters
 	std::vector<std::vector<MapCollider>> getObjects() { return this->colliderLayer; }
-	sf::Vector2u getSize() { return size; }
-	sf::Vector2u getTileSize() { return tileSize; }
+	sf::Vector2u getSize();
 
 	// Update
 	void update(Player& player);
