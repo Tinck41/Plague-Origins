@@ -4,45 +4,41 @@
 
 GameScreen::GameScreen()
 {
-	setup();
-}
-
-void GameScreen::setup()
-{
-	if (this->mapLoader.load("./Assets/Map/map.tmx"))
+	if (mapLoader.load("./Assets/Map/map.tmx"))
 	{
-		this->map = mapLoader.getTileMap();
+		map = mapLoader.getTileMap();
 	}
+	cameraComponent = new CameraComponent();
+	cameraComponent->setBounds(map.getSize());
 }
 
 void GameScreen::update(const float& dt)
 {
-	this->npcDog.update(dt);
-	this->player.update(dt);
-	this->map.update(this->player);
-	this->camera.setSize(sf::Vector2f(CONFIG.getWidth(), CONFIG.getHeight()));
-	this->camera.setCenter(this->player.getPosition());
+	npcDog.update(dt);
+	player.update(dt);
+	map.update(player);
+	cameraComponent->update(player.getPosition());
 }
 
 ScreenType GameScreen::render(sf::RenderWindow& window)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 	{
-		this->camera.setSize(sf::Vector2f(CONFIG.getWidth(), CONFIG.getHeight()));
-		this->camera.setCenter(CONFIG.getWidth() / 2, CONFIG.getHeight() / 2);
-		window.setView(this->camera);
+		cameraComponent->reset();
+		cameraComponent->setViewport(window);
 		return ScreenType::PAUSE;
 	}
-	window.setView(this->camera);
-	this->map.renderUnderPlayerLayers(window);
+	cameraComponent->setViewport(window);
+	map.renderUnderPlayerLayers(window);
 
-	this->npcDog.render(window);
-	this->player.render(window);
+	npcDog.render(window);
+	player.render(window);
 
-	this->map.renderOverPlayerLayers(window);
+	map.renderOverPlayerLayers(window);
 	return ScreenType::GAME;
 }
 
 GameScreen::~GameScreen()
 {
+	delete(cameraComponent);
 }
