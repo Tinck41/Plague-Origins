@@ -2,8 +2,6 @@
 
 #include "ScreenHandler.h"
 
-extern Config CONFIG;
-
 class Game
 {
 private:

@@ -4,25 +4,39 @@
 
 	Declared in "global.cpp", defined in main.
 	*/
+
 class Config {
 private:
-	unsigned int WINDOW_WIDTH = 800;
-	unsigned int WINDOW_HEIGHT = 600;
+	unsigned int windowWidth;
+	unsigned int windowHeight;
 public:
 	Config();
-	unsigned int FPS_LIMIT = 60;
-	bool IS_FULLSCREEN = false;
+	std::string title;
+	sf::Font font;
+	unsigned int fps;
+	bool isFullscreen = false;
 
-	unsigned int getHeight()
+	int playerSpeed;
+	float playerScale;
+	float playerHitpoints;
+	float playerDamage;
+	float playerHitboxWidth;
+	float playerHitboxHeight;
+
+	int dogSpeed;
+	float dogScale;
+	float dogHitpoints;
+	float dogDamage;
+	float dogHitboxWidth;
+	float dogHitboxHeight;
+
+	unsigned int height()
 	{
-		return IS_FULLSCREEN ? sf::VideoMode::getDesktopMode().height : WINDOW_HEIGHT;
+		return isFullscreen ? sf::VideoMode::getDesktopMode().height : windowHeight;
 	}
 
-	unsigned int getWidth() 
+	unsigned int width() 
 	{
-		return IS_FULLSCREEN ? sf::VideoMode::getDesktopMode().width : WINDOW_WIDTH;
+		return isFullscreen ? sf::VideoMode::getDesktopMode().width : windowWidth;
 	}
-	
-	std::string WINDOW_TITLE = "Plague: Origins";
-	sf::Font MAIN_FONT;
 };

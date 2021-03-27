@@ -1,0 +1,30 @@
+{
+    "title": "Plague: Origins",
+    "font": "./Assets/Fonts/FreeSans.ttf",
+    "fps": 60,
+    "window": {
+        "fullscreen": false,
+        "width": 800,
+        "height": 600
+    },
+    "player": {
+        "speed": 600,
+        "scale": 0.2,
+        "hitpoints": 20,
+        "damage": 5,
+        "hitbox": {
+            "width": 100,
+            "height": 150
+        }
+    },
+    "dog": {
+        "speed": 200,
+        "scale": 0.3,
+        "hitpoints": 20,
+        "damage": 0,
+        "hitbox": {
+            "width": 100,
+            "height": 150
+        }
+    }
+}

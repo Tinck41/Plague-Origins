@@ -42,7 +42,6 @@
     <ClCompile Include="Button.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Config.cpp" />
     <ClCompile Include="PauseScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
@@ -100,6 +99,9 @@
     <ClCompile Include="CameraComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -142,7 +144,6 @@
     <ClInclude Include="Button.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Config.h" />
     <ClInclude Include="PauseScreen.h">
       <Filter>Screens</Filter>
     </ClInclude>
@@ -224,6 +225,12 @@
     <ClInclude Include="CameraComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
@@ -256,5 +263,13 @@
     <Filter Include="States\PlayerStates">
       <UniqueIdentifier>{98338d43-d297-43c1-897d-780cd2a3cc6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{05539b73-9586-4dc2-ba3c-76c42f585297}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.json">
+      <Filter>Config</Filter>
+    </None>
   </ItemGroup>
 </Project>

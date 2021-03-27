@@ -2,8 +2,6 @@
 #include "Screen.h"
 #include "Button.h"
 
-extern Config CONFIG;
-
 class PauseScreen :
     public Screen
 {

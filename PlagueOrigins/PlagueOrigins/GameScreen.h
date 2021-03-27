@@ -7,8 +7,6 @@
 #include "NPCDog.h"
 #include "CameraComponent.h"
 
-extern Config CONFIG;
-
 class GameScreen :
     public Screen
 {

@@ -199,6 +199,7 @@
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GlobalFactory.h" />
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="NPCDog.h" />
     <ClInclude Include="PlayerAnimationStates.h" />
     <ClInclude Include="PlayerAttackState.h" />
@@ -240,6 +241,9 @@
     <ProjectReference Include="..\AdditionalLibraries\dragonBones\dragonBones\dragonBones.vcxproj">
       <Project>{c6c31c38-61a9-4bc2-be05-4022b2df6b74}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

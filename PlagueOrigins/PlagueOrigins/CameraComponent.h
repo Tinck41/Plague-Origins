@@ -1,7 +1,5 @@
 #pragma once
 
-extern Config CONFIG;
-
 class CameraComponent
 {
 private:
