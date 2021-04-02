@@ -1,5 +1,10 @@
 #pragma once
 #include "Unit.h"
+#include "FiniteStateMachine.h"
+#include "GlobalFactory.h"
+
+class NPCDogIdleState;
+class NPCDogMoveState;
 
 class NPCDog :
 	public Unit
@@ -24,6 +29,9 @@ class NPCDog :
 	GameObjects& gObjects;
 	GlobalFactory& gFactory;
 	dragonBones::SFMLFactory& factory;
+
+	FiniteStateMachine* playerStateMachine;
+	State* initState;
 
 	//Game objects
 	sf::RectangleShape shape;
@@ -52,6 +60,8 @@ public:
 	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
 	AnimationComponent* getAnimator() { return this->animationComponent; }
 	MovementComponent* getMover() { return this->movementComponent; }
+	DirectionFinder getInput() { return this->directionFinder; }
+	FiniteStateMachine* getStateMachine() { return this->playerStateMachine; }
 
 	// Setters
 	//void setArmature(dragonBones::SFMLArmatureDisplay* armatureDisplay) { this->armatureDisplay = armatureDisplay; }

@@ -155,6 +155,10 @@
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
     <ClCompile Include="NPCDog.cpp" />
+    <ClCompile Include="NPCDogAttackState.cpp" />
+    <ClCompile Include="NPCDogIdleState.cpp" />
+    <ClCompile Include="NPCDogMoveState.cpp" />
+    <ClCompile Include="NPCDogStates.h" />
     <ClCompile Include="PlayerAttackState.cpp" />
     <ClCompile Include="PlayerIdleState.cpp" />
     <ClCompile Include="MapCollider.cpp" />
@@ -174,10 +178,8 @@
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerMoveState.cpp" />
-    <ClCompile Include="PlayerStateHandler.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenHandler.cpp" />
-    <ClCompile Include="IStateHandler.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -201,6 +203,9 @@
     <ClInclude Include="GlobalFactory.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="NPCDog.h" />
+    <ClInclude Include="NPCDogAttackState.h" />
+    <ClInclude Include="NPCDogIdleState.h" />
+    <ClInclude Include="NPCDogMoveState.h" />
     <ClInclude Include="PlayerAnimationStates.h" />
     <ClInclude Include="PlayerAttackState.h" />
     <ClInclude Include="PlayerIdleState.h" />
@@ -224,11 +229,9 @@
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerStateHandler.h" />
     <ClInclude Include="PlayerStates.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenHandler.h" />
-    <ClInclude Include="IStateHandler.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Unit.h" />
