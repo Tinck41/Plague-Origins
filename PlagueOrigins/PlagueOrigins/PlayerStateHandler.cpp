@@ -1,30 +1,25 @@
 #include "stdafx.h"
-
-#include "PlayerStateHandler.h"
-
-//PlayerStateHandler::PlayerStateHandler(Player& player) :
-//	player(player)
+//
+//#include "PlayerStateHandler.h"
+//
+//globalState PlayerStateHandler::getNextGlobalState(globalState suggestedGlobalState)
 //{
+//	// Validate the next GLOBAL state
+//	return suggestedGlobalState;
 //}
 //
-//PlayerStateHandler::~PlayerStateHandler()
-//{
-//}
-//
-//State PlayerStateHandler::getNextState(State suggestedState)
-//{
-//	// Validate the next state
-//	return suggestedState;
-//}
-//
-//void PlayerStateHandler::stateWillSet(State newState)
+//void PlayerStateHandler::stateWillSet(globalState newGlobalState)
 //{
 //	// Prepare for new State
 //}
 //
-//void PlayerStateHandler::setState(State newState, State oldState)
+//
+//
+//void PlayerStateHandler::setState(globalState newGlobalState,globalState oldGlobalState)
 //{
 //	// Activate the new State
+//	this->previousGlobalState = this->currentGlobalState;
+//	this->currentGlobalState = newGlobalState;
 //}
 //
 //void PlayerStateHandler::stateDidSet()
@@ -35,7 +30,22 @@
 //void PlayerStateHandler::update(const float& dt)
 //{
 //	// Listen for user input
-//
-//
-//
+//	//if (iB.isDashInput())
+//	//{
+//	//	std::cout << "DASH INPUT" << std::endl;
+//	//	this->pushState(globalState::DASH);
+//	//}
+//	//else if (iB.isAttackInput())
+//	//{
+//	//	std::cout << "ATTACK INPUT" << std::endl;
+//	//	this->pushState(globalState::ATTACK);
+//	//}
+//	if (iB.isMovementInput())
+//	{
+//		this->pushState(globalState::MOVE);
+//	}
+//	else if (iB.isIdle())
+//	{
+//		this->pushState(globalState::IDLE);
+//	}
 //}

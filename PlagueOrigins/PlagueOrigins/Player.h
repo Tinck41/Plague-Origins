@@ -1,51 +1,65 @@
 #pragma once
 
 #include "Unit.h"
-#include "InputHandler.h"
-#include "PlayerStates.h"
+#include "FiniteStateMachine.h"
+#include "DirectionFinder.h"
+//#include "PlayerStateHandler.h"
+#include "GlobalFactory.h"
 
-class Player : public Unit
+class PlayerIdleState;
+class PlayerMoveState;
+
+class Player : 
+	public Unit
 {
 private: 
 	//Variables
 	sf::RenderStates states;
-	float posX;
-	float posY;
 	int speed;
-	float dx;
-	float dy;
-	bool isStateChanged;
 	float scale;
 
-	InputHandler inputHandler;
+	float hitpoints;
+	float damage;
+
+	DirectionFinder directionFinder;
+	//PlayerStateHandler playerStateHandler;
+
+	FiniteStateMachine* playerStateMachine;
+	State* initState;
 
 	//Game objects
 	sf::RectangleShape shape;
 
+	GameObjects& gObjects;
+	GlobalFactory& gFactory;
 	//dragonBones
-	dragonBones::SFMLFactory factory;
-	dragonBones::SFMLArmatureDisplay* armatureDisplay;
+	dragonBones::SFMLFactory& factory;
+	//std::unique_ptr<dragonBones::SFMLArmatureDisplay> armatureDisplay;
 
 	void initVariables();
-	void spawnPlayer(float x, float y);
+	void createHitbox(float x, float y);
 public:
-	//Variables
-
 	//Constructors/Destructors
-	Player();
 	Player(float x, float y);
+	Player();
 	~Player();
-	//virtual ~Player();
+
+	Player(const Player&) = default;
+	Player& operator=(const Player&) = default;
 
 	//Functions
-	
 	void update(const float& dt);
 	void render(sf::RenderWindow& target);
 
-	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
-
+	// Getters
+	sf::RectangleShape getShape() override { return shape; } 
 	sf::Vector2f getPosition() { return this->shape.getPosition(); }
+	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
+	DirectionFinder getInput() { return this->directionFinder; }
+	AnimationComponent* getAnimator() { return this->animationComponent; }
+	MovementComponent* getMover() { return this->movementComponent; }
+	FiniteStateMachine* getStateMachine() { return this->playerStateMachine; }
+
+	// Setters
+	//void setArmature(dragonBones::SFMLArmatureDisplay* armatureDisplay) { this->armatureDisplay = armatureDisplay; }
 };
-
-
-

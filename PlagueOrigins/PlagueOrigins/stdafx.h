@@ -8,6 +8,7 @@
 #include <set>
 #include <thread>
 #include <utility>
+#include <memory>
 #include <vector>
 #include <list>
 #include <stack>
@@ -30,3 +31,5 @@
 #include <dragonBones/SFMLArmatureDisplay.h>
 
 #include "Config.h"
+
+extern Config config;

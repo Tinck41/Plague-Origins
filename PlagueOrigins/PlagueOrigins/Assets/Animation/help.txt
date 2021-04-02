@@ -1,0 +1,20 @@
+ArmatureHeroAttackR & ArmatureHeroAttackU & ArmatureHeroAttackD
+Attack
+
+ArmatureHeroMoveR & ArmatureHeroMoveU & ArmatureHeroMoveD
+Idle
+Run
+
+-------------enemies---------------
+
+ArmatureDogR
+Idle
+Run
+Attack0
+Attack1
+
+ArmatureDogD
+Idle
+Run
+Attack0
+Attack1

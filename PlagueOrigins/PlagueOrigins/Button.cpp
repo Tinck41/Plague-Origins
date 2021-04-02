@@ -32,7 +32,7 @@ Button::Button(
     this->body.setOutlineColor(this->borderColor);
 	this->body.setOutlineThickness(this->borderWidth);
 
-    this->label = sf::Text(label, CONFIG.MAIN_FONT);
+    this->label = sf::Text(label, config.font);
 	this->label.setOrigin((int)(this->label.getLocalBounds().width / 2), (int)(this->label.getLocalBounds().height / 2));
 	this->label.setPosition(this->x + (int)(this->width / 2), this->y + (int)(this->height / 2 - 7.5));
 }

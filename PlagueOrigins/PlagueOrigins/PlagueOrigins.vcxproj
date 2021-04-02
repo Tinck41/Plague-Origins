@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -71,6 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(PlatformName)\$(Configuration)</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)$(PlatformName)\$(Configuration)</OutDir>
@@ -103,6 +105,7 @@
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -146,7 +149,15 @@
   <ItemGroup>
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
+    <ClCompile Include="CombatComponent.cpp" />
+    <ClCompile Include="GameObjects.cpp" />
+    <ClCompile Include="GlobalFactory.cpp" />
+    <ClCompile Include="NPCDog.cpp" />
+    <ClCompile Include="PlayerAttackState.cpp" />
+    <ClCompile Include="PlayerIdleState.cpp" />
+    <ClCompile Include="MapCollider.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureProxy.cpp" />
@@ -155,17 +166,18 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameScreen.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="InputBooleans.cpp" />
+    <ClCompile Include="DirectionFinder.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenuScreen.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerMoveState.cpp" />
     <ClCompile Include="PlayerStateHandler.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenHandler.cpp" />
     <ClCompile Include="IStateHandler.cpp" />
-    <ClCompile Include="Test.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -181,7 +193,18 @@
   <ItemGroup>
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
+    <ClInclude Include="CombatComponent.h" />
+    <ClInclude Include="FiniteStateMachine.h" />
+    <ClInclude Include="GameObjects.h" />
+    <ClInclude Include="GlobalFactory.h" />
+    <ClInclude Include="json.hpp" />
+    <ClInclude Include="NPCDog.h" />
+    <ClInclude Include="PlayerAnimationStates.h" />
+    <ClInclude Include="PlayerAttackState.h" />
+    <ClInclude Include="PlayerIdleState.h" />
+    <ClInclude Include="MapCollider.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="dragonBones\SFMLArmatureDisplay.h" />
     <ClInclude Include="dragonBones\SFMLArmatureProxy.h" />
@@ -194,8 +217,10 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameScreen.h" />
-    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="InputBooleans.h" />
+    <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="PlayerMoveState.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Player.h" />
@@ -204,8 +229,8 @@
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenHandler.h" />
     <ClInclude Include="IStateHandler.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Test.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="TileMap.h" />
@@ -216,6 +241,9 @@
     <ProjectReference Include="..\AdditionalLibraries\dragonBones\dragonBones\dragonBones.vcxproj">
       <Project>{c6c31c38-61a9-4bc2-be05-4022b2df6b74}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

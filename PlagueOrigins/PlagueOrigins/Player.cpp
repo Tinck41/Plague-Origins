@@ -1,70 +1,77 @@
+#pragma once
 #include "stdafx.h"
 
 #include "Player.h"
 
+#include "FiniteStateMachine.h"
+#include "PlayerIdleState.h"
 
-
-Player::Player()
+Player::Player(float x, float y) : 
+	gFactory(GlobalFactory::Instance()), factory(gFactory.factory), gObjects(GameObjects::Instance())
 {
-}
-
-Player::Player(float x, float y) : Unit()
-{
-	scale = 0.2f;
+	gObjects.registerObject(this, objects::player);
+	id = 1;
 	initVariables();
-	spawnPlayer(x,y);
+
+	// create components
 	createMovementComponent(this->shape, this->speed);
-	createAnimationComponent(this->shape, this->factory);
-	animationComponent->initArmature(sf::Vector2f(x,y));
-	this->states.transform.scale(scale, scale);
-	this->armatureDisplay = this->animationComponent->playAnimation(IDLE, idleDown);
+	createAnimationComponent(this->shape, this->factory, "Hero");
+		animationComponent->initArmature(sf::Vector2f(x,y));
+		this->states.transform.scale(scale, scale);
+		this->animationComponent->setAnimation(animationName::IDLE);
+
 	createColliderComponent(this->shape);
+
+	// init State-Machine
+	this->playerStateMachine->changeState(this->initState);
+	createHitbox(x, y);
+	createCombatComponent(shape, hitpoints, damage);
 }
 
 Player::~Player()
 {
 }
 
-void Player::spawnPlayer(float x, float y)
+// create hitbox (shape)
+void Player::createHitbox(float x, float y)
 {
-	//create movement component based on shape
-	shape.setPosition(x, y);
-	shape.setSize(sf::Vector2f(100.0f, 150.0f));
-	//shape.setScale(sf::Vector2f(0.5f, 0.5f));
-	shape.setFillColor(sf::Color::Red);
+	this->shape.setPosition(x, y);
+	this->shape.setSize(sf::Vector2f(100.0f, 150.0f));
+	this->shape.setFillColor(sf::Color::Red);
 }
 
 void Player::initVariables()
 {
-	speed = 600;
-	dx = 0; //move x direction
-	dy = 0; //move y direction
-	isStateChanged = false;
+	hitpoints = 20;
+	damage = 5;
+
+	this->speed = 600;
+	this->scale = 0.2f;
+
+	this->playerStateMachine = new FiniteStateMachine();
+	this->initState = new PlayerIdleState(*this);
 }
 
 void Player::update(const float& dt)
 {
-	this->inputHandler.update();
+	// update utility
+	this->directionFinder.update();
+	this->playerStateMachine->executeStateUpdate(dt);
 
-	this->movementComponent->move(dt, this->inputHandler.getDirection());
-	this->armatureDisplay = this->animationComponent->playAnimation(this->inputHandler.getGlobalState(), this->inputHandler.getLocalState());
-	
-	//if (this->movementComponent->stateChanged())
-	//{
-	//	/*std::cout << "STATE CHANGED" << std::endl;
-	//	std::cout << "ARM POS:" << armatureDisplay->getPosition().x << " " << armatureDisplay->getPosition().y << std::endl;
-	//	std::cout << "SHAPE POS:" << this->shape.getPosition().x << " " << this->shape.getPosition().y << std::endl;*/
-	//	this->armatureDisplay = this->animationComponent->playAnimation(movementComponent->getState(), this->shape.getPosition().x, this->shape.getPosition().y);
-	//}
-	
-	this->armatureDisplay->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
-	//std::cout << "PLAYER: shape pos x: " << this->shape.getPosition().x << " shape pos y: " << this->shape.getPosition().y << "\n";
-	this->factory.update(dt);
+	// Moving
+	combatComponent->update(directionFinder.getDirection(), dt);
+
+	// Animation things
+	//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
+	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
+	this->animationComponent->updateFactory(dt);
+	//GlobalFactory::zf->update(dt);
 }
 	
 void Player::render(sf::RenderWindow& target)
 {
-	//draw hitbox
-	//target.draw(this->shape);
-	target.draw(*armatureDisplay, states);
+	// draw hitbox
+	combatComponent->render(target);
+	target.draw(this->shape);
+	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }

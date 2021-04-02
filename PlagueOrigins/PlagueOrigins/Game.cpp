@@ -14,11 +14,11 @@ Game::~Game()
 void Game::setup()
 {
 	this->window = new sf::RenderWindow(
-		CONFIG.IS_FULLSCREEN ? sf::VideoMode::getDesktopMode() : sf::VideoMode(CONFIG.getWidth(), CONFIG.getHeight()),
-		CONFIG.WINDOW_TITLE, 
-		CONFIG.IS_FULLSCREEN ? sf::Style::Fullscreen : sf::Style::Close
+		config.isFullscreen ? sf::VideoMode::getDesktopMode() : sf::VideoMode(config.width(), config.height()),
+		config.title,
+		config.isFullscreen ? sf::Style::Fullscreen : sf::Style::Close
 	);
-	this->window->setFramerateLimit(CONFIG.FPS_LIMIT);
+	this->window->setFramerateLimit(config.fps);
 	this->window->setVerticalSyncEnabled(true);
 	this->screenHandler = new ScreenHandler(ScreenType::MAIN_MENU);
 	this->deltaTime = 0.f;
@@ -48,6 +48,8 @@ void Game::resolveSFMLEvents()
 void Game::update()
 {
 	resolveSFMLEvents();
+	if (this->window->hasFocus())
+		this->inputBooleans.update();
 	this->screenHandler->update(deltaTime);
 }
 

@@ -2,65 +2,57 @@
 
 #include "TileMap.h"
 
+TileMap::TileMap(std::vector<TileLayer> layers, std::vector<std::vector<MapCollider>> objects, sf::Vector2u mapSize, sf::Vector2u tileSize)
+{
+	this->tileLayer = layers;
+	this->colliderLayer = objects;
+	this->size = mapSize;
+	this->tileSize = tileSize;
+}
+
 TileMap::TileMap()
 {
 
 }
 
-TileMap::TileMap(std::vector<TileLayer> layers, sf::Vector2u size)
-{
-	this->layers = layers;
-	this->size = size;
-}
-
 TileMap::~TileMap()
 {
-	this->layers.clear();
+	this->tileLayer.clear();
+	this->colliderLayer.clear();
+}
+
+sf::Vector2u TileMap::getSize()
+{
+	return sf::Vector2u(size.x * tileSize.x, size.y * tileSize.y);
 }
 
 void TileMap::update(Player& player)
 {
-	for (auto object : this->objects)
+	ColliderComponent playerCollider = player.getCollider();
+
+	for (auto& layer : this->colliderLayer)
 	{
-		for (auto rect : object)
+		for (auto& collider : layer)
 		{
-			this->getCollider(rect).checkCollision(player.getCollider(), 1.0f);
+			collider.getCollider().checkCollision(playerCollider, 1.0f);
 		}
 	}
 }
 
-void TileMap::render(sf::RenderTarget& target)
+void TileMap::render(sf::RenderTarget& target, unsigned firstLayerId, unsigned lastLayerId)
 {
-	// Draw all vertex arrays
-	for (auto& layer : this->layers)
+	for (int i = firstLayerId; i < lastLayerId; i++)
 	{
-		target.draw(layer);
+		target.draw(this->tileLayer[i]);
 	}
 }
 
-void TileMap::renderFirstLayer(sf::RenderTarget& target)
+void TileMap::renderUnderPlayerLayers(sf::RenderTarget& target)
 {
-	target.draw(this->layers[0]);
+	this->render(target, 0, 2);
 }
 
-void TileMap::renderSecondLayer(sf::RenderTarget& target)
+void TileMap::renderOverPlayerLayers(sf::RenderTarget& target)
 {
-	for (int i = 1; i < this->layers.size(); i++)
-	{
-		target.draw(layers[i]);
-	}
-}
-
-void TileMap::loadLayers()
-{
-	// Load all layers to the vertex arrays
-	for (auto& layer : this->layers)
-	{
-		layer.load();
-	}
-}
-
-ColliderComponent TileMap::getCollider(sf::RectangleShape& rect)
-{
-	return ColliderComponent(rect);
+	this->render(target, 2, this->tileLayer.size());
 }

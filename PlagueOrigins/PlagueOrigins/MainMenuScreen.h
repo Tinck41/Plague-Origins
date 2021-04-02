@@ -3,8 +3,6 @@
 #include "Screen.h"
 #include "Button.h"
 
-extern Config CONFIG;
-
 class MainMenuScreen :
     public Screen
 {
@@ -15,7 +13,6 @@ public:
     static const ScreenType screenType = ScreenType::MAIN_MENU;
 
     MainMenuScreen();
-    ~MainMenuScreen();
 
     void update(const float&);
     ScreenType render(sf::RenderWindow&);

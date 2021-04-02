@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
@@ -42,7 +42,6 @@
     <ClCompile Include="Button.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Config.cpp" />
     <ClCompile Include="PauseScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
@@ -77,8 +76,32 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
-    <ClCompile Include="Test.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="MapCollider.cpp">
+      <Filter>Tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="InputBooleans.cpp" />
+    <ClCompile Include="DirectionFinder.cpp" />
+    <ClCompile Include="PlayerIdleState.cpp">
+      <Filter>States\PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMoveState.cpp">
+      <Filter>States\PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttackState.cpp">
+      <Filter>States\PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalFactory.cpp" />
+    <ClCompile Include="NPCDog.cpp" />
+    <ClCompile Include="CombatComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects.cpp" />
+    <ClCompile Include="CameraComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -121,7 +144,6 @@
     <ClInclude Include="Button.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="Config.h" />
     <ClInclude Include="PauseScreen.h">
       <Filter>Screens</Filter>
     </ClInclude>
@@ -168,10 +190,46 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h" />
-    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="MapCollider.h">
+      <Filter>Tilemap</Filter>
+    </ClInclude>
     <ClInclude Include="PlayerStates.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="InputBooleans.h" />
+    <ClInclude Include="DirectionFinder.h" />
+    <ClInclude Include="FiniteStateMachine.h">
+      <Filter>FiniteStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>FiniteStateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerIdleState.h">
+      <Filter>States\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMoveState.h">
+      <Filter>States\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAnimationStates.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAttackState.h">
+      <Filter>States\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalFactory.h" />
+    <ClInclude Include="NPCDog.h" />
+    <ClInclude Include="CombatComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects.h" />
+    <ClInclude Include="CameraComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -196,5 +254,22 @@
     <Filter Include="dragonBones">
       <UniqueIdentifier>{a6bd0dee-e4b1-402b-8f93-ba09b20e93a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FiniteStateMachine">
+      <UniqueIdentifier>{17e8069f-414f-46dd-a5bb-1a2955aa9a7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States">
+      <UniqueIdentifier>{2d6d80cd-035a-40cf-b302-159c6567dae1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\PlayerStates">
+      <UniqueIdentifier>{98338d43-d297-43c1-897d-780cd2a3cc6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{05539b73-9586-4dc2-ba3c-76c42f585297}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.json">
+      <Filter>Config</Filter>
+    </None>
   </ItemGroup>
 </Project>

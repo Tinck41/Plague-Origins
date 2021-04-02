@@ -4,11 +4,14 @@
 
 bool TileMapLoader::load(const char* path)
 {
-	this->xmlTileMap.LoadFile(path);
-	if (this->xmlTileMap.Error())
+	xmlTileMap.LoadFile(path);
+	if (xmlTileMap.Error())
 	{
 		return false;
 	}
+
+	parseTileMap();
+
 	return true;
 }
 
@@ -20,21 +23,20 @@ TileMapLoader::TileMapLoader()
 TileMapLoader::~TileMapLoader()
 {
 	this->tilesets.clear();
-	this->tilesetFirstId.clear();
-	this->tilesetLastId.clear();
-	this->tilesetTileCount.clear();
-	this->layers.clear();
+	this->tilesetInfo.clear();
+	this->tileLayer.clear();
+	this->colliderLayer.clear();
 }
 
-TileMap TileMapLoader::parseTileMap()
+void TileMapLoader::parseTileMap()
 {
 	// Taking the root element with all info about map
-	tinyxml2::XMLElement* root = this->xmlTileMap.RootElement();
+	tinyxml2::XMLElement* root = xmlTileMap.RootElement();
 
-	root->QueryUnsignedAttribute("height", &this->mapSize.y);
-	root->QueryUnsignedAttribute("width", &this->mapSize.x);
-	root->QueryUnsignedAttribute("tilewidth", &this->tileSize.x);
-	root->QueryUnsignedAttribute("tileheight", &this->tileSize.y);
+	root->QueryUnsignedAttribute("height", &mapSize.y);
+	root->QueryUnsignedAttribute("width", &mapSize.x);
+	root->QueryUnsignedAttribute("tilewidth", &tileSize.x);
+	root->QueryUnsignedAttribute("tileheight", &tileSize.y);
 
 	// Reading tilesets info
 	for (tinyxml2::XMLElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
@@ -63,24 +65,18 @@ TileMap TileMapLoader::parseTileMap()
 		}
 	}
 
-	this->tileMap.setSize(this->mapSize);
-	this->tileMap.setLayers(this->layers);
-	this->tileMap.setObjects(this->objects);
-
-	return this->tileMap;
+	this->tileMap = TileMap(tileLayer, colliderLayer, mapSize, tileSize);
 }
 
 void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)
 {
-	unsigned firstId = 0, lastId = 0, tileCount = 0;
+	TilesetParameters tilesetInfo;
 
-	xmlElement->QueryUnsignedAttribute("firstgid", &firstId);
-	xmlElement->QueryUnsignedAttribute("tilecount", &tileCount);
-	lastId = tileCount + firstId - 2;
+	xmlElement->QueryUnsignedAttribute("firstgid", &tilesetInfo.firstId);
+	xmlElement->QueryUnsignedAttribute("tilecount", &tilesetInfo.tileCount);
+	tilesetInfo.lastId = tilesetInfo.firstId + tilesetInfo.tileCount - 2;
 
-	this->tilesetFirstId.push_back(firstId);
-	this->tilesetLastId.push_back(lastId);
-	this->tilesetTileCount.push_back(tileCount);
+	this->tilesetInfo.push_back(tilesetInfo);
 
 	tinyxml2::XMLElement* image = xmlElement->FirstChildElement();
 	const char* source;
@@ -88,9 +84,9 @@ void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)
 	const char* subSource = source + 2;
 	
 	sf::Texture tileset;
-	tileset.loadFromFile("./Assets/" + static_cast<std::string>(subSource));
+	tileset.loadFromFile("./Assets" + static_cast<std::string>(subSource));
 
-	this->tilesets.push_back(tileset);
+	tilesets.push_back(tileset);
 }
 
 void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
@@ -100,8 +96,8 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 	tinyxml2::XMLElement* data = xmlElement->FirstChildElement();
 
 	xmlElement->QueryStringAttribute("name", &layerName);
-	xmlElement->QueryUnsignedAttribute("height", &this->layerSize.y);
-	xmlElement->QueryUnsignedAttribute("width", &this->layerSize.x);
+	xmlElement->QueryUnsignedAttribute("height", &layerSize.y);
+	xmlElement->QueryUnsignedAttribute("width", &layerSize.x);
 
 	std::string matrix(data->GetText());
 	std::istringstream iss(matrix);
@@ -125,25 +121,25 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 				tileId--;
 
 				if (tilesetNotChoosen)
-					for (size_t i = 0; i < this->tilesetFirstId.size(); i++)
+					for (size_t i = 0; i < tilesetInfo.size(); i++)
 					{
-						if (tileId >= this->tilesetFirstId[i] && tileId <= this->tilesetLastId[i])
+						if (tileId >= tilesetInfo[i].firstId && tileId <= tilesetInfo[i].lastId)
 						{
 							tilesetId = i;
 							tilesetNotChoosen = false;
 						}
 					}
 
-				tileId = tileId + this->tilesetTileCount[tilesetId] - this->tilesetLastId[tilesetId] - 1;
+				tileId = tileId + tilesetInfo[tilesetId].tileCount - tilesetInfo[tilesetId].lastId - 1;
 			}
 			_layer.push_back(tileId);
 		}
 	}
 
-	if (!this->tilesets.empty())
+	if (!tilesets.empty())
 	{
-		TileLayer layer(layerName, _layer, this->layerSize, this->tileSize, this->tilesets[tilesetId]);
-		this->layers.push_back(layer);
+		TileLayer layer(layerName, _layer, layerSize, tileSize, tilesets[tilesetId]);
+		tileLayer.push_back(layer);
 	}
 	else
 	{
@@ -153,25 +149,21 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 
 void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 {
-	std::vector<sf::RectangleShape> _objects;
+	std::vector<MapCollider> objects;
 
 	for (tinyxml2::XMLElement* e = xmlElement->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
-		sf::RectangleShape rect;
-		sf::Vector2f rectPosition;
-		sf::Vector2f rectSize;
+		sf::Vector2f objPosition;
+		sf::Vector2f objSize;
 
-		e->QueryFloatAttribute("x", &rectPosition.x);
-		e->QueryFloatAttribute("y", &rectPosition.y);
+		e->QueryFloatAttribute("x", &objPosition.x);
+		e->QueryFloatAttribute("y", &objPosition.y);
 
-		e->QueryFloatAttribute("width", &rectSize.x);
-		e->QueryFloatAttribute("height", &rectSize.y);
+		e->QueryFloatAttribute("width", &objSize.x);
+		e->QueryFloatAttribute("height", &objSize.y);
 
-		rect.setPosition(rectPosition);
-		rect.setSize(rectSize);
-
-		_objects.push_back(rect);
+		objects.push_back(MapCollider(objPosition, objSize));
 	}
 
-	this->objects.push_back(_objects);
+	colliderLayer.push_back(objects);
 }

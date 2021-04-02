@@ -1,6 +1,6 @@
 #pragma once
 
-#include "PlayerStates.h"
+#include "PlayerAnimationStates.h"
 
 class AnimationComponent
 {
@@ -8,25 +8,43 @@ private:
 	//Variables
 	bool done;
 	int state;
+	std::string prefix;
+	std::string armatureName;
+	std::string postfix;
 
-	unsigned curState;
+	animationName currentAnimation;
+	sf::Vector2f currentDirection = sf::Vector2f(0.f, 1.f);
 
 	//Game objects
-	sf::Texture texture;
+	//sf::Texture texture1;
+	//sf::Texture texture2;
+	//sf::Texture texture3;
 	sf::RectangleShape& shape;
 	dragonBones::SFMLFactory& factory;
+	//const dragonBones::SFMLFactory* zf = dragonBones::SFMLFactory::get();
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
 
-	void setMovementAnimation(unsigned state);
-	void setIdleAnimation(unsigned state);
+	void playAnimation();
+	void playMovementAnimation();
+	void playIdleAnimation();
+	void playAttackAnimation();
+	std::string setPostfix(std::string prefix, std::string dir);
 public:
 	//Constructor/Destructor
-	AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);
+	//AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);
+	AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix);
 	~AnimationComponent();
 
 	//Functions
 	void initArmature(sf::Vector2f vec);
+	void updateFactory(float dt);
 
-	dragonBones::SFMLArmatureDisplay* playAnimation(unsigned globalState, unsigned localState);
+	void setAnimation(animationName newAnimation, sf::Vector2f newDirection);
+	void setAnimation(animationName newAnimation);
 
+	// Getters
+	dragonBones::SFMLArmatureDisplay* getArmatureDisplay() 
+	{ 
+		return this->armatureDisplay; 
+	}
 };

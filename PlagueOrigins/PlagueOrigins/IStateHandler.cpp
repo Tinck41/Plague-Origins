@@ -1,13 +1,13 @@
 #include "stdafx.h"
-
-#include "IStateHandler.h"
-
-//void IStateHandler::pushState(State suggestedState)
+//
+//#include "IStateHandler.h"
+//
+//void IStateHandler::pushState(globalState suggestedGlobalState)
 //{
-//	State newState = getNextState(suggestedState);
-//	stateWillSet(newState);
-//	setState(newState, currentState);
-//	this->previousState = this->currentState;
-//	this->currentState = newState;
+//	globalState newGlobalState = getNextGlobalState(suggestedGlobalState);
+//	stateWillSet(newGlobalState);
+//	setState(newGlobalState,currentGlobalState);
+//	this->previousGlobalState = this->currentGlobalState;
+//	this->currentGlobalState = newGlobalState;
 //	stateDidSet();
 //}

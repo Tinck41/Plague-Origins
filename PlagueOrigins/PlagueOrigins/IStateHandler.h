@@ -1,27 +1,20 @@
-#pragma once
-#include "Player.h"
-
-//enum State {
-//	IDLE,
-//	MOVE,
-//	DASH,
-//	ATTACK
-//};
-
-class IStateHandler
-{
+//#pragma once
+//#include "PlayerStates.h"
+//
+//class IStateHandler
+//{
 //public:
-//	State currentState;
-//	State previousState;
+//	globalState currentGlobalState;
+//	globalState previousGlobalState;
 //
-//	virtual State getNextState(State suggestedState) = 0;
+//	virtual globalState getNextGlobalState(globalState suggestedGlobalState) = 0;
 //
-//	virtual void stateWillSet(State newState) = 0;
-//	virtual void setState(State newState, State oldState) = 0;
+//	virtual void stateWillSet(globalState newGlobalState) = 0;
+//	virtual void setState(globalState newGlobalState, globalState oldState) = 0;
 //	virtual void stateDidSet() = 0;
 //
-//	void pushState(State suggestedState);
+//	void pushState(globalState suggestedGlobalState);
 //	
 //	virtual void update(const float& dt) = 0;
-};
-
+//};
+//
