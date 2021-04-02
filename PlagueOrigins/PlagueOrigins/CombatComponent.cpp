@@ -53,17 +53,22 @@ void CombatComponent::receiveDamage(float damage)
 	if (isDead())
 	{
 		std::cout << "dead\n";
-			
 	}
 }
 
-void CombatComponent::attack()
+void CombatComponent::attackNPC()
 {
 	auto temp = gObjects.getOverlapBounds(attackCircle);
 	for (auto& enemy : temp)
 	{
 		enemy->getCombatComponent()->receiveDamage(damage);
 	}
+}
+
+void CombatComponent::attackPlayer()
+{
+	Unit* player = gObjects.getPlayer();
+	player->getCombatComponent()->receiveDamage(damage);
 }
 
 void CombatComponent::update(sf::Vector2f direction, const float& dt)

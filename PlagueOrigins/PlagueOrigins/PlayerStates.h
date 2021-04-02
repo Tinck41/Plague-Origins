@@ -3,3 +3,4 @@
 #include "PlayerIdleState.h"
 #include "PlayerMoveState.h"
 #include "PlayerAttackState.h"
+#include "PlayerDeathState.h"

@@ -16,14 +16,17 @@ NPCDogAttackState::~NPCDogAttackState()
 void NPCDogAttackState::enter()
 {
 	std::cout << "Dog Attack State\n";
-	std::cout << owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted() << "\n";
 	this->owner.getAnimator()->setAnimation(animationName::ATTACK);
-	this->owner.getCombatComponent()->attack();
+	this->owner.getCombatComponent()->attackPlayer();
 }
 
 void NPCDogAttackState::update(const float& dt)
 {
-	if (owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted())
+	if (owner.getCombatComponent()->isDead())
+	{
+		owner.getStateMachine()->changeState(new NPCDogDeathState(owner));
+	}
+	else if (owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted())
 	{
 		if (owner.getCombatComponent()->isInAttackRange())
 		{

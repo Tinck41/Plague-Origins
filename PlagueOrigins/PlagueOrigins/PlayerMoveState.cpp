@@ -30,6 +30,10 @@ void PlayerMoveState::update(const float& dt)
 	{
 		this->stateMachine->changeState(new PlayerIdleState(this->owner));
 	}
+	else if (owner.getCombatComponent()->isDead())
+	{
+		owner.getStateMachine()->changeState(new PlayerDeathState(owner));
+	}
 	else
 	{
 		owner.getMover()->move(dt, owner.getInput().getDirection());

@@ -21,7 +21,8 @@ private:
 public:
 	CombatComponent(sf::RectangleShape& shape, float hitpoints, float damage);
 	void receiveDamage(float damage);
-	void attack();
+	void attackNPC();
+	void attackPlayer();
 
 	void update(sf::Vector2f direction, const float& dt);
 	void render(sf::RenderWindow& target);
