@@ -1,20 +1,14 @@
-ArmatureHeroAttackR & ArmatureHeroAttackU & ArmatureHeroAttackD
-Attack
-
-ArmatureHeroMoveR & ArmatureHeroMoveU & ArmatureHeroMoveD
+ArmatureHeroR & ArmatureHeroU & ArmatureHeroD
 Idle
 Run
+Attack
+Die
 
 -------------enemies---------------
 
-ArmatureDogR
+ArmatureDogR && ArmatureDogD && ArmatureDogU
 Idle
 Run
 Attack0
 Attack1
-
-ArmatureDogD
-Idle
-Run
-Attack0
-Attack1
+Die
