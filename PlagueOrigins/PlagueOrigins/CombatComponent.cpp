@@ -49,7 +49,8 @@ void CombatComponent::updateCircle(sf::Vector2f direction)
 void CombatComponent::receiveDamage(float damage)
 {
 	hitpoints -= damage;
-	std::cout << "take damage\n";
+	std::cout << "receive " << damage << " damage\n";
+	std::cout << "hp = " << hitpoints << "\n";
 	if (isDead())
 	{
 		std::cout << "dead\n";

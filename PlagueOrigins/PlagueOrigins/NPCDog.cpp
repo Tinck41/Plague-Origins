@@ -77,15 +77,9 @@ void NPCDog::update(const float& dt)
 {
 	//update utility
 	patrolComponent->update();
-	//if (direction.x != 0 || direction.y != 0)
-	//	this->animationComponent->setAnimation(animationName::MOVE, this->direction);
+	combatComponent->update(direction, dt);
 	npcDogStateMachine->executeStateUpdate(dt);
 
-	//moving
-	combatComponent->update(direction, dt);
-	//movementComponent->move(dt, direction);
-	
-	
 	//animation
 	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
 	animationComponent->updateFactory(dt);

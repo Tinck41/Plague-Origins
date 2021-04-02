@@ -5,7 +5,7 @@ Patrol::Patrol(sf::RectangleShape& shape, std::vector<sf::Vector2f> waypoints) :
 {
 	direction = { 0.f, 0.f };
 	this->waypoints = waypoints;
-	pointN = 0;
+	pointN = 1;
 	N = waypoints.size();
 }
 
@@ -30,7 +30,7 @@ sf::Vector2f Patrol::patrolRoute(sf::Vector2f dest)
 	//if patrol point is done
 	if ((currentPos.x >= dest.x - 5.0f && currentPos.x <= dest.x + 5.0f) && (currentPos.y >= dest.y - 5.0f && currentPos.y <= dest.y + 5.0f))
 		pointN++;
-	if (pointN > N)
+	if (pointN >= N)
 		pointN = 0;
 
 	return direction;

@@ -64,6 +64,7 @@ public:
 	MovementComponent* getMover() { return movementComponent; }
 	Patrol* getPatrol() { return patrolComponent; }
 	FiniteStateMachine* getStateMachine() { return npcDogStateMachine; }
+	float getHP() { return hitpoints; }
 
 	// Setters
 	//void setArmature(dragonBones::SFMLArmatureDisplay* armatureDisplay) { this->armatureDisplay = armatureDisplay; }

@@ -9,6 +9,8 @@ NPCDogMoveState::NPCDogMoveState(NPCDog& owner) :
 
 NPCDogMoveState::~NPCDogMoveState()
 {
+	stateMachine = NULL;
+	delete stateMachine;
 }
 
 void NPCDogMoveState::enter()
