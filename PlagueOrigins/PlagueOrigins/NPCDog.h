@@ -6,12 +6,8 @@
 
 class NPCDogIdleState;
 class NPCDogMoveState;
-
-//struct ptrl
-//{
-//	sf::Vector2f direction;
-//	animationName animationName;
-//};
+class NPCDogAggroState;
+class NPCDogDeathState;
 
 class NPCDog :
 	public Unit
@@ -36,7 +32,7 @@ class NPCDog :
 	GlobalFactory& gFactory;
 	dragonBones::SFMLFactory& factory;
 
-	FiniteStateMachine* playerStateMachine;
+	FiniteStateMachine* npcDogStateMachine;
 	State* initState;
 
 	//Game objects
@@ -47,7 +43,7 @@ class NPCDog :
 
 	void initVariables();
 	void createHitbox(float x, float y);
-	void findRoute(sf::Vector2f dest);
+	//void findRoute(sf::Vector2f dest);
 public:
 	//Constructors/Destructors
 	NPCDog(float x, float y);
@@ -67,7 +63,7 @@ public:
 	AnimationComponent* getAnimator() { return animationComponent; }
 	MovementComponent* getMover() { return movementComponent; }
 	Patrol* getPatrol() { return patrolComponent; }
-	FiniteStateMachine* getStateMachine() { return playerStateMachine; }
+	FiniteStateMachine* getStateMachine() { return npcDogStateMachine; }
 
 	// Setters
 	//void setArmature(dragonBones::SFMLArmatureDisplay* armatureDisplay) { this->armatureDisplay = armatureDisplay; }

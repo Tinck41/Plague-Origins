@@ -13,18 +13,27 @@ NPCDogMoveState::~NPCDogMoveState()
 
 void NPCDogMoveState::enter()
 {
+	std::cout << "Dog Move State\n";
 	this->owner.getAnimator()->setAnimation(animationName::MOVE, owner.getPatrol()->getDirection());
 }
 
 void NPCDogMoveState::update(const float& dt)
 {
-	if (owner.getCombatComponent()->isTriggered())
+	if (owner.getCombatComponent()->isAggro())
+	{
+		owner.getStateMachine()->changeState(new NPCDogAggroState(owner));
+	}
+	else if (owner.getCombatComponent()->isInAttackRange())
 	{
 		owner.getStateMachine()->changeState(new NPCDogAttackState(owner));
 	}
 	else if (owner.getPatrol()->getDirection() == sf::Vector2f(0, 0))
 	{
-		this->stateMachine->changeState(new NPCDogIdleState(this->owner));
+		stateMachine->changeState(new NPCDogIdleState(owner));
+	}
+	else if (owner.getCombatComponent()->isDead())
+	{
+		owner.getStateMachine()->changeState(new NPCDogDeathState(owner));
 	}
 	else
 	{

@@ -114,6 +114,15 @@
       <Filter>NPCDog</Filter>
     </ClCompile>
     <ClCompile Include="Patrol.cpp" />
+    <ClCompile Include="NPCDogDeathState.cpp">
+      <Filter>States\NPCDogStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeathState.cpp">
+      <Filter>States\PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCDogAggroState.cpp">
+      <Filter>States\NPCDogStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -256,6 +265,15 @@
     </ClInclude>
     <ClInclude Include="Patrol.h" />
     <ClInclude Include="NPCDogStates.h">
+      <Filter>States\NPCDogStates</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCDogDeathState.h">
+      <Filter>States\NPCDogStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDeathState.h">
+      <Filter>States\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCDogAggroState.h">
       <Filter>States\NPCDogStates</Filter>
     </ClInclude>
   </ItemGroup>

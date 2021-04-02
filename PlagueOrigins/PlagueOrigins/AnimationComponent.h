@@ -28,6 +28,7 @@ private:
 	void playMovementAnimation();
 	void playIdleAnimation();
 	void playAttackAnimation();
+	void playDeathAnimation();
 	std::string setPostfix(std::string dir);
 public:
 	//Constructor/Destructor

@@ -1,11 +1,14 @@
 #pragma once
 #include "stdafx.h"
 #include "NPCDog.h"
+#include "FiniteStateMachine.h"
+#include "NPCDogIdleState.h"
 
 NPCDog::NPCDog(float x, float y) : 
 	gFactory(GlobalFactory::Instance()), factory(gFactory.factory), gObjects(GameObjects::Instance())
 {
 	gObjects.registerObject(this, objects::enemies);
+	id = 2;
 	initVariables();
 	createHitbox(x, y);
 
@@ -20,7 +23,11 @@ NPCDog::NPCDog(float x, float y) :
 	createColliderComponent(this->shape);
 	createCombatComponent(shape, hitpoints, damage);
 	
-	patrolComponent = new Patrol(shape);
+	patrolComponent = new Patrol(shape, waypoints);
+
+	// init State-Machine
+	npcDogStateMachine->changeState(initState);
+
 }
 
 NPCDog::~NPCDog()
@@ -50,11 +57,13 @@ void NPCDog::initVariables()
 {
 	hitpoints = config.dogHitpoints;
 	damage = config.dogDamage;
-	this->speed = config.dogSpeed;
-	this->scale = config.dogScale;
-	this->pointN = 0;
-	this->direction = { .0f, .0f };
+	speed = config.dogSpeed;
+	scale = config.dogScale;
+	pointN = 0;
+	direction = { .0f, .0f };
 	fillWaypoints();
+	npcDogStateMachine = new FiniteStateMachine();
+	this->initState = new NPCDogIdleState(*this);
 }
 
 void NPCDog::createHitbox(float x, float y)
@@ -64,50 +73,28 @@ void NPCDog::createHitbox(float x, float y)
 	this->shape.setFillColor(sf::Color::Red);
 }
 
-void NPCDog::findRoute(sf::Vector2f dest)
-{
-	sf::Vector2f currentPos = this->getPosition();// +sf::Vector2f(this->shape.getSize().x / 2, this->shape.getSize().y / 2);
-
-	if (currentPos.x < dest.x)
-		this->direction.x = 1.0f;
-	else if (currentPos.x > dest.x)
-		this->direction.x = -1.0f;
-	if (currentPos.y < dest.y)
-		this->direction.y = 1.0f;
-	else if (currentPos.y > dest.y)
-		this->direction.y = -1.0f;
-
-	if (this->direction.x != 0 || this->direction.y != 0)
-		this->animationComponent->setAnimation(animationName::MOVE, this->direction);
-
-	//if patrol point is done
-	if ((currentPos.x >= dest.x - 5.0f && currentPos.x <= dest.x + 5.0f) && (currentPos.y >= dest.y - 5.0f && currentPos.y <= dest.y + 5.0f))
-		this->pointN++;
-	if (pointN > 1)
-		pointN = 0;
-}
-
 void NPCDog::update(const float& dt)
 {
-	//get direction
-	//patrolComponent->findRoute(getWaypoint(pointN), pointN);
-	direction = patrolComponent->findRoute(getWaypoint(pointN), pointN).direction;
-	if (direction.x != 0 || direction.y != 0)
-		this->animationComponent->setAnimation(animationName::MOVE, this->direction);
-	//this->findRoute(this->getWaypoint(this->pointN));
+	//update utility
+	patrolComponent->update();
+	//if (direction.x != 0 || direction.y != 0)
+	//	this->animationComponent->setAnimation(animationName::MOVE, this->direction);
+	npcDogStateMachine->executeStateUpdate(dt);
+
 	//moving
-	movementComponent->move(dt, direction);
+	combatComponent->update(direction, dt);
+	//movementComponent->move(dt, direction);
+	
+	
 	//animation
-	//animationComponent->setAnimation(animationName::MOVE, direction);
 	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
 	animationComponent->updateFactory(dt);
 
-	combatComponent->update(direction, dt);
 }
 
 void NPCDog::render(sf::RenderWindow& target)
 {
 	combatComponent->render(target);
-	target.draw(this->shape);
-	target.draw(*this->animationComponent->getArmatureDisplay(), states);
+	target.draw(shape);
+	target.draw(*animationComponent->getArmatureDisplay(), states);
 }

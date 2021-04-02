@@ -29,7 +29,6 @@ void CombatComponent::initVariables()
 		shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
 	);
 	aggroCircle.setRadius(500.0f);
-	attackCircle.setFillColor(sf::Color::White);
 }
 
 void CombatComponent::updateCircle(sf::Vector2f direction)
@@ -58,30 +57,6 @@ void CombatComponent::receiveDamage(float damage)
 	}
 }
 
-bool CombatComponent::checkAggro()
-{
-	if (gObjects.getPlayerAggro(aggroCircle))
-	{
-		aggroCircle.setFillColor(sf::Color::Red);
-		return true;
-	}
-	else
-	{
-		aggroCircle.setFillColor(sf::Color::White);
-		return false;
-	}
-}
-
-bool CombatComponent::checkAttackRange()
-{
-	if (gObjects.getPlayerAggro(attackCircle))
-	{
-		std::cout << "Dog attacks\n";
-		return true;
-	}
-	return false;
-}
-
 void CombatComponent::attack()
 {
 	auto temp = gObjects.getOverlapBounds(attackCircle);
@@ -94,12 +69,49 @@ void CombatComponent::attack()
 void CombatComponent::update(sf::Vector2f direction, const float& dt)
 {
 	updateCircle(direction);
-	checkAggro();
-	checkAttackRange();
+	isAggro();
+	isInAttackRange();
 }
 
 void CombatComponent::render(sf::RenderWindow& target)
 {
-	target.draw(attackCircle);
 	target.draw(aggroCircle);
+	target.draw(attackCircle);
+}
+
+bool CombatComponent::isAggro()
+{
+	if (gObjects.getPlayerAggro(aggroCircle) && getPlayerPosition() != shape.getPosition())
+	{
+		aggro = true;
+		aggroCircle.setFillColor(sf::Color::Red);
+		return true;
+	}
+	else
+	{
+		aggro = false;
+		aggroCircle.setFillColor(sf::Color::White);
+		return false;
+	}
+}
+
+bool CombatComponent::isInAttackRange()
+{
+	if (gObjects.getPlayerAggro(attackCircle))
+	{
+		attackCircle.setFillColor(sf::Color::Blue);
+		return true;
+	}
+	else
+	{
+		attackCircle.setFillColor(sf::Color::Green);
+		return false;
+	}
+}
+
+sf::Vector2f CombatComponent::getPlayerPosition()
+{
+	auto player = gObjects.getPlayer();
+	sf::Vector2f playerPos = player->getShape().getPosition();
+	return playerPos;
 }

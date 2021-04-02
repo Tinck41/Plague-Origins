@@ -21,13 +21,15 @@ private:
 public:
 	CombatComponent(sf::RectangleShape& shape, float hitpoints, float damage);
 	void receiveDamage(float damage);
-	bool checkAggro();
-	bool checkAttackRange();
 	void attack();
+
 	void update(sf::Vector2f direction, const float& dt);
 	void render(sf::RenderWindow& target);
 
-	bool isTriggered() { return aggro; }
+	bool isAggro();
+	bool isInAttackRange();
+
 	bool isDead() { return hitpoints <= 0; }
+	sf::Vector2f getPlayerPosition();
 };
 

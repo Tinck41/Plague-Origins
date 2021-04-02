@@ -23,7 +23,7 @@ Player::Player(float x, float y) :
 	createColliderComponent(this->shape);
 
 	// init State-Machine
-	this->playerStateMachine->changeState(this->initState);
+	playerStateMachine->changeState(initState);
 	createHitbox(x, y);
 	createCombatComponent(shape, hitpoints, damage);
 }

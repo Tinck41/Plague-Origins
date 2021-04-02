@@ -154,12 +154,15 @@
     <ClCompile Include="CombatComponent.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
+    <ClCompile Include="NPCDogAggroState.cpp" />
     <ClCompile Include="NPCDog.cpp" />
     <ClCompile Include="NPCDogAttackState.cpp" />
+    <ClCompile Include="NPCDogDeathState.cpp" />
     <ClCompile Include="NPCDogIdleState.cpp" />
     <ClCompile Include="NPCDogMoveState.cpp" />
     <ClCompile Include="Patrol.cpp" />
     <ClCompile Include="PlayerAttackState.cpp" />
+    <ClCompile Include="PlayerDeathState.cpp" />
     <ClCompile Include="PlayerIdleState.cpp" />
     <ClCompile Include="MapCollider.cpp" />
     <ClCompile Include="Config.cpp" />
@@ -201,6 +204,8 @@
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GlobalFactory.h" />
+    <ClInclude Include="NPCDogAggroState.h" />
+    <ClInclude Include="NPCDogDeathState.h" />
     <ClInclude Include="NPCDogStates.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="NPCDog.h" />
@@ -210,6 +215,7 @@
     <ClInclude Include="Patrol.h" />
     <ClInclude Include="PlayerAnimationStates.h" />
     <ClInclude Include="PlayerAttackState.h" />
+    <ClInclude Include="PlayerDeathState.h" />
     <ClInclude Include="PlayerIdleState.h" />
     <ClInclude Include="MapCollider.h" />
     <ClInclude Include="Config.h" />

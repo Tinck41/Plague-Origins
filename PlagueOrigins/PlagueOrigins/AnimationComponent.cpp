@@ -28,6 +28,9 @@ void AnimationComponent::playAnimation()
 	case(animationName::ATTACK):
 		this->playAttackAnimation();
 		break;
+	case(animationName::DIE):
+		this->playDeathAnimation();
+		break;
 	default:
 		break;
 	}
@@ -57,6 +60,7 @@ void AnimationComponent::playMovementAnimation()
 		this->armatureDisplay->getArmature()->setFlipX(true);
 	}
 	this->armatureDisplay->getAnimation()->play("Run");
+	//this->armatureDisplay->getAnimation()->fadeIn("Run", 1.f);
 }
 
 void AnimationComponent::playIdleAnimation()
@@ -83,11 +87,11 @@ void AnimationComponent::playIdleAnimation()
 		this->armatureDisplay->getArmature()->setFlipX(true);
 	}
 	this->armatureDisplay->getAnimation()->play("Idle");
+	//this->armatureDisplay->getAnimation()->fadeIn("Idle", 1.f);
 }
 
 void AnimationComponent::playAttackAnimation()
 {
-	
 	if (this->currentDirection.y == -1.f)
 	{
 		this->postfix = this->setPostfix("U");
@@ -109,7 +113,38 @@ void AnimationComponent::playAttackAnimation()
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
 		this->armatureDisplay->getArmature()->setFlipX(true);
 	}
-	this->armatureDisplay->getAnimation()->play("Attack", 1);
+	if (prefix == "Hero")
+		this->armatureDisplay->getAnimation()->play("Attack", 1);
+	else if (prefix == "Dog")
+		this->armatureDisplay->getAnimation()->play("Attack0", 1);
+	//this->armatureDisplay->getAnimation()->fadeIn("Attack", 1.f, 1);
+}
+
+void AnimationComponent::playDeathAnimation()
+{
+	if (this->currentDirection.y == -1.f)
+	{
+		this->postfix = this->setPostfix("U");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	else if (this->currentDirection.y == 1.f)
+	{
+		this->postfix = this->setPostfix("D");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	if (this->currentDirection.x == 1.f)
+	{
+		this->postfix = this->setPostfix("R");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+	}
+	else if (this->currentDirection.x == -1.f)
+	{
+		this->postfix = this->setPostfix("R");
+		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
+		this->armatureDisplay->getArmature()->setFlipX(true);
+	}
+	this->armatureDisplay->getAnimation()->play("Die", 1);
+	//this->armatureDisplay->getAnimation()->fadeIn("Die", 1.f, 1);
 }
 
 void AnimationComponent::updateFactory(float dt)
