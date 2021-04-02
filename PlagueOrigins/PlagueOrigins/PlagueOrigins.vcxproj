@@ -158,7 +158,7 @@
     <ClCompile Include="NPCDogAttackState.cpp" />
     <ClCompile Include="NPCDogIdleState.cpp" />
     <ClCompile Include="NPCDogMoveState.cpp" />
-    <ClCompile Include="NPCDogStates.h" />
+    <ClCompile Include="Patrol.cpp" />
     <ClCompile Include="PlayerAttackState.cpp" />
     <ClCompile Include="PlayerIdleState.cpp" />
     <ClCompile Include="MapCollider.cpp" />
@@ -201,11 +201,13 @@
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GlobalFactory.h" />
+    <ClInclude Include="NPCDogStates.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="NPCDog.h" />
     <ClInclude Include="NPCDogAttackState.h" />
     <ClInclude Include="NPCDogIdleState.h" />
     <ClInclude Include="NPCDogMoveState.h" />
+    <ClInclude Include="Patrol.h" />
     <ClInclude Include="PlayerAnimationStates.h" />
     <ClInclude Include="PlayerAttackState.h" />
     <ClInclude Include="PlayerIdleState.h" />

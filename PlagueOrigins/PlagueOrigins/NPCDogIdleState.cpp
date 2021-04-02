@@ -20,11 +20,11 @@ void NPCDogIdleState::enter()
 
 void NPCDogIdleState::update(const float& dt)
 {
-	if (owner.getInput().getAttack())
+	if (owner.getCombatComponent()->isTriggered())
 	{
 		owner.getStateMachine()->changeState(new NPCDogAttackState(owner));
 	}
-	else if (owner.getInput().getDirection() != sf::Vector2f(0, 0))
+	else if (owner.getPatrol()->getDirection() != sf::Vector2f(0, 0))
 	{
 		stateMachine->changeState(new NPCDogMoveState(owner));
 	}

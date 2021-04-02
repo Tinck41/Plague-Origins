@@ -19,6 +19,8 @@ NPCDog::NPCDog(float x, float y) :
 
 	createColliderComponent(this->shape);
 	createCombatComponent(shape, hitpoints, damage);
+	
+	patrolComponent = new Patrol(shape);
 }
 
 NPCDog::~NPCDog()
@@ -88,18 +90,24 @@ void NPCDog::findRoute(sf::Vector2f dest)
 void NPCDog::update(const float& dt)
 {
 	//get direction
-	this->findRoute(this->getWaypoint(this->pointN));
+	//patrolComponent->findRoute(getWaypoint(pointN), pointN);
+	direction = patrolComponent->findRoute(getWaypoint(pointN), pointN).direction;
+	if (direction.x != 0 || direction.y != 0)
+		this->animationComponent->setAnimation(animationName::MOVE, this->direction);
+	//this->findRoute(this->getWaypoint(this->pointN));
 	//moving
-	this->movementComponent->move(dt, this->direction);
+	movementComponent->move(dt, direction);
 	//animation
-	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
-	this->animationComponent->updateFactory(dt);
+	//animationComponent->setAnimation(animationName::MOVE, direction);
+	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
+	animationComponent->updateFactory(dt);
 
 	combatComponent->update(direction, dt);
 }
 
 void NPCDog::render(sf::RenderWindow& target)
 {
+	combatComponent->render(target);
 	target.draw(this->shape);
 	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }

@@ -23,5 +23,6 @@ public:
 	void registerObject(Unit* unit, objects e);
 	void dropObject(Unit* unit, objects e);
 	std::list<Unit*> getOverlapBounds(sf::CircleShape circle);
+	bool getPlayerAggro(sf::CircleShape circle);
 };
 

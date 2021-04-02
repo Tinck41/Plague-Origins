@@ -110,12 +110,10 @@
     <ClCompile Include="InputBooleans.cpp">
       <Filter>Global</Filter>
     </ClCompile>
-    <ClCompile Include="NPCDogStates.h">
-      <Filter>States\NPCDogStates</Filter>
-    </ClCompile>
     <ClCompile Include="NPCDog.cpp">
       <Filter>NPCDog</Filter>
     </ClCompile>
+    <ClCompile Include="Patrol.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -255,6 +253,10 @@
     </ClInclude>
     <ClInclude Include="NPCDog.h">
       <Filter>NPCDog</Filter>
+    </ClInclude>
+    <ClInclude Include="Patrol.h" />
+    <ClInclude Include="NPCDogStates.h">
+      <Filter>States\NPCDogStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,9 +2,16 @@
 #include "Unit.h"
 #include "FiniteStateMachine.h"
 #include "GlobalFactory.h"
+#include "Patrol.h"
 
 class NPCDogIdleState;
 class NPCDogMoveState;
+
+//struct ptrl
+//{
+//	sf::Vector2f direction;
+//	animationName animationName;
+//};
 
 class NPCDog :
 	public Unit
@@ -20,9 +27,8 @@ class NPCDog :
 	//waypoints of rectangle patrol path TEST
 	sf::Vector2f point0 = sf::Vector2f(1500.0f, 700.0f);
 	sf::Vector2f point1 = sf::Vector2f(2000.0f, 700.0f);
-	//sf::Vector2f point2 = sf::Vector2f(3000.0f, 3000.0f);
-	//sf::Vector2f point3 = sf::Vector2f(2000.0f, 3000.0f);
 
+	Patrol* patrolComponent;
 	std::vector<sf::Vector2f> waypoints;
 	sf::Vector2f direction;
 
@@ -56,12 +62,12 @@ public:
 
 	// Getters
 	sf::RectangleShape getShape() override { return shape; }
-	sf::Vector2f getPosition() { return this->shape.getPosition(); }
-	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
-	AnimationComponent* getAnimator() { return this->animationComponent; }
-	MovementComponent* getMover() { return this->movementComponent; }
-	DirectionFinder getInput() { return this->directionFinder; }
-	FiniteStateMachine* getStateMachine() { return this->playerStateMachine; }
+	sf::Vector2f getPosition() { return shape.getPosition(); }
+	ColliderComponent getCollider() { return ColliderComponent(shape); }
+	AnimationComponent* getAnimator() { return animationComponent; }
+	MovementComponent* getMover() { return movementComponent; }
+	Patrol* getPatrol() { return patrolComponent; }
+	FiniteStateMachine* getStateMachine() { return playerStateMachine; }
 
 	// Setters
 	//void setArmature(dragonBones::SFMLArmatureDisplay* armatureDisplay) { this->armatureDisplay = armatureDisplay; }

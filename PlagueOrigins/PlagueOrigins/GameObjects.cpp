@@ -73,3 +73,8 @@ std::list<Unit*> GameObjects::getOverlapBounds(sf::CircleShape circle)
 	}
 	return hitEnemies;
 }
+
+bool GameObjects::getPlayerAggro(sf::CircleShape circle)
+{
+	return circle.getGlobalBounds().intersects(player.front()->getShape().getGlobalBounds());
+}
