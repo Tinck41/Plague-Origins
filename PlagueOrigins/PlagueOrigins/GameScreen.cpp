@@ -9,6 +9,7 @@ GameScreen::GameScreen()
 	}
 	cameraComponent = new CameraComponent();
 	cameraComponent->setBounds(map.getSize());
+	inventoryComponent = new InventoryComponent();
 }
 
 void GameScreen::update(const float& dt)
@@ -17,27 +18,22 @@ void GameScreen::update(const float& dt)
 	player.update(dt);
 	map.update(player);
 	cameraComponent->update(player.getPosition());
+	inventoryComponent->update(cameraComponent->getPosition());
 }
 
 ScreenType GameScreen::render(sf::RenderWindow& window)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
-	{
-		cameraComponent->reset();
-		cameraComponent->setViewport(window);
-		return ScreenType::PAUSE;
-	}
 	cameraComponent->setViewport(window);
 	map.renderUnderPlayerLayers(window);
-
 	npcDog.render(window);
 	player.render(window);
-
 	map.renderOverPlayerLayers(window);
+	inventoryComponent->render(window);
 	return ScreenType::GAME;
 }
 
 GameScreen::~GameScreen()
 {
-	delete(cameraComponent);
+	delete cameraComponent;
+	delete inventoryComponent;
 }

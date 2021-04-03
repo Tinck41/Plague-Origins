@@ -12,6 +12,8 @@ public:
 	CameraComponent();
 	~CameraComponent();
 
+	sf::Vector2f getPosition();
+
 	void update(sf::Vector2f center);
 	void setViewport(sf::RenderWindow& window);
 	void setBounds(sf::Vector2u bounds);

@@ -102,6 +102,9 @@
     <ClCompile Include="Config.cpp">
       <Filter>Config</Filter>
     </ClCompile>
+    <ClCompile Include="InventoryComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -230,6 +233,9 @@
     </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryComponent.h">
+      <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,11 @@ CameraComponent::CameraComponent()
 	reset();
 }
 
+void CameraComponent::setBounds(sf::Vector2u bounds)
+{
+	this->bounds = bounds;
+}
+
 void CameraComponent::update(sf::Vector2f center)
 {
 	updateSize();
@@ -35,6 +40,11 @@ void CameraComponent::update(sf::Vector2f center)
 	camera->setCenter(center.x + offset.x, center.y + offset.y);
 }
 
+void CameraComponent::setViewport(sf::RenderWindow& window)
+{
+	window.setView(*camera);
+}
+
 void CameraComponent::updateSize()
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::XButton1))
@@ -47,14 +57,11 @@ void CameraComponent::updateSize()
 	}
 }
 
-void CameraComponent::setViewport(sf::RenderWindow& window)
+sf::Vector2f CameraComponent::getPosition()
 {
-	window.setView(*camera);
-}
-
-void CameraComponent::setBounds(sf::Vector2u bounds)
-{
-	this->bounds = bounds;
+	sf::Vector2f center = camera->getCenter();
+	sf::Vector2f size = camera->getSize();
+	return sf::Vector2f(center.x - size.x / 2, center.y - size.y / 2);
 }
 
 void CameraComponent::reset()
@@ -65,5 +72,5 @@ void CameraComponent::reset()
 
 CameraComponent::~CameraComponent()
 {
-	delete(camera);
+	delete camera;
 }

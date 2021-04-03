@@ -154,6 +154,7 @@
     <ClCompile Include="CombatComponent.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
+    <ClCompile Include="InventoryComponent.cpp" />
     <ClCompile Include="NPCDog.cpp" />
     <ClCompile Include="PlayerAttackState.cpp" />
     <ClCompile Include="PlayerIdleState.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GlobalFactory.h" />
+    <ClInclude Include="InventoryComponent.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="NPCDog.h" />
     <ClInclude Include="PlayerAnimationStates.h" />

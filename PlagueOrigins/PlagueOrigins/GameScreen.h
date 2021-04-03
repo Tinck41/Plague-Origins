@@ -6,6 +6,7 @@
 #include "TileMapLoader.h"
 #include "NPCDog.h"
 #include "CameraComponent.h"
+#include "InventoryComponent.h"
 
 class GameScreen :
     public Screen
@@ -20,6 +21,7 @@ private:
 	TileMap map;
 
 	CameraComponent* cameraComponent;
+	InventoryComponent* inventoryComponent;
 public:
 	static const ScreenType screenType = ScreenType::GAME;
 
