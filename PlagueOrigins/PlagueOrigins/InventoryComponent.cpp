@@ -15,17 +15,26 @@ InventoryComponent::InventoryComponent()
 	
 	minimizedInventorySprite->setTexture(*minimizedInventoryTexture);
 	unfoldedInventorySprite->setTexture(*unfoldedInventoryTexture);
+
+	gap = 10;
+
+	scaleFactor = (float)(config.height() - gap * 2) / (float)unfoldedInventoryTexture->getSize().y;
+	minimizedInventorySprite->setScale(scaleFactor, scaleFactor);
+	unfoldedInventorySprite->setScale(scaleFactor, scaleFactor);
 }
 
 void InventoryComponent::update(sf::Vector2f position)
 {
-	minimizedInventorySprite->setPosition(position);
-	unfoldedInventorySprite->setPosition(position);
+	sf::Vector2f minimizedPos = sf::Vector2f(position.x + gap, position.y + gap);
+	minimizedInventorySprite->setPosition(minimizedPos);
+	
+	sf::Vector2f unfoldedPos = sf::Vector2f(position.x + gap + minimizedInventoryTexture->getSize().x * scaleFactor + gap, position.y + gap);
+	unfoldedInventorySprite->setPosition(unfoldedPos);
 }
 
 void InventoryComponent::render(sf::RenderWindow& window)
 {
-	//window.draw(*minimizedInventorySprite);
+	window.draw(*minimizedInventorySprite);
 	window.draw(*unfoldedInventorySprite);
 }
 

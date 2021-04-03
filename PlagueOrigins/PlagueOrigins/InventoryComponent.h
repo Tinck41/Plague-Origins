@@ -6,6 +6,8 @@ private:
 	sf::Texture* unfoldedInventoryTexture;
 	sf::Sprite* unfoldedInventorySprite;
 	sf::Sprite* minimizedInventorySprite;
+	float scaleFactor;
+	float gap;
 public:
 	InventoryComponent();
 	~InventoryComponent();
