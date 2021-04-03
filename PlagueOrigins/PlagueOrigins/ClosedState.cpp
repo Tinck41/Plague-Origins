@@ -19,10 +19,11 @@ void ClosedState::enter()
 
 void ClosedState::update(const float& dt)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && owner.escapeReleased)
 	{
 		owner.getStateMachine()->changeState(new MinimizedState(owner));
 	}
+	
 }
 
 void ClosedState::exit()

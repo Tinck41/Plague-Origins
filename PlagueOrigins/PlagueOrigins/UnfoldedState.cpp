@@ -19,7 +19,7 @@ void UnfoldedState::enter()
 
 void UnfoldedState::update(const float& dt)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && owner.escapeReleased)
 	{
 		owner.getStateMachine()->changeState(new ClosedState(owner));
 	}

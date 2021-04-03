@@ -39,6 +39,16 @@ void InventoryComponent::update(const float& dt, sf::Vector2f position)
 	unfoldedInventorySprite->setPosition(unfoldedPos);
 
 	inventoryStateMachine->executeStateUpdate(dt);
+
+	// TODO: убрать
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+	{
+		escapeReleased = false;
+	}
+	else 
+	{
+		escapeReleased = true;
+	}
 }
 
 void InventoryComponent::render(sf::RenderWindow& window)

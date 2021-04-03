@@ -16,6 +16,7 @@ private:
 	
 	FiniteStateMachine* inventoryStateMachine;
 	State* initState;
+
 public:
 	InventoryComponent();
 	~InventoryComponent();
@@ -26,6 +27,9 @@ public:
 
 	void update(const float& dt, sf::Vector2f position);
 	void render(sf::RenderWindow& window);
+
+	// TODO: убрать
+	bool escapeReleased = true;
 
 	FiniteStateMachine* getStateMachine() { return this->inventoryStateMachine; }
 };
