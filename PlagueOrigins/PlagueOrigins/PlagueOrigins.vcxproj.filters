@@ -105,6 +105,18 @@
     <ClCompile Include="InventoryComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="UnfoldedState.cpp">
+      <Filter>States\InventoryStates</Filter>
+    </ClCompile>
+    <ClCompile Include="MinimizedState.cpp">
+      <Filter>States\InventoryStates</Filter>
+    </ClCompile>
+    <ClCompile Include="ClosedState.cpp">
+      <Filter>States\InventoryStates</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryRendererComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -237,6 +249,21 @@
     <ClInclude Include="InventoryComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="UnfoldedState.h">
+      <Filter>States\InventoryStates</Filter>
+    </ClInclude>
+    <ClInclude Include="MinimizedState.h">
+      <Filter>States\InventoryStates</Filter>
+    </ClInclude>
+    <ClInclude Include="ClosedState.h">
+      <Filter>States\InventoryStates</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryStates.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryRendererComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
@@ -271,6 +298,9 @@
     </Filter>
     <Filter Include="Config">
       <UniqueIdentifier>{05539b73-9586-4dc2-ba3c-76c42f585297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\InventoryStates">
+      <UniqueIdentifier>{c57b7887-a151-468a-86e5-e497b537b848}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

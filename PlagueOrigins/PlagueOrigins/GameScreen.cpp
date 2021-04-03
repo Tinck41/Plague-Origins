@@ -18,7 +18,7 @@ void GameScreen::update(const float& dt)
 	player.update(dt);
 	map.update(player);
 	cameraComponent->update(player.getPosition());
-	inventoryComponent->update(cameraComponent->getPosition());
+	inventoryComponent->update(dt, cameraComponent->getPosition());
 }
 
 ScreenType GameScreen::render(sf::RenderWindow& window)

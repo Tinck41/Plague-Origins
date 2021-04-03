@@ -150,11 +150,14 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
+    <ClCompile Include="ClosedState.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CombatComponent.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
     <ClCompile Include="InventoryComponent.cpp" />
+    <ClCompile Include="InventoryRendererComponent.cpp" />
+    <ClCompile Include="MinimizedState.cpp" />
     <ClCompile Include="NPCDog.cpp" />
     <ClCompile Include="PlayerAttackState.cpp" />
     <ClCompile Include="PlayerIdleState.cpp" />
@@ -179,6 +182,7 @@
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenHandler.cpp" />
     <ClCompile Include="IStateHandler.cpp" />
+    <ClCompile Include="UnfoldedState.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -195,13 +199,17 @@
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CameraComponent.h" />
+    <ClInclude Include="ClosedState.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="CombatComponent.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GlobalFactory.h" />
     <ClInclude Include="InventoryComponent.h" />
+    <ClInclude Include="InventoryRendererComponent.h" />
+    <ClInclude Include="InventoryStates.h" />
     <ClInclude Include="json.hpp" />
+    <ClInclude Include="MinimizedState.h" />
     <ClInclude Include="NPCDog.h" />
     <ClInclude Include="PlayerAnimationStates.h" />
     <ClInclude Include="PlayerAttackState.h" />
@@ -233,6 +241,7 @@
     <ClInclude Include="IStateHandler.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="UnfoldedState.h" />
     <ClInclude Include="Unit.h" />
     <ClInclude Include="TileLayer.h" />
     <ClInclude Include="TileMap.h" />
