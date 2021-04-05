@@ -12,39 +12,52 @@ CombatComponent::CombatComponent(sf::RectangleShape& shape, float hitpoints, flo
 
 void CombatComponent::initVariables()
 {
-	this->attackCircle.setPosition(
+	aggro = false;
+
+	attackCircle.setPosition(
 		shape.getPosition().x + shape.getSize().x / 2 - attackCircle.getRadius()
 		+ shape.getSize().x / 2,
 		shape.getPosition().y + shape.getSize().y / 2 - attackCircle.getRadius()
 		+ shape.getSize().x / 2
 	);
-	this->attackCircle.setRadius(shape.getSize().y / 2);
+	attackCircle.setRadius(shape.getSize().y / 2);
 	attackCircle.setFillColor(sf::Color::Green);
 	//sf::Vector2f pos, float radius
+
+	aggroCircle.setPosition(
+		shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
+		shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
+	);
+	aggroCircle.setRadius(500.0f);
 }
 
 void CombatComponent::updateCircle(sf::Vector2f direction)
 {
-	this->attackCircle.setPosition(
+	attackCircle.setPosition(
 		shape.getPosition().x + shape.getSize().x / 2 - attackCircle.getRadius()
 		+ shape.getSize().x / 2 * direction.x,
 		shape.getPosition().y + shape.getSize().y / 2 - attackCircle.getRadius()
 		+ shape.getSize().x / 2 * direction.y
 	);
+	aggroCircle.setPosition(
+		shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
+		shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
+	);
+
 }
 
 void CombatComponent::receiveDamage(float damage)
 {
 	hitpoints -= damage;
-	std::cout << "take damage\n";
+	std::cout << "receive " << damage << " damage\n";
+	std::cout << "hp = " << hitpoints << "\n";
 	if (isDead())
 	{
 		std::cout << "dead\n";
-			
 	}
 }
 
-void CombatComponent::attack()
+void CombatComponent::attackNPC()
 {
 	auto temp = gObjects.getOverlapBounds(attackCircle);
 	for (auto& enemy : temp)
@@ -53,12 +66,58 @@ void CombatComponent::attack()
 	}
 }
 
+void CombatComponent::attackPlayer()
+{
+	Unit* player = gObjects.getPlayer();
+	player->getCombatComponent()->receiveDamage(damage);
+}
+
 void CombatComponent::update(sf::Vector2f direction, const float& dt)
 {
 	updateCircle(direction);
+	isAggro();
+	isInAttackRange();
 }
 
 void CombatComponent::render(sf::RenderWindow& target)
 {
-	target.draw(this->attackCircle);
+	target.draw(aggroCircle);
+	target.draw(attackCircle);
+}
+
+bool CombatComponent::isAggro()
+{
+	if (gObjects.getPlayerAggro(aggroCircle) && getPlayerPosition() != shape.getPosition())
+	{
+		aggro = true;
+		aggroCircle.setFillColor(sf::Color::Red);
+		return true;
+	}
+	else
+	{
+		aggro = false;
+		aggroCircle.setFillColor(sf::Color::White);
+		return false;
+	}
+}
+
+bool CombatComponent::isInAttackRange()
+{
+	if (gObjects.getPlayerAggro(attackCircle))
+	{
+		attackCircle.setFillColor(sf::Color::Blue);
+		return true;
+	}
+	else
+	{
+		attackCircle.setFillColor(sf::Color::Green);
+		return false;
+	}
+}
+
+sf::Vector2f CombatComponent::getPlayerPosition()
+{
+	auto player = gObjects.getPlayer();
+	sf::Vector2f playerPos = player->getShape().getPosition();
+	return playerPos;
 }

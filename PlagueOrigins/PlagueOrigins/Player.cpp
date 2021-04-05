@@ -23,7 +23,7 @@ Player::Player(float x, float y) :
 	createColliderComponent(this->shape);
 
 	// init State-Machine
-	this->playerStateMachine->changeState(this->initState);
+	playerStateMachine->changeState(initState);
 	createHitbox(x, y);
 	createCombatComponent(shape, hitpoints, damage);
 }
@@ -71,7 +71,7 @@ void Player::update(const float& dt)
 void Player::render(sf::RenderWindow& target)
 {
 	// draw hitbox
-	combatComponent->render(target);
+	//combatComponent->render(target);
 	target.draw(this->shape);
 	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }

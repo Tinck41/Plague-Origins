@@ -10,7 +10,7 @@
     "player": {
         "speed": 600,
         "scale": 0.2,
-        "hitpoints": 20,
+        "hitpoints": 40,
         "damage": 5,
         "hitbox": {
             "width": 100,
@@ -20,8 +20,8 @@
     "dog": {
         "speed": 200,
         "scale": 0.3,
-        "hitpoints": 20,
-        "damage": 0,
+        "hitpoints": 10,
+        "damage": 5,
         "hitbox": {
             "width": 100,
             "height": 150

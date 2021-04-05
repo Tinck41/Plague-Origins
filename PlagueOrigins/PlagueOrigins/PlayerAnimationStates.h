@@ -6,5 +6,6 @@ enum animationName
 	IDLE,
 	MOVE,
 	DASH,
-	ATTACK
+	ATTACK,
+	DIE
 };

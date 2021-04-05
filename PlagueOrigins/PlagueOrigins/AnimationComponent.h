@@ -28,7 +28,8 @@ private:
 	void playMovementAnimation();
 	void playIdleAnimation();
 	void playAttackAnimation();
-	std::string setPostfix(std::string prefix, std::string dir);
+	void playDeathAnimation();
+	std::string setPostfix(std::string dir);
 public:
 	//Constructor/Destructor
 	//AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);

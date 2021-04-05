@@ -55,12 +55,6 @@
     <ClCompile Include="PauseScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
-    <ClCompile Include="IStateHandler.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerStateHandler.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
@@ -79,7 +73,6 @@
     <ClCompile Include="MapCollider.cpp">
       <Filter>Tilemap</Filter>
     </ClCompile>
-    <ClCompile Include="InputBooleans.cpp" />
     <ClCompile Include="DirectionFinder.cpp" />
     <ClCompile Include="PlayerIdleState.cpp">
       <Filter>States\PlayerStates</Filter>
@@ -90,17 +83,45 @@
     <ClCompile Include="PlayerAttackState.cpp">
       <Filter>States\PlayerStates</Filter>
     </ClCompile>
-    <ClCompile Include="GlobalFactory.cpp" />
-    <ClCompile Include="NPCDog.cpp" />
     <ClCompile Include="CombatComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="CameraComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="Config.cpp">
       <Filter>Config</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCDogIdleState.cpp">
+      <Filter>States\NPCDogStates</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCDogAttackState.cpp">
+      <Filter>States\NPCDogStates</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCDogMoveState.cpp">
+      <Filter>States\NPCDogStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjects.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalFactory.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="InputBooleans.cpp">
+      <Filter>Global</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCDog.cpp">
+      <Filter>NPCDog</Filter>
+    </ClCompile>
+    <ClCompile Include="Patrol.cpp" />
+    <ClCompile Include="NPCDogDeathState.cpp">
+      <Filter>States\NPCDogStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeathState.cpp">
+      <Filter>States\PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCDogAggroState.cpp">
+      <Filter>States\NPCDogStates</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,12 +178,6 @@
     <ClInclude Include="PauseScreen.h">
       <Filter>Screens</Filter>
     </ClInclude>
-    <ClInclude Include="IStateHandler.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStateHandler.h">
-      <Filter>Player</Filter>
-    </ClInclude>
     <ClInclude Include="dragonBones\SFMLArmatureDisplay.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
@@ -193,10 +208,6 @@
     <ClInclude Include="MapCollider.h">
       <Filter>Tilemap</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerStates.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="InputBooleans.h" />
     <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="FiniteStateMachine.h">
       <Filter>FiniteStateMachine</Filter>
@@ -216,12 +227,9 @@
     <ClInclude Include="PlayerAttackState.h">
       <Filter>States\PlayerStates</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalFactory.h" />
-    <ClInclude Include="NPCDog.h" />
     <ClInclude Include="CombatComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjects.h" />
     <ClInclude Include="CameraComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -230,6 +238,43 @@
     </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCDogIdleState.h">
+      <Filter>States\NPCDogStates</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCDogAttackState.h">
+      <Filter>States\NPCDogStates</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCDogMoveState.h">
+      <Filter>States\NPCDogStates</Filter>
+    </ClInclude>
+    <ClInclude Include="InputBooleans.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalFactory.h">
+      <Filter>Global</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStates.h">
+      <Filter>States\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCDog.h">
+      <Filter>NPCDog</Filter>
+    </ClInclude>
+    <ClInclude Include="Patrol.h" />
+    <ClInclude Include="NPCDogStates.h">
+      <Filter>States\NPCDogStates</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCDogDeathState.h">
+      <Filter>States\NPCDogStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerDeathState.h">
+      <Filter>States\PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCDogAggroState.h">
+      <Filter>States\NPCDogStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +310,15 @@
     </Filter>
     <Filter Include="Config">
       <UniqueIdentifier>{05539b73-9586-4dc2-ba3c-76c42f585297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\NPCDogStates">
+      <UniqueIdentifier>{99221d85-87ae-49a8-891a-b7b6e0459a79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{6464fb19-772d-4ab2-ae54-a293a74aca4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NPCDog">
+      <UniqueIdentifier>{d50ce6b2-3b3a-4e3e-88b5-ccc3253a6172}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

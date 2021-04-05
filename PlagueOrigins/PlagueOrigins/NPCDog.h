@@ -1,5 +1,13 @@
 #pragma once
 #include "Unit.h"
+#include "FiniteStateMachine.h"
+#include "GlobalFactory.h"
+#include "Patrol.h"
+
+class NPCDogIdleState;
+class NPCDogMoveState;
+class NPCDogAggroState;
+class NPCDogDeathState;
 
 class NPCDog :
 	public Unit
@@ -15,15 +23,17 @@ class NPCDog :
 	//waypoints of rectangle patrol path TEST
 	sf::Vector2f point0 = sf::Vector2f(1500.0f, 700.0f);
 	sf::Vector2f point1 = sf::Vector2f(2000.0f, 700.0f);
-	//sf::Vector2f point2 = sf::Vector2f(3000.0f, 3000.0f);
-	//sf::Vector2f point3 = sf::Vector2f(2000.0f, 3000.0f);
 
+	Patrol* patrolComponent;
 	std::vector<sf::Vector2f> waypoints;
 	sf::Vector2f direction;
 
 	GameObjects& gObjects;
 	GlobalFactory& gFactory;
 	dragonBones::SFMLFactory& factory;
+
+	FiniteStateMachine* npcDogStateMachine;
+	State* initState;
 
 	//Game objects
 	sf::RectangleShape shape;
@@ -33,7 +43,7 @@ class NPCDog :
 
 	void initVariables();
 	void createHitbox(float x, float y);
-	void findRoute(sf::Vector2f dest);
+	//void findRoute(sf::Vector2f dest);
 public:
 	//Constructors/Destructors
 	NPCDog(float x, float y);
@@ -48,10 +58,13 @@ public:
 
 	// Getters
 	sf::RectangleShape getShape() override { return shape; }
-	sf::Vector2f getPosition() { return this->shape.getPosition(); }
-	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
-	AnimationComponent* getAnimator() { return this->animationComponent; }
-	MovementComponent* getMover() { return this->movementComponent; }
+	sf::Vector2f getPosition() { return shape.getPosition(); }
+	ColliderComponent getCollider() { return ColliderComponent(shape); }
+	AnimationComponent* getAnimator() { return animationComponent; }
+	MovementComponent* getMover() { return movementComponent; }
+	Patrol* getPatrol() { return patrolComponent; }
+	FiniteStateMachine* getStateMachine() { return npcDogStateMachine; }
+	float getHP() { return hitpoints; }
 
 	// Setters
 	//void setArmature(dragonBones::SFMLArmatureDisplay* armatureDisplay) { this->armatureDisplay = armatureDisplay; }

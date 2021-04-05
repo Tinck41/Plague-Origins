@@ -15,18 +15,19 @@ PlayerAttackState::~PlayerAttackState()
 
 void PlayerAttackState::enter()
 {
-	std::cout << owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted() << "\n";
+	//std::cout << owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted() << "\n";
 	this->owner.getAnimator()->setAnimation(animationName::ATTACK);
-	this->owner.getCombatComponent()->attack();
-	//this->owner.getCombat()->detect();
-	//this->owner.getCombat()->applyDamage();
+	this->owner.getCombatComponent()->attackNPC();
 }
 
 void PlayerAttackState::update(const float& dt)
 {
 	//std::cout << "ATTACK" << " " << this->owner.getInput().getDirection().x << " " << this->owner.getInput().getDirection().y << "\n";
-
-	if (owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted())
+	if (owner.getCombatComponent()->isDead())
+	{
+		owner.getStateMachine()->changeState(new PlayerDeathState(owner));
+	}
+	else if (owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted())
 	{
 		if (owner.getInput().getAttack())
 		{
