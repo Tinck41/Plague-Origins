@@ -4,6 +4,12 @@ Run
 Attack
 Die
 
+-------------bishop-----------------
+
+ArmatureBishop
+Idle
+LevelUp
+
 -------------enemies---------------
 
 ArmatureDogR && ArmatureDogD && ArmatureDogU
