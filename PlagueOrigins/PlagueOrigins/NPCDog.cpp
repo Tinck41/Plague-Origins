@@ -8,7 +8,7 @@ NPCDog::NPCDog(float x, float y) :
 	gFactory(GlobalFactory::Instance()), factory(gFactory.factory), gObjects(GameObjects::Instance())
 {
 	gObjects.registerObject(this, objects::enemies);
-	id = 2;
+	id = 3;
 	initVariables();
 	createHitbox(x, y);
 

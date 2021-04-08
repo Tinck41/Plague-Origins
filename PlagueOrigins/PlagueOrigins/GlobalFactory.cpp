@@ -4,8 +4,11 @@
 
 GlobalFactory::GlobalFactory()
 {
+	//LOAD TO FACTORY
+	//TEXTURES
 	heroAnim.loadFromFile("./Assets/Animation/heroAnim/heroAnim_tex.png");
 	dogAnim.loadFromFile("./Assets/Animation/dogAnim/dogAnim_tex.png");
+	bishopAnim.loadFromFile("./Assets/Animation/bishopAnim/bishopAnim_tex.png");
 
 	//HERO
 	factory.loadDragonBonesData("./Assets/Animation/heroAnim/heroAnim_ske.json");
@@ -14,6 +17,10 @@ GlobalFactory::GlobalFactory()
 	//DOG
 	factory.loadDragonBonesData("./Assets/Animation/dogAnim/dogAnim_ske.json");
 	factory.loadTextureAtlasData("./Assets/Animation/dogAnim/dogAnim_tex.json", &dogAnim);
+
+	//BISHOP
+	factory.loadDragonBonesData("./Assets/Animation/bishopAnim/bishopAnim_ske.json");
+	factory.loadTextureAtlasData("./Assets/Animation/bishopAnim/bishopAnim_tex.json", &bishopAnim);
 }
 
 GlobalFactory& GlobalFactory::Instance()
