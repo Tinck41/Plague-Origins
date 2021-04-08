@@ -4,7 +4,7 @@ class Unit;
 
 enum objects
 {
-	player, enemies, obstacles
+	player, enemies, merchants, obstacles
 };
 
 class GameObjects

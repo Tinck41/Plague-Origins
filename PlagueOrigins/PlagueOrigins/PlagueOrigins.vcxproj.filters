@@ -113,7 +113,6 @@
     <ClCompile Include="NPCDog.cpp">
       <Filter>NPCDog</Filter>
     </ClCompile>
-    <ClCompile Include="Patrol.cpp" />
     <ClCompile Include="NPCDogDeathState.cpp">
       <Filter>States\NPCDogStates</Filter>
     </ClCompile>
@@ -128,6 +127,12 @@
     </ClCompile>
     <ClCompile Include="PlayerCharacteristics.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Patrol.cpp">
+      <Filter>NPCDog</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCBishop.cpp">
+      <Filter>NPCBIshop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -269,7 +274,6 @@
     <ClInclude Include="NPCDog.h">
       <Filter>NPCDog</Filter>
     </ClInclude>
-    <ClInclude Include="Patrol.h" />
     <ClInclude Include="NPCDogStates.h">
       <Filter>States\NPCDogStates</Filter>
     </ClInclude>
@@ -287,6 +291,12 @@
     </ClInclude>
     <ClInclude Include="PlayerCharacteristics.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Patrol.h">
+      <Filter>NPCDog</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCBishop.h">
+      <Filter>NPCBIshop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +341,9 @@
     </Filter>
     <Filter Include="NPCDog">
       <UniqueIdentifier>{d50ce6b2-3b3a-4e3e-88b5-ccc3253a6172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NPCBIshop">
+      <UniqueIdentifier>{adb6728c-5b83-4db2-8456-51f34a534548}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

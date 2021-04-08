@@ -28,6 +28,7 @@ void InputBooleans::checkMovementInput()
 	//check
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) && !isWPressed)
 	{
+		std::cout << "\nW\n";
 		isWPressed = true;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) && !isAPressed)
