@@ -8,12 +8,15 @@ bool InputBooleans::isWPressed = false;
 bool InputBooleans::isAPressed = false;
 bool InputBooleans::isSPressed = false;
 bool InputBooleans::isDPressed = false;
+bool InputBooleans::isFPressed = false;
 bool InputBooleans::isQPressed = false;
 bool InputBooleans::isEPressed = false;
 bool InputBooleans::isEscapePressed = false;
 bool InputBooleans::isSpacePressed = false;
 bool InputBooleans::isM1Pressed = false;
 bool InputBooleans::isM2Pressed = false;
+
+bool InputBooleans::handled = true;
 
 /*
 	CHECK FUNCTIONS
@@ -23,52 +26,52 @@ bool InputBooleans::isM2Pressed = false;
 void InputBooleans::checkMovementInput()
 {
 	//check
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) && !isWPressed)
 	{
-		this->isWPressed = true;
+		isWPressed = true;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) && !isAPressed)
 	{
-		this->isAPressed = true;
+		isAPressed = true;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) && !isSPressed)
 	{
-		this->isSPressed = true;
+		isSPressed = true;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) && !isDPressed)
 	{
-		this->isDPressed = true;
+		isDPressed = true;
 	}
 	//reset
-	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) && isWPressed)
 	{
-		this->isWPressed = false;
+		isWPressed = false;
 	}
-	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) && isAPressed)
 	{
-		this->isAPressed = false;
+		isAPressed = false;
 	}
-	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) && isSPressed)
 	{
-		this->isSPressed = false;
+		isSPressed = false;
 	}
-	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) && isDPressed)
 	{
-		this->isDPressed = false;
+		isDPressed = false;
 	}
 }
 
 void InputBooleans::checkDashInput()
 {
 	//check
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) && !isSpacePressed)
 	{
-		this->isSpacePressed = true;
+		isSpacePressed = true;
 	}
 	//reset
-	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space) &&isSpacePressed)
 	{
-		this->isSpacePressed = false;
+		isSpacePressed = false;
 	}
 }
 
@@ -77,24 +80,35 @@ void InputBooleans::checkAttackInput()
 	//check
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isM1Pressed)
 	{
-		this->isM1Pressed = true;
+		isM1Pressed = true;
 	}
 	else if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && isM1Pressed || !sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+	//if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && isM1Pressed)
 	{
-		this->isM1Pressed = false;
+		isM1Pressed = false;
 	}
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && !isM2Pressed)
 	{
-		this->isM2Pressed = true;
+		isM2Pressed = true;
 	}
 	//reset
-	//if ()
-	//{
-	//	this->isM1Pressed = false;
-	//}
-	if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+	if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && isM2Pressed)
 	{
-		this->isM2Pressed = false;
+		isM2Pressed = false;
+	}
+}
+
+void InputBooleans::checkInteractionInput()
+{
+	//check
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F) && !isFPressed)
+	{
+		isFPressed = true;
+	}
+	//reset
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F) && isFPressed ||!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F))
+	{
+		isFPressed = false;
 	}
 }
 
@@ -103,36 +117,39 @@ void InputBooleans::checkUtilityInput()
 	//check
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q))
 	{
-		this->isQPressed = true;
+		isQPressed = true;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E))
 	{
-		this->isEPressed = true;
+		isEPressed = true;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 	{
-		this->isEscapePressed = true;
+		isEscapePressed = true;
 	}
 	//reset
 	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q))
 	{
-		this->isQPressed = false;
+		isQPressed = false;
 	}
 	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E))
 	{
-		this->isEPressed = false;
+		isEPressed = false;
 	}
 	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
 	{
-		this->isEscapePressed = false;
+		isEscapePressed = false;
 	}
 }
 
 void InputBooleans::update()
 {
-	this->checkMovementInput();
-	//this->checkDashInput();
-	this->checkAttackInput();
-	this->checkUtilityInput();
+	
+	checkMovementInput();
+	//checkDashInput();
+	checkInteractionInput();
+	checkAttackInput();
+	checkUtilityInput();
+	
 }
 
