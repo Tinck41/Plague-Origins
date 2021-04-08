@@ -30,6 +30,10 @@ public:
 	float dogHitboxWidth;
 	float dogHitboxHeight;
 
+	float bishopScale;
+	float bishopHitboxWidth;
+	float bishopHitboxHeight;
+
 	unsigned int height()
 	{
 		return isFullscreen ? sf::VideoMode::getDesktopMode().height : windowHeight;
