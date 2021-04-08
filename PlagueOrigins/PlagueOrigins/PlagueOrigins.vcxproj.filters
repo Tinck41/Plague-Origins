@@ -123,6 +123,12 @@
     <ClCompile Include="NPCDogAggroState.cpp">
       <Filter>States\NPCDogStates</Filter>
     </ClCompile>
+    <ClCompile Include="LevelUpComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCharacteristics.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -275,6 +281,12 @@
     </ClInclude>
     <ClInclude Include="NPCDogAggroState.h">
       <Filter>States\NPCDogStates</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelUpComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCharacteristics.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
