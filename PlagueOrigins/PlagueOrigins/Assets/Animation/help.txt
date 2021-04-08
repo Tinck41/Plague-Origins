@@ -2,7 +2,14 @@ ArmatureHeroR & ArmatureHeroU & ArmatureHeroD
 Idle
 Run
 Attack
+Dash
 Die
+
+-------------bishop-----------------
+
+ArmatureBishop
+Idle
+LevelUp
 
 -------------enemies---------------
 
