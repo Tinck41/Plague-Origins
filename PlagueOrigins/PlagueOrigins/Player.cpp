@@ -71,7 +71,7 @@ void Player::update(const float& dt)
 void Player::render(sf::RenderWindow& target)
 {
 	// draw hitbox
-	//combatComponent->render(target);
+	combatComponent->render(target);
 	target.draw(this->shape);
 	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }
