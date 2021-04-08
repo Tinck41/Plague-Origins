@@ -88,7 +88,7 @@ void NPCDog::update(const float& dt)
 
 void NPCDog::render(sf::RenderWindow& target)
 {
-	combatComponent->render(target);
+	//combatComponent->render(target);
 	target.draw(shape);
 	target.draw(*animationComponent->getArmatureDisplay(), states);
 }

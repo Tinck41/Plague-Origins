@@ -9,11 +9,6 @@
 class Unit
 {
 private:
-	//Variables
-	int speed;
-	float dx;
-	float dy;
-	
 	//Game objects
 	sf::RectangleShape shape;
 	sf::Texture texture;
@@ -23,6 +18,8 @@ private:
 	void initVariables();
 	void spawnUnit();
 protected:
+	int essence;
+
 	MovementComponent* movementComponent;
 	AnimationComponent* animationComponent;
 	ColliderComponent* colliderComponent;
@@ -42,11 +39,13 @@ public:
 	}
 
 	//Functions
+	void setEssenceValue(int value);
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
 	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix);
 	void createColliderComponent(sf::RectangleShape& shape);
 	void createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage);
 
+	int getEssenceValue() { return essence; }
 	virtual sf::RectangleShape getShape() { return shape; }
 	CombatComponent* getCombatComponent() { return combatComponent; }
 

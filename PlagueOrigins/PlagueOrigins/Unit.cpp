@@ -21,6 +21,11 @@ void Unit::initVariables()
 	//this->animationComponent = NULL;
 }
 
+void Unit::setEssenceValue(int value)
+{
+	essence = value;
+}
+
 void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
 {
 	//create movement component based on shape

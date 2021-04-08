@@ -9,6 +9,7 @@
 Player::Player(float x, float y) : 
 	gFactory(GlobalFactory::Instance()), factory(gFactory.factory), gObjects(GameObjects::Instance())
 {
+	srand(time(NULL));
 	gObjects.registerObject(this, objects::player);
 	id = 1;
 	initVariables();
@@ -42,6 +43,9 @@ void Player::createHitbox(float x, float y)
 
 void Player::initVariables()
 {
+	essence = rand() % 50 + 20;
+	std::cout << essence << "\n";
+
 	hitpoints = 20;
 	damage = 5;
 
@@ -71,7 +75,7 @@ void Player::update(const float& dt)
 void Player::render(sf::RenderWindow& target)
 {
 	// draw hitbox
-	//combatComponent->render(target);
+	combatComponent->render(target);
 	target.draw(this->shape);
 	target.draw(*this->animationComponent->getArmatureDisplay(), states);
 }

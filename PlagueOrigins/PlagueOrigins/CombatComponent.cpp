@@ -12,6 +12,7 @@ CombatComponent::CombatComponent(sf::RectangleShape& shape, float hitpoints, flo
 
 void CombatComponent::initVariables()
 {
+	srand(time(NULL));
 	aggro = false;
 
 	attackCircle.setPosition(
@@ -49,11 +50,16 @@ void CombatComponent::updateCircle(sf::Vector2f direction)
 void CombatComponent::receiveDamage(float damage)
 {
 	hitpoints -= damage;
-	std::cout << "receive " << damage << " damage\n";
+	//std::cout << "receive " << damage << " damage\n";
 	std::cout << "hp = " << hitpoints << "\n";
 	if (isDead())
 	{
+		Unit* player = gObjects.getPlayer();
+		int essence = player->getEssenceValue();
+		int value = essence + rand() % 100 + 23;
+		player->setEssenceValue(value);
 		std::cout << "dead\n";
+		std::cout << player->getEssenceValue() << "\n";
 	}
 }
 
@@ -81,7 +87,7 @@ void CombatComponent::update(sf::Vector2f direction, const float& dt)
 
 void CombatComponent::render(sf::RenderWindow& target)
 {
-	target.draw(aggroCircle);
+	//target.draw(aggroCircle);
 	target.draw(attackCircle);
 }
 
