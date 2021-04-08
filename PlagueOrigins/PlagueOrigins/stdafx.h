@@ -30,6 +30,10 @@
 #include <dragonBones/SFMLFactory.h>
 #include <dragonBones/SFMLArmatureDisplay.h>
 
+//Box2D
+#include <box2d/box2d.h>
+
 #include "Config.h"
+#include "PhysicsWorld.h"
 
 extern Config config;

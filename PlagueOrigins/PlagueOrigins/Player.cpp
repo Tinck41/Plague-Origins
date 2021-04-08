@@ -12,20 +12,22 @@ Player::Player(float x, float y) :
 	gObjects.registerObject(this, objects::player);
 	id = 1;
 	initVariables();
+	createHitbox(x, y);
+
+	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true);
 
 	// create components
-	createMovementComponent(this->shape, this->speed);
+	createColliderComponent(body);
+	createMovementComponent(body, this->speed);
+	createCombatComponent(shape, hitpoints, damage);
 	createAnimationComponent(this->shape, this->factory, "Hero");
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		this->states.transform.scale(scale, scale);
 		this->animationComponent->setAnimation(animationName::IDLE);
 
-	createColliderComponent(this->shape);
 
 	// init State-Machine
 	playerStateMachine->changeState(initState);
-	createHitbox(x, y);
-	createCombatComponent(shape, hitpoints, damage);
 }
 
 Player::~Player()
@@ -45,7 +47,7 @@ void Player::initVariables()
 	hitpoints = 20;
 	damage = 5;
 
-	this->speed = 600;
+	this->speed = 1000000000.f;
 	this->scale = 0.2f;
 
 	this->playerStateMachine = new FiniteStateMachine();
@@ -61,9 +63,11 @@ void Player::update(const float& dt)
 	// Moving
 	combatComponent->update(directionFinder.getDirection(), dt);
 
+	shape.setPosition(colliderComponent->getPosition());
+
 	// Animation things
 	//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
-	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
+	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + shape.getSize().x / 2),(1 / scale) * (shape.getPosition().y + shape.getSize().y / 2)));
 	this->animationComponent->updateFactory(dt);
 	//GlobalFactory::zf->update(dt);
 }

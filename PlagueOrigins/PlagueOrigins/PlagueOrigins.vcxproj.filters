@@ -70,9 +70,6 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
-    <ClCompile Include="MapCollider.cpp">
-      <Filter>Tilemap</Filter>
-    </ClCompile>
     <ClCompile Include="DirectionFinder.cpp" />
     <ClCompile Include="PlayerIdleState.cpp">
       <Filter>States\PlayerStates</Filter>
@@ -122,6 +119,12 @@
     </ClCompile>
     <ClCompile Include="NPCDogAggroState.cpp">
       <Filter>States\NPCDogStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsWorld.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContactListener.cpp">
+      <Filter>Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,9 +208,6 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
-    <ClInclude Include="MapCollider.h">
-      <Filter>Tilemap</Filter>
-    </ClInclude>
     <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="FiniteStateMachine.h">
       <Filter>FiniteStateMachine</Filter>
@@ -276,6 +276,12 @@
     <ClInclude Include="NPCDogAggroState.h">
       <Filter>States\NPCDogStates</Filter>
     </ClInclude>
+    <ClInclude Include="PhysicsWorld.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContactListener.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
@@ -319,6 +325,9 @@
     </Filter>
     <Filter Include="NPCDog">
       <UniqueIdentifier>{d50ce6b2-3b3a-4e3e-88b5-ccc3253a6172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{7b635f11-b072-4158-971e-0307598c135c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

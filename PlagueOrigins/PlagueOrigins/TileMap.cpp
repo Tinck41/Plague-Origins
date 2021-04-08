@@ -2,7 +2,7 @@
 
 #include "TileMap.h"
 
-TileMap::TileMap(std::vector<TileLayer> layers, std::vector<std::vector<MapCollider>> objects, sf::Vector2u mapSize, sf::Vector2u tileSize)
+TileMap::TileMap(std::vector<TileLayer> layers, std::vector<std::vector<ColliderComponent>> objects, sf::Vector2u mapSize, sf::Vector2u tileSize)
 {
 	this->tileLayer = layers;
 	this->colliderLayer = objects;
@@ -26,17 +26,9 @@ sf::Vector2u TileMap::getSize()
 	return sf::Vector2u(size.x * tileSize.x, size.y * tileSize.y);
 }
 
-void TileMap::update(Player& player)
+void TileMap::update(const float& dt)
 {
-	ColliderComponent playerCollider = player.getCollider();
 
-	for (auto& layer : this->colliderLayer)
-	{
-		for (auto& collider : layer)
-		{
-			collider.getCollider().checkCollision(playerCollider, 1.0f);
-		}
-	}
 }
 
 void TileMap::render(sf::RenderTarget& target, unsigned firstLayerId, unsigned lastLayerId)

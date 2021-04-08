@@ -18,7 +18,7 @@
         }
     },
     "dog": {
-        "speed": 200,
+        "speed": 100,
         "scale": 0.3,
         "hitpoints": 10,
         "damage": 5,

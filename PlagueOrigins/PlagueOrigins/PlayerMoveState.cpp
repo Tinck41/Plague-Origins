@@ -24,10 +24,12 @@ void PlayerMoveState::update(const float& dt)
 
 	if (owner.getInput().getAttack())
 	{
+		owner.getMover()->move(dt, sf::Vector2f(0.f, 0.f)); // костыль
 		owner.getStateMachine()->changeState(new PlayerAttackState(owner));
 	}
 	else if (owner.getInput().getDirection() == sf::Vector2f(0, 0))
 	{
+		owner.getMover()->move(dt, sf::Vector2f(0.f, 0.f)); // костыль
 		this->stateMachine->changeState(new PlayerIdleState(this->owner));
 	}
 	else if (owner.getCombatComponent()->isDead())

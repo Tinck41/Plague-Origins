@@ -3,15 +3,12 @@
 class MovementComponent
 {
 private:
-	sf::RectangleShape& shape;
+	b2Body* body;
 	
-	int initialSpeed;
-	int currentSpeed;
-
+	float speed;
 public:
-
 	//Constructor/destructor
-	MovementComponent(sf::RectangleShape& shape, int speed);
+	MovementComponent(b2Body* body, float speed);
 	virtual ~MovementComponent();
 
 	//Functions

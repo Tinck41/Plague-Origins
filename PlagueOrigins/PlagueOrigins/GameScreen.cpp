@@ -15,8 +15,9 @@ void GameScreen::update(const float& dt)
 {
 	npcDog.update(dt);
 	player.update(dt);
-	map.update(player);
+	map.update(dt);
 	cameraComponent->update(player.getPosition());
+	PhysicsWorld::update(dt);
 }
 
 ScreenType GameScreen::render(sf::RenderWindow& window)

@@ -12,16 +12,17 @@ NPCDog::NPCDog(float x, float y) :
 	initVariables();
 	createHitbox(x, y);
 
-	// create components
-	createMovementComponent(this->shape, this->speed);
+	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true);
 
+	// create components
+	createColliderComponent(body);
+	createMovementComponent(body, this->speed);
+	createCombatComponent(shape, hitpoints, damage);
 	createAnimationComponent(this->shape, this->factory, "Dog");
 		animationComponent->initArmature(sf::Vector2f(x, y));
 		this->states.transform.scale(scale, scale);
 		this->animationComponent->setAnimation(animationName::MOVE);
 
-	createColliderComponent(this->shape);
-	createCombatComponent(shape, hitpoints, damage);
 	
 	patrolComponent = new Patrol(shape, waypoints);
 
@@ -79,9 +80,11 @@ void NPCDog::update(const float& dt)
 	patrolComponent->update();
 	combatComponent->update(direction, dt);
 	npcDogStateMachine->executeStateUpdate(dt);
+	
+	shape.setPosition(colliderComponent->getPosition());
 
 	//animation
-	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
+	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + shape.getSize().x / 2), (1 / scale) * (shape.getPosition().y + shape.getSize().y / 2)));
 	animationComponent->updateFactory(dt);
 
 }

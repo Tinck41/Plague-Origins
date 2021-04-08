@@ -21,15 +21,14 @@ void Unit::initVariables()
 	//this->animationComponent = NULL;
 }
 
-void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
+void Unit::createMovementComponent(b2Body* body, float speed)
 {
-	//create movement component based on shape
-	this->movementComponent = new MovementComponent(shape, speed);
+	this->movementComponent = new MovementComponent(body, speed);
 }
 
-void Unit::createColliderComponent(sf::RectangleShape& shape)
+void Unit::createColliderComponent(b2Body* body)
 {
-	this->colliderComponent = new ColliderComponent(shape);
+	this->colliderComponent = new ColliderComponent(body);
 }
 
 void Unit::createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage)
