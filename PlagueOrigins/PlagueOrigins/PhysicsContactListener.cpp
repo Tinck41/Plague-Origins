@@ -3,6 +3,8 @@
 
 void PhysicsContactListener::BeginContact(b2Contact* contact)
 {
+    b2Fixture* fixtureA = contact->GetFixtureA();
+    b2Fixture* fixtureB = contact->GetFixtureB();
 }
 
 void PhysicsContactListener::EndContact(b2Contact* contact)

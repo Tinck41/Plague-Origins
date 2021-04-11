@@ -12,10 +12,11 @@ NPCDog::NPCDog(float x, float y) :
 	initVariables();
 	createHitbox(x, y);
 
-	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true);
+	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, ENEMY_NPC, PLAYER | FRIENDLY_NPC | OBSTACLE);
+	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
 	// create components
-	createColliderComponent(body);
+	createColliderComponent(body, shape.getSize());
 	createMovementComponent(body, this->speed);
 	createCombatComponent(shape, hitpoints, damage);
 	createAnimationComponent(this->shape, this->factory, "Dog");

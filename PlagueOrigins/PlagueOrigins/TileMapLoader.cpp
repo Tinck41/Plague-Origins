@@ -162,7 +162,9 @@ void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 		e->QueryFloatAttribute("width", &objSize.x);
 		e->QueryFloatAttribute("height", &objSize.y);
 
-		objects.push_back(PhysicsWorld::createRectangleBody(objPosition, objSize, false));
+		ColliderComponent obj(PhysicsWorld::createRectangleBody(objPosition, objSize, false, OBSTACLE, FRIENDLY_NPC | PLAYER | ENEMY_NPC), objSize);
+
+		objects.push_back(obj);
 	}
 
 	colliderLayers.push_back(objects);

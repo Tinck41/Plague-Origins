@@ -26,9 +26,9 @@ void Unit::createMovementComponent(b2Body* body, float speed)
 	this->movementComponent = new MovementComponent(body, speed);
 }
 
-void Unit::createColliderComponent(b2Body* body)
+void Unit::createColliderComponent(b2Body* body, sf::Vector2f size)
 {
-	this->colliderComponent = new ColliderComponent(body);
+	this->colliderComponent = new ColliderComponent(body, size);
 }
 
 void Unit::createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage)

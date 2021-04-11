@@ -1,4 +1,5 @@
 #pragma once
+
 class PhysicsContactListener :
     public b2ContactListener
 {

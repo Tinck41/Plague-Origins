@@ -44,7 +44,7 @@ public:
 	//Functions
 	void createMovementComponent(b2Body* body, float speed);
 	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix);
-	void createColliderComponent(b2Body* body);
+	void createColliderComponent(b2Body* body, sf::Vector2f size);
 	void createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage);
 
 	virtual sf::RectangleShape getShape() { return shape; }

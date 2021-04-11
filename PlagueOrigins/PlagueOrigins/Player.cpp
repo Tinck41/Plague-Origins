@@ -14,16 +14,18 @@ Player::Player(float x, float y) :
 	initVariables();
 	createHitbox(x, y);
 
-	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true);
+	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, PLAYER, ENEMY_NPC | FRIENDLY_NPC | OBSTACLE);
+	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
 	// create components
-	createColliderComponent(body);
+	createColliderComponent(body, shape.getSize());
 	createMovementComponent(body, this->speed);
 	createCombatComponent(shape, hitpoints, damage);
+
 	createAnimationComponent(this->shape, this->factory, "Hero");
-		animationComponent->initArmature(sf::Vector2f(x,y));
-		this->states.transform.scale(scale, scale);
-		this->animationComponent->setAnimation(animationName::IDLE);
+	animationComponent->initArmature(sf::Vector2f(x,y));
+	this->states.transform.scale(scale, scale);
+	this->animationComponent->setAnimation(IDLE);
 
 
 	// init State-Machine
@@ -47,7 +49,7 @@ void Player::initVariables()
 	hitpoints = 20;
 	damage = 5;
 
-	this->speed = 1000000000.f;
+	this->speed = 1000.f;
 	this->scale = 0.2f;
 
 	this->playerStateMachine = new FiniteStateMachine();
