@@ -82,13 +82,13 @@ void NPCDog::update(const float& dt)
 
 	//animation
 	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
-	animationComponent->updateFactory(dt);
+	//animationComponent->updateFactory(dt);
 
 }
 
 void NPCDog::render(sf::RenderWindow& target)
 {
-	combatComponent->render(target);
+	//combatComponent->render(target);
 	target.draw(shape);
 	target.draw(*animationComponent->getArmatureDisplay(), states);
 }
