@@ -23,6 +23,6 @@ public:
 	//void setChar(std::string charName);
 	void setChar(unsigned int value, charName charName);
 	//unsigned int getChar(std::string charName);
-	unsigned int getChar(charName charName);
+	int getChar(charName charName);
 };
 

@@ -7,6 +7,7 @@ GameObjects::GameObjects()
 	player = std::list<Unit*>();
 	enemies = std::list<Unit*>();
 	obstacles = std::list<Unit*>();
+	merchants = std::list<Unit*>();
 }
 
 GameObjects::~GameObjects()
@@ -14,6 +15,7 @@ GameObjects::~GameObjects()
 	player.clear();
 	enemies.clear();
 	obstacles.clear();
+	merchants.clear();
 }
 
 GameObjects& GameObjects::Instance()
@@ -32,6 +34,9 @@ void GameObjects::registerObject(Unit* unit, objects e)
 	case objects::enemies:
 		enemies.push_back(unit);
 		break;
+	case objects::merchants:
+		merchants.push_back(unit);
+		break;
 	case objects::obstacles:
 		obstacles.push_back(unit);
 		break;
@@ -49,6 +54,9 @@ void GameObjects::dropObject(Unit* unit, objects e)
 		break;
 	case objects::enemies:
 		enemies.remove(unit);
+		break;
+	case objects::merchants:
+		merchants.remove(unit);
 		break;
 	case objects::obstacles:
 		obstacles.remove(unit);
@@ -77,4 +85,9 @@ std::list<Unit*> GameObjects::getOverlapBounds(sf::CircleShape circle)
 bool GameObjects::getPlayerAggro(sf::CircleShape circle)
 {
 	return circle.getGlobalBounds().intersects(player.front()->getShape().getGlobalBounds());
+}
+
+bool GameObjects::getPlayerInteraction(sf::RectangleShape rect)
+{
+	return rect.getGlobalBounds().intersects(player.front()->getShape().getGlobalBounds());
 }

@@ -38,7 +38,7 @@ void PlayerCharacteristics::setChar(unsigned int value, charName charName)
 	}
 }
 
-unsigned int PlayerCharacteristics::getChar(charName charName)
+int PlayerCharacteristics::getChar(charName charName)
 {
 	unsigned int temp;
 	switch (charName)

@@ -44,7 +44,7 @@ void NPCBishop::update(const float& dt)
 	//animation
 	animationComponent->setAnimation(animationName::IDLE);
 	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
-	animationComponent->updateFactory(dt);
+	//animationComponent->updateFactory(dt);
 }
 
 void NPCBishop::render(sf::RenderWindow& target)
