@@ -13,7 +13,6 @@ NPCDog::NPCDog(float x, float y) :
 	createHitbox(x, y);
 
 	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, ENEMY_NPC, PLAYER | FRIENDLY_NPC | OBSTACLE);
-	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
 	// create components
 	createColliderComponent(body, shape.getSize());

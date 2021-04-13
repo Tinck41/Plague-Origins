@@ -15,7 +15,6 @@ Player::Player(float x, float y) :
 	createHitbox(x, y);
 
 	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, PLAYER, ENEMY_NPC | FRIENDLY_NPC | OBSTACLE);
-	body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
 
 	// create components
 	createColliderComponent(body, shape.getSize());

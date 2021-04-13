@@ -15,7 +15,10 @@ PhysicsWorld::~PhysicsWorld()
 
 void PhysicsWorld::updateInternal(const float& dt)
 {
-    world->Step(dt, 6, 2);
+    uint32_t velocityIterations = 6;
+    uint32_t positionIterations = 2;
+
+    world->Step(dt, velocityIterations, positionIterations);
 
     for (b2Body* body = world->GetBodyList(); body; body = body->GetNext())
     {
@@ -51,6 +54,7 @@ b2Body* PhysicsWorld::createRectangleBodyInternal(sf::Vector2f position, sf::Vec
 
     bodyDef.position = b2Vec2((position.x + size.x / 2) / SCALE, (position.y + size.y / 2) / SCALE);
     bodyDef.fixedRotation = true;
+    bodyDef.userData.pointer = categoryBits;        // Identifier for collision checking
     body = world->CreateBody(&bodyDef);
 
     Shape.SetAsBox((size.x / 2) / SCALE, (size.y / 2) / SCALE);
@@ -59,8 +63,8 @@ b2Body* PhysicsWorld::createRectangleBodyInternal(sf::Vector2f position, sf::Vec
     FixtureDef.friction = 0.f;
     FixtureDef.restitution = 0.f;
 
-    FixtureDef.filter.categoryBits = categoryBits; // I'm <...> 
-    FixtureDef.filter.maskBits = maskBits; // I collide with <...>
+    FixtureDef.filter.categoryBits = categoryBits;  // I'm <...> 
+    FixtureDef.filter.maskBits = maskBits;          // I collide with <...>
 
     body->CreateFixture(&FixtureDef);
 	
@@ -92,6 +96,10 @@ b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radi
     FixtureDef.density = 1.f;
     FixtureDef.friction = 0.f;
     FixtureDef.restitution = 0.f;
+
+    FixtureDef.filter.categoryBits = categoryBits; // I'm <...> 
+    FixtureDef.filter.maskBits = maskBits; // I collide with <...>
+
     body->CreateFixture(&FixtureDef);
 
     return body;

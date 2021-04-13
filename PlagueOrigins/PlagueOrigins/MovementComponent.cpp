@@ -17,6 +17,6 @@ void MovementComponent::move(const float& dt, sf::Vector2f dir)
 {
 	b2Vec2 direction(dir.x, dir.y);
 	direction.Normalize();
-
+	
 	this->body->SetLinearVelocity(dt * speed * direction);
 }
