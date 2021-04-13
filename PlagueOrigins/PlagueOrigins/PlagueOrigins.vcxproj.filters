@@ -134,6 +134,9 @@
     <ClCompile Include="NPCBishop.cpp">
       <Filter>NPCBIshop</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerInventory.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -297,6 +300,9 @@
     </ClInclude>
     <ClInclude Include="NPCBishop.h">
       <Filter>NPCBIshop</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInventory.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

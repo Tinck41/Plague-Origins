@@ -182,6 +182,7 @@
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerInventory.cpp" />
     <ClCompile Include="PlayerMoveState.cpp" />
     <ClCompile Include="PlayerCharacteristics.cpp" />
     <ClCompile Include="Screen.cpp" />
@@ -238,6 +239,7 @@
     <ClInclude Include="InputBooleans.h" />
     <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="PlayerInventory.h" />
     <ClInclude Include="PlayerMoveState.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="PauseScreen.h" />

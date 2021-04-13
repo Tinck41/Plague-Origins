@@ -22,6 +22,7 @@ private:
 public:
 	static GameObjects& Instance();
 	void registerObject(Unit* unit, objects e);
+	Unit* getUnitById(int id, objects e);
 	void dropObject(Unit* unit, objects e);
 	std::list<Unit*> getOverlapBounds(sf::CircleShape circle);
 	bool getPlayerAggro(sf::CircleShape circle);

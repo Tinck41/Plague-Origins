@@ -4,6 +4,9 @@
 class CombatComponent
 {
 private:
+	int id;
+	objects objectType;
+
 	float attackRange;
 	GameObjects& gObjects;
 
@@ -19,7 +22,7 @@ private:
 	void updateCircle(sf::Vector2f direction);
 	void initVariables();
 public:
-	CombatComponent(sf::RectangleShape& shape, float hitpoints, float damage);
+	CombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage);
 	void receiveDamage(float damage);
 	void attackNPC();
 	void attackPlayer();
