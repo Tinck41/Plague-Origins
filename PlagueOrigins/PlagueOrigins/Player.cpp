@@ -15,13 +15,13 @@ Player::Player(float x, float y) :
 	initVariables();
 
 	// create components
-	createMovementComponent(this->shape, this->speed);
-	createAnimationComponent(this->shape, this->factory, "Hero");
+	createMovementComponent(shape, speed);
+	createAnimationComponent(shape, factory, "Hero");
 		animationComponent->initArmature(sf::Vector2f(x,y));
-		this->states.transform.scale(scale, scale);
-		this->animationComponent->setAnimation(animationName::IDLE);
+		states.transform.scale(scale, scale);
+		animationComponent->setAnimation(animationName::IDLE);
 
-	createColliderComponent(this->shape);
+	createColliderComponent(shape);
 
 	// init State-Machine
 	playerStateMachine->changeState(initState);
@@ -36,9 +36,9 @@ Player::~Player()
 // create hitbox (shape)
 void Player::createHitbox(float x, float y)
 {
-	this->shape.setPosition(x, y);
-	this->shape.setSize(sf::Vector2f(100.0f, 150.0f));
-	this->shape.setFillColor(sf::Color::Red);
+	shape.setPosition(x, y);
+	shape.setSize(sf::Vector2f(100.0f, 150.0f));
+	shape.setFillColor(sf::Color::Red);
 }
 
 void Player::initVariables()
@@ -49,33 +49,33 @@ void Player::initVariables()
 	hitpoints = 20;
 	damage = 5;
 
-	this->speed = 600;
-	this->scale = 0.2f;
+	speed = 600;
+	scale = 0.2f;
 
-	this->playerStateMachine = new FiniteStateMachine();
-	this->initState = new PlayerIdleState(*this);
+	playerStateMachine = new FiniteStateMachine();
+	initState = new PlayerIdleState(*this);
 }
 
 void Player::update(const float& dt)
 {
 	// update utility
-	this->directionFinder.update();
-	this->playerStateMachine->executeStateUpdate(dt);
+	directionFinder.update();
+	playerStateMachine->executeStateUpdate(dt);
 
 	// Moving
 	combatComponent->update(directionFinder.getDirection(), dt);
 
 	// Animation things
 	//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
-	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
-	this->animationComponent->updateFactory(dt);
+	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x),(1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
+	animationComponent->updateFactory(dt);
 	//GlobalFactory::zf->update(dt);
 }
 	
 void Player::render(sf::RenderWindow& target)
 {
 	// draw hitbox
-	combatComponent->render(target);
-	target.draw(this->shape);
-	target.draw(*this->animationComponent->getArmatureDisplay(), states);
+	//combatComponent->render(target);
+	target.draw(shape);
+	target.draw(*animationComponent->getArmatureDisplay(), states);
 }

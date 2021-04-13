@@ -29,7 +29,7 @@ void CombatComponent::initVariables()
 		shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
 		shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
 	);
-	aggroCircle.setRadius(500.0f);
+	aggroCircle.setRadius(300.0f);
 }
 
 void CombatComponent::updateCircle(sf::Vector2f direction)

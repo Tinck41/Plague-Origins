@@ -8,7 +8,7 @@ NPCDog::NPCDog(float x, float y) :
 	gFactory(GlobalFactory::Instance()), factory(gFactory.factory), gObjects(GameObjects::Instance())
 {
 	gObjects.registerObject(this, objects::enemies);
-	id = 2;
+	id = 3;
 	initVariables();
 	createHitbox(x, y);
 
@@ -82,7 +82,7 @@ void NPCDog::update(const float& dt)
 
 	//animation
 	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
-	animationComponent->updateFactory(dt);
+	//animationComponent->updateFactory(dt);
 
 }
 

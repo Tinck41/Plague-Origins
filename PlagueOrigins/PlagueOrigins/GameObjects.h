@@ -4,7 +4,7 @@ class Unit;
 
 enum objects
 {
-	player, enemies, obstacles
+	player, enemies, merchants, obstacles
 };
 
 class GameObjects
@@ -14,6 +14,7 @@ private:
 	std::list<Unit*> player;
 	std::list<Unit*> enemies;
 	std::list<Unit*> obstacles;
+	std::list<Unit*> merchants;
 	GameObjects();
 	~GameObjects();
 	GameObjects(const GameObjects& root) = delete;
@@ -24,9 +25,7 @@ public:
 	void dropObject(Unit* unit, objects e);
 	std::list<Unit*> getOverlapBounds(sf::CircleShape circle);
 	bool getPlayerAggro(sf::CircleShape circle);
-	Unit* getPlayer() { 
-		return player
-			.front();
-	}
+	bool getPlayerInteraction(sf::RectangleShape rect);
+	Unit* getPlayer() { return player.front(); }
 };
 
