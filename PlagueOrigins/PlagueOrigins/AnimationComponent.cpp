@@ -186,8 +186,8 @@ void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f n
 			{
 				this->armatureDisplay->getArmature()->~Armature();
 				delete armatureDisplay;
+				armatureDisplay = NULL;
 			}
-
 
 			this->playAnimation();
 		}
@@ -204,6 +204,7 @@ void AnimationComponent::setAnimation(animationName newAnimation)
 		{
 			this->armatureDisplay->getArmature()->~Armature();
 			delete armatureDisplay;
+			armatureDisplay = NULL;
 		}
 
 		this->playAnimation();
@@ -212,10 +213,15 @@ void AnimationComponent::setAnimation(animationName newAnimation)
 
 std::string AnimationComponent::setPostfix(std::string dir)
 {
-	if (dir == "U")
-		return dir;
-	if (dir == "R")
-		return dir;
-	if (dir == "D")
-		return dir;
+	if (prefix != "Bishop")
+	{
+		if (dir == "U")
+			return dir;
+		if (dir == "R")
+			return dir;
+		if (dir == "D")
+			return dir;
+	}
+	else
+		return "";
 }
