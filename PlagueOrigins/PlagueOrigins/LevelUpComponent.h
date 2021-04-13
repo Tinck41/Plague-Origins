@@ -12,10 +12,6 @@ private:
 	sf::RectangleShape& merchant;
 	Unit* player;
 
-	sf::Clock gameClock;
-	sf::Time delay;
-	sf::Time last;
-
 	//interaction hitbox
 	//TO-DO box2d
 	sf::RectangleShape interactionTrigger;

@@ -15,7 +15,7 @@ private:
 	//GlobalFactory gFactory;
 
 	Player player{ 615.f, 350.f };
-	//NPCDog npcDog{ 1500.f, 700.f };
+	NPCDog npcDog{ 1500.f, 700.f };
 	NPCBishop npcBishop{ 400.f, 650.f };
 
 	TileMapLoader mapLoader;
