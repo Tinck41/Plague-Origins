@@ -13,9 +13,12 @@ GameScreen::GameScreen()
 
 void GameScreen::update(const float& dt)
 {
-	player.update(dt);
-	npcDog.update(dt);
-	npcBishop.update(dt);
+	if (player.getActiveStatus())
+		player.update(dt);
+	if (npcDog.getActiveStatus())
+		npcDog.update(dt);
+	if (npcBishop.getActiveStatus())
+		npcBishop.update(dt);
 	map.update(player);
 	cameraComponent->update(player.getPosition());
 }
@@ -31,9 +34,12 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 	cameraComponent->setViewport(window);
 	map.renderUnderPlayerLayers(window);
 
-	npcBishop.render(window);
-	npcDog.render(window);
-	player.render(window);
+	if (npcBishop.getActiveStatus())
+		npcBishop.render(window);
+	if (npcDog.getActiveStatus())
+		npcDog.render(window);
+	if (player.getActiveStatus())
+		player.render(window);
 
 	map.renderOverPlayerLayers(window);
 	return ScreenType::GAME;

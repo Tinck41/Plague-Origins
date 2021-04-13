@@ -26,6 +26,7 @@ GameObjects& GameObjects::Instance()
 
 void GameObjects::registerObject(Unit* unit, objects e)
 {
+	unit->setActiveStatus(true);
 	switch (e)
 	{
 	case objects::player:
@@ -39,6 +40,39 @@ void GameObjects::registerObject(Unit* unit, objects e)
 		break;
 	case objects::obstacles:
 		obstacles.push_back(unit);
+		break;
+	default:
+		break;
+	}
+}
+
+Unit* GameObjects::getUnitById(int id, objects e)
+{
+	switch (e)
+	{
+	case objects::player:
+		return player.front();
+		break;
+	case objects::enemies:
+		for (auto& enemy : enemies)
+		{
+			if (enemy->getId() == id)
+				return enemy;
+		}
+		break;
+	case objects::merchants:
+		for (auto& merchant : merchants)
+		{
+			if (merchant->getId() == id)
+				return merchant;
+		}
+		break;
+	case objects::obstacles:
+		for (auto& obstacle : obstacles)
+		{
+			if (obstacle->getId() == id)
+				return obstacle;
+		}
 		break;
 	default:
 		break;
