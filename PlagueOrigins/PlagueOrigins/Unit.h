@@ -5,6 +5,7 @@
 #include "CombatComponent.h"
 #include "GlobalFactory.h"
 #include "GameObjects.h"
+#include "PlayerInventory.h"
 
 class Unit
 {
@@ -18,8 +19,12 @@ private:
 	void initVariables();
 	void spawnUnit();
 protected:
-	int essence;
+	bool active;
 
+	int id;
+	objects objectType;
+
+	PlayerInventory* inventory;
 	MovementComponent* movementComponent;
 	AnimationComponent* animationComponent;
 	ColliderComponent* colliderComponent;
@@ -28,7 +33,6 @@ public:
 	//Constructors/Destructors
 	Unit();
 	//virtual ~Unit() = 0;
-	int id;
 
 	virtual bool operator==(const Unit* other) const
 	{
@@ -39,15 +43,19 @@ public:
 	}
 
 	//Functions
-	void setEssenceValue(int value);
 	void createMovementComponent(sf::RectangleShape& shape, int speed);
 	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix);
 	void createColliderComponent(sf::RectangleShape& shape);
 	void createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage);
-
-	int getEssenceValue() { return essence; }
+	//Getters
 	virtual sf::RectangleShape getShape() { return shape; }
 	CombatComponent* getCombatComponent() { return combatComponent; }
+	PlayerInventory* getInventory() { return inventory; }
+	int getId() { return id; }
+	objects getObjectType() { return objectType; }
+
+	void setActiveStatus(bool flag) { active = flag; }
+	bool getActiveStatus() { return active; }
 
 	virtual void update(const float& dt);
 

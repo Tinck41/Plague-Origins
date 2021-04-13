@@ -2,9 +2,13 @@
 #include "CombatComponent.h"
 #include "Unit.h"
 
-CombatComponent::CombatComponent(sf::RectangleShape& shape, float hitpoints, float damage) :
+CombatComponent::CombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage) :
 	gObjects(GameObjects::Instance()), shape(shape)
 {
+	this->id = id;
+	this->objectType = objectType;
+	std::cout << "ID: " << id << "\n";
+	std::cout << "OBJ ID: " << objectType << "\n";
 	this->hitpoints = hitpoints;
 	this->damage = damage;
 	initVariables();
@@ -12,7 +16,6 @@ CombatComponent::CombatComponent(sf::RectangleShape& shape, float hitpoints, flo
 
 void CombatComponent::initVariables()
 {
-	srand(time(NULL));
 	aggro = false;
 
 	attackCircle.setPosition(
@@ -49,17 +52,17 @@ void CombatComponent::updateCircle(sf::Vector2f direction)
 
 void CombatComponent::receiveDamage(float damage)
 {
+	Unit* player = gObjects.getPlayer();
 	hitpoints -= damage;
 	//std::cout << "receive " << damage << " damage\n";
 	std::cout << "hp = " << hitpoints << "\n";
 	if (isDead())
 	{
-		Unit* player = gObjects.getPlayer();
-		int essence = player->getEssenceValue();
-		int value = essence + rand() % 100 + 23;
-		player->setEssenceValue(value);
+		//TO-DO add baseCost to enemy config
+		player->getInventory()->grantEssence(50);
 		std::cout << "dead\n";
-		std::cout << player->getEssenceValue() << "\n";
+		Unit* temp = gObjects.getUnitById(id, objectType);
+		gObjects.dropObject(temp, objectType);
 	}
 }
 

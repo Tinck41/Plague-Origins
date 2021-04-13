@@ -21,11 +21,6 @@ void Unit::initVariables()
 	//this->animationComponent = NULL;
 }
 
-void Unit::setEssenceValue(int value)
-{
-	essence = value;
-}
-
 void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
 {
 	//create movement component based on shape
@@ -39,7 +34,7 @@ void Unit::createColliderComponent(sf::RectangleShape& shape)
 
 void Unit::createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage)
 {
-	combatComponent = new CombatComponent(shape, hitpoints, damage);
+	combatComponent = new CombatComponent(shape, id, objectType, hitpoints, damage);
 }
 
 void Unit::update(const float& dt)

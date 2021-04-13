@@ -27,6 +27,9 @@ Player::Player(float x, float y) :
 	playerStateMachine->changeState(initState);
 	createHitbox(x, y);
 	createCombatComponent(shape, hitpoints, damage);
+
+	// inventory for essence
+	inventory = new PlayerInventory();
 }
 
 Player::~Player()
@@ -37,20 +40,16 @@ Player::~Player()
 void Player::createHitbox(float x, float y)
 {
 	shape.setPosition(x, y);
-	shape.setSize(sf::Vector2f(100.0f, 150.0f));
+	shape.setSize(sf::Vector2f(config.playerHitboxWidth, config.playerHitboxHeight));
 	shape.setFillColor(sf::Color::Red);
 }
 
 void Player::initVariables()
 {
-	essence = rand() % 50 + 20;
-	std::cout << essence << "\n";
-
-	hitpoints = 20;
-	damage = 5;
-
-	speed = 600;
-	scale = 0.2f;
+	hitpoints = config.playerHitpoints;
+	damage = config.playerDamage;
+	speed = config.playerSpeed;
+	scale = config.playerScale;
 
 	playerStateMachine = new FiniteStateMachine();
 	initState = new PlayerIdleState(*this);
