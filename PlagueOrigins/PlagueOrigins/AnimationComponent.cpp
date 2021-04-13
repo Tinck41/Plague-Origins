@@ -168,16 +168,29 @@ void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f n
 {
 	if (currentDirection != newDirection || currentAnimation != newAnimation)
 	{
-		this->currentDirection = newDirection;
-		this->currentAnimation = newAnimation;
-
-		if (this->armatureDisplay != nullptr)
+		/*
+			if 
+				start run in opposite direction by x 
+			or 
+				start run upwards-downwards
+			change animation
+			else 
+				don't
+		*/
+		if (currentDirection.x != newDirection.x || currentDirection.x == 0 && newDirection.x == 0)
 		{
-			this->armatureDisplay->getArmature()->~Armature();
-			delete armatureDisplay;
-		}
+			this->currentDirection = newDirection;
+			this->currentAnimation = newAnimation;
 
-		this->playAnimation();
+			if (this->armatureDisplay != nullptr)
+			{
+				this->armatureDisplay->getArmature()->~Armature();
+				delete armatureDisplay;
+			}
+
+
+			this->playAnimation();
+		}
 	}
 }
 
