@@ -60,7 +60,7 @@ void AnimationComponent::playMovementAnimation()
 		this->armatureDisplay->getArmature()->setFlipX(true);
 	}
 	//this->armatureDisplay->getAnimation()->play("Run");
-	this->armatureDisplay->getAnimation()->fadeIn("Run", 0.3f);
+	this->armatureDisplay->getAnimation()->fadeIn("Run", 0.3f, -1, 0, "hero", dragonBones::AnimationFadeOutMode::SameLayerAndGroup);
 }
 
 void AnimationComponent::playIdleAnimation()
@@ -87,7 +87,7 @@ void AnimationComponent::playIdleAnimation()
 		this->armatureDisplay->getArmature()->setFlipX(true);
 	}
 	//this->armatureDisplay->getAnimation()->play("Idle");
-	this->armatureDisplay->getAnimation()->fadeIn("Idle", .5f);
+	this->armatureDisplay->getAnimation()->fadeIn("Idle", .5f, -1, 0, "hero", dragonBones::AnimationFadeOutMode::SameLayerAndGroup);
 }
 
 void AnimationComponent::playAttackAnimation()
@@ -115,8 +115,8 @@ void AnimationComponent::playAttackAnimation()
 	}
 	if (prefix == "Hero")
 	{
-		this->armatureDisplay->getAnimation()->fadeIn("Attack", 0.2f, 1);
-		//this->armatureDisplay->getAnimation()->play("Attack", 1);
+		//this->armatureDisplay->getAnimation()->fadeIn("Attack", 0.2f, 1);
+		this->armatureDisplay->getAnimation()->play("Attack", 1);
 
 	}
 	else if (prefix == "Dog")
@@ -177,7 +177,7 @@ void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f n
 			else 
 				don't
 		*/
-		if (currentDirection.x != newDirection.x || currentDirection.x == 0 && newDirection.x == 0)
+		if (currentDirection.x != newDirection.x || currentDirection.x == 0 && newDirection.x == 0 || currentAnimation != newAnimation)
 		{
 			this->currentDirection = newDirection;
 			this->currentAnimation = newAnimation;
