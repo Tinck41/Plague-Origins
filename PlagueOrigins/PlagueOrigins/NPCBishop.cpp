@@ -26,7 +26,7 @@ NPCBishop::~NPCBishop()
 
 void NPCBishop::initVariables()
 {
-	scale = config.dogScale;
+	scale = config.bishopScale;
 	direction = { .0f, 1.0f };
 }
 
