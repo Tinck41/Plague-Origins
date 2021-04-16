@@ -7,6 +7,7 @@ GameObjects::GameObjects()
 	player = std::list<Unit*>();
 	enemies = std::list<Unit*>();
 	obstacles = std::list<Unit*>();
+	merchants = std::list<Unit*>();
 }
 
 GameObjects::~GameObjects()
@@ -14,6 +15,7 @@ GameObjects::~GameObjects()
 	player.clear();
 	enemies.clear();
 	obstacles.clear();
+	merchants.clear();
 }
 
 GameObjects& GameObjects::Instance()
@@ -24,6 +26,7 @@ GameObjects& GameObjects::Instance()
 
 void GameObjects::registerObject(Unit* unit, objects e)
 {
+	unit->setActiveStatus(true);
 	switch (e)
 	{
 	case objects::player:
@@ -32,8 +35,44 @@ void GameObjects::registerObject(Unit* unit, objects e)
 	case objects::enemies:
 		enemies.push_back(unit);
 		break;
+	case objects::merchants:
+		merchants.push_back(unit);
+		break;
 	case objects::obstacles:
 		obstacles.push_back(unit);
+		break;
+	default:
+		break;
+	}
+}
+
+Unit* GameObjects::getUnitById(int id, objects e)
+{
+	switch (e)
+	{
+	case objects::player:
+		return player.front();
+		break;
+	case objects::enemies:
+		for (auto& enemy : enemies)
+		{
+			if (enemy->getId() == id)
+				return enemy;
+		}
+		break;
+	case objects::merchants:
+		for (auto& merchant : merchants)
+		{
+			if (merchant->getId() == id)
+				return merchant;
+		}
+		break;
+	case objects::obstacles:
+		for (auto& obstacle : obstacles)
+		{
+			if (obstacle->getId() == id)
+				return obstacle;
+		}
 		break;
 	default:
 		break;
@@ -49,6 +88,9 @@ void GameObjects::dropObject(Unit* unit, objects e)
 		break;
 	case objects::enemies:
 		enemies.remove(unit);
+		break;
+	case objects::merchants:
+		merchants.remove(unit);
 		break;
 	case objects::obstacles:
 		obstacles.remove(unit);
@@ -77,4 +119,9 @@ std::list<Unit*> GameObjects::getOverlapBounds(sf::CircleShape circle)
 bool GameObjects::getPlayerAggro(sf::CircleShape circle)
 {
 	return circle.getGlobalBounds().intersects(player.front()->getShape().getGlobalBounds());
+}
+
+bool GameObjects::getPlayerInteraction(sf::RectangleShape rect)
+{
+	return rect.getGlobalBounds().intersects(player.front()->getShape().getGlobalBounds());
 }

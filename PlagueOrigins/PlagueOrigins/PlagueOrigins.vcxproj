@@ -154,6 +154,8 @@
     <ClCompile Include="CombatComponent.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
+    <ClCompile Include="LevelUpComponent.cpp" />
+    <ClCompile Include="NPCBishop.cpp" />
     <ClCompile Include="NPCDogAggroState.cpp" />
     <ClCompile Include="NPCDog.cpp" />
     <ClCompile Include="NPCDogAttackState.cpp" />
@@ -181,7 +183,9 @@
     <ClCompile Include="MovementComponent.cpp" />
     <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerInventory.cpp" />
     <ClCompile Include="PlayerMoveState.cpp" />
+    <ClCompile Include="PlayerCharacteristics.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenHandler.cpp" />
     <ClCompile Include="Unit.cpp" />
@@ -205,6 +209,8 @@
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GlobalFactory.h" />
+    <ClInclude Include="LevelUpComponent.h" />
+    <ClInclude Include="NPCBishop.h" />
     <ClInclude Include="NPCDogAggroState.h" />
     <ClInclude Include="NPCDogDeathState.h" />
     <ClInclude Include="NPCDogStates.h" />
@@ -235,11 +241,13 @@
     <ClInclude Include="InputBooleans.h" />
     <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="PlayerInventory.h" />
     <ClInclude Include="PlayerMoveState.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStates.h" />
+    <ClInclude Include="PlayerCharacteristics.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenHandler.h" />
     <ClInclude Include="State.h" />

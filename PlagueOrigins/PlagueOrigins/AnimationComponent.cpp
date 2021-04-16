@@ -59,8 +59,8 @@ void AnimationComponent::playMovementAnimation()
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
 		this->armatureDisplay->getArmature()->setFlipX(true);
 	}
-	this->armatureDisplay->getAnimation()->play("Run");
-	//this->armatureDisplay->getAnimation()->fadeIn("Run", 1.f);
+	//this->armatureDisplay->getAnimation()->play("Run");
+	this->armatureDisplay->getAnimation()->fadeIn("Run", 0.3f, -1, 0, "hero", dragonBones::AnimationFadeOutMode::SameLayerAndGroup);
 }
 
 void AnimationComponent::playIdleAnimation()
@@ -86,8 +86,8 @@ void AnimationComponent::playIdleAnimation()
 		this->armatureDisplay = new dragonBones::SFMLArmatureDisplay(this->armatureName + this->postfix);
 		this->armatureDisplay->getArmature()->setFlipX(true);
 	}
-	this->armatureDisplay->getAnimation()->play("Idle");
-	//this->armatureDisplay->getAnimation()->fadeIn("Idle", 1.f);
+	//this->armatureDisplay->getAnimation()->play("Idle");
+	this->armatureDisplay->getAnimation()->fadeIn("Idle", .5f, -1, 0, "hero", dragonBones::AnimationFadeOutMode::SameLayerAndGroup);
 }
 
 void AnimationComponent::playAttackAnimation()
@@ -114,10 +114,15 @@ void AnimationComponent::playAttackAnimation()
 		this->armatureDisplay->getArmature()->setFlipX(true);
 	}
 	if (prefix == "Hero")
+	{
+		//this->armatureDisplay->getAnimation()->fadeIn("Attack", 0.2f, 1);
 		this->armatureDisplay->getAnimation()->play("Attack", 1);
+
+	}
 	else if (prefix == "Dog")
+	{
 		this->armatureDisplay->getAnimation()->play("Attack0", 1);
-	//this->armatureDisplay->getAnimation()->fadeIn("Attack", 1.f, 1);
+	}
 }
 
 void AnimationComponent::playDeathAnimation()
@@ -163,16 +168,29 @@ void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f n
 {
 	if (currentDirection != newDirection || currentAnimation != newAnimation)
 	{
-		this->currentDirection = newDirection;
-		this->currentAnimation = newAnimation;
-
-		if (this->armatureDisplay != nullptr)
+		/*
+			if 
+				start run in opposite direction by x 
+			or 
+				start run upwards-downwards
+			change animation
+			else 
+				don't
+		*/
+		if (currentDirection.x != newDirection.x || currentDirection.x == 0 && newDirection.x == 0 || currentAnimation != newAnimation)
 		{
-			this->armatureDisplay->getArmature()->~Armature();
-			delete armatureDisplay;
-		}
+			this->currentDirection = newDirection;
+			this->currentAnimation = newAnimation;
 
-		this->playAnimation();
+			if (this->armatureDisplay != nullptr)
+			{
+				this->armatureDisplay->getArmature()->~Armature();
+				delete armatureDisplay;
+				armatureDisplay = NULL;
+			}
+
+			this->playAnimation();
+		}
 	}
 }
 
@@ -186,6 +204,7 @@ void AnimationComponent::setAnimation(animationName newAnimation)
 		{
 			this->armatureDisplay->getArmature()->~Armature();
 			delete armatureDisplay;
+			armatureDisplay = NULL;
 		}
 
 		this->playAnimation();
@@ -194,10 +213,15 @@ void AnimationComponent::setAnimation(animationName newAnimation)
 
 std::string AnimationComponent::setPostfix(std::string dir)
 {
-	if (dir == "U")
-		return dir;
-	if (dir == "R")
-		return dir;
-	if (dir == "D")
-		return dir;
+	if (prefix != "Bishop")
+	{
+		if (dir == "U")
+			return dir;
+		if (dir == "R")
+			return dir;
+		if (dir == "D")
+			return dir;
+	}
+	else
+		return "";
 }

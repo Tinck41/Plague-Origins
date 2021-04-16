@@ -9,3 +9,13 @@ enum animationName
 	ATTACK,
 	DIE
 };
+
+enum charName
+{
+	VIT,
+	END,
+	STR,
+	AGI,
+	INT,
+	HUM
+};

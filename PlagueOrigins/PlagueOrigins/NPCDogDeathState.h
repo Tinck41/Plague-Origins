@@ -9,6 +9,12 @@ class NPCDogDeathState :
 private:
 	FiniteStateMachine* stateMachine;
 	NPCDog& owner;
+
+	sf::Clock gameClock;
+	sf::Time delay;
+	sf::Time now;
+	sf::Time last;
+
 public:
 	NPCDogDeathState(NPCDog& owner);
 	~NPCDogDeathState();

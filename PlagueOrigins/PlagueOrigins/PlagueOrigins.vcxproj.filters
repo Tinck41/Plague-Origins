@@ -110,7 +110,6 @@
     <ClCompile Include="NPCDog.cpp">
       <Filter>NPCDog</Filter>
     </ClCompile>
-    <ClCompile Include="Patrol.cpp" />
     <ClCompile Include="NPCDogDeathState.cpp">
       <Filter>States\NPCDogStates</Filter>
     </ClCompile>
@@ -125,6 +124,21 @@
     </ClCompile>
     <ClCompile Include="PhysicsContactListener.cpp">
       <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelUpComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCharacteristics.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Patrol.cpp">
+      <Filter>NPCDog</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCBishop.cpp">
+      <Filter>NPCBIshop</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInventory.cpp">
+      <Filter>Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -263,7 +277,6 @@
     <ClInclude Include="NPCDog.h">
       <Filter>NPCDog</Filter>
     </ClInclude>
-    <ClInclude Include="Patrol.h" />
     <ClInclude Include="NPCDogStates.h">
       <Filter>States\NPCDogStates</Filter>
     </ClInclude>
@@ -281,6 +294,21 @@
     </ClInclude>
     <ClInclude Include="PhysicsContactListener.h">
       <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelUpComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCharacteristics.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Patrol.h">
+      <Filter>NPCDog</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCBishop.h">
+      <Filter>NPCBIshop</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInventory.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -328,6 +356,9 @@
     </Filter>
     <Filter Include="Physics">
       <UniqueIdentifier>{7b635f11-b072-4158-971e-0307598c135c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NPCBIshop">
+      <UniqueIdentifier>{adb6728c-5b83-4db2-8456-51f34a534548}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

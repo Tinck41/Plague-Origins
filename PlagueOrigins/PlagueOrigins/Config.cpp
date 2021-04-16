@@ -35,4 +35,8 @@ Config::Config()
 	dogDamage = json["dog"]["damage"];
 	dogHitboxWidth = json["dog"]["hitbox"]["width"];
 	dogHitboxHeight = json["dog"]["hitbox"]["height"];
+
+	bishopScale = json["bishop"]["scale"];
+	bishopHitboxWidth = json["bishop"]["hitbox"]["width"];
+	bishopHitboxHeight = json["bishop"]["hitbox"]["height"];
 }

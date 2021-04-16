@@ -7,8 +7,9 @@
 NPCDog::NPCDog(float x, float y) : 
 	gFactory(GlobalFactory::Instance()), factory(gFactory.factory), gObjects(GameObjects::Instance())
 {
-	gObjects.registerObject(this, objects::enemies);
-	id = 2;
+	id = 3;
+	objectType = objects::enemies;
+	gObjects.registerObject(this, objectType);
 	initVariables();
 	createHitbox(x, y);
 
@@ -91,7 +92,7 @@ void NPCDog::update(const float& dt)
 
 void NPCDog::render(sf::RenderWindow& target)
 {
-	combatComponent->render(target);
+	//combatComponent->render(target);
 	target.draw(shape);
 	target.draw(*animationComponent->getArmatureDisplay(), states);
 }

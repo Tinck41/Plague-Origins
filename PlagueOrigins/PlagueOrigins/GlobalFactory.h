@@ -7,6 +7,7 @@ public:
 private:
 	sf::Texture heroAnim;
 	sf::Texture dogAnim;
+	sf::Texture bishopAnim;
 	
 	GlobalFactory();
 	GlobalFactory(const GlobalFactory& root) = delete;

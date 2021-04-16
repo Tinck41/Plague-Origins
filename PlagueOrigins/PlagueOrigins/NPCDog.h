@@ -12,6 +12,7 @@ class NPCDogDeathState;
 class NPCDog :
 	public Unit
 {
+private:
 	//Variables
 	sf::RenderStates states;
 	int speed;
