@@ -29,6 +29,7 @@ void NPCDogDeathState::update(const float& dt)
 	if (now - last >= delay)
 	{
 		owner.setActiveStatus(false);
+		owner.getCollider()->~ColliderComponent();
 	}
 }
 

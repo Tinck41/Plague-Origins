@@ -8,7 +8,7 @@
         "height": 600
     },
     "player": {
-        "speed": 600,
+        "speed": 900,
         "scale": 0.2,
         "hitpoints": 400,
         "damage": 20,
