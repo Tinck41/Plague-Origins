@@ -17,12 +17,12 @@ NPCDog::NPCDog(float x, float y) :
 
 	// create components
 	createColliderComponent(body, shape.getSize());
-	createMovementComponent(body, this->speed);
+	createMovementComponent(body, speed);
 	createCombatComponent(shape, hitpoints, damage);
-	createAnimationComponent(this->shape, this->factory, "Dog");
+	createAnimationComponent(shape, factory, "Dog");
 		animationComponent->initArmature(sf::Vector2f(x, y));
-		this->states.transform.scale(scale, scale);
-		this->animationComponent->setAnimation(animationName::MOVE);
+		states.transform.scale(scale, scale);
+		animationComponent->setAnimation(animationName::MOVE);
 
 	
 	patrolComponent = new Patrol(shape, waypoints);
@@ -85,9 +85,10 @@ void NPCDog::update(const float& dt)
 	shape.setPosition(colliderComponent->getPosition());
 
 	//animation
-	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + shape.getSize().x / 2), (1 / scale) * (shape.getPosition().y + shape.getSize().y / 2)));
-	animationComponent->updateFactory(dt);
-
+	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f(
+		(1 / scale) * (shape.getPosition().x + shape.getSize().x / 2),
+		(1 / scale) * (shape.getPosition().y + shape.getSize().y / 2))
+	);
 }
 
 void NPCDog::render(sf::RenderWindow& target)

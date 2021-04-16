@@ -70,10 +70,11 @@ void Player::update(const float& dt)
 	shape.setPosition(colliderComponent->getPosition());
 
 	// Animation things
-	//this->armatureDisplay = this->animationComponent->getArmatureDisplay();
-	this->animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + shape.getSize().x / 2),(1 / scale) * (shape.getPosition().y + shape.getSize().y / 2)));
-	this->animationComponent->updateFactory(dt);
-	//GlobalFactory::zf->update(dt);
+	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f(
+		(1 / scale) * (shape.getPosition().x + shape.getSize().x / 2),
+		(1 / scale) * (shape.getPosition().y + shape.getSize().y / 2))
+	);
+	animationComponent->updateFactory(dt);
 }
 	
 void Player::render(sf::RenderWindow& target)

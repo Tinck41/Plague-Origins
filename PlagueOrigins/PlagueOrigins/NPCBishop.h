@@ -32,7 +32,7 @@ public:
 	//Getters
 	sf::RectangleShape getShape() override { return shape; }
 	sf::Vector2f getPosition() { return shape.getPosition(); }
-	ColliderComponent getCollider() { return ColliderComponent(shape); }
+	ColliderComponent* getCollider() { return colliderComponent; }
 	AnimationComponent* getAnimator() { return animationComponent; }
 	MovementComponent* getMover() { return movementComponent; }
 };
