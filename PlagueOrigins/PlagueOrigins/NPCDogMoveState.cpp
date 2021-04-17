@@ -46,4 +46,5 @@ void NPCDogMoveState::update(const float& dt)
 
 void NPCDogMoveState::exit()
 {
+	std::cout << "Dog EXIT move state\n";
 }

@@ -186,7 +186,7 @@ void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f n
 			{
 				this->armatureDisplay->getArmature()->~Armature();
 				delete armatureDisplay;
-				armatureDisplay = NULL;
+				//armatureDisplay = NULL;
 			}
 
 			this->playAnimation();
@@ -204,7 +204,7 @@ void AnimationComponent::setAnimation(animationName newAnimation)
 		{
 			this->armatureDisplay->getArmature()->~Armature();
 			delete armatureDisplay;
-			armatureDisplay = NULL;
+			//armatureDisplay = NULL;
 		}
 
 		this->playAnimation();

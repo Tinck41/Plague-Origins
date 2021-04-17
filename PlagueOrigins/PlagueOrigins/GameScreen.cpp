@@ -22,6 +22,8 @@ void GameScreen::update(const float& dt)
 	map.update(dt);
 	cameraComponent->update(player.getPosition());
 	PhysicsWorld::update(dt);
+
+	gObject.deleteInactive();
 }
 
 ScreenType GameScreen::render(sf::RenderWindow& window)

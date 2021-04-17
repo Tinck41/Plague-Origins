@@ -32,22 +32,24 @@ void CombatComponent::initVariables()
 		shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
 		shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
 	);
-	aggroCircle.setRadius(300.0f);
+	aggroCircle.setRadius(600.0f);
 }
 
 void CombatComponent::updateCircle(sf::Vector2f direction)
 {
-	attackCircle.setPosition(
-		shape.getPosition().x + shape.getSize().x / 2 - attackCircle.getRadius()
-		+ shape.getSize().x / 2 * direction.x,
-		shape.getPosition().y + shape.getSize().y / 2 - attackCircle.getRadius()
-		+ shape.getSize().x / 2 * direction.y
-	);
-	aggroCircle.setPosition(
-		shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
-		shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
-	);
-
+	if (direction != sf::Vector2f(0.f, 0.f))
+	{
+		attackCircle.setPosition(
+			shape.getPosition().x + shape.getSize().x / 2 - attackCircle.getRadius()
+			+ shape.getSize().x / 2 * direction.x,
+			shape.getPosition().y + shape.getSize().y / 2 - attackCircle.getRadius()
+			+ shape.getSize().x / 2 * direction.y
+		);
+		aggroCircle.setPosition(
+			shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
+			shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
+		);
+	}
 }
 
 void CombatComponent::receiveDamage(float damage)
@@ -61,8 +63,9 @@ void CombatComponent::receiveDamage(float damage)
 		//TO-DO add baseCost to enemy config
 		player->getInventory()->grantEssence(50);
 		std::cout << "dead\n";
-		Unit* temp = gObjects.getUnitById(id, objectType);
-		gObjects.dropObject(temp, objectType);
+		
+		//Unit* temp = gObjects.getUnitById(id, objectType);
+		//gObjects.dropObject(temp, objectType);
 	}
 }
 

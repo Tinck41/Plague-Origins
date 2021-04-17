@@ -11,12 +11,13 @@ private:
 	int N;
 
 public:
+	bool aggro;
 	Patrol(sf::RectangleShape& shape, std::vector<sf::Vector2f> waypoints);
 
 	void update();
 
-	sf::Vector2f patrolRoute(sf::Vector2f dest);
-	sf::Vector2f directRoute(sf::Vector2f dest);
+	void patrolRoute(sf::Vector2f dest);
+	void directRoute(sf::Vector2f dest);
 	sf::Vector2f getDirection() { return direction; }
 };
 

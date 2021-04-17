@@ -16,23 +16,30 @@ NPCDogDeathState::~NPCDogDeathState()
 
 void NPCDogDeathState::enter()
 {
-	std::cout << owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted() << "\n";
-	this->owner.getAnimator()->setAnimation(animationName::DIE);
+	if (owner.getActiveStatus())
+	{
+		std::cout << "Dog death state\n";
+		owner.getAnimator()->setAnimation(animationName::DIE);
 
-	//Timer
-	last = gameClock.getElapsedTime();
+		//Timer
+		last = gameClock.getElapsedTime();
+	}
 }
 
 void NPCDogDeathState::update(const float& dt)
 {
-	now = gameClock.getElapsedTime();
-	if (now - last >= delay)
+	if (owner.getActiveStatus())
 	{
-		owner.setActiveStatus(false);
-		owner.getCollider()->~ColliderComponent();
+		now = gameClock.getElapsedTime();
+		if (now - last >= delay)
+		{
+			owner.setActiveStatus(false);
+			exit();
+		}
 	}
 }
 
 void NPCDogDeathState::exit()
 {
+	std::cout << "Dog EXIT death state\n";
 }

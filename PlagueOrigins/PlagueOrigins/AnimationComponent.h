@@ -46,6 +46,6 @@ public:
 	// Getters
 	dragonBones::SFMLArmatureDisplay* getArmatureDisplay() 
 	{ 
-		return this->armatureDisplay; 
+		return armatureDisplay; 
 	}
 };

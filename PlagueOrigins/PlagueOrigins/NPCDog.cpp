@@ -13,7 +13,7 @@ NPCDog::NPCDog(float x, float y) :
 	initVariables();
 	createHitbox(x, y);
 
-	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, ENEMY_NPC, PLAYER | FRIENDLY_NPC | OBSTACLE);
+	body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, ENEMY_NPC, PLAYER | FRIENDLY_NPC | OBSTACLE);
 
 	// create components
 	createColliderComponent(body, shape.getSize());
@@ -65,7 +65,7 @@ void NPCDog::initVariables()
 	direction = { .0f, .0f };
 	fillWaypoints();
 	npcDogStateMachine = new FiniteStateMachine();
-	this->initState = new NPCDogIdleState(*this);
+	initState = new NPCDogIdleState(*this);
 }
 
 void NPCDog::createHitbox(float x, float y)
@@ -77,10 +77,15 @@ void NPCDog::createHitbox(float x, float y)
 
 void NPCDog::update(const float& dt)
 {
+	//std::cout << "Dog update\n";
+	
 	//update utility
 	patrolComponent->update();
-	combatComponent->update(direction, dt);
+
+	//combatComponent->update(direction, dt);
 	npcDogStateMachine->executeStateUpdate(dt);
+
+	combatComponent->update(patrolComponent->getDirection(), dt);
 	
 	shape.setPosition(colliderComponent->getPosition());
 
@@ -93,7 +98,8 @@ void NPCDog::update(const float& dt)
 
 void NPCDog::render(sf::RenderWindow& target)
 {
-	//combatComponent->render(target);
+	//std::cout << "Dog render\n";
+	combatComponent->render(target);
 	target.draw(shape);
 	target.draw(*animationComponent->getArmatureDisplay(), states);
 }

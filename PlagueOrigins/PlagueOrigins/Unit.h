@@ -24,6 +24,8 @@ protected:
 	int id;
 	objects objectType;
 
+	b2Body* body;
+
 	PlayerInventory* inventory;
 	MovementComponent* movementComponent;
 	AnimationComponent* animationComponent;

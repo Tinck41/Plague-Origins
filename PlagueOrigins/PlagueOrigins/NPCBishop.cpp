@@ -10,7 +10,7 @@ NPCBishop::NPCBishop(float x, float y) :
 	initVariables();
 	createHitbox(x, y);
 
-	b2Body* body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), false, ENEMY_NPC, PLAYER | FRIENDLY_NPC | OBSTACLE);
+	body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), false, ENEMY_NPC, PLAYER | FRIENDLY_NPC | OBSTACLE);
 
 	// create components
 	createColliderComponent(body, shape.getSize());

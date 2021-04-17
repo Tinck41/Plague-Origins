@@ -8,11 +8,14 @@
 #include "NPCBishop.h"
 #include "CameraComponent.h"
 
+#include "GameObjects.h"
+
 class GameScreen :
     public Screen
 {
 private:
 	//GlobalFactory gFactory;
+	GameObjects& gObject = GameObjects::Instance();
 
 	Player player{ 615.f, 350.f };
 	NPCDog npcDog{ 1500.f, 700.f };

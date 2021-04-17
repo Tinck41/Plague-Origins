@@ -19,7 +19,6 @@ private:
 	float hitpoints;
 	float damage;
 
-	void updateCircle(sf::Vector2f direction);
 	void initVariables();
 public:
 	CombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage);
@@ -27,6 +26,7 @@ public:
 	void attackNPC();
 	void attackPlayer();
 
+	void updateCircle(sf::Vector2f direction);
 	void update(sf::Vector2f direction, const float& dt);
 	void render(sf::RenderWindow& target);
 
