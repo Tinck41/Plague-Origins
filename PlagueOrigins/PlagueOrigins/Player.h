@@ -53,12 +53,13 @@ public:
 
 	// Getters
 	sf::RectangleShape getShape() override { return shape; } 
-	sf::Vector2f getPosition() { return this->shape.getPosition(); }
-	ColliderComponent getCollider() { return ColliderComponent(this->shape); }
-	DirectionFinder getInput() { return this->directionFinder; }
-	AnimationComponent* getAnimator() { return this->animationComponent; }
-	MovementComponent* getMover() { return this->movementComponent; }
-	FiniteStateMachine* getStateMachine() { return this->playerStateMachine; }
+	sf::Vector2f getPosition() { return shape.getPosition(); }
+	ColliderComponent getCollider() { return ColliderComponent(shape); }
+	DirectionFinder getInput() { return directionFinder; }
+	AnimationComponent* getAnimator() { return animationComponent; }
+	MovementComponent* getMover() { return movementComponent; }
+	FiniteStateMachine* getStateMachine() { return playerStateMachine; }
+	float getHP() { return hitpoints; }
 
 	// Setters
 	//void setArmature(dragonBones::SFMLArmatureDisplay* armatureDisplay) { this->armatureDisplay = armatureDisplay; }

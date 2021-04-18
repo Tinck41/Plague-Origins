@@ -6,5 +6,16 @@ enum animationName
 	IDLE,
 	MOVE,
 	DASH,
-	ATTACK
+	ATTACK,
+	DIE
+};
+
+enum charName
+{
+	VIT,
+	END,
+	STR,
+	AGI,
+	INT,
+	HUM
 };

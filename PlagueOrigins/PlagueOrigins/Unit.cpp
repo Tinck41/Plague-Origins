@@ -34,7 +34,7 @@ void Unit::createColliderComponent(sf::RectangleShape& shape)
 
 void Unit::createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage)
 {
-	combatComponent = new CombatComponent(shape, hitpoints, damage);
+	combatComponent = new CombatComponent(shape, id, objectType, hitpoints, damage);
 }
 
 void Unit::update(const float& dt)

@@ -30,6 +30,10 @@ void PlayerIdleState::update(const float& dt)
 	{
 		this->stateMachine->changeState(new PlayerMoveState(this->owner));
 	}
+	else if (owner.getCombatComponent()->isDead())
+	{
+		owner.getStateMachine()->changeState(new PlayerDeathState(owner));
+	}
 	else
 	{
 		this->owner.getAnimator()->setAnimation(animationName::IDLE);
