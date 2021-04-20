@@ -83,8 +83,9 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -98,8 +99,9 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -135,7 +137,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
@@ -153,6 +155,7 @@
     <ClCompile Include="ClosedState.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CombatComponent.cpp" />
+    <ClCompile Include="Src\Screen\Entity.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
     <ClCompile Include="InventoryComponent.cpp" />
@@ -177,20 +180,23 @@
     <ClCompile Include="dragonBones\SFMLFactory.cpp" />
     <ClCompile Include="dragonBones\SFMLSlot.cpp" />
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="Src\Core\Game.cpp" />
+    <ClCompile Include="Src\Screen\GameScreen.cpp" />
     <ClCompile Include="InputBooleans.cpp" />
     <ClCompile Include="DirectionFinder.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MainMenuScreen.cpp" />
+    <ClCompile Include="notMain.cpp" />
+    <ClCompile Include="Src\Screen\MainMenuScreen.cpp" />
     <ClCompile Include="MovementComponent.cpp" />
-    <ClCompile Include="PauseScreen.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInventory.cpp" />
     <ClCompile Include="PlayerMoveState.cpp" />
     <ClCompile Include="PlayerCharacteristics.cpp" />
-    <ClCompile Include="Screen.cpp" />
-    <ClCompile Include="ScreenHandler.cpp" />
+    <ClCompile Include="Src\Screen\Screen.cpp" />
+    <ClCompile Include="Src\Screen\ScreenHandler.cpp" />
+    <ClCompile Include="Src\Core\Main.cpp" />
+    <ClCompile Include="Src\Tilemap\AnimatedTile.cpp" />
+    <ClCompile Include="Src\Tilemap\StaticTile.cpp" />
+    <ClCompile Include="Src\Tilemap\Tile.cpp" />
     <ClCompile Include="UnfoldedState.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -211,6 +217,7 @@
     <ClInclude Include="ClosedState.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="CombatComponent.h" />
+    <ClInclude Include="Src\Screen\Entity.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GlobalFactory.h" />
@@ -244,20 +251,22 @@
     <ClInclude Include="dragonBones\SFMLSlot.h" />
     <ClInclude Include="dragonBones\SFMLTextureAtlasData.h" />
     <ClInclude Include="dragonBones\SFMLTextureData.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="Src\Core\Game.h" />
+    <ClInclude Include="Src\Screen\GameScreen.h" />
     <ClInclude Include="InputBooleans.h" />
     <ClInclude Include="DirectionFinder.h" />
-    <ClInclude Include="MainMenuScreen.h" />
+    <ClInclude Include="Src\Screen\MainMenuScreen.h" />
     <ClInclude Include="PlayerInventory.h" />
     <ClInclude Include="PlayerMoveState.h" />
     <ClInclude Include="MovementComponent.h" />
-    <ClInclude Include="PauseScreen.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStates.h" />
     <ClInclude Include="PlayerCharacteristics.h" />
-    <ClInclude Include="Screen.h" />
-    <ClInclude Include="ScreenHandler.h" />
+    <ClInclude Include="Src\Screen\Screen.h" />
+    <ClInclude Include="Src\Screen\ScreenHandler.h" />
+    <ClInclude Include="Src\Tilemap\AnimatedTile.h" />
+    <ClInclude Include="Src\Tilemap\StaticTile.h" />
+    <ClInclude Include="Src\Tilemap\Tile.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="UnfoldedState.h" />

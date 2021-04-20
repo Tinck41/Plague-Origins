@@ -25,6 +25,8 @@
 #include <new>      // placement new
 #include <limits>
 
+#pragma warning(disable : 4996)
+
 RAPIDJSON_DIAG_PUSH
 #ifdef _MSC_VER
 RAPIDJSON_DIAG_OFF(4127) // conditional expression is constant

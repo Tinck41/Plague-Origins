@@ -24,7 +24,7 @@ void TileLayer::load()
 		for (unsigned int j = 0; j < this->size.y; ++j)
 		{
 			// get the current tile number
-			int tileNumber = this->layer[i + j * this->size.x];
+			int tileNumber = layer[i + j * this->size.x].getTileId();
 
 			// find its position in the tileset texture
 			int tu = tileNumber % (this->tileset.getSize().x / this->tileSize.x);
@@ -48,7 +48,7 @@ void TileLayer::load()
 	}
 }
 
-TileLayer::TileLayer(const char* name, std::vector<unsigned> layer, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset)
+TileLayer::TileLayer(const char* name, std::vector<Tile> layer, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset)
 {
 	this->name = name;
 	this->layer = layer;

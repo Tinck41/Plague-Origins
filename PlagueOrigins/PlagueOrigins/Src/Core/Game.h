@@ -1,15 +1,17 @@
 #pragma once
 
-#include "ScreenHandler.h"
+#include "Src/Screen/ScreenHandler.h"
+#include "InputBooleans.h"
 
 class Game
 {
 private:
 	ScreenHandler* screenHandler;
-	sf::RenderWindow* window;
 	InputBooleans inputBooleans;
 
+	sf::RenderWindow* window;
 	sf::Clock deltaTimeClock;
+
 	float deltaTime;
 
 	void setup();
