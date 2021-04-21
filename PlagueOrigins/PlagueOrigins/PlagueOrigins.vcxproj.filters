@@ -332,6 +332,12 @@
     <ClInclude Include="Src\Screen\Entity.h" />
     <ClInclude Include="Src\Tilemap\Tile.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />
+    <ClInclude Include="Src\ECS\Components\Rigidbody.h" />
+    <ClInclude Include="Src\ECS\Components\Controller.h" />
+    <ClInclude Include="Src\ECS\Components\Animator.h" />
+    <ClInclude Include="Src\ECS\Systems\Physics.h" />
+    <ClInclude Include="Src\ECS\Systems\Animation.h" />
+    <ClInclude Include="Src\ECS\Systems\Input.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
