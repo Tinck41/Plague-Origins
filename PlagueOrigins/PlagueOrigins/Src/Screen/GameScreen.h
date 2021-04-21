@@ -2,8 +2,8 @@
 
 #include "Screen.h"
 #include "Player.h"
-#include "TileMap.h"
-#include "TileMapLoader.h"
+#include "Src/Tilemap/TileMap.h"
+#include "Src/Tilemap/TilemapParser.h"
 #include "NPCDog.h"
 #include "NPCBishop.h"
 #include "CameraComponent.h"
@@ -19,7 +19,7 @@ private:
 	NPCDog npcDog{ 1500.f, 700.f };
 	NPCBishop npcBishop{ 400.f, 650.f };
 
-	TileMapLoader mapLoader;
+	TilemapParser mapLoader;
 	TileMap map;
 
 	CameraComponent* cameraComponent;

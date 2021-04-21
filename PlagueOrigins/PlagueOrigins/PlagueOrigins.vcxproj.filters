@@ -27,10 +27,10 @@
     <ClCompile Include="TileMapLoader.cpp">
       <Filter>Tilemap</Filter>
     </ClCompile>
-    <ClCompile Include="TileMap.cpp">
+    <ClCompile Include="Src\Tilemap\TileMap.cpp">
       <Filter>Tilemap</Filter>
     </ClCompile>
-    <ClCompile Include="TileLayer.cpp">
+    <ClCompile Include="Src\Tilemap\TileLayer.cpp">
       <Filter>Tilemap</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
@@ -49,9 +49,6 @@
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="Config.cpp" />
-    <ClCompile Include="PauseScreen.cpp">
-      <Filter>Screens</Filter>
-    </ClCompile>
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
@@ -152,8 +149,7 @@
     <ClCompile Include="Src\Core\Main.cpp" />
     <ClCompile Include="Src\Screen\Entity.cpp" />
     <ClCompile Include="Src\Tilemap\Tile.cpp" />
-    <ClCompile Include="Src\Tilemap\AnimatedTile.cpp" />
-    <ClCompile Include="Src\Tilemap\StaticTile.cpp" />
+    <ClCompile Include="Src\Tilemap\TilemapParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -181,10 +177,10 @@
     <ClInclude Include="TileMapLoader.h">
       <Filter>Tilemap</Filter>
     </ClInclude>
-    <ClInclude Include="TileMap.h">
+    <ClInclude Include="Src\Tilemap\TileMap.h">
       <Filter>Tilemap</Filter>
     </ClInclude>
-    <ClInclude Include="TileLayer.h">
+    <ClInclude Include="Src\Tilemap\TileLayer.h">
       <Filter>Tilemap</Filter>
     </ClInclude>
     <ClInclude Include="Unit.h">
@@ -203,9 +199,6 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Config.h" />
-    <ClInclude Include="PauseScreen.h">
-      <Filter>Screens</Filter>
-    </ClInclude>
     <ClInclude Include="dragonBones\SFMLArmatureDisplay.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
@@ -338,8 +331,7 @@
     </ClInclude>
     <ClInclude Include="Src\Screen\Entity.h" />
     <ClInclude Include="Src\Tilemap\Tile.h" />
-    <ClInclude Include="Src\Tilemap\StaticTile.h" />
-    <ClInclude Include="Src\Tilemap\AnimatedTile.h" />
+    <ClInclude Include="Src\Tilemap\TilemapParser.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

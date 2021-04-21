@@ -1,5 +1,6 @@
 #pragma once
 
+#include <typeinfo>
 #include <algorithm>
 #include <deque>
 #include <iostream>

@@ -3,7 +3,7 @@
 
 GameScreen::GameScreen()
 {
-	if (mapLoader.load("./Assets/Map/map.tmx"))
+	if (mapLoader.loadTileMap("./Assets/Map/map.tmx"))
 	{
 		map = mapLoader.getTileMap();
 	}
@@ -26,7 +26,7 @@ void GameScreen::update(const float& dt)
 		npcDog.update(dt);
 	if (npcBishop.getActiveStatus())
 		npcBishop.update(dt);
-	map.update(player);
+	map.update(dt);
 	cameraComponent->update(player.getPosition());
 	inventoryComponent->update(dt, cameraComponent->getPosition());
 }

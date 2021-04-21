@@ -194,9 +194,8 @@
     <ClCompile Include="Src\Screen\Screen.cpp" />
     <ClCompile Include="Src\Screen\ScreenHandler.cpp" />
     <ClCompile Include="Src\Core\Main.cpp" />
-    <ClCompile Include="Src\Tilemap\AnimatedTile.cpp" />
-    <ClCompile Include="Src\Tilemap\StaticTile.cpp" />
     <ClCompile Include="Src\Tilemap\Tile.cpp" />
+    <ClCompile Include="Src\Tilemap\TilemapParser.cpp" />
     <ClCompile Include="UnfoldedState.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -205,8 +204,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TileLayer.cpp" />
-    <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="Src\Tilemap\TileLayer.cpp" />
+    <ClCompile Include="Src\Tilemap\TileMap.cpp" />
     <ClCompile Include="TileMapLoader.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
   </ItemGroup>
@@ -264,15 +263,14 @@
     <ClInclude Include="PlayerCharacteristics.h" />
     <ClInclude Include="Src\Screen\Screen.h" />
     <ClInclude Include="Src\Screen\ScreenHandler.h" />
-    <ClInclude Include="Src\Tilemap\AnimatedTile.h" />
-    <ClInclude Include="Src\Tilemap\StaticTile.h" />
     <ClInclude Include="Src\Tilemap\Tile.h" />
+    <ClInclude Include="Src\Tilemap\TilemapParser.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="UnfoldedState.h" />
     <ClInclude Include="Unit.h" />
-    <ClInclude Include="TileLayer.h" />
-    <ClInclude Include="TileMap.h" />
+    <ClInclude Include="Src\Tilemap\TileLayer.h" />
+    <ClInclude Include="Src\Tilemap\TileMap.h" />
     <ClInclude Include="TileMapLoader.h" />
     <ClInclude Include="tinyxml2.h" />
   </ItemGroup>

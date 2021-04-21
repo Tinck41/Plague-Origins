@@ -1,7 +1,5 @@
 #pragma once
 
-#include "TileMap.h"
-#include "TileLayer.h"
 #include "MapCollider.h";
 #include "tinyxml2.h"
 
@@ -19,7 +17,7 @@ private:
 	// XmlReader
 	tinyxml2::XMLDocument xmlTileMap;
 
-	TileMap tileMap;
+	//TileMap tileMap;
 
 	sf::Vector2u mapSize;
 	sf::Vector2u layerSize;
@@ -28,7 +26,7 @@ private:
 	// Tilemap components
 	std::vector<sf::Texture> tilesets;
 	std::vector<TilesetParameters> tilesetInfo;
-	std::vector<TileLayer> tileLayer;
+	//std::vector<TileLayer> tileLayer;
 	std::vector<std::vector<MapCollider>> colliderLayer;
 
 	// Functions
@@ -42,7 +40,7 @@ public:
 	~TileMapLoader();
 
 	// Getters
-	TileMap getTileMap() { return tileMap; }
+	//TileMap getTileMap() { return tileMap; }
 
 	// Functions
 	bool load(const char* path);

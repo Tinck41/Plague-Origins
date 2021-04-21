@@ -24,7 +24,7 @@ TileMapLoader::~TileMapLoader()
 {
 	this->tilesets.clear();
 	this->tilesetInfo.clear();
-	this->tileLayer.clear();
+	//this->tileLayer.clear();
 	this->colliderLayer.clear();
 }
 
@@ -65,7 +65,7 @@ void TileMapLoader::parseTileMap()
 		}
 	}
 
-	this->tileMap = TileMap(tileLayer, colliderLayer, mapSize, tileSize);
+	//this->tileMap = TileMap(tileLayer, colliderLayer, mapSize, tileSize);
 }
 
 void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)
@@ -91,60 +91,60 @@ void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)
 
 void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 {
-	const char* layerName = "";
+	//const char* layerName = "";
 
-	tinyxml2::XMLElement* data = xmlElement->FirstChildElement();
+	//tinyxml2::XMLElement* data = xmlElement->FirstChildElement();
 
-	xmlElement->QueryStringAttribute("name", &layerName);
-	xmlElement->QueryUnsignedAttribute("height", &layerSize.y);
-	xmlElement->QueryUnsignedAttribute("width", &layerSize.x);
+	//xmlElement->QueryStringAttribute("name", &layerName);
+	//xmlElement->QueryUnsignedAttribute("height", &layerSize.y);
+	//xmlElement->QueryUnsignedAttribute("width", &layerSize.x);
 
-	std::string matrix(data->GetText());
-	std::istringstream iss(matrix);
-	std::string id;
+	//std::string matrix(data->GetText());
+	//std::istringstream iss(matrix);
+	//std::string id;
 
-	std::vector<unsigned> _layer;
-	unsigned tilesetId = 0;
-	bool tilesetNotChoosen = true;
+	//std::vector<unsigned> _layer;
+	//unsigned tilesetId = 0;
+	//bool tilesetNotChoosen = true;
 
-	for (size_t row = 0; row < layerSize.x; row++)
-	{
-		for (size_t column = 0; column < layerSize.y; column++)
-		{
-			// Get the current tile number
-			unsigned tileId = 0;
-			std::getline(iss, id, ',');
-			std::stringstream converter(id);
-			converter >> tileId;
-			if (tileId != 0)
-			{
-				tileId--;
+	//for (size_t row = 0; row < layerSize.x; row++)
+	//{
+	//	for (size_t column = 0; column < layerSize.y; column++)
+	//	{
+	//		// Get the current tile number
+	//		unsigned tileId = 0;
+	//		std::getline(iss, id, ',');
+	//		std::stringstream converter(id);
+	//		converter >> tileId;
+	//		if (tileId != 0)
+	//		{
+	//			tileId--;
 
-				if (tilesetNotChoosen)
-					for (size_t i = 0; i < tilesetInfo.size(); i++)
-					{
-						if (tileId >= tilesetInfo[i].firstId && tileId <= tilesetInfo[i].lastId)
-						{
-							tilesetId = i;
-							tilesetNotChoosen = false;
-						}
-					}
+	//			if (tilesetNotChoosen)
+	//				for (size_t i = 0; i < tilesetInfo.size(); i++)
+	//				{
+	//					if (tileId >= tilesetInfo[i].firstId && tileId <= tilesetInfo[i].lastId)
+	//					{
+	//						tilesetId = i;
+	//						tilesetNotChoosen = false;
+	//					}
+	//				}
 
-				tileId = tileId + tilesetInfo[tilesetId].tileCount - tilesetInfo[tilesetId].lastId - 1;
-			}
-			_layer.push_back(tileId);
-		}
-	}
+	//			tileId = tileId + tilesetInfo[tilesetId].tileCount - tilesetInfo[tilesetId].lastId - 1;
+	//		}
+	//		_layer.push_back(tileId);
+	//	}
+	//}
 
-	if (!tilesets.empty())
-	{
-		TileLayer layer(layerName, _layer, layerSize, tileSize, tilesets[tilesetId]);
-		tileLayer.push_back(layer);
-	}
-	else
-	{
-		std::cout << "ERROR: trying to push layer with empty tileset" << "\n";
-	}
+	//if (!tilesets.empty())
+	//{
+	//	TileLayer layer(layerName, _layer, layerSize, tileSize, tilesets[tilesetId]);
+	//	tileLayer.push_back(layer);
+	//}
+	//else
+	//{
+	//	std::cout << "ERROR: trying to push layer with empty tileset" << "\n";
+	//}
 }
 
 void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
