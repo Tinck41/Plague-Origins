@@ -8,11 +8,15 @@ private:
 	objects objectType;
 
 	float attackRange;
+	float attackPosOffset;
 	GameObjects& gObjects;
+
+	b2Body* body;
+	b2Body* attackBody;
+	b2Body* aggroBody;
 
 	sf::CircleShape attackCircle;
 	sf::RectangleShape& shape;
-
 	sf::CircleShape aggroCircle;
 
 	bool aggro;
@@ -21,7 +25,7 @@ private:
 
 	void initVariables();
 public:
-	CombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage);
+	CombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage, float attackRange, b2Body* body);
 	void receiveDamage(float damage);
 	void attackNPC();
 	void attackPlayer();

@@ -140,6 +140,9 @@
     <ClCompile Include="PlayerInventory.cpp">
       <Filter>Player</Filter>
     </ClCompile>
+    <ClCompile Include="RayCastClosestCallback.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -309,6 +312,12 @@
     </ClInclude>
     <ClInclude Include="PlayerInventory.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="RayCastClosestCallback.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityCategory.h">
+      <Filter>Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

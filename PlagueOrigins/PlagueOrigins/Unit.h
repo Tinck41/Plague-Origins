@@ -19,9 +19,13 @@ private:
 	void initVariables();
 	void spawnUnit();
 protected:
-	bool active;
-
 	int id;
+	bool active;
+	//combat
+	float attackRange;
+	float hitpoints;
+	float damage;
+
 	objects objectType;
 
 	b2Body* body;
@@ -49,7 +53,7 @@ public:
 	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix);
 	void createColliderComponent(b2Body* body, sf::Vector2f size);
 	void deleteColliderComponent();
-	void createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage);
+	void createCombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage, float attackRange, b2Body* body);
 	//Getters
 	virtual sf::RectangleShape getShape() { return shape; }
 	CombatComponent* getCombatComponent() { return combatComponent; }

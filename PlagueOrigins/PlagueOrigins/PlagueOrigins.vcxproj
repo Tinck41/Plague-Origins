@@ -186,6 +186,7 @@
     <ClCompile Include="PlayerInventory.cpp" />
     <ClCompile Include="PlayerMoveState.cpp" />
     <ClCompile Include="PlayerCharacteristics.cpp" />
+    <ClCompile Include="RayCastClosestCallback.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="ScreenHandler.cpp" />
     <ClCompile Include="Unit.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="CombatComponent.h" />
+    <ClInclude Include="EntityCategory.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GlobalFactory.h" />
@@ -248,6 +250,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerStates.h" />
     <ClInclude Include="PlayerCharacteristics.h" />
+    <ClInclude Include="RayCastClosestCallback.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="ScreenHandler.h" />
     <ClInclude Include="State.h" />

@@ -18,7 +18,7 @@ NPCDog::NPCDog(float x, float y) :
 	// create components
 	createColliderComponent(body, shape.getSize());
 	createMovementComponent(body, speed);
-	createCombatComponent(shape, hitpoints, damage);
+	createCombatComponent(shape, id, objects::enemies, hitpoints, damage, attackRange, body);
 	createAnimationComponent(shape, factory, "Dog");
 		animationComponent->initArmature(sf::Vector2f(x, y));
 		states.transform.scale(scale, scale);
@@ -61,6 +61,8 @@ void NPCDog::initVariables()
 	damage = config.dogDamage;
 	speed = config.dogSpeed;
 	scale = config.dogScale;
+	attackRange = 60.f;
+
 	pointN = 0;
 	direction = { .0f, .0f };
 	fillWaypoints();

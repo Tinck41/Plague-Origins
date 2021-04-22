@@ -31,9 +31,9 @@ void Unit::createColliderComponent(b2Body* body, sf::Vector2f size)
 	this->colliderComponent = new ColliderComponent(body, size);
 }
 
-void Unit::createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage)
+void Unit::createCombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage, float attackRange, b2Body* body)
 {
-	combatComponent = new CombatComponent(shape, id, objectType, hitpoints, damage);
+	combatComponent = new CombatComponent(shape, id, objectType, hitpoints, damage, attackRange, body);
 }
 
 void Unit::update(const float& dt)

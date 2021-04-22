@@ -15,12 +15,12 @@ Player::Player(float x, float y) :
 	initVariables();
 	createHitbox(x, y);
 
-	body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, PLAYER, ENEMY_NPC | FRIENDLY_NPC | OBSTACLE);
+	body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, PLAYER, ENEMY_NPC | FRIENDLY_NPC);
 
 	// create components
 	createColliderComponent(body, shape.getSize());
 	createMovementComponent(body, speed);
-	createCombatComponent(shape, hitpoints, damage);
+	createCombatComponent(shape, id, objects::player, hitpoints, damage, attackRange, body);
 
 	createAnimationComponent(shape, factory, "Hero");
 		animationComponent->initArmature(sf::Vector2f(x,y));
@@ -53,6 +53,7 @@ void Player::initVariables()
 	damage = config.playerDamage;
 	speed = config.playerSpeed;
 	scale = config.playerScale;
+	attackRange = 90.f;
 
 	playerStateMachine = new FiniteStateMachine();
 	initState = new PlayerIdleState(*this);
@@ -64,10 +65,10 @@ void Player::update(const float& dt)
 	directionFinder.update();
 	playerStateMachine->executeStateUpdate(dt);
 
+	shape.setPosition(colliderComponent->getPosition());
+
 	// Moving
 	combatComponent->update(directionFinder.getDirection(),dt);
-
-	shape.setPosition(colliderComponent->getPosition());
 
 	// Animation things
 	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f(
