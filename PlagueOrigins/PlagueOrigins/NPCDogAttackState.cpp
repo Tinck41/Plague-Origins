@@ -56,5 +56,6 @@ void NPCDogAttackState::update(const float& dt)
 
 void NPCDogAttackState::exit()
 {
+	this->owner.getAnimator()->setAnimation(animationName::IDLE);
 	std::cout << "Dog EXIT attack state\n";
 }
