@@ -8,6 +8,7 @@
 #include "NPCBishop.h"
 #include "CameraComponent.h"
 #include "InventoryComponent.h"
+#include "Src/Screen/Entity.h"
 
 class GameScreen :
     public Screen
@@ -18,6 +19,8 @@ private:
 	Player player{ 615.f, 350.f };
 	NPCDog npcDog{ 1500.f, 700.f };
 	NPCBishop npcBishop{ 400.f, 650.f };
+
+	Entity testEntity;
 
 	TilemapParser mapLoader;
 	TileMap map;
