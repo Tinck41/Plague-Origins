@@ -10,6 +10,7 @@ NPCDog::NPCDog(float x, float y) :
 	id = 3;
 	objectType = objects::enemies;
 	gObjects.registerObject(this, objectType);
+	createStatsComponent("Dog");
 	initVariables();
 	createHitbox(x, y);
 
@@ -57,8 +58,13 @@ sf::Vector2f NPCDog::getWaypoint(int pointN)
 
 void NPCDog::initVariables()
 {
-	hitpoints = config.dogHitpoints;
-	damage = config.dogDamage;
+	//hitpoints = config.dogHitpoints;
+	//damage = config.dogDamage;
+	hitpoints = statsComponent->Hp();
+	damage = statsComponent->Damage();
+	std::cout << "DogHP: " << hitpoints << "\n";
+	std::cout << "DogDamage: " << damage << "\n";
+
 	speed = config.dogSpeed;
 	scale = config.dogScale;
 	attackRange = 60.f;

@@ -19,8 +19,16 @@ private:
 	unsigned int HUM;
 
 public:
-	PlayerCharacteristics();
+	PlayerCharacteristics(std::string name);
 	//void setChar(std::string charName);
+	float Hp();
+	float Stamina();
+	float Damage();
+	float Armor();
+	float DashCD();
+	float SkillDamage();
+	float SkillCD();
+
 	void setChar(unsigned int value, charName charName);
 	//unsigned int getChar(std::string charName);
 	int getChar(charName charName);

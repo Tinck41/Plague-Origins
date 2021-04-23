@@ -1,14 +1,70 @@
 #include "stdafx.h"
 #include "PlayerCharacteristics.h"
 
-PlayerCharacteristics::PlayerCharacteristics()
+PlayerCharacteristics::PlayerCharacteristics(std::string name)
 {
-	VIT = 5;
-	END = 5;
-	STR = 5;
-	AGI = 5;
-	INT = 5;
-	HUM = 5;
+	if (name == "Player")
+	{
+		VIT = config.playerVIT;
+		END = config.playerEND;
+		STR = config.playerSTR;
+		AGI = config.playerAGI;
+		INT = config.playerINT;
+		HUM = config.playerHUM;
+	}
+	else if (name == "Dog")
+	{
+		VIT = config.dogVIT;
+		END = config.dogEND;
+		STR = config.dogSTR;
+		AGI = config.dogAGI;
+		INT = config.dogINT;
+		HUM = config.dogHUM;
+	}
+	else
+	{
+		VIT = 0;
+		END = 0;
+		STR = 0;
+		AGI = 0;
+		INT = 0;
+		HUM = 0;
+	}
+}
+
+float PlayerCharacteristics::Hp()
+{
+	return VIT*20.f;
+}
+
+float PlayerCharacteristics::Stamina()
+{
+	return END*10.f;
+}
+
+float PlayerCharacteristics::Damage()
+{
+	return STR*5.0f;
+}
+
+float PlayerCharacteristics::Armor()
+{
+	return AGI*0.5f;
+}
+
+float PlayerCharacteristics::DashCD()
+{
+	return 10.f/AGI+1.f;
+}
+
+float PlayerCharacteristics::SkillDamage()
+{
+	return INT*5.5f;
+}
+
+float PlayerCharacteristics::SkillCD()
+{
+	return 20.0f/INT+6.66f;
 }
 
 void PlayerCharacteristics::setChar(unsigned int value, charName charName)

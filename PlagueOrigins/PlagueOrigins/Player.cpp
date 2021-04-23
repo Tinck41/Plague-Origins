@@ -12,6 +12,7 @@ Player::Player(float x, float y) :
 	srand(time(NULL));
 	gObjects.registerObject(this, objects::player);
 	id = 1;
+	createStatsComponent("Player");
 	initVariables();
 	createHitbox(x, y);
 
@@ -28,7 +29,6 @@ Player::Player(float x, float y) :
 		animationComponent->initArmature(sf::Vector2f(x,y));
 		states.transform.scale(scale, scale);
 		animationComponent->setAnimation(animationName::IDLE);
-
 
 	// init State-Machine
 	playerStateMachine->changeState(initState);
@@ -51,8 +51,13 @@ void Player::createHitbox(float x, float y)
 
 void Player::initVariables()
 {
-	hitpoints = config.playerHitpoints;
-	damage = config.playerDamage;
+	//hitpoints = config.playerHitpoints;
+	//damage = config.playerDamage;
+	hitpoints = statsComponent->Hp();
+	damage = statsComponent->Damage();
+	std::cout << "PlayerHP: " << hitpoints << "\n";
+	std::cout << "PlayerDamage: " << damage << "\n";
+
 	speed = config.playerSpeed;
 	scale = config.playerScale;
 	attackRange = 90.f;

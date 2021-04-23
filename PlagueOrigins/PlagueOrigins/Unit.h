@@ -6,6 +6,7 @@
 #include "GlobalFactory.h"
 #include "GameObjects.h"
 #include "PlayerInventory.h"
+#include "PlayerCharacteristics.h"
 
 class Unit
 {
@@ -31,6 +32,7 @@ protected:
 	b2Body* body;
 
 	PlayerInventory* inventory;
+	PlayerCharacteristics* statsComponent;
 	MovementComponent* movementComponent;
 	AnimationComponent* animationComponent;
 	ColliderComponent* colliderComponent;
@@ -49,6 +51,7 @@ public:
 	}
 
 	//Functions
+	void createStatsComponent(std::string name);
 	void createMovementComponent(b2Body* body, float speed);
 	void createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix);
 	void createColliderComponent(b2Body* body, sf::Vector2f size);
@@ -58,6 +61,7 @@ public:
 	virtual sf::RectangleShape getShape() { return shape; }
 	CombatComponent* getCombatComponent() { return combatComponent; }
 	PlayerInventory* getInventory() { return inventory; }
+	PlayerCharacteristics* getStatsComponent() { return statsComponent; }
 	int getId() { return id; }
 	objects getObjectType() { return objectType; }
 

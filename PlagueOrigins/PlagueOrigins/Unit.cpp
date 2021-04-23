@@ -21,6 +21,11 @@ void Unit::initVariables()
 	//this->animationComponent = NULL;
 }
 
+void Unit::createStatsComponent(std::string name)
+{
+	statsComponent = new PlayerCharacteristics(name);
+}
+
 void Unit::createMovementComponent(b2Body* body, float speed)
 {
 	this->movementComponent = new MovementComponent(body, speed);
