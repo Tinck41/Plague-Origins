@@ -34,7 +34,7 @@ void CombatComponent::initVariables()
 	if (id != 1)
 	{
 		sf::Vector2f aggroRadius = sf::Vector2f(aggroCircle.getRadius(), aggroCircle.getRadius());
-		aggroCircle.setRadius(600.0f);
+		aggroCircle.setRadius(1600.0f);
 		aggroCircle.setPosition(
 			shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
 			shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
@@ -125,18 +125,29 @@ void CombatComponent::render(sf::RenderWindow& target)
 
 bool CombatComponent::isAggro()
 {
-	if (gObjects.getPlayerAggro(aggroCircle) && getPlayerPosition() != shape.getPosition())
+	if (PhysicsWorld::getRange())
 	{
+
 		aggro = true;
 		aggroCircle.setFillColor(sf::Color::Red);
 		return true;
 	}
-	else
-	{
-		aggro = false;
-		aggroCircle.setFillColor(sf::Color::White);
-		return false;
-	}
+	aggro = false;
+	aggroCircle.setFillColor(sf::Color::White);
+	return false;
+
+	//if (gObjects.getPlayerAggro(aggroCircle) && getPlayerPosition() != shape.getPosition())
+	//{
+	//	aggro = true;
+	//	aggroCircle.setFillColor(sf::Color::Red);
+	//	return true;
+	//}
+	//else
+	//{
+	//	aggro = false;
+	//	aggroCircle.setFillColor(sf::Color::White);
+	//	return false;
+	//}
 }
 
 bool CombatComponent::isInAttackRange()

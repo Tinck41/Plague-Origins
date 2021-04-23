@@ -17,6 +17,8 @@ Player::Player(float x, float y) :
 
 	body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, PLAYER, ENEMY_NPC | FRIENDLY_NPC | OBSTACLE | ENEMY_AGGRO_RADIUS);
 
+	PhysicsWorld::setPlayerBody(body);
+
 	// create components
 	createColliderComponent(body, shape.getSize());
 	createMovementComponent(body, speed);

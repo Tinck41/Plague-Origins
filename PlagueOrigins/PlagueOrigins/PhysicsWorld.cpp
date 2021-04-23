@@ -1,12 +1,22 @@
 #include "stdafx.h"
 #include "PhysicsWorld.h"
 #include "EntityCategory.h"
+#include "RayCastClosestCallback.h"
 
 PhysicsWorld::PhysicsWorld()
 {
     b2Vec2 gravity(0.f, 0.f);
     world = new b2World(gravity);
     world->SetContactListener(&contactListener);
+
+    ////////
+    int n = 5;
+    aggro = new bool[n];
+    for (int i = 0; i < n; i++)
+    {
+        aggro[i] = false;
+    }
+    ////////
 }
 
 PhysicsWorld::~PhysicsWorld()
@@ -14,10 +24,36 @@ PhysicsWorld::~PhysicsWorld()
     
 }
 
+void PhysicsWorld::reRaycast()
+{
+    for (ag s : get().enemies)
+    {
+        RayCastClosestCallback callback;
+        world->RayCast(&callback, s.body->GetTransform().p, player->GetTransform().p);
+        if (callback.m_hit)
+        {
+            //PhysicsWorld::setRange(true);
+            //enemies.remove(s);
+            std::cout << "RAYCAST TRUE\n";
+        }
+        else
+        {
+            std::cout << "RAYCAST FALSE\n";
+        }
+    }
+}
+
+void PhysicsWorld::pushBody(b2Body* body, bool value)
+{
+    get().enemies.push_back({ body,value });
+}
+
 void PhysicsWorld::updateInternal(const float& dt)
 {
     uint32_t velocityIterations = 6;
     uint32_t positionIterations = 2;
+
+    reRaycast();
 
     world->Step(dt, velocityIterations, positionIterations);
 
@@ -53,7 +89,7 @@ b2Body* PhysicsWorld::createRectangleBodyInternal(sf::Vector2f position, sf::Vec
     {
         bodyDef.type = b2_staticBody;
     }
-
+    
     bodyDef.position = b2Vec2((position.x + size.x / 2) / SCALE, (position.y + size.y / 2) / SCALE);
     bodyDef.fixedRotation = true;
     bodyDef.userData.pointer = categoryBits;        // Identifier for collision checking

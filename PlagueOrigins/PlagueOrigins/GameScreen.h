@@ -18,7 +18,7 @@ private:
 	GameObjects& gObject = GameObjects::Instance();
 
 	Player player{ 2615.f, 2650.f };
-	NPCDog npcDog{ 4500.f, 800.f };
+	NPCDog npcDog{ 500.f, 800.f };
 	NPCBishop npcBishop{ 4000.f, 200.f };
 
 	TileMapLoader mapLoader;
