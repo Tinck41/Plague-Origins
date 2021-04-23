@@ -16,6 +16,14 @@ CombatComponent::CombatComponent(sf::RectangleShape& shape, int id, objects obje
 	initVariables();
 }
 
+CombatComponent::~CombatComponent()
+{
+	//PhysicsWorld::getWorld()->DestroyJoint(attackBody->GetJointList()->joint);
+	PhysicsWorld::getWorld()->DestroyBody(attackBody);
+	//PhysicsWorld::getWorld()->DestroyJoint(aggroBody->GetJointList()->joint);
+	PhysicsWorld::getWorld()->DestroyBody(aggroBody);
+}
+
 void CombatComponent::initVariables()
 {
 	aggro = false;
@@ -46,6 +54,7 @@ void CombatComponent::initVariables()
 	else
 	{
 		attackBody = PhysicsWorld::createCircleBody(shape.getPosition(), attackCircle.getRadius(), true, true, ATTACK_RADIUS, ENEMY_NPC);
+		//aggroBody = PhysicsWorld::createCircleBody(shape.getPosition(), aggroCircle.getRadius(), true, true, ENEMY_AGGRO_RADIUS, PLAYER);
 	}
 	
 }
@@ -125,7 +134,7 @@ void CombatComponent::render(sf::RenderWindow& target)
 
 bool CombatComponent::isAggro()
 {
-	if (PhysicsWorld::getRange())
+	if (PhysicsWorld::getAggro())
 	{
 
 		aggro = true;

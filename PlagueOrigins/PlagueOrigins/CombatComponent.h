@@ -26,6 +26,7 @@ private:
 	void initVariables();
 public:
 	CombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage, float attackRange, b2Body* body);
+	~CombatComponent();
 	void receiveDamage(float damage);
 	void attackNPC();
 	void attackPlayer();

@@ -5,7 +5,11 @@
 float RayCastClosestCallback::ReportFixture(b2Fixture* fixture, const b2Vec2& point, const b2Vec2& normal, float fraction)
 {
     uintptr_t index = fixture->GetBody()->GetUserData().pointer;
-    //std::cout << index << "\n";
+    std::cout << index << "\n";
+    if (index == EntityCategory::ATTACK_RADIUS)
+    {
+        return -1.f;
+    }
     if (index == EntityCategory::PLAYER)
     {
         m_hit = true;
@@ -20,6 +24,8 @@ float RayCastClosestCallback::ReportFixture(b2Fixture* fixture, const b2Vec2& po
         m_point = point;
         m_normal = normal;
 
-        return -1.f;
+        return 0.f;
     }
+
+
 }

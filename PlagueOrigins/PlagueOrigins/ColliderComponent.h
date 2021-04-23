@@ -7,6 +7,7 @@ public:
 
 	b2Body* getBody() { return body; }
 
+	void destroyBody();
 	sf::Vector2f getPosition();
 private:
 	b2Body* body;

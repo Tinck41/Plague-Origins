@@ -26,26 +26,31 @@ PhysicsWorld::~PhysicsWorld()
 
 void PhysicsWorld::reRaycast()
 {
-    for (ag s : get().enemies)
+    for (auto& s : get().enemies)
     {
         RayCastClosestCallback callback;
-        world->RayCast(&callback, s.body->GetTransform().p, player->GetTransform().p);
+        world->RayCast(&callback, s->GetBody()->GetTransform().p, player->GetTransform().p);
         if (callback.m_hit)
         {
+            PhysicsWorld::setAggro(true);
             //PhysicsWorld::setRange(true);
             //enemies.remove(s);
-            std::cout << "RAYCAST TRUE\n";
+            //std::cout << "RAYCAST TRUE\n";
         }
         else
         {
-            std::cout << "RAYCAST FALSE\n";
+            PhysicsWorld::setAggro(false);
+            //PhysicsWorld::setRange(false);
+            //s.aggro = false;
+            //std::cout << "RAYCAST FALSE\n";
         }
     }
 }
 
-void PhysicsWorld::pushBody(b2Body* body, bool value)
+
+void PhysicsWorld::pushBody(b2Fixture* body, bool value)
 {
-    get().enemies.push_back({ body,value });
+    get().enemies.push_back(body);
 }
 
 void PhysicsWorld::updateInternal(const float& dt)
@@ -134,6 +139,7 @@ b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radi
 
     bodyDef.position = b2Vec2((position.x + radius / 2) / SCALE, (position.y + radius / 2) / SCALE);
     bodyDef.fixedRotation = true;
+    bodyDef.userData.pointer = categoryBits;        // Identifier for collision checking
     body = world->CreateBody(&bodyDef);
 
     Shape.m_radius = radius / SCALE;

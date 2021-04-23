@@ -29,18 +29,9 @@ void PhysicsContactListener::BeginContact(b2Contact* contact)
         fixtureB->GetUserData().pointer == ENEMY_AGGRO_RADIUS)
     {
         //std::cout << "AGGRO START BOX2D\n";
-        RayCastClosestCallback callback;
-        PhysicsWorld::getWorld()->RayCast(&callback, bodyB->GetTransform().p, bodyA->GetTransform().p);
-        if (callback.m_hit)
-        {
-            PhysicsWorld::setRange(true);
-            std::cout << "RAYCAST TRUE\n";
-        }
-        else
-        {
-            PhysicsWorld::pushBody(bodyB, false);
-            std::cout << "RAYCAST FALSE\n";
-        }
+        PhysicsWorld::setRange(true);
+        std::cout << fixtureB->GetUserData().pointer << " " << bodyB->GetUserData().pointer << "\n";
+        PhysicsWorld::pushBody(fixtureB, false);
     }
 
 
@@ -72,20 +63,10 @@ void PhysicsContactListener::EndContact(b2Contact* contact)
     }
 
     if (bodyA->GetUserData().pointer == PLAYER &&
-        fixtureB->GetUserData().pointer == ENEMY_AGGRO_RADIUS)
+        bodyB->GetUserData().pointer == ENEMY_AGGRO_RADIUS)
     {
+        PhysicsWorld::setRange(false);
         //std::cout << "AGGRO END BOX2D\n";
-        RayCastClosestCallback callback;
-        PhysicsWorld::getWorld()->RayCast(&callback, bodyB->GetTransform().p, bodyA->GetTransform().p);
-        if (callback.m_hit)
-        {
-            PhysicsWorld::setRange(true);
-            std::cout << "RAYCAST TRUE\n";
-        }
-        else
-        {
-            std::cout << "RAYCAST FALSE\n";
-        }
     }
 }
 

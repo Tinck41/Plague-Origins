@@ -31,11 +31,13 @@ public:
 	~PhysicsWorld();
 
 	static void setPlayerBody(b2Body* body) { get().player = body; }
-	static void pushBody(b2Body* body, bool value);
+	static void pushBody(b2Fixture* body, bool value);
 	//static std::list<ag> getAggroList() { return get().enemies; }
 	static bool* getAggroList() { return get().aggro; }
 
+	static void setAggro(bool value) { get().aggro2 = value; }
 	static void setRange(bool value) { get().inRange = value; }
+	static bool getAggro() { return get().aggro2; }
 	static bool getRange() { return get().inRange; }
 	static void update(const float& dt) { get().updateInternal(dt); }
 	void reRaycast();
@@ -49,10 +51,11 @@ private:
 	PhysicsContactListener contactListener;
 	bool inRange;
 	bool* aggro;
+	bool aggro2;
 	//std::list<bool> aggro;
 
 	b2Body* player;
-	std::list<ag> enemies;
+	std::list<b2Fixture*> enemies;
 
 	const float SCALE = 30.f;
 

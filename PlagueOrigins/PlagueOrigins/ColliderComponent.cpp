@@ -11,6 +11,12 @@ ColliderComponent::~ColliderComponent()
 {
 }
 
+void ColliderComponent::destroyBody()
+{
+	//PhysicsWorld::getWorld()->DestroyJoint(body->GetJointList()->joint);
+	PhysicsWorld::getWorld()->DestroyBody(body);
+}
+
 sf::Vector2f ColliderComponent::getPosition()
 {
 	return sf::Vector2f(body->GetPosition().x * 30.f - size.x / 2.f, body->GetPosition().y * 30.f - size.x / 2.f);

@@ -42,4 +42,8 @@ void NPCDogDeathState::update(const float& dt)
 void NPCDogDeathState::exit()
 {
 	std::cout << "Dog EXIT death state\n";
+	owner.getCollider()->destroyBody();
+	owner.~NPCDog();
+	//owner.getCollider()->~ColliderComponent();
+	//owner.getCombatComponent()->~CombatComponent();
 }
