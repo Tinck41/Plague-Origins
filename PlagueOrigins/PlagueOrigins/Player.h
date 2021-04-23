@@ -54,7 +54,7 @@ public:
 	// Getters
 	sf::RectangleShape getShape() override { return shape; } 
 	sf::Vector2f getPosition() { return shape.getPosition(); }
-	ColliderComponent getCollider() { return ColliderComponent(shape); }
+	ColliderComponent* getCollider() { return colliderComponent; }
 	DirectionFinder getInput() { return directionFinder; }
 	AnimationComponent* getAnimator() { return animationComponent; }
 	MovementComponent* getMover() { return movementComponent; }

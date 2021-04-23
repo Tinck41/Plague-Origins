@@ -23,12 +23,26 @@ public:
 	float playerHitboxWidth;
 	float playerHitboxHeight;
 
+	int playerVIT;
+	int playerEND;
+	int playerSTR;
+	int playerAGI;
+	int playerINT;
+	int playerHUM;
+
 	int dogSpeed;
 	float dogScale;
 	float dogHitpoints;
 	float dogDamage;
 	float dogHitboxWidth;
 	float dogHitboxHeight;
+
+	int dogVIT;
+	int dogEND;
+	int dogSTR;
+	int dogAGI;
+	int dogINT;
+	int dogHUM;
 
 	float bishopScale;
 	float bishopHitboxWidth;

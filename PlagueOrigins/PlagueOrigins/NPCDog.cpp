@@ -10,19 +10,21 @@ NPCDog::NPCDog(float x, float y) :
 	id = 3;
 	objectType = objects::enemies;
 	gObjects.registerObject(this, objectType);
+	createStatsComponent("Dog");
 	initVariables();
 	createHitbox(x, y);
 
+	body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, ENEMY_NPC, PLAYER | FRIENDLY_NPC | OBSTACLE);
+
 	// create components
-	createMovementComponent(this->shape, this->speed);
-
-	createAnimationComponent(this->shape, this->factory, "Dog");
+	createColliderComponent(body, shape.getSize());
+	createMovementComponent(body, speed);
+	createCombatComponent(shape, id, objects::enemies, hitpoints, damage, attackRange, body);
+	createAnimationComponent(shape, factory, "Dog");
 		animationComponent->initArmature(sf::Vector2f(x, y));
-		this->states.transform.scale(scale, scale);
-		this->animationComponent->setAnimation(animationName::MOVE);
+		states.transform.scale(scale, scale);
+		animationComponent->setAnimation(animationName::MOVE);
 
-	createColliderComponent(this->shape);
-	createCombatComponent(shape, hitpoints, damage);
 	
 	patrolComponent = new Patrol(shape, waypoints);
 
@@ -56,15 +58,22 @@ sf::Vector2f NPCDog::getWaypoint(int pointN)
 
 void NPCDog::initVariables()
 {
-	hitpoints = config.dogHitpoints;
-	damage = config.dogDamage;
+	//hitpoints = config.dogHitpoints;
+	//damage = config.dogDamage;
+	hitpoints = statsComponent->Hp();
+	damage = statsComponent->Damage();
+	std::cout << "DogHP: " << hitpoints << "\n";
+	std::cout << "DogDamage: " << damage << "\n";
+
 	speed = config.dogSpeed;
 	scale = config.dogScale;
+	attackRange = 60.f;
+
 	pointN = 0;
 	direction = { .0f, .0f };
 	fillWaypoints();
 	npcDogStateMachine = new FiniteStateMachine();
-	this->initState = new NPCDogIdleState(*this);
+	initState = new NPCDogIdleState(*this);
 }
 
 void NPCDog::createHitbox(float x, float y)
@@ -76,20 +85,29 @@ void NPCDog::createHitbox(float x, float y)
 
 void NPCDog::update(const float& dt)
 {
+	//std::cout << "Dog update\n";
+	
 	//update utility
 	patrolComponent->update();
-	combatComponent->update(direction, dt);
+
+	//combatComponent->update(direction, dt);
 	npcDogStateMachine->executeStateUpdate(dt);
 
-	//animation
-	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
-	//animationComponent->updateFactory(dt);
+	combatComponent->update(patrolComponent->getDirection(), dt);
+	
+	shape.setPosition(colliderComponent->getPosition());
 
+	//animation
+	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f(
+		(1 / scale) * (shape.getPosition().x + shape.getSize().x / 2),
+		(1 / scale) * (shape.getPosition().y + shape.getSize().y / 2))
+	);
 }
 
 void NPCDog::render(sf::RenderWindow& target)
 {
-	//combatComponent->render(target);
+	//std::cout << "Dog render\n";
+	combatComponent->render(target);
 	target.draw(shape);
 	target.draw(*animationComponent->getArmatureDisplay(), states);
 }

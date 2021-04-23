@@ -9,6 +9,11 @@ class NPCDogAttackState :
 private:
 	FiniteStateMachine* stateMachine;
 	NPCDog& owner;
+
+	sf::Clock gameClock;
+	sf::Time delay;
+	sf::Time now;
+	sf::Time last;
 public:
 	NPCDogAttackState(NPCDog& owner);
 	~NPCDogAttackState();

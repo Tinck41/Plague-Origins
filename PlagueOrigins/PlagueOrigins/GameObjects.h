@@ -21,6 +21,7 @@ private:
 	GameObjects& operator = (const GameObjects&) = delete;
 public:
 	static GameObjects& Instance();
+	void deleteInactive();
 	void registerObject(Unit* unit, objects e);
 	Unit* getUnitById(int id, objects e);
 	void dropObject(Unit* unit, objects e);

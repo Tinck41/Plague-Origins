@@ -7,10 +7,10 @@ LevelUpComponent::LevelUpComponent(sf::RectangleShape& merchant) :
 //LevelUpComponent::LevelUpComponent(sf::RectangleShape& merchant, Player& player) :
 	merchant(merchant), gObjects(GameObjects::Instance())
 {
-	stats = new PlayerCharacteristics();
 	initTrigger();
 	player = gObjects.getPlayer();
 	interacting = false;
+	stats = player->getStatsComponent();
 }
 
 LevelUpComponent::~LevelUpComponent()
@@ -100,6 +100,6 @@ void LevelUpComponent::decreaseChar(unsigned int value, charName charName)
 
 void LevelUpComponent::resetChars()
 {
-	delete stats;
-	stats = new PlayerCharacteristics();
+	delete player->getStatsComponent();
+	player->createStatsComponent("Player");
 }

@@ -8,19 +8,19 @@ void DirectionFinder::getMovementInput()
 {
 	if (InputBooleans::isWPressed)
 	{
-		this->direction.y = -1.f;
+		direction.y = -1.f;
 	}
 	else if (InputBooleans::isSPressed)
 	{
-		this->direction.y = 1.f;
+		direction.y = 1.f;
 	}
 	if (InputBooleans::isAPressed)
 	{
-		this->direction.x = -1.f;
+		direction.x = -1.f;
 	}
 	else if (InputBooleans::isDPressed)
 	{
-		this->direction.x = 1.f;
+		direction.x = 1.f;
 	}
 }
 

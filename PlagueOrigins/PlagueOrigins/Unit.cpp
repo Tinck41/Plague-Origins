@@ -21,20 +21,24 @@ void Unit::initVariables()
 	//this->animationComponent = NULL;
 }
 
-void Unit::createMovementComponent(sf::RectangleShape& shape,int speed)
+void Unit::createStatsComponent(std::string name)
 {
-	//create movement component based on shape
-	this->movementComponent = new MovementComponent(shape, speed);
+	statsComponent = new PlayerCharacteristics(name);
 }
 
-void Unit::createColliderComponent(sf::RectangleShape& shape)
+void Unit::createMovementComponent(b2Body* body, float speed)
 {
-	this->colliderComponent = new ColliderComponent(shape);
+	this->movementComponent = new MovementComponent(body, speed);
 }
 
-void Unit::createCombatComponent(sf::RectangleShape& shape, float hitpoints, float damage)
+void Unit::createColliderComponent(b2Body* body, sf::Vector2f size)
 {
-	combatComponent = new CombatComponent(shape, id, objectType, hitpoints, damage);
+	this->colliderComponent = new ColliderComponent(body, size);
+}
+
+void Unit::createCombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage, float attackRange, b2Body* body)
+{
+	combatComponent = new CombatComponent(shape, id, objectType, hitpoints, damage, attackRange, body);
 }
 
 void Unit::update(const float& dt)
@@ -47,5 +51,5 @@ void Unit::render(sf::RenderWindow* window)
 
 void Unit::createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix)
 {
-	this->animationComponent = new AnimationComponent(shape, zf, prefix);
+	this->animationComponent = new AnimationComponent(shape, prefix);
 }

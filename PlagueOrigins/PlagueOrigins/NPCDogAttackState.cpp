@@ -5,6 +5,7 @@ NPCDogAttackState::NPCDogAttackState(NPCDog& owner) :
 	owner(owner)
 {
 	stateMachine = owner.getStateMachine();
+	delay = sf::seconds(1.f);
 }
 
 NPCDogAttackState::~NPCDogAttackState()
@@ -16,8 +17,14 @@ NPCDogAttackState::~NPCDogAttackState()
 void NPCDogAttackState::enter()
 {
 	std::cout << "Dog Attack State\n";
+	//this->owner.getAnimator()->getArmatureDisplay() = new dragonBones::SFMLArmatureDisplay("")
+	//this->owner.getAnimator()->getArmatureDisplay()->getAnimation()->gotoAndPlayByProgress("attack0", 100.f, 1);
+	//this->owner.getAnimator()->setAnimation(animationName::NONE);
 	this->owner.getAnimator()->setAnimation(animationName::ATTACK);
 	this->owner.getCombatComponent()->attackPlayer();
+
+	//Timer
+	last = gameClock.getElapsedTime();
 }
 
 void NPCDogAttackState::update(const float& dt)
@@ -26,19 +33,29 @@ void NPCDogAttackState::update(const float& dt)
 	{
 		owner.getStateMachine()->changeState(new NPCDogDeathState(owner));
 	}
-	else if (owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted())
+	else
 	{
-		if (owner.getCombatComponent()->isInAttackRange())
+		now = gameClock.getElapsedTime();
+		if (now - last >= delay)
 		{
-			owner.getStateMachine()->changeState(new NPCDogAttackState(owner));
-		}
-		else
-		{
-			owner.getStateMachine()->changeState(new NPCDogAggroState(owner));
+			if (owner.getAnimator()->getArmatureDisplay()->getAnimation()->isCompleted())
+			{
+				if (owner.getCombatComponent()->isInAttackRange())
+				{
+					owner.getStateMachine()->changeState(new NPCDogAttackState(owner));
+				}
+				else
+				{
+					owner.getStateMachine()->changeState(new NPCDogAggroState(owner));
+				}
+			}
 		}
 	}
+	
 }
 
 void NPCDogAttackState::exit()
 {
+	this->owner.getAnimator()->setAnimation(animationName::IDLE);
+	std::cout << "Dog EXIT attack state\n";
 }

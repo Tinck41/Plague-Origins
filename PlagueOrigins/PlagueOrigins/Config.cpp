@@ -29,12 +29,26 @@ Config::Config()
 	playerHitboxWidth = json["player"]["hitbox"]["width"];
 	playerHitboxHeight = json["player"]["hitbox"]["height"];
 
+	playerVIT = json["player"]["vit"];
+	playerEND = json["player"]["end"];
+	playerSTR = json["player"]["str"];
+	playerAGI = json["player"]["agi"];
+	playerINT = json["player"]["int"];
+	playerHUM = json["player"]["hum"];
+
 	dogSpeed = json["dog"]["speed"];
 	dogScale = json["dog"]["scale"];
 	dogHitpoints = json["dog"]["hitpoints"];
 	dogDamage = json["dog"]["damage"];
 	dogHitboxWidth = json["dog"]["hitbox"]["width"];
 	dogHitboxHeight = json["dog"]["hitbox"]["height"];
+
+	dogVIT = json["dog"]["vit"];
+	dogEND = json["dog"]["end"];
+	dogSTR = json["dog"]["str"];
+	dogAGI = json["dog"]["agi"];
+	dogINT = json["dog"]["int"];
+	dogHUM = json["dog"]["hum"];
 
 	bishopScale = json["bishop"]["scale"];
 	bishopHitboxWidth = json["bishop"]["hitbox"]["width"];

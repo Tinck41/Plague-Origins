@@ -3,25 +3,20 @@
 
 #include "MovementComponent.h"
 
-MovementComponent::MovementComponent(sf::RectangleShape& shape, int speed) :
-	shape(shape)
+MovementComponent::MovementComponent(b2Body* body, float speed)
 {
-	this->initialSpeed = speed;
-	this->currentSpeed = speed;
+	this->body = body;
+	this->speed = speed;
 }
 
 MovementComponent::~MovementComponent()
 {
-
 }
 
 void MovementComponent::move(const float& dt, sf::Vector2f dir)
 {
-	this->currentSpeed = this->initialSpeed;
-
-	if (dir.x != 0 && dir.y != 0)
-	{
-		this->currentSpeed /= sqrt(2);
-	}
-	this->shape.move(sf::Vector2f(dir.x * this->currentSpeed * dt, dir.y * this->currentSpeed * dt));
+	b2Vec2 direction(dir.x, dir.y);
+	direction.Normalize();
+	
+	body->SetLinearVelocity(dt * speed * direction);
 }

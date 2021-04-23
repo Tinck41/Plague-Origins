@@ -8,15 +8,18 @@
 #include "NPCBishop.h"
 #include "CameraComponent.h"
 
+#include "GameObjects.h"
+
 class GameScreen :
     public Screen
 {
 private:
 	//GlobalFactory gFactory;
+	GameObjects& gObject = GameObjects::Instance();
 
-	Player player{ 615.f, 350.f };
-	NPCDog npcDog{ 1500.f, 700.f };
-	NPCBishop npcBishop{ 400.f, 650.f };
+	Player player{ 2615.f, 2650.f };
+	NPCDog npcDog{ 500.f, 800.f };
+	NPCBishop npcBishop{ 4000.f, 200.f };
 
 	TileMapLoader mapLoader;
 	TileMap map;

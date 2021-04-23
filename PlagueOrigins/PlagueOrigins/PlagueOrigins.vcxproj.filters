@@ -70,9 +70,6 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
-    <ClCompile Include="MapCollider.cpp">
-      <Filter>Tilemap</Filter>
-    </ClCompile>
     <ClCompile Include="DirectionFinder.cpp" />
     <ClCompile Include="PlayerIdleState.cpp">
       <Filter>States\PlayerStates</Filter>
@@ -122,6 +119,12 @@
     <ClCompile Include="NPCDogAggroState.cpp">
       <Filter>States\NPCDogStates</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsWorld.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContactListener.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
     <ClCompile Include="LevelUpComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
@@ -136,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="PlayerInventory.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="RayCastClosestCallback.cpp">
+      <Filter>Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -219,9 +225,6 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
-    <ClInclude Include="MapCollider.h">
-      <Filter>Tilemap</Filter>
-    </ClInclude>
     <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="FiniteStateMachine.h">
       <Filter>FiniteStateMachine</Filter>
@@ -289,6 +292,12 @@
     <ClInclude Include="NPCDogAggroState.h">
       <Filter>States\NPCDogStates</Filter>
     </ClInclude>
+    <ClInclude Include="PhysicsWorld.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContactListener.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
     <ClInclude Include="LevelUpComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
@@ -303,6 +312,12 @@
     </ClInclude>
     <ClInclude Include="PlayerInventory.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="RayCastClosestCallback.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityCategory.h">
+      <Filter>Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +362,9 @@
     </Filter>
     <Filter Include="NPCDog">
       <UniqueIdentifier>{d50ce6b2-3b3a-4e3e-88b5-ccc3253a6172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{7b635f11-b072-4158-971e-0307598c135c}</UniqueIdentifier>
     </Filter>
     <Filter Include="NPCBIshop">
       <UniqueIdentifier>{adb6728c-5b83-4db2-8456-51f34a534548}</UniqueIdentifier>

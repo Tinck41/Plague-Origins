@@ -22,8 +22,8 @@ private:
 
 	int pointN;
 	//waypoints of rectangle patrol path TEST
-	sf::Vector2f point0 = sf::Vector2f(1500.0f, 700.0f);
-	sf::Vector2f point1 = sf::Vector2f(2000.0f, 700.0f);
+	sf::Vector2f point0 = sf::Vector2f(500.0f, 800.0f);
+	sf::Vector2f point1 = sf::Vector2f(2000.0f, 800.0f);
 
 	Patrol* patrolComponent;
 	std::vector<sf::Vector2f> waypoints;
@@ -60,7 +60,7 @@ public:
 	// Getters
 	sf::RectangleShape getShape() override { return shape; }
 	sf::Vector2f getPosition() { return shape.getPosition(); }
-	ColliderComponent getCollider() { return ColliderComponent(shape); }
+	ColliderComponent* getCollider() { return colliderComponent; }
 	AnimationComponent* getAnimator() { return animationComponent; }
 	MovementComponent* getMover() { return movementComponent; }
 	Patrol* getPatrol() { return patrolComponent; }

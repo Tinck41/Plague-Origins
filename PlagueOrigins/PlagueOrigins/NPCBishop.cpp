@@ -10,12 +10,14 @@ NPCBishop::NPCBishop(float x, float y) :
 	initVariables();
 	createHitbox(x, y);
 
+	body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), false, ENEMY_NPC, PLAYER | FRIENDLY_NPC | OBSTACLE);
+
+	// create components
+	createColliderComponent(body, shape.getSize());
 	createAnimationComponent(shape, factory, "Bishop");
-	animationComponent->initArmature(sf::Vector2f(x, y));
+		animationComponent->initArmature(sf::Vector2f(x, y));
 		states.transform.scale(scale, scale);
 		animationComponent->setAnimation(animationName::IDLE);
-
-	createColliderComponent(shape);
 
 	levelUpComponent = new LevelUpComponent(shape);
 }
@@ -43,8 +45,10 @@ void NPCBishop::update(const float& dt)
 	levelUpComponent->interact();
 	//animation
 	animationComponent->setAnimation(animationName::IDLE);
-	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f((1 / scale) * (shape.getPosition().x + colliderComponent->getHalfSize().x), (1 / scale) * (shape.getPosition().y + colliderComponent->getHalfSize().y)));
-	//animationComponent->updateFactory(dt);
+	animationComponent->getArmatureDisplay()->setPosition(sf::Vector2f(
+		(1 / scale) * (shape.getPosition().x + shape.getSize().x / 2),
+		(1 / scale) * (shape.getPosition().y + shape.getSize().y / 2))
+	);
 }
 
 void NPCBishop::render(sf::RenderWindow& target)

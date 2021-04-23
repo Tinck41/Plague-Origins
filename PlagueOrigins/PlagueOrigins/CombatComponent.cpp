@@ -2,11 +2,13 @@
 #include "CombatComponent.h"
 #include "Unit.h"
 
-CombatComponent::CombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage) :
+CombatComponent::CombatComponent(sf::RectangleShape& shape, int id, objects objectType, float hitpoints, float damage, float attackRange, b2Body* body) :
 	gObjects(GameObjects::Instance()), shape(shape)
 {
 	this->id = id;
 	this->objectType = objectType;
+	this->attackRange = attackRange;
+	this->body = body;
 	std::cout << "ID: " << id << "\n";
 	std::cout << "OBJ ID: " << objectType << "\n";
 	this->hitpoints = hitpoints;
@@ -14,40 +16,75 @@ CombatComponent::CombatComponent(sf::RectangleShape& shape, int id, objects obje
 	initVariables();
 }
 
+CombatComponent::~CombatComponent()
+{
+	//PhysicsWorld::getWorld()->DestroyJoint(attackBody->GetJointList()->joint);
+	PhysicsWorld::getWorld()->DestroyBody(attackBody);
+	//PhysicsWorld::getWorld()->DestroyJoint(aggroBody->GetJointList()->joint);
+	PhysicsWorld::getWorld()->DestroyBody(aggroBody);
+}
+
 void CombatComponent::initVariables()
 {
 	aggro = false;
+	attackPosOffset = 50.f;
+	attackCircle.setRadius(attackRange);
+	attackCircle.setFillColor(sf::Color::Green);
 
 	attackCircle.setPosition(
 		shape.getPosition().x + shape.getSize().x / 2 - attackCircle.getRadius()
-		+ shape.getSize().x / 2,
+		+ attackPosOffset,
 		shape.getPosition().y + shape.getSize().y / 2 - attackCircle.getRadius()
-		+ shape.getSize().x / 2
+		+ attackPosOffset
 	);
-	attackCircle.setRadius(shape.getSize().y / 2);
-	attackCircle.setFillColor(sf::Color::Green);
-	//sf::Vector2f pos, float radius
+	
+	//if not player
+	if (id != 1)
+	{
+		sf::Vector2f aggroRadius = sf::Vector2f(aggroCircle.getRadius(), aggroCircle.getRadius());
+		aggroCircle.setRadius(1600.0f);
+		aggroCircle.setPosition(
+			shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
+			shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
+		);
 
-	aggroCircle.setPosition(
-		shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
-		shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
-	);
-	aggroCircle.setRadius(300.0f);
+		attackBody = PhysicsWorld::createCircleBody(shape.getPosition(), attackCircle.getRadius(), true, true, ATTACK_RADIUS, PLAYER);
+		aggroBody = PhysicsWorld::createCircleBody(shape.getPosition(), aggroCircle.getRadius(), true, true, ENEMY_AGGRO_RADIUS, PLAYER);
+	}
+	else
+	{
+		attackBody = PhysicsWorld::createCircleBody(shape.getPosition(), attackCircle.getRadius(), true, true, ATTACK_RADIUS, ENEMY_NPC);
+		//aggroBody = PhysicsWorld::createCircleBody(shape.getPosition(), aggroCircle.getRadius(), true, true, ENEMY_AGGRO_RADIUS, PLAYER);
+	}
+	
 }
 
 void CombatComponent::updateCircle(sf::Vector2f direction)
 {
-	attackCircle.setPosition(
-		shape.getPosition().x + shape.getSize().x / 2 - attackCircle.getRadius()
-		+ shape.getSize().x / 2 * direction.x,
-		shape.getPosition().y + shape.getSize().y / 2 - attackCircle.getRadius()
-		+ shape.getSize().x / 2 * direction.y
-	);
-	aggroCircle.setPosition(
-		shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
-		shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
-	);
-
+	if (direction != sf::Vector2f(0.f, 0.f))
+	{
+		b2Vec2 temp = b2Vec2();
+		if (id != 1)
+		{
+			aggroCircle.setPosition(
+				shape.getPosition().x + shape.getSize().x / 2 - aggroCircle.getRadius(),
+				shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
+			);
+			temp.x = (aggroCircle.getPosition().x + aggroCircle.getRadius()) / 30.f;
+			temp.y = (aggroCircle.getPosition().y + aggroCircle.getRadius()) / 30.f;
+			aggroBody->SetTransform(temp, body->GetAngle());
+		}
+		attackCircle.setPosition(
+			shape.getPosition().x + shape.getSize().x / 2 - attackCircle.getRadius()
+			+ attackPosOffset * direction.x,
+			shape.getPosition().y + shape.getSize().y / 2 - attackCircle.getRadius()
+			+ attackPosOffset * direction.y
+		);
+		temp.x = (attackCircle.getPosition().x + attackCircle.getRadius()) / 30.f;
+		temp.y = (attackCircle.getPosition().y + attackCircle.getRadius()) / 30.f;
+		attackBody->SetTransform(temp, body->GetAngle());
+		
+	}
 }
 
 void CombatComponent::receiveDamage(float damage)
@@ -61,8 +98,9 @@ void CombatComponent::receiveDamage(float damage)
 		//TO-DO add baseCost to enemy config
 		player->getInventory()->grantEssence(50);
 		std::cout << "dead\n";
-		Unit* temp = gObjects.getUnitById(id, objectType);
-		gObjects.dropObject(temp, objectType);
+		
+		//Unit* temp = gObjects.getUnitById(id, objectType);
+		//gObjects.dropObject(temp, objectType);
 	}
 }
 
@@ -90,24 +128,35 @@ void CombatComponent::update(sf::Vector2f direction, const float& dt)
 
 void CombatComponent::render(sf::RenderWindow& target)
 {
-	//target.draw(aggroCircle);
+	target.draw(aggroCircle);
 	target.draw(attackCircle);
 }
 
 bool CombatComponent::isAggro()
 {
-	if (gObjects.getPlayerAggro(aggroCircle) && getPlayerPosition() != shape.getPosition())
+	if (PhysicsWorld::getAggro())
 	{
+
 		aggro = true;
 		aggroCircle.setFillColor(sf::Color::Red);
 		return true;
 	}
-	else
-	{
-		aggro = false;
-		aggroCircle.setFillColor(sf::Color::White);
-		return false;
-	}
+	aggro = false;
+	aggroCircle.setFillColor(sf::Color::White);
+	return false;
+
+	//if (gObjects.getPlayerAggro(aggroCircle) && getPlayerPosition() != shape.getPosition())
+	//{
+	//	aggro = true;
+	//	aggroCircle.setFillColor(sf::Color::Red);
+	//	return true;
+	//}
+	//else
+	//{
+	//	aggro = false;
+	//	aggroCircle.setFillColor(sf::Color::White);
+	//	return false;
+	//}
 }
 
 bool CombatComponent::isInAttackRange()

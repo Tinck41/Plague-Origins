@@ -25,7 +25,7 @@ TileMapLoader::~TileMapLoader()
 	this->tilesets.clear();
 	this->tilesetInfo.clear();
 	this->tileLayer.clear();
-	this->colliderLayer.clear();
+	this->colliderLayers.clear();
 }
 
 void TileMapLoader::parseTileMap()
@@ -65,7 +65,7 @@ void TileMapLoader::parseTileMap()
 		}
 	}
 
-	this->tileMap = TileMap(tileLayer, colliderLayer, mapSize, tileSize);
+	this->tileMap = TileMap(tileLayer, colliderLayers, mapSize, tileSize);
 }
 
 void TileMapLoader::parseTileSet(tinyxml2::XMLElement* xmlElement)
@@ -149,7 +149,7 @@ void TileMapLoader::parseTileLayer(tinyxml2::XMLElement* xmlElement)
 
 void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 {
-	std::vector<MapCollider> objects;
+	std::vector<ColliderComponent> objects;
 
 	for (tinyxml2::XMLElement* e = xmlElement->FirstChildElement(); e != nullptr; e = e->NextSiblingElement())
 	{
@@ -162,8 +162,10 @@ void TileMapLoader::parseObjects(tinyxml2::XMLElement* xmlElement)
 		e->QueryFloatAttribute("width", &objSize.x);
 		e->QueryFloatAttribute("height", &objSize.y);
 
-		objects.push_back(MapCollider(objPosition, objSize));
+		ColliderComponent obj(PhysicsWorld::createRectangleBody(objPosition, objSize, false, OBSTACLE, FRIENDLY_NPC | PLAYER | ENEMY_NPC), objSize);
+
+		objects.push_back(obj);
 	}
 
-	colliderLayer.push_back(objects);
+	colliderLayers.push_back(objects);
 }

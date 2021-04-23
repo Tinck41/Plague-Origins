@@ -24,6 +24,29 @@ GameObjects& GameObjects::Instance()
 	return gObjects;
 }
 
+void GameObjects::deleteInactive()
+{
+	//enemies
+	if ((int)enemies.size() > 0)
+	{
+		std::vector<int> toDeleteIds = std::vector<int>();
+		//for (auto& u : enemies)
+		for (std::list<Unit*>::iterator i = enemies.begin(); i != enemies.end(); i++)
+		{
+			if (!(*i)->getActiveStatus())
+			{
+				toDeleteIds.push_back((*i)->getId());
+				//dropObject(*i, (*i)->getObjectType());
+			}
+		}
+		for (auto& id : toDeleteIds)
+		{
+			dropObject(getUnitById(id, objects::enemies), objects::enemies);
+		}
+	}
+	
+}
+
 void GameObjects::registerObject(Unit* unit, objects e)
 {
 	unit->setActiveStatus(true);

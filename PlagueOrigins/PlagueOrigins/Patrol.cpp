@@ -7,47 +7,55 @@ Patrol::Patrol(sf::RectangleShape& shape, std::vector<sf::Vector2f> waypoints) :
 	this->waypoints = waypoints;
 	pointN = 1;
 	N = waypoints.size();
+	aggro = false;
 }
 
 void Patrol::update()
 {
-	patrolRoute(waypoints[pointN]);
+	if (!aggro)
+		patrolRoute(waypoints[pointN]);
 }
 
-sf::Vector2f Patrol::patrolRoute(sf::Vector2f dest)
+void Patrol::patrolRoute(sf::Vector2f dest)
 {
+	aggro = false;
 	sf::Vector2f currentPos = shape.getPosition();
 
-	if (currentPos.x < dest.x)
+	if (currentPos.x < dest.x - 5.f)
 		direction.x = 1.0f;
-	else if (currentPos.x > dest.x)
+	else if (currentPos.x > dest.x + 5.f)
 		direction.x = -1.0f;
-	if (currentPos.y < dest.y)
+	else if (abs(currentPos.x - dest.x) <= 5.f)
+		direction.x = 0.0f;
+	if (currentPos.y < dest.y - 5.f)
 		direction.y = 1.0f;
-	else if (currentPos.y > dest.y)
+	else if (currentPos.y > dest.y + 5.f)
 		direction.y = -1.0f;
+	else if (abs(currentPos.y - dest.y) <= 5.f)
+		direction.y = 0.0f;
 
-	//if patrol point is done
-	if ((currentPos.x >= dest.x - 5.0f && currentPos.x <= dest.x + 5.0f) && (currentPos.y >= dest.y - 5.0f && currentPos.y <= dest.y + 5.0f))
+	if ((currentPos.x >= dest.x - 5.f && currentPos.x <= dest.x + 5.f) && (currentPos.y >= dest.y - 5.f && currentPos.y <= dest.y + 5.f))
 		pointN++;
 	if (pointN >= N)
 		pointN = 0;
-
-	return direction;
 }
 
-sf::Vector2f Patrol::directRoute(sf::Vector2f dest)
+void Patrol::directRoute(sf::Vector2f dest)
 {
+	aggro = true;
 	sf::Vector2f currentPos = shape.getPosition();
 
-	if (currentPos.x < dest.x)
+	if (currentPos.x < dest.x - 5.f)
 		direction.x = 1.0f;
-	else if (currentPos.x > dest.x)
+	else if (currentPos.x > dest.x + 5.f)
 		direction.x = -1.0f;
-	if (currentPos.y < dest.y)
+	else if (abs(currentPos.x - dest.x) <= 5.f)
+		direction.x = 0.0f;
+	if (currentPos.y < dest.y - 5.f)
 		direction.y = 1.0f;
-	else if (currentPos.y > dest.y)
+	else if (currentPos.y > dest.y + 5.f)
 		direction.y = -1.0f;
+	else if (abs(currentPos.y - dest.y) <= 5.f)
+		direction.y = 0.0f;
 
-	return direction;
 }
