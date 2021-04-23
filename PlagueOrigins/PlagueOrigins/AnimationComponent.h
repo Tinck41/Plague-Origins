@@ -20,7 +20,7 @@ private:
 	//sf::Texture texture2;
 	//sf::Texture texture3;
 	sf::RectangleShape& shape;
-	dragonBones::SFMLFactory& factory;
+	//dragonBones::SFMLFactory& factory;
 	//const dragonBones::SFMLFactory* zf = dragonBones::SFMLFactory::get();
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
 
@@ -33,12 +33,12 @@ private:
 public:
 	//Constructor/Destructor
 	//AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& factory);
-	AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix);
+	AnimationComponent(sf::RectangleShape& shape, std::string prefix);
 	~AnimationComponent();
 
 	//Functions
 	void initArmature(sf::Vector2f vec);
-	void updateFactory(float dt);
+	//void updateFactory(float dt);
 
 	void setAnimation(animationName newAnimation, sf::Vector2f newDirection);
 	void setAnimation(animationName newAnimation);

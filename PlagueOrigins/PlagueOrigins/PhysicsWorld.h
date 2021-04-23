@@ -24,11 +24,11 @@ public:
 	PhysicsWorld(PhysicsWorld&) = delete;
 	~PhysicsWorld();
 
-	void setRange(bool value) { inRange = value; }
+	static void setRange(bool value) { get().inRange = value; }
 	static void update(const float& dt) { get().updateInternal(dt); }
 
 	static b2Body* createRectangleBody(sf::Vector2f position, sf::Vector2f size, bool isDynamic, uint16 categoryBits, uint16 maskBits);
-	static b2Body* createCircleBody(sf::Vector2f position, float radius, bool isDynamic, uint16 categoryBits, uint16 maskBits);
+	static b2Body* createCircleBody(sf::Vector2f position, float radius, bool isDynamic, bool isSensor, uint16 categoryBits, uint16 maskBits);
 
 	static b2World* getWorld() { return get().world; }
 private:
@@ -43,6 +43,6 @@ private:
 	void updateInternal(const float& dt);
 
 	b2Body* createRectangleBodyInternal(sf::Vector2f position, sf::Vector2f size, bool isDynamic, uint16 categoryBits, uint16 maskBits);
-	b2Body* createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, uint16 categoryBits, uint16 maskBits);
+	b2Body* createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, bool isSensor, uint16 categoryBits, uint16 maskBits);
 };
 

@@ -46,5 +46,5 @@ void Unit::render(sf::RenderWindow* window)
 
 void Unit::createAnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix)
 {
-	this->animationComponent = new AnimationComponent(shape, zf, prefix);
+	this->animationComponent = new AnimationComponent(shape, prefix);
 }

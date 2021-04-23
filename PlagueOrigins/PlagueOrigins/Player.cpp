@@ -15,7 +15,7 @@ Player::Player(float x, float y) :
 	initVariables();
 	createHitbox(x, y);
 
-	body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, PLAYER, ENEMY_NPC | FRIENDLY_NPC);
+	body = PhysicsWorld::createRectangleBody(shape.getPosition(), shape.getSize(), true, PLAYER, ENEMY_NPC | FRIENDLY_NPC | OBSTACLE | ENEMY_AGGRO_RADIUS);
 
 	// create components
 	createColliderComponent(body, shape.getSize());
@@ -75,13 +75,14 @@ void Player::update(const float& dt)
 		(1 / scale) * (shape.getPosition().x + shape.getSize().x / 2),
 		(1 / scale) * (shape.getPosition().y + shape.getSize().y / 2))
 	);
-	animationComponent->updateFactory(dt);
+	//animationComponent->updateFactory(dt);
+	gFactory.factory.update(dt);
 }
 	
 void Player::render(sf::RenderWindow& target)
 {
 	// draw hitbox
-	combatComponent->render(target);
+	//combatComponent->render(target);
 	target.draw(shape);
 	target.draw(*animationComponent->getArmatureDisplay(), states);
 }

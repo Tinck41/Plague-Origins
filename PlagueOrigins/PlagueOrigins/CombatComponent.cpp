@@ -40,12 +40,12 @@ void CombatComponent::initVariables()
 			shape.getPosition().y + shape.getSize().y / 2 - aggroCircle.getRadius()
 		);
 
-		attackBody = PhysicsWorld::createCircleBody(shape.getPosition(), attackCircle.getRadius(), true, ATTACK_RADIUS, PLAYER);
-		aggroBody = PhysicsWorld::createCircleBody(shape.getPosition(), aggroCircle.getRadius(), true, ENEMY_AGGRO_RADIUS, PLAYER);
+		attackBody = PhysicsWorld::createCircleBody(shape.getPosition(), attackCircle.getRadius(), true, true, ATTACK_RADIUS, PLAYER);
+		aggroBody = PhysicsWorld::createCircleBody(shape.getPosition(), aggroCircle.getRadius(), true, true, ENEMY_AGGRO_RADIUS, PLAYER);
 	}
 	else
 	{
-		attackBody = PhysicsWorld::createCircleBody(shape.getPosition(), attackCircle.getRadius(), true, ATTACK_RADIUS, ENEMY_NPC);
+		attackBody = PhysicsWorld::createCircleBody(shape.getPosition(), attackCircle.getRadius(), true, true, ATTACK_RADIUS, ENEMY_NPC);
 	}
 	
 }
@@ -119,7 +119,7 @@ void CombatComponent::update(sf::Vector2f direction, const float& dt)
 
 void CombatComponent::render(sf::RenderWindow& target)
 {
-	//target.draw(aggroCircle);
+	target.draw(aggroCircle);
 	target.draw(attackCircle);
 }
 

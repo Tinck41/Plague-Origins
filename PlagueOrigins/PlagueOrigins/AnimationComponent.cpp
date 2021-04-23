@@ -3,8 +3,7 @@
 #include "AnimationComponent.h"
 
 //Constructor/Destructor
-AnimationComponent::AnimationComponent(sf::RectangleShape& shape, dragonBones::SFMLFactory& zf, std::string prefix) : 
-	factory(zf), shape(shape)
+AnimationComponent::AnimationComponent(sf::RectangleShape& shape, std::string prefix) :  shape(shape)
 {
 	this->prefix = prefix;
 	this->armatureName = "Armature" + prefix;
@@ -152,10 +151,10 @@ void AnimationComponent::playDeathAnimation()
 	//this->armatureDisplay->getAnimation()->fadeIn("Die", 1.f, 1);
 }
 
-void AnimationComponent::updateFactory(float dt)
-{
-	this->factory.update(dt);
-}
+//void AnimationComponent::updateFactory(float dt)
+//{
+//	this->factory.update(dt);
+//}
 
 void AnimationComponent::initArmature(sf::Vector2f vec)
 {

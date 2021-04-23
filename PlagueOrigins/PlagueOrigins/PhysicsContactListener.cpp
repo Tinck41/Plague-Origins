@@ -29,14 +29,12 @@ void PhysicsContactListener::BeginContact(b2Contact* contact)
         fixtureB->GetUserData().pointer == ENEMY_AGGRO_RADIUS)
     {
         std::cout << "AGGRO START BOX2D\n";
-        //PhysicsWorld& phWorld = PhysicsWorld::get();
-        //b2World* world = phWorld.getWorld();
-        //RayCastClosestCallback callback;
-        //world->RayCast(&callback, bodyB->GetTransform().p, bodyA->GetTransform().p);
-        //if (callback.m_hit)
-        //{
-        //    phWorld.setRange(true);
-        //}
+        RayCastClosestCallback callback;
+        PhysicsWorld::getWorld()->RayCast(&callback, bodyB->GetTransform().p, bodyA->GetTransform().p);
+        if (callback.m_hit)
+        {
+            PhysicsWorld::setRange(true);
+        }
     }
 
 
@@ -71,32 +69,18 @@ void PhysicsContactListener::EndContact(b2Contact* contact)
         fixtureB->GetUserData().pointer == ENEMY_AGGRO_RADIUS)
     {
         std::cout << "AGGRO END BOX2D\n";
-        //PhysicsWorld& phWorld = PhysicsWorld::get();
-        //b2World* world = phWorld.getWorld();
-        //RayCastClosestCallback callback;
-        //world->RayCast(&callback, bodyB->GetTransform().p, bodyA->GetTransform().p);
-        //if (callback.m_hit)
-        //{
-        //    phWorld.setRange(false);
-        //}
+        RayCastClosestCallback callback;
+        PhysicsWorld::getWorld()->RayCast(&callback, bodyB->GetTransform().p, bodyA->GetTransform().p);
+        if (callback.m_hit)
+        {
+            PhysicsWorld::setRange(true);
+        }
     }
 }
 
 void PhysicsContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 {
-    b2Fixture* fixtureA = contact->GetFixtureA();
-    b2Fixture* fixtureB = contact->GetFixtureB();
-
-    b2Body* bodyA = fixtureA->GetBody();
-    b2Body* bodyB = fixtureB->GetBody();
-
-    if (bodyA == nullptr && bodyB == nullptr) return;
     // Same as previous
-    if (bodyA->GetUserData().pointer == PLAYER &&
-        bodyB->GetUserData().pointer == OBSTACLE)
-    {
-        std::cout << "It's the end of collision between PLAYER and OBSTACLE" << "\n";
-    }
 }
 
 void PhysicsContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
