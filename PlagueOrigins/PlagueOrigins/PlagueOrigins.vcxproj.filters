@@ -346,6 +346,9 @@
     <ClInclude Include="Src\ECS\Components\Transform.h" />
     <ClInclude Include="Src\ECS\Systems\Input.h" />
     <ClInclude Include="Src\ECS\SystemHandler.h" />
+    <ClInclude Include="Src\ECS\Components\Tag.h" />
+    <ClInclude Include="Src\ECS\Components\CircleCollider.h" />
+    <ClInclude Include="Src\ECS\Components\RectCollider.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

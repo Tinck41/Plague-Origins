@@ -13,9 +13,9 @@ GameScreen::GameScreen()
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<PlayerInput>();
 
-	cameraComponent = new CameraComponent();
-	cameraComponent->setBounds(map.getSize());
-	inventoryComponent = new InventoryComponent();
+	//cameraComponent = new CameraComponent();
+	//cameraComponent->setBounds(map.getSize());
+	//inventoryComponent = new InventoryComponent();
 }
 
 GameScreen::~GameScreen()

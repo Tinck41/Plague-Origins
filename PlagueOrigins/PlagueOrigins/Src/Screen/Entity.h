@@ -26,11 +26,11 @@ public:
 		return screen->registry.get<T>(entityHandle);
 	}
 
-	/*template<typename T>
+	template<typename T>
 	bool HasComponent()
 	{
-		return screen->registry.has<T>(entityHandle);
-	}*/
+		return screen->registry.all_of<T>(entityHandle);
+	}
 
 	template<typename T>
 	void RemoveComponent()

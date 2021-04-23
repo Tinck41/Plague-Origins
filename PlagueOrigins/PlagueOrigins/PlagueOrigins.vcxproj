@@ -220,8 +220,11 @@
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="CombatComponent.h" />
     <ClInclude Include="Src\ECS\Components\Animator.h" />
+    <ClInclude Include="Src\ECS\Components\CircleCollider.h" />
     <ClInclude Include="Src\ECS\Components\Movement.h" />
+    <ClInclude Include="Src\ECS\Components\RectCollider.h" />
     <ClInclude Include="Src\ECS\Components\Rigidbody.h" />
+    <ClInclude Include="Src\ECS\Components\Tag.h" />
     <ClInclude Include="Src\ECS\Components\Transform.h" />
     <ClInclude Include="Src\ECS\SystemHandler.h" />
     <ClInclude Include="Src\ECS\Systems\Animation.h" />
