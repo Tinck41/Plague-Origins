@@ -17,4 +17,8 @@ struct Animator
 	sf::Vector2f currentDirection = sf::Vector2f(0.f, 1.f);
 
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
+
+	float scale = 0.2f;
+	sf::RenderStates states;
+
 };

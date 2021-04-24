@@ -32,5 +32,6 @@
 #include <dragonBones/SFMLArmatureDisplay.h>
 
 #include "Config.h"
+#include "Src/Utility/PhysicsWorld.h"
 
 extern Config config;

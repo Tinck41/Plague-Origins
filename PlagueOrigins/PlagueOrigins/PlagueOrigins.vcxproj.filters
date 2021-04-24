@@ -153,6 +153,13 @@
     <ClCompile Include="Src\ECS\SystemHandler.cpp" />
     <ClCompile Include="Src\ECS\Systems\Input.cpp" />
     <ClCompile Include="Src\ECS\Systems\Animation.cpp" />
+    <ClCompile Include="Src\Utility\PhysicsWorld.cpp" />
+    <ClCompile Include="Src\Utility\PhysicsContactListener.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Controller.cpp" />
+    <ClCompile Include="Src\Utility\AnimationFactory.cpp" />
+    <ClCompile Include="Src\ECS\EntityStateMachine.cpp" />
+    <ClCompile Include="Src\ECS\EntityState.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -349,6 +356,14 @@
     <ClInclude Include="Src\ECS\Components\Tag.h" />
     <ClInclude Include="Src\ECS\Components\CircleCollider.h" />
     <ClInclude Include="Src\ECS\Components\RectCollider.h" />
+    <ClInclude Include="Src\Utility\PhysicsWorld.h" />
+    <ClInclude Include="Src\Utility\PhysicsContactListener.h" />
+    <ClInclude Include="Src\ECS\Systems\Controller.h" />
+    <ClInclude Include="Src\ECS\Components\Dash.h" />
+    <ClInclude Include="Src\Utility\AnimationFactory.h" />
+    <ClInclude Include="Src\ECS\Systems\IEcsOnCreateUpdate.h" />
+    <ClInclude Include="Src\ECS\EntityStateMachine.h" />
+    <ClInclude Include="Src\ECS\EntityState.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

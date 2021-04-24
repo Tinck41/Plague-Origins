@@ -21,6 +21,8 @@ private:
 	NPCBishop npcBishop{ 400.f, 650.f };
 
 	Entity testEntity;
+	Entity npcEntity;
+	sf::RectangleShape entityShape;
 
 	TilemapParser mapLoader;
 	TileMap map;

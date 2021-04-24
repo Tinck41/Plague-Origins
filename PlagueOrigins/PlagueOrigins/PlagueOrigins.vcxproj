@@ -155,9 +155,13 @@
     <ClCompile Include="ClosedState.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CombatComponent.cpp" />
+    <ClCompile Include="Src\ECS\EntityState.cpp" />
+    <ClCompile Include="Src\ECS\EntityStateMachine.cpp" />
     <ClCompile Include="Src\ECS\SystemHandler.cpp" />
     <ClCompile Include="Src\ECS\Systems\Animation.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Controller.cpp" />
     <ClCompile Include="Src\ECS\Systems\Input.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
     <ClCompile Include="Src\Screen\Entity.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
@@ -199,6 +203,9 @@
     <ClCompile Include="Src\Core\Main.cpp" />
     <ClCompile Include="Src\Tilemap\Tile.cpp" />
     <ClCompile Include="Src\Tilemap\TilemapParser.cpp" />
+    <ClCompile Include="Src\Utility\AnimationFactory.cpp" />
+    <ClCompile Include="Src\Utility\PhysicsContactListener.cpp" />
+    <ClCompile Include="Src\Utility\PhysicsWorld.cpp" />
     <ClCompile Include="UnfoldedState.cpp" />
     <ClCompile Include="Unit.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -221,6 +228,10 @@
     <ClInclude Include="CombatComponent.h" />
     <ClInclude Include="Src\ECS\Components\Animator.h" />
     <ClInclude Include="Src\ECS\Components\CircleCollider.h" />
+    <ClInclude Include="Src\ECS\Components\Dash.h" />
+    <ClInclude Include="Src\ECS\EntityStateMachine.h" />
+    <ClInclude Include="Src\ECS\EntityState.h" />
+    <ClInclude Include="Src\ECS\Systems\Controller.h" />
     <ClInclude Include="Src\ECS\Components\Movement.h" />
     <ClInclude Include="Src\ECS\Components\RectCollider.h" />
     <ClInclude Include="Src\ECS\Components\Rigidbody.h" />
@@ -228,6 +239,7 @@
     <ClInclude Include="Src\ECS\Components\Transform.h" />
     <ClInclude Include="Src\ECS\SystemHandler.h" />
     <ClInclude Include="Src\ECS\Systems\Animation.h" />
+    <ClInclude Include="Src\ECS\Systems\IEcsOnCreateUpdate.h" />
     <ClInclude Include="Src\ECS\Systems\IEcsRenderSystem.h" />
     <ClInclude Include="Src\ECS\Systems\IEcsUpdateSystem.h" />
     <ClInclude Include="Src\ECS\Components\PlayerInput.h" />
@@ -282,6 +294,9 @@
     <ClInclude Include="Src\Screen\ScreenHandler.h" />
     <ClInclude Include="Src\Tilemap\Tile.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />
+    <ClInclude Include="Src\Utility\AnimationFactory.h" />
+    <ClInclude Include="Src\Utility\PhysicsContactListener.h" />
+    <ClInclude Include="Src\Utility\PhysicsWorld.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="UnfoldedState.h" />
