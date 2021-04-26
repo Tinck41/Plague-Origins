@@ -4,32 +4,46 @@
 
 void Controller::update(entt::registry& reg, const float& dt)
 {
-	auto view = reg.view<Movement, RigidBody, PlayerInput, Dash>();
+	auto view = reg.view<Movement, RigidBody, PlayerInput, Animator, Dash>();
 	for (auto entity : view)
 	{
 		Movement& movement = reg.get<Movement>(entity);
 		RigidBody& rigidBody = reg.get<RigidBody>(entity);
 		PlayerInput& playerInput = reg.get<PlayerInput>(entity);
 		Dash& dash = reg.get<Dash>(entity);
+		Animator& animator = reg.get<Animator>(entity);
 
 		setDirection(movement, playerInput);
 		checkDash(playerInput, movement, dash, dt);
 
-		if (!dash.isDashing)
-			applyVelocity(movement, rigidBody, dt);
+		if (!dash.isDashing && movement.direction != sf::Vector2f(0.f, 0.f))
+		{
+			applyVelocity(rigidBody, movement.speed, movement.direction, dt);
+			animator.previousAnimation = animator.currentAnimation;
+			animator.currentAnimation = MOVE;
+			animator.previousFaceDirection = animator.currentFaceDirection;
+			animator.currentFaceDirection = movement.direction;
+		}
+		else if (dash.isDashing)
+		{
+			applyVelocity(rigidBody, dash.speed, dash.direction, dt);
+			animator.previousAnimation = animator.currentAnimation;
+			animator.currentAnimation = DASH;
+			animator.previousFaceDirection = animator.currentFaceDirection;
+			animator.currentFaceDirection = movement.direction;
+		}
 		else
-			applyVelocity(dash, rigidBody, dt);
+		{
+			animator.previousAnimation = animator.currentAnimation;
+			animator.currentAnimation = IDLE;
+		}
+
 	}
 }
 
-void Controller::applyVelocity(Movement& movement, RigidBody& rigidBody, const float& dt)
+void Controller::applyVelocity(RigidBody& rigidBody, const float& speed, sf::Vector2f direction, const float& dt)
 {
-	rigidBody.body->SetLinearVelocity(movement.speed * dt * b2Vec2(movement.direction.x, movement.direction.y));
-}
-
-void Controller::applyVelocity(Dash& dash, RigidBody& rigidBody, const float& dt)
-{
-	rigidBody.body->SetLinearVelocity(dash.speed * dt * b2Vec2(dash.direction.x, dash.direction.y));
+	rigidBody.body->SetLinearVelocity(speed * dt * b2Vec2(direction.x, direction.y));
 }
 
 void Controller::checkDash(PlayerInput& playerInput, Movement& movement, Dash& dash, const float& dt)

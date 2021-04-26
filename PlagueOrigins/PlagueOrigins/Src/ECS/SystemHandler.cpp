@@ -5,6 +5,7 @@
 #include "Src/ECS/Systems/Animation.h"
 #include "Src/ECS/Systems/Controller.h"
 #include "Src/ECS/Systems/Physics.h"
+#include "Src/ECS/Systems/Camera.h"
 
 SystemHandler::SystemHandler()
 {
@@ -16,6 +17,7 @@ SystemHandler::SystemHandler()
 
 	// Render systems
 	renderableSystems.push_back(new Animation());
+	renderableSystems.push_back(new Camera());
 
 	// OnCreate system
 	onCreateSystems.push_back(new Animation());

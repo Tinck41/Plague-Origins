@@ -23,7 +23,7 @@ class Animation :
 	void playDashAnimation(Animator& animator, Tag& tag);
 	std::string setPostfix(Tag& tag, std::string dir);
 
-	void setAnimation(Animator& animator, Tag& tag, animationName newAnimation, sf::Vector2f newDirection);
+	void setAnimation(Animator& animator, Tag& tag);
 	//void setAnimation(animationName newAnimation);
 
 	virtual void onCreate(entt::registry& reg) override;

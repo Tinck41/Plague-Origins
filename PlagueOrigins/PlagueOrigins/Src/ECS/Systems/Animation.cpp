@@ -27,76 +27,89 @@ void Animation::playAnimation(Animator& animator, Tag& tag, animationName name)
 
 void Animation::playMovementAnimation(Animator& animator, Tag& tag)
 {
-	if (animator.currentDirection.y < 0.f)
+	dragonBones::SFMLArmatureDisplay* armatureDisplay = nullptr;
+
+	if (animator.currentFaceDirection.y < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "U");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.y > 0.f)
+	else if (animator.currentFaceDirection.y > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "D");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	if (animator.currentDirection.x > 0.f)
+	if (animator.currentFaceDirection.x > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.x < 0.f)
+	else if (animator.currentFaceDirection.x < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
-		animator.armatureDisplay->getArmature()->setFlipX(true);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay->getArmature()->setFlipX(true);
 	}
 
-	animator.armatureDisplay->getAnimation()->fadeIn("Run", 0.3f, -1, 0, "hero", dragonBones::AnimationFadeOutMode::SameLayerAndGroup);
+	if (armatureDisplay != nullptr)
+	{
+		animator.armatureDisplay = armatureDisplay;
+		animator.armatureDisplay->getAnimation()->play("Run");
+		//animator.armatureDisplay->getAnimation()->fadeIn("Run", 0.3f, -1, 0, "hero", dragonBones::AnimationFadeOutMode::SameLayerAndGroup);
+	}
 }
 
 void Animation::playIdleAnimation(Animator& animator, Tag& tag)
 {
-	if (animator.currentDirection.y < 0.f)
+	dragonBones::SFMLArmatureDisplay* armatureDisplay = nullptr;
+
+	if (animator.currentFaceDirection.y < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "U");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.y > 0.f)
+	else if (animator.currentFaceDirection.y > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "D");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	if (animator.currentDirection.x > 0.f)
+	if (animator.currentFaceDirection.x > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.x < 0.f)
+	else if (animator.currentFaceDirection.x < 0.f)
 	{	
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
-		animator.armatureDisplay->getArmature()->setFlipX(true);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay->getArmature()->setFlipX(true);
 	}
 
-	animator.armatureDisplay->getAnimation()->play("Idle");
+	if (armatureDisplay != nullptr)
+	{
+		animator.armatureDisplay = armatureDisplay;
+		animator.armatureDisplay->getAnimation()->play("Idle");
+	}
 }
 
 void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 {
-	if (animator.currentDirection.y < 0.f)
+	if (animator.currentFaceDirection.y < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "U");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.y > 0.f)
+	else if (animator.currentFaceDirection.y > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "D");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	if (animator.currentDirection.x > 0.f)
+	if (animator.currentFaceDirection.x > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.x < 0.f)
+	else if (animator.currentFaceDirection.x < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
@@ -116,22 +129,22 @@ void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 
 void Animation::playDeathAnimation(Animator& animator, Tag& tag)
 {
-	if (animator.currentDirection.y < 0.f)
+	if (animator.currentFaceDirection.y < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "U");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.y > 0.f)
+	else if (animator.currentFaceDirection.y > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "D");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	if (animator.currentDirection.x > 0.f)
+	if (animator.currentFaceDirection.x > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.x < 0.f)
+	else if (animator.currentFaceDirection.x < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
@@ -144,22 +157,22 @@ void Animation::playDeathAnimation(Animator& animator, Tag& tag)
 
 void Animation::playDashAnimation(Animator& animator, Tag& tag)
 {
-	if (animator.currentDirection.y < 0.f)
+	if (animator.currentFaceDirection.y < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "U");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.y > 0.f)
+	else if (animator.currentFaceDirection.y > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "D");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	if (animator.currentDirection.x > 0.f)
+	if (animator.currentFaceDirection.x > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
-	else if (animator.currentDirection.x < 0.f)
+	else if (animator.currentFaceDirection.x < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
 		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
@@ -184,10 +197,10 @@ std::string Animation::setPostfix(Tag& tag, std::string dir)
 		return "";
 }
 
-void Animation::setAnimation(Animator& animator, Tag& tag, animationName newAnimation, sf::Vector2f newDirection)
+void Animation::setAnimation(Animator& animator, Tag& tag)
 {
 
-	if (animator.currentDirection != newDirection || animator.currentAnimation != newAnimation)
+	if (animator.previousFaceDirection != animator.currentFaceDirection || animator.previousAnimation != animator.currentAnimation)
 	{
 		/*
 			if 
@@ -198,10 +211,10 @@ void Animation::setAnimation(Animator& animator, Tag& tag, animationName newAnim
 			else 
 				don't
 		*/
-		if (animator.currentDirection.x != newDirection.x || animator.currentDirection.x == 0 && newDirection.x == 0 || animator.currentAnimation != newAnimation)
+		/*if (animator.currentFaceDirection.x != newDirection.x || animator.currentFaceDirection.x == 0 && newDirection.x == 0 || animator.currentAnimation != animator.previousAnimation)
 		{
-			animator.currentDirection = newDirection;
-			animator.currentAnimation = newAnimation;
+			animator.currentFaceDirection = newDirection;
+			animator.currentAnimation = newAnimation;*/
 
 			if (animator.armatureDisplay != nullptr)
 			{
@@ -210,18 +223,20 @@ void Animation::setAnimation(Animator& animator, Tag& tag, animationName newAnim
 				animator.armatureDisplay = NULL;
 			}
 
-			playAnimation(animator, tag, newAnimation);
-		}
+			playAnimation(animator, tag, animator.currentAnimation);
+		//}
 	}
 }
 
 void Animation::onCreate(entt::registry& reg)
 {
-	auto view = reg.view<Animator>();
+	auto view = reg.view<Animator, Tag>();
 	for (auto entity : view)
 	{
 		Animator& animator = reg.get<Animator>(entity);
+		Tag& tag = reg.get<Tag>(entity);
 
+		animator.armatureName = tag.name;
 		animator.states = animator.states.transform.scale(animator.scale, animator.scale);
 		animator.armatureDisplay = nullptr;
 	}
@@ -237,16 +252,8 @@ void Animation::update(entt::registry& reg, const float& dt)
 		Movement& movement = reg.get<Movement>(entity);
 		Transform& transform = reg.get<Transform>(entity);
 		Tag& tag = reg.get<Tag>(entity);
-		//Dash& dash = reg.get<Dash>(entity);
 
-		if (movement.direction == sf::Vector2f(0.f, 0.f))
-		{
-			setAnimation(animator, tag, IDLE, animator.currentDirection);
-		}
-		else
-		{
-			setAnimation(animator, tag, MOVE, movement.direction);
-		}
+		setAnimation(animator, tag);
 
 		animator.armatureDisplay->setPosition(sf::Vector2f(
 			(1 / animator.scale) * (transform.position.x),
@@ -261,6 +268,7 @@ void Animation::render(entt::registry& reg, sf::RenderWindow& window)
 	for (auto entity : view)
 	{
 		Animator& animator = reg.get<Animator>(entity);
+
 		window.draw(*animator.armatureDisplay, animator.states);
 	}
 }

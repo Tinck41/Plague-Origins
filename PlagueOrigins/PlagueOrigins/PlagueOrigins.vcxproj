@@ -155,10 +155,9 @@
     <ClCompile Include="ClosedState.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="CombatComponent.cpp" />
-    <ClCompile Include="Src\ECS\EntityState.cpp" />
-    <ClCompile Include="Src\ECS\EntityStateMachine.cpp" />
     <ClCompile Include="Src\ECS\SystemHandler.cpp" />
     <ClCompile Include="Src\ECS\Systems\Animation.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Camera.cpp" />
     <ClCompile Include="Src\ECS\Systems\Controller.cpp" />
     <ClCompile Include="Src\ECS\Systems\Input.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
@@ -227,10 +226,10 @@
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="CombatComponent.h" />
     <ClInclude Include="Src\ECS\Components\Animator.h" />
+    <ClInclude Include="Src\ECS\Components\CameraTarget.h" />
     <ClInclude Include="Src\ECS\Components\CircleCollider.h" />
     <ClInclude Include="Src\ECS\Components\Dash.h" />
-    <ClInclude Include="Src\ECS\EntityStateMachine.h" />
-    <ClInclude Include="Src\ECS\EntityState.h" />
+    <ClInclude Include="Src\ECS\Systems\Camera.h" />
     <ClInclude Include="Src\ECS\Systems\Controller.h" />
     <ClInclude Include="Src\ECS\Components\Movement.h" />
     <ClInclude Include="Src\ECS\Components\RectCollider.h" />

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <string>
 #include "PlayerAnimationStates.h"
 #include "SFML/Graphics.hpp"
 
+#include <string>
 #include <dragonBones/SFMLFactory.h>
 #include <dragonBones/SFMLArmatureDisplay.h>
 
@@ -13,8 +13,10 @@ struct Animator
 	std::string armatureName;
 	std::string postfix;
 
-	animationName currentAnimation;
-	sf::Vector2f currentDirection = sf::Vector2f(0.f, 1.f);
+	animationName currentAnimation = NONE;
+	animationName previousAnimation = NONE;
+	sf::Vector2f previousFaceDirection = sf::Vector2f(0.f, 1.f);
+	sf::Vector2f currentFaceDirection = sf::Vector2f(0.f, 1.f);
 
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
 

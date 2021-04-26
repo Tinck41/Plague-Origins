@@ -8,6 +8,7 @@
 #include "Src/ECS/Components/Tag.h"
 #include "Src/ECS/Components/Transform.h"
 #include "Src/ECS/Components/Animator.h"
+#include "Src/ECS/Components/CameraTarget.h"
 #include "Src/Utility/AnimationFactory.h"
 #include "GlobalFactory.h"
 
@@ -26,23 +27,16 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Movement>(500.f);
 	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, PLAYER, OBSTACLE | ENEMY_NPC);
 	testEntity.AddComponent<Tag>("Hero");
+	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()));
 
-	npcEntity = Entity(registry.create(), this);
+	/*npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>();
 	npcEntity.AddComponent<Movement>(500.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, ENEMY_NPC, OBSTACLE | PLAYER);
-	npcEntity.AddComponent<Tag>("Dog");
-	
-	entityShape.setSize(sf::Vector2f(50.f, 50.f));
-	entityShape.setPosition(sf::Vector2f(315.f, 615.f));
-	entityShape.setFillColor(sf::Color::Red);
+	npcEntity.AddComponent<Tag>("Dog");*/
 
 	systems.onCreate(registry);
-
-	//cameraComponent = new CameraComponent();
-	//cameraComponent->setBounds(map.getSize());
-	//inventoryComponent = new InventoryComponent();
 }
 
 GameScreen::~GameScreen()
@@ -53,8 +47,6 @@ GameScreen::~GameScreen()
 
 void GameScreen::update(const float& dt)
 {
-	
-
 	//if (player.getActiveStatus())
 	//	player.update(dt);
 	//if (npcDog.getActiveStatus())
@@ -63,7 +55,6 @@ void GameScreen::update(const float& dt)
 	//	npcBishop.update(dt);
 	//cameraComponent->update(player.getPosition());
 	//inventoryComponent->update(dt, cameraComponent->getPosition());
-	entityShape.setPosition(testEntity.GetComponent<RigidBody>().body->GetPosition().x * 30.f - entityShape.getSize().x / 2.f, testEntity.GetComponent<RigidBody>().body->GetPosition().y * 30.f - entityShape.getSize().y / 2.f);
 	map.update(dt);
 	systems.update(registry, dt);
 	// AnimationFactory::update(dt);
@@ -75,7 +66,6 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 {
 	//cameraComponent->setViewport(window);
 	map.renderUnderPlayerLayers(window);
-	window.draw(entityShape);
 	//if (npcBishop.getActiveStatus())
 	//	npcBishop.render(window);
 	//if (npcDog.getActiveStatus())
@@ -84,9 +74,8 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 	//	player.render(window);
 	//inventoryComponent->render(window);
 
-
-	map.renderOverPlayerLayers(window);
 	systems.render(registry, window);
+	map.renderOverPlayerLayers(window);
 	return ScreenType::GAME;
 }
 
