@@ -2,7 +2,7 @@
 
 #include "IEcsUpdateSystem.h"
 #include "entt.hpp"
-#include "Src/ECS/Components/PlayerInput.h"
+#include "Src/ECS/Components.h"
 
 class Input :
 	public IEcsUpdateSystem

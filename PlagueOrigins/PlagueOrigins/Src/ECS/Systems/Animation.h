@@ -4,11 +4,7 @@
 #include "Src/ECS/Systems/IEcsRenderSystem.h"
 #include "Src/ECS/Systems/IEcsOnCreateUpdate.h"
 
-#include "Src/ECS/Components/Animator.h"
-#include "Src/ECS/Components/Movement.h"
-#include "Src/ECS/Components/Tag.h"
-#include "Src/ECS/Components/Dash.h"
-#include "Src/ECS/Components/Transform.h"
+#include "Src/ECS/Components.h"
 
 class Animation :
 	public IEcsUpdateSystem,

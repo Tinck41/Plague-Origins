@@ -1,15 +1,6 @@
 #include "stdafx.h"
 #include "GameScreen.h"
 
-#include "Src/ECS/Components/PlayerInput.h"
-#include "Src/ECS/Components/Movement.h"
-#include "Src/ECS/Components/Rigidbody.h"
-#include "Src/ECS/Components/Dash.h"
-#include "Src/ECS/Components/Tag.h"
-#include "Src/ECS/Components/Transform.h"
-#include "Src/ECS/Components/Animator.h"
-#include "Src/ECS/Components/CameraTarget.h"
-#include "Src/Utility/AnimationFactory.h"
 #include "GlobalFactory.h"
 
 GameScreen::GameScreen()
@@ -25,16 +16,19 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Dash>();
 	testEntity.AddComponent<Animator>();
 	testEntity.AddComponent<Movement>(500.f);
-	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, PLAYER, OBSTACLE | ENEMY_NPC);
+	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity);
 	testEntity.AddComponent<Tag>("Hero");
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()));
+	testEntity.AddComponent<Health>(300.f);
+	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 50.f);
 
-	/*npcEntity = Entity(registry.create(), this);
+	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>();
 	npcEntity.AddComponent<Movement>(500.f);
-	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, ENEMY_NPC, OBSTACLE | PLAYER);
-	npcEntity.AddComponent<Tag>("Dog");*/
+	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity);
+	npcEntity.AddComponent<Tag>("Dog");
+	npcEntity.AddComponent<Health>(300.f);
 
 	systems.onCreate(registry);
 }
@@ -57,6 +51,7 @@ void GameScreen::update(const float& dt)
 	//inventoryComponent->update(dt, cameraComponent->getPosition());
 	map.update(dt);
 	systems.update(registry, dt);
+	std::cout << npcEntity.GetComponent<Health>().curhealth << "\n";
 	// AnimationFactory::update(dt);
 	GlobalFactory::Instance().factory.update(dt);
 	PhysicsWorld::update(dt);
@@ -74,8 +69,8 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 	//	player.render(window);
 	//inventoryComponent->render(window);
 
-	systems.render(registry, window);
 	map.renderOverPlayerLayers(window);
+	systems.render(registry, window);
 	return ScreenType::GAME;
 }
 

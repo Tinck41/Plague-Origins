@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-#include "Src/ECS/Components/CameraTarget.h"
-#include "Src/ECS/Components/Transform.h"
-
 void Camera::render(entt::registry& reg, sf::RenderWindow& window)
 {
 	auto view = reg.view<CameraTarget, Transform>();

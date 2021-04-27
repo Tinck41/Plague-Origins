@@ -120,6 +120,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -139,6 +140,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -158,6 +160,7 @@
     <ClCompile Include="Src\ECS\SystemHandler.cpp" />
     <ClCompile Include="Src\ECS\Systems\Animation.cpp" />
     <ClCompile Include="Src\ECS\Systems\Camera.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Combat.cpp" />
     <ClCompile Include="Src\ECS\Systems\Controller.cpp" />
     <ClCompile Include="Src\ECS\Systems\Input.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
@@ -228,12 +231,16 @@
     <ClInclude Include="Src\ECS\Components\Animator.h" />
     <ClInclude Include="Src\ECS\Components\CameraTarget.h" />
     <ClInclude Include="Src\ECS\Components\CircleCollider.h" />
+    <ClInclude Include="Src\ECS\Components\Attack.h" />
+    <ClInclude Include="Src\ECS\Components.h" />
     <ClInclude Include="Src\ECS\Components\Dash.h" />
+    <ClInclude Include="Src\ECS\Components\Health.h" />
     <ClInclude Include="Src\ECS\Systems\Camera.h" />
+    <ClInclude Include="Src\ECS\Systems\Combat.h" />
     <ClInclude Include="Src\ECS\Systems\Controller.h" />
     <ClInclude Include="Src\ECS\Components\Movement.h" />
     <ClInclude Include="Src\ECS\Components\RectCollider.h" />
-    <ClInclude Include="Src\ECS\Components\Rigidbody.h" />
+    <ClInclude Include="Src\ECS\Components\RigidBody.h" />
     <ClInclude Include="Src\ECS\Components\Tag.h" />
     <ClInclude Include="Src\ECS\Components\Transform.h" />
     <ClInclude Include="Src\ECS\SystemHandler.h" />

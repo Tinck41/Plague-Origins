@@ -6,16 +6,16 @@
 
 struct RigidBody
 {
-	RigidBody(sf::Vector2f size, sf::Vector2f position, bool isDynamic, uint16 categoryBits, uint16 maskBits)
+	RigidBody(sf::Vector2f size, sf::Vector2f position, bool isDynamic, entt::entity owner)
 	{
 		this->size = size;
-		body = PhysicsWorld::createRectangleBody(position, size, isDynamic, categoryBits, maskBits);
+		body = PhysicsWorld::createRectangleBody(position, size, isDynamic, owner);
 	}
 
-	RigidBody(float radius, sf::Vector2f position, bool isDynamic, uint16 categoryBits, uint16 maskBits)
+	RigidBody(float radius, sf::Vector2f position, bool isDynamic, entt::entity owner)
 	{
 		this->radius = radius;
-		body = PhysicsWorld::createCircleleBody(position, radius, isDynamic, categoryBits, maskBits);
+		body = PhysicsWorld::createCircleleBody(position, radius, isDynamic, owner);
 	}
 
 	RigidBody(b2Body* body)

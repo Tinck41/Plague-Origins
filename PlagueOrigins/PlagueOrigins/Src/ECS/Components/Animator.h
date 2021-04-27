@@ -13,14 +13,13 @@ struct Animator
 	std::string armatureName;
 	std::string postfix;
 
-	animationName currentAnimation = NONE;
+	animationName currentAnimation = MOVE;
 	animationName previousAnimation = NONE;
-	sf::Vector2f previousFaceDirection = sf::Vector2f(0.f, 1.f);
+	sf::Vector2f previousFaceDirection = sf::Vector2f(0.f, 0.f);
 	sf::Vector2f currentFaceDirection = sf::Vector2f(0.f, 1.f);
 
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
 
 	float scale = 0.2f;
 	sf::RenderStates states;
-
 };

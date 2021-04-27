@@ -202,41 +202,24 @@ void Animation::setAnimation(Animator& animator, Tag& tag)
 
 	if (animator.previousFaceDirection != animator.currentFaceDirection || animator.previousAnimation != animator.currentAnimation)
 	{
-		/*
-			if 
-				start run in opposite direction by x 
-			or 
-				start run upwards-downwards
-			change animation
-			else 
-				don't
-		*/
-		/*if (animator.currentFaceDirection.x != newDirection.x || animator.currentFaceDirection.x == 0 && newDirection.x == 0 || animator.currentAnimation != animator.previousAnimation)
+		if (animator.armatureDisplay != nullptr)
 		{
-			animator.currentFaceDirection = newDirection;
-			animator.currentAnimation = newAnimation;*/
+			animator.armatureDisplay->getArmature()->~Armature();
+			delete animator.armatureDisplay;
+			animator.armatureDisplay = NULL;
+		}
 
-			if (animator.armatureDisplay != nullptr)
-			{
-				animator.armatureDisplay->getArmature()->~Armature();
-				delete animator.armatureDisplay;
-				animator.armatureDisplay = NULL;
-			}
-
-			playAnimation(animator, tag, animator.currentAnimation);
-		//}
+		playAnimation(animator, tag, animator.currentAnimation);
 	}
 }
 
 void Animation::onCreate(entt::registry& reg)
 {
-	auto view = reg.view<Animator, Tag>();
+	auto view = reg.view<Animator>();
 	for (auto entity : view)
 	{
 		Animator& animator = reg.get<Animator>(entity);
-		Tag& tag = reg.get<Tag>(entity);
 
-		animator.armatureName = tag.name;
 		animator.states = animator.states.transform.scale(animator.scale, animator.scale);
 		animator.armatureDisplay = nullptr;
 	}
@@ -255,10 +238,13 @@ void Animation::update(entt::registry& reg, const float& dt)
 
 		setAnimation(animator, tag);
 
-		animator.armatureDisplay->setPosition(sf::Vector2f(
-			(1 / animator.scale) * (transform.position.x),
-			(1 / animator.scale) * (transform.position.y)
-		));
+		if (animator.armatureDisplay != nullptr)
+		{
+			animator.armatureDisplay->setPosition(sf::Vector2f(
+				(1 / animator.scale) * (transform.position.x),
+				(1 / animator.scale) * (transform.position.y)
+			));
+		}
 	}
 }
 
@@ -269,6 +255,9 @@ void Animation::render(entt::registry& reg, sf::RenderWindow& window)
 	{
 		Animator& animator = reg.get<Animator>(entity);
 
-		window.draw(*animator.armatureDisplay, animator.states);
+		if (animator.armatureDisplay != nullptr)
+		{
+			window.draw(*animator.armatureDisplay, animator.states);
+		}
 	}
 }

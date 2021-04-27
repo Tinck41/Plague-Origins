@@ -5,7 +5,7 @@
 
 struct RectCollider
 {
-	RectCollider(sf::Vector2f size, bool isSensor, uint16 categoryBits, , uint16 maskBits)
+	RectCollider(sf::Vector2f size, bool isSensor, uint16 categoryBits, uint16 maskBits)
 	{
 		this->size = size;
 

@@ -9,6 +9,7 @@
 #include "CameraComponent.h"
 #include "InventoryComponent.h"
 #include "Src/Screen/Entity.h"
+#include "Src/ECS/Components.h"
 
 class GameScreen :
     public Screen

@@ -4,7 +4,7 @@
 
 void Controller::update(entt::registry& reg, const float& dt)
 {
-	auto view = reg.view<Movement, RigidBody, PlayerInput, Animator, Dash>();
+	auto view = reg.view<Movement, RigidBody, PlayerInput, Animator, Dash, Attack>();
 	for (auto entity : view)
 	{
 		Movement& movement = reg.get<Movement>(entity);
@@ -12,11 +12,18 @@ void Controller::update(entt::registry& reg, const float& dt)
 		PlayerInput& playerInput = reg.get<PlayerInput>(entity);
 		Dash& dash = reg.get<Dash>(entity);
 		Animator& animator = reg.get<Animator>(entity);
+		Attack& attack = reg.get<Attack>(entity);
 
 		setDirection(movement, playerInput);
 		checkDash(playerInput, movement, dash, dt);
+		checkAttack(playerInput, attack);
 
-		if (!dash.isDashing && movement.direction != sf::Vector2f(0.f, 0.f))
+		if (attack.isAttacking)
+		{
+			animator.previousAnimation = animator.currentAnimation;
+			animator.currentAnimation = ATTACK;
+		}
+		else if (!dash.isDashing && movement.direction != sf::Vector2f(0.f, 0.f))
 		{
 			applyVelocity(rigidBody, movement.speed, movement.direction, dt);
 			animator.previousAnimation = animator.currentAnimation;
@@ -44,6 +51,14 @@ void Controller::update(entt::registry& reg, const float& dt)
 void Controller::applyVelocity(RigidBody& rigidBody, const float& speed, sf::Vector2f direction, const float& dt)
 {
 	rigidBody.body->SetLinearVelocity(speed * dt * b2Vec2(direction.x, direction.y));
+}
+
+void Controller::checkAttack(PlayerInput& playerInput, Attack& attack)
+{
+	if (playerInput.LMBwasPressed)
+	{
+		attack.isAttacking = true;
+	}
 }
 
 void Controller::checkDash(PlayerInput& playerInput, Movement& movement, Dash& dash, const float& dt)

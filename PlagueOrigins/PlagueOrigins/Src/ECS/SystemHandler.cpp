@@ -6,6 +6,7 @@
 #include "Src/ECS/Systems/Controller.h"
 #include "Src/ECS/Systems/Physics.h"
 #include "Src/ECS/Systems/Camera.h"
+#include "Src/ECS/Systems/Combat.h"
 
 SystemHandler::SystemHandler()
 {
@@ -14,6 +15,7 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new Controller());
 	updatableSystems.push_back(new Animation());
 	updatableSystems.push_back(new Physics());
+	updatableSystems.push_back(new Combat());
 
 	// Render systems
 	renderableSystems.push_back(new Animation());

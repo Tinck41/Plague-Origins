@@ -2,6 +2,8 @@
 
 #include "Src/ECS/Systems/IEcsRenderSystem.h"
 
+#include "Src/ECS/Components.h"
+
 class Camera :
 	public IEcsRenderSystem
 {

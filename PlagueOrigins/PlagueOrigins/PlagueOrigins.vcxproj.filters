@@ -159,6 +159,7 @@
     <ClCompile Include="Src\Utility\AnimationFactory.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
     <ClCompile Include="Src\ECS\Systems\Camera.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Combat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -341,7 +342,7 @@
     <ClInclude Include="Src\Screen\Entity.h" />
     <ClInclude Include="Src\Tilemap\Tile.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />
-    <ClInclude Include="Src\ECS\Components\Rigidbody.h" />
+    <ClInclude Include="Src\ECS\Components\RigidBody.h" />
     <ClInclude Include="Src\ECS\Components\Movement.h" />
     <ClInclude Include="Src\ECS\Components\Animator.h" />
     <ClInclude Include="Src\ECS\Systems\Physics.h" />
@@ -363,6 +364,10 @@
     <ClInclude Include="Src\ECS\Systems\IEcsOnCreateUpdate.h" />
     <ClInclude Include="Src\ECS\Components\CameraTarget.h" />
     <ClInclude Include="Src\ECS\Systems\Camera.h" />
+    <ClInclude Include="Src\ECS\Components\Attack.h" />
+    <ClInclude Include="Src\ECS\Components\Health.h" />
+    <ClInclude Include="Src\ECS\Systems\Combat.h" />
+    <ClInclude Include="Src\ECS\Components.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

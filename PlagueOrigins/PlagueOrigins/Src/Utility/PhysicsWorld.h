@@ -1,6 +1,7 @@
 #pragma once
 
 #include "box2d/box2d.h"
+#include "entt.hpp"
 #include "PhysicsContactListener.h"
 
 enum EntityCategory
@@ -26,8 +27,8 @@ public:
 
 	static void update(const float& dt) { get().updateInternal(dt); }
 
-	static b2Body* createRectangleBody(sf::Vector2f position, sf::Vector2f size, bool isDynamic, uint16 categoryBits, uint16 maskBits);
-	static b2Body* createCircleleBody(sf::Vector2f position, float radius, bool isDynamic, uint16 categoryBits, uint16 maskBits);
+	static b2Body* createRectangleBody(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner);
+	static b2Body* createCircleleBody(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner);
 
 	static b2World* getWorld() { return get().world; }
 private:
@@ -40,6 +41,6 @@ private:
 
 	void updateInternal(const float& dt);
 
-	b2Body* createRectangleBodyInternal(sf::Vector2f position, sf::Vector2f size, bool isDynamic, uint16 categoryBits, uint16 maskBits);
-	b2Body* createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, uint16 categoryBits, uint16 maskBits);
+	b2Body* createRectangleBodyInternal(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner);
+	b2Body* createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner);
 };
