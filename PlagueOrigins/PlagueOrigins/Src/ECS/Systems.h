@@ -10,3 +10,4 @@
 #include "Systems/Input.h"
 #include "Systems/Physics.h"
 #include "Systems/Vampiring.h"
+#include "Systems/Interaction.h"

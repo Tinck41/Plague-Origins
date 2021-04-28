@@ -13,7 +13,7 @@ struct Attack
         {
             b2PolygonShape polygonShape;
             b2FixtureDef myFixtureDef;
-            float radius = 100 / 30.f;;
+            radius = 100 / 30.f;;
             b2Vec2 vertices[8];
             vertices[0].Set(0, 0);
 

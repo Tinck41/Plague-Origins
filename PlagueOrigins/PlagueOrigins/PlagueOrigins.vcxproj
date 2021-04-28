@@ -163,6 +163,7 @@
     <ClCompile Include="Src\ECS\Systems\Combat.cpp" />
     <ClCompile Include="Src\ECS\Systems\Controller.cpp" />
     <ClCompile Include="Src\ECS\Systems\Input.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Interaction.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
     <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
     <ClCompile Include="Src\Screen\Entity.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="Src\ECS\Components.h" />
     <ClInclude Include="Src\ECS\Components\Dash.h" />
     <ClInclude Include="Src\ECS\Components\Health.h" />
+    <ClInclude Include="Src\ECS\Components\Interact.h" />
     <ClInclude Include="Src\ECS\Components\Vampire.h" />
     <ClInclude Include="Src\ECS\Systems\Camera.h" />
     <ClInclude Include="Src\ECS\Systems\Combat.h" />
@@ -250,6 +252,7 @@
     <ClInclude Include="Src\ECS\Systems\IEcsUpdateSystem.h" />
     <ClInclude Include="Src\ECS\Components\PlayerInput.h" />
     <ClInclude Include="Src\ECS\Systems\Input.h" />
+    <ClInclude Include="Src\ECS\Systems\Interaction.h" />
     <ClInclude Include="Src\ECS\Systems\Physics.h" />
     <ClInclude Include="Src\ECS\Systems.h" />
     <ClInclude Include="Src\ECS\Systems\Vampiring.h" />

@@ -4,7 +4,7 @@
 void Combat::update(entt::registry& reg, const float& dt)
 {
 	auto view = reg.view<Attack, RigidBody, Health, Animator>();
-	for (auto& entity : view)
+	for (auto entity : view)
 	{
 		Attack& attack = reg.get<Attack>(entity);
 		Health& senderHealth = reg.get<Health>(entity);

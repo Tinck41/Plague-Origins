@@ -11,9 +11,11 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new Physics());
 	updatableSystems.push_back(new Combat());
 	updatableSystems.push_back(new Vampiring());
+	updatableSystems.push_back(new Interaction());
 
 	// Render systems
 	renderableSystems.push_back(new Animation());
+	renderableSystems.push_back(new Interaction());
 	renderableSystems.push_back(new Camera());
 
 	// OnCreate system

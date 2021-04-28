@@ -23,6 +23,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Vampire>();
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 50.f);
 
+
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>();
@@ -37,6 +38,7 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Movement>(500.f);
 	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop);
 	bishop.AddComponent<Tag>("Bishop");
+	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
 
 	testEntity.GetComponent<Health>().curhealth = 200.f;
 
@@ -61,7 +63,7 @@ void GameScreen::update(const float& dt)
 	//inventoryComponent->update(dt, cameraComponent->getPosition());
 	map.update(dt);
 	systems.update(registry, dt);
-	std::cout << testEntity.GetComponent<Health>().curhealth << "\n";
+	//std::cout << testEntity.GetComponent<Health>().curhealth << "\n";
 	// AnimationFactory::update(dt);
 	GlobalFactory::Instance().factory.update(dt);
 	PhysicsWorld::update(dt);

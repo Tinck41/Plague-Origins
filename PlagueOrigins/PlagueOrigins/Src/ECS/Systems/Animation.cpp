@@ -239,10 +239,7 @@ void Animation::update(entt::registry& reg, const float& dt)
 
 		if (animator.armatureDisplay != nullptr)
 		{
-			animator.armatureDisplay->setPosition(sf::Vector2f(
-				(1 / animator.scale) * (transform.position.x),
-				(1 / animator.scale) * (transform.position.y)
-			));
+			animator.armatureDisplay->setPosition((1 / animator.scale) * transform.position);
 		}
 	}
 }
