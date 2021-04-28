@@ -20,6 +20,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Tag>("Hero");
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()));
 	testEntity.AddComponent<Health>(300.f);
+	testEntity.AddComponent<Vampire>();
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 50.f);
 
 	npcEntity = Entity(registry.create(), this);
@@ -29,6 +30,15 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<Health>(300.f);
+
+	bishop = Entity(registry.create(), this);
+	bishop.AddComponent<Transform>();
+	bishop.AddComponent<Animator>();
+	bishop.AddComponent<Movement>(500.f);
+	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop);
+	bishop.AddComponent<Tag>("Bishop");
+
+	testEntity.GetComponent<Health>().curhealth = 200.f;
 
 	systems.onCreate(registry);
 }
@@ -51,7 +61,7 @@ void GameScreen::update(const float& dt)
 	//inventoryComponent->update(dt, cameraComponent->getPosition());
 	map.update(dt);
 	systems.update(registry, dt);
-	std::cout << npcEntity.GetComponent<Health>().curhealth << "\n";
+	std::cout << testEntity.GetComponent<Health>().curhealth << "\n";
 	// AnimationFactory::update(dt);
 	GlobalFactory::Instance().factory.update(dt);
 	PhysicsWorld::update(dt);

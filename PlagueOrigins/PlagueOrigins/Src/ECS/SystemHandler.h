@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Systems/IEcsRenderSystem.h"
-#include "Systems/IEcsUpdateSystem.h"
-#include "Src/ECS/Systems/IEcsOnCreateUpdate.h"
-
+#include "Systems.h"
 #include "entt.hpp"
 
 class SystemHandler

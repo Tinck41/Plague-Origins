@@ -227,12 +227,11 @@ void Animation::onCreate(entt::registry& reg)
 
 void Animation::update(entt::registry& reg, const float& dt)
 {
-	auto view = reg.view<Animator, Movement, Transform, Tag>();
+	auto view = reg.view<Animator, Transform, Tag>();
 	
 	for (auto entity : view)
 	{
 		Animator& animator = reg.get<Animator>(entity);
-		Movement& movement = reg.get<Movement>(entity);
 		Transform& transform = reg.get<Transform>(entity);
 		Tag& tag = reg.get<Tag>(entity);
 

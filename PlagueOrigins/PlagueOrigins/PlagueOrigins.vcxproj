@@ -164,6 +164,7 @@
     <ClCompile Include="Src\ECS\Systems\Controller.cpp" />
     <ClCompile Include="Src\ECS\Systems\Input.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
     <ClCompile Include="Src\Screen\Entity.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
@@ -230,16 +231,15 @@
     <ClInclude Include="CombatComponent.h" />
     <ClInclude Include="Src\ECS\Components\Animator.h" />
     <ClInclude Include="Src\ECS\Components\CameraTarget.h" />
-    <ClInclude Include="Src\ECS\Components\CircleCollider.h" />
     <ClInclude Include="Src\ECS\Components\Attack.h" />
     <ClInclude Include="Src\ECS\Components.h" />
     <ClInclude Include="Src\ECS\Components\Dash.h" />
     <ClInclude Include="Src\ECS\Components\Health.h" />
+    <ClInclude Include="Src\ECS\Components\Vampire.h" />
     <ClInclude Include="Src\ECS\Systems\Camera.h" />
     <ClInclude Include="Src\ECS\Systems\Combat.h" />
     <ClInclude Include="Src\ECS\Systems\Controller.h" />
     <ClInclude Include="Src\ECS\Components\Movement.h" />
-    <ClInclude Include="Src\ECS\Components\RectCollider.h" />
     <ClInclude Include="Src\ECS\Components\RigidBody.h" />
     <ClInclude Include="Src\ECS\Components\Tag.h" />
     <ClInclude Include="Src\ECS\Components\Transform.h" />
@@ -251,6 +251,8 @@
     <ClInclude Include="Src\ECS\Components\PlayerInput.h" />
     <ClInclude Include="Src\ECS\Systems\Input.h" />
     <ClInclude Include="Src\ECS\Systems\Physics.h" />
+    <ClInclude Include="Src\ECS\Systems.h" />
+    <ClInclude Include="Src\ECS\Systems\Vampiring.h" />
     <ClInclude Include="Src\Screen\Entity.h" />
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="GameObjects.h" />

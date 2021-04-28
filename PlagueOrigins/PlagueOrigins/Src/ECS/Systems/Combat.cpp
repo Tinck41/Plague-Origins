@@ -3,18 +3,17 @@
 
 void Combat::update(entt::registry& reg, const float& dt)
 {
-	auto view = reg.view<Attack, Health, RigidBody, Transform, Animator>();
+	auto view = reg.view<Attack, RigidBody, Health, Animator>();
 	for (auto& entity : view)
 	{
 		Attack& attack = reg.get<Attack>(entity);
-		Health& health = reg.get<Health>(entity);
+		Health& senderHealth = reg.get<Health>(entity);
 		RigidBody& rigidBody = reg.get<RigidBody>(entity);
-		Transform& transform = reg.get<Transform>(entity);
 		Animator& animator = reg.get<Animator>(entity);
 
 		if (attack.isAttacking)
 		{
-			int number = 1;
+			int number = chooseSector(animator.currentFaceDirection);
 
 			int i = 0;
 			for (b2Fixture* f = rigidBody.body->GetFixtureList(); f; f = f->GetNext())
@@ -28,13 +27,22 @@ void Combat::update(entt::registry& reg, const float& dt)
 							if (f == edge->contact->GetFixtureA())
 							{
 								b2Body* bodyB = edge->contact->GetFixtureB()->GetBody();
+								
+								if (reg.all_of<Health>((entt::entity)bodyB->GetUserData().pointer))
+								{
+									Health& receiverHealth = reg.get<Health>((entt::entity)bodyB->GetUserData().pointer);
+									receiverHealth.curhealth -= attack.damage;
 
-								Health& health = reg.get<Health>((entt::entity)bodyB->GetUserData().pointer);
-								health.curhealth -= attack.damage;
+									if (reg.all_of<Vampire>(entity))
+									{
+										Vampire& vampire = reg.get<Vampire>(entity);
+										vampire.vampiredHealth = attack.damage / 100.f * 2.5f;
+									}
 
-								attack.isAttacking = false;
+									attack.isAttacking = false;
 
-								break;
+									break;
+								}
 							}
 						}
 					}
@@ -45,4 +53,46 @@ void Combat::update(entt::registry& reg, const float& dt)
 			attack.isAttacking = false;
 		}
 	}
+}
+
+int Combat::chooseSector(sf::Vector2f direction)
+{
+	int sector = 0;
+
+	if (direction.x > 0 && direction.y < 0) 
+	{
+		sector = 0;
+	}
+	else if (direction.x == 0 && direction.y < 0)
+	{
+		sector = 1;
+	}
+	else if (direction.x < 0 && direction.y < 0)
+	{
+		sector = 2;
+	}
+	else if (direction.x < 0 && direction.y == 0)
+	{
+		sector = 3;
+	}
+	else if (direction.x < 0 && direction.y > 0)
+	{
+		sector = 4;
+	}
+	else if (direction.x == 0 && direction.y > 0)
+	{
+		sector = 5;
+	}
+	else if (direction.x > 0 && direction.y > 0)
+	{
+		sector = 6;
+	}
+	else if (direction.x > 0 && direction.y == 0)
+	{
+		sector = 7;
+	}
+
+
+
+	return sector;
 }

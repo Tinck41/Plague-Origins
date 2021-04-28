@@ -44,7 +44,6 @@ void Controller::update(entt::registry& reg, const float& dt)
 			animator.previousAnimation = animator.currentAnimation;
 			animator.currentAnimation = IDLE;
 		}
-
 	}
 }
 

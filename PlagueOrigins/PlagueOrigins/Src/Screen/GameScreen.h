@@ -23,6 +23,7 @@ private:
 
 	Entity testEntity;
 	Entity npcEntity;
+	Entity bishop;
 	sf::RectangleShape entityShape;
 
 	TilemapParser mapLoader;

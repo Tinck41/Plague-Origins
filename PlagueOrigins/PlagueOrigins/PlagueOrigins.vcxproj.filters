@@ -160,6 +160,7 @@
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
     <ClCompile Include="Src\ECS\Systems\Camera.cpp" />
     <ClCompile Include="Src\ECS\Systems\Combat.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -354,8 +355,6 @@
     <ClInclude Include="Src\ECS\Systems\Input.h" />
     <ClInclude Include="Src\ECS\SystemHandler.h" />
     <ClInclude Include="Src\ECS\Components\Tag.h" />
-    <ClInclude Include="Src\ECS\Components\CircleCollider.h" />
-    <ClInclude Include="Src\ECS\Components\RectCollider.h" />
     <ClInclude Include="Src\Utility\PhysicsWorld.h" />
     <ClInclude Include="Src\Utility\PhysicsContactListener.h" />
     <ClInclude Include="Src\ECS\Systems\Controller.h" />
@@ -368,6 +367,9 @@
     <ClInclude Include="Src\ECS\Components\Health.h" />
     <ClInclude Include="Src\ECS\Systems\Combat.h" />
     <ClInclude Include="Src\ECS\Components.h" />
+    <ClInclude Include="Src\ECS\Components\Vampire.h" />
+    <ClInclude Include="Src\ECS\Systems\Vampiring.h" />
+    <ClInclude Include="Src\ECS\Systems.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

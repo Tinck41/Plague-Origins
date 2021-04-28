@@ -10,7 +10,7 @@ struct Dash
     sf::Time curDuration;
     sf::Time curCooldownTime = sf::seconds(0);
 
-    float duration = 30.f;
-    float speed = 10000.f;
+    float duration = 240.f;
+    float speed = 2500.f;
     float cooldownTime = 1.f;
 };
