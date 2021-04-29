@@ -13,6 +13,8 @@ private:
 	sf::Clock deltaTimeClock;
 
 	float deltaTime;
+	float lastFPSTime;
+	uint32_t fps;
 
 	void setup();
 	void updateDeltaTime();

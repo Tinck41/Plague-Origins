@@ -8,6 +8,10 @@ TilemapParser::TilemapParser()
 
 TilemapParser::~TilemapParser()
 {
+	tilesetsInfo.clear();
+	tilesets.clear();
+	collidersLayer.clear();
+	tileLayers.clear();
 }
 
 bool TilemapParser::loadTileMap(const char* path)

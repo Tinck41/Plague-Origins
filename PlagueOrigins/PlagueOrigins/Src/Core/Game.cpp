@@ -29,6 +29,8 @@ void Game::setup()
 void Game::updateDeltaTime()
 {
 	deltaTime = deltaTimeClock.restart().asSeconds();
+	lastFPSTime += deltaTime;
+	fps++;
 }
 
 void Game::resolveSFMLEvents()
@@ -68,6 +70,13 @@ void Game::run()
 {
 	while (window->isOpen())
 	{
+		if (lastFPSTime >= 1)
+		{
+			window->setTitle(std::to_string(fps));
+			lastFPSTime = 0.f;
+			fps = 0;
+		}
+
 		updateDeltaTime();
 		update();
 		render();
