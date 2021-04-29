@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "GameScreen.h"
 
-#include "GlobalFactory.h"
-
 GameScreen::GameScreen()
 {
 	if (mapLoader.loadTileMap("./Assets/Map/map.tmx"))

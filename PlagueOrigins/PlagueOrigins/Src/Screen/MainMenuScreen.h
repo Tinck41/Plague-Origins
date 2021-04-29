@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Screen.h"
-#include "Button.h"
+#include "Src/GUI/Button.h"
 
 class MainMenuScreen :
     public Screen

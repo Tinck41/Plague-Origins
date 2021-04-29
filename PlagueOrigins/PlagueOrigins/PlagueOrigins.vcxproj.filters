@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Src\Core\Game.cpp" />
-    <ClCompile Include="notMain.cpp" />
     <ClCompile Include="Src\Screen\GameScreen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
@@ -15,16 +14,7 @@
     <ClCompile Include="Src\Screen\ScreenHandler.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
-    <ClCompile Include="MovementComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="tinyxml2.cpp">
-      <Filter>Tilemap</Filter>
-    </ClCompile>
-    <ClCompile Include="TileMapLoader.cpp">
+    <ClCompile Include="Src\Utility\tinyxml2.cpp">
       <Filter>Tilemap</Filter>
     </ClCompile>
     <ClCompile Include="Src\Tilemap\TileMap.cpp">
@@ -33,22 +23,13 @@
     <ClCompile Include="Src\Tilemap\TileLayer.cpp">
       <Filter>Tilemap</Filter>
     </ClCompile>
-    <ClCompile Include="Unit.cpp">
-      <Filter>Entities</Filter>
-    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Precompiled headers</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
+    <ClCompile Include="Src\GUI\Button.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="ColliderComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimationComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Src\Global\Config.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
@@ -64,87 +45,8 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp">
       <Filter>dragonBones</Filter>
     </ClCompile>
-    <ClCompile Include="MapCollider.cpp">
-      <Filter>Tilemap</Filter>
-    </ClCompile>
-    <ClCompile Include="DirectionFinder.cpp" />
-    <ClCompile Include="PlayerIdleState.cpp">
-      <Filter>States\PlayerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerMoveState.cpp">
-      <Filter>States\PlayerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerAttackState.cpp">
-      <Filter>States\PlayerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="CombatComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="Config.cpp">
       <Filter>Config</Filter>
-    </ClCompile>
-    <ClCompile Include="InventoryComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="UnfoldedState.cpp">
-      <Filter>States\InventoryStates</Filter>
-    </ClCompile>
-    <ClCompile Include="MinimizedState.cpp">
-      <Filter>States\InventoryStates</Filter>
-    </ClCompile>
-    <ClCompile Include="ClosedState.cpp">
-      <Filter>States\InventoryStates</Filter>
-    </ClCompile>
-    <ClCompile Include="InventoryRendererComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCDogIdleState.cpp">
-      <Filter>States\NPCDogStates</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCDogAttackState.cpp">
-      <Filter>States\NPCDogStates</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCDogMoveState.cpp">
-      <Filter>States\NPCDogStates</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjects.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalFactory.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="InputBooleans.cpp">
-      <Filter>Global</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCDog.cpp">
-      <Filter>NPCDog</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCDogDeathState.cpp">
-      <Filter>States\NPCDogStates</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerDeathState.cpp">
-      <Filter>States\PlayerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCDogAggroState.cpp">
-      <Filter>States\NPCDogStates</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelUpComponent.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerCharacteristics.cpp">
-      <Filter>Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Patrol.cpp">
-      <Filter>NPCDog</Filter>
-    </ClCompile>
-    <ClCompile Include="NPCBishop.cpp">
-      <Filter>NPCBIshop</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerInventory.cpp">
-      <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="Src\Core\Main.cpp" />
     <ClCompile Include="Src\Screen\Entity.cpp" />
@@ -156,12 +58,12 @@
     <ClCompile Include="Src\Utility\PhysicsWorld.cpp" />
     <ClCompile Include="Src\Utility\PhysicsContactListener.cpp" />
     <ClCompile Include="Src\ECS\Systems\Controller.cpp" />
-    <ClCompile Include="Src\Utility\AnimationFactory.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
     <ClCompile Include="Src\ECS\Systems\Camera.cpp" />
     <ClCompile Include="Src\ECS\Systems\Combat.cpp" />
     <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
     <ClCompile Include="Src\ECS\Systems\Interaction.cpp" />
+    <ClCompile Include="Src\Utility\GlobalFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -177,16 +79,7 @@
     <ClInclude Include="Src\Screen\ScreenHandler.h">
       <Filter>Screens</Filter>
     </ClInclude>
-    <ClInclude Include="MovementComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="tinyxml2.h">
-      <Filter>Tilemap</Filter>
-    </ClInclude>
-    <ClInclude Include="TileMapLoader.h">
+    <ClInclude Include="Src\Utility\tinyxml2.h">
       <Filter>Tilemap</Filter>
     </ClInclude>
     <ClInclude Include="Src\Tilemap\TileMap.h">
@@ -195,22 +88,13 @@
     <ClInclude Include="Src\Tilemap\TileLayer.h">
       <Filter>Tilemap</Filter>
     </ClInclude>
-    <ClInclude Include="Unit.h">
-      <Filter>Entities</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Precompiled headers</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="Src\GUI\Button.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="ColliderComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.h" />
+    <ClInclude Include="Src\Global\Config.h" />
     <ClInclude Include="dragonBones\SFMLArmatureDisplay.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
@@ -238,108 +122,8 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
-    <ClInclude Include="MapCollider.h">
-      <Filter>Tilemap</Filter>
-    </ClInclude>
-    <ClInclude Include="DirectionFinder.h" />
-    <ClInclude Include="FiniteStateMachine.h">
-      <Filter>FiniteStateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>FiniteStateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerIdleState.h">
-      <Filter>States\PlayerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerMoveState.h">
-      <Filter>States\PlayerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerAnimationStates.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerAttackState.h">
-      <Filter>States\PlayerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="CombatComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="CameraComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="json.hpp">
-      <Filter>Config</Filter>
-    </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>Config</Filter>
-    </ClInclude>
-    <ClInclude Include="InventoryComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="UnfoldedState.h">
-      <Filter>States\InventoryStates</Filter>
-    </ClInclude>
-    <ClInclude Include="MinimizedState.h">
-      <Filter>States\InventoryStates</Filter>
-    </ClInclude>
-    <ClInclude Include="ClosedState.h">
-      <Filter>States\InventoryStates</Filter>
-    </ClInclude>
-    <ClInclude Include="InventoryStates.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="InventoryRendererComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCDogIdleState.h">
-      <Filter>States\NPCDogStates</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCDogAttackState.h">
-      <Filter>States\NPCDogStates</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCDogMoveState.h">
-      <Filter>States\NPCDogStates</Filter>
-    </ClInclude>
-    <ClInclude Include="InputBooleans.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjects.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalFactory.h">
-      <Filter>Global</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStates.h">
-      <Filter>States\PlayerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCDog.h">
-      <Filter>NPCDog</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCDogStates.h">
-      <Filter>States\NPCDogStates</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCDogDeathState.h">
-      <Filter>States\NPCDogStates</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerDeathState.h">
-      <Filter>States\PlayerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCDogAggroState.h">
-      <Filter>States\NPCDogStates</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelUpComponent.h">
-      <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerCharacteristics.h">
-      <Filter>Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Patrol.h">
-      <Filter>NPCDog</Filter>
-    </ClInclude>
-    <ClInclude Include="NPCBishop.h">
-      <Filter>NPCBIshop</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerInventory.h">
-      <Filter>Player</Filter>
     </ClInclude>
     <ClInclude Include="Src\Screen\Entity.h" />
     <ClInclude Include="Src\Tilemap\Tile.h" />
@@ -360,7 +144,6 @@
     <ClInclude Include="Src\Utility\PhysicsContactListener.h" />
     <ClInclude Include="Src\ECS\Systems\Controller.h" />
     <ClInclude Include="Src\ECS\Components\Dash.h" />
-    <ClInclude Include="Src\Utility\AnimationFactory.h" />
     <ClInclude Include="Src\ECS\Systems\IEcsOnCreateUpdate.h" />
     <ClInclude Include="Src\ECS\Components\CameraTarget.h" />
     <ClInclude Include="Src\ECS\Systems\Camera.h" />
@@ -373,6 +156,9 @@
     <ClInclude Include="Src\ECS\Systems.h" />
     <ClInclude Include="Src\ECS\Components\Interact.h" />
     <ClInclude Include="Src\ECS\Systems\Interaction.h" />
+    <ClInclude Include="Src\Utility\GlobalFactory.h" />
+    <ClInclude Include="Src\Utility\json.hpp" />
+    <ClInclude Include="PlayerAnimationStates.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
@@ -428,5 +214,9 @@
     <None Include="config.json">
       <Filter>Config</Filter>
     </None>
+    <None Include="PlagueOrigins.aps" />
+    <None Include="PlagueOrigins.exe" />
+    <None Include="PlagueOrigins.ilk" />
+    <None Include="PlagueOrigins.pdb" />
   </ItemGroup>
 </Project>

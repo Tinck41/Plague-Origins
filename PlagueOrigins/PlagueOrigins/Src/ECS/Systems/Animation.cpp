@@ -55,6 +55,8 @@ void Animation::playMovementAnimation(Animator& animator, Tag& tag)
 	{
 		animator.armatureDisplay = armatureDisplay;
 		animator.armatureDisplay->getAnimation()->play("Run");
+		armatureDisplay = nullptr;
+		delete armatureDisplay;
 		//animator.armatureDisplay->getAnimation()->fadeIn("Run", 0.3f, -1, 0, "hero", dragonBones::AnimationFadeOutMode::SameLayerAndGroup);
 	}
 }
@@ -89,97 +91,129 @@ void Animation::playIdleAnimation(Animator& animator, Tag& tag)
 	{
 		animator.armatureDisplay = armatureDisplay;
 		animator.armatureDisplay->getAnimation()->play("Idle");
+		armatureDisplay = nullptr;
+		delete armatureDisplay;
 	}
 }
 
 void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 {
+	dragonBones::SFMLArmatureDisplay* armatureDisplay = nullptr;
+
 	if (animator.currentFaceDirection.y < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "U");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	else if (animator.currentFaceDirection.y > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "D");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	if (animator.currentFaceDirection.x > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	else if (animator.currentFaceDirection.x < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
-		animator.armatureDisplay->getArmature()->setFlipX(true);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay->getArmature()->setFlipX(true);
 	}
 	if (tag.name == "Hero")
 	{
 		//animator.armatureDisplay->getAnimation()->fadeIn("Attack", 0.2f, 1);
-		animator.armatureDisplay->getAnimation()->play("Attack", 1);
+		if (armatureDisplay != nullptr)
+		{
+			animator.armatureDisplay = armatureDisplay;
+			animator.armatureDisplay->getAnimation()->play("Attack", 1);
+			armatureDisplay = nullptr;
+			delete armatureDisplay;
+		}
 
 	}
 	else if (tag.name == "Dog")
 	{
-		animator.armatureDisplay->getAnimation()->play("Attack0", 1);
+		if (armatureDisplay != nullptr)
+		{
+			animator.armatureDisplay = armatureDisplay;
+			animator.armatureDisplay->getAnimation()->play("Attack0", 1);
+			armatureDisplay = nullptr;
+			delete armatureDisplay;
+		}
 	}
 }
 
 void Animation::playDeathAnimation(Animator& animator, Tag& tag)
 {
+	dragonBones::SFMLArmatureDisplay* armatureDisplay = nullptr;
+
 	if (animator.currentFaceDirection.y < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "U");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	else if (animator.currentFaceDirection.y > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "D");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	if (animator.currentFaceDirection.x > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	else if (animator.currentFaceDirection.x < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
-		animator.armatureDisplay->getArmature()->setFlipX(true);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay->getArmature()->setFlipX(true);
 	}
 
-	animator.armatureDisplay->getAnimation()->play("Die", 1);
+	if (armatureDisplay != nullptr)
+	{
+		animator.armatureDisplay = armatureDisplay;
+		animator.armatureDisplay->getAnimation()->play("Die", 1);
+		armatureDisplay = nullptr;
+		delete armatureDisplay;
+	}
 	//animator.armatureDisplay->getAnimation()->fadeIn("Die", 1.f, 1);
 }
 
 void Animation::playDashAnimation(Animator& animator, Tag& tag)
 {
+	dragonBones::SFMLArmatureDisplay* armatureDisplay = nullptr;
+	
 	if (animator.currentFaceDirection.y < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "U");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	else if (animator.currentFaceDirection.y > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "D");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	if (animator.currentFaceDirection.x > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	else if (animator.currentFaceDirection.x < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
-		animator.armatureDisplay->getArmature()->setFlipX(true);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay->getArmature()->setFlipX(true);
 	}
 
-	animator.armatureDisplay->getAnimation()->play("Dash");
+	if (armatureDisplay != nullptr)
+	{
+		animator.armatureDisplay = armatureDisplay;
+		animator.armatureDisplay->getAnimation()->play("Dash");
+		armatureDisplay = nullptr;
+		delete armatureDisplay;
+	}
 }
 
 std::string Animation::setPostfix(Tag& tag, std::string dir)
@@ -206,7 +240,7 @@ void Animation::setAnimation(Animator& animator, Tag& tag)
 		{
 			animator.armatureDisplay->getArmature()->~Armature();
 			delete animator.armatureDisplay;
-			animator.armatureDisplay = NULL;
+			animator.armatureDisplay = nullptr;
 		}
 
 		playAnimation(animator, tag, animator.currentAnimation);

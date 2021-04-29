@@ -5,6 +5,7 @@
 #include "Src/Tilemap/TilemapParser.h"
 #include "Src/Screen/Entity.h"
 #include "Src/ECS/Components.h"
+#include "Src/Utility/GlobalFactory.h"
 
 class GameScreen :
     public Screen

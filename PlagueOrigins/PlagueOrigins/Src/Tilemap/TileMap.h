@@ -1,8 +1,7 @@
 #pragma once
 
 #include "TileLayer.h"
-#include "MapCollider.h";
-#include "Player.h"
+//#include "MapCollider.h";
 
 class TileMap
 {

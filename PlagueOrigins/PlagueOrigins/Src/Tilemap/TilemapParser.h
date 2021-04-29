@@ -1,7 +1,7 @@
 #pragma once
 
 #include "TileMap.h"
-#include "tinyxml2.h"
+#include "Src/Utility/tinyxml2.h"
 
 struct TilesetParameters
 {
@@ -23,7 +23,7 @@ private:
 
 	std::vector<TilesetParameters> tilesetsInfo;
 	std::vector<sf::Texture> tilesets;
-	std::vector<std::vector<MapCollider>> collidersLayer;
+	//std::vector<std::vector<MapCollider>> collidersLayer;
 	std::vector<TileLayer> tileLayers;
 
 	void parseTileMap();

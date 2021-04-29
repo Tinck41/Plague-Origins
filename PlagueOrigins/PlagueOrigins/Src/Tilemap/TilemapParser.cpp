@@ -10,7 +10,7 @@ TilemapParser::~TilemapParser()
 {
 	tilesetsInfo.clear();
 	tilesets.clear();
-	collidersLayer.clear();
+	//collidersLayer.clear();
 	tileLayers.clear();
 }
 
