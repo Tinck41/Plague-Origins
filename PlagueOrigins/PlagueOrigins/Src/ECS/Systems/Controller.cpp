@@ -18,38 +18,33 @@ void Controller::update(entt::registry& reg, const float& dt)
 		checkDash(playerInput, movement, dash, dt);
 		checkAttack(playerInput, attack);
 
-		if (attack.isAttacking)
-		{
-			animator.previousAnimation = animator.currentAnimation;
-			animator.currentAnimation = ATTACK;
-		}
-		else if (!dash.isDashing && movement.direction != sf::Vector2f(0.f, 0.f))
-		{
-			applyVelocity(rigidBody, movement.speed, movement.direction, dt);
-			animator.previousAnimation = animator.currentAnimation;
-			animator.currentAnimation = MOVE;
-			animator.previousFaceDirection = animator.currentFaceDirection;
-			animator.currentFaceDirection = movement.direction;
-		}
-		else if (dash.isDashing)
-		{
-			applyVelocity(rigidBody, dash.speed, dash.direction, dt);
-			animator.previousAnimation = animator.currentAnimation;
-			animator.currentAnimation = DASH;
-			animator.previousFaceDirection = animator.currentFaceDirection;
-			animator.currentFaceDirection = movement.direction;
-		}
-		else
-		{
-			animator.previousAnimation = animator.currentAnimation;
-			animator.currentAnimation = IDLE;
-		}
+		//if (attack.isAttacking)
+		//{
+		//	animator.previousAnimation = animator.currentAnimation;
+		//	animator.currentAnimation = ATTACK;
+		//}
+		//else if (!dash.isDashing && movement.direction != sf::Vector2f(0.f, 0.f))
+		//{
+		//	applyVelocity(rigidBody, movement.speed, movement.direction, dt);
+		//	animator.previousAnimation = animator.currentAnimation;
+		//	animator.currentAnimation = MOVE;
+		//	animator.previousFaceDirection = animator.currentFaceDirection;
+		//	animator.currentFaceDirection = movement.direction;
+		//}
+		//else if (dash.isDashing)
+		//{
+		//	applyVelocity(rigidBody, dash.speed, dash.direction, dt);
+		//	animator.previousAnimation = animator.currentAnimation;
+		//	animator.currentAnimation = DASH;
+		//	animator.previousFaceDirection = animator.currentFaceDirection;
+		//	animator.currentFaceDirection = movement.direction;
+		//}
+		//else
+		//{
+		//	animator.previousAnimation = animator.currentAnimation;
+		//	animator.currentAnimation = IDLE;
+		//}
 	}
-}
-
-void Controller::applyVelocity(RigidBody& rigidBody, const float& speed, sf::Vector2f direction, const float& dt)
-{
-	rigidBody.body->SetLinearVelocity(speed * dt * b2Vec2(direction.x, direction.y));
 }
 
 void Controller::checkAttack(PlayerInput& playerInput, Attack& attack)

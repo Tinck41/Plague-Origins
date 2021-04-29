@@ -13,3 +13,8 @@
 #include "Components/Tag.h"
 #include "Components/Transform.h"
 #include "Components/Interact.h"
+
+
+//FSM
+#include "Src/FSM/Components/PlayerStates.h"
+

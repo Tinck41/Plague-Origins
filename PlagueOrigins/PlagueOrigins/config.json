@@ -1,7 +1,7 @@
 {
     "title": "Plague: Origins",
     "font": "./Assets/Fonts/FreeSans.ttf",
-    "fps": 60,
+    "fps": 0,
     "window": {
         "fullscreen": false,
         "width": 1600,

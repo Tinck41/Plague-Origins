@@ -1,35 +1,35 @@
-#pragma once
+// #pragma once
 
-#include "FiniteStateMachine.h"
-#include "InventoryRendererComponent.h"
+// #include "FiniteStateMachine.h"
+// #include "InventoryRendererComponent.h"
 
-class ClosedState;
+// class ClosedState;
 
-class InventoryComponent
-{
-private:
-	sf::Texture* minimizedInventoryTexture;
-	sf::Texture* unfoldedInventoryTexture;
+// class InventoryComponent
+// {
+// private:
+// 	sf::Texture* minimizedInventoryTexture;
+// 	sf::Texture* unfoldedInventoryTexture;
 	
-	float scaleFactor;
-	float gap;
+// 	float scaleFactor;
+// 	float gap;
 	
-	FiniteStateMachine* inventoryStateMachine;
-	State* initState;
+// 	FiniteStateMachine* inventoryStateMachine;
+// 	State* initState;
 
-public:
-	InventoryComponent();
-	~InventoryComponent();
+// public:
+// 	InventoryComponent();
+// 	~InventoryComponent();
 
-	InventoryRendererComponent* inventoryRenderer;
-	sf::Sprite* unfoldedInventorySprite;
-	sf::Sprite* minimizedInventorySprite;
+// 	InventoryRendererComponent* inventoryRenderer;
+// 	sf::Sprite* unfoldedInventorySprite;
+// 	sf::Sprite* minimizedInventorySprite;
 
-	void update(const float& dt, sf::Vector2f position);
-	void render(sf::RenderWindow& window);
+// 	void update(const float& dt, sf::Vector2f position);
+// 	void render(sf::RenderWindow& window);
 
-	// TODO: убрать
-	bool escapeReleased = true;
+// 	// TODO: пїЅпїЅпїЅпїЅпїЅпїЅ
+// 	bool escapeReleased = true;
 
-	FiniteStateMachine* getStateMachine() { return this->inventoryStateMachine; }
-};
+// 	FiniteStateMachine* getStateMachine() { return this->inventoryStateMachine; }
+// };

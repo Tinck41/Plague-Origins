@@ -177,7 +177,10 @@ void AnimationComponent::setAnimation(animationName newAnimation, sf::Vector2f n
 			else 
 				don't
 		*/
-		if (currentDirection.x != newDirection.x || currentDirection.x == 0 && newDirection.x == 0 || currentAnimation != newAnimation)
+		if (currentDirection.x != newDirection.x 
+			|| currentDirection.x == 0
+				&& newDirection.x == 0 
+			|| currentAnimation != newAnimation)
 		{
 			this->currentDirection = newDirection;
 			this->currentAnimation = newAnimation;
