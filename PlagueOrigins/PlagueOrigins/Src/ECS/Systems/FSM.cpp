@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "FSM.h"
 #include "Src/Screen/Entity.h"
+#include "Src/FSM/State.h"
 
 void FSM::changeState(State* currentState, State* newState)
 {
@@ -8,6 +9,7 @@ void FSM::changeState(State* currentState, State* newState)
 	{
 		currentState->exit();
 		delete currentState;
+		currentState = nullptr;
 	}
 
 	currentState = newState;

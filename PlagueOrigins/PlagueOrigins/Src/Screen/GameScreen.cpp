@@ -2,6 +2,7 @@
 #include "GameScreen.h"
 
 #include "GlobalFactory.h"
+#include "Src/FSM/States/Player/PlayerStates.h"
 
 GameScreen::GameScreen()
 {
@@ -23,6 +24,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Health>(300.f);
 	testEntity.AddComponent<Vampire>();
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 50.f);
+	testEntity.AddComponent<PlayerStates>(new PlayerIdleState(testEntity));
 
 
 	npcEntity = Entity(registry.create(), this);

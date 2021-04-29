@@ -1,38 +1,38 @@
-// #pragma once
+#pragma once
 
-// #include "State.h"
+#include "State.h"
 
-// class FiniteStateMachine
-// {
-// private:
-// 	// TO DO: smart_ptr
-// 	State* �urrentState;
-// public:
-// 	~FiniteStateMachine()
-// 	{
-// 		delete �urrentState;
-// 	}
+class FiniteStateMachine
+{
+private:
+	// TO DO: smart_ptr
+	State* �urrentState;
+public:
+	~FiniteStateMachine()
+	{
+		delete �urrentState;
+	}
 
 
-// 	void changeState(State* newState)
-// 	{
-// 		if (�urrentState != nullptr)
-// 		{
-// 			�urrentState->exit();
-// 			delete �urrentState;
-// 		}
+	void changeState(State* newState)
+	{
+		if (�urrentState != nullptr)
+		{
+			�urrentState->exit();
+			delete �urrentState;
+		}
 
-// 		�urrentState = newState;
+		�urrentState = newState;
 
-// 		�urrentState->enter();
-// 	}
+		�urrentState->enter();
+	}
 
-// 	void executeStateUpdate(const float& dt)
-// 	{
-// 		if (�urrentState != nullptr)
-// 		{
-// 			�urrentState->update(dt);
-// 		}
-// 	}
-// };
+	void executeStateUpdate(const float& dt)
+	{
+		if (�urrentState != nullptr)
+		{
+			�urrentState->update(dt);
+		}
+	}
+};
 

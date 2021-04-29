@@ -5,14 +5,11 @@
 struct PlayerStates
 {
 	State* currentState;
-	State* newState;
-
-	FSM fsm;
-
-	PlayerStates()
+	//State* previousState;
+	PlayerStates(State* initState)
 	{
-		fsm = FSM();
+		currentState = initState;
+		//previousState = nullptr;
 	}
-
-	void (*changeState)(State*,State*) = fsm.changeState;
+	void (*changeState)(State*,State*) = FSM::changeState;
 };
