@@ -24,8 +24,7 @@ void PlayerMoveState::update(const float& dt)
 	if (owner.GetComponent<Movement>().direction == sf::Vector2f(0, 0))
 	{
 		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
-		//PlayerSMcomponent* playerStates = owner.GetPointerComponent<PlayerSMcomponent>();
-		playerStates.currentState = FSM::changeStateP(playerStates.currentState, new PlayerIdleState(owner));
+		playerStates.currentState = playerStates.changeState(playerStates.currentState, new PlayerIdleState(owner));
 	}
 	else
 	{
