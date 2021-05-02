@@ -2,11 +2,18 @@
 #include "Src/FSM/State.h"
 #include "Src/ECS/Systems/FSM.h"
 
-struct PlayerStates
+//#include "Src/Screen/Entity.h"
+//#include "Src/FSM/States/Player/PlayerStates.h"
+
+struct PlayerSMcomponent
 {
 	State* currentState;
 	//State* previousState;
-	PlayerStates(State* initState)
+	PlayerSMcomponent()
+	{
+		currentState = nullptr;
+	}
+	PlayerSMcomponent(State* initState)
 	{
 		currentState = initState;
 		//previousState = nullptr;

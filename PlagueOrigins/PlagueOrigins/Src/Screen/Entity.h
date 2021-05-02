@@ -27,6 +27,12 @@ public:
 	}
 
 	template<typename T>
+	T* GetPointerComponent()
+	{
+		return screen->registry.get<T*>(entityHandle);
+	}
+
+	template<typename T>
 	bool HasComponent()
 	{
 		return screen->registry.all_of<T>(entityHandle);

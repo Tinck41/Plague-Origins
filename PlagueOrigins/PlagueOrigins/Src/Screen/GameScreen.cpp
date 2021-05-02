@@ -24,7 +24,10 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Health>(300.f);
 	testEntity.AddComponent<Vampire>();
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 50.f);
-	testEntity.AddComponent<PlayerStates>(new PlayerIdleState(testEntity));
+	testEntity.AddComponent<PlayerSMcomponent>();
+	PlayerSMcomponent& sm = testEntity.GetComponent<PlayerSMcomponent>();
+	//sm.currentState = new PlayerIdleState(testEntity);
+	sm.currentState = FSM::initStateP(sm.currentState, new PlayerIdleState(testEntity));
 
 
 	npcEntity = Entity(registry.create(), this);

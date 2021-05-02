@@ -23,9 +23,10 @@ void PlayerIdleState::update(const float& dt)
 {
 	if (owner.GetComponent<Movement>().direction != sf::Vector2f(0, 0))
 	{
-		PlayerStates& playerStates = owner.GetComponent<PlayerStates>();
-		//FSM::changeState(playerStates.currentState, new PlayerMoveState(owner));
-		playerStates.changeState(playerStates.currentState, new PlayerMoveState(owner));
+		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		//FSM::changeState(playerStates->currentState, new PlayerMoveState(owner));
+		playerStates.currentState = FSM::changeStateP(playerStates.currentState, new PlayerMoveState(owner));
+		//playerStates.changeState(playerStates.currentState, new PlayerMoveState(owner));
 		std::cout << "";
 	}
 	else
