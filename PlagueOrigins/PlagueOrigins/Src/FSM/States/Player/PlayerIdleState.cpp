@@ -15,8 +15,8 @@ void PlayerIdleState::enter()
 
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = IDLE;
-	animator.previousFaceDirection = animator.currentFaceDirection;
-	animator.currentFaceDirection = movement.direction;
+	//animator.previousFaceDirection = animator.currentFaceDirection;
+	//animator.currentFaceDirection = movement.direction;
 }
 
 void PlayerIdleState::update(const float& dt)
@@ -34,8 +34,8 @@ void PlayerIdleState::update(const float& dt)
 
 		animator.previousAnimation = animator.currentAnimation;
 		animator.currentAnimation = IDLE;
-		animator.previousFaceDirection = animator.currentFaceDirection;
-		animator.currentFaceDirection = movement.direction;
+		//animator.previousFaceDirection = animator.currentFaceDirection;
+		//animator.currentFaceDirection = movement.direction;
 	}
 }
 

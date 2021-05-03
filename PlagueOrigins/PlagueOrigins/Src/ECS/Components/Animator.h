@@ -15,7 +15,7 @@ struct Animator
 
 	animationName currentAnimation = IDLE;
 	animationName previousAnimation = NONE;
-	sf::Vector2f previousFaceDirection = sf::Vector2f(0.f, 0.f);
+	sf::Vector2f previousFaceDirection = sf::Vector2f(0.f, 1.f);
 	sf::Vector2f currentFaceDirection = sf::Vector2f(0.f, 1.f);
 
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
