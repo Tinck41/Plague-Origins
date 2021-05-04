@@ -3,7 +3,7 @@
 #include "Src/FSM/State.h"
 
 class PlayerMoveState :
-	public State
+	virtual public State
 {
 private:
 	Entity& owner;

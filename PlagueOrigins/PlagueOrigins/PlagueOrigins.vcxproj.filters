@@ -166,6 +166,8 @@
     <ClCompile Include="Src\ECS\Systems\FSM.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerIdleState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerMoveState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerAttackState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerDeathState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -383,6 +385,8 @@
     <ClInclude Include="Src\FSM\Components\PlayerIdleComponent.h" />
     <ClInclude Include="Src\FSM\Components\PlayerMoveComponent.h" />
     <ClInclude Include="Src\FSM\State.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerAttackState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerDeathState.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

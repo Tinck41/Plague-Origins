@@ -1,6 +1,5 @@
 #include "stdafx.h"
-#include "Src\FSM\States\Player\PlayerIdleState.h"
-#include "Src\FSM\States\Player\PlayerStates.h"
+#include "./PlayerStates.h"
 
 PlayerIdleState::PlayerIdleState(Entity& owner) :
 	owner(owner)
@@ -15,16 +14,29 @@ void PlayerIdleState::enter()
 
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = IDLE;
-	//animator.previousFaceDirection = animator.currentFaceDirection;
-	//animator.currentFaceDirection = movement.direction;
 }
 
 void PlayerIdleState::update(const float& dt)
 {
-	if (owner.GetComponent<Movement>().direction != sf::Vector2f(0, 0))
+	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
 		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState, new PlayerMoveState(owner));
+		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			new PlayerDeathState(owner));
+		std::cout << "";
+	}
+	else if (owner.GetComponent<Attack>().isAttacking)
+	{
+		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			new PlayerAttackState(owner));
+		std::cout << "";
+	}
+	else if (owner.GetComponent<Movement>().direction != sf::Vector2f(0, 0))
+	{
+		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		playerStates.currentState = playerStates.changeState(playerStates.currentState, 
+			new PlayerMoveState(owner));
 		std::cout << "";
 	}
 	else
@@ -34,8 +46,6 @@ void PlayerIdleState::update(const float& dt)
 
 		animator.previousAnimation = animator.currentAnimation;
 		animator.currentAnimation = IDLE;
-		//animator.previousFaceDirection = animator.currentFaceDirection;
-		//animator.currentFaceDirection = movement.direction;
 	}
 }
 

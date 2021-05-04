@@ -1,4 +1,6 @@
 #pragma once
 
-#include "Src/FSM/States/Player/PlayerIdleState.h"
-#include "Src/FSM/States/Player/PlayerMoveState.h"
+#include "PlayerIdleState.h"
+#include "PlayerMoveState.h"
+#include "PlayerAttackState.h"
+#include "PlayerDeathState.h"

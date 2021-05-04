@@ -1,6 +1,5 @@
 #include "stdafx.h"
-#include "Src\FSM\States\Player\PlayerMoveState.h"
-#include "Src\FSM\States\Player\PlayerStates.h"
+#include "./PlayerStates.h"
 
 PlayerMoveState::PlayerMoveState(Entity& owner) :
 	owner(owner)
@@ -21,10 +20,25 @@ void PlayerMoveState::enter()
 
 void PlayerMoveState::update(const float& dt)
 {
-	if (owner.GetComponent<Movement>().direction == sf::Vector2f(0, 0))
+	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
 		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState, new PlayerIdleState(owner));
+		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			new PlayerDeathState(owner));
+		std::cout << "";
+	}
+	else if (owner.GetComponent<Attack>().isAttacking)
+	{
+		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			new PlayerAttackState(owner));
+		std::cout << "";
+	}
+	else if (owner.GetComponent<Movement>().direction == sf::Vector2f(0, 0))
+	{
+		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		playerStates.currentState = playerStates.changeState(playerStates.currentState, 
+			new PlayerIdleState(owner));
 	}
 	else
 	{

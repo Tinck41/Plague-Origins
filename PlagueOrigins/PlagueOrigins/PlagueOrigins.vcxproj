@@ -167,6 +167,8 @@
     <ClCompile Include="Src\ECS\Systems\Interaction.cpp" />
     <ClCompile Include="Src\ECS\Systems\Motion.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerAttackState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerDeathState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerIdleState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerMoveState.cpp" />
     <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
@@ -264,6 +266,8 @@
     <ClInclude Include="Src\ECS\Systems\Motion.h" />
     <ClInclude Include="Src\ECS\Systems\Physics.h" />
     <ClInclude Include="Src\ECS\Systems.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerAttackState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerDeathState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerIdleState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerMoveState.h" />
     <ClInclude Include="Src\FSM\State.h" />
