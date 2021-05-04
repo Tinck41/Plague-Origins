@@ -3,6 +3,8 @@
 #include "TileMap.h"
 #include "Src/Utility/json.hpp"
 
+#define ERROR(msg) std::cout << "Tilemap parser ERROR: " << msg << "\n"
+
 struct TilesetParameters
 {
 	uint32_t id;

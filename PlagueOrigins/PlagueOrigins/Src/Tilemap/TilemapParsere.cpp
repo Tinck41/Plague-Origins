@@ -105,14 +105,7 @@ void TilemapParser::parseTileLayer()
 			uint32_t	tilesetId	= jsonReader["layers"][i]["properties"][1]["value"];
 
 			TilesetParameters tilesetInfo;
-			try
-			{
-				tilesetInfo = chooseTileSet(tilesetId);
-			}
-			catch (const std::exception& e)
-			{
-				std::cout << e.what() << '\n';
-			}
+			tilesetInfo = chooseTileSet(tilesetId);
 
 			for (size_t j = 0; j < jsonReader["layers"][i]["data"].size(); j++)
 			{
@@ -158,4 +151,8 @@ TilesetParameters TilemapParser::chooseTileSet(uint32_t tileSetId)
 			return tilesetsInfo[i];
 		}
 	}
+
+	ERROR("could not load the tileset with id: " + std::to_string(tileSetId));
+
+	return tilesetsInfo[0];
 }
