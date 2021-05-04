@@ -2,7 +2,7 @@
 
 #include "TileLayer.h"
 
-TileLayer::TileLayer(std::string name, bool isAnimated, std::vector<StaticTile*> tiles, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset)
+TileLayer::TileLayer(std::string name, bool isAnimated, std::vector<std::shared_ptr<StaticTile>> tiles, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset)
 {
 	this->name = name;
 	this->isAnimated = isAnimated;
@@ -19,8 +19,6 @@ TileLayer::TileLayer(std::string name, bool isAnimated, std::vector<StaticTile*>
 
 TileLayer::~TileLayer()
 {
-	
-
 	tiles.clear();
 	vertices.clear();
 }
@@ -42,10 +40,8 @@ void TileLayer::update(const float& dt)
 	// update animated tiles
 	if (isAnimated)
 	{
-		for (size_t i = 0; i < tiles.size(); ++i)
+		for (auto& tile : tiles)
 		{
-			StaticTile* tile = tiles[i];
-
 			tile->update(dt);
 
 			drawTile(tile->getId(), tile->getPosition().y, tile->getPosition().x);
@@ -77,11 +73,8 @@ void TileLayer::drawTile(uint32_t tileNumber, uint32_t x, uint32_t y)
 
 void TileLayer::loadLayer()
 {
-	for (size_t i = 0; i < tiles.size(); ++i)
+	for (auto& tile : tiles)
 	{
-		// get the current tile number
-		StaticTile* tile = tiles[i];
-
 		if (tile->getId() == 0) continue;
 
 		drawTile(tile->getId(), tile->getPosition().y, tile->getPosition().x);

@@ -11,7 +11,7 @@ private:
 	sf::Vector2u tileSize;
 	sf::Vector2u size;
 
-	std::vector<StaticTile*> tiles;
+	std::vector<std::shared_ptr<StaticTile>> tiles;
 
 	sf::VertexArray vertices;
 	sf::Texture tileset;
@@ -20,7 +20,7 @@ private:
 	void drawTile(uint32_t tileNumber, uint32_t x, uint32_t y);
 	void loadLayer();
 public:
-	TileLayer(std::string name, bool isAnimated, std::vector<StaticTile*> tiles, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset);
+	TileLayer(std::string name, bool isAnimated, std::vector<std::shared_ptr<StaticTile>> tiles, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset);
 	TileLayer() = default;
 	~TileLayer();
 

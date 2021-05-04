@@ -68,7 +68,7 @@ void Game::run()
 	{
 		if (lastFPSTime >= 1)
 		{
-			window->setTitle(std::to_string(fps));
+			window->setTitle(config.title + " " + std::to_string(fps));
 			lastFPSTime = 0.f;
 			fps = 0;
 		}
