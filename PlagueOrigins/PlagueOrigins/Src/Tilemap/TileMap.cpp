@@ -44,10 +44,10 @@ void TileMap::render(sf::RenderTarget& target, unsigned firstLayerId, unsigned l
 
 void TileMap::renderUnderPlayerLayers(sf::RenderTarget& target)
 {
-	this->render(target, 0, 2);
+	this->render(target, 0, 7);
 }
 
 void TileMap::renderOverPlayerLayers(sf::RenderTarget& target)
 {
-	this->render(target, 2, this->tileLayer.size());
+	this->render(target, 7, this->tileLayer.size());
 }

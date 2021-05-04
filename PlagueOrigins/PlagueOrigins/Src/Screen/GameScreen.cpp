@@ -3,7 +3,7 @@
 
 GameScreen::GameScreen()
 {
-	if (mapLoader.loadTileMap("./Assets/Map/map.tmx"))
+	if (mapLoader.loadTileMap("./Assets/Map/newTiles_map.json"))
 	{
 		map = mapLoader.getTileMap();
 	}
@@ -23,9 +23,9 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 50.f);
 
 
-	npcEntity = Entity(registry.create(), this);
+	/*npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
-	npcEntity.AddComponent<Animator>();
+	npcEntity.AddsComponent<Animator>();
 	npcEntity.AddComponent<Movement>(500.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity);
 	npcEntity.AddComponent<Tag>("Dog");
@@ -37,7 +37,7 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Movement>(500.f);
 	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop);
 	bishop.AddComponent<Tag>("Bishop");
-	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
+	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");*/
 
 	systems.onCreate(registry);
 }
@@ -58,8 +58,8 @@ void GameScreen::update(const float& dt)
 ScreenType GameScreen::render(sf::RenderWindow& window)
 {
 	map.renderUnderPlayerLayers(window);
-	map.renderOverPlayerLayers(window);
 	systems.render(registry, window);
+	map.renderOverPlayerLayers(window);
 	return ScreenType::GAME;
 }
 

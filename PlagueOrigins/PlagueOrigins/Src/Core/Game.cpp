@@ -20,7 +20,7 @@ void Game::setup()
 		config.title,
 		config.isFullscreen ? sf::Style::Fullscreen : sf::Style::Close
 	);
-	window->setFramerateLimit(config.fps);
+	//window->setFramerateLimit(config.fps);
 	window->setVerticalSyncEnabled(true);
 	screenHandler = new ScreenHandler(ScreenType::GAME);
 	deltaTime = 0.f;

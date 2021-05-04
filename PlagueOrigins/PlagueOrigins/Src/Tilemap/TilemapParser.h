@@ -1,20 +1,21 @@
 #pragma once
 
 #include "TileMap.h"
-#include "Src/Utility/tinyxml2.h"
+#include "Src/Utility/json.hpp"
 
 struct TilesetParameters
 {
+	uint32_t id;
 	uint32_t firstId;
 	uint32_t lastId;
 	uint32_t tileCount;
-	std::vector<Tile> animatedTiles;
+	std::vector<AnimatedTile> animatedTiles;
 };
 
 class TilemapParser
 {
 private:
-	tinyxml2::XMLDocument xmlTileMap;
+	nlohmann::json jsonReader;
 
 	TileMap tileMap;
 
@@ -27,9 +28,10 @@ private:
 	std::vector<TileLayer> tileLayers;
 
 	void parseTileMap();
-	void parseTileSet(tinyxml2::XMLElement* xmlElement);
-	void parseTileLayer(tinyxml2::XMLElement* xmlElement);
-	void parseObjects(tinyxml2::XMLElement* xmlElement);
+	void parseTileSet();
+	void parseTileLayer();
+	//void parseObjects();
+	TilesetParameters chooseTileSet(uint32_t tileSetId);
 public:
 	TilemapParser();
 	~TilemapParser();
