@@ -2,6 +2,7 @@
 
 #include "TileMap.h"
 #include "Src/Utility/json.hpp"
+#include "Src/Screen/Entity.h"
 
 #define ERROR(msg) std::cout << "Tilemap parser ERROR: " << msg << "\n"
 
@@ -32,8 +33,10 @@ private:
 	void parseTileMap();
 	void parseTileSet();
 	void parseTileLayer();
-	//void parseObjects();
+	void parseObjects(entt::registry reg);
+
 	TilesetParameters chooseTileSet(uint32_t tileSetId);
+	std::shared_ptr <AnimatedTile> chooseAnimatedTile(TilesetParameters tilesetInfo, uint32_t tileId, sf::Vector2u tilePos);
 public:
 	TilemapParser();
 	~TilemapParser();

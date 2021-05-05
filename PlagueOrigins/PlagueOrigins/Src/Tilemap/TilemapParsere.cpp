@@ -118,16 +118,8 @@ void TilemapParser::parseTileLayer()
 
 				if (isAnimated)
 				{
-					for (size_t k = 0; k < tilesetInfo.animatedTiles.size(); k++)
-					{
-						if (tileId == tilesetInfo.animatedTiles[k].getId())
-						{
-							std::shared_ptr<AnimatedTile> tile = std::make_shared<AnimatedTile>(tilesetInfo.animatedTiles[k]);
-							tile->changePosition(tilePos);
-							layer.push_back(tile);
-							break;
-						}
-					}
+					std::shared_ptr<AnimatedTile> tile = chooseAnimatedTile(tilesetInfo, tileId, tilePos);
+					layer.push_back(tile);
 				}
 				else
 				{
@@ -140,6 +132,24 @@ void TilemapParser::parseTileLayer()
 			tileLayers.emplace_back(tileLayer);
 		}
 	}
+}
+
+std::shared_ptr <AnimatedTile> TilemapParser::chooseAnimatedTile(TilesetParameters tilesetInfo, uint32_t tileId, sf::Vector2u tilePos)
+{
+	for (size_t k = 0; k < tilesetInfo.animatedTiles.size(); k++)
+	{
+		if (tileId == tilesetInfo.animatedTiles[k].getId())
+		{
+			std::shared_ptr<AnimatedTile> tile = std::make_shared<AnimatedTile>(tilesetInfo.animatedTiles[k]);
+			tile->changePosition(tilePos);
+			return tile;
+		}
+	}
+
+	ERROR("could not load the animated tile with id: " + std::to_string(tileId));
+
+	std::shared_ptr<AnimatedTile> tile = std::make_shared<AnimatedTile>(0, sf::Vector2u(0, 0), std::vector<uint32_t>());
+	return tile;
 }
 
 TilesetParameters TilemapParser::chooseTileSet(uint32_t tileSetId)
@@ -155,4 +165,25 @@ TilesetParameters TilemapParser::chooseTileSet(uint32_t tileSetId)
 	ERROR("could not load the tileset with id: " + std::to_string(tileSetId));
 
 	return tilesetsInfo[0];
+}
+
+void TilemapParser::parseObjects(entt::registry reg)
+{
+	for (size_t i = 0; i < jsonReader["layers"].size(); i++)
+	{
+		if (jsonReader["layers"][i]["type"] == "objectgroup")
+		{
+			for (size_t j = 0; j < jsonReader["layers"][i]["type"]["objects"].size(); j++)
+			{
+				float width		= jsonReader["layers"][i]["type"]["objects"][j]["width"];
+				float height	= jsonReader["layers"][i]["type"]["objects"][j]["height"];
+
+				float x = jsonReader["layers"][i]["type"]["objects"][j]["x"];
+				float y = jsonReader["layers"][i]["type"]["objects"][j]["y"];
+				
+				/*Entity object = Entity(reg.create(), this);
+				PhysicsWorld::createRectangleBody(sf::Vector2f(x, y), sf::Vector2f(width, height), false, j + 10);*/
+			}
+		}
+	}
 }

@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\GUI\Button.cpp" />
-    <ClCompile Include="Src\Tilemap\StaticTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\StaticTile.cpp" />
     <ClCompile Include="Src\Tilemap\TilemapParsere.cpp" />
     <ClCompile Include="Src\Utility\GlobalFactory.cpp" />
@@ -179,7 +178,6 @@
     <ClCompile Include="Src\Screen\ScreenHandler.cpp" />
     <ClCompile Include="Src\Core\Main.cpp" />
     <ClCompile Include="Src\Tilemap\AnimatedTile.cpp" />
-    <ClCompile Include="Src\Tilemap\OldTilemapParser.cpp" />
     <ClCompile Include="Src\Utility\PhysicsContactListener.cpp" />
     <ClCompile Include="Src\Utility\PhysicsWorld.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -194,7 +192,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\GUI\Button.h" />
-    <ClInclude Include="Src\Tilemap\StaticTileLayer.h" />
     <ClInclude Include="Src\Tilemap\StaticTile.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />
     <ClInclude Include="Src\Utility\GlobalFactory.h" />
@@ -243,7 +240,6 @@
     <ClInclude Include="Src\Screen\Screen.h" />
     <ClInclude Include="Src\Screen\ScreenHandler.h" />
     <ClInclude Include="Src\Tilemap\AnimatedTile.h" />
-    <ClInclude Include="Src\Tilemap\OldTilemapParser.h" />
     <ClInclude Include="Src\Utility\PhysicsContactListener.h" />
     <ClInclude Include="Src\Utility\PhysicsWorld.h" />
     <ClInclude Include="stdafx.h" />

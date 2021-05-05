@@ -48,7 +48,6 @@
     <ClCompile Include="Src\Core\Main.cpp" />
     <ClCompile Include="Src\Screen\Entity.cpp" />
     <ClCompile Include="Src\Tilemap\AnimatedTile.cpp" />
-    <ClCompile Include="Src\Tilemap\OldTilemapParser.cpp" />
     <ClCompile Include="Src\ECS\SystemHandler.cpp" />
     <ClCompile Include="Src\ECS\Systems\Input.cpp" />
     <ClCompile Include="Src\ECS\Systems\Animation.cpp" />
@@ -61,7 +60,6 @@
     <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
     <ClCompile Include="Src\ECS\Systems\Interaction.cpp" />
     <ClCompile Include="Src\Utility\GlobalFactory.cpp" />
-    <ClCompile Include="Src\Tilemap\StaticTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\TilemapParsere.cpp" />
     <ClCompile Include="Src\Tilemap\StaticTile.cpp" />
   </ItemGroup>
@@ -124,7 +122,6 @@
     </ClInclude>
     <ClInclude Include="Src\Screen\Entity.h" />
     <ClInclude Include="Src\Tilemap\AnimatedTile.h" />
-    <ClInclude Include="Src\Tilemap\OldTilemapParser.h" />
     <ClInclude Include="Src\ECS\Components\RigidBody.h" />
     <ClInclude Include="Src\ECS\Components\Movement.h" />
     <ClInclude Include="Src\ECS\Components\Animator.h" />
@@ -156,7 +153,6 @@
     <ClInclude Include="Src\Utility\GlobalFactory.h" />
     <ClInclude Include="Src\Utility\json.hpp" />
     <ClInclude Include="PlayerAnimationStates.h" />
-    <ClInclude Include="Src\Tilemap\StaticTileLayer.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />
     <ClInclude Include="Src\Tilemap\StaticTile.h" />
   </ItemGroup>

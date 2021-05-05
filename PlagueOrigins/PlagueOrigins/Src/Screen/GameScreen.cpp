@@ -17,7 +17,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Movement>(500.f);
 	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity);
 	testEntity.AddComponent<Tag>("Hero");
-	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()));
+	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	testEntity.AddComponent<Health>(300.f);
 	testEntity.AddComponent<Vampire>();
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 50.f);
