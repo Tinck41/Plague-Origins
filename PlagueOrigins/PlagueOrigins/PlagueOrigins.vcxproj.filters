@@ -173,6 +173,10 @@
     <ClCompile Include="Src\FSM\States\NPCDog\NPCDogMoveState.cpp" />
     <ClCompile Include="Src\FSM\States\NPCDog\NPCDogAttackState.cpp" />
     <ClCompile Include="Src\FSM\States\NPCDog\NPCDogAggroState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerInteractState.cpp" />
+    <ClCompile Include="Src\FSM\States\Bishop\BishopIdleState.cpp" />
+    <ClCompile Include="Src\FSM\States\Bishop\BishopInteractState.cpp" />
+    <ClCompile Include="Src\FSM\States\Bishop\BishopDeathState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -398,6 +402,11 @@
     <ClInclude Include="Src\FSM\States\NPCDog\NPCDogMoveState.h" />
     <ClInclude Include="Src\FSM\States\NPCDog\NPCDogAttackState.h" />
     <ClInclude Include="Src\FSM\States\NPCDog\NPCDogAggroState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerInteractState.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopStates.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopIdleState.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopInteractState.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopDeathState.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

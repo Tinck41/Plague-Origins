@@ -1,48 +1,37 @@
 #include "stdafx.h"
-#include "./NPCDogStates.h"
+#include "./BishopStates.h"
 
-NPCDogIdleState::NPCDogIdleState(Entity& owner) :
+BishopIdleState::BishopIdleState(Entity& owner) :
 	owner(owner)
 {
 }
 
-void NPCDogIdleState::enter()
+void BishopIdleState::enter()
 {
-	std::cout << "IDLE\n";
+	std::cout << "BISHOP IDLE\n";
 	Animator& animator = owner.GetComponent<Animator>();
 	Movement& movement = owner.GetComponent<Movement>();
 
-	animator.previousAnimation = animator.currentAnimation;
+	//movement.direction = { .0f, 1.f };
+
 	animator.currentAnimation = IDLE;
+	animator.previousFaceDirection = animator.currentFaceDirection;
 }
 
-void NPCDogIdleState::update(const float& dt)
+void BishopIdleState::update(const float& dt)
 {
-
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
 		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
-			new NPCDogDeathState(owner));
+			new BishopDeathState(owner));
 		std::cout << "";
 	}
-	//TO-DO
-	//else if (owner.getCombatComponent()->isAggro())
-	//{
-	//	owner.getStateMachine()->changeState(new NPCDogAggroState(owner));
-	//}
-	//else if (owner.GetComponent<Attack>().isAttacking)
-	//{
-	//	PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
-	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
-	//		new NPCDogAttackState(owner));
-	//	std::cout << "";
-	//}
-	else if (owner.GetComponent<Movement>().direction != sf::Vector2f(0, 0))
+	else if (owner.GetComponent<Interact>().isInteracting == true)
 	{
 		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
-			new NPCDogMoveState(owner));
+			new BishopInteractState(owner));
 		std::cout << "";
 	}
 	else
@@ -55,6 +44,6 @@ void NPCDogIdleState::update(const float& dt)
 	}
 }
 
-void NPCDogIdleState::exit()
+void BishopIdleState::exit()
 {
 }

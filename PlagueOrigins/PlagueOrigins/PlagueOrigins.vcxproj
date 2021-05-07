@@ -167,6 +167,9 @@
     <ClCompile Include="Src\ECS\Systems\Interaction.cpp" />
     <ClCompile Include="Src\ECS\Systems\Motion.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
+    <ClCompile Include="Src\FSM\States\Bishop\BishopDeathState.cpp" />
+    <ClCompile Include="Src\FSM\States\Bishop\BishopIdleState.cpp" />
+    <ClCompile Include="Src\FSM\States\Bishop\BishopInteractState.cpp" />
     <ClCompile Include="Src\FSM\States\NPCDog\NPCDogAggroState.cpp" />
     <ClCompile Include="Src\FSM\States\NPCDog\NPCDogAttackState.cpp" />
     <ClCompile Include="Src\FSM\States\NPCDog\NPCDogDeathState.cpp" />
@@ -174,6 +177,7 @@
     <ClCompile Include="Src\FSM\States\NPCDog\NPCDogMoveState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerAttackState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerDeathState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerInteractState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerIdleState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerMoveState.cpp" />
     <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
@@ -271,6 +275,10 @@
     <ClInclude Include="Src\ECS\Systems\Motion.h" />
     <ClInclude Include="Src\ECS\Systems\Physics.h" />
     <ClInclude Include="Src\ECS\Systems.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopDeathState.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopIdleState.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopInteractState.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopStates.h" />
     <ClInclude Include="Src\FSM\States\NPCDog\NPCDogAggroState.h" />
     <ClInclude Include="Src\FSM\States\NPCDog\NPCDogAttackState.h" />
     <ClInclude Include="Src\FSM\States\NPCDog\NPCDogDeathState.h" />
@@ -279,6 +287,7 @@
     <ClInclude Include="Src\FSM\States\NPCDog\NPCDogStates.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerAttackState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerDeathState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerInteractState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerIdleState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerMoveState.h" />
     <ClInclude Include="Src\FSM\State.h" />

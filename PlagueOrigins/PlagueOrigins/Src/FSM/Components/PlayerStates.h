@@ -8,6 +8,7 @@ struct PlayerSMcomponent
 	PlayerSMcomponent(State* initState)
 	{
 		currentState = initState;
+		currentState->enter();
 	}
 	State* (*changeState)(State*,State*) = FSM::changeStateP;
 };

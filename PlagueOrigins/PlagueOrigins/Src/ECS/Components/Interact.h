@@ -23,6 +23,8 @@ struct Interact
 
     sf::CircleShape interactionZone;
     std::string text;
+
     bool canInteract = true;
+    bool isInteracting = false;
     float radius;
 };

@@ -3,6 +3,8 @@
 
 #include "GlobalFactory.h"
 #include "Src/FSM/States/Player/PlayerStates.h"
+#include "Src/FSM/States/NPCDog/NPCDogStates.h"
+#include "Src/FSM/States/Bishop/BishopStates.h"
 
 GameScreen::GameScreen()
 {
@@ -33,6 +35,7 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<Health>(300.f);
+	npcEntity.AddComponent<PlayerSMcomponent>(new NPCDogIdleState(npcEntity));
 
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();
@@ -41,6 +44,8 @@ GameScreen::GameScreen()
 	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop);
 	bishop.AddComponent<Tag>("Bishop");
 	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
+	bishop.AddComponent<Health>(300.f);
+	bishop.AddComponent<PlayerSMcomponent>(new BishopIdleState(bishop));
 
 	systems.onCreate(registry);
 }

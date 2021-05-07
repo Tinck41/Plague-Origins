@@ -122,7 +122,6 @@ void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 		animator.armatureDisplay = armatureDisplay;
 		if (tag.name == "Hero")
 		{
-			std::cout << "hero\n";
 			animator.armatureDisplay->getAnimation()->play("Attack", 1);
 
 		}
