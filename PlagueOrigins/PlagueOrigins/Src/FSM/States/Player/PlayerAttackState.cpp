@@ -19,8 +19,8 @@ void PlayerAttackState::enter()
     attack.isAttacking = true;
 }
 
- void PlayerAttackState::update(const float& dt)
- {
+void PlayerAttackState::update(const float& dt)
+{
  	if (owner.GetComponent<Health>().curhealth <= 0)
  	{
         PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
@@ -30,6 +30,8 @@ void PlayerAttackState::enter()
  	}
  	else if (owner.GetComponent<Animator>().armatureDisplay->getAnimation()->isCompleted())
  	{
+        
+        std::cout << "finish\n";
  		if (owner.GetComponent<Attack>().isAttacking)
  		{
             PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
@@ -45,8 +47,10 @@ void PlayerAttackState::enter()
             std::cout << "";
  		}
  	}
- }
+}
 
- void PlayerAttackState::exit()
- {
- }
+void PlayerAttackState::exit()
+{
+    Attack& attack = owner.GetComponent<Attack>();
+    attack.isAttacking = false;
+}

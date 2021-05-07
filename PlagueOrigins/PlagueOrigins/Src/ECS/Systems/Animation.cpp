@@ -94,37 +94,44 @@ void Animation::playIdleAnimation(Animator& animator, Tag& tag)
 
 void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 {
+	dragonBones::SFMLArmatureDisplay* armatureDisplay = nullptr;
+
 	if (animator.currentFaceDirection.y < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "U");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	else if (animator.currentFaceDirection.y > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "D");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	if (animator.currentFaceDirection.x > 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 	}
 	else if (animator.currentFaceDirection.x < 0.f)
 	{
 		animator.postfix = setPostfix(tag, "R");
-		animator.armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
-		animator.armatureDisplay->getArmature()->setFlipX(true);
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay->getArmature()->setFlipX(true);
 	}
-	if (tag.name == "Hero")
+	if (armatureDisplay != nullptr)
 	{
-		//animator.armatureDisplay->getAnimation()->fadeIn("Attack", 0.2f, 1);
-		animator.armatureDisplay->getAnimation()->play("Attack", 1);
+		animator.armatureDisplay = armatureDisplay;
+		if (tag.name == "Hero")
+		{
+			std::cout << "hero\n";
+			animator.armatureDisplay->getAnimation()->play("Attack", 1);
 
+		}
+		else if (tag.name == "Dog")
+		{
+			animator.armatureDisplay->getAnimation()->play("Attack0", 1);
+		}
 	}
-	else if (tag.name == "Dog")
-	{
-		animator.armatureDisplay->getAnimation()->play("Attack0", 1);
-	}
+	
 }
 
 void Animation::playDeathAnimation(Animator& animator, Tag& tag)
@@ -210,6 +217,8 @@ void Animation::setAnimation(Animator& animator, Tag& tag)
 		}
 
 		playAnimation(animator, tag, animator.currentAnimation);
+
+		animator.previousAnimation = animator.currentAnimation;
 	}
 }
 

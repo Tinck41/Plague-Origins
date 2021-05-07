@@ -1,16 +1,14 @@
 #pragma once
-#include "NPCDog.h"
-#include "NPCDogStates.h"
+#include "Src/Screen/Entity.h"
+#include "Src/FSM/State.h"
 
 class NPCDogMoveState :
 	virtual public State
 {
 private:
-	FiniteStateMachine* stateMachine;
-	NPCDog& owner;
+	Entity& owner;
 public:
-	NPCDogMoveState(NPCDog& owner);
-	~NPCDogMoveState();
+	NPCDogMoveState(Entity& owner);
 
 	void enter() override;
 	void update(const float& dt) override;

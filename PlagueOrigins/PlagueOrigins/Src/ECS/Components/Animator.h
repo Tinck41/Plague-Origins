@@ -9,8 +9,8 @@
 
 struct Animator
 {
-	std::string prefix;
-	std::string armatureName;
+	//std::string prefix;
+	//std::string armatureName;
 	std::string postfix;
 
 	animationName currentAnimation = IDLE;
