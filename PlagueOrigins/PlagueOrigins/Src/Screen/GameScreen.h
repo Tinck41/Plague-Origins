@@ -15,6 +15,8 @@ private:
 	Entity npcEntity;
 	Entity bishop;
 
+	tgui::GuiSFML gui;
+
 	TilemapParser mapLoader;
 	TileMap map;
 public:

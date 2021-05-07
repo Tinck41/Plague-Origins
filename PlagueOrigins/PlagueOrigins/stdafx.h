@@ -33,6 +33,9 @@
 #include <SFML\Audio.hpp>
 #include <SFML\Network.hpp>
 
+//TGUI
+#include <TGUI/TGUI.hpp>
+
 //SFMLDragonBones
 #include <dragonBones/SFMLFactory.h>
 #include <dragonBones/SFMLArmatureDisplay.h>

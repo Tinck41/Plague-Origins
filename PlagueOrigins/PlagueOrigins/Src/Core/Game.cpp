@@ -22,7 +22,7 @@ void Game::setup()
 	);
 	//window->setFramerateLimit(config.fps);
 	window->setVerticalSyncEnabled(true);
-	screenHandler = new ScreenHandler(ScreenType::GAME);
+	screenHandler = new ScreenHandler(ScreenType::MAIN_MENU);
 	deltaTime = 0.f;
 }
 

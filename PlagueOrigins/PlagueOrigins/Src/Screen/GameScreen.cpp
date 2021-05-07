@@ -9,6 +9,8 @@ GameScreen::GameScreen()
 	}
 	mapLoader.~TilemapParser();
 
+	gui.loadWidgetsFromFile("../AdditionalLibraries/TGUI-0.9/gui-builder/Game.txt");
+
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<Transform>();
 	testEntity.AddComponent<PlayerInput>();
@@ -57,9 +59,25 @@ void GameScreen::update(const float& dt)
 
 ScreenType GameScreen::render(sf::RenderWindow& window)
 {
+	gui.setTarget(window);
+	
+	sf::Event event;
+	while (window.pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+			window.close();
+		
+		gui.handleEvent(event);
+	}
+
+	tgui::FloatRect visibleArea(0, 0, 2560, 1440);
+	gui.setAbsoluteView(visibleArea);
+
 	map.renderUnderPlayerLayers(window);
 	systems.render(registry, window);
 	map.renderOverPlayerLayers(window);
+	
+	gui.draw();
 
 	auto view = registry.view<CameraTarget>();
 	for (auto& entity : view)

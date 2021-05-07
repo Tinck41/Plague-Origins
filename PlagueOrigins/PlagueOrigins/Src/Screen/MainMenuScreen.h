@@ -9,6 +9,14 @@ class MainMenuScreen :
 private:
     Button newGameButton;
     Button exitGameButton;
+
+    bool newGame = false;
+    bool quit = false;
+
+    tgui::GuiSFML gui;
+
+    void setGameScreen();
+    void setExitScreen();
 public:
     static const ScreenType screenType = ScreenType::MAIN_MENU;
 
@@ -17,4 +25,3 @@ public:
     void update(const float&);
     ScreenType render(sf::RenderWindow&);
 };
-

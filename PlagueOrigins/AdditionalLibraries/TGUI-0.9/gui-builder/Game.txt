@@ -1,0 +1,46 @@
+Panel.statusBar {
+    Position = (25, 25);
+    Size = (805, 146.56);
+
+    Renderer {
+        BackgroundColor = white;
+        BorderColor = black;
+        TextureBackground = "../../../PlagueOrigins/Assets/UI/statusBar.png" Smooth;
+        TransparentTexture = true;
+    }
+}
+
+Panel.essenceBar {
+    Position = (2130, 1317.5);
+    Size = (404, 101);
+
+    Renderer {
+        BackgroundColor = white;
+        BorderColor = black;
+        TextureBackground = "../../../PlagueOrigins/Assets/UI/essenceBar.png" Smooth;
+        TransparentTexture = true;
+    }
+
+    TextArea.essenceBarText {
+        HorizontalScrollbarPolicy = Never;
+        MaximumCharacters = 15;
+        Position = (30, 22);
+        Size = (388, 65);
+        Text = 0;
+        TextSize = 45;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = black;
+            Borders = (0, 0, 0, 0);
+            CaretColor = black;
+            CaretWidth = 1;
+            DefaultTextColor = #A0A0A0;
+            Padding = (0, 0, 0, 0);
+            SelectedTextBackgroundColor = #006EFF;
+            SelectedTextColor = white;
+            TextColor = white;
+            TextureBackground = None;
+        }
+    }
+}

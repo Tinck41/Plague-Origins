@@ -3,23 +3,53 @@
 
 MainMenuScreen::MainMenuScreen()
 {
-	newGameButton = Button(config.width() / 2 - 90, config.height() / 2 - 25, 180, 50, 3, "New Game");
-	exitGameButton = Button(config.width() / 2 - 90, config.height() / 2 + 50, 180, 50, 3, "Exit game");
+	gui.loadWidgetsFromFile("../AdditionalLibraries/TGUI-0.9/gui-builder/Main_menu.txt");
+	gui.get<tgui::Button>("newGame")->onClick(&MainMenuScreen::setGameScreen, this);
+	gui.get<tgui::Button>("quit")->onClick(&MainMenuScreen::setExitScreen, this);
 }
 
 void MainMenuScreen::update(const float &dt)
 {
+
 }
 
 ScreenType MainMenuScreen::render(sf::RenderWindow& window)
 {
-	newGameButton.render(window);
-	exitGameButton.render(window);
-	if (newGameButton.state == ButtonState::RELEASED) {
+	gui.setTarget(window);
+	
+	sf::Event event;
+	while (window.pollEvent(event))
+	{
+		gui.handleEvent(event);
+	}
+
+	tgui::FloatRect visibleArea(0, 0, 2560, 1440);
+	gui.setAbsoluteView(visibleArea);
+
+	gui.draw();
+
+	if (newGame) 
+	{
 		return ScreenType::GAME;
 	}
-	if (exitGameButton.state == ButtonState::RELEASED) {
+	if (quit) 
+	{
 		return ScreenType::EXIT;
 	}
+
 	return ScreenType::MAIN_MENU;
 }
+
+void MainMenuScreen::setGameScreen()
+{
+	std::cout << "set game state" << "\n";
+	newGame = true;
+}
+
+void MainMenuScreen::setExitScreen()
+{
+	std::cout << "set exit state" << "\n";
+	quit = true;
+}
+
+
