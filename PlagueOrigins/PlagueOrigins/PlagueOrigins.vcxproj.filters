@@ -60,8 +60,9 @@
     <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
     <ClCompile Include="Src\ECS\Systems\Interaction.cpp" />
     <ClCompile Include="Src\Utility\GlobalFactory.cpp" />
-    <ClCompile Include="Src\Tilemap\TilemapParsere.cpp" />
-    <ClCompile Include="Src\Tilemap\StaticTile.cpp" />
+    <ClCompile Include="Src\Tilemap\TilemapParser.cpp" />
+    <ClCompile Include="Src\Tilemap\StaticTileLayer.cpp" />
+    <ClCompile Include="Src\Tilemap\AnimatedTileLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -154,7 +155,8 @@
     <ClInclude Include="Src\Utility\json.hpp" />
     <ClInclude Include="PlayerAnimationStates.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />
-    <ClInclude Include="Src\Tilemap\StaticTile.h" />
+    <ClInclude Include="Src\Tilemap\StaticTileLayer.h" />
+    <ClInclude Include="Src\Tilemap\AnimatedTileLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

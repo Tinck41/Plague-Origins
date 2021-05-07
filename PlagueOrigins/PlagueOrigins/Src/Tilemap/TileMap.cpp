@@ -2,23 +2,16 @@
 
 #include "TileMap.h"
 
-TileMap::TileMap(std::vector<TileLayer> layers, sf::Vector2u mapSize, sf::Vector2u tileSize)
+TileMap::TileMap(std::vector<std::shared_ptr<TileLayer>> layers, sf::Vector2u mapSize, sf::Vector2u tileSize)
 {
-	this->tileLayer = layers;
-	//this->colliderLayer = objects;
-	this->size = mapSize;
+	tileLayers = layers;
+	size = mapSize;
 	this->tileSize = tileSize;
-}
-
-TileMap::TileMap()
-{
-
 }
 
 TileMap::~TileMap()
 {
-	this->tileLayer.clear();
-	//this->colliderLayer.clear();
+	tileLayers.clear();
 }
 
 sf::Vector2u TileMap::getSize()
@@ -28,26 +21,26 @@ sf::Vector2u TileMap::getSize()
 
 void TileMap::update(const float& dt)
 {
-	for (auto& layer : tileLayer)
+	for (auto& layer : tileLayers)
 	{
-		layer.update(dt);
+		layer->update(dt);
 	}
 }
 
-void TileMap::render(sf::RenderTarget& target, unsigned firstLayerId, unsigned lastLayerId)
+void TileMap::render(sf::RenderTarget& target, uint32_t firstLayerId, uint32_t lastLayerId)
 {
 	for (int i = firstLayerId; i < lastLayerId; i++)
 	{
-		target.draw(this->tileLayer[i]);
+		target.draw(*tileLayers[i]);
 	}
 }
 
 void TileMap::renderUnderPlayerLayers(sf::RenderTarget& target)
 {
-	this->render(target, 0, 7);
+	render(target, 0, 8);
 }
 
 void TileMap::renderOverPlayerLayers(sf::RenderTarget& target)
 {
-	this->render(target, 7, this->tileLayer.size());
+	render(target, 8, tileLayers.size());
 }

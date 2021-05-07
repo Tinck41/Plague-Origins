@@ -17,7 +17,6 @@ SystemHandler::SystemHandler()
 	// Render systems
 	renderableSystems.push_back(new Animation());
 	renderableSystems.push_back(new Interaction());
-	renderableSystems.push_back(new Camera());
 
 	// OnCreate system
 	onCreateSystems.push_back(new Animation());

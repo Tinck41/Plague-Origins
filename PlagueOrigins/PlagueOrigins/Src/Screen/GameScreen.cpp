@@ -60,6 +60,14 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 	map.renderUnderPlayerLayers(window);
 	systems.render(registry, window);
 	map.renderOverPlayerLayers(window);
+
+	auto view = registry.view<CameraTarget>();
+	for (auto& entity : view)
+	{
+		CameraTarget& camera = registry.get<CameraTarget>(entity);
+		window.setView(camera.camera);
+	}
+
 	return ScreenType::GAME;
 }
 

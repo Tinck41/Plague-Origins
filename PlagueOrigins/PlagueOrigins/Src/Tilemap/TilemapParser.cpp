@@ -2,6 +2,7 @@
 
 #include "TilemapParser.h"
 
+
 TilemapParser::TilemapParser()
 {
 
@@ -11,7 +12,6 @@ TilemapParser::~TilemapParser()
 {
 	tilesetsInfo.clear();
 	tilesets.clear();
-	//collidersLayer.clear();
 	tileLayers.clear();
 }
 
@@ -29,13 +29,13 @@ bool TilemapParser::loadTileMap(const char* path)
 	}
 
 	parseTileMap();
-
+	
 	return true;
 }
 
 void TilemapParser::parseTileMap()
 {
-	//Reading tilemap main parameters
+	//Reading tilemap generall parameters
 	mapSize.x = jsonReader["width"];
 	mapSize.y = jsonReader["height"];
 	tileSize.x = jsonReader["tilewidth"];
@@ -45,7 +45,7 @@ void TilemapParser::parseTileMap()
 	parseTileLayer();
 	//parseObjects();
 
-	this->tileMap = TileMap(tileLayers, mapSize, tileSize);
+	tileMap = TileMap(tileLayers, mapSize, tileSize);
 }
 
 void TilemapParser::parseTileSet()
@@ -69,26 +69,26 @@ void TilemapParser::parseTileSet()
 		{
 			for (size_t j = 0; j < jsonReader["tilesets"][i]["tiles"].size(); j++)
 			{
-				uint32_t				tileId;
-				std::vector<uint32_t>	tilesId;
+				uint16_t				tileId;
+				std::vector<uint16_t>	tilesId;
 				float duration;
 
 				tileId = jsonReader["tilesets"][i]["tiles"][j]["id"];
 
 				for (size_t k = 0; k < jsonReader["tilesets"][i]["tiles"][j]["animation"].size(); k++)
 				{
-					uint32_t id	= jsonReader["tilesets"][i]["tiles"][j]["animation"][k]["tileid"];
+					uint16_t id	= jsonReader["tilesets"][i]["tiles"][j]["animation"][k]["tileid"];
 					duration	= jsonReader["tilesets"][i]["tiles"][j]["animation"][k]["duration"];
 
-					tilesId.push_back(id);
+					tilesId.emplace_back(id);
 				}
 
-				tilesetInfo.animatedTiles.push_back(AnimatedTile(tileId, sf::Vector2u(0, 0), tilesId, duration));
+				tilesetInfo.animatedTiles.emplace_back(AnimatedTile(tileId, sf::Vector2u(0, 0), tilesId, duration));
 			}
 		}
 
-		tilesets.push_back(tileset);
-		tilesetsInfo.push_back(tilesetInfo);
+		tilesets.emplace_back(tileset);
+		tilesetsInfo.emplace_back(tilesetInfo);
 	}
 }
 
@@ -98,61 +98,88 @@ void TilemapParser::parseTileLayer()
 	{
 		if (jsonReader["layers"][i]["type"] == "tilelayer")
 		{
-			std::vector<std::shared_ptr<StaticTile>> layer;
-
 			std::string layerName	= jsonReader["layers"][i]["name"];
-			bool		isAnimated	= jsonReader["layers"][i]["properties"][0]["value"];
-			uint32_t	tilesetId	= jsonReader["layers"][i]["properties"][1]["value"];
+			bool		isAnimated	= jsonReader["layers"][i]["properties"][1]["value"];
+			uint8_t		tilesetId	= jsonReader["layers"][i]["properties"][2]["value"];
 
 			TilesetParameters tilesetInfo;
 			tilesetInfo = chooseTileSet(tilesetId);
 
-			for (size_t j = 0; j < jsonReader["layers"][i]["data"].size(); j++)
+			nlohmann::json dataNode = jsonReader["layers"][i]["data"];
+
+			if (isAnimated)
 			{
-				sf::Vector2u	tilePos	= sf::Vector2u(j / mapSize.x, j % mapSize.y);
-				uint32_t		tileId	= jsonReader["layers"][i]["data"][j];
-
-				if (tileId == 0) continue;
-
-				tileId = tileId + tilesetInfo.tileCount - tilesetInfo.lastId - 2;
-
-				if (isAnimated)
-				{
-					std::shared_ptr<AnimatedTile> tile = chooseAnimatedTile(tilesetInfo, tileId, tilePos);
-					layer.push_back(tile);
-				}
-				else
-				{
-					std::shared_ptr<StaticTile> tile = std::make_shared<StaticTile>(tileId, tilePos);
-					layer.push_back(tile);
-				}
+				parseAnimatedTiles(layerName, tilesetInfo, dataNode);
 			}
-
-			TileLayer tileLayer(layerName, isAnimated, layer, mapSize, tileSize, tilesets[tilesetId]);
-			tileLayers.emplace_back(tileLayer);
+			else
+			{
+				parseStaticTiles(layerName, tilesetInfo, dataNode);
+			}
 		}
 	}
 }
 
-std::shared_ptr <AnimatedTile> TilemapParser::chooseAnimatedTile(TilesetParameters tilesetInfo, uint32_t tileId, sf::Vector2u tilePos)
+void TilemapParser::parseAnimatedTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node)
+{
+	std::vector<AnimatedTile> layer;
+
+	for (size_t j = 0; j < node.size(); j++)
+	{
+		sf::Vector2u	tilePos = sf::Vector2u(j / mapSize.x, j % mapSize.y);
+		uint16_t		tileId = node[j];
+
+		if (tileId == 0) continue;
+
+		tileId = tileId + tileset.tileCount - tileset.lastId - 2;
+			
+		AnimatedTile tile = chooseAnimatedTile(tileset, tileId, tilePos);
+		layer.emplace_back(tile);
+	}
+
+	std::shared_ptr<AnimatedTileLayer> tileLayer = std::make_shared<AnimatedTileLayer>(layerName, layer, mapSize, tileSize, tilesets[tileset.id]);
+	tileLayers.emplace_back(tileLayer);
+}
+
+void TilemapParser::parseStaticTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node)
+{
+	std::vector<uint16_t> layer;
+
+	for (size_t j = 0; j < node.size(); j++)
+	{
+		sf::Vector2u	tilePos = sf::Vector2u(j / mapSize.x, j % mapSize.y);
+		uint16_t		tileId = node[j];
+
+		if (tileId != 0)
+		{
+			tileId = tileId + tileset.tileCount - tileset.lastId - 2;
+		}
+
+		layer.emplace_back(tileId);
+	}
+
+	std::shared_ptr<StaticTileLayer> tileLayer = std::make_shared<StaticTileLayer>(layerName, layer, mapSize, tileSize, tilesets[tileset.id]);
+	tileLayers.emplace_back(tileLayer);
+}
+
+AnimatedTile TilemapParser::chooseAnimatedTile(TilesetParameters tilesetInfo, uint16_t tileId, sf::Vector2u tilePos)
 {
 	for (size_t k = 0; k < tilesetInfo.animatedTiles.size(); k++)
 	{
 		if (tileId == tilesetInfo.animatedTiles[k].getId())
 		{
-			std::shared_ptr<AnimatedTile> tile = std::make_shared<AnimatedTile>(tilesetInfo.animatedTiles[k]);
-			tile->changePosition(tilePos);
+			AnimatedTile tile = AnimatedTile(tilesetInfo.animatedTiles[k]);
+			tile.changePosition(tilePos);
 			return tile;
 		}
 	}
 
 	ERROR("could not load the animated tile with id: " + std::to_string(tileId));
 
-	std::shared_ptr<AnimatedTile> tile = std::make_shared<AnimatedTile>(0, sf::Vector2u(0, 0), std::vector<uint32_t>());
+	AnimatedTile tile = AnimatedTile(0, sf::Vector2u(0, 0), std::vector<uint16_t>());
 	return tile;
 }
 
-TilesetParameters TilemapParser::chooseTileSet(uint32_t tileSetId)
+TilesetParameters TilemapParser::chooseTileSet(uint8_t tileSetId)
 {
 	for (size_t i = 0; i < tilesetsInfo.size(); i++)
 	{

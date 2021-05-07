@@ -2,9 +2,10 @@
 
 #include "AnimatedTile.h"
 
-AnimatedTile::AnimatedTile(uint32_t tileId, sf::Vector2u tilePosition, std::vector<uint32_t> tilesId, const float& duration) :
-	StaticTile(tileId, tilePosition)
+AnimatedTile::AnimatedTile(uint16_t tileId, sf::Vector2u tilePosition, std::vector<uint16_t> tilesId, const float& duration)
 {
+	id = tileId;
+	position = tilePosition;
 	this->duration = duration;
 	curDuration	= sf::milliseconds(duration);
 

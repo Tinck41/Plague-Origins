@@ -1,6 +1,8 @@
 #pragma once
 
 #include "TileMap.h"
+#include "StaticTileLayer.h"
+#include "AnimatedTileLayer.h"
 #include "Src/Utility/json.hpp"
 #include "Src/Screen/Entity.h"
 
@@ -8,10 +10,10 @@
 
 struct TilesetParameters
 {
-	uint32_t id;
-	uint32_t firstId;
-	uint32_t lastId;
-	uint32_t tileCount;
+	uint8_t		id;
+	uint16_t	firstId;
+	uint16_t	lastId;
+	uint16_t	tileCount;
 	std::vector<AnimatedTile> animatedTiles;
 };
 
@@ -28,15 +30,18 @@ private:
 	std::vector<TilesetParameters> tilesetsInfo;
 	std::vector<sf::Texture> tilesets;
 	//std::vector<std::vector<MapCollider>> collidersLayer;
-	std::vector<TileLayer> tileLayers;
+	std::vector<std::shared_ptr<TileLayer>> tileLayers;
 
 	void parseTileMap();
 	void parseTileSet();
 	void parseTileLayer();
 	void parseObjects(entt::registry reg);
 
-	TilesetParameters chooseTileSet(uint32_t tileSetId);
-	std::shared_ptr <AnimatedTile> chooseAnimatedTile(TilesetParameters tilesetInfo, uint32_t tileId, sf::Vector2u tilePos);
+	void parseAnimatedTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node);
+	void parseStaticTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node);
+
+	TilesetParameters chooseTileSet(uint8_t tileSetId);
+	AnimatedTile chooseAnimatedTile(TilesetParameters tilesetInfo, uint16_t tileId, sf::Vector2u tilePos);
 public:
 	TilemapParser();
 	~TilemapParser();

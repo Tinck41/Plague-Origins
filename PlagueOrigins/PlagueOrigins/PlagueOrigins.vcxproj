@@ -83,14 +83,14 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./.;S:\Programs\Visual Leak Detector\include;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\Box2D\lib;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>S:\Programs\Visual Leak Detector\lib\Win64;$(SolutionDir)\AdditionalLibraries\Box2D\lib;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;box2d.lib;vld.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -99,14 +99,14 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./.;S:\Programs\Visual Leak Detector\include;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\Box2D\lib;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>S:\Programs\Visual Leak Detector\lib\Win64;$(SolutionDir)\AdditionalLibraries\Box2D\lib;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;box2d.lib;vld.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -152,8 +152,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\GUI\Button.cpp" />
-    <ClCompile Include="Src\Tilemap\StaticTile.cpp" />
-    <ClCompile Include="Src\Tilemap\TilemapParsere.cpp" />
+    <ClCompile Include="Src\Tilemap\AnimatedTileLayer.cpp" />
+    <ClCompile Include="Src\Tilemap\StaticTileLayer.cpp" />
+    <ClCompile Include="Src\Tilemap\TilemapParser.cpp" />
     <ClCompile Include="Src\Utility\GlobalFactory.cpp" />
     <ClCompile Include="Src\ECS\SystemHandler.cpp" />
     <ClCompile Include="Src\ECS\Systems\Animation.cpp" />
@@ -192,7 +193,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\GUI\Button.h" />
-    <ClInclude Include="Src\Tilemap\StaticTile.h" />
+    <ClInclude Include="Src\Tilemap\AnimatedTileLayer.h" />
+    <ClInclude Include="Src\Tilemap\StaticTileLayer.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />
     <ClInclude Include="Src\Utility\GlobalFactory.h" />
     <ClInclude Include="Src\Utility\json.hpp" />
