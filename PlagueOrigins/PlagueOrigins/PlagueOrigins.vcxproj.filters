@@ -26,9 +26,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Precompiled headers</Filter>
     </ClCompile>
-    <ClCompile Include="Src\GUI\Button.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Global\Config.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp">
       <Filter>dragonBones</Filter>
@@ -89,9 +86,6 @@
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Precompiled headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\GUI\Button.h">
-      <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="Src\Global\Config.h" />
     <ClInclude Include="dragonBones\SFMLArmatureDisplay.h">

@@ -90,7 +90,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\TGUI-0.9\lib;$(SolutionDir)\AdditionalLibraries\Box2D\lib;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;box2d.lib;tgui-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;box2d-d.lib;tgui-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -106,7 +106,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\TGUI-0.9\lib;$(SolutionDir)\AdditionalLibraries\Box2D\lib;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;box2d.lib;tgui-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;box2d-d.lib;tgui-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -121,6 +121,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\TGUI-0.9\include;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -141,6 +142,7 @@
       <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\TGUI-0.9\include;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,7 +153,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Src\GUI\Button.cpp" />
     <ClCompile Include="Src\Tilemap\AnimatedTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\StaticTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\TilemapParser.cpp" />
@@ -192,7 +193,6 @@
     <ClCompile Include="Src\Utility\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Src\GUI\Button.h" />
     <ClInclude Include="Src\Tilemap\AnimatedTileLayer.h" />
     <ClInclude Include="Src\Tilemap\StaticTileLayer.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />

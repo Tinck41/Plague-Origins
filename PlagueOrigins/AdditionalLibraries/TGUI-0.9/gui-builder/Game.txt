@@ -32,7 +32,7 @@ Panel.statusBar {
         }
     }
 
-    ProgressBar.ProgressBar1 {
+    ProgressBar.staminaBar {
         Maximum = 100;
         Minimum = 0;
         Position = (155, 66);
@@ -45,6 +45,26 @@ Panel.statusBar {
             BorderColor = black;
             Borders = (0, 0, 0, 0);
             FillColor = #0CFF4D76;
+            TextColor = #3C3C3C;
+            TextColorFilled = white;
+            TextureBackground = None;
+            TextureFill = None;
+        }
+    }
+
+    ProgressBar.ProgressBar1 {
+        Maximum = 100;
+        Minimum = 0;
+        Position = (155, 100);
+        Size = (368, 19);
+        TextSize = 13;
+        Value = 100;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = black;
+            Borders = (1, 1, 1, 1);
+            FillColor = #AF0BFF80;
             TextColor = #3C3C3C;
             TextColorFilled = white;
             TextureBackground = None;

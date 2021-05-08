@@ -1,7 +1,5 @@
 #pragma once
 
-#include "AnimatedTile.h"
-
 class TileLayer : public sf::Drawable, public sf::Transformable
 {
 protected:

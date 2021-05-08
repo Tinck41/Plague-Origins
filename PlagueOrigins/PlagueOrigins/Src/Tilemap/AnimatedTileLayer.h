@@ -1,6 +1,8 @@
 #pragma once
 
 #include "TileLayer.h"
+#include "AnimatedTile.h"
+
 
 class AnimatedTileLayer :
 	public TileLayer
