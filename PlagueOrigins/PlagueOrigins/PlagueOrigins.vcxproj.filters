@@ -177,6 +177,7 @@
     <ClCompile Include="Src\FSM\States\Bishop\BishopIdleState.cpp" />
     <ClCompile Include="Src\FSM\States\Bishop\BishopInteractState.cpp" />
     <ClCompile Include="Src\FSM\States\Bishop\BishopDeathState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerDashState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -407,6 +408,7 @@
     <ClInclude Include="Src\FSM\States\Bishop\BishopIdleState.h" />
     <ClInclude Include="Src\FSM\States\Bishop\BishopInteractState.h" />
     <ClInclude Include="Src\FSM\States\Bishop\BishopDeathState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerDashState.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

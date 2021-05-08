@@ -5,3 +5,4 @@
 #include "PlayerAttackState.h"
 #include "PlayerDeathState.h"
 #include "PlayerInteractState.h"
+#include "PlayerDashState.h"

@@ -176,6 +176,7 @@
     <ClCompile Include="Src\FSM\States\NPCDog\NPCDogIdleState.cpp" />
     <ClCompile Include="Src\FSM\States\NPCDog\NPCDogMoveState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerAttackState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerDashState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerDeathState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerInteractState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerIdleState.cpp" />
@@ -286,6 +287,7 @@
     <ClInclude Include="Src\FSM\States\NPCDog\NPCDogMoveState.h" />
     <ClInclude Include="Src\FSM\States\NPCDog\NPCDogStates.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerAttackState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerDashState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerDeathState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerInteractState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerIdleState.h" />

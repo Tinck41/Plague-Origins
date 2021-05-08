@@ -34,6 +34,13 @@ void PlayerAttackState::update(const float& dt)
  	{
         
         std::cout << "finish\n";
+        if (owner.GetComponent<Dash>().isDashing)
+        {
+            PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+            playerStates.currentState = playerStates.changeState(playerStates.currentState,
+                new PlayerDashState(owner));
+            std::cout << "";
+        }
  		if (owner.GetComponent<Attack>().isAttacking)
  		{
             PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();

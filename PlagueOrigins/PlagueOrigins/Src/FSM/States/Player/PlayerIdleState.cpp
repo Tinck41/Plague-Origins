@@ -29,6 +29,13 @@ void PlayerIdleState::update(const float& dt)
 			new PlayerDeathState(owner));
 		std::cout << "";
 	}
+	else if (owner.GetComponent<Dash>().isDashing)
+	{
+		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			new PlayerDashState(owner));
+		std::cout << "";
+	}
 	else if (owner.GetComponent<Attack>().isAttacking)
 	{
 		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
