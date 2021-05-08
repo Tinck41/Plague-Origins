@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "NPCDogAggroState.h"
+#include "./NPCDogStates.h"
 
 NPCDogAggroState::NPCDogAggroState(Entity& owner) :
 	owner(owner)

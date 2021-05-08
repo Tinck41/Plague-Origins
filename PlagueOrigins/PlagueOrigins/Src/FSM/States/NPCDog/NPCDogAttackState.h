@@ -1,7 +1,6 @@
 #pragma once
-
-#include "NPCDog.h"
-#include "NPCDogStates.h"
+#include "Src/Screen/Entity.h"
+#include "Src/FSM/State.h"
 
 class NPCDogAttackState :
 	virtual public State

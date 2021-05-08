@@ -40,6 +40,7 @@ GameScreen::GameScreen()
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();
 	bishop.AddComponent<Animator>();
+	//   ?
 	bishop.AddComponent<Movement>(500.f);
 	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop);
 	bishop.AddComponent<Tag>("Bishop");

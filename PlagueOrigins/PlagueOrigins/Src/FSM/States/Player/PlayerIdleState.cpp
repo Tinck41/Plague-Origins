@@ -10,9 +10,13 @@ void PlayerIdleState::enter()
 {
 	std::cout << "IDLE\n";
 	Animator& animator = owner.GetComponent<Animator>();
-	Movement& movement = owner.GetComponent<Movement>();
+	//Movement& movement = owner.GetComponent<Movement>();
 
 	animator.previousAnimation = animator.currentAnimation;
+	//animator.currentAnimation = IDLE;
+
+	//animator.previousFaceDirection = animator.currentFaceDirection;
+	//animator.currentFaceDirection = { 1.f, .0f };
 	animator.currentAnimation = IDLE;
 }
 

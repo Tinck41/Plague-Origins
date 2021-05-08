@@ -15,6 +15,8 @@ void PlayerAttackState::enter()
     animator.previousAnimation = animator.currentAnimation;
     animator.currentAnimation = ATTACK;
 
+    owner.RemoveComponent<Movement>();
+
     Attack& attack = owner.GetComponent<Attack>();
     attack.isAttacking = true;
 }
@@ -53,4 +55,5 @@ void PlayerAttackState::exit()
 {
     Attack& attack = owner.GetComponent<Attack>();
     attack.isAttacking = false;
+    owner.AddComponent<Movement>(config.playerSpeed);
 }

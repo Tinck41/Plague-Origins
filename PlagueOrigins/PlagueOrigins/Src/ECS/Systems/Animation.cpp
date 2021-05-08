@@ -208,16 +208,26 @@ void Animation::setAnimation(Animator& animator, Tag& tag)
 
 	if (animator.previousFaceDirection != animator.currentFaceDirection || animator.previousAnimation != animator.currentAnimation)
 	{
-		if (animator.armatureDisplay != nullptr)
+		std::cout << "previousFaceDirection: " << animator.previousFaceDirection.x << " " << animator.previousFaceDirection.y << "\n";
+		std::cout << "currentFaceDirection: " << animator.currentFaceDirection.x << " " << animator.currentFaceDirection.y << "\n";
+		if (animator.previousFaceDirection.x >= 0 && animator.currentFaceDirection.x <= 0
+			|| animator.previousFaceDirection.x <= 0 && animator.currentFaceDirection.x >= 0
+			|| animator.previousAnimation != animator.currentAnimation
+			)
 		{
-			animator.armatureDisplay->getArmature()->~Armature();
-			delete animator.armatureDisplay;
-			animator.armatureDisplay = NULL;
+			if (animator.armatureDisplay != nullptr)
+			{
+				animator.armatureDisplay->getArmature()->~Armature();
+				delete animator.armatureDisplay;
+				animator.armatureDisplay = NULL;
+			}
+
+			playAnimation(animator, tag, animator.currentAnimation);
+
+			animator.previousFaceDirection = animator.currentFaceDirection;
+			animator.previousAnimation = animator.currentAnimation;
 		}
-
-		playAnimation(animator, tag, animator.currentAnimation);
-
-		animator.previousAnimation = animator.currentAnimation;
+		
 	}
 }
 
