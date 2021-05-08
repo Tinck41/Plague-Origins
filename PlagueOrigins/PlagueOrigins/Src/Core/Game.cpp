@@ -20,8 +20,8 @@ void Game::setup()
 		config.title,
 		config.isFullscreen ? sf::Style::Fullscreen : sf::Style::Close
 	);
-	//window->setFramerateLimit(config.fps);
-	window->setVerticalSyncEnabled(true);
+	window->setFramerateLimit(config.fps);
+	//window->setVerticalSyncEnabled(true);
 	screenHandler = new ScreenHandler(ScreenType::MAIN_MENU);
 	deltaTime = 0.f;
 }
@@ -33,25 +33,8 @@ void Game::updateDeltaTime()
 	fps++;
 }
 
-void Game::resolveSFMLEvents()
-{
-	sf::Event event;
-	while (window->pollEvent(event))
-	{
-		switch (event.type)
-		{
-		case sf::Event::Closed:
-			window->close();
-			break;
-		default:
-			break;
-		}
-	}
-}
-
 void Game::update()
 {
-	resolveSFMLEvents();
 	screenHandler->update(deltaTime);
 }
 

@@ -16,7 +16,6 @@ private:
 
 	void setup();
 	void updateDeltaTime();
-	void resolveSFMLEvents();
 	void update();
 	void render();
 public:
