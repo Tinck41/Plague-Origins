@@ -18,6 +18,8 @@ Config::Config()
 	windowHeight = json["window"]["height"];
 	windowWidth = json["window"]["width"];
 	isFullscreen = json["window"]["fullscreen"];
+	uiHeight = json["window"]["uiHeight"];
+	uiWidth = json["window"]["uiWidth"];
 	fps = json["fps"];
 	font.loadFromFile(json["font"]);
 

@@ -70,7 +70,7 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 		gui.handleEvent(event);
 	}
 
-	tgui::FloatRect visibleArea(0, 0, 2560, 1440);
+	tgui::FloatRect visibleArea(0, 0, config.uiWidth, config.uiHeight);
 	gui.setAbsoluteView(visibleArea);
 
 	map.renderUnderPlayerLayers(window);

@@ -20,6 +20,8 @@ public:
 	sf::Font font;
 	unsigned int fps;
 	bool isFullscreen = false;
+	uint16_t uiWidth;
+	uint16_t uiHeight;
 
 	int playerSpeed;
 	float playerScale;

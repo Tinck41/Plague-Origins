@@ -5,7 +5,9 @@
     "window": {
         "fullscreen": false,
         "width": 1280,
-        "height": 720
+        "height": 720,
+        "uiWidth": 2560,
+        "uiHeight": 1440
     },
     "player": {
         "speed": 600,
