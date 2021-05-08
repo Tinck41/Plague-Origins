@@ -19,7 +19,7 @@ struct Attack
 
             for (int i = k; i < k + 7; i++)
             {
-                float angle = i / 6.0 * 90 * DEGTORAD;
+                float angle = (float)i / 6.0f * 90.f * DEGTORAD;
                 vertices[i + 1 - k].Set(radius * cosf(angle), radius * sinf(angle));
             }
             polygonShape.Set(vertices, 8);

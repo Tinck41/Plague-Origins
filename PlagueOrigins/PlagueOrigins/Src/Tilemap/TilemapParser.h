@@ -28,7 +28,7 @@ private:
 	sf::Vector2u tileSize;
 
 	std::vector<TilesetParameters> tilesetsInfo;
-	std::vector<sf::Texture> tilesets;
+	std::vector<std::shared_ptr<sf::Texture>> tilesets;
 	//std::vector<std::vector<MapCollider>> collidersLayer;
 	std::vector<std::shared_ptr<TileLayer>> tileLayers;
 

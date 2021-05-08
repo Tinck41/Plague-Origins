@@ -62,8 +62,8 @@ void TilemapParser::parseTileSet()
 		std::string source = jsonReader["tilesets"][i]["image"];
 		source.erase(source.begin(), source.begin() + 2);
 		
-		sf::Texture tileset;
-		tileset.loadFromFile("./Assets" + source);
+		std::shared_ptr<sf::Texture> tileset = std::make_shared<sf::Texture>();
+		tileset->loadFromFile("./Assets" + source);
 
 		if (jsonReader["tilesets"][i].contains("tiles"))
 		{

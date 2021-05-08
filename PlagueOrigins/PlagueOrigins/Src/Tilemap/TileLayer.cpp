@@ -2,7 +2,7 @@
 
 #include "TileLayer.h"
 
-TileLayer::TileLayer(std::string name, sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset)
+TileLayer::TileLayer(std::string name, sf::Vector2u size, sf::Vector2u tileSize, std::shared_ptr<sf::Texture> tileset)
 {
 	this->name = name;
 	this->size = size;
@@ -24,7 +24,7 @@ void TileLayer::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	states.transform *= getTransform();
 
 	// our particles don't use a texture
-	states.texture = &tileset;
+	states.texture = &(*tileset);
 
 	// draw the vertex array
 	target.draw(vertices, states);
@@ -37,8 +37,8 @@ void TileLayer::update(const float& dt)
 void TileLayer::drawTile(uint32_t tileNumber, uint32_t x, uint32_t y)
 {
 	// find its position in the tileset texture
-	int tu = tileNumber % (tileset.getSize().x / tileSize.x);
-	int tv = tileNumber / (tileset.getSize().x / tileSize.x);
+	int tu = tileNumber % (tileset->getSize().x / tileSize.x);
+	int tv = tileNumber / (tileset->getSize().x / tileSize.x);
 
 	// get a pointer to the current tile's quad
 	sf::Vertex* quad = &vertices[(x + y * size.x) * 4];

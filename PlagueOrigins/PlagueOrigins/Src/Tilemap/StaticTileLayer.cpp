@@ -3,7 +3,7 @@
 
 StaticTileLayer::StaticTileLayer(
 	std::string name, std::vector<uint16_t> tiles,
-	sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset
+	sf::Vector2u size, sf::Vector2u tileSize, std::shared_ptr<sf::Texture> tileset
 )
 	: TileLayer(name, size, tileSize, tileset)
 {

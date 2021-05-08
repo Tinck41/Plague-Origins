@@ -14,7 +14,7 @@ private:
 public:
 	AnimatedTileLayer(
 		std::string name, std::vector<AnimatedTile> tiles,
-		sf::Vector2u size, sf::Vector2u tileSize, sf::Texture tileset
+		sf::Vector2u size, sf::Vector2u tileSize, std::shared_ptr<sf::Texture> tileset
 	);
 	~AnimatedTileLayer();
 
