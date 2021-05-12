@@ -11,5 +11,5 @@ class Combat :
 public:
 	virtual void update(entt::registry& reg, const float& dt) override;
 private:
-	float angleBetween(sf::Vector2f vec1, sf::Vector2f vec2);
+	float angleBetween(const sf::Vector2f& vec1, const sf::Vector2f& vec2);
 };

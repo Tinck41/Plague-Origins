@@ -30,6 +30,6 @@ struct RigidBody
 	b2Body* body;
 	sf::Vector2f size{0.f, 0.f};
 	float radius = 0.f;
-	bool debugDraw = true;
+	bool debugDraw = false;
 	sf::Shape* shape;
 };

@@ -58,7 +58,7 @@ void Combat::update(entt::registry& reg, const float& dt)
 	}
 }
 
-float Combat::angleBetween(sf::Vector2f vec1, sf::Vector2f vec2)
+float Combat::angleBetween(const sf::Vector2f& vec1, const sf::Vector2f& vec2)
 {
 	float vec1Magnitude = std::sqrtf(vec1.x * vec1.x + vec1.y * vec1.y);
 	float vec2Magnitude = std::sqrtf(vec2.x * vec2.x + vec2.y * vec2.y);
