@@ -102,6 +102,7 @@
       <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,6 +142,7 @@
       <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -151,12 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="CameraComponent.cpp" />
-    <ClCompile Include="ClosedState.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
-    <ClCompile Include="CombatComponent.cpp" />
     <ClCompile Include="Src\ECS\SystemHandler.cpp" />
     <ClCompile Include="Src\ECS\Systems\Animation.cpp" />
     <ClCompile Include="Src\ECS\Systems\Camera.cpp" />
@@ -183,23 +181,7 @@
     <ClCompile Include="Src\FSM\States\Player\PlayerMoveState.cpp" />
     <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
     <ClCompile Include="Src\Screen\Entity.cpp" />
-    <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="GlobalFactory.cpp" />
-    <ClCompile Include="InventoryComponent.cpp" />
-    <ClCompile Include="InventoryRendererComponent.cpp" />
-    <ClCompile Include="MinimizedState.cpp" />
-    <ClCompile Include="LevelUpComponent.cpp" />
-    <ClCompile Include="NPCBishop.cpp" />
-    <ClCompile Include="NPCDogAggroState.cpp" />
-    <ClCompile Include="NPCDog.cpp" />
-    <ClCompile Include="NPCDogAttackState.cpp" />
-    <ClCompile Include="NPCDogDeathState.cpp" />
-    <ClCompile Include="NPCDogIdleState.cpp" />
-    <ClCompile Include="NPCDogMoveState.cpp" />
-    <ClCompile Include="Patrol.cpp" />
-    <ClCompile Include="PlayerAttackState.cpp" />
-    <ClCompile Include="PlayerDeathState.cpp" />
-    <ClCompile Include="PlayerIdleState.cpp" />
     <ClCompile Include="MapCollider.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="dragonBones\SFMLArmatureDisplay.cpp" />
@@ -209,15 +191,7 @@
     <ClCompile Include="dragonBones\SFMLTextureAtlasData.cpp" />
     <ClCompile Include="Src\Core\Game.cpp" />
     <ClCompile Include="Src\Screen\GameScreen.cpp" />
-    <ClCompile Include="InputBooleans.cpp" />
-    <ClCompile Include="DirectionFinder.cpp" />
-    <ClCompile Include="notMain.cpp" />
     <ClCompile Include="Src\Screen\MainMenuScreen.cpp" />
-    <ClCompile Include="MovementComponent.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerInventory.cpp" />
-    <ClCompile Include="PlayerMoveState.cpp" />
-    <ClCompile Include="PlayerCharacteristics.cpp" />
     <ClCompile Include="Src\Screen\Screen.cpp" />
     <ClCompile Include="Src\Screen\ScreenHandler.cpp" />
     <ClCompile Include="Src\Core\Main.cpp" />
@@ -226,8 +200,6 @@
     <ClCompile Include="Src\Utility\AnimationFactory.cpp" />
     <ClCompile Include="Src\Utility\PhysicsContactListener.cpp" />
     <ClCompile Include="Src\Utility\PhysicsWorld.cpp" />
-    <ClCompile Include="UnfoldedState.cpp" />
-    <ClCompile Include="Unit.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -236,16 +208,11 @@
     </ClCompile>
     <ClCompile Include="Src\Tilemap\TileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\TileMap.cpp" />
-    <ClCompile Include="TileMapLoader.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="Button.h" />
-    <ClInclude Include="CameraComponent.h" />
-    <ClInclude Include="ClosedState.h" />
     <ClInclude Include="ColliderComponent.h" />
-    <ClInclude Include="CombatComponent.h" />
     <ClInclude Include="Src\ECS\Components\Animator.h" />
     <ClInclude Include="Src\ECS\Components\CameraTarget.h" />
     <ClInclude Include="Src\ECS\Components\Attack.h" />
@@ -295,28 +262,9 @@
     <ClInclude Include="Src\FSM\State.h" />
     <ClInclude Include="Src\ECS\Systems\Vampiring.h" />
     <ClInclude Include="Src\Screen\Entity.h" />
-    <ClInclude Include="FiniteStateMachine.h" />
-    <ClInclude Include="GameObjects.h" />
     <ClInclude Include="GlobalFactory.h" />
-    <ClInclude Include="InventoryComponent.h" />
-    <ClInclude Include="InventoryRendererComponent.h" />
-    <ClInclude Include="InventoryStates.h" />
-    <ClInclude Include="LevelUpComponent.h" />
-    <ClInclude Include="NPCBishop.h" />
-    <ClInclude Include="NPCDogAggroState.h" />
-    <ClInclude Include="NPCDogDeathState.h" />
-    <ClInclude Include="NPCDogStates.h" />
     <ClInclude Include="json.hpp" />
-    <ClInclude Include="MinimizedState.h" />
-    <ClInclude Include="NPCDog.h" />
-    <ClInclude Include="NPCDogAttackState.h" />
-    <ClInclude Include="NPCDogIdleState.h" />
-    <ClInclude Include="NPCDogMoveState.h" />
-    <ClInclude Include="Patrol.h" />
     <ClInclude Include="PlayerAnimationStates.h" />
-    <ClInclude Include="PlayerAttackState.h" />
-    <ClInclude Include="PlayerDeathState.h" />
-    <ClInclude Include="PlayerIdleState.h" />
     <ClInclude Include="MapCollider.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="dragonBones\SFMLArmatureDisplay.h" />
@@ -330,14 +278,7 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h" />
     <ClInclude Include="Src\Core\Game.h" />
     <ClInclude Include="Src\Screen\GameScreen.h" />
-    <ClInclude Include="InputBooleans.h" />
-    <ClInclude Include="DirectionFinder.h" />
     <ClInclude Include="Src\Screen\MainMenuScreen.h" />
-    <ClInclude Include="PlayerInventory.h" />
-    <ClInclude Include="PlayerMoveState.h" />
-    <ClInclude Include="MovementComponent.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerCharacteristics.h" />
     <ClInclude Include="Src\Screen\Screen.h" />
     <ClInclude Include="Src\Screen\ScreenHandler.h" />
     <ClInclude Include="Src\Tilemap\Tile.h" />
@@ -346,13 +287,9 @@
     <ClInclude Include="Src\Utility\PhysicsContactListener.h" />
     <ClInclude Include="Src\Utility\PhysicsWorld.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerStates.h" />
-    <ClInclude Include="State.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="UnfoldedState.h" />
-    <ClInclude Include="Unit.h" />
     <ClInclude Include="Src\Tilemap\TileLayer.h" />
     <ClInclude Include="Src\Tilemap\TileMap.h" />
-    <ClInclude Include="TileMapLoader.h" />
     <ClInclude Include="tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>

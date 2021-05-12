@@ -4,11 +4,11 @@
     "fps": 60,
     "window": {
         "fullscreen": false,
-        "width": 1600,
-        "height": 800
+        "width": 800,
+        "height": 600
     },
     "player": {
-        "speed": 600,
+        "speed": 500,
         "scale": 0.2,
         "hitpoints": 400,
         "damage": 20,

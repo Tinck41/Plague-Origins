@@ -2,7 +2,6 @@
 
 #include "TileLayer.h"
 #include "MapCollider.h";
-#include "Player.h"
 
 class TileMap
 {
