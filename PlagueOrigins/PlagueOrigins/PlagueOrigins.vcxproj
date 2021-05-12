@@ -102,6 +102,7 @@
       <AdditionalIncludeDirectories>./.;$(SolutionDir)\AdditionalLibraries\TGUI-0.9\include;$(SolutionDir)\AdditionalLibraries\Box2D\include;$(SolutionDir)\AdditionalLibraries\entt\include;$(SolutionDir)\AdditionalLibraries\dragonBones\dragonBones;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -162,9 +163,25 @@
     <ClCompile Include="Src\ECS\Systems\Camera.cpp" />
     <ClCompile Include="Src\ECS\Systems\Combat.cpp" />
     <ClCompile Include="Src\ECS\Systems\Controller.cpp" />
+    <ClCompile Include="Src\ECS\Systems\FSM.cpp" />
     <ClCompile Include="Src\ECS\Systems\Input.cpp" />
     <ClCompile Include="Src\ECS\Systems\Interaction.cpp" />
+    <ClCompile Include="Src\ECS\Systems\Motion.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
+    <ClCompile Include="Src\FSM\States\Bishop\BishopDeathState.cpp" />
+    <ClCompile Include="Src\FSM\States\Bishop\BishopIdleState.cpp" />
+    <ClCompile Include="Src\FSM\States\Bishop\BishopInteractState.cpp" />
+    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogAggroState.cpp" />
+    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogAttackState.cpp" />
+    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogDeathState.cpp" />
+    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogIdleState.cpp" />
+    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogMoveState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerAttackState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerDashState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerDeathState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerInteractState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerIdleState.cpp" />
+    <ClCompile Include="Src\FSM\States\Player\PlayerMoveState.cpp" />
     <ClCompile Include="Src\ECS\Systems\Vampiring.cpp" />
     <ClCompile Include="Src\Screen\Entity.cpp" />
     <ClCompile Include="Src\Global\Config.cpp" />
@@ -206,6 +223,10 @@
     <ClInclude Include="Src\ECS\Components\Dash.h" />
     <ClInclude Include="Src\ECS\Components\Health.h" />
     <ClInclude Include="Src\ECS\Components\Interact.h" />
+    <ClInclude Include="Src\FSM\Components\PlayerIdleComponent.h" />
+    <ClInclude Include="Src\FSM\Components\PlayerMoveComponent.h" />
+    <ClInclude Include="Src\FSM\Components\PlayerStates.h" />
+    <ClInclude Include="Src\ECS\Systems\FSM.h" />
     <ClInclude Include="Src\ECS\Components\Vampire.h" />
     <ClInclude Include="Src\ECS\Systems\Camera.h" />
     <ClInclude Include="Src\ECS\Systems\Combat.h" />
@@ -222,8 +243,26 @@
     <ClInclude Include="Src\ECS\Components\PlayerInput.h" />
     <ClInclude Include="Src\ECS\Systems\Input.h" />
     <ClInclude Include="Src\ECS\Systems\Interaction.h" />
+    <ClInclude Include="Src\ECS\Systems\Motion.h" />
     <ClInclude Include="Src\ECS\Systems\Physics.h" />
     <ClInclude Include="Src\ECS\Systems.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopDeathState.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopIdleState.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopInteractState.h" />
+    <ClInclude Include="Src\FSM\States\Bishop\BishopStates.h" />
+    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogAggroState.h" />
+    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogAttackState.h" />
+    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogDeathState.h" />
+    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogIdleState.h" />
+    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogMoveState.h" />
+    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogStates.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerAttackState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerDashState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerDeathState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerInteractState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerIdleState.h" />
+    <ClInclude Include="Src\FSM\States\Player\PlayerMoveState.h" />
+    <ClInclude Include="Src\FSM\State.h" />
     <ClInclude Include="Src\ECS\Systems\Vampiring.h" />
     <ClInclude Include="Src\Screen\Entity.h" />
     <ClInclude Include="Src\Global\Config.h" />

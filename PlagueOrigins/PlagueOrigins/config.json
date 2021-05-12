@@ -10,7 +10,7 @@
         "uiHeight": 1440
     },
     "player": {
-        "speed": 600,
+        "speed": 500,
         "scale": 0.2,
         "hitpoints": 400,
         "damage": 20,

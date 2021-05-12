@@ -121,7 +121,7 @@ void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
 		armatureDisplay->getArmature()->setFlipX(true);
 	}
-	if (tag.name == "Hero")
+	if (armatureDisplay != nullptr)
 	{
 		//animator.armatureDisplay->getAnimation()->fadeIn("Attack", 0.2f, 1);
 		if (armatureDisplay != nullptr)
@@ -131,16 +131,13 @@ void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 			armatureDisplay = nullptr;
 			delete armatureDisplay;
 		}
-
-	}
-	else if (tag.name == "Dog")
-	{
-		if (armatureDisplay != nullptr)
+		if (tag.name == "Hero")
 		{
-			animator.armatureDisplay = armatureDisplay;
+			animator.armatureDisplay->getAnimation()->play("Attack", 1);
+		}
+		else if (tag.name == "Dog")
+		{
 			animator.armatureDisplay->getAnimation()->play("Attack0", 1);
-			armatureDisplay = nullptr;
-			delete armatureDisplay;
 		}
 	}
 }
@@ -237,14 +234,26 @@ void Animation::setAnimation(Animator& animator, Tag& tag)
 
 	if (animator.previousFaceDirection != animator.currentFaceDirection || animator.previousAnimation != animator.currentAnimation)
 	{
-		if (animator.armatureDisplay != nullptr)
+		std::cout << "previousFaceDirection: " << animator.previousFaceDirection.x << " " << animator.previousFaceDirection.y << "\n";
+		std::cout << "currentFaceDirection: " << animator.currentFaceDirection.x << " " << animator.currentFaceDirection.y << "\n";
+		if (animator.previousFaceDirection.x >= 0 && animator.currentFaceDirection.x <= 0
+			|| animator.previousFaceDirection.x <= 0 && animator.currentFaceDirection.x >= 0
+			|| animator.previousAnimation != animator.currentAnimation
+			)
 		{
-			animator.armatureDisplay->getArmature()->~Armature();
-			delete animator.armatureDisplay;
-			animator.armatureDisplay = nullptr;
-		}
+			if (animator.armatureDisplay != nullptr)
+			{
+				animator.armatureDisplay->getArmature()->~Armature();
+				delete animator.armatureDisplay;
+				animator.armatureDisplay = nullptr;
+			}
 
-		playAnimation(animator, tag, animator.currentAnimation);
+			playAnimation(animator, tag, animator.currentAnimation);
+
+			animator.previousFaceDirection = animator.currentFaceDirection;
+			animator.previousAnimation = animator.currentAnimation;
+		}
+		
 	}
 }
 

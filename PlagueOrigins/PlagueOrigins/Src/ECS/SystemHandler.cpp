@@ -7,12 +7,14 @@ SystemHandler::SystemHandler()
 	// Update systems
 	updatableSystems.push_back(new Input());
 	updatableSystems.push_back(new Controller());
+	updatableSystems.push_back(new FSM());
 	updatableSystems.push_back(new Animation());
 	updatableSystems.push_back(new Physics());
 	updatableSystems.push_back(new Combat());
 	updatableSystems.push_back(new Vampiring());
 	updatableSystems.push_back(new Interaction());
 	updatableSystems.push_back(new Camera());
+	updatableSystems.push_back(new Motion());
 
 	// Render systems
 	renderableSystems.push_back(new Animation());
