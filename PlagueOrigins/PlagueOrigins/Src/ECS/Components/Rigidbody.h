@@ -9,19 +9,27 @@ struct RigidBody
 	RigidBody(sf::Vector2f size, sf::Vector2f position, bool isDynamic, entt::entity owner)
 	{
 		this->size = size;
-		radius = size.x > size.y ? size.x : size.y;
+		shape = new sf::RectangleShape(size);
+		shape->setOutlineThickness(2);
+		shape->setFillColor(sf::Color::Transparent);
+		shape->setOutlineColor(sf::Color::Green);
+		shape->setOrigin(size / 2.f);
 		body = PhysicsWorld::createRectangleBody(position, size, isDynamic, owner);
 	}
 
 	RigidBody(float radius, sf::Vector2f position, bool isDynamic, entt::entity owner)
 	{
 		this->radius = radius;
-		size.x = radius;
-		size.y = radius;
+		shape = new sf::CircleShape(radius);
+		shape->setOutlineThickness(2);
+		shape->setFillColor(sf::Color::Transparent);
+		shape->setOutlineColor(sf::Color::Green);
 		body = PhysicsWorld::createCircleleBody(position, radius, isDynamic, owner);
 	}
 
 	b2Body* body;
-	sf::Vector2f size;
-	float radius;
+	sf::Vector2f size{0.f, 0.f};
+	float radius = 0.f;
+	bool debugDraw = true;
+	sf::Shape* shape;
 };

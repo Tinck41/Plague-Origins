@@ -226,6 +226,7 @@ std::string Animation::setPostfix(Tag& tag, std::string dir)
 			return dir;
 		if (dir == "D")
 			return dir;
+		return "";
 	}
 	else
 		return "";
@@ -278,7 +279,7 @@ void Animation::update(entt::registry& reg, const float& dt)
 	}
 }
 
-void Animation::render(entt::registry& reg, sf::RenderWindow& window)
+void Animation::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
 	auto view = reg.view<Animator>();
 	for (auto entity : view)

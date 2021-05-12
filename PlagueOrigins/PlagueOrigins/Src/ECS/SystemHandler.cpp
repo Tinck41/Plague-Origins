@@ -17,6 +17,7 @@ SystemHandler::SystemHandler()
 	// Render systems
 	renderableSystems.push_back(new Animation());
 	renderableSystems.push_back(new Interaction());
+	renderableSystems.push_back(new Physics());
 
 	// OnCreate system
 	onCreateSystems.push_back(new Animation());
@@ -46,10 +47,10 @@ void SystemHandler::update(entt::registry& reg, const float& dt)
 	}
 }
 
-void SystemHandler::render(entt::registry& reg, sf::RenderWindow& window)
+void SystemHandler::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
 	for (auto& system : renderableSystems)
 	{
-		system->render(reg, window);
+		system->render(reg, window, gui);
 	}
 }

@@ -15,7 +15,7 @@ void Interaction::update(entt::registry& reg, const float& dt)
 	}
 }
 
-void Interaction::render(entt::registry& reg, sf::RenderWindow& window)
+void Interaction::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
 	auto view = reg.view<Interact, Transform, Animator, RigidBody>();
 

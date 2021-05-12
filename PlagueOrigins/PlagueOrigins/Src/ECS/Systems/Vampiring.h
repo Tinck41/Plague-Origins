@@ -1,10 +1,10 @@
 #pragma once
 
-#include "IEcsUpdateSystem.h"
+#include "IUpdateSystem.h"
 #include "Src/ECS/Components.h"
 
 class Vampiring :
-	public IEcsUpdateSystem
+	public IUpdateSystem
 {
 public:
 	virtual void update(entt::registry& reg, const float& dt) override;

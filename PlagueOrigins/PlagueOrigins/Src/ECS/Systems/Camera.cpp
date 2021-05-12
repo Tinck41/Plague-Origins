@@ -39,14 +39,15 @@ void Camera::update(entt::registry& reg, const float& dt)
 	}
 }
 
-void Camera::render(entt::registry& reg, sf::RenderWindow& window)
+void Camera::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
 	auto view = reg.view<CameraTarget>();
 	for (auto entity : view)
 	{
 		CameraTarget& target = reg.get<CameraTarget>(entity);
 
-		window.setView(target.camera);
+		// Вызывает баг с отрисовкой, если рендерить view до полного рендера карты и сущностей на ней
+		//window.setView(target.camera);
 	}
 }
 

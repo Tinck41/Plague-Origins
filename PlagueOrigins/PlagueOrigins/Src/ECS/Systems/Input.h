@@ -1,11 +1,11 @@
 #pragma once
 
-#include "IEcsUpdateSystem.h"
+#include "IUpdateSystem.h"
 #include "entt.hpp"
 #include "Src/ECS/Components.h"
 
 class Input :
-	public IEcsUpdateSystem
+	public IUpdateSystem
 {
 	virtual void update(entt::registry& reg, const float& dt) override;
 

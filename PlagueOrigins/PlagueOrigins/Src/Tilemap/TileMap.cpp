@@ -29,7 +29,7 @@ void TileMap::update(const float& dt)
 
 void TileMap::render(sf::RenderTarget& target, uint32_t firstLayerId, uint32_t lastLayerId)
 {
-	for (int i = firstLayerId; i < lastLayerId; i++)
+	for (uint32_t i = firstLayerId; i < lastLayerId; i++)
 	{
 		target.draw(*tileLayers[i]);
 	}

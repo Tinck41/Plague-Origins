@@ -2,7 +2,7 @@
 
 #include "entt.hpp"
 
-class IEcsUpdateSystem
+class IUpdateSystem
 {
 public:
 	virtual void update(entt::registry& reg, const float& dt) = 0;

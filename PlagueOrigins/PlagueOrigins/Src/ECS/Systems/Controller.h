@@ -1,11 +1,11 @@
 #pragma once
 
-#include "IEcsUpdateSystem.h"
+#include "IUpdateSystem.h"
 
 #include "Src/ECS/Components.h"
 
 class Controller : 
-	public IEcsUpdateSystem
+	public IUpdateSystem
 {
 private:
 	sf::Clock clock;

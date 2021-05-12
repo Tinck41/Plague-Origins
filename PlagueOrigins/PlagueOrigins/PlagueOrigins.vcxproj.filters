@@ -123,8 +123,8 @@
     <ClInclude Include="Src\ECS\Systems\Physics.h" />
     <ClInclude Include="Src\ECS\Systems\Animation.h" />
     <ClInclude Include="Src\ECS\Components\PlayerInput.h" />
-    <ClInclude Include="Src\ECS\Systems\IEcsUpdateSystem.h" />
-    <ClInclude Include="Src\ECS\Systems\IEcsRenderSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\IUpdateSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\IRenderSystem.h" />
     <ClInclude Include="Src\ECS\Components\Transform.h" />
     <ClInclude Include="Src\ECS\Systems\Input.h" />
     <ClInclude Include="Src\ECS\SystemHandler.h" />
@@ -133,7 +133,7 @@
     <ClInclude Include="Src\Utility\PhysicsContactListener.h" />
     <ClInclude Include="Src\ECS\Systems\Controller.h" />
     <ClInclude Include="Src\ECS\Components\Dash.h" />
-    <ClInclude Include="Src\ECS\Systems\IEcsOnCreateUpdate.h" />
+    <ClInclude Include="Src\ECS\Systems\IOnCreateSystem.h" />
     <ClInclude Include="Src\ECS\Components\CameraTarget.h" />
     <ClInclude Include="Src\ECS\Systems\Camera.h" />
     <ClInclude Include="Src\ECS\Components\Attack.h" />

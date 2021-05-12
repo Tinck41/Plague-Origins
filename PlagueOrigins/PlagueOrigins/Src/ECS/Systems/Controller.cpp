@@ -62,7 +62,7 @@ void Controller::checkAttack(PlayerInput& playerInput, Attack& attack)
 
 void Controller::checkDash(PlayerInput& playerInput, Movement& movement, Dash& dash, const float& dt)
 {
-	if (playerInput.spaceWasPressed && dash.curCooldownTime < sf::seconds(0))
+	if (playerInput.spaceWasPressed && dash.curCooldownTime < sf::seconds(0.f))
 	{
 		dash.curCooldownTime = sf::seconds(dash.cooldownTime);
 		dash.isDashing = true;

@@ -1,11 +1,15 @@
 #pragma once
 
-#include "Src/ECS/Systems/IEcsUpdateSystem.h"
+#include "IUpdateSystem.h"
+#include "IRenderSystem.h"
 
 #include "Src/ECS/Components.h"
 
 class Physics :
-	public IEcsUpdateSystem
+	public IUpdateSystem,
+	public IRenderSystem
 {
 	virtual void update(entt::registry& reg, const float& dt) override;
+
+	virtual void render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui) override;
 };

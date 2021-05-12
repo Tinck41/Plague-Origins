@@ -1,14 +1,15 @@
 #pragma once
-
-#include "IEcsUpdateSystem.h"
+#include "IUpdateSystem.h"
 
 #include "Src/ECS/Components.h"
 
+#define RADTODEG 180.f / M_PI
+
 class Combat :
-	public IEcsUpdateSystem
+	public IUpdateSystem
 {
 public:
 	virtual void update(entt::registry& reg, const float& dt) override;
 private:
-	int chooseSector(sf::Vector2f direction);
+	float angleBetween(sf::Vector2f vec1, sf::Vector2f vec2);
 };

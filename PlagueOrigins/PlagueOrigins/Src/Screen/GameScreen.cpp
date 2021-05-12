@@ -22,24 +22,24 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	testEntity.AddComponent<Health>(300.f);
 	testEntity.AddComponent<Vampire>();
-	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 50.f);
+	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 100.f);
+	testEntity.GetComponent<Health>().curhealth = 100.f;
 
-
-	/*npcEntity = Entity(registry.create(), this);
+	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
-	npcEntity.AddsComponent<Animator>();
+	npcEntity.AddComponent<Animator>();
 	npcEntity.AddComponent<Movement>(500.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<Health>(300.f);
 
-	bishop = Entity(registry.create(), this);
-	bishop.AddComponent<Transform>();
-	bishop.AddComponent<Animator>();
-	bishop.AddComponent<Movement>(500.f);
-	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop);
-	bishop.AddComponent<Tag>("Bishop");
-	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");*/
+	//bishop = Entity(registry.create(), this);
+	//bishop.AddComponent<Transform>();
+	//bishop.AddComponent<Animator>();
+	//bishop.AddComponent<Movement>(500.f);
+	//bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop);
+	//bishop.AddComponent<Tag>("Bishop");
+	//bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
 
 	systems.onCreate(registry);
 }
@@ -74,7 +74,7 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 	gui.setAbsoluteView(visibleArea);
 
 	map.renderUnderPlayerLayers(window);
-	systems.render(registry, window);
+	systems.render(registry, window, gui);
 	map.renderOverPlayerLayers(window);
 	
 	gui.draw();

@@ -25,6 +25,8 @@
 #include <cmath>
 #include <queue>
 #include <deque>
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 //SFML
 #include <SFML\System.hpp>

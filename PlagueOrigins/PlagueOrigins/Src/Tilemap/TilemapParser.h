@@ -6,7 +6,7 @@
 #include "Src/Utility/json.hpp"
 #include "Src/Screen/Entity.h"
 
-#define ERROR(msg) std::cout << "Tilemap parser ERROR: " << msg << "\n"
+#define TILEMAP_PARSER_ERROR(msg) std::cout << "Tilemap parser ERROR: " << msg << "\n"
 
 struct TilesetParameters
 {
@@ -35,12 +35,13 @@ private:
 	void parseTileMap();
 	void parseTileSet();
 	void parseTileLayer();
-	void parseObjects(entt::registry reg);
+	void parseTileMapObjects(entt::registry reg);
 
 	void parseAnimatedTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node);
 	void parseStaticTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node);
 
 	TilesetParameters chooseTileSet(uint8_t tileSetId);
+
 	AnimatedTile chooseAnimatedTile(TilesetParameters tilesetInfo, uint16_t tileId, sf::Vector2u tilePos);
 public:
 	TilemapParser();

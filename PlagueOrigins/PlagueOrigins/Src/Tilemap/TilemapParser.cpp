@@ -50,7 +50,8 @@ void TilemapParser::parseTileMap()
 
 void TilemapParser::parseTileSet()
 {
-	for (size_t i = 0; i < jsonReader["tilesets"].size(); i++)
+	size_t tilesetsCount = jsonReader["tilesets"].size();
+	for (size_t i = 0; i < tilesetsCount; i++)
 	{
 		TilesetParameters tilesetInfo;
 
@@ -67,7 +68,8 @@ void TilemapParser::parseTileSet()
 
 		if (jsonReader["tilesets"][i].contains("tiles"))
 		{
-			for (size_t j = 0; j < jsonReader["tilesets"][i]["tiles"].size(); j++)
+			size_t tilesCount = jsonReader["tilesets"][i]["tiles"].size();
+			for (size_t j = 0; j < tilesCount; j++)
 			{
 				uint16_t				tileId;
 				std::vector<uint16_t>	tilesId;
@@ -75,7 +77,8 @@ void TilemapParser::parseTileSet()
 
 				tileId = jsonReader["tilesets"][i]["tiles"][j]["id"];
 
-				for (size_t k = 0; k < jsonReader["tilesets"][i]["tiles"][j]["animation"].size(); k++)
+				size_t framesCount = jsonReader["tilesets"][i]["tiles"][j]["animation"].size();
+				for (size_t k = 0; k < framesCount; k++)
 				{
 					uint16_t id	= jsonReader["tilesets"][i]["tiles"][j]["animation"][k]["tileid"];
 					duration	= jsonReader["tilesets"][i]["tiles"][j]["animation"][k]["duration"];
@@ -94,7 +97,8 @@ void TilemapParser::parseTileSet()
 
 void TilemapParser::parseTileLayer()
 {
-	for (size_t i = 0; i < jsonReader["layers"].size(); i++)
+	size_t layersCount = jsonReader["layers"].size();
+	for (size_t i = 0; i < layersCount; i++)
 	{
 		if (jsonReader["layers"][i]["type"] == "tilelayer")
 		{
@@ -123,7 +127,8 @@ void TilemapParser::parseAnimatedTiles(std::string layerName, TilesetParameters 
 {
 	std::vector<AnimatedTile> layer;
 
-	for (size_t j = 0; j < node.size(); j++)
+	size_t tilesCount = node.size();
+	for (size_t j = 0; j < tilesCount; j++)
 	{
 		sf::Vector2u	tilePos = sf::Vector2u(j / mapSize.x, j % mapSize.y);
 		uint16_t		tileId = node[j];
@@ -144,7 +149,8 @@ void TilemapParser::parseStaticTiles(std::string layerName, TilesetParameters ti
 {
 	std::vector<uint16_t> layer;
 
-	for (size_t j = 0; j < node.size(); j++)
+	size_t tilesCount = node.size();
+	for (size_t j = 0; j < tilesCount; j++)
 	{
 		sf::Vector2u	tilePos = sf::Vector2u(j / mapSize.x, j % mapSize.y);
 		uint16_t		tileId = node[j];
@@ -173,7 +179,7 @@ AnimatedTile TilemapParser::chooseAnimatedTile(TilesetParameters tilesetInfo, ui
 		}
 	}
 
-	ERROR("could not load the animated tile with id: " + std::to_string(tileId));
+	TILEMAP_PARSER_ERROR("could not load the animated tile with id: " + std::to_string(tileId));
 
 	AnimatedTile tile = AnimatedTile(0, sf::Vector2u(0, 0), std::vector<uint16_t>());
 	return tile;
@@ -189,18 +195,20 @@ TilesetParameters TilemapParser::chooseTileSet(uint8_t tileSetId)
 		}
 	}
 
-	ERROR("could not load the tileset with id: " + std::to_string(tileSetId));
+	TILEMAP_PARSER_ERROR("could not load the tileset with id: " + std::to_string(tileSetId));
 
 	return tilesetsInfo[0];
 }
 
-void TilemapParser::parseObjects(entt::registry reg)
+void TilemapParser::parseTileMapObjects(entt::registry reg)
 {
-	for (size_t i = 0; i < jsonReader["layers"].size(); i++)
+	size_t layersCount = jsonReader["layers"].size();
+	for (size_t i = 0; i < layersCount; i++)
 	{
 		if (jsonReader["layers"][i]["type"] == "objectgroup")
 		{
-			for (size_t j = 0; j < jsonReader["layers"][i]["type"]["objects"].size(); j++)
+			size_t objectsCount = jsonReader["layers"][i]["type"]["objects"].size();
+			for (size_t j = 0; j < objectsCount; j++)
 			{
 				float width		= jsonReader["layers"][i]["type"]["objects"][j]["width"];
 				float height	= jsonReader["layers"][i]["type"]["objects"][j]["height"];
