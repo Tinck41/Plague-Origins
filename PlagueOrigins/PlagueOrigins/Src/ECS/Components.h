@@ -13,6 +13,7 @@
 #include "Components/Tag.h"
 #include "Components/Transform.h"
 #include "Components/Interact.h"
+#include "Components/Patrol.h"
 
 
 //FSM
