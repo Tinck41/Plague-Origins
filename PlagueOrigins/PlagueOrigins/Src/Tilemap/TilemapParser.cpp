@@ -10,13 +10,19 @@ TilemapParser::TilemapParser()
 
 TilemapParser::~TilemapParser()
 {
+	screen = nullptr;
+	registry = nullptr;
+
 	tilesetsInfo.clear();
 	tilesets.clear();
 	tileLayers.clear();
 }
 
-bool TilemapParser::loadTileMap(const char* path)
+bool TilemapParser::loadTileMap(const char* path, entt::registry* reg, Screen* screen)
 {
+	registry = reg;
+	this->screen = screen;
+
 	try
 	{
 		std::ifstream stream(path);
@@ -43,7 +49,7 @@ void TilemapParser::parseTileMap()
 
 	parseTileSet();
 	parseTileLayer();
-	//parseObjects();
+	parseTileMapObjects();
 
 	tileMap = TileMap(tileLayers, mapSize, tileSize);
 }
@@ -200,24 +206,24 @@ TilesetParameters TilemapParser::chooseTileSet(uint8_t tileSetId)
 	return tilesetsInfo[0];
 }
 
-void TilemapParser::parseTileMapObjects(entt::registry reg)
+void TilemapParser::parseTileMapObjects()
 {
 	size_t layersCount = jsonReader["layers"].size();
 	for (size_t i = 0; i < layersCount; i++)
 	{
 		if (jsonReader["layers"][i]["type"] == "objectgroup")
 		{
-			size_t objectsCount = jsonReader["layers"][i]["type"]["objects"].size();
+			size_t objectsCount = jsonReader["layers"][i]["objects"].size();
 			for (size_t j = 0; j < objectsCount; j++)
 			{
-				float width		= jsonReader["layers"][i]["type"]["objects"][j]["width"];
-				float height	= jsonReader["layers"][i]["type"]["objects"][j]["height"];
+				float width		= jsonReader["layers"][i]["objects"][j]["width"];
+				float height	= jsonReader["layers"][i]["objects"][j]["height"];
 
-				float x = jsonReader["layers"][i]["type"]["objects"][j]["x"];
-				float y = jsonReader["layers"][i]["type"]["objects"][j]["y"];
+				float x = jsonReader["layers"][i]["objects"][j]["x"];
+				float y = jsonReader["layers"][i]["objects"][j]["y"];
 				
-				/*Entity object = Entity(reg.create(), this);
-				PhysicsWorld::createRectangleBody(sf::Vector2f(x, y), sf::Vector2f(width, height), false, j + 10);*/
+				Entity object = Entity(registry->create(), screen);
+				PhysicsWorld::createRectangleBody(sf::Vector2f(x, y), sf::Vector2f(width, height), false, object, OBSTACLE);
 			}
 		}
 	}
