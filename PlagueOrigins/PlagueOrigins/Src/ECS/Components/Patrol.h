@@ -1,17 +1,15 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-#include <list>
+#include <vector>
 
 struct Patrol
 {
-	std::list<sf::Vector2f> waypoints;
-	sf::Vector2f currentWaypoint;
+	std::vector<sf::Vector2f> waypoints;
 	int currentIndex;
 
-	Patrol(std::list<sf::Vector2f> waypoints)
+	Patrol(std::vector<sf::Vector2f> waypoints)
 	{
 		this->waypoints = waypoints;
-		currentWaypoint = waypoints.front();
 		currentIndex = 0;
 	}
 };
