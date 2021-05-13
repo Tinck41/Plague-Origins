@@ -15,6 +15,7 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new Interaction());
 	updatableSystems.push_back(new Camera());
 	updatableSystems.push_back(new Motion());
+	updatableSystems.push_back(new InventorySystem());
 
 	// Render systems
 	renderableSystems.push_back(new Animation());
