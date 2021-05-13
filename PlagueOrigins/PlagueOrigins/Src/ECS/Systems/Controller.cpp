@@ -17,33 +17,6 @@ void Controller::update(entt::registry& reg, const float& dt)
 		setDirection(movement, playerInput);
 		checkDash(playerInput, movement, dash, dt);
 		checkAttack(playerInput, attack);
-
-		//if (attack.isAttacking)
-		//{
-		//	animator.previousAnimation = animator.currentAnimation;
-		//	animator.currentAnimation = ATTACK;
-		//}
-		//else if (!dash.isDashing && movement.direction != sf::Vector2f(0.f, 0.f))
-		//{
-		//	applyVelocity(rigidBody, movement.speed, movement.direction, dt);
-		//	animator.previousAnimation = animator.currentAnimation;
-		//	animator.currentAnimation = MOVE;
-		//	animator.previousFaceDirection = animator.currentFaceDirection;
-		//	animator.currentFaceDirection = movement.direction;
-		//}
-		//else if (dash.isDashing)
-		//{
-		//	applyVelocity(rigidBody, dash.speed, dash.direction, dt);
-		//	animator.previousAnimation = animator.currentAnimation;
-		//	animator.currentAnimation = DASH;
-		//	animator.previousFaceDirection = animator.currentFaceDirection;
-		//	animator.currentFaceDirection = movement.direction;
-		//}
-		//else
-		//{
-		//	animator.previousAnimation = animator.currentAnimation;
-		//	animator.currentAnimation = IDLE;
-		//}
 	}
 }
 
@@ -57,6 +30,8 @@ void Controller::checkAttack(PlayerInput& playerInput, Attack& attack)
 
 void Controller::checkDash(PlayerInput& playerInput, Movement& movement, Dash& dash, const float& dt)
 {
+	if (movement.direction == sf::Vector2f(0.f, 0.f)) return;
+
 	if (playerInput.spaceWasPressed && dash.curCooldownTime < sf::seconds(0.f))
 	{
 		dash.curCooldownTime = sf::seconds(dash.cooldownTime);

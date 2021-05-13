@@ -7,7 +7,7 @@
 
 GameScreen::GameScreen()
 {
-	if (mapLoader.loadTileMap("./Assets/Map/newTiles_map.json"))
+	if (mapLoader.loadTileMap("./Assets/Map/newTiles_map.json", &registry, this))
 	{
 		map = mapLoader.getTileMap();
 	}
@@ -21,7 +21,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Dash>();
 	testEntity.AddComponent<Animator>();
 	testEntity.AddComponent<Movement>(500.f);
-	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity);
+	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity, PLAYER);
 	testEntity.AddComponent<Tag>("Hero");
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	testEntity.AddComponent<Health>(300.f);
@@ -34,7 +34,7 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>();
 	npcEntity.AddComponent<Movement>(500.f);
-	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity);
+	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<Health>(300.f);
 	npcEntity.AddComponent<PlayerSMcomponent>(new NPCDogIdleState(npcEntity));
@@ -49,7 +49,7 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Animator>();
 	//   ?
 	bishop.AddComponent<Movement>(500.f);
-	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop);
+	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop, FRIENDLY_NPC);
 	bishop.AddComponent<Tag>("Bishop");
 	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
 	bishop.AddComponent<Health>(300.f);

@@ -21,6 +21,9 @@ class TilemapParser
 {
 private:
 	nlohmann::json jsonReader;
+	entt::registry* registry;
+
+	Screen* screen;
 
 	TileMap tileMap;
 
@@ -29,13 +32,12 @@ private:
 
 	std::vector<TilesetParameters> tilesetsInfo;
 	std::vector<std::shared_ptr<sf::Texture>> tilesets;
-	//std::vector<std::vector<MapCollider>> collidersLayer;
 	std::vector<std::shared_ptr<TileLayer>> tileLayers;
 
 	void parseTileMap();
 	void parseTileSet();
 	void parseTileLayer();
-	void parseTileMapObjects(entt::registry reg);
+	void parseTileMapObjects();
 
 	void parseAnimatedTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node);
 	void parseStaticTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node);
@@ -47,7 +49,7 @@ public:
 	TilemapParser();
 	~TilemapParser();
 
-	bool loadTileMap(const char* path);
+	bool loadTileMap(const char* path, entt::registry* reg, Screen* screen);
 
 	TileMap getTileMap() { return tileMap; }
 };
