@@ -8,15 +8,10 @@ PlayerIdleState::PlayerIdleState(Entity& owner) :
 
 void PlayerIdleState::enter()
 {
-	std::cout << "IDLE\n";
+	std::cout << "PLAYER IDLE\n";
 	Animator& animator = owner.GetComponent<Animator>();
-	//Movement& movement = owner.GetComponent<Movement>();
 
 	animator.previousAnimation = animator.currentAnimation;
-	//animator.currentAnimation = IDLE;
-
-	//animator.previousFaceDirection = animator.currentFaceDirection;
-	//animator.currentFaceDirection = { 1.f, .0f };
 	animator.currentAnimation = IDLE;
 }
 
@@ -52,11 +47,6 @@ void PlayerIdleState::update(const float& dt)
 	}
 	else
 	{
-		Animator& animator = owner.GetComponent<Animator>();
-		Movement& movement = owner.GetComponent<Movement>();
-
-		animator.previousAnimation = animator.currentAnimation;
-		animator.currentAnimation = IDLE;
 	}
 }
 
