@@ -29,6 +29,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 100.f);
 	testEntity.GetComponent<Health>().curhealth = 100.f;
 	testEntity.AddComponent<PlayerSMcomponent>(new PlayerIdleState(testEntity));
+	testEntity.AddComponent<Inventory>(0);
 
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
