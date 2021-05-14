@@ -28,7 +28,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Vampire>();
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 100.f);
 	testEntity.GetComponent<Health>().curhealth = 100.f;
-	testEntity.AddComponent<PlayerSMcomponent>(new PlayerIdleState(testEntity));
+	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
 
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
@@ -38,7 +38,7 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<Aggresion>(250.f, sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_AGGRO_RADIUS);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<Health>(300.f);
-	npcEntity.AddComponent<PlayerSMcomponent>(new DogIdleState(npcEntity));
+	npcEntity.AddComponent<SMcomponent>(new DogIdleState(npcEntity));
 
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();
@@ -49,7 +49,7 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Tag>("Bishop");
 	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
 	bishop.AddComponent<Health>(300.f);
-	bishop.AddComponent<PlayerSMcomponent>(new BishopIdleState(bishop));
+	bishop.AddComponent<SMcomponent>(new BishopIdleState(bishop));
 
 	systems.onCreate(registry);
 }
