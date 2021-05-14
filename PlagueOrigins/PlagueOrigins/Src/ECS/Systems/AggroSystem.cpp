@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "AggroSystem.h"
 
-void AggroSystem::update(entt::registry& reg, const float& dt)
+void AggroSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<RigidBody, Aggresion, Transform, Animator>();
 	for (auto entity : view)

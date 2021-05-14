@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "DisposalSystem.h"
 
-void DisposalSystem::update(entt::registry& reg, const float& dt)
+void DisposalSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<Dispose>();
 
