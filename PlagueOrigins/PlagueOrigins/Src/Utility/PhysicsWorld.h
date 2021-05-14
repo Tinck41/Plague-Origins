@@ -4,12 +4,15 @@
 #include "entt.hpp"
 #include "PhysicsContactListener.h"
 
+#define RADTODEG 180.f / M_PI
+
 enum EntityCategory
 {
 	PLAYER = 0x0001,
 	ENEMY_NPC = 0x0002,
 	FRIENDLY_NPC = 0x0004,
 	OBSTACLE = 0x0006,
+	ENEMY_AGGRO_RADIUS = 0x0007
 };
 
 class PhysicsWorld
@@ -30,6 +33,9 @@ public:
 	static b2Body* createCircleleBody(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits);
 
 	static b2World* getWorld() { return get().world; }
+
+	static float angleBetween(const sf::Vector2f& vec1, const sf::Vector2f& vec2);
+
 private:
 	b2World* world;
 	PhysicsContactListener contactListener;
