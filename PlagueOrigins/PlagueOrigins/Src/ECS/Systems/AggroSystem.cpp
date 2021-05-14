@@ -28,14 +28,13 @@ void AggroSystem::update(entt::registry& reg, const float& dt)
 
 				sf::Vector2f playerPos{ bodyA->GetPosition().x * 30.f, bodyA->GetPosition().y * 30.f };
 				sf::Vector2f vectorToPlayer = playerPos - transform.position;
+				aggresion.distanceToTarget = sqrtf(std::pow(vectorToPlayer.x, 2) + std::pow(vectorToPlayer.y, 2));
 				sf::Vector2f directionVector{ animator.currentFaceDirection.x, animator.currentFaceDirection.y };
 				
 				float angle = PhysicsWorld::angleBetween(vectorToPlayer, directionVector);
 
 				if (angle <= 60.f)
 				{
-					std::cout << "AGGRO\n";
-
 					b2Vec2 normalizedVectorToPlayer;
 					normalizedVectorToPlayer.x = vectorToPlayer.x;
 					normalizedVectorToPlayer.y = vectorToPlayer.y;
@@ -48,19 +47,13 @@ void AggroSystem::update(entt::registry& reg, const float& dt)
 				}
 				else if (angle > 60.f)
 				{
-					std::cout << "angle >\n";
 					aggresion.isAggresive = false;
 				}
 			}
 		}
 		if (!playerFound)
 		{
-			std::cout << "player out of range\n";
 			aggresion.isAggresive = false;
 		}
 	}
-}
-
-void AggroSystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
-{
 }

@@ -17,9 +17,11 @@ struct Aggresion
 		body->CreateFixture(&fixtureDef);
 
 		this->radius = radius;
+		distanceToTarget = radius + 1.f;
 	}
 	float radius;
 
 	bool isAggresive = false;
 	sf::Vector2f vectorToTarget;
+	float distanceToTarget;
 };

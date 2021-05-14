@@ -9,11 +9,13 @@ DogDeathState::DogDeathState(Entity& owner) :
 
 void DogDeathState::enter()
 {
-	std::cout << "DIE\n";
+	std::cout << "Dog Death State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = DIE;
+
+	owner.RemoveComponent<Movement>();
 
 	//Timer
 	last = gameClock.getElapsedTime();
@@ -25,6 +27,8 @@ void DogDeathState::update(const float& dt)
 	if (now - last >= delay)
 	{
 		//dispose
+		std::cout << "dispose true\n";
+		owner.GetComponent<Dispose>().toDispose = true;
 	}
 }
 

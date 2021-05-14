@@ -15,6 +15,7 @@
 #include "Components/Interact.h"
 #include "Components/Aggresion.h"
 #include "Components/Patrol.h"
+#include "Components/Dispose.h"
 
 
 //FSM

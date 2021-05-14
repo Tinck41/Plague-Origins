@@ -22,12 +22,25 @@ void DogAggroState::enter()
 
 void DogAggroState::update(const float& dt)
 {
-	if (!owner.GetComponent<Aggresion>().isAggresive)
+	if (owner.GetComponent<Health>().curhealth <= 0)
+	{
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
+		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			new DogDeathState(owner));
+		std::cout << "";
+	}
+	else if (!owner.GetComponent<Aggresion>().isAggresive)
 	{
 		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
-		owner.GetComponent<Movement>().direction = { 0.f,0.f };
 		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new DogIdleState(owner));
+		std::cout << "";
+	}
+	else if (owner.GetComponent<Attack>().radius >= owner.GetComponent<Aggresion>().distanceToTarget)
+	{
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
+			new DogAttackState(owner));
 		std::cout << "";
 	}
 	else
@@ -42,10 +55,6 @@ void DogAggroState::update(const float& dt)
 		animator.previousFaceDirection = animator.currentFaceDirection;
 		animator.currentFaceDirection = movement.direction;
 	}
-	//if (!owner.getCombatComponent()->isAggro())
-	//{
-	//	owner.getStateMachine()->changeState(new NPCDogMoveState(owner));
-	//}
 	//else if (owner.getCombatComponent()->isInAttackRange())
 	//{
 	//	owner.getStateMachine()->changeState(new NPCDogAttackState(owner));

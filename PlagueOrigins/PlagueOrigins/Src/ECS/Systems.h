@@ -14,3 +14,4 @@
 #include "Systems/Motion.h"
 #include "Systems/AggroSystem.h"
 #include "Systems/PatrolSystem.h"
+#include "Systems/DisposalSystem.h"

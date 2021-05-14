@@ -24,9 +24,9 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity, PLAYER);
 	testEntity.AddComponent<Tag>("Hero");
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
-	testEntity.AddComponent<Health>(300.f);
+	testEntity.AddComponent<Health>(500.f);
 	testEntity.AddComponent<Vampire>();
-	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 100.f);
+	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 150.f);
 	testEntity.GetComponent<Health>().curhealth = 100.f;
 	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
 
@@ -35,16 +35,16 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<Animator>();
 	npcEntity.AddComponent<Movement>(300.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
-	npcEntity.AddComponent<Attack>(npcEntity.GetComponent<RigidBody>().body, 100.f, 100.f);
+	npcEntity.AddComponent<Attack>(npcEntity.GetComponent<RigidBody>().body, 100.f, 150.f);
 	npcEntity.AddComponent<Aggresion>(npcEntity.GetComponent<RigidBody>().body, 300.f);
 	npcEntity.AddComponent<Tag>("Dog");
-	npcEntity.AddComponent<Health>(500.f);
+	npcEntity.AddComponent<Health>(200.f);
 	npcEntity.AddComponent<SMcomponent>(new DogIdleState(npcEntity));
 	std::vector<sf::Vector2f> waypoints;
 	waypoints.push_back(sf::Vector2f(615.f,615.f));
-	waypoints.push_back(sf::Vector2f(1500.f,615.f));
-	waypoints.push_back(sf::Vector2f(900.f,900.f));
+	waypoints.push_back(sf::Vector2f(615.f,915.f));
 	npcEntity.AddComponent<Patrol>(waypoints);
+	npcEntity.AddComponent<Dispose>();
 
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();

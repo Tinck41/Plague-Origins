@@ -8,7 +8,7 @@ DogMoveState::DogMoveState(Entity& owner) :
 
 void DogMoveState::enter()
 {
-	std::cout << "MOVE\n";
+	std::cout << "Dog Move State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 	Movement& movement = owner.GetComponent<Movement>();
 
@@ -27,13 +27,13 @@ void DogMoveState::update(const float& dt)
 			new DogDeathState(owner));
 		std::cout << "";
 	}
-	//else if (owner.getCombatComponent()->isAggro())
-	//{
-	//	PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
-	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
-	//		new DogAggroState(owner));
-	//	std::cout << "";
-	//}
+	else if (owner.GetComponent<Aggresion>().isAggresive)
+	{
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
+		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			new DogAggroState(owner));
+		std::cout << "";
+	}
 	//else if (owner.getCombatComponent()->isInAttackRange())
 	//{
 	//	PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();

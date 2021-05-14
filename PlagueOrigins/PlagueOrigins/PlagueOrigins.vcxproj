@@ -155,6 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\ECS\Systems\AggroSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\DisposalSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\PatrolSystem.cpp" />
     <ClCompile Include="Src\Tilemap\AnimatedTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\StaticTileLayer.cpp" />
@@ -213,8 +214,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\ECS\Components\Aggresion.h" />
+    <ClInclude Include="Src\ECS\Components\Dispose.h" />
     <ClInclude Include="Src\ECS\Systems\AggroSystem.h" />
     <ClInclude Include="Src\ECS\Components\Patrol.h" />
+    <ClInclude Include="Src\ECS\Systems\DisposalSystem.h" />
     <ClInclude Include="Src\ECS\Systems\PatrolSystem.h" />
     <ClInclude Include="Src\Tilemap\AnimatedTileLayer.h" />
     <ClInclude Include="Src\Tilemap\StaticTileLayer.h" />

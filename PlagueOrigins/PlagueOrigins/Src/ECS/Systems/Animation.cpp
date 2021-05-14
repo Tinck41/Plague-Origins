@@ -127,17 +127,16 @@ void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 		if (armatureDisplay != nullptr)
 		{
 			animator.armatureDisplay = armatureDisplay;
-			animator.armatureDisplay->getAnimation()->play("Attack", 1);
+			if (tag.name == "Hero")
+			{
+				animator.armatureDisplay->getAnimation()->play("Attack", 1);
+			}
+			else if (tag.name == "Dog")
+			{
+				animator.armatureDisplay->getAnimation()->play("Attack0", 1);
+			}
 			armatureDisplay = nullptr;
 			delete armatureDisplay;
-		}
-		if (tag.name == "Hero")
-		{
-			animator.armatureDisplay->getAnimation()->play("Attack", 1);
-		}
-		else if (tag.name == "Dog")
-		{
-			animator.armatureDisplay->getAnimation()->play("Attack0", 1);
 		}
 	}
 }

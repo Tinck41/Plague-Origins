@@ -8,11 +8,13 @@ DogAttackState::DogAttackState(Entity& owner) :
 
 void DogAttackState::enter()
 {
-	std::cout << "ATTACK\n";
+	std::cout << "Dog Attack State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = ATTACK;
+
+    owner.RemoveComponent<Movement>();
 
 	Attack& attack = owner.GetComponent<Attack>();
 	attack.isAttacking = true;
@@ -52,4 +54,5 @@ void DogAttackState::exit()
 {
     Attack& attack = owner.GetComponent<Attack>();
     attack.isAttacking = false;
+    owner.AddComponent<Movement>(config.dogSpeed);
 }
