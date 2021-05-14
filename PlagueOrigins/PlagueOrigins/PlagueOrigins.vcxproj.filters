@@ -76,6 +76,8 @@
     <ClCompile Include="Src\FSM\States\Bishop\BishopInteractState.cpp" />
     <ClCompile Include="Src\FSM\States\Bishop\BishopDeathState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerDashState.cpp" />
+    <ClCompile Include="Src\ECS\Systems\PlayerSoundSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\AmbientSoundSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -131,20 +133,8 @@
     <ClInclude Include="dragonBones\SFMLTextureData.h">
       <Filter>dragonBones</Filter>
     </ClInclude>
-    <ClInclude Include="MapCollider.h">
-      <Filter>Tilemap</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerAnimationStates.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="json.hpp">
-      <Filter>Config</Filter>
-    </ClInclude>
-    <ClInclude Include="Config.h">
-      <Filter>Config</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalFactory.h">
-      <Filter>Global</Filter>
     </ClInclude>
     <ClInclude Include="Src\Screen\Entity.h" />
     <ClInclude Include="Src\Tilemap\AnimatedTile.h" />
@@ -186,7 +176,6 @@
     <ClInclude Include="Src\ECS\Systems\Motion.h" />
     <ClInclude Include="Src\FSM\Components\PlayerStates.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerIdleState.h" />
-    <ClInclude Include="Src\FSM\States\Player\PlayerStates.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerMoveState.h" />
     <ClInclude Include="Src\FSM\Components\PlayerIdleComponent.h" />
     <ClInclude Include="Src\FSM\Components\PlayerMoveComponent.h" />
@@ -205,6 +194,10 @@
     <ClInclude Include="Src\FSM\States\Bishop\BishopInteractState.h" />
     <ClInclude Include="Src\FSM\States\Bishop\BishopDeathState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerDashState.h" />
+    <ClInclude Include="Src\ECS\Components\PlayerAudioSource.h" />
+    <ClInclude Include="Src\ECS\Systems\PlayerSoundSystem.h" />
+    <ClInclude Include="Src\ECS\Components\AmbienceAudioSource.h" />
+    <ClInclude Include="Src\ECS\Systems\AmbientSoundSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

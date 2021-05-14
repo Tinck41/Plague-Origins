@@ -18,6 +18,7 @@ GameScreen::GameScreen()
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<Transform>();
 	testEntity.AddComponent<PlayerInput>();
+	testEntity.AddComponent<PlayerAudioSource>();
 	testEntity.AddComponent<Dash>();
 	testEntity.AddComponent<Animator>();
 	testEntity.AddComponent<Movement>(500.f);
@@ -29,6 +30,9 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 100.f);
 	testEntity.GetComponent<Health>().curhealth = 100.f;
 	testEntity.AddComponent<PlayerSMcomponent>(new PlayerIdleState(testEntity));
+
+	Entity ambient = Entity(registry.create(), this);
+	ambient.AddComponent<AmbienceAudioSource>();
 
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
@@ -49,7 +53,7 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
 	bishop.AddComponent<Health>(300.f);
 	bishop.AddComponent<PlayerSMcomponent>(new BishopIdleState(bishop));
-
+	
 	systems.onCreate(registry);
 }
 

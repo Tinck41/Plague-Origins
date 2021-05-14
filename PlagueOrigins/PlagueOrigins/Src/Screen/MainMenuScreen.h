@@ -11,6 +11,9 @@ private:
 
     tgui::GuiSFML gui;
 
+    sf::Sound mainTheme;
+    sf::SoundBuffer mainThemeBuffer;
+
     void setGameScreen();
     void setExitScreen();
 public:

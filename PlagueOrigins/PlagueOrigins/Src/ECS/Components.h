@@ -13,6 +13,8 @@
 #include "Components/Tag.h"
 #include "Components/Transform.h"
 #include "Components/Interact.h"
+#include "Components/PlayerAudioSource.h"
+#include "Components/AmbienceAudioSource.h"
 
 
 //FSM

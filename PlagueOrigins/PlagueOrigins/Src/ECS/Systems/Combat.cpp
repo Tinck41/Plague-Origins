@@ -22,7 +22,7 @@ void Combat::update(entt::registry& reg, const float& dt)
 				{
 					b2Body* bodyA = edge->contact->GetFixtureA()->GetBody();
 					b2Body* bodyB = edge->contact->GetFixtureB()->GetBody();
-
+					
 					sf::Vector2f vec1{ bodyA->GetPosition().x * 30.f, bodyA->GetPosition().y * 30.f };
 					vec1 = vec1 - transform.position;
 					sf::Vector2f vec2{ animator.currentFaceDirection.x, animator.currentFaceDirection.y };
