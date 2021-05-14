@@ -35,6 +35,7 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<Animator>();
 	npcEntity.AddComponent<Movement>(500.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
+	npcEntity.AddComponent<Aggresion>(250.f, sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_AGGRO_RADIUS);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<Health>(300.f);
 	npcEntity.AddComponent<PlayerSMcomponent>(new NPCDogIdleState(npcEntity));
