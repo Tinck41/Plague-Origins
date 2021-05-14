@@ -39,6 +39,11 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<Health>(300.f);
 	npcEntity.AddComponent<PlayerSMcomponent>(new NPCDogIdleState(npcEntity));
+	std::vector<sf::Vector2f> waypoints;
+	waypoints.push_back(sf::Vector2f(615.f,615.f));
+	waypoints.push_back(sf::Vector2f(1500.f,615.f));
+	waypoints.push_back(sf::Vector2f(900.f,900.f));
+	npcEntity.AddComponent<Patrol>(waypoints);
 
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();

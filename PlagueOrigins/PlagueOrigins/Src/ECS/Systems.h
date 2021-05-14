@@ -13,3 +13,4 @@
 #include "Systems/Interaction.h"
 #include "Systems/Motion.h"
 #include "Systems/InventorySystem.h"
+#include "Systems/PatrolSystem.h"

@@ -15,12 +15,14 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new Interaction());
 	updatableSystems.push_back(new Camera());
 	updatableSystems.push_back(new Motion());
+	updatableSystems.push_back(new PatrolSystem());
 
 	// Render systems
 	renderableSystems.push_back(new Animation());
 	renderableSystems.push_back(new Interaction());
 	renderableSystems.push_back(new Physics());
-	
+	renderableSystems.push_back(new PatrolSystem());
+
 	// OnCreate system
 	onCreateSystems.push_back(new Animation());
 	

@@ -14,6 +14,7 @@
 #include "Components/Transform.h"
 #include "Components/Interact.h"
 #include "Components/Inventory.h"
+#include "Components/Patrol.h"
 
 
 //FSM
