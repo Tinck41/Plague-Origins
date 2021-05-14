@@ -14,5 +14,5 @@ private:
 	void checkDash(PlayerInput& playerInput, Movement& movement, Dash& dash, const float& dt);
 	void checkAttack(PlayerInput& playerInput, Attack& attack);
 public:
-	virtual void update(entt::registry& reg, const float& dt) override;
+	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
 };

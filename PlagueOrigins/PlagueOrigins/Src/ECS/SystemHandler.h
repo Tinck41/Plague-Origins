@@ -13,7 +13,7 @@ public:
 	SystemHandler();
 	~SystemHandler();
 
-	void onCreate(entt::registry& reg);
-	void update(entt::registry& reg, const float& dt);
+	void onCreate(entt::registry& reg, tgui::GuiSFML& gui);
+	void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt);
 	void render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui);
 };

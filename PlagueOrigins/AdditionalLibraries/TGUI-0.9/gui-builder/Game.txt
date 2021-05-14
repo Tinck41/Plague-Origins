@@ -1,3 +1,8 @@
+Renderer.1 {
+    Texture = "../../../PlagueOrigins/Assets/UI/unfoldedInventory.png" Smooth;
+    TransparentTexture = false;
+}
+
 Panel.statusBar {
     Position = (25, 25);
     Size = (805, 146.56);
@@ -104,6 +109,169 @@ Panel.essenceBar {
             SelectedTextColor = white;
             TextColor = white;
             TextureBackground = None;
+        }
+    }
+}
+
+Picture.unfoldedInventory1 {
+    Position = (200, 40);
+    Size = (1642, 910);
+
+    Renderer {
+        Texture = "../../../PlagueOrigins/Assets/UI/unfoldedInventory.png" Smooth;
+        TransparentTexture = false;
+    }
+}
+
+Picture.unfoldedInventory2 {
+    Position = (200, 40);
+    Renderer = &1;
+    Size = (1642, 910);
+}
+
+Picture.unfoldedInventory3 {
+    Position = (200, 40);
+    Renderer = &1;
+    Size = (1642, 910);
+}
+
+Picture.unfoldedInventory4 {
+    Position = (200, 40);
+    Renderer = &1;
+    Size = (1642, 910);
+}
+
+Panel.inventoryButtons {
+    Position = (40, 40);
+    Size = (110, 470);
+
+    Renderer {
+        BackgroundColor = #FFFFFF00;
+        BorderColor = black;
+        TextureBackground = "../../../PlagueOrigins/Assets/UI/minimizedInventory.png" Smooth;
+    }
+
+    Button.inventoryButton1 {
+        Position = (10, 10);
+        Size = (100, 100);
+        TextSize = 13;
+
+        Renderer {
+            BackgroundColor = #F5F5F500;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorFocused = #00000065;
+            BackgroundColorHover = #00000065;
+            BorderColor = #3C3C3C00;
+            BorderColorDisabled = #7D7D7D00;
+            BorderColorDown = transparent;
+            BorderColorFocused = transparent;
+            BorderColorHover = transparent;
+            Borders = (1, 1, 1, 1);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+
+    Button.inventoryButton2 {
+        Position = (10, 130);
+        Size = (100, 102);
+        TextSize = 13;
+
+        Renderer {
+            BackgroundColor = #F5F5F500;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorFocused = #00000065;
+            BackgroundColorHover = #00000065;
+            BorderColor = #3C3C3C00;
+            BorderColorDisabled = #7D7D7D00;
+            BorderColorDown = transparent;
+            BorderColorFocused = transparent;
+            BorderColorHover = transparent;
+            Borders = (1, 1, 1, 1);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+
+    Button.inventoryButton3 {
+        Position = (10, 240);
+        Size = (100, 112);
+        TextSize = 13;
+
+        Renderer {
+            BackgroundColor = #F5F5F500;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorFocused = #00000065;
+            BackgroundColorHover = #00000065;
+            BorderColor = #3C3C3C00;
+            BorderColorDisabled = #7D7D7D00;
+            BorderColorDown = transparent;
+            BorderColorFocused = transparent;
+            BorderColorHover = transparent;
+            Borders = (1, 1, 1, 1);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+
+    Button.inventoryButton4 {
+        Position = (10, 360);
+        Size = (100, 102);
+        TextSize = 13;
+
+        Renderer {
+            BackgroundColor = #F5F5F500;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorFocused = #00000065;
+            BackgroundColorHover = #00000065;
+            BorderColor = #3C3C3C00;
+            BorderColorDisabled = #7D7D7D00;
+            BorderColorDown = transparent;
+            BorderColorFocused = transparent;
+            BorderColorHover = transparent;
+            Borders = (1, 1, 1, 1);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
         }
     }
 }

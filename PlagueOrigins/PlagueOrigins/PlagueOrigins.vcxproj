@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\ECS\Systems\InventorySystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\PatrolSystem.cpp" />
     <ClCompile Include="Src\Tilemap\AnimatedTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\StaticTileLayer.cpp" />
@@ -211,6 +212,8 @@
     <ClCompile Include="Src\Utility\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\ECS\Components\Inventory.h" />
+    <ClInclude Include="Src\ECS\Systems\InventorySystem.h" />
     <ClInclude Include="Src\ECS\Components\Patrol.h" />
     <ClInclude Include="Src\ECS\Systems\PatrolSystem.h" />
     <ClInclude Include="Src\Tilemap\AnimatedTileLayer.h" />

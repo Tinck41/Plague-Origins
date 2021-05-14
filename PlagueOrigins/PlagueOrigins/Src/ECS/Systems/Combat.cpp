@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Combat.h"
 
-void Combat::update(entt::registry& reg, const float& dt)
+void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<Attack, RigidBody, Health, Animator>();
 	for (auto entity : view)
