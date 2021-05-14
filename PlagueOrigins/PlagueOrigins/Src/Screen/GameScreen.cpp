@@ -14,7 +14,7 @@ GameScreen::GameScreen()
 	mapLoader.~TilemapParser();
 
 	gui.loadWidgetsFromFile("../AdditionalLibraries/TGUI-0.9/gui-builder/Game.txt");
-
+	
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<Transform>();
 	testEntity.AddComponent<PlayerInput>();
@@ -29,6 +29,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 150.f);
 	testEntity.GetComponent<Health>().curhealth = 100.f;
 	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
+	testEntity.AddComponent<Inventory>(0);
 
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
@@ -57,7 +58,7 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Health>(300.f);
 	bishop.AddComponent<SMcomponent>(new BishopIdleState(bishop));
 
-	systems.onCreate(registry);
+	systems.onCreate(registry, gui);
 }
 
 GameScreen::~GameScreen()
@@ -69,7 +70,7 @@ void GameScreen::update(const float& dt)
 {
 	map.update(dt);
 	GlobalFactory::Instance().factory.update(dt);
-	systems.update(registry, dt);
+	systems.update(registry, gui, dt);
 	PhysicsWorld::update(dt);
 }
 

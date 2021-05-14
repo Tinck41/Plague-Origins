@@ -5,5 +5,5 @@
 class IUpdateSystem
 {
 public:
-	virtual void update(entt::registry& reg, const float& dt) = 0;
+	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) = 0;
 };

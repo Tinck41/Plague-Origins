@@ -2,7 +2,7 @@
 #include "Controller.h"
 
 
-void Controller::update(entt::registry& reg, const float& dt)
+void Controller::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<Movement, RigidBody, PlayerInput, Animator, Dash, Attack>();
 	for (auto entity : view)

@@ -1,0 +1,71 @@
+Renderer.1 {
+    BackgroundColor = #F5F5F500;
+    BackgroundColorDisabled = #E6E6E6;
+    BackgroundColorDown = #EBEBEB;
+    BackgroundColorHover = white;
+    BorderColor = #3C3C3C;
+    BorderColorDisabled = #7D7D7D;
+    BorderColorDown = black;
+    BorderColorFocused = #1E1EB4;
+    BorderColorHover = black;
+    Borders = (1, 1, 1, 1);
+    TextColor = #3C3C3C;
+    TextColorDisabled = #7D7D7D;
+    TextColorDown = black;
+    TextColorHover = black;
+    Texture = None;
+    TextureDisabled = None;
+    TextureDown = None;
+    TextureDownFocused = None;
+    TextureDownHover = None;
+    TextureFocused = None;
+    TextureHover = None;
+}
+
+Picture.unfoldedInventory {
+    Position = (200, 40);
+    Size = (1642, 910);
+
+    Renderer {
+        Texture = "../../../PlagueOrigins/Assets/UI/unfoldedInventory.png" Smooth;
+        TransparentTexture = false;
+    }
+}
+
+Picture.minimizedInventory {
+    Position = (40, 40);
+    Size = (115, 470);
+
+    Renderer {
+        Texture = "../../../PlagueOrigins/Assets/UI/minimizedInventory.png" Smooth;
+        TransparentTexture = false;
+    }
+}
+
+Button.inventoryButton1 {
+    Position = (50, 50);
+    Renderer = &1;
+    Size = (100, 100);
+    TextSize = 13;
+}
+
+Button.inventoryButton2 {
+    Position = (50, 170);
+    Renderer = &1;
+    Size = (100, 100);
+    TextSize = 13;
+}
+
+Button.inventoryButton3 {
+    Position = (50, 280);
+    Renderer = &1;
+    Size = (100, 100);
+    TextSize = 13;
+}
+
+Button.inventoryButton4 {
+    Position = (50, 400);
+    Renderer = &1;
+    Size = (100, 100);
+    TextSize = 13;
+}

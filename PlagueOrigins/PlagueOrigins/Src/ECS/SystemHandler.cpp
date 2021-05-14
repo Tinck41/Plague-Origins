@@ -27,6 +27,12 @@ SystemHandler::SystemHandler()
 
 	// OnCreate system
 	onCreateSystems.push_back(new Animation());
+	
+	// Update && render && onCreate systems
+	auto inventorySystem = new InventorySystem();
+	updatableSystems.push_back(inventorySystem);
+	renderableSystems.push_back(inventorySystem);
+	onCreateSystems.push_back(inventorySystem);
 }
 
 SystemHandler::~SystemHandler()
@@ -35,21 +41,21 @@ SystemHandler::~SystemHandler()
 	renderableSystems.clear();
 }
 
-void SystemHandler::onCreate(entt::registry& reg)
+void SystemHandler::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 {
 	for (auto& system : onCreateSystems)
 	{
-		system->onCreate(reg);
+		system->onCreate(reg, gui);
 	}
 
 	onCreateSystems.clear();
 }
 
-void SystemHandler::update(entt::registry& reg, const float& dt)
+void SystemHandler::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	for (auto& system : updatableSystems)
 	{
-		system->update(reg, dt);
+		system->update(reg, gui, dt);
 	}
 }
 

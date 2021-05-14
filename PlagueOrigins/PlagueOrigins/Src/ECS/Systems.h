@@ -15,3 +15,5 @@
 #include "Systems/AggroSystem.h"
 #include "Systems/PatrolSystem.h"
 #include "Systems/DisposalSystem.h"
+#include "Systems/InventorySystem.h"
+#include "Systems/PatrolSystem.h"

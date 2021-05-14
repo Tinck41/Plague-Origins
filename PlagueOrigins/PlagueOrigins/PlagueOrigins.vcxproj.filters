@@ -77,6 +77,7 @@
     <ClCompile Include="Src\FSM\States\Dog\DogDeathState.cpp" />
     <ClCompile Include="Src\FSM\States\Dog\DogIdleState.cpp" />
     <ClCompile Include="Src\FSM\States\Dog\DogMoveState.cpp" />
+    <ClCompile Include="Src\ECS\Systems\InventorySystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\PatrolSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\DisposalSystem.cpp" />
   </ItemGroup>
@@ -195,6 +196,8 @@
     <ClInclude Include="Src\FSM\States\Dog\DogIdleState.h" />
     <ClInclude Include="Src\FSM\States\Dog\DogMoveState.h" />
     <ClInclude Include="Src\FSM\States\Dog\DogStates.h" />
+    <ClInclude Include="Src\ECS\Systems\InventorySystem.h" />
+    <ClInclude Include="Src\ECS\Components\Inventory.h" />
     <ClInclude Include="Src\ECS\Components\Patrol.h" />
     <ClInclude Include="Src\ECS\Systems\PatrolSystem.h" />
     <ClInclude Include="Src\ECS\Components\Dispose.h" />

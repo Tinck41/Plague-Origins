@@ -1,23 +1,21 @@
 #pragma once
 #include "IUpdateSystem.h"
 #include "IRenderSystem.h"
+#include "IOnCreateSystem.h"
 #include "Src/ECS/Components.h"
 
-class PatrolSystem : 
+class InventorySystem :
 	public IUpdateSystem,
-	public IRenderSystem
+	public IRenderSystem,
+	public IOnCreateSystem
 {
+private:
+	void buttonClicked(int buttonIndex, Inventory& inventory);
+	void escReleased(Inventory& inventory);
 public:
+	InventorySystem();
 	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
 	virtual void render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui) override;
-	PatrolSystem()
-	{
-		marker.setRadius(5.f);
-		marker.setFillColor(sf::Color::Blue);
-	};
-private:
-	
-	sf::CircleShape marker;
-	void dirToNext(Movement& movement, Patrol& patrol, Transform& transform);
-	void nextWaypoint(Patrol& patrol, Transform& transform);
+	virtual void onCreate(entt::registry& reg, tgui::GuiSFML& gui) override;
 };
+
