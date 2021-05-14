@@ -8,7 +8,7 @@ class PatrolSystem :
 	public IRenderSystem
 {
 public:
-	virtual void update(entt::registry& reg, const float& dt) override;
+	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
 	virtual void render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui) override;
 	PatrolSystem()
 	{

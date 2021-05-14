@@ -27,7 +27,7 @@ void PatrolSystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::G
 	window.draw(marker);
 }
 
-void PatrolSystem::update(entt::registry& reg, const float& dt)
+void PatrolSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<Movement,Patrol,Transform>();
 	for (auto entity : view)
