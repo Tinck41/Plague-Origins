@@ -19,7 +19,7 @@ State* FSM::changeStateP(State* currentState, State* newState)
 	return currentState;
 }
 
-void FSM::update(entt::registry& reg, const float& dt)
+void FSM::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<PlayerSMcomponent>();
 

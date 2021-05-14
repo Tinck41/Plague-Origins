@@ -257,7 +257,7 @@ void Animation::setAnimation(Animator& animator, Tag& tag)
 	}
 }
 
-void Animation::onCreate(entt::registry& reg)
+void Animation::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 {
 	auto view = reg.view<Animator>();
 	for (auto entity : view)
@@ -269,7 +269,7 @@ void Animation::onCreate(entt::registry& reg)
 	}
 }
 
-void Animation::update(entt::registry& reg, const float& dt)
+void Animation::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<Animator, Transform, Tag>();
 	

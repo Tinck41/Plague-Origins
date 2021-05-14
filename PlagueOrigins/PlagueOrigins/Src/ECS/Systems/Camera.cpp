@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-void Camera::update(entt::registry& reg, const float& dt)
+void Camera::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<CameraTarget, Transform>();
 	for (auto entity : view)

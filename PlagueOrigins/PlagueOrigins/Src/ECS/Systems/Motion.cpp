@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Motion.h"
 
-void Motion::update(entt::registry& reg, const float& dt)
+void Motion::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<RigidBody, Movement>();
 

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Interaction.h"
 
-void Interaction::update(entt::registry& reg, const float& dt)
+void Interaction::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<Interact, Transform, Animator>();
 

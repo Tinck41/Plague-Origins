@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Input.h"
 
-void Input::update(entt::registry& reg, const float& dt)
+void Input::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<PlayerInput>();
 	for (auto entity : view)
@@ -20,6 +20,7 @@ void Input::movementInput(PlayerInput& input)
 	checkR(input);
 	checkSpace(input);
 	checkLMB(input);
+	checkEsc(input);
 }
 
 void Input::checkW(PlayerInput& input)
@@ -215,5 +216,33 @@ void Input::checkLMB(PlayerInput& input)
 		input.LMBwasPressed = false;
 		input.LMBpressed = false;
 		input.LMBreleased = false;
+	}
+}
+
+void Input::checkEsc(PlayerInput& input)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && !input.escPressed)
+	{
+		input.escWasPressed = true;
+		input.escPressed = true;
+		input.escReleased = false;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+	{
+		input.escWasPressed = false;
+		input.escPressed = true;
+		input.escReleased = false;
+	}
+	else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape) && input.escPressed)
+	{
+		input.escWasPressed = false;
+		input.escPressed = false;
+		input.escReleased = true;
+	}
+	else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+	{
+		input.escWasPressed = false;
+		input.escPressed = false;
+		input.escReleased = false;
 	}
 }

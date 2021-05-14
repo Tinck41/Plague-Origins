@@ -5,4 +5,5 @@ struct Inventory
 		this->essence = essence;
 	}
 	int essence;
+	int state = 0;
 };
