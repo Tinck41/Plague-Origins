@@ -47,5 +47,5 @@ private:
 	void updateInternal(const float& dt);
 
 	b2Body* createRectangleBodyInternal(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner, uint16 categoryBits);
-	b2Body* createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits);
+	b2Body* createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, bool isSensor, entt::entity owner, uint16 categoryBits);
 };

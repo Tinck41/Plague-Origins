@@ -33,11 +33,11 @@ GameScreen::GameScreen()
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>();
-	npcEntity.AddComponent<Movement>(500.f);
+	npcEntity.AddComponent<Movement>(300.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
 	npcEntity.AddComponent<Aggresion>(250.f, sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_AGGRO_RADIUS);
 	npcEntity.AddComponent<Tag>("Dog");
-	npcEntity.AddComponent<Health>(300.f);
+	npcEntity.AddComponent<Health>(500.f);
 	npcEntity.AddComponent<SMcomponent>(new DogIdleState(npcEntity));
 
 	bishop = Entity(registry.create(), this);

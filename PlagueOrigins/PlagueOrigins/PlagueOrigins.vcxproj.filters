@@ -176,8 +176,6 @@
     <ClInclude Include="Src\FSM\Components\PlayerStates.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerIdleState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerMoveState.h" />
-    <ClInclude Include="Src\FSM\Components\PlayerIdleComponent.h" />
-    <ClInclude Include="Src\FSM\Components\PlayerMoveComponent.h" />
     <ClInclude Include="Src\FSM\State.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerAttackState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerDeathState.h" />

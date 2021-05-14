@@ -226,8 +226,6 @@
     <ClInclude Include="Src\ECS\Components\Dash.h" />
     <ClInclude Include="Src\ECS\Components\Health.h" />
     <ClInclude Include="Src\ECS\Components\Interact.h" />
-    <ClInclude Include="Src\FSM\Components\PlayerIdleComponent.h" />
-    <ClInclude Include="Src\FSM\Components\PlayerMoveComponent.h" />
     <ClInclude Include="Src\FSM\Components\PlayerStates.h" />
     <ClInclude Include="Src\ECS\Systems\FSM.h" />
     <ClInclude Include="Src\ECS\Components\Vampire.h" />

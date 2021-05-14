@@ -65,7 +65,7 @@ b2Body* PhysicsWorld::createRectangleBodyInternal(sf::Vector2f position, sf::Vec
     return body;
 }
 
-b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits)
+b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, bool isSensor, entt::entity owner, uint16 categoryBits)
 {
     b2Body* body;
     b2BodyDef bodyDef;
@@ -79,7 +79,8 @@ b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radi
     bodyDef.userData.pointer = (uint16)owner;
     body = world->CreateBody(&bodyDef);
 
-    Shape.m_radius = radius;
+    Shape.m_radius = radius / SCALE;
+    FixtureDef.isSensor = isSensor;
     FixtureDef.shape = &Shape;
     FixtureDef.density = 1.f;
     FixtureDef.friction = 0.f;

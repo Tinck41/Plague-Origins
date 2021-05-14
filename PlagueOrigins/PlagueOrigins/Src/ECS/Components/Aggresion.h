@@ -6,21 +6,20 @@
 
 struct Aggresion
 {
-	Aggresion(float radius, sf::Vector2f position, bool isDynamic, entt::entity owner, uint16 categoryBits)
-	{
-		this->radius = radius;
-		shape = new sf::CircleShape(radius);
-		shape->setOutlineThickness(2);
-		shape->setFillColor(sf::Color::Transparent);
-		shape->setOutlineColor(sf::Color::Green);
-		body = PhysicsWorld::createCircleleBody(position, radius, isDynamic, owner, categoryBits);
-	}
 
-	b2Body* body;
-	sf::Vector2f size{ 0.f, 0.f };
-	float radius = 0.f;
-	bool debugDraw = false;
-	sf::Shape* shape;
+	Aggresion(b2Body* body, float radius)
+	{
+		b2CircleShape attackShape;
+		b2FixtureDef fixtureDef;
+		attackShape.m_radius = radius / 30.f;
+		fixtureDef.shape = &attackShape;
+		fixtureDef.isSensor = true;
+		body->CreateFixture(&fixtureDef);
+
+		this->radius = radius;
+	}
+	float radius;
 
 	bool isAggresive = false;
+	sf::Vector2f vectorToTarget;
 };

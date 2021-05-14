@@ -28,16 +28,24 @@ void AggroSystem::update(entt::registry& reg, const float& dt)
 				b2Body* bodyA = edge->contact->GetFixtureA()->GetBody();
 				b2Body* bodyB = edge->contact->GetFixtureB()->GetBody();
 
-				sf::Vector2f vec1{ bodyA->GetPosition().x * 30.f, bodyA->GetPosition().y * 30.f };
-				vec1 = vec1 - transform.position;
-				sf::Vector2f vec2{ animator.currentFaceDirection.x, animator.currentFaceDirection.y };
-
-				float angle = PhysicsWorld::angleBetween(vec1, vec2);
+				sf::Vector2f playerPos{ bodyA->GetPosition().x * 30.f, bodyA->GetPosition().y * 30.f };
+				sf::Vector2f vectorToPlayer = playerPos - transform.position;
+				sf::Vector2f directionVector{ animator.currentFaceDirection.x, animator.currentFaceDirection.y };
+				
+				float angle = PhysicsWorld::angleBetween(vectorToPlayer, directionVector);
 
 				if (angle <= 70.f && aggresion.isAggresive == false)
 				{
 					std::cout << "AGGRO\n";
+
+					b2Vec2 normalizedVectorToPlayer;
+					normalizedVectorToPlayer.x = vectorToPlayer.x;
+					normalizedVectorToPlayer.y = vectorToPlayer.y;
+					normalizedVectorToPlayer.Normalize();
+
 					aggresion.isAggresive = true;
+					aggresion.vectorToTarget.x = normalizedVectorToPlayer.x;
+					aggresion.vectorToTarget.y = normalizedVectorToPlayer.y;
 					break;
 				}
 				else if (angle > 70.f && aggresion.isAggresive == true)

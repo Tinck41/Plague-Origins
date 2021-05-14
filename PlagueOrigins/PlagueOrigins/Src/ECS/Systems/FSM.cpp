@@ -21,11 +21,11 @@ State* FSM::changeStateP(State* currentState, State* newState)
 
 void FSM::update(entt::registry& reg, const float& dt)
 {
-	auto view = reg.view<PlayerSMcomponent>();
+	auto view = reg.view<SMcomponent>();
 
 	for (auto entity : view)
 	{
-		PlayerSMcomponent& stateMachine = reg.get<PlayerSMcomponent>(entity);
+		SMcomponent& stateMachine = reg.get<SMcomponent>(entity);
 
 		if (stateMachine.currentState != nullptr)
 		{
