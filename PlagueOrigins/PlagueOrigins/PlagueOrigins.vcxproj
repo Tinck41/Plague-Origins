@@ -154,6 +154,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\ECS\Systems\AggroSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\DisposalSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\InventorySystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\PatrolSystem.cpp" />
     <ClCompile Include="Src\Tilemap\AnimatedTileLayer.cpp" />
@@ -173,11 +175,11 @@
     <ClCompile Include="Src\FSM\States\Bishop\BishopDeathState.cpp" />
     <ClCompile Include="Src\FSM\States\Bishop\BishopIdleState.cpp" />
     <ClCompile Include="Src\FSM\States\Bishop\BishopInteractState.cpp" />
-    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogAggroState.cpp" />
-    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogAttackState.cpp" />
-    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogDeathState.cpp" />
-    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogIdleState.cpp" />
-    <ClCompile Include="Src\FSM\States\NPCDog\NPCDogMoveState.cpp" />
+    <ClCompile Include="Src\FSM\States\Dog\DogAggroState.cpp" />
+    <ClCompile Include="Src\FSM\States\Dog\DogAttackState.cpp" />
+    <ClCompile Include="Src\FSM\States\Dog\DogDeathState.cpp" />
+    <ClCompile Include="Src\FSM\States\Dog\DogIdleState.cpp" />
+    <ClCompile Include="Src\FSM\States\Dog\DogMoveState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerAttackState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerDashState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerDeathState.cpp" />
@@ -212,9 +214,13 @@
     <ClCompile Include="Src\Utility\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\ECS\Components\Aggresion.h" />
+    <ClInclude Include="Src\ECS\Components\Dispose.h" />
+    <ClInclude Include="Src\ECS\Systems\AggroSystem.h" />
     <ClInclude Include="Src\ECS\Components\Inventory.h" />
     <ClInclude Include="Src\ECS\Systems\InventorySystem.h" />
     <ClInclude Include="Src\ECS\Components\Patrol.h" />
+    <ClInclude Include="Src\ECS\Systems\DisposalSystem.h" />
     <ClInclude Include="Src\ECS\Systems\PatrolSystem.h" />
     <ClInclude Include="Src\Tilemap\AnimatedTileLayer.h" />
     <ClInclude Include="Src\Tilemap\StaticTileLayer.h" />
@@ -229,8 +235,6 @@
     <ClInclude Include="Src\ECS\Components\Dash.h" />
     <ClInclude Include="Src\ECS\Components\Health.h" />
     <ClInclude Include="Src\ECS\Components\Interact.h" />
-    <ClInclude Include="Src\FSM\Components\PlayerIdleComponent.h" />
-    <ClInclude Include="Src\FSM\Components\PlayerMoveComponent.h" />
     <ClInclude Include="Src\FSM\Components\PlayerStates.h" />
     <ClInclude Include="Src\ECS\Systems\FSM.h" />
     <ClInclude Include="Src\ECS\Components\Vampire.h" />
@@ -256,12 +260,12 @@
     <ClInclude Include="Src\FSM\States\Bishop\BishopIdleState.h" />
     <ClInclude Include="Src\FSM\States\Bishop\BishopInteractState.h" />
     <ClInclude Include="Src\FSM\States\Bishop\BishopStates.h" />
-    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogAggroState.h" />
-    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogAttackState.h" />
-    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogDeathState.h" />
-    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogIdleState.h" />
-    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogMoveState.h" />
-    <ClInclude Include="Src\FSM\States\NPCDog\NPCDogStates.h" />
+    <ClInclude Include="Src\FSM\States\Dog\DogAggroState.h" />
+    <ClInclude Include="Src\FSM\States\Dog\DogAttackState.h" />
+    <ClInclude Include="Src\FSM\States\Dog\DogDeathState.h" />
+    <ClInclude Include="Src\FSM\States\Dog\DogIdleState.h" />
+    <ClInclude Include="Src\FSM\States\Dog\DogMoveState.h" />
+    <ClInclude Include="Src\FSM\States\Dog\DogStates.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerAttackState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerDashState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerDeathState.h" />

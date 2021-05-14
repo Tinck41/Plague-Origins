@@ -2,13 +2,13 @@
 #include "Src/Screen/Entity.h"
 #include "Src/FSM/State.h"
 
-class NPCDogAttackState :
+class DogAttackState :
 	virtual public State
 {
 private:
 	Entity& owner;
 public:
-	NPCDogAttackState(Entity& owner);
+	DogAttackState(Entity& owner);
 
 	virtual void enter() override;
 	virtual void update(const float& dt) override;

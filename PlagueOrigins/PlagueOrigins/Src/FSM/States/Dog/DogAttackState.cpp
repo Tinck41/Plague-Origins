@@ -1,30 +1,32 @@
 #include "stdafx.h"
-#include "./NPCDogStates.h"
+#include "./DogStates.h"
 
-NPCDogAttackState::NPCDogAttackState(Entity& owner) :
+DogAttackState::DogAttackState(Entity& owner) :
 	owner(owner)
 {
 }
 
-void NPCDogAttackState::enter()
+void DogAttackState::enter()
 {
-	std::cout << "ATTACK\n";
+	std::cout << "Dog Attack State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = ATTACK;
 
+    owner.RemoveComponent<Movement>();
+
 	Attack& attack = owner.GetComponent<Attack>();
 	attack.isAttacking = true;
 }
 
-void NPCDogAttackState::update(const float& dt)
+void DogAttackState::update(const float& dt)
 {
     if (owner.GetComponent<Health>().curhealth <= 0)
     {
-        PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+        SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
         playerStates.currentState = playerStates.changeState(playerStates.currentState,
-            new NPCDogDeathState(owner));
+            new DogDeathState(owner));
         std::cout << "";
     }
     else if (owner.GetComponent<Animator>().armatureDisplay->getAnimation()->isCompleted())
@@ -33,23 +35,24 @@ void NPCDogAttackState::update(const float& dt)
         std::cout << "finish\n";
         if (owner.GetComponent<Attack>().isAttacking)
         {
-            PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
             playerStates.currentState = playerStates.changeState(playerStates.currentState,
-                new NPCDogAttackState(owner));
+                new DogAttackState(owner));
             std::cout << "";
         }
         else
         {
-            PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
             playerStates.currentState = playerStates.changeState(playerStates.currentState,
-                new NPCDogIdleState(owner));
+                new DogIdleState(owner));
             std::cout << "";
         }
     }
 }
 
-void NPCDogAttackState::exit()
+void DogAttackState::exit()
 {
     Attack& attack = owner.GetComponent<Attack>();
     attack.isAttacking = false;
+    owner.AddComponent<Movement>(config.dogSpeed);
 }

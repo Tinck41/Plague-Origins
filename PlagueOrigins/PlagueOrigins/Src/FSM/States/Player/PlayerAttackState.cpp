@@ -25,7 +25,7 @@ void PlayerAttackState::update(const float& dt)
 {
  	if (owner.GetComponent<Health>().curhealth <= 0)
  	{
-        PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+        SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
         playerStates.currentState = playerStates.changeState(playerStates.currentState, 
             new PlayerDeathState(owner));
         std::cout << "";
@@ -36,21 +36,21 @@ void PlayerAttackState::update(const float& dt)
         std::cout << "finish\n";
         if (owner.GetComponent<Dash>().isDashing)
         {
-            PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
             playerStates.currentState = playerStates.changeState(playerStates.currentState,
                 new PlayerDashState(owner));
             std::cout << "";
         }
  		if (owner.GetComponent<Attack>().isAttacking)
  		{
-            PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
             playerStates.currentState = playerStates.changeState(playerStates.currentState, 
                 new PlayerAttackState(owner));
             std::cout << "";
  		}
  		else
  		{
-            PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
             playerStates.currentState = playerStates.changeState(playerStates.currentState,
                 new PlayerIdleState(owner));
             std::cout << "";

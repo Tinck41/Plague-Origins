@@ -11,7 +11,7 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 		RigidBody& rigidBody = reg.get<RigidBody>(entity);
 		Animator& animator = reg.get<Animator>(entity);
 		Transform& transform = reg.get<Transform>(entity);
-
+		
 		if (attack.isAttacking)
 		{
 			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
@@ -27,7 +27,7 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 					vec1 = vec1 - transform.position;
 					sf::Vector2f vec2{ animator.currentFaceDirection.x, animator.currentFaceDirection.y };
 
-					float angle = angleBetween(vec1, vec2);
+					float angle = PhysicsWorld::angleBetween(vec1, vec2);
 
 					if (angle <= 45.f)
 					{
@@ -56,14 +56,5 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 			attack.isAttacking = false;
 		}
 	}
-}
-
-float Combat::angleBetween(const sf::Vector2f& vec1, const sf::Vector2f& vec2)
-{
-	float vec1Magnitude = std::sqrtf(vec1.x * vec1.x + vec1.y * vec1.y);
-	float vec2Magnitude = std::sqrtf(vec2.x * vec2.x + vec2.y * vec2.y);
-
-	float dotProduct = vec1.x * vec2.x + vec1.y * vec2.y;
-
-	return std::acosf(dotProduct / (vec1Magnitude * vec2Magnitude)) * RADTODEG;
+	
 }

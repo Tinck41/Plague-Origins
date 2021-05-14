@@ -2,13 +2,15 @@
 #include "Src/FSM/State.h"
 #include "Src/ECS/Systems/FSM.h"
 
-struct PlayerSMcomponent
+struct SMcomponent
 {
 	State* currentState;
-	PlayerSMcomponent(State* initState)
+	
+	SMcomponent(State* initState)
 	{
 		currentState = initState;
 		currentState->enter();
+
 	}
 	State* (*changeState)(State*,State*) = FSM::changeStateP;
 };

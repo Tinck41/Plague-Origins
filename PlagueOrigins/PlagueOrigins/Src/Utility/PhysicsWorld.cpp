@@ -32,7 +32,7 @@ b2Body* PhysicsWorld::createRectangleBody(sf::Vector2f position, sf::Vector2f si
     return get().createRectangleBodyInternal(position, size, isDynamic, owner, categoryBits);
 }
 
-b2Body* PhysicsWorld::createCircleleBody(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits)
+b2Body* PhysicsWorld::createCircleBody(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits)
 {
     return get().createCircleBodyInternal(position, radius, isDynamic, owner, categoryBits);
 }
@@ -56,8 +56,9 @@ b2Body* PhysicsWorld::createRectangleBodyInternal(sf::Vector2f position, sf::Vec
     FixtureDef.density = 1.f;
     FixtureDef.friction = 0.f;
     FixtureDef.restitution = 0.f;
+    FixtureDef.userData.pointer = categoryBits;
 
-    FixtureDef.filter.categoryBits = categoryBits;  // I'm <...> 
+    //FixtureDef.filter.categoryBits = categoryBits;  // I'm <...> 
     //FixtureDef.filter.maskBits = maskBits;          // I collide with <...>
 
     body->CreateFixture(&FixtureDef);
@@ -79,7 +80,7 @@ b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radi
     bodyDef.userData.pointer = (uint16)owner;
     body = world->CreateBody(&bodyDef);
 
-    Shape.m_radius = radius;
+    Shape.m_radius = radius / SCALE;
     FixtureDef.shape = &Shape;
     FixtureDef.density = 1.f;
     FixtureDef.friction = 0.f;
@@ -91,4 +92,14 @@ b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radi
     body->CreateFixture(&FixtureDef);
 
     return body;
+}
+
+float PhysicsWorld::angleBetween(const sf::Vector2f& vec1, const sf::Vector2f& vec2)
+{
+    float vec1Magnitude = std::sqrtf(vec1.x * vec1.x + vec1.y * vec1.y);
+    float vec2Magnitude = std::sqrtf(vec2.x * vec2.x + vec2.y * vec2.y);
+
+    float dotProduct = vec1.x * vec2.x + vec1.y * vec2.y;
+
+    return std::acosf(dotProduct / (vec1Magnitude * vec2Magnitude)) * RADTODEG;
 }

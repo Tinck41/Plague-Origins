@@ -1,14 +1,14 @@
 #include "stdafx.h"
-#include "./NPCDogStates.h"
+#include "./DogStates.h"
 
-NPCDogMoveState::NPCDogMoveState(Entity& owner) :
+DogMoveState::DogMoveState(Entity& owner) :
 	owner(owner)
 {
 }
 
-void NPCDogMoveState::enter()
+void DogMoveState::enter()
 {
-	std::cout << "MOVE\n";
+	std::cout << "Dog Move State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 	Movement& movement = owner.GetComponent<Movement>();
 
@@ -18,34 +18,34 @@ void NPCDogMoveState::enter()
 	animator.currentFaceDirection = movement.direction;
 }
 
-void NPCDogMoveState::update(const float& dt)
+void DogMoveState::update(const float& dt)
 {
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
-		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
-			new NPCDogDeathState(owner));
+			new DogDeathState(owner));
 		std::cout << "";
 	}
-	//else if (owner.getCombatComponent()->isAggro())
-	//{
-	//	PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
-	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
-	//		new NPCDogAggroState(owner));
-	//	std::cout << "";
-	//}
+	else if (owner.GetComponent<Aggresion>().isAggresive)
+	{
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
+		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			new DogAggroState(owner));
+		std::cout << "";
+	}
 	//else if (owner.getCombatComponent()->isInAttackRange())
 	//{
 	//	PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
 	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
-	//		new NPCDogAttackState(owner));
+	//		new DogAttackState(owner));
 	//	std::cout << "";
 	//}
 	else if (owner.GetComponent<Movement>().direction == sf::Vector2f(0, 0))
 	{
-		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
-			new NPCDogIdleState(owner));
+			new DogIdleState(owner));
 		std::cout << "";
 	}
 	else
@@ -60,6 +60,6 @@ void NPCDogMoveState::update(const float& dt)
 	}
 }
 
-void NPCDogMoveState::exit()
+void DogMoveState::exit()
 {
 }

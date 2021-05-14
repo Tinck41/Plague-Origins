@@ -10,6 +10,4 @@ class Combat :
 {
 public:
 	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
-private:
-	float angleBetween(const sf::Vector2f& vec1, const sf::Vector2f& vec2);
 };
