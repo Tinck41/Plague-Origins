@@ -1,12 +1,12 @@
 #include "stdafx.h"
-#include "./NPCDogStates.h"
+#include "./DogStates.h"
 
-NPCDogAttackState::NPCDogAttackState(Entity& owner) :
+DogAttackState::DogAttackState(Entity& owner) :
 	owner(owner)
 {
 }
 
-void NPCDogAttackState::enter()
+void DogAttackState::enter()
 {
 	std::cout << "ATTACK\n";
 	Animator& animator = owner.GetComponent<Animator>();
@@ -18,13 +18,13 @@ void NPCDogAttackState::enter()
 	attack.isAttacking = true;
 }
 
-void NPCDogAttackState::update(const float& dt)
+void DogAttackState::update(const float& dt)
 {
     if (owner.GetComponent<Health>().curhealth <= 0)
     {
         PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
         playerStates.currentState = playerStates.changeState(playerStates.currentState,
-            new NPCDogDeathState(owner));
+            new DogDeathState(owner));
         std::cout << "";
     }
     else if (owner.GetComponent<Animator>().armatureDisplay->getAnimation()->isCompleted())
@@ -35,20 +35,20 @@ void NPCDogAttackState::update(const float& dt)
         {
             PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
             playerStates.currentState = playerStates.changeState(playerStates.currentState,
-                new NPCDogAttackState(owner));
+                new DogAttackState(owner));
             std::cout << "";
         }
         else
         {
             PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
             playerStates.currentState = playerStates.changeState(playerStates.currentState,
-                new NPCDogIdleState(owner));
+                new DogIdleState(owner));
             std::cout << "";
         }
     }
 }
 
-void NPCDogAttackState::exit()
+void DogAttackState::exit()
 {
     Attack& attack = owner.GetComponent<Attack>();
     attack.isAttacking = false;

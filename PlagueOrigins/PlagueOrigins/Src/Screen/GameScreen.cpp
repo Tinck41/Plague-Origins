@@ -2,7 +2,7 @@
 #include "GameScreen.h"
 
 #include "Src/FSM/States/Player/PlayerStates.h"
-#include "Src/FSM/States/NPCDog/NPCDogStates.h"
+#include "Src/FSM/States/Dog/DogStates.h"
 #include "Src/FSM/States/Bishop/BishopStates.h"
 
 GameScreen::GameScreen()
@@ -38,7 +38,7 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<Aggresion>(250.f, sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_AGGRO_RADIUS);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<Health>(300.f);
-	npcEntity.AddComponent<PlayerSMcomponent>(new NPCDogIdleState(npcEntity));
+	npcEntity.AddComponent<PlayerSMcomponent>(new DogIdleState(npcEntity));
 
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();

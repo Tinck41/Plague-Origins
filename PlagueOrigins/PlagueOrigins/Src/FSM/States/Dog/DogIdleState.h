@@ -2,14 +2,14 @@
 #include "Src/Screen/Entity.h"
 #include "Src/FSM/State.h"
 
-class NPCDogIdleState :
+class DogIdleState :
 	virtual public State
 {
 private:
 	Entity& owner;
 
 public:
-	NPCDogIdleState(Entity& owner);
+	DogIdleState(Entity& owner);
 
 	void enter();
 	void update(const float& dt);

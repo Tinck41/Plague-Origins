@@ -1,19 +1,18 @@
 #include "stdafx.h"
-#include "./NPCDogStates.h"
-
-NPCDogAggroState::NPCDogAggroState(Entity& owner) :
+#include "./DogStates.h"
+DogAggroState::DogAggroState(Entity& owner) :
 	owner(owner)
 {
 }
 
-void NPCDogAggroState::enter()
+void DogAggroState::enter()
 {
 	//std::cout << "Dog Aggro State\n";
 	//target = owner.getCombatComponent()->getPlayerPosition();
 	//owner.getAnimator()->setAnimation(animationName::MOVE, owner.getPatrol()->directRoute(owner.getCombatComponent()->getPlayerPosition()));
 }
 
-void NPCDogAggroState::update(const float& dt)
+void DogAggroState::update(const float& dt)
 {
 	//if (!owner.getCombatComponent()->isAggro())
 	//{
@@ -35,6 +34,6 @@ void NPCDogAggroState::update(const float& dt)
 	//}
 }
 
-void NPCDogAggroState::exit()
+void DogAggroState::exit()
 {
 }
