@@ -3,28 +3,26 @@
 
 void AggroSystem::update(entt::registry& reg, const float& dt)
 {
-	auto view = reg.view<RigidBody, Aggresion>();
+	auto view = reg.view<RigidBody, Aggresion, Transform, Animator>();
 	for (auto entity : view)
 	{
-		
-		
 		RigidBody& rigidBody = reg.get<RigidBody>(entity);
 		Animator& animator = reg.get<Animator>(entity);
 		Transform& transform = reg.get<Transform>(entity);
 		Aggresion& aggresion = reg.get<Aggresion>(entity);
 		
-		b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
-
-		for (b2ContactEdge* edge = attackCircle->GetBody()->GetContactList(); edge; edge = edge->next)
+		b2Fixture* aggroCircle = rigidBody.body->GetFixtureList();
+		while (aggroCircle->GetUserData().pointer != ENEMY_AGGRO_RADIUS)
 		{
-			if (aggresion.isAggresive == true)
-			{
-				std::cout << "not in range\n";
-				aggresion.isAggresive = false;
-			}
+			aggroCircle = aggroCircle->GetNext();
+		}
+		bool playerFound = false;
 
-			if (edge->contact->GetFixtureB() == attackCircle)
+		for (b2ContactEdge* edge = aggroCircle->GetBody()->GetContactList(); edge; edge = edge->next)
+		{
+			if (edge->contact->GetFixtureB() == aggroCircle && edge->contact->GetFixtureA()->GetUserData().pointer == PLAYER)
 			{
+				playerFound = true;
 				b2Body* bodyA = edge->contact->GetFixtureA()->GetBody();
 				b2Body* bodyB = edge->contact->GetFixtureB()->GetBody();
 
@@ -34,7 +32,7 @@ void AggroSystem::update(entt::registry& reg, const float& dt)
 				
 				float angle = PhysicsWorld::angleBetween(vectorToPlayer, directionVector);
 
-				if (angle <= 70.f && aggresion.isAggresive == false)
+				if (angle <= 60.f)
 				{
 					std::cout << "AGGRO\n";
 
@@ -48,12 +46,17 @@ void AggroSystem::update(entt::registry& reg, const float& dt)
 					aggresion.vectorToTarget.y = normalizedVectorToPlayer.y;
 					break;
 				}
-				else if (angle > 70.f && aggresion.isAggresive == true)
+				else if (angle > 60.f)
 				{
 					std::cout << "angle >\n";
 					aggresion.isAggresive = false;
 				}
 			}
+		}
+		if (!playerFound)
+		{
+			std::cout << "player out of range\n";
+			aggresion.isAggresive = false;
 		}
 	}
 }

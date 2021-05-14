@@ -14,6 +14,7 @@ struct Attack
 		attackShape.m_radius = radius / 30.f;
 		fixtureDef.shape = &attackShape;
 		fixtureDef.isSensor = true;
+		fixtureDef.userData.pointer = ATTACK_RADIUS;
         body->CreateFixture(&fixtureDef);
 
 		this->damage = damage;
