@@ -12,8 +12,6 @@ void BishopIdleState::enter()
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;
-	//animator.previousFaceDirection = animator.currentFaceDirection;
-	//animator.currentFaceDirection = { .0f, 1.f };
 	animator.currentAnimation = IDLE;
 
 }
