@@ -26,28 +26,28 @@ void PlayerMoveState::update(const float& dt)
 {
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
-		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
 			new PlayerDeathState(owner));
 		std::cout << "";
 	}
 	else if (owner.GetComponent<Dash>().isDashing)
 	{
-		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
 			new PlayerDashState(owner));
 		std::cout << "";
 	}
 	else if (owner.GetComponent<Attack>().isAttacking)
 	{
-		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
 			new PlayerAttackState(owner));
 		std::cout << "";
 	}
 	else if (owner.GetComponent<Movement>().direction == sf::Vector2f(0, 0))
 	{
-		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState, 
 			new PlayerIdleState(owner));
 	}

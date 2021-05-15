@@ -14,3 +14,8 @@
 #include "Systems/Motion.h"
 #include "Systems/ActorSoundSystem.h"
 #include "Systems/AmbientSoundSystem.h"
+#include "Systems/AggroSystem.h"
+#include "Systems/PatrolSystem.h"
+#include "Systems/DisposalSystem.h"
+#include "Systems/InventorySystem.h"
+#include "Systems/PatrolSystem.h"

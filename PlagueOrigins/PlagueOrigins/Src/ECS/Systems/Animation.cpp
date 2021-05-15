@@ -127,17 +127,16 @@ void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 		if (armatureDisplay != nullptr)
 		{
 			animator.armatureDisplay = armatureDisplay;
-			animator.armatureDisplay->getAnimation()->play("Attack", 1);
+			if (tag.name == "Hero")
+			{
+				animator.armatureDisplay->getAnimation()->play("Attack", 1);
+			}
+			else if (tag.name == "Dog")
+			{
+				animator.armatureDisplay->getAnimation()->play("Attack0", 1);
+			}
 			armatureDisplay = nullptr;
 			delete armatureDisplay;
-		}
-		if (tag.name == "Hero")
-		{
-			animator.armatureDisplay->getAnimation()->play("Attack", 1);
-		}
-		else if (tag.name == "Dog")
-		{
-			animator.armatureDisplay->getAnimation()->play("Attack0", 1);
 		}
 	}
 }
@@ -234,8 +233,8 @@ void Animation::setAnimation(Animator& animator, Tag& tag)
 
 	if (animator.previousFaceDirection != animator.currentFaceDirection || animator.previousAnimation != animator.currentAnimation)
 	{
-		std::cout << "previousFaceDirection: " << animator.previousFaceDirection.x << " " << animator.previousFaceDirection.y << "\n";
-		std::cout << "currentFaceDirection: " << animator.currentFaceDirection.x << " " << animator.currentFaceDirection.y << "\n";
+		//std::cout << "previousFaceDirection: " << animator.previousFaceDirection.x << " " << animator.previousFaceDirection.y << "\n";
+		//std::cout << "currentFaceDirection: " << animator.currentFaceDirection.x << " " << animator.currentFaceDirection.y << "\n";
 		if (animator.previousFaceDirection.x >= 0 && animator.currentFaceDirection.x <= 0
 			|| animator.previousFaceDirection.x <= 0 && animator.currentFaceDirection.x >= 0
 			|| animator.previousAnimation != animator.currentAnimation
@@ -257,7 +256,7 @@ void Animation::setAnimation(Animator& animator, Tag& tag)
 	}
 }
 
-void Animation::onCreate(entt::registry& reg)
+void Animation::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 {
 	auto view = reg.view<Animator>();
 	for (auto entity : view)
@@ -269,7 +268,7 @@ void Animation::onCreate(entt::registry& reg)
 	}
 }
 
-void Animation::update(entt::registry& reg, const float& dt)
+void Animation::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<Animator, Transform, Tag>();
 	

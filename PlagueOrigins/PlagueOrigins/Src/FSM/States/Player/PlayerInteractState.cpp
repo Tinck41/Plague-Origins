@@ -21,7 +21,7 @@ void PlayerInteractState::update(const float& dt)
 {
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
-		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
 			new PlayerDeathState(owner));
 		std::cout << "";
@@ -29,7 +29,7 @@ void PlayerInteractState::update(const float& dt)
 	//END OF INTERACTION
 	else if (false)
 	{
-		PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
 			new PlayerIdleState(owner));
 		std::cout << "";

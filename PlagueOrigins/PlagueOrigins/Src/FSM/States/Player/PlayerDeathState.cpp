@@ -12,6 +12,9 @@ void PlayerDeathState::enter()
     Animator& animator = owner.GetComponent<Animator>();
     Movement& movement = owner.GetComponent<Movement>();
 
+    owner.RemoveComponent<Movement>();
+    owner.RemoveComponent<Attack>();
+
     animator.previousAnimation = animator.currentAnimation;
     animator.currentAnimation = DIE;
 }

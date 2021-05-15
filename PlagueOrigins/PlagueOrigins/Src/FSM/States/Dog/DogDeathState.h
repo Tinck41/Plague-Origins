@@ -2,7 +2,7 @@
 #include "Src/Screen/Entity.h"
 #include "Src/FSM/State.h"
 
-class NPCDogDeathState :
+class DogDeathState :
 	virtual public State
 {
 private:
@@ -14,7 +14,7 @@ private:
 	sf::Time last;
 
 public:
-	NPCDogDeathState(Entity& owner);
+	DogDeathState(Entity& owner);
 
 	virtual void enter() override;
 	virtual void update(const float& dt) override;

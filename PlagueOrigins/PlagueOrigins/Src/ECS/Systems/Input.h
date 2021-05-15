@@ -7,7 +7,7 @@
 class Input :
 	public IUpdateSystem
 {
-	virtual void update(entt::registry& reg, const float& dt) override;
+	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
 
 	void movementInput(PlayerInput& input);
 	void checkS(PlayerInput& input);
@@ -17,4 +17,5 @@ class Input :
 	void checkR(PlayerInput& input);
 	void checkSpace(PlayerInput& input);
 	void checkLMB(PlayerInput& input);
+	void checkEsc(PlayerInput& input);
 };

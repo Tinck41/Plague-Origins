@@ -6,5 +6,5 @@
 class IOnCreateSystem
 {
 public:
-	virtual void onCreate(entt::registry& reg) = 0;
+	virtual void onCreate(entt::registry& reg, tgui::GuiSFML& gui) = 0;
 };

@@ -2,7 +2,7 @@
 #include "GameScreen.h"
 
 #include "Src/FSM/States/Player/PlayerStates.h"
-#include "Src/FSM/States/NPCDog/NPCDogStates.h"
+#include "Src/FSM/States/Dog/DogStates.h"
 #include "Src/FSM/States/Bishop/BishopStates.h"
 
 GameScreen::GameScreen()
@@ -14,7 +14,7 @@ GameScreen::GameScreen()
 	mapLoader.~TilemapParser();
 
 	gui.loadWidgetsFromFile("../AdditionalLibraries/TGUI-0.9/gui-builder/Game.txt");
-
+	
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<Transform>();
 	testEntity.AddComponent<PlayerInput>();
@@ -25,11 +25,12 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity, PLAYER);
 	testEntity.AddComponent<Tag>("Hero");
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
-	testEntity.AddComponent<Health>(300.f);
+	testEntity.AddComponent<Health>(500.f);
 	testEntity.AddComponent<Vampire>();
-	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 100.f);
+	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 150.f);
 	testEntity.GetComponent<Health>().curhealth = 100.f;
-	testEntity.AddComponent<PlayerSMcomponent>(new PlayerIdleState(testEntity));
+	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
+	testEntity.AddComponent<Inventory>(0);
 
 	Entity ambient = Entity(registry.create(), this);
 	ambient.AddComponent<AmbienceAudioSource>();
@@ -37,12 +38,19 @@ GameScreen::GameScreen()
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>();
-	npcEntity.AddComponent<Movement>(500.f);
+	npcEntity.AddComponent<Movement>(300.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
+	npcEntity.AddComponent<Attack>(npcEntity.GetComponent<RigidBody>().body, 25.f, 150.f);
+	npcEntity.AddComponent<Aggresion>(npcEntity.GetComponent<RigidBody>().body, 300.f);
 	npcEntity.AddComponent<Tag>("Dog");
-	npcEntity.AddComponent<Health>(300.f);
 	npcEntity.AddComponent<ActorAudioSource>();
-	npcEntity.AddComponent<PlayerSMcomponent>(new NPCDogIdleState(npcEntity));
+	npcEntity.AddComponent<Health>(200.f);
+	npcEntity.AddComponent<SMcomponent>(new DogIdleState(npcEntity));
+	std::vector<sf::Vector2f> waypoints;
+	waypoints.push_back(sf::Vector2f(615.f,615.f));
+	waypoints.push_back(sf::Vector2f(615.f,915.f));
+	npcEntity.AddComponent<Patrol>(waypoints);
+	npcEntity.AddComponent<Dispose>();
 
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();
@@ -53,9 +61,9 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Tag>("Bishop");
 	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
 	bishop.AddComponent<Health>(300.f);
-	bishop.AddComponent<PlayerSMcomponent>(new BishopIdleState(bishop));
-	
-	systems.onCreate(registry);
+	bishop.AddComponent<SMcomponent>(new BishopIdleState(bishop));
+
+	systems.onCreate(registry, gui);
 }
 
 GameScreen::~GameScreen()
@@ -67,7 +75,7 @@ void GameScreen::update(const float& dt)
 {
 	map.update(dt);
 	GlobalFactory::Instance().factory.update(dt);
-	systems.update(registry, dt);
+	systems.update(registry, gui, dt);
 	PhysicsWorld::update(dt);
 }
 

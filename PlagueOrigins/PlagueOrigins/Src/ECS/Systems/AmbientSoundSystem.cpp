@@ -7,7 +7,7 @@ AmbientSoundSystem::AmbientSoundSystem()
 	torchBuffer.loadFromFile("./Assets/SFX/FireTorchSoundMono.wav");
 }
 
-void AmbientSoundSystem::update(entt::registry& reg, const float& dt)
+void AmbientSoundSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<AmbienceAudioSource>();
 	for (auto entity : view)

@@ -2,14 +2,14 @@
 #include "Src/Screen/Entity.h"
 #include "Src/FSM/State.h"
 
-class NPCDogAggroState :
+class DogAggroState :
 	virtual public State
 {
 private:
 	Entity& owner;
 	sf::Vector2f target;
 public:
-	NPCDogAggroState(Entity& owner);
+	DogAggroState(Entity& owner);
 
 	virtual void enter() override;
 	virtual void update(const float& dt) override;

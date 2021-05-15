@@ -1,9 +1,10 @@
 #pragma once
 #include "Src/ECS/Components.h"
-#include "Src/ECS/Systems.h"
+#include "Src/ECS/Systems/IUpdateSystem.h"
 
-class Motion : public IUpdateSystem
+class AggroSystem :
+	public virtual IUpdateSystem
 {
-	// Inherited via IEcsUpdateSystem
+public:
 	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
 };

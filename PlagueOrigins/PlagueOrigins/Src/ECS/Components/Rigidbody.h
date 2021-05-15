@@ -24,12 +24,12 @@ struct RigidBody
 		shape->setOutlineThickness(2);
 		shape->setFillColor(sf::Color::Transparent);
 		shape->setOutlineColor(sf::Color::Green);
-		body = PhysicsWorld::createCircleleBody(position, radius, isDynamic, owner, categoryBits);
+		body = PhysicsWorld::createCircleBody(position, radius, isDynamic, owner, categoryBits);
 	}
 
 	b2Body* body;
 	sf::Vector2f size{0.f, 0.f};
 	float radius = 0.f;
-	bool debugDraw = false;
+	bool debugDraw = true;	
 	sf::Shape* shape;
 };

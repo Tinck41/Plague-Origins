@@ -10,7 +10,7 @@ ActorSoundSystem::ActorSoundSystem()
 	dogGetHitBuffer.loadFromFile("./Assets/SFX/GetHit.wav");
 }
 
-void ActorSoundSystem::onCreate(entt::registry& reg)
+void ActorSoundSystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 {
 	auto view = reg.view<ActorAudioSource, Tag>();
 	for (auto entity : view)
@@ -30,7 +30,7 @@ void ActorSoundSystem::onCreate(entt::registry& reg)
 }
 
 
-void ActorSoundSystem::update(entt::registry& reg, const float& dt)
+void ActorSoundSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<ActorAudioSource, Tag, Transform>();
 	for (auto entity : view)
@@ -73,6 +73,14 @@ void ActorSoundSystem::playPlayerSounds(ActorAudioSource& audioSource)
 	else if (!audioSource.loopFootStepSound)
 	{
 		audioSource.footStepSound.setLoop(false);
+	}
+
+	if (audioSource.playGetHitSound)
+	{
+		sf::Sound& sound = audioSource.getHitSound;
+		sound.play();
+		sound.setVolume(50.f);
+		audioSource.playGetHitSound = false;
 	}
 }
 

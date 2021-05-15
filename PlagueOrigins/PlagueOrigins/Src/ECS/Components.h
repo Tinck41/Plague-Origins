@@ -15,6 +15,10 @@
 #include "Components/Interact.h"
 #include "Components/ActorAudioSource.h"
 #include "Components/AmbienceAudioSource.h"
+#include "Components/Aggresion.h"
+#include "Components/Inventory.h"
+#include "Components/Patrol.h"
+#include "Components/Dispose.h"
 
 
 //FSM

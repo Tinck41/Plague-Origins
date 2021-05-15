@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Interaction.h"
 
-void Interaction::update(entt::registry& reg, const float& dt)
+void Interaction::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<Interact, Transform, Animator>();
 
@@ -61,7 +61,7 @@ bool Interaction::checkForPlayer(RigidBody& rigidBody)
 		{
 			if (edge->contact->IsTouching())
 			{
-				if (edge->contact->GetFixtureA()->GetBody()->GetUserData().pointer == 0)
+				if (edge->contact->GetFixtureA()->GetUserData().pointer == PLAYER)
 				{
 					return true;
 				}

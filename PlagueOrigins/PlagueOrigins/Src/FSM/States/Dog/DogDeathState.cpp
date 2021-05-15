@@ -1,33 +1,37 @@
 #include "stdafx.h"
-#include "./NPCDogStates.h"
+#include "./DogStates.h"
 
-NPCDogDeathState::NPCDogDeathState(Entity& owner) :
+DogDeathState::DogDeathState(Entity& owner) :
 	owner(owner)
 {
 	delay = sf::seconds(2.f);
 }
 
-void NPCDogDeathState::enter()
+void DogDeathState::enter()
 {
-	std::cout << "DIE\n";
+	std::cout << "Dog Death State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = DIE;
 
+	owner.RemoveComponent<Movement>();
+
 	//Timer
 	last = gameClock.getElapsedTime();
 }
 
-void NPCDogDeathState::update(const float& dt)
+void DogDeathState::update(const float& dt)
 {
 	now = gameClock.getElapsedTime();
 	if (now - last >= delay)
 	{
 		//dispose
+		std::cout << "dispose true\n";
+		owner.GetComponent<Dispose>().toDispose = true;
 	}
 }
 
-void NPCDogDeathState::exit()
+void DogDeathState::exit()
 {
 }
