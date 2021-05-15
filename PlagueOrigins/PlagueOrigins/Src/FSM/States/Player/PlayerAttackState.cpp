@@ -11,6 +11,9 @@ void PlayerAttackState::enter()
 {
     std::cout << "ATTACK\n";
     Animator& animator = owner.GetComponent<Animator>();
+    ActorAudioSource& audioSource = owner.GetComponent<ActorAudioSource>();
+
+    audioSource.playAttackSound = true;
 
     animator.previousAnimation = animator.currentAnimation;
     animator.currentAnimation = ATTACK;

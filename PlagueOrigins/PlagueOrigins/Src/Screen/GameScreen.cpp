@@ -18,6 +18,7 @@ GameScreen::GameScreen()
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<Transform>();
 	testEntity.AddComponent<PlayerInput>();
+	testEntity.AddComponent<ActorAudioSource>();
 	testEntity.AddComponent<Dash>();
 	testEntity.AddComponent<Animator>();
 	testEntity.AddComponent<Movement>(500.f);
@@ -31,14 +32,18 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
 	testEntity.AddComponent<Inventory>(0);
 
+	Entity ambient = Entity(registry.create(), this);
+	ambient.AddComponent<AmbienceAudioSource>();
+
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>();
 	npcEntity.AddComponent<Movement>(300.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
-	npcEntity.AddComponent<Attack>(npcEntity.GetComponent<RigidBody>().body, 100.f, 150.f);
+	npcEntity.AddComponent<Attack>(npcEntity.GetComponent<RigidBody>().body, 25.f, 150.f);
 	npcEntity.AddComponent<Aggresion>(npcEntity.GetComponent<RigidBody>().body, 300.f);
 	npcEntity.AddComponent<Tag>("Dog");
+	npcEntity.AddComponent<ActorAudioSource>();
 	npcEntity.AddComponent<Health>(200.f);
 	npcEntity.AddComponent<SMcomponent>(new DogIdleState(npcEntity));
 	std::vector<sf::Vector2f> waypoints;

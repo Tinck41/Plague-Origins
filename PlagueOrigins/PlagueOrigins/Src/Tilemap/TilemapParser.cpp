@@ -50,6 +50,7 @@ void TilemapParser::parseTileMap()
 	parseTileSet();
 	parseTileLayer();
 	parseTileMapObjects();
+	parseSoundSources();
 
 	tileMap = TileMap(tileLayers, mapSize, tileSize);
 }
@@ -211,7 +212,7 @@ void TilemapParser::parseTileMapObjects()
 	size_t layersCount = jsonReader["layers"].size();
 	for (size_t i = 0; i < layersCount; i++)
 	{
-		if (jsonReader["layers"][i]["type"] == "objectgroup")
+		if (jsonReader["layers"][i]["type"] == "objectgroup" && jsonReader["layers"][i]["properties"][0]["value"] == "collision")
 		{
 			size_t objectsCount = jsonReader["layers"][i]["objects"].size();
 			for (size_t j = 0; j < objectsCount; j++)
@@ -224,6 +225,32 @@ void TilemapParser::parseTileMapObjects()
 				
 				Entity object = Entity(registry->create(), screen);
 				PhysicsWorld::createRectangleBody(sf::Vector2f(x, y), sf::Vector2f(width, height), false, object, OBSTACLE);
+			}
+		}
+	}
+}
+
+void TilemapParser::parseSoundSources()
+{
+	size_t layersCount = jsonReader["layers"].size();
+	for (size_t i = 0; i < layersCount; i++)
+	{
+		if (jsonReader["layers"][i]["type"] == "objectgroup" && jsonReader["layers"][i]["properties"][0]["value"] == "sound")
+		{
+			size_t objectsCount = jsonReader["layers"][i]["objects"].size();
+			for (size_t j = 0; j < objectsCount; j++)
+			{
+				Entity sound = Entity(registry->create(), screen);
+				sound.AddComponent<AmbienceAudioSource>();
+
+				AmbienceAudioSource& soundSource = sound.GetComponent<AmbienceAudioSource>();
+				soundSource.playWindSound = false;
+				soundSource.loopWindSound = false;
+				
+				float x = jsonReader["layers"][i]["objects"][j]["x"];
+				float y = jsonReader["layers"][i]["objects"][j]["y"];
+
+				soundSource.torchSoundPosition = sf::Vector3f(x, 0.f, y);
 			}
 		}
 	}

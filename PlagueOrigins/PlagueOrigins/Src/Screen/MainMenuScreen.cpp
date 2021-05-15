@@ -3,6 +3,12 @@
 
 MainMenuScreen::MainMenuScreen()
 {
+	mainThemeBuffer.loadFromFile("./Assets/SFX/MainMenuTheme.wav");
+	mainTheme.setBuffer(mainThemeBuffer);
+	mainTheme.setLoop(true);
+	mainTheme.setVolume(30.f);
+	mainTheme.play();
+
 	gui.loadWidgetsFromFile("../AdditionalLibraries/TGUI-0.9/gui-builder/Main_menu.txt");
 	gui.get<tgui::Button>("newGame")->onClick(&MainMenuScreen::setGameScreen, this);
 	gui.get<tgui::Button>("quit")->onClick(&MainMenuScreen::setExitScreen, this);
@@ -30,6 +36,7 @@ ScreenType MainMenuScreen::render(sf::RenderWindow& window)
 
 	if (newGame) 
 	{
+		mainTheme.stop();
 		return ScreenType::GAME;
 	}
 	if (quit) 

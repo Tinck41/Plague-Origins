@@ -14,7 +14,12 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 		
 		if (attack.isAttacking)
 		{
+
 			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
+			while (attackCircle->GetUserData().pointer != ATTACK_RADIUS)
+			{
+				attackCircle = attackCircle->GetNext();
+			}
 
 			for (b2ContactEdge* edge = attackCircle->GetBody()->GetContactList(); edge; edge = edge->next)
 			{
@@ -22,7 +27,7 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 				{
 					b2Body* bodyA = edge->contact->GetFixtureA()->GetBody();
 					b2Body* bodyB = edge->contact->GetFixtureB()->GetBody();
-
+					
 					sf::Vector2f vec1{ bodyA->GetPosition().x * 30.f, bodyA->GetPosition().y * 30.f };
 					vec1 = vec1 - transform.position;
 					sf::Vector2f vec2{ animator.currentFaceDirection.x, animator.currentFaceDirection.y };
@@ -35,6 +40,12 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 						{
 							Health& receiverHealth = reg.get<Health>((entt::entity)bodyA->GetUserData().pointer);
 							receiverHealth.curhealth -= attack.damage;
+
+							if (reg.all_of<ActorAudioSource>((entt::entity)bodyA->GetUserData().pointer))
+							{
+								ActorAudioSource& soundSource = reg.get<ActorAudioSource>((entt::entity)bodyA->GetUserData().pointer);
+								soundSource.playGetHitSound = true;
+							}
 
 							if (reg.all_of<Vampire>(entity))
 							{
