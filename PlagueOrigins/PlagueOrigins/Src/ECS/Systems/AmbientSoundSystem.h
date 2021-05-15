@@ -14,5 +14,5 @@ public:
 	virtual void update(entt::registry& reg, const float& dt) override;
 private:
 	sf::SoundBuffer windBuffer;
-	sf::Sound windSound;
+	sf::SoundBuffer torchBuffer;
 };

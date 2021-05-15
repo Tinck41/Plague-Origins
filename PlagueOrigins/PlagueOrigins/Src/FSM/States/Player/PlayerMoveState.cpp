@@ -11,7 +11,7 @@ void PlayerMoveState::enter()
 	std::cout << "MOVE\n";
 	Animator& animator = owner.GetComponent<Animator>();
 	Movement& movement = owner.GetComponent<Movement>();
-	PlayerAudioSource& audioSource = owner.GetComponent<PlayerAudioSource>();
+	ActorAudioSource& audioSource = owner.GetComponent<ActorAudioSource>();
 
 	audioSource.playFootStepSound = true;
 	audioSource.loopFootStepSound = true;
@@ -65,7 +65,7 @@ void PlayerMoveState::update(const float& dt)
 
 void PlayerMoveState::exit()
 {
-	PlayerAudioSource& audioSource = owner.GetComponent<PlayerAudioSource>();
+	ActorAudioSource& audioSource = owner.GetComponent<ActorAudioSource>();
 
 	audioSource.loopFootStepSound = false;
 }

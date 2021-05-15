@@ -18,7 +18,7 @@ GameScreen::GameScreen()
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<Transform>();
 	testEntity.AddComponent<PlayerInput>();
-	testEntity.AddComponent<PlayerAudioSource>();
+	testEntity.AddComponent<ActorAudioSource>();
 	testEntity.AddComponent<Dash>();
 	testEntity.AddComponent<Animator>();
 	testEntity.AddComponent<Movement>(500.f);
@@ -41,6 +41,7 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<Health>(300.f);
+	npcEntity.AddComponent<ActorAudioSource>();
 	npcEntity.AddComponent<PlayerSMcomponent>(new NPCDogIdleState(npcEntity));
 
 	bishop = Entity(registry.create(), this);

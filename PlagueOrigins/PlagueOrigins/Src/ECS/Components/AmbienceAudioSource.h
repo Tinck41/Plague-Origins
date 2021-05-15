@@ -2,9 +2,13 @@
 
 struct AmbienceAudioSource
 {
+	sf::Sound windSound;
+	sf::Sound torchSound;
+
 	bool playWindSound = true;
 	bool loopWindSound = true;
 
-	bool playFireSound = false;
-	bool loopFireSound = false;
+	bool playTorchSound = true;
+	bool loopTorchSound = true;
+	sf::Vector3f torchSoundPosition;
 };

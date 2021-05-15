@@ -76,7 +76,7 @@
     <ClCompile Include="Src\FSM\States\Bishop\BishopInteractState.cpp" />
     <ClCompile Include="Src\FSM\States\Bishop\BishopDeathState.cpp" />
     <ClCompile Include="Src\FSM\States\Player\PlayerDashState.cpp" />
-    <ClCompile Include="Src\ECS\Systems\PlayerSoundSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\ActorSoundSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\AmbientSoundSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -194,10 +194,10 @@
     <ClInclude Include="Src\FSM\States\Bishop\BishopInteractState.h" />
     <ClInclude Include="Src\FSM\States\Bishop\BishopDeathState.h" />
     <ClInclude Include="Src\FSM\States\Player\PlayerDashState.h" />
-    <ClInclude Include="Src\ECS\Components\PlayerAudioSource.h" />
-    <ClInclude Include="Src\ECS\Systems\PlayerSoundSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\ActorSoundSystem.h" />
     <ClInclude Include="Src\ECS\Components\AmbienceAudioSource.h" />
     <ClInclude Include="Src\ECS\Systems\AmbientSoundSystem.h" />
+    <ClInclude Include="Src\ECS\Components\ActorAudioSource.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

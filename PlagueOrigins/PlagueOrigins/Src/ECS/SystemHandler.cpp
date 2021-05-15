@@ -4,6 +4,8 @@
 
 SystemHandler::SystemHandler()
 {
+	ActorSoundSystem* actorSoundSystem = new ActorSoundSystem();
+
 	// Update systems
 	updatableSystems.push_back(new Input());
 	updatableSystems.push_back(new Controller());
@@ -15,7 +17,7 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new Interaction());
 	updatableSystems.push_back(new Camera());
 	updatableSystems.push_back(new Motion());
-	updatableSystems.push_back(new PlayerSoundSystem());
+	updatableSystems.push_back(actorSoundSystem);
 	updatableSystems.push_back(new AmbientSoundSystem());
 
 	// Render systems
@@ -25,6 +27,7 @@ SystemHandler::SystemHandler()
 
 	// OnCreate system
 	onCreateSystems.push_back(new Animation());
+	onCreateSystems.push_back(actorSoundSystem);
 }
 
 SystemHandler::~SystemHandler()

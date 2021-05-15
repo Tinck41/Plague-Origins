@@ -36,6 +36,12 @@ void Combat::update(entt::registry& reg, const float& dt)
 							Health& receiverHealth = reg.get<Health>((entt::entity)bodyA->GetUserData().pointer);
 							receiverHealth.curhealth -= attack.damage;
 
+							if (reg.all_of<ActorAudioSource>((entt::entity)bodyA->GetUserData().pointer))
+							{
+								ActorAudioSource& soundSource = reg.get<ActorAudioSource>((entt::entity)bodyA->GetUserData().pointer);
+								soundSource.playGetHitSound = true;
+							}
+
 							if (reg.all_of<Vampire>(entity))
 							{
 								Vampire& vampire = reg.get<Vampire>(entity);

@@ -4,8 +4,7 @@
 AmbientSoundSystem::AmbientSoundSystem()
 {
 	windBuffer.loadFromFile("./Assets/SFX/WindAmbience.wav");
-
-	windSound.setBuffer(windBuffer);
+	torchBuffer.loadFromFile("./Assets/SFX/FireTorchSoundMono.wav");
 }
 
 void AmbientSoundSystem::update(entt::registry& reg, const float& dt)
@@ -17,14 +16,33 @@ void AmbientSoundSystem::update(entt::registry& reg, const float& dt)
 
 		if (audioSource.playWindSound)
 		{
-			windSound.setLoop(true);
-			windSound.play();
-			windSound.setVolume(50.f);
+			sf::Sound& sound = audioSource.windSound;
+			sound.setBuffer(windBuffer);
+			sound.setLoop(true);
+			sound.play();
+			sound.setVolume(50.f);
 			audioSource.playWindSound = false;
 		}
 		else if (!audioSource.loopWindSound)
 		{
-			windSound.setLoop(false);
+			audioSource.windSound.setLoop(false);
+		}
+
+		if (audioSource.playTorchSound)
+		{
+			sf::Sound& sound = audioSource.torchSound;
+			sound.setBuffer(torchBuffer);
+			sound.setPosition(audioSource.torchSoundPosition);
+			sound.setMinDistance(500.f);
+			sound.setAttenuation(5.f);
+			sound.setLoop(true);
+			sound.play();
+			sound.setVolume(50.f);
+			audioSource.playTorchSound = false;
+		}
+		else if (!audioSource.loopTorchSound)
+		{
+			audioSource.torchSound.setLoop(false);
 		}
 	}
 }

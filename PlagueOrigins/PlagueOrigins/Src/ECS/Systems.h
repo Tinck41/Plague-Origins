@@ -12,5 +12,5 @@
 #include "Systems/Vampiring.h"
 #include "Systems/Interaction.h"
 #include "Systems/Motion.h"
-#include "Systems/PlayerSoundSystem.h"
+#include "Systems/ActorSoundSystem.h"
 #include "Systems/AmbientSoundSystem.h"

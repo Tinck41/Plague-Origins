@@ -155,7 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\ECS\Systems\AmbientSoundSystem.cpp" />
-    <ClCompile Include="Src\ECS\Systems\PlayerSoundSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\ActorSoundSystem.cpp" />
     <ClCompile Include="Src\Tilemap\AnimatedTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\StaticTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\TilemapParser.cpp" />
@@ -212,10 +212,10 @@
     <ClCompile Include="Src\Utility\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\ECS\Components\ActorAudioSource.h" />
     <ClInclude Include="Src\ECS\Components\AmbienceAudioSource.h" />
-    <ClInclude Include="Src\ECS\Components\PlayerAudioSource.h" />
     <ClInclude Include="Src\ECS\Systems\AmbientSoundSystem.h" />
-    <ClInclude Include="Src\ECS\Systems\PlayerSoundSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\ActorSoundSystem.h" />
     <ClInclude Include="Src\Tilemap\AnimatedTileLayer.h" />
     <ClInclude Include="Src\Tilemap\StaticTileLayer.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />
