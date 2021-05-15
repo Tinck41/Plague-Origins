@@ -6,7 +6,7 @@ Config::Config()
 {
 	// Read config.json
 	nlohmann::json json;
-	std::ifstream i("config.json");
+	std::ifstream i("./Assets/Configs/config.json");
 	i >> json;
 	
 	// Print config.json
