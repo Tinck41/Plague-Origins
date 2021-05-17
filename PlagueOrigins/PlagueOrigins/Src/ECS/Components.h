@@ -19,6 +19,7 @@
 #include "Components/Inventory.h"
 #include "Components/Patrol.h"
 #include "Components/Dispose.h"
+#include "Components/Stamina.h"
 
 
 //FSM
