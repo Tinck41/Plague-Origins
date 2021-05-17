@@ -26,9 +26,9 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Tag>("Hero");
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	testEntity.AddComponent<Health>(500.f);
+	testEntity.AddComponent<Stamina>(500.f);
 	testEntity.AddComponent<Vampire>();
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 150.f);
-	testEntity.GetComponent<Health>().curhealth = 100.f;
 	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
 	testEntity.AddComponent<Inventory>(0);
 
