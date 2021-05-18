@@ -19,3 +19,12 @@ Run
 Attack0
 Attack1
 Die
+
+----------------boss-----------------
+
+ArmatureBossR && ArmatureBossD && ArmatureBossU
+Idle
+Run
+Attack0
+Attack1
+Die
