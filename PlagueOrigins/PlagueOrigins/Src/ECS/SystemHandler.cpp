@@ -4,6 +4,9 @@
 
 SystemHandler::SystemHandler()
 {
+	ActorSoundSystem* actorSoundSystem = new ActorSoundSystem();
+	StatsSystem* statsSystem = new StatsSystem();
+
 	// Update systems
 	updatableSystems.push_back(new Input());
 	updatableSystems.push_back(new Controller());
@@ -15,6 +18,9 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new Interaction());
 	updatableSystems.push_back(new Camera());
 	updatableSystems.push_back(new Motion());
+	updatableSystems.push_back(actorSoundSystem);
+	updatableSystems.push_back(statsSystem);
+	updatableSystems.push_back(new AmbientSoundSystem());
 	updatableSystems.push_back(new AggroSystem());
 	updatableSystems.push_back(new PatrolSystem());
 	updatableSystems.push_back(new DisposalSystem());
@@ -24,9 +30,11 @@ SystemHandler::SystemHandler()
 	renderableSystems.push_back(new Interaction());
 	renderableSystems.push_back(new Physics());
 	renderableSystems.push_back(new PatrolSystem());
+	renderableSystems.push_back(statsSystem);
 
 	// OnCreate system
 	onCreateSystems.push_back(new Animation());
+	onCreateSystems.push_back(actorSoundSystem);
 	
 	// Update && render && onCreate systems
 	auto inventorySystem = new InventorySystem();

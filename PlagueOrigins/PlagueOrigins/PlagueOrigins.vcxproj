@@ -90,7 +90,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\TGUI-0.9\lib;$(SolutionDir)\AdditionalLibraries\Box2D\lib;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;box2d-d.lib;tgui-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-main-d.lib;sfml-audio-d.lib;box2d-d.lib;tgui-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -128,7 +128,7 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;box2d.lib;tgui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-main.lib;sfml-audio.lib;box2d.lib;tgui.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\AdditionalLibraries\TGUI-0.9\lib;$(SolutionDir)\AdditionalLibraries\SFML-2.5.1\lib;$(SolutionDir)\AdditionalLibraries\Box2D\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -154,10 +154,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\ECS\Systems\AmbientSoundSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\ActorSoundSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\AggroSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\DisposalSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\InventorySystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\PatrolSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\StatsSystem.cpp" />
     <ClCompile Include="Src\Tilemap\AnimatedTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\StaticTileLayer.cpp" />
     <ClCompile Include="Src\Tilemap\TilemapParser.cpp" />
@@ -214,6 +217,11 @@
     <ClCompile Include="Src\Utility\tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\ECS\Components\ActorAudioSource.h" />
+    <ClInclude Include="Src\ECS\Components\AmbienceAudioSource.h" />
+    <ClInclude Include="Src\ECS\Components\Stamina.h" />
+    <ClInclude Include="Src\ECS\Systems\AmbientSoundSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\ActorSoundSystem.h" />
     <ClInclude Include="Src\ECS\Components\Aggresion.h" />
     <ClInclude Include="Src\ECS\Components\Dispose.h" />
     <ClInclude Include="Src\ECS\Systems\AggroSystem.h" />
@@ -222,6 +230,7 @@
     <ClInclude Include="Src\ECS\Components\Patrol.h" />
     <ClInclude Include="Src\ECS\Systems\DisposalSystem.h" />
     <ClInclude Include="Src\ECS\Systems\PatrolSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\StatsSystem.h" />
     <ClInclude Include="Src\Tilemap\AnimatedTileLayer.h" />
     <ClInclude Include="Src\Tilemap\StaticTileLayer.h" />
     <ClInclude Include="Src\Tilemap\TilemapParser.h" />
