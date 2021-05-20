@@ -5,6 +5,7 @@
 #include "PhysicsContactListener.h"
 
 #define RADTODEG 180.f / M_PI
+#define SCALE 30.f
 
 enum EntityCategory
 {
@@ -13,7 +14,8 @@ enum EntityCategory
 	FRIENDLY_NPC = 0x0004,
 	OBSTACLE = 0x0006,
 	ENEMY_AGGRO_RADIUS = 0x0007,
-	ATTACK_RADIUS = 0x0008
+	ATTACK_RADIUS = 0x0008,
+	BOSS_FIGHT_TRIGGER = 0x0009
 };
 
 class PhysicsWorld
@@ -40,8 +42,6 @@ public:
 private:
 	b2World* world;
 	PhysicsContactListener contactListener;
-
-	const float SCALE = 30.f;
 
 	PhysicsWorld();
 

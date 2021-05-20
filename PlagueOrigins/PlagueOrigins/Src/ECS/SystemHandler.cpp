@@ -24,6 +24,7 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new AggroSystem());
 	updatableSystems.push_back(new PatrolSystem());
 	updatableSystems.push_back(new DisposalSystem());
+	updatableSystems.push_back(new BossFight());
 
 	// Render systems
 	renderableSystems.push_back(new Animation());

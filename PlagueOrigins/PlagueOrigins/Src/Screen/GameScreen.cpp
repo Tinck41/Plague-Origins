@@ -22,7 +22,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Dash>();
 	testEntity.AddComponent<Animator>();
 	testEntity.AddComponent<Movement>(500.f);
-	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity, PLAYER);
+	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(2716.f, 4992.f), true, testEntity, PLAYER);
 	testEntity.AddComponent<Tag>("Hero");
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	testEntity.AddComponent<Health>(500.f);
