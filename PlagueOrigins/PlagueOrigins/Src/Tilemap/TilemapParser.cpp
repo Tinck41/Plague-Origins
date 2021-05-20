@@ -279,16 +279,18 @@ void TilemapParser::parseBossFightTriggers()
 				bossFightTrigger.AddComponent<RigidBody>(sf::Vector2f(width, height), sf::Vector2f(x, y), false, bossFightTrigger, BOSS_FIGHT_TRIGGER)
 					.body->GetFixtureList()->SetSensor(true);
 
-				size_t propertiesCount = jsonReader["layers"][i]["objects"][j]["properties"].size();
-				for (size_t k = 0; k < 2; k++)
+				uint8_t propertiesCount = 4;
+				size_t	doorCount		= jsonReader["layers"][i]["objects"][j]["properties"].size() / propertiesCount;
+				for (size_t k = 0; k < doorCount; k++)
 				{
 					Entity door = Entity(registry->create(), screen);
+					uint16_t param = k * propertiesCount;
 
-					float doorHeight	= jsonReader["layers"][i]["objects"][j]["properties"][0 + k * 4]["value"];
-					float doorWidth		= jsonReader["layers"][i]["objects"][j]["properties"][1 + k * 4]["value"];
+					float doorHeight	= jsonReader["layers"][i]["objects"][j]["properties"][0 + param]["value"];
+					float doorWidth		= jsonReader["layers"][i]["objects"][j]["properties"][1 + param]["value"];
 
-					float doorX			= jsonReader["layers"][i]["objects"][j]["properties"][2 + k * 4]["value"];
-					float doorY			= jsonReader["layers"][i]["objects"][j]["properties"][3 + k * 4]["value"];
+					float doorX			= jsonReader["layers"][i]["objects"][j]["properties"][2 + param]["value"];
+					float doorY			= jsonReader["layers"][i]["objects"][j]["properties"][3 + param]["value"];
 
 					door.AddComponent<RigidBody>(sf::Vector2f(doorWidth, doorHeight), sf::Vector2f(doorX, doorY), false, door, OBSTACLE)
 						.body->GetFixtureList()->SetSensor(true);
