@@ -41,6 +41,10 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(inventorySystem);
 	renderableSystems.push_back(inventorySystem);
 	onCreateSystems.push_back(inventorySystem);
+	auto dialogueSystem = new DialogueSystem();
+	updatableSystems.push_back(dialogueSystem);
+	renderableSystems.push_back(dialogueSystem);
+	onCreateSystems.push_back(dialogueSystem);
 }
 
 SystemHandler::~SystemHandler()

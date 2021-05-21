@@ -31,6 +31,8 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 150.f);
 	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
 	testEntity.AddComponent<Inventory>(0);
+	testEntity.AddComponent<Player>();
+	testEntity.AddComponent<Dialogue>();
 
 	Entity ambient = Entity(registry.create(), this);
 	ambient.AddComponent<AmbienceAudioSource>();
