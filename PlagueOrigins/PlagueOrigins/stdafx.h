@@ -44,5 +44,6 @@
 
 #include "Src/Global/Config.h"
 #include "Src/Utility/PhysicsWorld.h"
+#include "Characteristics.h"
 
 extern Config config;
