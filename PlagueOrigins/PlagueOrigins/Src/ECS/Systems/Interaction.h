@@ -6,7 +6,7 @@
 
 class Interaction :
 	public IRenderSystem,
-	public IUpdateSystem,
+	public IUpdateSystem
 {
 public:
 	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
