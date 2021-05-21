@@ -215,6 +215,8 @@
     <ClInclude Include="Src\ECS\Systems\DialogueSystem.h" />
     <ClInclude Include="Src\ECS\Components\PlayerTemporal.h" />
     <ClInclude Include="Src\ECS\Components\Dialogue.h" />
+    <ClInclude Include="Src\ECS\Components\Stats.h" />
+    <ClInclude Include="Characteristics.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
