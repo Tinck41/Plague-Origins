@@ -14,6 +14,7 @@ class Input :
 	void checkA(PlayerInput& input);
 	void checkW(PlayerInput& input);
 	void checkD(PlayerInput& input);
+	void checkF(PlayerInput& input);
 	void checkR(PlayerInput& input);
 	void checkSpace(PlayerInput& input);
 	void checkLMB(PlayerInput& input);

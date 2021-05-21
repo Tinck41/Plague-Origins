@@ -17,6 +17,7 @@ void Input::movementInput(PlayerInput& input)
 	checkA(input);
 	checkS(input);
 	checkD(input);
+	checkF(input);
 	checkR(input);
 	checkSpace(input);
 	checkLMB(input);
@@ -132,6 +133,34 @@ void Input::checkD(PlayerInput& input)
 		input.dWasPressed = false;
 		input.dPressed = false;
 		input.dReleased = false;
+	}
+}
+
+void Input::checkF(PlayerInput& input)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F) && !input.fPressed)
+	{
+		input.fWasPressed = true;
+		input.fPressed = true;
+		input.fReleased = false;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F))
+	{
+		input.fWasPressed = false;
+		input.fPressed = true;
+		input.fReleased = false;
+	}
+	else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F) && input.fPressed)
+	{
+		input.fWasPressed = false;
+		input.fPressed = false;
+		input.fReleased = true;
+	}
+	else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F))
+	{
+		input.fWasPressed = false;
+		input.fPressed = false;
+		input.fReleased = false;
 	}
 }
 

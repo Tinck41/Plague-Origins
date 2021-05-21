@@ -220,6 +220,7 @@
   <ItemGroup>
     <ClInclude Include="Src\ECS\Components\ActorAudioSource.h" />
     <ClInclude Include="Src\ECS\Components\AmbienceAudioSource.h" />
+    <ClInclude Include="Src\ECS\Components\Dialogue.h" />
     <ClInclude Include="Src\ECS\Components\PlayerTemporal.h" />
     <ClInclude Include="Src\ECS\Components\Stamina.h" />
     <ClInclude Include="Src\ECS\Systems\AmbientSoundSystem.h" />

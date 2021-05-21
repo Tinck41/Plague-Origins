@@ -21,7 +21,7 @@
 #include "Components/Dispose.h"
 #include "Components/Stamina.h"
 #include "Components/PlayerTemporal.h"
-
+#include "Components/Dialogue.h"
 
 //FSM
 #include "Src/FSM/Components/PlayerStates.h"
