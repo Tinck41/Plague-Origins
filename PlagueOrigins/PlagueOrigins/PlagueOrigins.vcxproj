@@ -157,6 +157,7 @@
     <ClCompile Include="Src\ECS\Systems\AmbientSoundSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\ActorSoundSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\AggroSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\BossFight.cpp" />
     <ClCompile Include="Src\ECS\Systems\DialogueSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\DisposalSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\HealthSystem.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="Characteristics.h" />
     <ClInclude Include="Src\ECS\Components\ActorAudioSource.h" />
     <ClInclude Include="Src\ECS\Components\AmbienceAudioSource.h" />
+    <ClInclude Include="Src\ECS\Components\BossFightArena.h" />
     <ClInclude Include="Src\ECS\Components\Dialogue.h" />
     <ClInclude Include="Src\ECS\Components\PlayerTemporal.h" />
     <ClInclude Include="Src\ECS\Components\Stamina.h" />
@@ -234,6 +236,7 @@
     <ClInclude Include="Src\ECS\Components\Dispose.h" />
     <ClInclude Include="Src\ECS\Systems\AggroSystem.h" />
     <ClInclude Include="Src\ECS\Components\Inventory.h" />
+    <ClInclude Include="Src\ECS\Systems\BossFight.h" />
     <ClInclude Include="Src\ECS\Systems\DialogueSystem.h" />
     <ClInclude Include="Src\ECS\Systems\HealthSystem.h" />
     <ClInclude Include="Src\ECS\Systems\EssenceSystem.h" />

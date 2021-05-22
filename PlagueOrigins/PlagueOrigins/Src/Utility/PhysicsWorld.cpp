@@ -85,6 +85,7 @@ b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radi
     FixtureDef.density = 1.f;
     FixtureDef.friction = 0.f;
     FixtureDef.restitution = 0.f;
+    FixtureDef.userData.pointer = categoryBits;
 
     //FixtureDef.filter.categoryBits = categoryBits;  // I'm <...> 
     //FixtureDef.filter.maskBits = maskBits;          // I collide with <...>
