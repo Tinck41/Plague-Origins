@@ -6,12 +6,16 @@ SystemHandler::SystemHandler()
 {
 	ActorSoundSystem* actorSoundSystem = new ActorSoundSystem();
 	StatsSystem* statsSystem = new StatsSystem();
+	Animation* animation = new Animation();
+	HealthSystem* healthSystem = new HealthSystem();
+	StaminaSystem* staminaSystem = new StaminaSystem();
+	auto essence = new EssenceSystem();
 
 	// Update systems
 	updatableSystems.push_back(new Input());
 	updatableSystems.push_back(new Controller());
 	updatableSystems.push_back(new FSM());
-	updatableSystems.push_back(new Animation());
+	updatableSystems.push_back(animation);
 	updatableSystems.push_back(new Physics());
 	updatableSystems.push_back(new Combat());
 	updatableSystems.push_back(new Vampiring());
@@ -20,21 +24,27 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new Motion());
 	updatableSystems.push_back(actorSoundSystem);
 	updatableSystems.push_back(statsSystem);
+	updatableSystems.push_back(healthSystem);
 	updatableSystems.push_back(new AmbientSoundSystem());
 	updatableSystems.push_back(new AggroSystem());
 	updatableSystems.push_back(new PatrolSystem());
 	updatableSystems.push_back(new DisposalSystem());
 	updatableSystems.push_back(new BossFight());
+	updatableSystems.push_back(staminaSystem);
+	updatableSystems.push_back(essence);
 
 	// Render systems
-	renderableSystems.push_back(new Animation());
+	renderableSystems.push_back(animation);
 	renderableSystems.push_back(new Interaction());
 	renderableSystems.push_back(new Physics());
 	renderableSystems.push_back(new PatrolSystem());
 	renderableSystems.push_back(statsSystem);
+	renderableSystems.push_back(healthSystem);
+	renderableSystems.push_back(staminaSystem);
+	renderableSystems.push_back(essence);
 
 	// OnCreate system
-	onCreateSystems.push_back(new Animation());
+	onCreateSystems.push_back(animation);
 	onCreateSystems.push_back(actorSoundSystem);
 	
 	// Update && render && onCreate systems
@@ -42,6 +52,10 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(inventorySystem);
 	renderableSystems.push_back(inventorySystem);
 	onCreateSystems.push_back(inventorySystem);
+	auto dialogueSystem = new DialogueSystem();
+	updatableSystems.push_back(dialogueSystem);
+	renderableSystems.push_back(dialogueSystem);
+	onCreateSystems.push_back(dialogueSystem);
 }
 
 SystemHandler::~SystemHandler()

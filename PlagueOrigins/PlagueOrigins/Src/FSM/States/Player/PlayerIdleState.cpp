@@ -48,6 +48,8 @@ void PlayerIdleState::update(const float& dt)
 	else
 	{
 	}
+
+
 }
 
 void PlayerIdleState::exit()

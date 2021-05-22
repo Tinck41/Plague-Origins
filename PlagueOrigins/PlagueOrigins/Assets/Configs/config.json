@@ -12,28 +12,47 @@
     "player": {
         "speed": 500,
         "scale": 0.2,
-        "hitpoints": 400,
-        "damage": 20,
         "hitbox": {
-            "width": 100,
-            "height": 150
+          "width": 100,
+          "height": 150
+        },
+        "range": 175,
+        "stats": {
+          "vit": 10,
+          "end": 10,
+          "str": 10,
+          "agi": 10,
+          "int": 10
         }
     },
     "dog": {
-      "speed": 200,
-      "scale": 0.3,
-      "hitpoints": 10,
-      "damage": 0.1,
-      "hitbox": {
-        "width": 100,
-        "height": 150
-      }
+        "speed": 200,
+        "scale": 0.3,
+        "range": 150,
+        "hitbox": {
+          "width": 100,
+          "height": 150
+        },
+        "stats": {
+          "vit": 5,
+          "end": 5,
+          "str": 1,
+          "agi": 5,
+          "int": 5
+        }
     },
     "bishop": {
-      "scale": 0.22,
-      "hitbox": {
-        "width": 100,
-        "height": 150
-      }
+        "scale": 0.22,
+        "hitbox": {
+          "width": 100,
+          "height": 150
+        },
+        "stats": {
+          "vit": 5,
+          "end": 5,
+          "str": 5,
+          "agi": 5,
+          "int": 5
+        }
     }
 }

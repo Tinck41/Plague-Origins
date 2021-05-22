@@ -7,7 +7,7 @@
 
 struct Attack
 {
-	Attack(b2Body* body, float damage, float radius)
+	Attack(b2Body* body, int STR, float radius)
 	{
         b2CircleShape attackShape;
         b2FixtureDef fixtureDef;
@@ -17,11 +17,12 @@ struct Attack
 		fixtureDef.userData.pointer = ATTACK_RADIUS;
         body->CreateFixture(&fixtureDef);
 
-		this->damage = damage;
+		damage = STR*5.f;
 		this->radius = radius;
 	}
 
 	float radius;
 	float damage;
+	float staminaCost = 30.f;
 	bool isAttacking = false;
 };

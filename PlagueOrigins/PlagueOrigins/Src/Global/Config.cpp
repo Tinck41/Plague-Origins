@@ -25,21 +25,34 @@ Config::Config()
 
 	playerSpeed = json["player"]["speed"];
 	playerScale = json["player"]["scale"];
-	playerHitpoints = json["player"]["hitpoints"];
-	playerDamage = json["player"]["damage"];
+	playerAttackRange = json["player"]["range"];
 	playerHitboxWidth = json["player"]["hitbox"]["width"];
 	playerHitboxHeight = json["player"]["hitbox"]["height"];
+	playerStats.push_back(json["player"]["stats"]["vit"]);
+	playerStats.push_back(json["player"]["stats"]["end"]);
+	playerStats.push_back(json["player"]["stats"]["str"]);
+	playerStats.push_back(json["player"]["stats"]["agi"]);
+	playerStats.push_back(json["player"]["stats"]["int"]);
 
 	dogSpeed = json["dog"]["speed"];
 	dogScale = json["dog"]["scale"];
-	dogHitpoints = json["dog"]["hitpoints"];
-	dogDamage = json["dog"]["damage"];
+	dogAttackRange = json["dog"]["range"];
 	dogHitboxWidth = json["dog"]["hitbox"]["width"];
 	dogHitboxHeight = json["dog"]["hitbox"]["height"];
+	dogStats.push_back(json["dog"]["stats"]["vit"]);
+	dogStats.push_back(json["dog"]["stats"]["end"]);
+	dogStats.push_back(json["dog"]["stats"]["str"]);
+	dogStats.push_back(json["dog"]["stats"]["agi"]);
+	dogStats.push_back(json["dog"]["stats"]["int"]);
 
 	bishopScale = json["bishop"]["scale"];
 	bishopHitboxWidth = json["bishop"]["hitbox"]["width"];
 	bishopHitboxHeight = json["bishop"]["hitbox"]["height"];
+	bishopStats.push_back(json["bishop"]["stats"]["vit"]);
+	bishopStats.push_back(json["bishop"]["stats"]["end"]);
+	bishopStats.push_back(json["bishop"]["stats"]["str"]);
+	bishopStats.push_back(json["bishop"]["stats"]["agi"]);
+	bishopStats.push_back(json["bishop"]["stats"]["int"]);
 }
 
 Config::~Config()

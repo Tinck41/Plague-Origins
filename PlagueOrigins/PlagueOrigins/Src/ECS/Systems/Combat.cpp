@@ -11,9 +11,10 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 		RigidBody& rigidBody = reg.get<RigidBody>(entity);
 		Animator& animator = reg.get<Animator>(entity);
 		Transform& transform = reg.get<Transform>(entity);
-		
+
 		if (attack.isAttacking)
 		{
+			if (animator.currentAnimationDurationLeft < animator.currentAnimationDuration / 2.f) return;
 
 			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
 			while (attackCircle->GetUserData().pointer != ATTACK_RADIUS)
@@ -27,7 +28,7 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 				{
 					b2Body* bodyA = edge->contact->GetFixtureA()->GetBody();
 					b2Body* bodyB = edge->contact->GetFixtureB()->GetBody();
-					
+
 					sf::Vector2f vec1{ bodyA->GetPosition().x * 30.f, bodyA->GetPosition().y * 30.f };
 					vec1 = vec1 - transform.position;
 					sf::Vector2f vec2{ animator.currentFaceDirection.x, animator.currentFaceDirection.y };
@@ -36,14 +37,15 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 					if (angle <= 45.f)
 					{
-						if (reg.all_of<Health>((entt::entity)bodyA->GetUserData().pointer))
+						auto receiverEntity = (entt::entity)bodyA->GetUserData().pointer;
+						if (reg.all_of<Health>(receiverEntity))
 						{
-							Health& receiverHealth = reg.get<Health>((entt::entity)bodyA->GetUserData().pointer);
+							Health& receiverHealth = reg.get<Health>(receiverEntity);
 							receiverHealth.curhealth -= attack.damage;
 
 							if (reg.all_of<ActorAudioSource>((entt::entity)bodyA->GetUserData().pointer))
 							{
-								ActorAudioSource& soundSource = reg.get<ActorAudioSource>((entt::entity)bodyA->GetUserData().pointer);
+								ActorAudioSource& soundSource = reg.get<ActorAudioSource>(receiverEntity);
 								soundSource.playGetHitSound = true;
 							}
 
@@ -51,6 +53,19 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 							{
 								Vampire& vampire = reg.get<Vampire>(entity);
 								vampire.vampiredHealth = attack.damage / 100.f * 2.5f;
+							}
+
+							if (receiverHealth.curhealth <= 0
+								&& reg.all_of<Tag>(receiverEntity)
+								&& reg.all_of<Inventory>(entity))
+							{
+								Tag& attackerTag = reg.get<Tag>(entity);
+								Tag& receiverTag = reg.get<Tag>(receiverEntity);
+
+								if (attackerTag.name == "Hero" && receiverTag.name == "Dog")
+								{
+									reg.get<Inventory>(entity).essence += 100.f;
+								}
 							}
 							
 							std::cout << "Sender health: " << senderHealth.curhealth << "\n";

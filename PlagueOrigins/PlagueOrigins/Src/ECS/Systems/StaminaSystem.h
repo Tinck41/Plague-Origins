@@ -1,16 +1,15 @@
 #pragma once
 
-#include "IRenderSystem.h"
 #include "IUpdateSystem.h"
+#include "IRenderSystem.h"
+
 #include "Src/ECS/Components.h"
 
-class Interaction :
-	public IRenderSystem,
-	public IUpdateSystem
+class StaminaSystem :
+	public IUpdateSystem,
+	public IRenderSystem
 {
-public:
 	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
+
 	virtual void render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui) override;
-private:
-	bool checkForPlayer(RigidBody& rigidBody);
 };

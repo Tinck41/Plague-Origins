@@ -4,6 +4,11 @@
 
 struct Dash
 {
+    Dash(int AGI)
+    {
+        cooldownTime = 10.f / AGI + 1.f;
+    }
+
     bool isDashing = false;
 
     sf::Vector2f direction;
@@ -13,6 +18,7 @@ struct Dash
 
     sf::Int32 duration = 240;
 
-    float cooldownTime = 1.f;
+    float cooldownTime;
     float speed = 2500.f;
+    float staminaCost = 30.f;
 };

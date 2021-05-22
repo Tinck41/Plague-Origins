@@ -29,15 +29,26 @@ void DogAttackState::update(const float& dt)
             new DogDeathState(owner));
         std::cout << "";
     }
-    else if (owner.GetComponent<Animator>().armatureDisplay->getAnimation()->isCompleted())
+    else if (owner.GetComponent<Animator>().currentAnimationDurationLeft >= owner.GetComponent<Animator>().currentAnimationDuration)
     {
 
         std::cout << "finish\n";
-        if (owner.GetComponent<Attack>().isAttacking)
+        if (owner.GetComponent<Attack>().radius >= owner.GetComponent<Aggresion>().distanceToTarget)
+        {
+            Animator& animator = owner.GetComponent<Animator>();
+            animator.armatureDisplay->getAnimation()->play(animator.armatureDisplay->getAnimation()->getLastAnimationName(), 1);
+            animator.previousAnimation = animator.currentAnimation;
+            animator.currentAnimation = ATTACK;
+
+            Attack& attack = owner.GetComponent<Attack>();
+            attack.isAttacking = true;
+            std::cout << "";
+        }
+        else if (owner.GetComponent<Aggresion>().isAggresive)
         {
             SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
             playerStates.currentState = playerStates.changeState(playerStates.currentState,
-                new DogAttackState(owner));
+                new DogAggroState(owner));
             std::cout << "";
         }
         else

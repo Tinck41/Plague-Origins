@@ -36,8 +36,33 @@ void AggroSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& d
 				if (angle <= 60.f)
 				{
 					b2Vec2 normalizedVectorToPlayer;
-					normalizedVectorToPlayer.x = vectorToPlayer.x;
-					normalizedVectorToPlayer.y = vectorToPlayer.y;
+					//normalizedVectorToPlayer.x = vectorToPlayer.x;
+					//normalizedVectorToPlayer.y = vectorToPlayer.y;
+					//normalizedVectorToPlayer.Normalize();
+					if (transform.position.x < playerPos.x - 15.f)
+					{
+						normalizedVectorToPlayer.x = 1.f;
+					}
+					else if (transform.position.x > playerPos.x + 15.f)
+					{
+						normalizedVectorToPlayer.x = -1.f;
+					}
+					else if (std::fabs(transform.position.x - playerPos.x) <= 15.f)
+					{
+						normalizedVectorToPlayer.x = 0.f;
+					}
+					if (transform.position.y < playerPos.y - 15.f)
+					{
+						normalizedVectorToPlayer.y = 1.f;
+					}
+					else if (transform.position.y > playerPos.y + 15.f)
+					{
+						normalizedVectorToPlayer.y = -1.f;
+					}
+					else if (std::fabs(transform.position.y - playerPos.y) <= 15.f)
+					{
+						normalizedVectorToPlayer.y = 0.f;
+					}
 					normalizedVectorToPlayer.Normalize();
 
 					aggresion.isAggresive = true;

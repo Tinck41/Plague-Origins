@@ -19,18 +19,23 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Transform>();
 	testEntity.AddComponent<PlayerInput>();
 	testEntity.AddComponent<ActorAudioSource>();
-	testEntity.AddComponent<Dash>();
 	testEntity.AddComponent<Animator>();
-	testEntity.AddComponent<Movement>(500.f);
-	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(2716.f, 4992.f), true, testEntity, PLAYER);
+	testEntity.AddComponent<Movement>(config.playerSpeed);
+	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity, PLAYER);
 	testEntity.AddComponent<Tag>("Hero");
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
-	testEntity.AddComponent<Health>(500.f);
-	testEntity.AddComponent<Stamina>(500.f);
 	testEntity.AddComponent<Vampire>();
-	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, 100.f, 150.f);
 	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
-	testEntity.AddComponent<Inventory>(0);
+	testEntity.AddComponent<Inventory>(222);
+	testEntity.AddComponent<Player>();
+	testEntity.AddComponent<Dialogue>();
+
+	testEntity.AddComponent<Stats>(config.playerStats);
+	auto playerStats = testEntity.GetComponent<Stats>();
+	testEntity.AddComponent<Health>(playerStats.VIT);
+	testEntity.AddComponent<Stamina>(playerStats.END);
+	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange);
+	testEntity.AddComponent<Dash>(playerStats.AGI);
 
 	Entity ambient = Entity(registry.create(), this);
 	ambient.AddComponent<AmbienceAudioSource>();
@@ -40,17 +45,20 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<Animator>();
 	npcEntity.AddComponent<Movement>(300.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
-	npcEntity.AddComponent<Attack>(npcEntity.GetComponent<RigidBody>().body, 25.f, 150.f);
 	npcEntity.AddComponent<Aggresion>(npcEntity.GetComponent<RigidBody>().body, 300.f);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<ActorAudioSource>();
-	npcEntity.AddComponent<Health>(200.f);
 	npcEntity.AddComponent<SMcomponent>(new DogIdleState(npcEntity));
 	std::vector<sf::Vector2f> waypoints;
 	waypoints.push_back(sf::Vector2f(615.f,615.f));
 	waypoints.push_back(sf::Vector2f(615.f,915.f));
 	npcEntity.AddComponent<Patrol>(waypoints);
 	npcEntity.AddComponent<Dispose>();
+
+	npcEntity.AddComponent<Stats>(config.dogStats);
+	auto dogStats = npcEntity.GetComponent<Stats>();
+	npcEntity.AddComponent<Health>(dogStats.VIT);
+	npcEntity.AddComponent<Attack>(npcEntity.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
 
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();
@@ -60,8 +68,11 @@ GameScreen::GameScreen()
 	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop, FRIENDLY_NPC);
 	bishop.AddComponent<Tag>("Bishop");
 	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
-	bishop.AddComponent<Health>(300.f);
 	bishop.AddComponent<SMcomponent>(new BishopIdleState(bishop));
+
+	bishop.AddComponent<Stats>(config.bishopStats);
+	auto bishopStats = bishop.GetComponent<Stats>();
+	bishop.AddComponent<Health>(bishopStats.VIT);
 
 	systems.onCreate(registry, gui);
 }
