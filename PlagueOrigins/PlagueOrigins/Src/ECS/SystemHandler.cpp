@@ -7,6 +7,7 @@ SystemHandler::SystemHandler()
 	ActorSoundSystem* actorSoundSystem = new ActorSoundSystem();
 	StatsSystem* statsSystem = new StatsSystem();
 	Animation* animation = new Animation();
+	auto essence = new EssenceSystem();
 
 	// Update systems
 	updatableSystems.push_back(new Input());
@@ -25,6 +26,7 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new AggroSystem());
 	updatableSystems.push_back(new PatrolSystem());
 	updatableSystems.push_back(new DisposalSystem());
+	updatableSystems.push_back(essence);
 
 	// Render systems
 	renderableSystems.push_back(animation);
@@ -32,6 +34,7 @@ SystemHandler::SystemHandler()
 	renderableSystems.push_back(new Physics());
 	renderableSystems.push_back(new PatrolSystem());
 	renderableSystems.push_back(statsSystem);
+	renderableSystems.push_back(essence);
 
 	// OnCreate system
 	onCreateSystems.push_back(animation);
