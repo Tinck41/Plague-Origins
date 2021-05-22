@@ -13,23 +13,27 @@ void Controller::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt
 		Dash& dash = reg.get<Dash>(entity);
 		Animator& animator = reg.get<Animator>(entity);
 		Attack& attack = reg.get<Attack>(entity);
+		Stamina& stamina = reg.get<Stamina>(entity);
 
 		setDirection(movement, playerInput);
-		checkDash(playerInput, movement, dash, dt);
-		checkAttack(playerInput, attack);
+		checkDash(playerInput, movement, dash, stamina, dt);
+		checkAttack(playerInput, attack, stamina);
 	}
 }
 
-void Controller::checkAttack(PlayerInput& playerInput, Attack& attack)
+void Controller::checkAttack(PlayerInput& playerInput, Attack& attack, Stamina& stamina)
 {
+	if (stamina.curStamina <= 0) return;
+
 	if (playerInput.LMBwasPressed)
 	{
 		attack.isAttacking = true;
 	}
 }
 
-void Controller::checkDash(PlayerInput& playerInput, Movement& movement, Dash& dash, const float& dt)
+void Controller::checkDash(PlayerInput& playerInput, Movement& movement, Dash& dash, Stamina& stamina, const float& dt)
 {
+	if (stamina.curStamina <= 0) return;
 	if (movement.direction == sf::Vector2f(0.f, 0.f)) return;
 
 	if (playerInput.spaceWasPressed && dash.curCooldownTime < sf::seconds(0.f))

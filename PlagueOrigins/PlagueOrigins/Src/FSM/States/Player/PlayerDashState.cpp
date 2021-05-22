@@ -19,6 +19,10 @@ void PlayerDashState::enter()
 
 	movement.speed = dash.speed;
 	dash.curDuration = sf::milliseconds(dash.duration);
+
+	Stamina& stamina = owner.GetComponent<Stamina>();
+	stamina.curStamina -= dash.staminaCost;
+	stamina.canRestore = false;
 }
 
 void PlayerDashState::update(const float& dt)
@@ -75,4 +79,7 @@ void PlayerDashState::exit()
 	Dash& dash = owner.GetComponent<Dash>();
 
 	movement.speed = config.playerSpeed;
+
+	Stamina& stamina = owner.GetComponent<Stamina>();
+	stamina.canRestore = true;
 }

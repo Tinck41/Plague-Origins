@@ -23,5 +23,6 @@ struct Attack
 
 	float radius;
 	float damage;
+	float staminaCost = 30.f;
 	bool isAttacking = false;
 };

@@ -15,7 +15,7 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 		if (attack.isAttacking)
 		{
 			if (animator.currentAnimationDurationLeft < animator.currentAnimationDuration / 2.f) return;
-			
+
 			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
 			while (attackCircle->GetUserData().pointer != ATTACK_RADIUS)
 			{
@@ -53,7 +53,7 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 								Vampire& vampire = reg.get<Vampire>(entity);
 								vampire.vampiredHealth = attack.damage / 100.f * 2.5f;
 							}
-							
+
 							std::cout << "Sender health: " << senderHealth.curhealth << "\n";
 							std::cout << "Recevier health: " << receiverHealth.curhealth << "\n";
 

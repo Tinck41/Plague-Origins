@@ -15,4 +15,6 @@ struct Stamina
 
 	float maxStamina;
 	float curStamina;
+
+	bool canRestore = true;
 };
