@@ -6,12 +6,13 @@ SystemHandler::SystemHandler()
 {
 	ActorSoundSystem* actorSoundSystem = new ActorSoundSystem();
 	StatsSystem* statsSystem = new StatsSystem();
+	Animation* animation = new Animation();
 
 	// Update systems
 	updatableSystems.push_back(new Input());
 	updatableSystems.push_back(new Controller());
 	updatableSystems.push_back(new FSM());
-	updatableSystems.push_back(new Animation());
+	updatableSystems.push_back(animation);
 	updatableSystems.push_back(new Physics());
 	updatableSystems.push_back(new Combat());
 	updatableSystems.push_back(new Vampiring());
@@ -26,14 +27,14 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new DisposalSystem());
 
 	// Render systems
-	renderableSystems.push_back(new Animation());
+	renderableSystems.push_back(animation);
 	renderableSystems.push_back(new Interaction());
 	renderableSystems.push_back(new Physics());
 	renderableSystems.push_back(new PatrolSystem());
 	renderableSystems.push_back(statsSystem);
 
 	// OnCreate system
-	onCreateSystems.push_back(new Animation());
+	onCreateSystems.push_back(animation);
 	onCreateSystems.push_back(actorSoundSystem);
 	
 	// Update && render && onCreate systems

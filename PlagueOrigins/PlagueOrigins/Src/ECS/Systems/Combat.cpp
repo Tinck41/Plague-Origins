@@ -14,7 +14,8 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 		
 		if (attack.isAttacking)
 		{
-
+			if (animator.currentAnimationDurationLeft < animator.currentAnimationDuration / 2.f) return;
+			
 			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
 			while (attackCircle->GetUserData().pointer != ATTACK_RADIUS)
 			{
@@ -33,7 +34,7 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 					sf::Vector2f vec2{ animator.currentFaceDirection.x, animator.currentFaceDirection.y };
 
 					float angle = PhysicsWorld::angleBetween(vec1, vec2);
-
+					
 					if (angle <= 45.f)
 					{
 						if (reg.all_of<Health>((entt::entity)bodyA->GetUserData().pointer))

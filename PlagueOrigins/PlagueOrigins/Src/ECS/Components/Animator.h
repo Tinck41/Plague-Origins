@@ -20,4 +20,7 @@ struct Animator
 
 	float scale = 0.2f;
 	sf::RenderStates states;
+
+	float currentAnimationDuration = 0.f;
+	float currentAnimationDurationLeft = 0.f;
 };
