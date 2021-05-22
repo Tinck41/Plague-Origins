@@ -292,9 +292,8 @@ void Animation::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 		setAnimation(animator, tag);
 
-		if (animator.armatureDisplay->getAnimation()->isCompleted())
+		if (animator.currentAnimationDurationLeft >= animator.currentAnimationDuration)
 		{
-			std::cout << "animation completed" << "\n";
 			animator.currentAnimationDurationLeft = 0.f;
 		}
 		else
