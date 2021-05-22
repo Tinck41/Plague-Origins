@@ -19,7 +19,6 @@ void DogIdleState::enter()
 
 void DogIdleState::update(const float& dt)
 {
-
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
 		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
@@ -35,13 +34,6 @@ void DogIdleState::update(const float& dt)
 			new DogAggroState(owner));
 		std::cout << "";
 	}
-	//else if (owner.GetComponent<Attack>().isAttacking)
-	//{
-	//	PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
-	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
-	//		new DogAttackState(owner));
-	//	std::cout << "";
-	//}
 	else if (owner.GetComponent<Movement>().direction != sf::Vector2f(0, 0))
 	{
 		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();

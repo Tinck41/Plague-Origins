@@ -4,8 +4,32 @@
 void PatrolSystem::dirToNext(Movement& movement, Patrol& patrol, Transform& transform)
 {
 	b2Vec2 direction;
-	direction.x = patrol.waypoints[patrol.currentIndex].x - transform.position.x;
-	direction.y = patrol.waypoints[patrol.currentIndex].y - transform.position.y;
+	if (transform.position.x < patrol.waypoints[patrol.currentIndex].x - 15.f)
+	{
+		direction.x = 1.f;
+	}
+	else if (transform.position.x > patrol.waypoints[patrol.currentIndex].x + 15.f)
+	{
+		direction.x = -1.f;
+	}
+	else if (std::fabs(transform.position.x - patrol.waypoints[patrol.currentIndex].x) < 15.f)
+	{
+		direction.x = 0.f;
+	}
+	if (transform.position.y < patrol.waypoints[patrol.currentIndex].y - 15.f)
+	{
+		direction.y = 1.f;
+	}
+	else if (transform.position.y > patrol.waypoints[patrol.currentIndex].y + 15.f)
+	{
+		direction.y = -1.f;
+	}
+	else if (std::fabs(transform.position.y - patrol.waypoints[patrol.currentIndex].y) < 15.f)
+	{
+		direction.y = 0.f;
+	}
+	//direction.x = patrol.waypoints[patrol.currentIndex].x - transform.position.x;
+	//direction.y = patrol.waypoints[patrol.currentIndex].y - transform.position.y;
 	direction.Normalize();
 	movement.direction.x = direction.x;
 	movement.direction.y = direction.y;
