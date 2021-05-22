@@ -20,4 +20,5 @@ struct Dash
 
     float cooldownTime;
     float speed = 2500.f;
+    float staminaCost = 30.f;
 };

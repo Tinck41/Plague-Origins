@@ -22,6 +22,10 @@ void PlayerAttackState::enter()
 
     Attack& attack = owner.GetComponent<Attack>();
     attack.isAttacking = true;
+
+    Stamina& stamina = owner.GetComponent<Stamina>();
+    stamina.curStamina -= attack.staminaCost;
+    stamina.canRestore = false;
 }
 
 void PlayerAttackState::update(const float& dt)
@@ -66,4 +70,7 @@ void PlayerAttackState::exit()
     Attack& attack = owner.GetComponent<Attack>();
     attack.isAttacking = false;
     owner.AddComponent<Movement>(config.playerSpeed);
+
+    Stamina& stamina = owner.GetComponent<Stamina>();
+    stamina.canRestore = true;
 }

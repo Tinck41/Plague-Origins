@@ -21,4 +21,6 @@
 #include "Systems/PatrolSystem.h"
 #include "Systems/StatsSystem.h"
 #include "Systems/DialogueSystem.h"
+#include "Systems/StaminaSystem.h"
+#include "Systems/HealthSystem.h"
 #include "Systems/EssenceSystem.h"
