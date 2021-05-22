@@ -27,6 +27,10 @@ struct PlayerInput
 	bool LMBreleased = false;
 
 	// Interaction input
+	bool fWasPressed = false;
+	bool fPressed = false;
+	bool fReleased = false;
+
 	bool rWasPressed = false;
 	bool rPressed = false;
 	bool rReleased = false;

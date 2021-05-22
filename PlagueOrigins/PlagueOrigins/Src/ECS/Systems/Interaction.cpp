@@ -43,8 +43,10 @@ void Interaction::render(entt::registry& reg, sf::RenderWindow& window, tgui::Gu
 			{
 				CameraTarget& camera = reg.get<CameraTarget>(player);
 				Transform& transform = reg.get<Transform>(player);
+				Player& pl = reg.get<Player>(player);
 
-				text.setPosition(camera.camera.getCenter().x, camera.camera.getCenter().y + camera.camera.getSize().y / 3.f);
+				text.setPosition(camera.camera.getCenter().x,
+					camera.camera.getCenter().y + camera.camera.getSize().y / 3.f);
 			}
 
 			window.draw(text);

@@ -24,7 +24,7 @@ Renderer.1 {
 }
 
 Renderer.2 {
-    Texture = "../../../PlagueOrigins/Assets/UI/unfoldedInventory.png" Smooth;
+    Texture = "unfoldedInventory.png" Smooth;
     TransparentTexture = false;
 }
 
@@ -43,7 +43,7 @@ Panel.statusBar {
     Renderer {
         BackgroundColor = white;
         BorderColor = black;
-        TextureBackground = "../../../PlagueOrigins/Assets/UI/statusBar.png" Smooth;
+        TextureBackground = "statusBar.png" Smooth;
         TransparentTexture = true;
     }
 
@@ -118,7 +118,7 @@ Panel.essenceBar {
     Renderer {
         BackgroundColor = white;
         BorderColor = black;
-        TextureBackground = "../../../PlagueOrigins/Assets/UI/essenceBar.png" Smooth;
+        TextureBackground = "essenceBar.png" Smooth;
         TransparentTexture = true;
     }
 
@@ -151,7 +151,7 @@ Picture.unfoldedInventory1 {
     Size = (1642, 910);
 
     Renderer {
-        Texture = "../../../PlagueOrigins/Assets/UI/unfoldedInventory.png" Smooth;
+        Texture = "unfoldedInventory.png" Smooth;
         TransparentTexture = false;
     }
 }
@@ -181,7 +181,7 @@ Panel.inventoryButtons {
     Renderer {
         BackgroundColor = #FFFFFF00;
         BorderColor = black;
-        TextureBackground = "../../../PlagueOrigins/Assets/UI/minimizedInventory.png" Smooth;
+        TextureBackground = "minimizedInventory.png" Smooth;
     }
 
     Button.inventoryButton1 {
@@ -324,7 +324,7 @@ Panel.mainDialoguePanel {
         Size = (900, 500);
 
         Renderer {
-            Texture = "../../../PlagueOrigins/Assets/UI/mainDialogueBox.png" Smooth;
+            Texture = "mainDialogueBox.png" Smooth;
             TransparentTexture = false;
         }
     }
@@ -369,7 +369,7 @@ Panel.upgradeStatsPanel {
         Size = (1350, 870);
 
         Renderer {
-            Texture = "../../../PlagueOrigins/Assets/UI/upgradeStatsBox.png" Smooth;
+            Texture = "upgradeStatsBox.png" Smooth;
             TransparentTexture = false;
         }
     }
@@ -866,7 +866,7 @@ Panel.tradePanel {
         Size = (867, 770);
 
         Renderer {
-            Texture = "../../../PlagueOrigins/Assets/UI/tradingBox.png" Smooth;
+            Texture = "tradingBox.png" Smooth;
             TransparentTexture = false;
         }
     }

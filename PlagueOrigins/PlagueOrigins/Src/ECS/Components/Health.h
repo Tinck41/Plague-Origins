@@ -2,10 +2,16 @@
 
 struct Health
 {
-	Health(float health)
+	//Health(float health)
+	//{
+	//	this->maxHealth = health;
+	//	this->curhealth = health;
+	//}
+	Health(int VIT)
 	{
-		this->maxHealth = health;
-		this->curhealth = health;
+		this->maxHealth = VIT * 20.f;
+		this->curhealth = VIT * 20.f;
+		std::cout << maxHealth << " maxHealth\n";
 	}
 	
 	float maxHealth;

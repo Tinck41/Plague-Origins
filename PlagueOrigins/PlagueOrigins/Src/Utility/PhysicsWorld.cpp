@@ -97,8 +97,8 @@ b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radi
 float PhysicsWorld::angleBetween(const sf::Vector2f& vec1, const sf::Vector2f& vec2)
 {
     float vec1Magnitude = std::sqrtf(vec1.x * vec1.x + vec1.y * vec1.y);
-    float vec2Magnitude = std::sqrtf(vec2.x * vec2.x + vec2.y * vec2.y);
-
+    //float vec2Magnitude = std::sqrtf(vec2.x * vec2.x + vec2.y * vec2.y);
+    float vec2Magnitude = 1.f;
     float dotProduct = vec1.x * vec2.x + vec1.y * vec2.y;
 
     return std::acosf(dotProduct / (vec1Magnitude * vec2Magnitude)) * RADTODEG;

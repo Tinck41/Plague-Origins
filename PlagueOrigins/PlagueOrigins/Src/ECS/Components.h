@@ -20,7 +20,9 @@
 #include "Components/Patrol.h"
 #include "Components/Dispose.h"
 #include "Components/Stamina.h"
-
+#include "Components/PlayerTemporal.h"
+#include "Components/Dialogue.h"
+#include "Components/Stats.h"
 
 //FSM
 #include "Src/FSM/Components/PlayerStates.h"

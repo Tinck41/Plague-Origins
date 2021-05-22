@@ -25,21 +25,22 @@ public:
 
 	int playerSpeed;
 	float playerScale;
-	float playerHitpoints;
-	float playerDamage;
+	float playerAttackRange;
 	float playerHitboxWidth;
 	float playerHitboxHeight;
+	std::vector<int> playerStats = std::vector<int>();
 
 	int dogSpeed;
 	float dogScale;
-	float dogHitpoints;
-	float dogDamage;
+	float dogAttackRange;
 	float dogHitboxWidth;
 	float dogHitboxHeight;
+	std::vector<int> dogStats = std::vector<int>();
 
 	float bishopScale;
 	float bishopHitboxWidth;
 	float bishopHitboxHeight;
+	std::vector<int> bishopStats = std::vector<int>();
 
 	unsigned int height()
 	{
