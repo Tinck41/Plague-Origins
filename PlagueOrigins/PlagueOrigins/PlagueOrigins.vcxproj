@@ -160,6 +160,7 @@
     <ClCompile Include="Src\ECS\Systems\DialogueSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\DisposalSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\HealthSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\EssenceSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\InventorySystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\PatrolSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\StaminaSystem.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="Src\ECS\Components\Inventory.h" />
     <ClInclude Include="Src\ECS\Systems\DialogueSystem.h" />
     <ClInclude Include="Src\ECS\Systems\HealthSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\EssenceSystem.h" />
     <ClInclude Include="Src\ECS\Systems\InventorySystem.h" />
     <ClInclude Include="Src\ECS\Components\Patrol.h" />
     <ClInclude Include="Src\ECS\Systems\DisposalSystem.h" />

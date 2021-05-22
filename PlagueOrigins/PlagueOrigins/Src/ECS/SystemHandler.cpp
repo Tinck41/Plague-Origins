@@ -9,6 +9,7 @@ SystemHandler::SystemHandler()
 	Animation* animation = new Animation();
 	HealthSystem* healthSystem = new HealthSystem();
 	StaminaSystem* staminaSystem = new StaminaSystem();
+	auto essence = new EssenceSystem();
 
 	// Update systems
 	updatableSystems.push_back(new Input());
@@ -29,6 +30,7 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new PatrolSystem());
 	updatableSystems.push_back(new DisposalSystem());
 	updatableSystems.push_back(staminaSystem);
+	updatableSystems.push_back(essence);
 
 	// Render systems
 	renderableSystems.push_back(animation);
@@ -38,6 +40,7 @@ SystemHandler::SystemHandler()
 	renderableSystems.push_back(statsSystem);
 	renderableSystems.push_back(healthSystem);
 	renderableSystems.push_back(staminaSystem);
+	renderableSystems.push_back(essence);
 
 	// OnCreate system
 	onCreateSystems.push_back(animation);

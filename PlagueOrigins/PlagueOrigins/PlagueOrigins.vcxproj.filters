@@ -86,6 +86,7 @@
     <ClCompile Include="Src\ECS\Systems\DialogueSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\StaminaSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\HealthSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\EssenceSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -221,6 +222,7 @@
     <ClInclude Include="Characteristics.h" />
     <ClInclude Include="Src\ECS\Systems\StaminaSystem.h" />
     <ClInclude Include="Src\ECS\Systems\HealthSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\EssenceSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
