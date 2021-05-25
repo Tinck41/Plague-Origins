@@ -29,9 +29,8 @@ void DogAttackState::update(const float& dt)
             new DogDeathState(owner));
         std::cout << "";
     }
-    else if (owner.GetComponent<Animator>().currentAnimationDurationLeft >= owner.GetComponent<Animator>().currentAnimationDuration)
+    else if (owner.GetComponent<Animator>().armatureDisplay->getAnimation()->isCompleted())
     {
-
         std::cout << "finish\n";
         if (owner.GetComponent<Attack>().radius >= owner.GetComponent<Aggresion>().distanceToTarget)
         {
