@@ -9,7 +9,7 @@ MainMenuScreen::MainMenuScreen()
 	mainTheme.setVolume(.5f);
 	mainTheme.play();
 
-	gui.loadWidgetsFromFile("../AdditionalLibraries/TGUI-0.9/gui-builder/Main_menu.txt");
+	gui.loadWidgetsFromFile("./Assets/UI/Main_menu.txt");
 	gui.get<tgui::Button>("newGame")->onClick(&MainMenuScreen::setGameScreen, this);
 	gui.get<tgui::Button>("quit")->onClick(&MainMenuScreen::setExitScreen, this);
 }

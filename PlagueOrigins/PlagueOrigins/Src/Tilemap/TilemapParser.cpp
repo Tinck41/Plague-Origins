@@ -51,6 +51,7 @@ void TilemapParser::parseTileMap()
 	parseTileLayer();
 	parseTileMapObjects();
 	parseSoundSources();
+	parseBossFightTriggers();
 
 	tileMap = TileMap(tileLayers, mapSize, tileSize);
 }
@@ -251,6 +252,51 @@ void TilemapParser::parseSoundSources()
 				float y = jsonReader["layers"][i]["objects"][j]["y"];
 
 				soundSource.torchSoundPosition = sf::Vector3f(x, 0.f, y);
+			}
+		}
+	}
+}
+
+void TilemapParser::parseBossFightTriggers()
+{
+	size_t layersCount = jsonReader["layers"].size();
+	for (size_t i = 0; i < layersCount; i++)
+	{
+		if (jsonReader["layers"][i]["type"] == "objectgroup" && jsonReader["layers"][i]["properties"][0]["value"] == "bossFightTrigger")
+		{
+			size_t objectsCount = jsonReader["layers"][i]["objects"].size();
+			for (size_t j = 0; j < objectsCount; j++)
+			{
+				Entity bossFightTrigger = Entity(registry->create(), screen);
+
+				float x			= jsonReader["layers"][i]["objects"][j]["x"];
+				float y			= jsonReader["layers"][i]["objects"][j]["y"];
+
+				float width		= jsonReader["layers"][i]["objects"][j]["width"];
+				float height	= jsonReader["layers"][i]["objects"][j]["height"];
+
+				bossFightTrigger.AddComponent<BossFightArena>();
+				bossFightTrigger.AddComponent<RigidBody>(sf::Vector2f(width, height), sf::Vector2f(x, y), false, bossFightTrigger, BOSS_FIGHT_TRIGGER)
+					.body->GetFixtureList()->SetSensor(true);
+
+				uint8_t propertiesCount = 4;
+				size_t	doorCount		= jsonReader["layers"][i]["objects"][j]["properties"].size() / propertiesCount;
+				for (size_t k = 0; k < doorCount; k++)
+				{
+					Entity door = Entity(registry->create(), screen);
+					uint16_t param = k * propertiesCount;
+
+					float doorHeight	= jsonReader["layers"][i]["objects"][j]["properties"][0 + param]["value"];
+					float doorWidth		= jsonReader["layers"][i]["objects"][j]["properties"][1 + param]["value"];
+
+					float doorX			= jsonReader["layers"][i]["objects"][j]["properties"][2 + param]["value"];
+					float doorY			= jsonReader["layers"][i]["objects"][j]["properties"][3 + param]["value"];
+
+					door.AddComponent<RigidBody>(sf::Vector2f(doorWidth, doorHeight), sf::Vector2f(doorX, doorY), false, door, OBSTACLE)
+						.body->GetFixtureList()->SetSensor(true);
+
+					bossFightTrigger.GetComponent<BossFightArena>().doors.push_back(door);
+				}
 			}
 		}
 	}

@@ -1,18 +1,17 @@
-Renderer.1 {
+Renderer.2 {
     BackgroundColor = #F5F5F500;
-    BackgroundColorDisabled = #E6E6E6;
-    BackgroundColorDown = #EBEBEB;
-    BackgroundColorFocused = #00000065;
-    BackgroundColorHover = #00000065;
+    BackgroundColorDisabled = #E6E6E600;
+    BackgroundColorDown = #EBEBEB8C;
+    BackgroundColorHover = white;
     BorderColor = #3C3C3C00;
     BorderColorDisabled = #7D7D7D00;
-    BorderColorDown = transparent;
-    BorderColorFocused = #1E1EB4;
-    BorderColorHover = black;
+    BorderColorDown = #FFFFFFB1;
+    BorderColorFocused = #1E1EB400;
+    BorderColorHover = #FFFFFF2B;
     Borders = (1, 1, 1, 1);
     TextColor = #7D7D7D;
     TextColorDisabled = #7D7D7D;
-    TextColorDown = black;
+    TextColorDown = #7D7D7D;
     TextColorHover = black;
     Texture = None;
     TextureDisabled = None;
@@ -23,11 +22,6 @@ Renderer.1 {
     TextureHover = None;
 }
 
-Renderer.2 {
-    Texture = "./unfoldedInventory.png" Smooth;
-    TransparentTexture = false;
-}
-
 Renderer.3 {
     BackgroundColor = transparent;
     BorderColor = #3C3C3C;
@@ -36,283 +30,10 @@ Renderer.3 {
     TextureBackground = None;
 }
 
-Panel.statusBar {
-    Position = (25, 25);
-    Size = (805, 146.56);
-
-    Renderer {
-        BackgroundColor = white;
-        BorderColor = black;
-        TextureBackground = "./statusBar.png" Smooth;
-        TransparentTexture = true;
-    }
-
-    ProgressBar.healthBar {
-        Maximum = 100;
-        Minimum = 0;
-        Position = (155, 31);
-        Size = (598, 19);
-        TextSize = 13;
-        Value = 100;
-
-        Renderer {
-            BackgroundColor = transparent;
-            BorderColor = black;
-            Borders = (0, 0, 0, 0);
-            FillColor = #FF00006F;
-            Opacity = 1;
-            OpacityDisabled = -1;
-            TextColor = #3C3C3C;
-            TextColorFilled = white;
-            TextureBackground = None;
-            TextureFill = None;
-            TransparentTexture = false;
-        }
-    }
-
-    ProgressBar.staminaBar {
-        Maximum = 100;
-        Minimum = 0;
-        Position = (155, 66);
-        Size = (448, 19);
-        TextSize = 13;
-        Value = 100;
-
-        Renderer {
-            BackgroundColor = transparent;
-            BorderColor = black;
-            Borders = (0, 0, 0, 0);
-            FillColor = #0CFF4D76;
-            TextColor = #3C3C3C;
-            TextColorFilled = white;
-            TextureBackground = None;
-            TextureFill = None;
-        }
-    }
-
-    ProgressBar.ProgressBar1 {
-        Maximum = 100;
-        Minimum = 0;
-        Position = (155, 100);
-        Size = (368, 19);
-        TextSize = 13;
-        Value = 100;
-
-        Renderer {
-            BackgroundColor = transparent;
-            BorderColor = black;
-            Borders = (1, 1, 1, 1);
-            FillColor = #AF0BFF80;
-            TextColor = #3C3C3C;
-            TextColorFilled = white;
-            TextureBackground = None;
-            TextureFill = None;
-        }
-    }
-}
-
-Panel.essenceBar {
-    Position = (2130, 1317.5);
-    Size = (404, 101);
-
-    Renderer {
-        BackgroundColor = white;
-        BorderColor = black;
-        TextureBackground = "./essenceBar.png" Smooth;
-        TransparentTexture = true;
-    }
-
-    TextArea.essenceBarText {
-        HorizontalScrollbarPolicy = Never;
-        MaximumCharacters = 15;
-        Position = (30, 22);
-        Size = (388, 65);
-        Text = 0;
-        TextSize = 45;
-
-        Renderer {
-            BackgroundColor = transparent;
-            BorderColor = black;
-            Borders = (0, 0, 0, 0);
-            CaretColor = black;
-            CaretWidth = 1;
-            DefaultTextColor = #A0A0A0;
-            Padding = (0, 0, 0, 0);
-            SelectedTextBackgroundColor = #006EFF;
-            SelectedTextColor = white;
-            TextColor = white;
-            TextureBackground = None;
-        }
-    }
-}
-
-Picture.unfoldedInventory1 {
-    Position = (200, 40);
-    Size = (1642, 910);
-
-    Renderer {
-        Texture = "./unfoldedInventory.png" Smooth;
-        TransparentTexture = false;
-    }
-}
-
-Picture.unfoldedInventory2 {
-    Position = (200, 40);
-    Renderer = &2;
-    Size = (1642, 910);
-}
-
-Picture.unfoldedInventory3 {
-    Position = (200, 40);
-    Renderer = &2;
-    Size = (1642, 910);
-}
-
-Picture.unfoldedInventory4 {
-    Position = (200, 40);
-    Renderer = &2;
-    Size = (1642, 910);
-}
-
-Panel.inventoryButtons {
-    Position = (40, 40);
-    Size = (110, 470);
-
-    Renderer {
-        BackgroundColor = #FFFFFF00;
-        BorderColor = black;
-        TextureBackground = "./minimizedInventory.png" Smooth;
-    }
-
-    Button.inventoryButton1 {
-        Position = (10, 10);
-        Size = (100, 100);
-        TextSize = 13;
-
-        Renderer {
-            BackgroundColor = #F5F5F500;
-            BackgroundColorDisabled = #E6E6E6;
-            BackgroundColorDown = #EBEBEB;
-            BackgroundColorFocused = #00000065;
-            BackgroundColorHover = #00000065;
-            BorderColor = #3C3C3C00;
-            BorderColorDisabled = #7D7D7D00;
-            BorderColorDown = transparent;
-            BorderColorFocused = transparent;
-            BorderColorHover = transparent;
-            Borders = (1, 1, 1, 1);
-            TextColor = #3C3C3C;
-            TextColorDisabled = #7D7D7D;
-            TextColorDown = black;
-            TextColorHover = black;
-            Texture = None;
-            TextureDisabled = None;
-            TextureDown = None;
-            TextureDownFocused = None;
-            TextureDownHover = None;
-            TextureFocused = None;
-            TextureHover = None;
-        }
-    }
-
-    Button.inventoryButton2 {
-        Position = (10, 130);
-        Size = (100, 102);
-        TextSize = 13;
-
-        Renderer {
-            BackgroundColor = #F5F5F500;
-            BackgroundColorDisabled = #E6E6E6;
-            BackgroundColorDown = #EBEBEB;
-            BackgroundColorFocused = #00000065;
-            BackgroundColorHover = #00000065;
-            BorderColor = #3C3C3C00;
-            BorderColorDisabled = #7D7D7D00;
-            BorderColorDown = transparent;
-            BorderColorFocused = transparent;
-            BorderColorHover = transparent;
-            Borders = (1, 1, 1, 1);
-            TextColor = #3C3C3C;
-            TextColorDisabled = #7D7D7D;
-            TextColorDown = black;
-            TextColorHover = black;
-            Texture = None;
-            TextureDisabled = None;
-            TextureDown = None;
-            TextureDownFocused = None;
-            TextureDownHover = None;
-            TextureFocused = None;
-            TextureHover = None;
-        }
-    }
-
-    Button.inventoryButton3 {
-        Position = (10, 240);
-        Size = (100, 112);
-        TextSize = 13;
-
-        Renderer {
-            BackgroundColor = #F5F5F500;
-            BackgroundColorDisabled = #E6E6E6;
-            BackgroundColorDown = #EBEBEB;
-            BackgroundColorFocused = #00000065;
-            BackgroundColorHover = #00000065;
-            BorderColor = #3C3C3C00;
-            BorderColorDisabled = #7D7D7D00;
-            BorderColorDown = transparent;
-            BorderColorFocused = transparent;
-            BorderColorHover = transparent;
-            Borders = (1, 1, 1, 1);
-            TextColor = #3C3C3C;
-            TextColorDisabled = #7D7D7D;
-            TextColorDown = black;
-            TextColorHover = black;
-            Texture = None;
-            TextureDisabled = None;
-            TextureDown = None;
-            TextureDownFocused = None;
-            TextureDownHover = None;
-            TextureFocused = None;
-            TextureHover = None;
-        }
-    }
-
-    Button.inventoryButton4 {
-        Position = (10, 360);
-        Size = (100, 102);
-        TextSize = 13;
-
-        Renderer {
-            BackgroundColor = #F5F5F500;
-            BackgroundColorDisabled = #E6E6E6;
-            BackgroundColorDown = #EBEBEB;
-            BackgroundColorFocused = #00000065;
-            BackgroundColorHover = #00000065;
-            BorderColor = #3C3C3C00;
-            BorderColorDisabled = #7D7D7D00;
-            BorderColorDown = transparent;
-            BorderColorFocused = transparent;
-            BorderColorHover = transparent;
-            Borders = (1, 1, 1, 1);
-            TextColor = #3C3C3C;
-            TextColorDisabled = #7D7D7D;
-            TextColorDown = black;
-            TextColorHover = black;
-            Texture = None;
-            TextureDisabled = None;
-            TextureDown = None;
-            TextureDownFocused = None;
-            TextureDownHover = None;
-            TextureFocused = None;
-            TextureHover = None;
-        }
-    }
-}
-
 Panel.mainDialoguePanel {
     Position = (830, 470);
     Size = (900, 500);
-    Visible = false;
+    visible = false;
 
     Renderer {
         BackgroundColor = #FFFFFF00;
@@ -331,7 +52,7 @@ Panel.mainDialoguePanel {
 
     Button.upgradeStatsButton {
         Position = (50, 50);
-        Renderer = &1;
+        Renderer = &2;
         Size = (800, 100);
         Text = "Upgrade stats";
         TextSize = 35;
@@ -339,15 +60,15 @@ Panel.mainDialoguePanel {
 
     Button.tradeButton {
         Position = (50, 200);
-        Renderer = &1;
+        Renderer = &2;
         Size = (800, 100);
         Text = Trade;
         TextSize = 35;
-    }
+   }
 
     Button.exitButton {
         Position = (50, 350);
-        Renderer = &1;
+        Renderer = &2;
         Size = (800, 100);
         Text = Exit;
         TextSize = 35;
@@ -357,7 +78,7 @@ Panel.mainDialoguePanel {
 Panel.upgradeStatsPanel {
     Position = (605, 285);
     Size = (1350, 870);
-    Visible = false;
+    Visible = true;
 
     Renderer {
         BackgroundColor = #FFFFFF00;
@@ -376,35 +97,35 @@ Panel.upgradeStatsPanel {
 
     Button.VITbutton {
         Position = (50, 220);
-        Renderer = &1;
+        Renderer = &2;
         Size = (600, 100);
         TextSize = 35;
     }
 
     Button.STRbutton {
         Position = (50, 350);
-        Renderer = &1;
+        Renderer = &2;
         Size = (600, 100);
         TextSize = 35;
     }
 
     Button.ENDbutton {
         Position = (50, 470);
-        Renderer = &1;
+        Renderer = &2;
         Size = (600, 100);
         TextSize = 35;
     }
 
     Button.AGIbutton {
         Position = (50, 590);
-        Renderer = &1;
+        Renderer = &2;
         Size = (600, 100);
         TextSize = 35;
     }
 
     Button.INTbutton {
         Position = (50, 720);
-        Renderer = &1;
+        Renderer = &2;
         Size = (600, 100);
         TextSize = 35;
     }
@@ -925,14 +646,14 @@ Panel.tradePanel {
 
     Button.itemButton1 {
         Position = (50, 220);
-        Renderer = &1;
+        Renderer = &2;
         Size = (200, 200);
         TextSize = 13;
     }
 
     Button.itemButton2 {
         Position = (50, 470);
-        Renderer = &1;
+        Renderer = &2;
         Size = (200, 200);
         TextSize = 13;
     }

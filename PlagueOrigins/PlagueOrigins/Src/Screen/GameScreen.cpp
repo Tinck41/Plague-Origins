@@ -13,7 +13,7 @@ GameScreen::GameScreen()
 	}
 	mapLoader.~TilemapParser();
 
-	gui.loadWidgetsFromFile("../AdditionalLibraries/TGUI-0.9/gui-builder/Game.txt");
+	gui.loadWidgetsFromFile("./Assets/UI/Game.txt");
 	
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<Transform>();

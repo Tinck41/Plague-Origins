@@ -29,6 +29,7 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new AggroSystem());
 	updatableSystems.push_back(new PatrolSystem());
 	updatableSystems.push_back(new DisposalSystem());
+	updatableSystems.push_back(new BossFight());
 	updatableSystems.push_back(staminaSystem);
 	updatableSystems.push_back(essence);
 

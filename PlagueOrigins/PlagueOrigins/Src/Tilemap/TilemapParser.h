@@ -39,6 +39,7 @@ private:
 	void parseTileLayer();
 	void parseTileMapObjects();
 	void parseSoundSources();
+	void parseBossFightTriggers();
 
 	void parseAnimatedTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node);
 	void parseStaticTiles(std::string layerName, TilesetParameters tileset, nlohmann::json node);
