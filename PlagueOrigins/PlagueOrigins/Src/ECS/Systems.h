@@ -25,3 +25,4 @@
 #include "Systems/StaminaSystem.h"
 #include "Systems/HealthSystem.h"
 #include "Systems/EssenceSystem.h"
+#include "Systems/OverlaySystem.h"

@@ -26,7 +26,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	testEntity.AddComponent<Vampire>();
 	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
-	testEntity.AddComponent<Inventory>(222);
+	testEntity.AddComponent<Inventory>();
 	testEntity.AddComponent<Player>();
 	testEntity.AddComponent<Dialogue>();
 

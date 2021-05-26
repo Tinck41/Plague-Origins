@@ -7,31 +7,25 @@ InventorySystem::InventorySystem()
 
 void InventorySystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 {
-	gui.get<tgui::Panel>("inventoryButtons")->setVisible(false);
-	gui.get<tgui::Picture>("unfoldedInventory1")->setVisible(false);
-	gui.get<tgui::Picture>("unfoldedInventory2")->setVisible(false);
-	gui.get<tgui::Picture>("unfoldedInventory3")->setVisible(false);
-	gui.get<tgui::Picture>("unfoldedInventory4")->setVisible(false);
+	gui.get<tgui::Panel>("menuButtons")->get<tgui::Button>("inventoryButton")->onClick(&InventorySystem::unfoldInventory, this, std::ref(gui));
+
+	tgui::Panel::Ptr inventoryPanel = gui.get<tgui::Panel>("unfoldedInventory");
+
+	tgui::Panel::Ptr miniInventory	= inventoryPanel->get<tgui::Panel>("miniInventory");
+	tgui::Panel::Ptr quickAction	= inventoryPanel->get<tgui::Panel>("quickAction");
+	tgui::Panel::Ptr ringEquiped	= inventoryPanel->get<tgui::Panel>("ringEquiped");
+
+	createInventorySlots(miniInventory);
+	createQuickSlots(quickAction);
+	createRingSlots(ringEquiped);
 }
 
 void InventorySystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
-	auto view = reg.view<Inventory, PlayerInput>();
+	auto view = reg.view<Inventory>();
 	for (auto entity : view) 
 	{
-		Inventory& inventory = reg.get<Inventory>(entity);
-		PlayerInput& playerInput = reg.get<PlayerInput>(entity);
-		if (playerInput.escReleased)
-		{
-			escReleased(inventory);
-		}
-		if (playerInput.LMBreleased)
-		{
-			if (gui.get<tgui::Button>("inventoryButton1")->isMouseDown()) buttonClicked(0, inventory);
-			if (gui.get<tgui::Button>("inventoryButton2")->isMouseDown()) buttonClicked(1, inventory);
-			if (gui.get<tgui::Button>("inventoryButton3")->isMouseDown()) buttonClicked(2, inventory);
-			if (gui.get<tgui::Button>("inventoryButton4")->isMouseDown()) buttonClicked(3, inventory);
-		}
+
 	}
 }
 
@@ -40,76 +34,76 @@ void InventorySystem::render(entt::registry& reg, sf::RenderWindow& window, tgui
 	auto view = reg.view<Inventory>();
 	for (auto entity : view)
 	{
-		Inventory& inventory = reg.get<Inventory>(entity);
-		switch (inventory.state)
+
+	}
+}
+
+void InventorySystem::unfoldInventory(tgui::GuiSFML& gui)
+{
+	bool isVisable = gui.get<tgui::Panel>("unfoldedInventory")->isVisible();
+
+	gui.get<tgui::Panel>("unfoldedInventory")->setVisible(!isVisable);
+}
+
+void InventorySystem::createInventorySlots(tgui::Panel::Ptr panel)
+{
+	for (int i = 0; i < config.inventorySlots.y; i++)
+	{
+		for (int j = 0; j < config.inventorySlots.x; j++)
 		{
-		case 0:
-			gui.get<tgui::Panel>("statusBar")->setVisible(true);
-			gui.get<tgui::Panel>("inventoryButtons")->setVisible(false);
-			
-			gui.get<tgui::Picture>("unfoldedInventory1")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory2")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory3")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory4")->setVisible(false);
-			break;
-		case 1:
-			gui.get<tgui::Panel>("statusBar")->setVisible(false);
-			gui.get<tgui::Panel>("inventoryButtons")->setVisible(true);
-			
-			gui.get<tgui::Picture>("unfoldedInventory1")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory2")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory3")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory4")->setVisible(false);
-			break;
-		case 2:
-			gui.get<tgui::Panel>("statusBar")->setVisible(false);
-			gui.get<tgui::Panel>("inventoryButtons")->setVisible(true);
-			
-			gui.get<tgui::Picture>("unfoldedInventory1")->setVisible(true);
-			gui.get<tgui::Picture>("unfoldedInventory2")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory3")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory4")->setVisible(false);
-			break;
-		case 3:
-			gui.get<tgui::Panel>("statusBar")->setVisible(false);
-			gui.get<tgui::Panel>("inventoryButtons")->setVisible(true);
-			
-			gui.get<tgui::Picture>("unfoldedInventory1")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory2")->setVisible(true);
-			gui.get<tgui::Picture>("unfoldedInventory3")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory4")->setVisible(false);
-			break;
-		case 4:
-			gui.get<tgui::Panel>("statusBar")->setVisible(false);
-			gui.get<tgui::Panel>("inventoryButtons")->setVisible(true);
-			
-			gui.get<tgui::Picture>("unfoldedInventory1")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory2")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory3")->setVisible(true);
-			gui.get<tgui::Picture>("unfoldedInventory4")->setVisible(false);
-			break;
-		case 5:
-			gui.get<tgui::Panel>("statusBar")->setVisible(false);
-			gui.get<tgui::Panel>("inventoryButtons")->setVisible(true);
-			
-			gui.get<tgui::Picture>("unfoldedInventory1")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory2")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory3")->setVisible(false);
-			gui.get<tgui::Picture>("unfoldedInventory4")->setVisible(true);
-			break;
-		default:
-			break;
+			tgui::Button::Ptr slot = tgui::Button::create();
+
+			slot->getRenderer()->setBackgroundColor(tgui::Color::Transparent);
+			slot->getRenderer()->setBackgroundColorHover(tgui::Color(0, 0, 0, 101));
+			slot->getRenderer()->setBackgroundColorDown(tgui::Color(0, 0, 0, 201));
+			slot->getRenderer()->setBorders(tgui::Borders(0.f));
+
+			slot->setSize(config.slotSize.x, config.slotSize.y);
+			slot->setPosition(config.slotSize.x * j + config.slotMargin.x * j, config.slotSize.y * i + config.slotMargin.y * i);
+
+			panel->add(slot, std::to_string(config.inventorySlots.x * i + j));
 		}
 	}
 }
 
-void InventorySystem::buttonClicked(int buttonIndex, Inventory& inventory)
+void InventorySystem::createQuickSlots(tgui::Panel::Ptr panel)
 {
-	inventory.state = buttonIndex + 2;
+	for (int i = 0; i < config.quickSlots.y; i++)
+	{
+		for (int j = 0; j < config.quickSlots.x; j++)
+		{
+			tgui::Button::Ptr slot = tgui::Button::create();
+
+			slot->getRenderer()->setBackgroundColor(tgui::Color::Transparent);
+			slot->getRenderer()->setBackgroundColorHover(tgui::Color(0, 0, 0, 101));
+			slot->getRenderer()->setBackgroundColorDown(tgui::Color(0, 0, 0, 201));
+			slot->getRenderer()->setBorders(tgui::Borders(0.f));
+
+			slot->setSize(config.slotSize.x, config.slotSize.y);
+			slot->setPosition(config.slotSize.x * j + config.slotMargin.x * j, config.slotSize.y * i + config.slotMargin.y * i);
+
+			panel->add(slot, std::to_string(config.quickSlots.x * i + j));
+		}
+	}
 }
 
-void InventorySystem::escReleased(Inventory& inventory)
+void InventorySystem::createRingSlots(tgui::Panel::Ptr panel)
 {
-	if (inventory.state == 0) inventory.state = 1;
-	else inventory.state = 0;
+	for (int i = 0; i < config.ringSlots.y; i++)
+	{
+		for (int j = 0; j < config.ringSlots.x; j++)
+		{
+			tgui::Button::Ptr slot = tgui::Button::create();
+
+			slot->getRenderer()->setBackgroundColor(tgui::Color::Transparent);
+			slot->getRenderer()->setBackgroundColorHover(tgui::Color(0, 0, 0, 101));
+			slot->getRenderer()->setBackgroundColorDown(tgui::Color(0, 0, 0, 201));
+			slot->getRenderer()->setBorders(tgui::Borders(0.f));
+
+			slot->setSize(config.slotSize.x, config.slotSize.y);
+			slot->setPosition(config.slotSize.x * j + config.slotMargin.x * j, config.slotSize.y * i + config.slotMargin.y * i);
+
+			panel->add(slot, std::to_string(config.ringSlots.x * i + j));
+		}
+	}
 }
