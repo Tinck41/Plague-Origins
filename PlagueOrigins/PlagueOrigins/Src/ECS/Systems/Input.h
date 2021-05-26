@@ -10,6 +10,9 @@ class Input :
 	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
 
 	void movementInput(PlayerInput& input);
+	void attackInput(PlayerInput& input);
+	void menuInput(PlayerInput& input);
+	void interactionInput(PlayerInput& input);
 	void checkS(PlayerInput& input);
 	void checkA(PlayerInput& input);
 	void checkW(PlayerInput& input);

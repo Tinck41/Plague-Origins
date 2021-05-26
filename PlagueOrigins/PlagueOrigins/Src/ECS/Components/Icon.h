@@ -4,10 +4,10 @@
 
 struct Icon
 {
-	Icon(sf::Image image)
+	Icon(std::string path)
 	{
-		this->image = image;
+		image.loadFromFile(path);
 	}
 
-	sf::Image image;
+	sf::Texture image;
 };

@@ -8,6 +8,7 @@
 
 #include <typeinfo>
 #include <algorithm>
+#include <sstream> 
 #include <deque>
 #include <iostream>
 #include <map>

@@ -8,11 +8,15 @@ void Input::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 	{
 		PlayerInput& input = reg.get<PlayerInput>(entity);
 		movementInput(input);
+		attackInput(input);
+		menuInput(input);
+		interactionInput(input);
 	}
 }
 
 void Input::movementInput(PlayerInput& input)
 {
+	if (!input.canCheckForMovement) return;
 	checkW(input);
 	checkA(input);
 	checkS(input);
@@ -20,8 +24,22 @@ void Input::movementInput(PlayerInput& input)
 	checkF(input);
 	checkR(input);
 	checkSpace(input);
+}
+
+void Input::attackInput(PlayerInput& input)
+{
+	if (!input.canCheckForAttack) return;
 	checkLMB(input);
+}
+
+void Input::menuInput(PlayerInput& input)
+{
+	if (!input.canCheckForMenu) return;
 	checkEsc(input);
+}
+
+void Input::interactionInput(PlayerInput& input)
+{
 }
 
 void Input::checkW(PlayerInput& input)

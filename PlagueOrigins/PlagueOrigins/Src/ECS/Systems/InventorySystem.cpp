@@ -31,10 +31,38 @@ void InventorySystem::update(entt::registry& reg, tgui::GuiSFML& gui, const floa
 
 void InventorySystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
-	auto view = reg.view<Inventory>();
+	auto view = reg.view<Inventory, PlayerInput>();
 	for (auto entity : view)
 	{
+		Inventory& inventory = reg.get<Inventory>(entity);
+		tgui::Panel::Ptr inventoryPanel = gui.get<tgui::Panel>("unfoldedInventory");
 
+		if (inventoryPanel->isVisible())
+		{
+			tgui::Panel::Ptr miniInventory = inventoryPanel->get<tgui::Panel>("miniInventory");
+
+			for (size_t i = 0; i < inventory.items.size(); i++)
+			{
+				Icon& icon = reg.get<Icon>(entt::entity(inventory.items[i]));
+				Item& item = reg.get<Item>(entt::entity(inventory.items[i]));
+
+				std::stringstream ss;
+				std::string name;
+				ss << i;
+				ss >> name;
+				tgui::Button::Ptr slot = miniInventory->get<tgui::Button>(name);
+
+				Description& description = reg.get<Description>(entt::entity(inventory.items[i]));
+
+				if (slot->isMouseDown())
+				{
+					inventoryPanel->get<tgui::Label>("itemName")->setText(item.name);
+					inventoryPanel->get<tgui::Label>("itemDescription")->setText(description.description);
+				}
+
+				slot->getRenderer()->setTexture(icon.image);
+			}
+		}
 	}
 }
 
@@ -60,8 +88,13 @@ void InventorySystem::createInventorySlots(tgui::Panel::Ptr panel)
 
 			slot->setSize(config.slotSize.x, config.slotSize.y);
 			slot->setPosition(config.slotSize.x * j + config.slotMargin.x * j, config.slotSize.y * i + config.slotMargin.y * i);
-
-			panel->add(slot, std::to_string(config.inventorySlots.x * i + j));
+			
+			int k = config.inventorySlots.x * i + j;
+			std::stringstream ss;
+			std::string name;
+			ss << k;
+			ss >> name;
+			panel->add(slot, name);
 		}
 	}
 }
@@ -103,7 +136,12 @@ void InventorySystem::createRingSlots(tgui::Panel::Ptr panel)
 			slot->setSize(config.slotSize.x, config.slotSize.y);
 			slot->setPosition(config.slotSize.x * j + config.slotMargin.x * j, config.slotSize.y * i + config.slotMargin.y * i);
 
-			panel->add(slot, std::to_string(config.ringSlots.x * i + j));
+			panel->add(slot, std::to_string(int(config.ringSlots.x * i + j)));
 		}
 	}
+}
+
+void InventorySystem::onMouseRelease(entt::registry& reg, tgui::GuiSFML& gui)
+{
+
 }

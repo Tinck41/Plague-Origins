@@ -20,5 +20,7 @@ private:
 	void createInventorySlots(tgui::Panel::Ptr panel);
 	void createQuickSlots(tgui::Panel::Ptr panel);
 	void createRingSlots(tgui::Panel::Ptr panel);
+
+	void onMouseRelease(entt::registry& reg, tgui::GuiSFML& gui);
 };
 

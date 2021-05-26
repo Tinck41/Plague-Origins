@@ -12,9 +12,9 @@ void OverlaySystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 	auto view = reg.view<PlayerInput>();
 	for (auto entity : view)
 	{
-		PlayerInput& playerInput = reg.get<PlayerInput>(entity);
+		PlayerInput& input = reg.get<PlayerInput>(entity);
 
-		if (playerInput.escReleased)
+		if (input.escReleased)
 		{
 			if (gui.get<tgui::Panel>("unfoldedInventory")->isVisible())
 			{
@@ -26,6 +26,8 @@ void OverlaySystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 			gui.get<tgui::Panel>("menuButtons")->setVisible(!isVisible);
 
 			gui.get<tgui::Panel>("statusBar")->setVisible(isVisible);
+			input.canCheckForAttack = isVisible;
+			input.canCheckForMovement = isVisible;
 		}
 	}
 }

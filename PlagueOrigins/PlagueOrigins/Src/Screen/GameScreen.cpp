@@ -40,6 +40,13 @@ GameScreen::GameScreen()
 	Entity ambient = Entity(registry.create(), this);
 	ambient.AddComponent<AmbienceAudioSource>();
 
+	Entity item = Entity(registry.create(), this);
+	item.AddComponent<Item>("Broken ring");
+	item.AddComponent<Description>("It's absolutely trash... Why are you carrying that?");
+	item.AddComponent<Icon>("./Assets/UI/trashRing.png");
+
+	testEntity.GetComponent<Inventory>().items.push_back(item);
+
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>();

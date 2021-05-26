@@ -1154,4 +1154,33 @@ Panel.unfoldedInventory {
             TextureBackground = None;
         }
     }
+
+    Label.itemDescription {
+        Position = (1040, 170);
+        Size = (750, 533.484);
+        TextSize = 33;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            Opacity = 1;
+            TextColor = white;
+            TextureBackground = None;
+        }
+    }
+
+    Label.itemName {
+        Position = (1040, 60);
+        Size = (750, 57);
+        TextSize = 43;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = white;
+            TextureBackground = None;
+        }
+    }
 }

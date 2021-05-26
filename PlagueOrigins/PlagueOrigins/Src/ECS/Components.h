@@ -21,6 +21,10 @@
 #include "Components/Dispose.h"
 #include "Components/Stamina.h"
 #include "Components/BossFightArena.h"
+#include "Components/Item.h"
+#include "Components/Description.h"
+#include "Components/Icon.h"
+#include "Components/Equipped.h"
 
 #include "Components/PlayerTemporal.h"
 #include "Components/Dialogue.h"

@@ -3,6 +3,7 @@
 struct PlayerInput
 {
 	// Movement input
+	bool canCheckForMovement = true;
 	bool wWasPressed = false;
 	bool wPressed = false;
 	bool wReleased = false;
@@ -22,11 +23,13 @@ struct PlayerInput
 	bool spaceReleased = false;
 
 	// Attack input
+	bool canCheckForAttack = true;
 	bool LMBwasPressed = false;
 	bool LMBpressed = false;
 	bool LMBreleased = false;
 
 	// Interaction input
+	bool canCheckForInteraction = true;
 	bool fWasPressed = false;
 	bool fPressed = false;
 	bool fReleased = false;
@@ -35,6 +38,8 @@ struct PlayerInput
 	bool rPressed = false;
 	bool rReleased = false;
 	
+	//Menu input
+	bool canCheckForMenu = true;
 	bool escWasPressed = false;
 	bool escPressed = false;
 	bool escReleased = false;
