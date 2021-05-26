@@ -14,9 +14,9 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 		if (attack.isAttacking)
 		{
-			if (animator.currentAnimationDurationLeft < animator.currentAnimationDuration / 2.f) return;
+			if (animator.currentAnimationDurationLeft < sf::milliseconds(animator.currentAnimationDuration / 2.f)) return;
 
-			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
+ 			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
 			while (attackCircle->GetUserData().pointer != ATTACK_RADIUS)
 			{
 				attackCircle = attackCircle->GetNext();
@@ -26,6 +26,7 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 			{
 				if (edge->contact->GetFixtureB() == attackCircle)
 				{
+
 					b2Body* bodyA = edge->contact->GetFixtureA()->GetBody();
 					b2Body* bodyB = edge->contact->GetFixtureB()->GetBody();
 

@@ -9,7 +9,7 @@ PlayerAttackState::PlayerAttackState(Entity& owner) :
 
 void PlayerAttackState::enter()
 {
-    std::cout << "ATTACK\n";
+    std::cout << "PLAYER ATTACK\n";
     Animator& animator = owner.GetComponent<Animator>();
     ActorAudioSource& audioSource = owner.GetComponent<ActorAudioSource>();
 
@@ -39,8 +39,6 @@ void PlayerAttackState::update(const float& dt)
  	}
  	else if (owner.GetComponent<Animator>().armatureDisplay->getAnimation()->isCompleted())
  	{
-        
-        std::cout << "finish\n";
         if (owner.GetComponent<Dash>().isDashing)
         {
             SMcomponent& playerStates = owner.GetComponent<SMcomponent>();

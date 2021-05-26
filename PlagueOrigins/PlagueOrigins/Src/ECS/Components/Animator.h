@@ -22,5 +22,5 @@ struct Animator
 	sf::RenderStates states;
 
 	float currentAnimationDuration = 0.f;
-	float currentAnimationDurationLeft = 0.f;
+	sf::Time currentAnimationDurationLeft;
 };
