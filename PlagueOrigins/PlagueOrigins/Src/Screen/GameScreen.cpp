@@ -40,12 +40,18 @@ GameScreen::GameScreen()
 	Entity ambient = Entity(registry.create(), this);
 	ambient.AddComponent<AmbienceAudioSource>();
 
-	Entity item = Entity(registry.create(), this);
-	item.AddComponent<Item>("Broken ring");
-	item.AddComponent<Description>("It's absolutely trash... Why are you carrying that?");
-	item.AddComponent<Icon>("./Assets/UI/trashRing.png");
+	Entity ring1 = Entity(registry.create(), this);
+	ring1.AddComponent<Item>("Broken ring", RING);
+	ring1.AddComponent<Description>("It's absolutely trash... Why are you carrying that?");
+	ring1.AddComponent<Icon>("./Assets/UI/trashRing.png");
 
-	testEntity.GetComponent<Inventory>().items.push_back(item);
+	Entity ring2 = Entity(registry.create(), this);
+	ring2.AddComponent<Item>("Health ring", RING);
+	ring2.AddComponent<Description>("Ring with a dull red stone.\n\nIncreases owner health.");
+	ring2.AddComponent<Icon>("./Assets/UI/healthRing.png");
+
+	testEntity.GetComponent<Inventory>().items.push_back(ring1);
+	testEntity.GetComponent<Inventory>().items.push_back(ring2);
 
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();

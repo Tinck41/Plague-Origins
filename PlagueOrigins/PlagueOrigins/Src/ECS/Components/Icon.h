@@ -6,8 +6,11 @@ struct Icon
 {
 	Icon(std::string path)
 	{
-		image.loadFromFile(path);
+		sf::Texture texture;
+		texture.loadFromFile(path);
+
+		image = tgui::Texture(texture);
 	}
 
-	sf::Texture image;
+	tgui::Texture image;
 };

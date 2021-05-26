@@ -13,6 +13,12 @@ class Input :
 	void attackInput(PlayerInput& input);
 	void menuInput(PlayerInput& input);
 	void interactionInput(PlayerInput& input);
+
+	void resetMovementInput(PlayerInput& input);
+	void resetAttackInput(PlayerInput& input);
+	void resetMenuInput(PlayerInput& input);
+	void resetInteractionInput(PlayerInput& input);
+
 	void checkS(PlayerInput& input);
 	void checkA(PlayerInput& input);
 	void checkW(PlayerInput& input);

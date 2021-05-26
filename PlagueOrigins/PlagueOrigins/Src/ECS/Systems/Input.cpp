@@ -16,7 +16,12 @@ void Input::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 void Input::movementInput(PlayerInput& input)
 {
-	if (!input.canCheckForMovement) return;
+	if (!input.canCheckForMovement)
+	{
+		resetMovementInput(input);
+		return;
+	}
+
 	checkW(input);
 	checkA(input);
 	checkS(input);
@@ -28,18 +33,73 @@ void Input::movementInput(PlayerInput& input)
 
 void Input::attackInput(PlayerInput& input)
 {
-	if (!input.canCheckForAttack) return;
+	if (!input.canCheckForAttack)
+	{
+		resetAttackInput(input);
+		return;
+	}
+
 	checkLMB(input);
 }
 
 void Input::menuInput(PlayerInput& input)
 {
-	if (!input.canCheckForMenu) return;
+	if (!input.canCheckForMenu)
+	{
+		resetMenuInput(input);
+		return;
+	}
+
 	checkEsc(input);
 }
 
 void Input::interactionInput(PlayerInput& input)
 {
+}
+
+void Input::resetMovementInput(PlayerInput& input)
+{
+	input.wPressed = false;
+	input.wWasPressed = false;
+	input.wReleased = false;
+
+	input.aPressed = false;
+	input.aWasPressed = false;
+	input.aReleased = false;
+
+	input.sPressed = false;
+	input.sWasPressed = false;
+	input.sReleased = false;
+
+	input.dPressed = false;
+	input.dWasPressed = false;
+	input.dReleased = false;
+
+	input.spacePressed = false;
+	input.spaceWasPressed = false;
+	input.spaceReleased = false;
+
+}
+
+void Input::resetAttackInput(PlayerInput& input)
+{
+	input.LMBpressed = false;
+	input.LMBwasPressed = false;
+	input.LMBreleased = false;
+}
+
+void Input::resetMenuInput(PlayerInput& input)
+{
+	input.escPressed = false;
+	input.escWasPressed = false;
+	input.escReleased = false;
+}
+
+void Input::resetInteractionInput(PlayerInput& input)
+{
+	input.fPressed = false;
+	input.fWasPressed = false;
+	input.fReleased = false;
 }
 
 void Input::checkW(PlayerInput& input)

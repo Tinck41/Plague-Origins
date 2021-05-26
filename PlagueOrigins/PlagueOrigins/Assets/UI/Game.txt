@@ -1183,4 +1183,106 @@ Panel.unfoldedInventory {
             TextureBackground = None;
         }
     }
+
+    Panel.itemActions {
+        Position = (410, 190);
+        Size = (450, 250);
+        Visible = false;
+
+        Renderer {
+            BackgroundColor = white;
+            BorderColor = black;
+            TextureBackground = "mainDialogueBox.png" Smooth;
+        }
+
+        Button.Button1 {
+            Position = (26, 24);
+            Size = (400, 52);
+            TextSize = 30;
+
+            Renderer {
+                BackgroundColor = transparent;
+                BackgroundColorDisabled = #E6E6E6;
+                BackgroundColorDown = black;
+                BackgroundColorHover = #3C3C3C;
+                BorderColor = #3C3C3C;
+                BorderColorDisabled = #7D7D7D;
+                BorderColorDown = black;
+                BorderColorFocused = #1E1EB4;
+                BorderColorHover = black;
+                Borders = (0, 0, 0, 0);
+                TextColor = white;
+                TextColorDisabled = #7D7D7D;
+                TextColorDown = black;
+                TextColorHover = black;
+                Texture = None;
+                TextureDisabled = None;
+                TextureDown = None;
+                TextureDownFocused = None;
+                TextureDownHover = None;
+                TextureFocused = None;
+                TextureHover = None;
+            }
+        }
+
+        Button.Button2 {
+            Position = (26, 99);
+            Size = (400, 52);
+            TextSize = 30;
+
+            Renderer {
+                BackgroundColor = transparent;
+                BackgroundColorDisabled = #E6E6E6;
+                BackgroundColorDown = black;
+                BackgroundColorHover = #3C3C3C;
+                BorderColor = #3C3C3C;
+                BorderColorDisabled = #7D7D7D;
+                BorderColorDown = black;
+                BorderColorFocused = #1E1EB4;
+                BorderColorHover = black;
+                Borders = (0, 0, 0, 0);
+                TextColor = white;
+                TextColorDisabled = #7D7D7D;
+                TextColorDown = black;
+                TextColorHover = black;
+                Texture = None;
+                TextureDisabled = None;
+                TextureDown = None;
+                TextureDownFocused = None;
+                TextureDownHover = None;
+                TextureFocused = None;
+                TextureHover = None;
+            }
+        }
+
+        Button.Button3 {
+            Position = (26, 174);
+            Size = (400, 52);
+            TextSize = 30;
+
+            Renderer {
+                BackgroundColor = transparent;
+                BackgroundColorDisabled = #E6E6E6;
+                BackgroundColorDown = black;
+                BackgroundColorHover = #3C3C3C;
+                BorderColor = #3C3C3C;
+                BorderColorDisabled = #7D7D7D;
+                BorderColorDown = black;
+                BorderColorFocused = #1E1EB4;
+                BorderColorHover = black;
+                Borders = (0, 0, 0, 0);
+                TextColor = white;
+                TextColorDisabled = #7D7D7D;
+                TextColorDown = black;
+                TextColorHover = black;
+                Texture = None;
+                TextureDisabled = None;
+                TextureDown = None;
+                TextureDownFocused = None;
+                TextureDownHover = None;
+                TextureFocused = None;
+                TextureHover = None;
+            }
+        }
+    }
 }

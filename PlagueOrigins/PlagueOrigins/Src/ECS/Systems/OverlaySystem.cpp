@@ -18,7 +18,11 @@ void OverlaySystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 		{
 			if (gui.get<tgui::Panel>("unfoldedInventory")->isVisible())
 			{
-				gui.get<tgui::Panel>("unfoldedInventory")->setVisible(false);
+				tgui::Panel::Ptr inventoryPanel = gui.get<tgui::Panel>("unfoldedInventory");
+
+				inventoryPanel->setVisible(false);
+				inventoryPanel->get<tgui::Label>("itemName")->setText("");
+				inventoryPanel->get<tgui::Label>("itemDescription")->setText("");
 				break;
 			}
 
