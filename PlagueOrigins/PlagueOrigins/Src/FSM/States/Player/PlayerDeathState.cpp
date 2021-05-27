@@ -8,7 +8,7 @@ PlayerDeathState::PlayerDeathState(Entity& owner) :
 
 void PlayerDeathState::enter()
 {
-    std::cout << "DIE\n";
+    //std::cout << "DIE\n";
     Animator& animator = owner.GetComponent<Animator>();
     Movement& movement = owner.GetComponent<Movement>();
 

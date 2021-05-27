@@ -8,7 +8,7 @@ DogIdleState::DogIdleState(Entity& owner) :
 
 void DogIdleState::enter()
 {
-	std::cout << "Dog Idle State\n";
+	//std::cout << "Dog Idle State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;

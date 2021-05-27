@@ -8,7 +8,7 @@ PlayerInteractState::PlayerInteractState(Entity& owner) :
 
 void PlayerInteractState::enter()
 {
-	std::cout << "DIALOGUE START\n";
+	//std::cout << "DIALOGUE START\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;

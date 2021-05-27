@@ -8,7 +8,7 @@ PlayerIdleState::PlayerIdleState(Entity& owner) :
 
 void PlayerIdleState::enter()
 {
-	std::cout << "PLAYER IDLE\n";
+	//std::cout << "PLAYER IDLE\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;

@@ -8,7 +8,7 @@ PlayerDashState::PlayerDashState(Entity& owner) :
 
 void PlayerDashState::enter()
 {
-	std::cout << "DASH\n";
+	//std::cout << "DASH\n";
 	Animator& animator = owner.GetComponent<Animator>();
 	Movement& movement = owner.GetComponent<Movement>();
 	Dash& dash = owner.GetComponent<Dash>();
