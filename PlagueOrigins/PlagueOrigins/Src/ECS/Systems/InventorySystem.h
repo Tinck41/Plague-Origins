@@ -17,13 +17,14 @@ public:
 private:
 	void unfoldInventory(tgui::GuiSFML& gui);
 
-	void createInventorySlots(tgui::GuiSFML& gui);
-	void createQuickSlots(tgui::GuiSFML& gui);
-	void createRingSlots(tgui::GuiSFML& gui);
+	void createInventorySlots(entt::registry& reg, tgui::GuiSFML& gui);
+	void createQuickSlots(entt::registry& reg, tgui::GuiSFML& gui);
+	void createRingSlots(entt::registry& reg, tgui::GuiSFML& gui);
 
-	void rightClickOnInventorySlot(tgui::Panel::Ptr inventory, tgui::Panel::Ptr panel, tgui::Button::Ptr slot);
+	void rightClickOnInventorySlot(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Panel::Ptr panel, tgui::Button::Ptr slot);
 
-	void equipItem(tgui::Panel::Ptr inventory, tgui::Button::Ptr slot);
-	void unequipItem();
+	void equipItem(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Button::Ptr slot);
+	void unequipItem(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Button::Ptr slot);
+	void removeItem(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Button::Ptr slot);
 };
 

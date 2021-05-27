@@ -9,9 +9,9 @@ void InventorySystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 {
 	gui.get<tgui::Panel>("menuButtons")->get<tgui::Button>("inventoryButton")->onClick(&InventorySystem::unfoldInventory, this, std::ref(gui));
 
-	createInventorySlots(gui);
-	createQuickSlots(gui);
-	createRingSlots(gui);
+	createInventorySlots(reg, gui);
+	createQuickSlots(reg, gui);
+	createRingSlots(reg, gui);
 }
 
 void InventorySystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
@@ -34,8 +34,8 @@ void InventorySystem::render(entt::registry& reg, sf::RenderWindow& window, tgui
 		if (inventoryPanel->isVisible())
 		{
 			tgui::Panel::Ptr miniInventory	= inventoryPanel->get<tgui::Panel>("miniInventory");
-			tgui::Panel::Ptr quickSlots		= inventoryPanel->get<tgui::Panel>("quickSlots");
-			tgui::Panel::Ptr ringSlots		= inventoryPanel->get<tgui::Panel>("ringSlots");
+			tgui::Panel::Ptr quickSlots		= inventoryPanel->get<tgui::Panel>("quickAction");
+			tgui::Panel::Ptr ringSlots		= inventoryPanel->get<tgui::Panel>("ringEquiped");
 
 			for (size_t i = 0; i < inventory.items.size(); i++)
 			{
@@ -75,6 +75,45 @@ void InventorySystem::render(entt::registry& reg, sf::RenderWindow& window, tgui
 
 				slot->getRenderer()->setTexture(icon.image);
 			}
+
+			for (size_t i = 0; i < inventory.ringSlots.size(); i++)
+			{
+				Icon& icon = reg.get<Icon>(entt::entity(inventory.ringSlots[i]));
+				Item& item = reg.get<Item>(entt::entity(inventory.ringSlots[i]));
+
+				tgui::Button::Ptr slot;
+
+				std::stringstream ss;
+				std::string name;
+				ss << i;
+				ss >> name;
+
+				if (item.isEquiped)
+				{
+					if (item.type == RING)
+					{
+						slot = ringSlots->get<tgui::Button>(name);
+					}
+					else if (item.type == BOOSTER)
+					{
+						slot = quickSlots->get<tgui::Button>(name);
+					}
+				}
+				else
+				{
+					slot = miniInventory->get<tgui::Button>(name);
+				}
+
+				Description& description = reg.get<Description>(entt::entity(inventory.ringSlots[i]));
+
+				if (slot->isMouseDown())
+				{
+					inventoryPanel->get<tgui::Label>("itemName")->setText(item.name);
+					inventoryPanel->get<tgui::Label>("itemDescription")->setText(description.description);
+				}
+
+				slot->getRenderer()->setTexture(icon.image);
+			}
 		}
 	}
 }
@@ -91,7 +130,7 @@ void InventorySystem::unfoldInventory(tgui::GuiSFML& gui)
 	gui.get<tgui::Panel>("itemActions")->setVisible(false);
 }
 
-void InventorySystem::createInventorySlots(tgui::GuiSFML& gui)
+void InventorySystem::createInventorySlots(entt::registry& reg, tgui::GuiSFML& gui)
 {
 	tgui::Panel::Ptr inventory = gui.get<tgui::Panel>("unfoldedInventory");
 	tgui::Panel::Ptr panel = inventory->get<tgui::Panel>("miniInventory");
@@ -117,12 +156,12 @@ void InventorySystem::createInventorySlots(tgui::GuiSFML& gui)
 			ss >> name;
 			panel->add(slot, name);
 
-			slot->onRightMouseRelease(&InventorySystem::rightClickOnInventorySlot, this, inventory, panel, slot);
+			slot->onRightMouseRelease(&InventorySystem::rightClickOnInventorySlot, this, std::ref(reg), inventory, panel, slot);
 		}
 	}
 }
 
-void InventorySystem::createQuickSlots(tgui::GuiSFML& gui)
+void InventorySystem::createQuickSlots(entt::registry& reg, tgui::GuiSFML& gui)
 {
 	tgui::Panel::Ptr inventory = gui.get<tgui::Panel>("unfoldedInventory");
 	tgui::Panel::Ptr panel = inventory->get<tgui::Panel>("quickAction");
@@ -141,14 +180,19 @@ void InventorySystem::createQuickSlots(tgui::GuiSFML& gui)
 			slot->setSize(config.slotSize.x, config.slotSize.y);
 			slot->setPosition(config.slotSize.x * j + config.slotMargin.x * j, config.slotSize.y * i + config.slotMargin.y * i);
 
-			panel->add(slot, std::to_string(config.quickSlots.x * i + j));
+			int k = config.quickSlots.x * i + j;
+			std::stringstream ss;
+			std::string name;
+			ss << k;
+			ss >> name;
+			panel->add(slot, name);
 
-			slot->onRightMouseRelease(&InventorySystem::rightClickOnInventorySlot, this, inventory, panel, slot);
+			slot->onRightMouseRelease(&InventorySystem::rightClickOnInventorySlot, this, std::ref(reg), inventory, panel, slot);
 		}
 	}
 }
 
-void InventorySystem::createRingSlots(tgui::GuiSFML& gui)
+void InventorySystem::createRingSlots(entt::registry& reg, tgui::GuiSFML& gui)
 {
 	tgui::Panel::Ptr inventory = gui.get<tgui::Panel>("unfoldedInventory");
 	tgui::Panel::Ptr panel = inventory->get<tgui::Panel>("ringEquiped");
@@ -167,14 +211,19 @@ void InventorySystem::createRingSlots(tgui::GuiSFML& gui)
 			slot->setSize(config.slotSize.x, config.slotSize.y);
 			slot->setPosition(config.slotSize.x * j + config.slotMargin.x * j, config.slotSize.y * i + config.slotMargin.y * i);
 
-			panel->add(slot, std::to_string(int(config.ringSlots.x * i + j)));
+			int k = config.ringSlots.x * i + j;
+			std::stringstream ss;
+			std::string name;
+			ss << k;
+			ss >> name;
+			panel->add(slot, name);
 
-			slot->onRightMouseRelease(&InventorySystem::rightClickOnInventorySlot, this, inventory, panel, slot);
+			slot->onRightMouseRelease(&InventorySystem::rightClickOnInventorySlot, this, std::ref(reg), inventory, panel, slot);
 		}
 	}
 }
 
-void InventorySystem::rightClickOnInventorySlot(tgui::Panel::Ptr inventory, tgui::Panel::Ptr panel, tgui::Button::Ptr slot)
+void InventorySystem::rightClickOnInventorySlot(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Panel::Ptr panel, tgui::Button::Ptr slot)
 {
 	auto itemActions = inventory->get<tgui::Panel>("itemActions");
 	bool isVisable = itemActions->isVisible();
@@ -187,20 +236,177 @@ void InventorySystem::rightClickOnInventorySlot(tgui::Panel::Ptr inventory, tgui
 	if (panel->getWidgetName() == "miniInventory")
 	{
 		auto btn = itemActions->get<tgui::Button>("Button1");
-
+		
 		btn->setText("Equip");
-		btn->onMouseRelease(&InventorySystem::equipItem, this, inventory, slot);
+		btn->onMouseRelease.disconnectAll();
+		btn->onMouseRelease(&InventorySystem::equipItem, this, std::ref(reg), inventory, slot);
 	}
 	else
 	{
-		itemActions->get<tgui::Button>("Button1")->setText("Unequip");
+		auto btn = itemActions->get<tgui::Button>("Button1");
+
+		btn->setText("Unequip");
+		btn->onMouseRelease.disconnectAll();
+		btn->onMouseRelease(&InventorySystem::unequipItem, this, std::ref(reg), inventory, slot);
 	}
 	itemActions->get<tgui::Button>("Button2")->setText("idk");
 	itemActions->get<tgui::Button>("Button3")->setText("Remove");
+	itemActions->get<tgui::Button>("Button3")->onMouseRelease.disconnectAll();
+	itemActions->get<tgui::Button>("Button3")->onMouseRelease(&InventorySystem::removeItem, this, std::ref(reg), inventory, slot);
 
 	inventory->get<tgui::Panel>("itemActions")->setVisible(!isVisable);
 }
 
-void InventorySystem::equipItem(tgui::Panel::Ptr inventory, tgui::Button::Ptr slot)
+void InventorySystem::equipItem(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Button::Ptr slot)
 {
+	inventory->get<tgui::Panel>("itemActions")->setVisible(false);
+	
+	uint32_t itemId = std::stoi(std::string(slot->getWidgetName()));
+
+	std::stringstream ss;
+	std::string name;
+	ss << itemId + 1;
+	ss >> name;
+	
+	slot->getRenderer()->setTexture({});
+
+	auto veiw = reg.view<Inventory, PlayerInput>();
+	for (auto entity : veiw)
+	{
+		Inventory& inventoryComp = reg.get<Inventory>(entity);
+		if (itemId >= inventoryComp.items.size()) return;
+		Item& item = reg.get<Item>(entt::entity(inventoryComp.items[itemId]));
+
+		item.isEquiped = true;
+
+		if (item.type == RING)
+		{
+			inventoryComp.ringSlots.push_back(inventoryComp.items[itemId]);
+		}
+		else if (item.type == BOOSTER)
+		{
+			inventoryComp.quickSlots.push_back(inventoryComp.items[itemId]);
+		}
+
+		inventoryComp.items.erase(inventoryComp.items.begin() + itemId, inventoryComp.items.begin() + itemId + 1);
+
+		if (itemId + 1 < config.inventorySlots.x * config.inventorySlots.y)
+		{
+			inventory->get<tgui::Panel>("miniInventory")->get<tgui::Button>(name)->getRenderer()->setTexture({});
+		}
+
+		break;
+	}
+}
+
+void InventorySystem::unequipItem(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Button::Ptr slot)
+{
+	inventory->get<tgui::Panel>("itemActions")->setVisible(false);
+
+	uint32_t itemId = std::stoi(std::string(slot->getWidgetName()));
+
+	std::stringstream ss;
+	std::string name;
+	ss << itemId + 1;
+	ss >> name;
+
+	std::string parentName = std::string(slot->getParent()->getWidgetName());
+	slot->getRenderer()->setTexture({});
+
+	auto veiw = reg.view<Inventory, PlayerInput>();
+	for (auto entity : veiw)
+	{
+		Inventory& inventoryComp = reg.get<Inventory>(entity);
+		if (parentName == "quickAction")
+		{
+			if (itemId >= inventoryComp.quickSlots.size()) return;
+			Item& item = reg.get<Item>(entt::entity(inventoryComp.quickSlots[itemId]));
+
+			item.isEquiped = false;
+
+			inventoryComp.items.push_back(inventoryComp.quickSlots[itemId]);
+			inventoryComp.quickSlots.erase(inventoryComp.quickSlots.begin() + itemId, inventoryComp.quickSlots.begin() + itemId + 1);
+
+			if (itemId + 1 < config.quickSlots.x * config.quickSlots.y)
+			{
+				inventory->get<tgui::Panel>(parentName)->get<tgui::Button>(name)->getRenderer()->setTexture({});
+			}
+		}
+		else if (parentName == "ringEquiped")
+		{
+			if (itemId >= inventoryComp.ringSlots.size()) return;
+			Item& item = reg.get<Item>(entt::entity(inventoryComp.ringSlots[itemId]));
+
+			item.isEquiped = false;
+
+			inventoryComp.items.push_back(inventoryComp.ringSlots[itemId]);
+			inventoryComp.ringSlots.erase(inventoryComp.ringSlots.begin() + itemId, inventoryComp.ringSlots.begin() + itemId + 1);
+
+			if (itemId + 1 < config.ringSlots.x * config.ringSlots.y)
+			{
+				inventory->get<tgui::Panel>(parentName)->get<tgui::Button>(name)->getRenderer()->setTexture({});
+			}
+		}
+
+		break;
+	}
+}
+
+void InventorySystem::removeItem(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Button::Ptr slot)
+{
+	inventory->get<tgui::Panel>("itemActions")->setVisible(false);
+
+	uint32_t itemId = std::stoi(std::string(slot->getWidgetName()));
+
+	std::stringstream ss;
+	std::string name;
+	ss << itemId + 1;
+	ss >> name;
+
+	std::string parentName = std::string(slot->getParent()->getWidgetName());
+	slot->getRenderer()->setTexture({});
+
+	auto veiw = reg.view<Inventory, PlayerInput>();
+	for (auto entity : veiw)
+	{
+		Inventory& inventoryComp = reg.get<Inventory>(entity);
+		if (parentName == "miniInventory")
+		{
+			if (itemId >= inventoryComp.items.size()) return;
+			reg.destroy(entt::entity(inventoryComp.items[itemId]));
+
+			inventoryComp.items.erase(inventoryComp.items.begin() + itemId, inventoryComp.items.begin() + itemId + 1);
+
+			if (itemId + 1 < config.inventorySlots.x * config.inventorySlots.y)
+			{
+				inventory->get<tgui::Panel>(parentName)->get<tgui::Button>(name)->getRenderer()->setTexture({});
+			}
+		}
+		else if (parentName == "quickAction")
+		{
+			if (itemId >= inventoryComp.quickSlots.size()) return;
+			reg.destroy(entt::entity(inventoryComp.quickSlots[itemId]));
+
+			inventoryComp.quickSlots.erase(inventoryComp.quickSlots.begin() + itemId, inventoryComp.quickSlots.begin() + itemId + 1);
+
+			if (itemId + 1 < config.quickSlots.x * config.quickSlots.y)
+			{
+				inventory->get<tgui::Panel>(parentName)->get<tgui::Button>(name)->getRenderer()->setTexture({});
+			}
+		}
+		else if (parentName == "ringEquiped")
+		{
+			if (itemId >= inventoryComp.ringSlots.size()) return;
+			reg.destroy(entt::entity(inventoryComp.ringSlots[itemId]));
+
+			inventoryComp.ringSlots.erase(inventoryComp.ringSlots.begin() + itemId, inventoryComp.ringSlots.begin() + itemId + 1);
+
+			if (itemId + 1 < config.ringSlots.x * config.ringSlots.y)
+			{
+				inventory->get<tgui::Panel>(parentName)->get<tgui::Button>(name)->getRenderer()->setTexture({});
+			}
+		}
+
+		break;
+	}
 }
