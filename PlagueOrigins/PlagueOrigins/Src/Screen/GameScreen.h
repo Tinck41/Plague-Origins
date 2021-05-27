@@ -14,6 +14,7 @@ private:
 	Entity testEntity;
 	Entity npcEntity;
 	Entity bishop;
+	Entity boss;
 
 	tgui::GuiSFML gui;
 

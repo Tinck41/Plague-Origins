@@ -4,6 +4,7 @@
 #include "Src/FSM/States/Player/PlayerStates.h"
 #include "Src/FSM/States/Dog/DogStates.h"
 #include "Src/FSM/States/Bishop/BishopStates.h"
+#include "Src/FSM/States/Boss/BossStates.h"
 
 GameScreen::GameScreen()
 {
@@ -73,6 +74,24 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Stats>(config.bishopStats);
 	auto bishopStats = bishop.GetComponent<Stats>();
 	bishop.AddComponent<Health>(bishopStats.VIT);
+
+
+	boss = Entity(registry.create(), this);
+	boss.AddComponent<Transform>();
+	boss.AddComponent<Animator>();
+	boss.AddComponent<Movement>(300.f);
+	boss.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2400.f, 8000.f), true, boss, ENEMY_NPC);
+	//boss.AddComponent<Aggresion>(boss.GetComponent<RigidBody>().body, 300.f);
+	boss.AddComponent<Tag>("Boss");
+	boss.AddComponent<ActorAudioSource>();
+	boss.AddComponent<SMcomponent>(new BossIdleState(boss));
+	boss.AddComponent<Dispose>();
+
+	boss.AddComponent<Stats>(config.bossStats);
+	auto bossStats = boss.GetComponent<Stats>();
+	boss.AddComponent<Health>(bossStats.VIT);
+	boss.AddComponent<Attack>(boss.GetComponent<RigidBody>().body, bossStats.STR, config.bossAttackRange);
+
 
 	systems.onCreate(registry, gui);
 }
