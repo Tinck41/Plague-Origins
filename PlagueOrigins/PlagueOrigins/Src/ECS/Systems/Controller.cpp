@@ -18,6 +18,9 @@ void Controller::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt
 		setDirection(movement, playerInput);
 		checkDash(playerInput, movement, dash, stamina, dt);
 		checkAttack(playerInput, attack, stamina);
+
+		//std::cout << rigidBody.body->GetPosition().x * 30.f << " " 
+		//		  << rigidBody.body->GetPosition().y * 30.f << " : player pos\n";
 	}
 }
 
