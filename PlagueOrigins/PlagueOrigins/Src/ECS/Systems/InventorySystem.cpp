@@ -49,21 +49,7 @@ void InventorySystem::render(entt::registry& reg, sf::RenderWindow& window, tgui
 				ss << i;
 				ss >> name;
 
-				if (item.isEquiped)
-				{
-					if (item.type == RING)
-					{
-						slot = ringSlots->get<tgui::Button>(name);
-					}
-					else if (item.type == BOOSTER)
-					{
-						slot = quickSlots->get<tgui::Button>(name);
-					}
-				}
-				else
-				{
-					slot = miniInventory->get<tgui::Button>(name);
-				}
+				slot = miniInventory->get<tgui::Button>(name);
 
 				Description& description = reg.get<Description>(entt::entity(inventory.items[i]));
 
@@ -88,23 +74,34 @@ void InventorySystem::render(entt::registry& reg, sf::RenderWindow& window, tgui
 				ss << i;
 				ss >> name;
 
-				if (item.isEquiped)
-				{
-					if (item.type == RING)
-					{
-						slot = ringSlots->get<tgui::Button>(name);
-					}
-					else if (item.type == BOOSTER)
-					{
-						slot = quickSlots->get<tgui::Button>(name);
-					}
-				}
-				else
-				{
-					slot = miniInventory->get<tgui::Button>(name);
-				}
+				slot = ringSlots->get<tgui::Button>(name);
 
 				Description& description = reg.get<Description>(entt::entity(inventory.ringSlots[i]));
+
+				if (slot->isMouseDown())
+				{
+					inventoryPanel->get<tgui::Label>("itemName")->setText(item.name);
+					inventoryPanel->get<tgui::Label>("itemDescription")->setText(description.description);
+				}
+
+				slot->getRenderer()->setTexture(icon.image);
+			}
+
+			for (size_t i = 0; i < inventory.quickSlots.size(); i++)
+			{
+				Icon& icon = reg.get<Icon>(entt::entity(inventory.quickSlots[i]));
+				Item& item = reg.get<Item>(entt::entity(inventory.quickSlots[i]));
+
+				tgui::Button::Ptr slot;
+
+				std::stringstream ss;
+				std::string name;
+				ss << i;
+				ss >> name;
+
+				slot = quickSlots->get<tgui::Button>(name);
+
+				Description& description = reg.get<Description>(entt::entity(inventory.quickSlots[i]));
 
 				if (slot->isMouseDown())
 				{
