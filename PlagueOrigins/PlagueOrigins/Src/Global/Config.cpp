@@ -53,6 +53,17 @@ Config::Config()
 	bishopStats.push_back(json["bishop"]["stats"]["str"]);
 	bishopStats.push_back(json["bishop"]["stats"]["agi"]);
 	bishopStats.push_back(json["bishop"]["stats"]["int"]);
+
+	bossSpeed = json["boss"]["speed"];
+	bossScale = json["boss"]["scale"];
+	bossAttackRange = json["boss"]["range"];
+	bossHitboxWidth = json["boss"]["hitbox"]["width"];
+	bossHitboxHeight = json["boss"]["hitbox"]["height"];
+	bossStats.push_back(json["boss"]["stats"]["vit"]);
+	bossStats.push_back(json["boss"]["stats"]["end"]);
+	bossStats.push_back(json["boss"]["stats"]["str"]);
+	bossStats.push_back(json["boss"]["stats"]["agi"]);
+	bossStats.push_back(json["boss"]["stats"]["int"]);
 }
 
 Config::~Config()
