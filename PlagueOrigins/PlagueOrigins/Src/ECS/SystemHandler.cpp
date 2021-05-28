@@ -19,7 +19,6 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new Physics());
 	updatableSystems.push_back(new Combat());
 	updatableSystems.push_back(new Vampiring());
-	updatableSystems.push_back(new Interaction());
 	updatableSystems.push_back(new Camera());
 	updatableSystems.push_back(new Motion());
 	updatableSystems.push_back(actorSoundSystem);
@@ -35,7 +34,6 @@ SystemHandler::SystemHandler()
 
 	// Render systems
 	renderableSystems.push_back(animation);
-	renderableSystems.push_back(new Interaction());
 	renderableSystems.push_back(new Physics());
 	renderableSystems.push_back(new PatrolSystem());
 	renderableSystems.push_back(statsSystem);

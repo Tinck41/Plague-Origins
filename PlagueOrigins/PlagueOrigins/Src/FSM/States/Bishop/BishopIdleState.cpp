@@ -25,13 +25,13 @@ void BishopIdleState::update(const float& dt)
 	//		new BishopDeathState(owner));
 	//	std::cout << "";
 	//}
-	//else if (owner.GetComponent<Interact>().isInteracting == true)
-	//{
-	//	SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
-	//		new BishopInteractState(owner));
-	//	std::cout << "";
-	//}
+	if (owner.GetComponent<Dialogue>().isInteracting == true)
+	{
+		SMcomponent& smComponent = owner.GetComponent<SMcomponent>();
+		smComponent.currentState = smComponent.changeState(smComponent.currentState,
+			new BishopInteractState(owner));
+		std::cout << "";
+	}
 	//else
 	//{
 	//}
