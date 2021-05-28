@@ -361,7 +361,6 @@ Panel.mainDialoguePanel {
 Panel.upgradeStatsPanel {
     Position = (605, 285);
     Size = (1350, 870);
-    Visible = false;
 
     Renderer {
         BackgroundColor = #FFFFFF00;
@@ -858,6 +857,7 @@ Panel.upgradeStatsPanel {
 Panel.tradePanel {
     Position = (846, 335);
     Size = (867, 770);
+    Visible = false;
 
     Renderer {
         BackgroundColor = #FFFFFF00;

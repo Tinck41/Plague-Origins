@@ -22,7 +22,6 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(new Camera());
 	updatableSystems.push_back(new Motion());
 	updatableSystems.push_back(actorSoundSystem);
-	updatableSystems.push_back(statsSystem);
 	updatableSystems.push_back(healthSystem);
 	updatableSystems.push_back(new AmbientSoundSystem());
 	updatableSystems.push_back(new AggroSystem());
@@ -36,7 +35,6 @@ SystemHandler::SystemHandler()
 	renderableSystems.push_back(animation);
 	renderableSystems.push_back(new Physics());
 	renderableSystems.push_back(new PatrolSystem());
-	renderableSystems.push_back(statsSystem);
 	renderableSystems.push_back(healthSystem);
 	renderableSystems.push_back(staminaSystem);
 	renderableSystems.push_back(essence);

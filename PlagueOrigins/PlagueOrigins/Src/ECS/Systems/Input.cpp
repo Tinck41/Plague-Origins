@@ -21,6 +21,7 @@ void Input::movementInput(PlayerInput& input)
 	checkR(input);
 	checkSpace(input);
 	checkLMB(input);
+	checkRMB(input);
 	checkEsc(input);
 }
 
@@ -245,6 +246,34 @@ void Input::checkLMB(PlayerInput& input)
 		input.LMBwasPressed = false;
 		input.LMBpressed = false;
 		input.LMBreleased = false;
+	}
+}
+
+void Input::checkRMB(PlayerInput& input)
+{
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && !input.RMBpressed)
+	{
+		input.RMBwasPressed = true;
+		input.RMBpressed = true;
+		input.RMBreleased = false;
+	}
+	else if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+	{
+		input.RMBwasPressed = false;
+		input.RMBpressed = true;
+		input.RMBreleased = false;
+	}
+	else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && input.RMBpressed)
+	{
+		input.RMBwasPressed = false;
+		input.RMBpressed = false;
+		input.RMBreleased = true;
+	}
+	else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+	{
+		input.RMBwasPressed = false;
+		input.RMBpressed = false;
+		input.RMBreleased = false;
 	}
 }
 

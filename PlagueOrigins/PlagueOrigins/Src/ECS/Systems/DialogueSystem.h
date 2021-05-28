@@ -16,4 +16,5 @@ public:
 	virtual void render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui) override;
 private:
 	void dialogueSwitch(Dialogue& dialogue);
+	void updateStats(entt::registry& reg, tgui::GuiSFML& gui, entt::entity player);
 };

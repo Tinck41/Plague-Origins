@@ -34,6 +34,10 @@ struct PlayerInput
 	bool rWasPressed = false;
 	bool rPressed = false;
 	bool rReleased = false;
+
+	bool RMBwasPressed = false;
+	bool RMBpressed = false;
+	bool RMBreleased = false;
 	
 	bool escWasPressed = false;
 	bool escPressed = false;

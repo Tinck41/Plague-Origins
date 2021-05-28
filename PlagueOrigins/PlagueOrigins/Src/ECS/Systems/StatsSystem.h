@@ -1,18 +1,14 @@
 #pragma once
-
-#include "IUpdateSystem.h"
-#include "IRenderSystem.h"
-
 #include "Src/ECS/Components.h"
 
-class StatsSystem :
-	public IUpdateSystem,
-	public IRenderSystem
+class StatsSystem
 {
 public:
-	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
-	virtual void render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui) override;
+	float newHp(Stats& stats, int value);
+	float newStamina(Stats& stats, int value);
+	float newDamage(Stats& stats, int value);
+	float newDashCD(Stats& stats, int value);
 
-	void increaseChar(Stats& stats, int value, charName charName);
-	void decreaseChar(Stats& stats, int value, charName charName);
+	void increaseChar(entt::registry& reg, entt::entity player, Stats& stats, Inventory& essence, charName charName);
+	void decreaseChar(entt::registry& reg, entt::entity player, Stats& stats, Inventory& essence, charName charName);
 };
