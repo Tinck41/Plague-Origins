@@ -181,7 +181,6 @@
     <ClCompile Include="Src\ECS\Systems\Controller.cpp" />
     <ClCompile Include="Src\ECS\Systems\FSM.cpp" />
     <ClCompile Include="Src\ECS\Systems\Input.cpp" />
-    <ClCompile Include="Src\ECS\Systems\Interaction.cpp" />
     <ClCompile Include="Src\ECS\Systems\Motion.cpp" />
     <ClCompile Include="Src\ECS\Systems\Physics.cpp" />
     <ClCompile Include="Src\FSM\States\Bishop\BishopDeathState.cpp" />
@@ -268,7 +267,6 @@
     <ClInclude Include="Src\ECS\Components.h" />
     <ClInclude Include="Src\ECS\Components\Dash.h" />
     <ClInclude Include="Src\ECS\Components\Health.h" />
-    <ClInclude Include="Src\ECS\Components\Interact.h" />
     <ClInclude Include="Src\FSM\Components\PlayerStates.h" />
     <ClInclude Include="Src\ECS\Systems\FSM.h" />
     <ClInclude Include="Src\ECS\Components\Vampire.h" />
@@ -286,7 +284,6 @@
     <ClInclude Include="Src\ECS\Systems\IUpdateSystem.h" />
     <ClInclude Include="Src\ECS\Components\PlayerInput.h" />
     <ClInclude Include="Src\ECS\Systems\Input.h" />
-    <ClInclude Include="Src\ECS\Systems\Interaction.h" />
     <ClInclude Include="Src\ECS\Systems\Motion.h" />
     <ClInclude Include="Src\ECS\Systems\Physics.h" />
     <ClInclude Include="Src\ECS\Systems.h" />
