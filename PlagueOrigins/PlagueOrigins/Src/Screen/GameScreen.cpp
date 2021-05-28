@@ -22,7 +22,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Transform>();
 	testEntity.AddComponent<PlayerInput>();
 	testEntity.AddComponent<ActorAudioSource>();
-	testEntity.AddComponent<Animator>();
+	testEntity.AddComponent<Animator>(config.playerScale);
 	testEntity.AddComponent<Movement>(config.playerSpeed);
 	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity, PLAYER);
 	testEntity.AddComponent<Tag>("Hero");
@@ -49,7 +49,7 @@ GameScreen::GameScreen()
 	//DOG
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
-	npcEntity.AddComponent<Animator>();
+	npcEntity.AddComponent<Animator>(config.dogScale);
 	npcEntity.AddComponent<Movement>(300.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
 	npcEntity.AddComponent<Aggresion>(npcEntity.GetComponent<RigidBody>().body, 300.f, 60.f);
@@ -71,11 +71,12 @@ GameScreen::GameScreen()
 	//BISHOP
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();
-	bishop.AddComponent<Animator>();
+	bishop.AddComponent<Animator>(config.bishopScale);
 	bishop.AddComponent<Movement>(500.f);
 	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop, FRIENDLY_NPC);
 	bishop.AddComponent<Tag>("Bishop");
 	//bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
+	bishop.AddComponent<Dialogue>(bishop.GetComponent<RigidBody>().body, 75.f);
 	bishop.AddComponent<SMcomponent>(new BishopIdleState(bishop));
 
 	bishop.AddComponent<Stats>(config.bishopStats);
@@ -86,7 +87,7 @@ GameScreen::GameScreen()
 	//BOSS
 	boss = Entity(registry.create(), this);
 	boss.AddComponent<Transform>();
-	boss.AddComponent<Animator>();
+	boss.AddComponent<Animator>(config.bossScale);
 	boss.AddComponent<Movement>(300.f);
 	boss.AddComponent<RigidBody>(sf::Vector2f(75.f, 135.f), sf::Vector2f(2400.f, 8000.f), true, boss, ENEMY_NPC);
 	boss.AddComponent<Tag>("Boss");
@@ -103,6 +104,7 @@ GameScreen::GameScreen()
 	//TO-DO find other solution
 	//add pointer to boss body
 	testEntity.GetComponent<Player>().bossBody = boss.GetComponent<RigidBody>().body;
+	testEntity.GetComponent<Dialogue>().bishop = bishop;
 
 	systems.onCreate(registry, gui);
 }

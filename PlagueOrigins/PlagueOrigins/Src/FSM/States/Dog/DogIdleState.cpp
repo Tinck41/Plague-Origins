@@ -21,8 +21,8 @@ void DogIdleState::update(const float& dt)
 {
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& smComponent = owner.GetComponent<SMcomponent>();
+		smComponent.currentState = smComponent.changeState(smComponent.currentState,
 			new DogDeathState(owner));
 		std::cout << "";
 	}

@@ -36,12 +36,12 @@ void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float
 				|| edge->contact->GetFixtureA()->GetUserData().pointer == INTERACTION_ZONE
 					&& edge->contact->GetFixtureB()->GetUserData().pointer == FRIENDLY_NPC)
 			{
+				//entt::entity bishop = (entt::entity)edge->contact->GetFixtureB()->GetBody()->GetUserData().pointer;
 				playerFound = true;
-				std::cout << "in zone\n";
 				if (playerInput.fReleased)
 				{
-					std::cout << "START\n";
 					dialogue.isInteracting = true;
+					reg.get<Dialogue>(dialogue.bishop).isInteracting = true;
 					dialogueSwitch(dialogue);
 				}
 
@@ -49,21 +49,20 @@ void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float
 				{
 					if (gui.get<tgui::Button>("upgradeStatsButton")->isMouseDown()) dialogue.state = 2;
 					if (gui.get<tgui::Button>("tradeButton")->isMouseDown()) dialogue.state = 3;
-					if (gui.get<tgui::Button>("exitButton")->isMouseDown())
-					{
-						std::cout << "END ON BUTTON\n";
-						dialogue.state = 0;
-						dialogue.isInteracting = false;
-					}
+					if (gui.get<tgui::Button>("exitButton")->isMouseDown()) dialogue.state = 0;
 				}
 			}
 		}
 
 		if (!playerFound)
 		{
-			std::cout << "END BY WALKING AWAY\n";
 			dialogue.state = 0;
+		}
+
+		if (dialogue.state == 0)
+		{
 			dialogue.isInteracting = false;
+			reg.get<Dialogue>(dialogue.bishop).isInteracting = false;
 		}
 	}
 }

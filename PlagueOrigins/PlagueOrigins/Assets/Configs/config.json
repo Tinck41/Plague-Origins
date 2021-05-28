@@ -42,7 +42,7 @@
     }
   },
   "bishop": {
-    "scale": 0.22,
+    "scale": 0.5,
     "hitbox": {
       "width": 100,
       "height": 150

@@ -7,5 +7,6 @@ enum animationName
 	MOVE,
 	DASH,
 	ATTACK,
-	DIE
+	DIE,
+	INTERACT
 };

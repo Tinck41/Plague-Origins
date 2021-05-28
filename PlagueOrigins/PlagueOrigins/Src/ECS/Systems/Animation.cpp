@@ -20,6 +20,9 @@ void Animation::playAnimation(Animator& animator, Tag& tag, animationName name)
 	case(animationName::DASH):
 		playDashAnimation(animator, tag);
 		break;
+	case(animationName::INTERACT):
+		playInteractionAnimation(animator, tag);
+		break;
 	default:
 		break;
 	}
@@ -217,6 +220,43 @@ void Animation::playDashAnimation(Animator& animator, Tag& tag)
 		animator.armatureDisplay = armatureDisplay;
 		animator.armatureDisplay->getAnimation()->play("Dash");
 		animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("Dash")->_duration;
+		animator.currentAnimationDurationLeft = sf::milliseconds(animator.currentAnimationDuration);
+		armatureDisplay = nullptr;
+		delete armatureDisplay;
+	}
+}
+
+void Animation::playInteractionAnimation(Animator& animator, Tag& tag)
+{
+	dragonBones::SFMLArmatureDisplay* armatureDisplay = nullptr;
+
+	if (animator.currentFaceDirection.y < 0.f)
+	{
+		animator.postfix = setPostfix(tag, "U");
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+	}
+	else if (animator.currentFaceDirection.y > 0.f)
+	{
+		animator.postfix = setPostfix(tag, "D");
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+	}
+	if (animator.currentFaceDirection.x > 0.f)
+	{
+		animator.postfix = setPostfix(tag, "R");
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+	}
+	else if (animator.currentFaceDirection.x < 0.f)
+	{
+		animator.postfix = setPostfix(tag, "R");
+		armatureDisplay = new dragonBones::SFMLArmatureDisplay("Armature" + tag.name + animator.postfix);
+		armatureDisplay->getArmature()->setFlipX(true);
+	}
+
+	if (armatureDisplay != nullptr)
+	{
+		animator.armatureDisplay = armatureDisplay;
+		animator.armatureDisplay->getAnimation()->play("LevelUp");
+		animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("LevelUp")->_duration;
 		animator.currentAnimationDurationLeft = sf::milliseconds(animator.currentAnimationDuration);
 		armatureDisplay = nullptr;
 		delete armatureDisplay;

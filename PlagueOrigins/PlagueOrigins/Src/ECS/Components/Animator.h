@@ -9,18 +9,28 @@
 
 struct Animator
 {
+	Animator(float scale)
+	{
+		currentAnimation = NONE;
+		previousAnimation = NONE;
+		previousFaceDirection = sf::Vector2f(0.f, 1.f);
+		currentFaceDirection = sf::Vector2f(0.f, 1.f);
+		this->scale = scale;
+
+		currentAnimationDuration = 0.f;
+	}
 	std::string postfix;
 
-	animationName currentAnimation = NONE;
-	animationName previousAnimation = NONE;
-	sf::Vector2f previousFaceDirection = sf::Vector2f(0.f, 1.f);
-	sf::Vector2f currentFaceDirection = sf::Vector2f(0.f, 1.f);
+	animationName currentAnimation;
+	animationName previousAnimation;
+	sf::Vector2f previousFaceDirection;
+	sf::Vector2f currentFaceDirection;
 
 	dragonBones::SFMLArmatureDisplay* armatureDisplay;
 
-	float scale = 0.2f;
+	float scale;
 	sf::RenderStates states;
 
-	float currentAnimationDuration = 0.f;
+	float currentAnimationDuration;
 	sf::Time currentAnimationDurationLeft;
 };

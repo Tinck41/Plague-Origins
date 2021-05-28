@@ -17,6 +17,7 @@ class Animation :
 	void playAttackAnimation(Animator& animator, Tag& tag);
 	void playDeathAnimation(Animator& animator, Tag& tag);
 	void playDashAnimation(Animator& animator, Tag& tag);
+	void playInteractionAnimation(Animator& animator, Tag& tag);
 	std::string setPostfix(Tag& tag, std::string dir);
 
 	void setAnimation(Animator& animator, Tag& tag);
