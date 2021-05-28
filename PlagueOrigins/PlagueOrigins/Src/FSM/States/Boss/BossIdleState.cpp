@@ -27,13 +27,14 @@ void BossIdleState::update(const float& dt)
 		std::cout << "";
 	}
 	//TO-DO
-	//else if (owner.GetComponent<Aggresion>().isAggresive)
-	//{
-	//	SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
-	//		new BossAggroState(owner));
-	//	std::cout << "";
-	//}
+	else if (owner.GetComponent<Boss>().isBossFight)
+	{
+		owner.AddComponent<Aggresion>(owner.GetComponent<RigidBody>().body, 3000.f, 360.f);
+		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
+		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			new BossAggroState(owner));
+		std::cout << "";
+	}
 	//else if (owner.GetComponent<Movement>().direction != sf::Vector2f(0, 0))
 	//{
 	//	SMcomponent& playerStates = owner.GetComponent<SMcomponent>();

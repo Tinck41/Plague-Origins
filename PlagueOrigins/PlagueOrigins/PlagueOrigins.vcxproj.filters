@@ -235,6 +235,7 @@
     <ClInclude Include="Src\FSM\States\Boss\BossAttackState.h" />
     <ClInclude Include="Src\FSM\States\Boss\BossDeathState.h" />
     <ClInclude Include="Src\FSM\States\Boss\BossAggroState.h" />
+    <ClInclude Include="Src\ECS\Components\BossTemporal.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

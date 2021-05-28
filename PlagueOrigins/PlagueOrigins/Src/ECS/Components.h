@@ -23,6 +23,7 @@
 #include "Components/BossFightArena.h"
 
 #include "Components/PlayerTemporal.h"
+#include "Components/BossTemporal.h"
 #include "Components/Dialogue.h"
 #include "Components/Stats.h"
 

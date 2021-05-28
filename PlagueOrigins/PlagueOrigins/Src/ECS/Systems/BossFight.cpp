@@ -27,7 +27,9 @@ void BossFight::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 					doorRB.body->GetFixtureList()->SetSensor(false);
 				}
-
+				Player& player = reg.get<Player>((entt::entity)edge->contact->GetFixtureB()->GetBody()->GetUserData().pointer);
+				Boss& boss = reg.get<Boss>((entt::entity)player.bossBody->GetUserData().pointer);
+				boss.isBossFight = true;
 				bossFightArena.arenaClosed = true;
 			}
 		}

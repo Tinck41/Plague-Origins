@@ -230,6 +230,7 @@
     <ClInclude Include="Src\ECS\Components\ActorAudioSource.h" />
     <ClInclude Include="Src\ECS\Components\AmbienceAudioSource.h" />
     <ClInclude Include="Src\ECS\Components\BossFightArena.h" />
+    <ClInclude Include="Src\ECS\Components\BossTemporal.h" />
     <ClInclude Include="Src\ECS\Components\Dialogue.h" />
     <ClInclude Include="Src\ECS\Components\PlayerTemporal.h" />
     <ClInclude Include="Src\ECS\Components\Stamina.h" />

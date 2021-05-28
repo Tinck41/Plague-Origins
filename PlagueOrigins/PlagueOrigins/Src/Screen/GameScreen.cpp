@@ -90,17 +90,20 @@ GameScreen::GameScreen()
 	boss.AddComponent<Animator>();
 	boss.AddComponent<Movement>(300.f);
 	boss.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2400.f, 8000.f), true, boss, ENEMY_NPC);
-	boss.AddComponent<Aggresion>(boss.GetComponent<RigidBody>().body, 3000.f, 360.f);
 	boss.AddComponent<Tag>("Boss");
 	boss.AddComponent<ActorAudioSource>();
 	boss.AddComponent<SMcomponent>(new BossIdleState(boss));
 	boss.AddComponent<Dispose>();
+	boss.AddComponent<Boss>();
 
 	boss.AddComponent<Stats>(config.bossStats);
 	auto bossStats = boss.GetComponent<Stats>();
 	boss.AddComponent<Health>(bossStats.VIT);
 	boss.AddComponent<Attack>(boss.GetComponent<RigidBody>().body, bossStats.STR, config.bossAttackRange);
 
+	//TO-DO find other solution
+	//add pointer to boss body
+	testEntity.GetComponent<Player>().bossBody = boss.GetComponent<RigidBody>().body;
 
 	systems.onCreate(registry, gui);
 }
