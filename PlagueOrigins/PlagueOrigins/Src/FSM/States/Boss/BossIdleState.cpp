@@ -12,9 +12,12 @@ void BossIdleState::enter()
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;
-	//animator.previousFaceDirection = animator.currentFaceDirection;
-	//animator.currentFaceDirection = { .0f, 1.f };
 	animator.currentAnimation = IDLE;
+
+	if (owner.HasComponent<Aggresion>())
+	{
+		owner.RemoveComponent<Aggresion>();
+	}
 }
 
 void BossIdleState::update(const float& dt)
@@ -29,10 +32,7 @@ void BossIdleState::update(const float& dt)
 	//TO-DO
 	else if (owner.GetComponent<Boss>().isBossFight)
 	{
-		//owner.AddComponent<Aggresion>(owner.GetComponent<RigidBody>().body, 3000.f, 360.f);
-		Aggresion& aggresion = owner.GetComponent<Aggresion>();
-		aggresion.radius = 3000.f;
-		aggresion.angle = 360.f;
+		owner.AddComponent<Aggresion>(owner.GetComponent<RigidBody>().body, 3000.f, 360.f);
 		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
 			new BossAggroState(owner));
@@ -45,13 +45,7 @@ void BossIdleState::update(const float& dt)
 	//		new BossMoveState(owner));
 	//	std::cout << "";
 	//}
-	else
-	{
-		//Animator& animator = owner.GetComponent<Animator>();
 
-		//animator.previousAnimation = animator.currentAnimation;
-		//animator.currentAnimation = IDLE;
-	}
 }
 
 void BossIdleState::exit()

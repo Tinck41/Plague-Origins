@@ -55,20 +55,6 @@ void BossAggroState::update(const float& dt)
 		animator.previousFaceDirection = animator.currentFaceDirection;
 		animator.currentFaceDirection = movement.direction;
 	}
-	//else if (owner.getCombatComponent()->isInAttackRange())
-	//{
-	//	owner.getStateMachine()->changeState(new NPCBossAttackState(owner));
-	//}
-	//else if (owner.getCombatComponent()->isDead())
-	//{
-	//	owner.getStateMachine()->changeState(new NPCBossDeathState(owner));
-	//}
-	//else
-	//{
-	//	target = owner.getCombatComponent()->getPlayerPosition();
-	//	owner.getMover()->move(dt, owner.getPatrol()->directRoute(target));
-	//	this->owner.getAnimator()->setAnimation(animationName::MOVE, this->owner.getPatrol()->getDirection());
-	//}
 }
 
 void BossAggroState::exit()

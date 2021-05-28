@@ -72,7 +72,6 @@ GameScreen::GameScreen()
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();
 	bishop.AddComponent<Animator>();
-	//   ?
 	bishop.AddComponent<Movement>(500.f);
 	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop, FRIENDLY_NPC);
 	bishop.AddComponent<Tag>("Bishop");
@@ -89,8 +88,7 @@ GameScreen::GameScreen()
 	boss.AddComponent<Transform>();
 	boss.AddComponent<Animator>();
 	boss.AddComponent<Movement>(300.f);
-	boss.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2400.f, 8000.f), true, boss, ENEMY_NPC);
-	boss.AddComponent<Aggresion>(boss.GetComponent<RigidBody>().body, 0.f, 0.f);
+	boss.AddComponent<RigidBody>(sf::Vector2f(75.f, 135.f), sf::Vector2f(2400.f, 8000.f), true, boss, ENEMY_NPC);
 	boss.AddComponent<Tag>("Boss");
 	boss.AddComponent<ActorAudioSource>();
 	boss.AddComponent<SMcomponent>(new BossIdleState(boss));
