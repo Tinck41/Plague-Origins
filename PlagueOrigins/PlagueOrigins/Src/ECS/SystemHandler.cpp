@@ -11,7 +11,6 @@ SystemHandler::SystemHandler()
 	auto physicsSystem		= new Physics();
 	auto combatSystem		= new Combat();
 	auto vampiringSystem	= new Vampiring();
-	auto interactionSystem	= new Interaction();
 	auto cameraSystem		= new Camera();
 	auto motionSystem		= new Motion();
 	auto actorSoundSystem	= new ActorSoundSystem();
@@ -36,7 +35,6 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(physicsSystem);
 	updatableSystems.push_back(combatSystem);
 	updatableSystems.push_back(vampiringSystem);
-	updatableSystems.push_back(interactionSystem);
 	updatableSystems.push_back(cameraSystem);
 	updatableSystems.push_back(motionSystem);
 	updatableSystems.push_back(actorSoundSystem);
@@ -55,7 +53,6 @@ SystemHandler::SystemHandler()
 
 	// Render systems
 	renderableSystems.push_back(animationSystem);
-	renderableSystems.push_back(interactionSystem);
 	renderableSystems.push_back(physicsSystem);
 	renderableSystems.push_back(patrolSystem);
 	renderableSystems.push_back(healthSystem);
