@@ -8,6 +8,7 @@ private:
 	sf::Texture heroAnim;
 	sf::Texture dogAnim;
 	sf::Texture bishopAnim;
+	sf::Texture bossAnim;
 	
 	GlobalFactory();
 	GlobalFactory(const GlobalFactory& root) = delete;

@@ -7,7 +7,7 @@ DogAggroState::DogAggroState(Entity& owner) :
 
 void DogAggroState::enter()
 {
-	std::cout << "Dog Aggro State\n";
+	//std::cout << "Dog Aggro State\n";
 
 	Movement& movement = owner.GetComponent<Movement>();
 	Aggresion& aggresion = owner.GetComponent<Aggresion>();

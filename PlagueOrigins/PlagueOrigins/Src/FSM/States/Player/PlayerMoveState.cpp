@@ -8,7 +8,7 @@ PlayerMoveState::PlayerMoveState(Entity& owner) :
 
 void PlayerMoveState::enter()
 {
-	std::cout << "MOVE\n";
+	//std::cout << "MOVE\n";
 	Animator& animator = owner.GetComponent<Animator>();
 	Movement& movement = owner.GetComponent<Movement>();
 	ActorAudioSource& audioSource = owner.GetComponent<ActorAudioSource>();

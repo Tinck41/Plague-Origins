@@ -33,7 +33,7 @@ void AggroSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& d
 				
 				float angle = PhysicsWorld::angleBetween(vectorToPlayer, directionVector);
 
-				if (angle <= 60.f)
+				if (angle <= aggresion.angle)
 				{
 					b2Vec2 normalizedVectorToPlayer;
 					//normalizedVectorToPlayer.x = vectorToPlayer.x;
@@ -70,7 +70,7 @@ void AggroSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& d
 					aggresion.vectorToTarget.y = normalizedVectorToPlayer.y;
 					break;
 				}
-				else if (angle > 60.f)
+				else if (angle > aggresion.angle)
 				{
 					aggresion.isAggresive = false;
 				}
