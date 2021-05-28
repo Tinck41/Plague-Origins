@@ -8,7 +8,7 @@
 
 GameScreen::GameScreen()
 {
-	if (mapLoader.loadTileMap("./Assets/Map/newTiles_map.json", &registry, this))
+	if (mapLoader.loadTileMap("./Assets/Map/newTiles_map2.json", &registry, this))
 	{
 		map = mapLoader.getTileMap();
 	}
