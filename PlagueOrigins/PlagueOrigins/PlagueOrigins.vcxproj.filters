@@ -90,6 +90,10 @@
     <ClCompile Include="Src\ECS\Systems\EssenceSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\OverlaySystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\EffectsSystem.cpp" />
+    <ClCompile Include="Src\FSM\States\Boss\BossAggroState.cpp" />
+    <ClCompile Include="Src\FSM\States\Boss\BossDeathState.cpp" />
+    <ClCompile Include="Src\FSM\States\Boss\BossIdleState.cpp" />
+    <ClCompile Include="Src\FSM\States\Boss\BossAttackState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -240,6 +244,12 @@
     <ClInclude Include="Src\ECS\Components\JustUnequiped.h" />
     <ClInclude Include="Src\ECS\Components\CurrentScreen.h" />
     <ClInclude Include="Src\Screen\ScreenTypes.h" />
+    <ClInclude Include="Src\FSM\States\Boss\BossStates.h" />
+    <ClInclude Include="Src\FSM\States\Boss\BossIdleState.h" />
+    <ClInclude Include="Src\FSM\States\Boss\BossAttackState.h" />
+    <ClInclude Include="Src\FSM\States\Boss\BossDeathState.h" />
+    <ClInclude Include="Src\FSM\States\Boss\BossAggroState.h" />
+    <ClInclude Include="Src\ECS\Components\BossTemporal.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

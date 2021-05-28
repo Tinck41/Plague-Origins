@@ -8,7 +8,7 @@ DogAttackState::DogAttackState(Entity& owner) :
 
 void DogAttackState::enter()
 {
-	std::cout << "Dog Attack State\n";
+	//std::cout << "Dog Attack State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;

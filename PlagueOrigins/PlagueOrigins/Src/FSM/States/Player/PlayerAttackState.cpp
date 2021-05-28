@@ -9,7 +9,7 @@ PlayerAttackState::PlayerAttackState(Entity& owner) :
 
 void PlayerAttackState::enter()
 {
-    std::cout << "PLAYER ATTACK\n";
+    //std::cout << "PLAYER ATTACK\n";
     Animator& animator = owner.GetComponent<Animator>();
     ActorAudioSource& audioSource = owner.GetComponent<ActorAudioSource>();
 

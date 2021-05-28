@@ -50,7 +50,7 @@
       "end": 5,
       "str": 1,
       "agi": 5,
-      "int": 5
+      "int": 1
     }
   },
   "bishop": {
@@ -65,6 +65,22 @@
       "str": 5,
       "agi": 5,
       "int": 5
+    }
+  },
+  "boss": {
+    "speed": 200,
+    "scale": 0.3,
+    "range": 150,
+    "hitbox": {
+      "width": 100,
+      "height": 150
+    },
+    "stats": {
+      "vit": 12,
+      "end": 5,
+      "str": 12,
+      "agi": 5,
+      "int": 1
     }
   }
 }

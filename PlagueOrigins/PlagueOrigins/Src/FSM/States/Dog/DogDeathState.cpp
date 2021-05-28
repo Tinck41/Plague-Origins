@@ -9,7 +9,7 @@ DogDeathState::DogDeathState(Entity& owner) :
 
 void DogDeathState::enter()
 {
-	std::cout << "Dog Death State\n";
+	//std::cout << "Dog Death State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;

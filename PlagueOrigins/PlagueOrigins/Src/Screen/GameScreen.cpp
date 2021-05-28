@@ -4,6 +4,7 @@
 #include "Src/FSM/States/Player/PlayerStates.h"
 #include "Src/FSM/States/Dog/DogStates.h"
 #include "Src/FSM/States/Bishop/BishopStates.h"
+#include "Src/FSM/States/Boss/BossStates.h"
 
 GameScreen::GameScreen()
 {
@@ -16,8 +17,10 @@ GameScreen::GameScreen()
 	gui.loadWidgetsFromFile("./Assets/UI/Game.txt");
 
 	screenManager = Entity(registry.create(), this);
-	screenManager.AddComponent<CurrentScreen>(ScreenType::GAME);
 	
+	screenManager.AddComponent<CurrentScreen>(ScreenType::GAME);
+
+	//PLAYER
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<Transform>();
 	testEntity.AddComponent<PlayerInput>();
@@ -40,6 +43,8 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange);
 	testEntity.AddComponent<Dash>(playerStats.AGI);
 
+
+	//AMBIENT AUDIO
 	Entity ambient = Entity(registry.create(), this);
 	ambient.AddComponent<AmbienceAudioSource>();
 
@@ -60,12 +65,14 @@ GameScreen::GameScreen()
 	testEntity.GetComponent<Inventory>().items.push_back(ring1);
 	testEntity.GetComponent<Inventory>().items.push_back(ring2);
 
+
+	//DOG
 	npcEntity = Entity(registry.create(), this);
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>();
 	npcEntity.AddComponent<Movement>(300.f);
 	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
-	npcEntity.AddComponent<Aggresion>(npcEntity.GetComponent<RigidBody>().body, 300.f);
+	npcEntity.AddComponent<Aggresion>(npcEntity.GetComponent<RigidBody>().body, 300.f, 60.f);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<ActorAudioSource>();
 	npcEntity.AddComponent<SMcomponent>(new DogIdleState(npcEntity));
@@ -80,10 +87,11 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<Health>(dogStats.VIT);
 	npcEntity.AddComponent<Attack>(npcEntity.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
 
+
+	//BISHOP
 	bishop = Entity(registry.create(), this);
 	bishop.AddComponent<Transform>();
 	bishop.AddComponent<Animator>();
-	//   ?
 	bishop.AddComponent<Movement>(500.f);
 	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop, FRIENDLY_NPC);
 	bishop.AddComponent<Tag>("Bishop");
@@ -93,6 +101,28 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Stats>(config.bishopStats);
 	auto bishopStats = bishop.GetComponent<Stats>();
 	bishop.AddComponent<Health>(bishopStats.VIT);
+
+
+	//BOSS
+	boss = Entity(registry.create(), this);
+	boss.AddComponent<Transform>();
+	boss.AddComponent<Animator>();
+	boss.AddComponent<Movement>(300.f);
+	boss.AddComponent<RigidBody>(sf::Vector2f(75.f, 135.f), sf::Vector2f(2400.f, 8000.f), true, boss, ENEMY_NPC);
+	boss.AddComponent<Tag>("Boss");
+	boss.AddComponent<ActorAudioSource>();
+	boss.AddComponent<SMcomponent>(new BossIdleState(boss));
+	boss.AddComponent<Dispose>();
+	boss.AddComponent<Boss>();
+
+	boss.AddComponent<Stats>(config.bossStats);
+	auto bossStats = boss.GetComponent<Stats>();
+	boss.AddComponent<Health>(bossStats.VIT);
+	boss.AddComponent<Attack>(boss.GetComponent<RigidBody>().body, bossStats.STR, config.bossAttackRange);
+
+	//TO-DO find other solution
+	//add pointer to boss body
+	testEntity.GetComponent<Player>().bossBody = boss.GetComponent<RigidBody>().body;
 
 	systems.onCreate(registry, gui);
 }

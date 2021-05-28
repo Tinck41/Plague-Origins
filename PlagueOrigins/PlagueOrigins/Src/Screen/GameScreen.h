@@ -16,6 +16,7 @@ private:
 	Entity bishop;
 	
 	Entity screenManager;
+	Entity boss;
 
 	tgui::GuiSFML gui;
 

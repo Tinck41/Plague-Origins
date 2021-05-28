@@ -48,6 +48,13 @@ public:
 	float bishopHitboxHeight;
 	std::vector<int> bishopStats = std::vector<int>();
 
+	int bossSpeed;
+	float bossScale;
+	float bossAttackRange;
+	float bossHitboxWidth;
+	float bossHitboxHeight;
+	std::vector<int> bossStats = std::vector<int>();
+
 	unsigned int height()
 	{
 		return isFullscreen ? sf::VideoMode::getDesktopMode().height : windowHeight;

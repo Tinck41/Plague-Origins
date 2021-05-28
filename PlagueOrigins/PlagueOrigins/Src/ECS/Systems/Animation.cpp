@@ -136,7 +136,7 @@ void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 				animator.armatureDisplay->getAnimation()->play("Attack", 1);
 				animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("Attack")->_duration;
 			}
-			else if (tag.name == "Dog")
+			else if (tag.name == "Dog" || tag.name == "Boss")
 			{
 				animator.armatureDisplay->getAnimation()->play("Attack0", 1);
 				animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("Attack0")->_duration;

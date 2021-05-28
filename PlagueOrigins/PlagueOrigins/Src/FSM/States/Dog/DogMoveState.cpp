@@ -8,7 +8,7 @@ DogMoveState::DogMoveState(Entity& owner) :
 
 void DogMoveState::enter()
 {
-	std::cout << "Dog Move State\n";
+	//std::cout << "Dog Move State\n";
 	Animator& animator = owner.GetComponent<Animator>();
 	Movement& movement = owner.GetComponent<Movement>();
 
