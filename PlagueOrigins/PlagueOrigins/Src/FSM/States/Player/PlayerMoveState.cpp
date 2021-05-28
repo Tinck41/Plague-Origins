@@ -18,7 +18,6 @@ void PlayerMoveState::enter()
 
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = MOVE;
-	//animator.previousFaceDirection = animator.currentFaceDirection;
 	animator.currentFaceDirection = movement.direction;
 }
 
@@ -56,9 +55,6 @@ void PlayerMoveState::update(const float& dt)
 		Animator& animator = owner.GetComponent<Animator>();
 		Movement& movement = owner.GetComponent<Movement>();
 
-		//animator.previousAnimation = animator.currentAnimation;
-		//animator.currentAnimation = MOVE;
-		//animator.previousFaceDirection = animator.currentFaceDirection;
 		animator.currentFaceDirection = movement.direction;
 	}
 }

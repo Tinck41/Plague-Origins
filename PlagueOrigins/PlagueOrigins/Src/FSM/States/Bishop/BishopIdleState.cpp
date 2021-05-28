@@ -20,15 +20,15 @@ void BishopIdleState::update(const float& dt)
 {
 	//if (owner.GetComponent<Health>().curhealth <= 0)
 	//{
-	//	SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
+	//	SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+	//	stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 	//		new BishopDeathState(owner));
 	//	std::cout << "";
 	//}
 	if (owner.GetComponent<Dialogue>().isInteracting == true)
 	{
-		SMcomponent& smComponent = owner.GetComponent<SMcomponent>();
-		smComponent.currentState = smComponent.changeState(smComponent.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new BishopInteractState(owner));
 		std::cout << "";
 	}

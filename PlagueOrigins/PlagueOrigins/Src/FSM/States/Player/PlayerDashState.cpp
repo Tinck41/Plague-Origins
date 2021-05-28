@@ -45,7 +45,6 @@ void PlayerDashState::update(const float& dt)
 			new PlayerDeathState(owner));
 		std::cout << "";
 	}
-	//else if (owner.GetComponent<Animator>().armatureDisplay->getAnimation()->isCompleted())
 	else if (!owner.GetComponent<Dash>().isDashing)
 	{
 		std::cout << "dash animation completed\n";

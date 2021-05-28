@@ -21,32 +21,24 @@ void DogIdleState::update(const float& dt)
 {
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
-		SMcomponent& smComponent = owner.GetComponent<SMcomponent>();
-		smComponent.currentState = smComponent.changeState(smComponent.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new DogDeathState(owner));
 		std::cout << "";
 	}
-	//TO-DO
 	else if (owner.GetComponent<Aggresion>().isAggresive)
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new DogAggroState(owner));
 		std::cout << "";
 	}
 	else if (owner.GetComponent<Movement>().direction != sf::Vector2f(0, 0))
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new DogMoveState(owner));
 		std::cout << "";
-	}
-	else
-	{
-		//Animator& animator = owner.GetComponent<Animator>();
-
-		//animator.previousAnimation = animator.currentAnimation;
-		//animator.currentAnimation = IDLE;
 	}
 }
 

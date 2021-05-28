@@ -22,29 +22,22 @@ void DogMoveState::update(const float& dt)
 {
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new DogDeathState(owner));
 		std::cout << "";
 	}
 	else if (owner.GetComponent<Aggresion>().isAggresive)
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new DogAggroState(owner));
 		std::cout << "";
 	}
-	//else if (owner.getCombatComponent()->isInAttackRange())
-	//{
-	//	PlayerSMcomponent& playerStates = owner.GetComponent<PlayerSMcomponent>();
-	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
-	//		new DogAttackState(owner));
-	//	std::cout << "";
-	//}
 	else if (owner.GetComponent<Movement>().direction == sf::Vector2f(0, 0))
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new DogIdleState(owner));
 		std::cout << "";
 	}

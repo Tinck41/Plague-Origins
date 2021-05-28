@@ -13,8 +13,6 @@ void PlayerInteractState::enter()
 
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = IDLE;
-
-	//owner.GetComponent<Interact>().isInteracting = true;
 }
 
 void PlayerInteractState::update(const float& dt)
@@ -26,7 +24,6 @@ void PlayerInteractState::update(const float& dt)
 			new PlayerDeathState(owner));
 		std::cout << "";
 	}
-	//END OF INTERACTION
 	else if (false)
 	{
 		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
