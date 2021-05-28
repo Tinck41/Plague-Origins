@@ -32,8 +32,8 @@ void PlayerAttackState::update(const float& dt)
 {
  	if (owner.GetComponent<Health>().curhealth <= 0)
  	{
-        SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-        playerStates.currentState = playerStates.changeState(playerStates.currentState, 
+        SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+        stateMachine.currentState = stateMachine.changeState(stateMachine.currentState, 
             new PlayerDeathState(owner));
         std::cout << "";
  	}
@@ -41,22 +41,22 @@ void PlayerAttackState::update(const float& dt)
  	{
         if (owner.GetComponent<Dash>().isDashing)
         {
-            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-            playerStates.currentState = playerStates.changeState(playerStates.currentState,
+            SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+            stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
                 new PlayerDashState(owner));
             std::cout << "";
         }
  		if (owner.GetComponent<Attack>().isAttacking)
  		{
-            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-            playerStates.currentState = playerStates.changeState(playerStates.currentState, 
+            SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+            stateMachine.currentState = stateMachine.changeState(stateMachine.currentState, 
                 new PlayerAttackState(owner));
             std::cout << "";
  		}
  		else
  		{
-            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-            playerStates.currentState = playerStates.changeState(playerStates.currentState,
+            SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+            stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
                 new PlayerIdleState(owner));
             std::cout << "";
  		}
