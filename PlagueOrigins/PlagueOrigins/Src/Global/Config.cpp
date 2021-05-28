@@ -23,6 +23,17 @@ Config::Config()
 	fps = json["fps"];
 	font.loadFromFile(json["font"]);
 
+	inventorySlots.x = json["inventory"]["inventorySlotsX"];
+	inventorySlots.y = json["inventory"]["inventorySlotsY"];
+	quickSlots.x = json["inventory"]["quickSlotsX"];
+	quickSlots.y = json["inventory"]["quickSlotsY"];
+	ringSlots.x = json["inventory"]["ringSlotsX"];
+	ringSlots.y = json["inventory"]["ringSlotsY"];
+	slotSize.x = json["inventory"]["slotWidth"];
+	slotSize.y = json["inventory"]["slotHeight"];
+	slotMargin.x = json["inventory"]["slotMarginLeft"];
+	slotMargin.y = json["inventory"]["slotMarginTop"];
+
 	playerSpeed = json["player"]["speed"];
 	playerScale = json["player"]["scale"];
 	playerAttackRange = json["player"]["range"];

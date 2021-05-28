@@ -23,6 +23,12 @@ public:
 	uint16_t uiWidth;
 	uint16_t uiHeight;
 
+	sf::Vector2f inventorySlots;
+	sf::Vector2f quickSlots;
+	sf::Vector2f ringSlots;
+	sf::Vector2f slotSize;
+	sf::Vector2f slotMargin;
+
 	int playerSpeed;
 	float playerScale;
 	float playerAttackRange;

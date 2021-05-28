@@ -8,14 +8,17 @@
 
 GameScreen::GameScreen()
 {
-	if (mapLoader.loadTileMap("./Assets/Map/newTiles_map.json", &registry, this))
+	if (mapLoader.loadTileMap("./Assets/Map/newTiles_map2.json", &registry, this))
 	{
 		map = mapLoader.getTileMap();
 	}
 	mapLoader.~TilemapParser();
 
 	gui.loadWidgetsFromFile("./Assets/UI/Game.txt");
+
+	screenManager = Entity(registry.create(), this);
 	
+	screenManager.AddComponent<CurrentScreen>(ScreenType::GAME);
 
 	//PLAYER
 	testEntity = Entity(registry.create(), this);
@@ -29,7 +32,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	testEntity.AddComponent<Vampire>();
 	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
-	testEntity.AddComponent<Inventory>(222);
+	testEntity.AddComponent<Inventory>();
 	testEntity.AddComponent<Player>();
 	testEntity.AddComponent<Dialogue>(testEntity.GetComponent<RigidBody>().body, 75.f);
 
@@ -44,6 +47,23 @@ GameScreen::GameScreen()
 	//AMBIENT AUDIO
 	Entity ambient = Entity(registry.create(), this);
 	ambient.AddComponent<AmbienceAudioSource>();
+
+	Entity ring1 = Entity(registry.create(), this);
+	ring1.AddComponent<Item>("Broken ring", RING);
+	ring1.AddComponent<ItemOwner>(testEntity);
+	ring1.AddComponent<Description>("It's absolutely trash... Why are you carrying that?");
+	ring1.AddComponent<Icon>("./Assets/UI/trashRing.png");
+	ring1.AddComponent<HealthBoost>(-0.1f);
+
+	Entity ring2 = Entity(registry.create(), this);
+	ring2.AddComponent<Item>("Health ring", RING);
+	ring2.AddComponent<ItemOwner>(testEntity);
+	ring2.AddComponent<Description>("Ring with a dull red stone.\n\nIncreases owner health.");
+	ring2.AddComponent<Icon>("./Assets/UI/healthRing.png");
+	ring2.AddComponent<HealthBoost>(.2f);
+
+	testEntity.GetComponent<Inventory>().items.push_back(ring1);
+	testEntity.GetComponent<Inventory>().items.push_back(ring2);
 
 
 	//DOG
@@ -151,6 +171,6 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 		window.setView(camera.camera);
 	}
 
-	return ScreenType::GAME;
+	return (ScreenType)screenManager.GetComponent<CurrentScreen>().type;
 }
 
