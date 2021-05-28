@@ -9,6 +9,18 @@
     "uiWidth": 2560,
     "uiHeight": 1440
   },
+  "inventory": {
+    "inventorySlotsX": 5,
+    "inventorySlotsY": 2,
+    "quickSlotsX": 3,
+    "quickSlotsY": 2,
+    "ringSlotsX": 2,
+    "ringSlotsY": 2,
+    "slotWidth": 140,
+    "slotHeight": 140,
+    "slotMarginLeft": 47.5,
+    "slotMarginTop": 67
+  },
   "player": {
     "speed": 500,
     "scale": 0.2,

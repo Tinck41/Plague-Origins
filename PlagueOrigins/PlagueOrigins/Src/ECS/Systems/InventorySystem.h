@@ -9,13 +9,20 @@ class InventorySystem :
 	public IRenderSystem,
 	public IOnCreateSystem
 {
-private:
-	void buttonClicked(int buttonIndex, Inventory& inventory);
-	void escReleased(Inventory& inventory);
 public:
 	InventorySystem();
+	virtual void onCreate(entt::registry& reg, tgui::GuiSFML& gui) override;
 	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
 	virtual void render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui) override;
-	virtual void onCreate(entt::registry& reg, tgui::GuiSFML& gui) override;
+private:
+	void createInventorySlots(entt::registry& reg, tgui::GuiSFML& gui);
+	void createQuickSlots(entt::registry& reg, tgui::GuiSFML& gui);
+	void createRingSlots(entt::registry& reg, tgui::GuiSFML& gui);
+
+	void rightClickOnInventorySlot(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Panel::Ptr panel, tgui::Button::Ptr slot);
+
+	void equipItem(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Button::Ptr slot);
+	void unequipItem(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Button::Ptr slot);
+	void removeItem(entt::registry& reg, tgui::Panel::Ptr inventory, tgui::Button::Ptr slot);
 };
 
