@@ -283,7 +283,7 @@ void InventorySystem::equipItem(entt::registry& reg, tgui::Panel::Ptr inventory,
 		{
 			inventoryComp.ringSlots.push_back(inventoryComp.items[itemId]);
 		}
-		else if (item.type == BOOSTER)
+		else if (item.type == CONSUMABLE)
 		{
 			inventoryComp.quickSlots.push_back(inventoryComp.items[itemId]);
 		}

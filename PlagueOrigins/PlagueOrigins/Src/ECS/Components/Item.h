@@ -3,7 +3,7 @@
 enum ITEM_TYPE
 {
 	RING,
-	BOOSTER
+	CONSUMABLE
 };
 
 struct Item 

@@ -11,9 +11,6 @@ void EffectsSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 		HealthBoost& effect = reg.get<HealthBoost>(entity);
 
 		health.maxHealth += health.baseHealth * effect.boost;
-		health.curhealth = health.curhealth * effect.boost;
-
-		std::cout << "Just eqiped" << "\n";
 
 		reg.remove<JustEquiped>(entity);
 	}
@@ -29,8 +26,6 @@ void EffectsSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 
 		if (health.curhealth > health.maxHealth)
 			health.curhealth = health.maxHealth;
-
-		std::cout << "Just uneqiped" << "\n";
 
 		reg.remove<JustUnequiped>(entity);
 	}

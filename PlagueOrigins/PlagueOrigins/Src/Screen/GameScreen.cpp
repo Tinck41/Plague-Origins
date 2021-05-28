@@ -104,7 +104,6 @@ void GameScreen::update(const float& dt)
 	map.update(dt);
 	GlobalFactory::Instance().factory.update(dt);
 	systems.update(registry, gui, dt);
-	std::cout << "max health: " << testEntity.GetComponent<Health>().maxHealth << "\n";
 	PhysicsWorld::update(dt);
 }
 
