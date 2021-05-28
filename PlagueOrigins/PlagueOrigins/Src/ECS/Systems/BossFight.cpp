@@ -19,8 +19,10 @@ void BossFight::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 		for (b2ContactEdge* edge = bossFightTrigger->GetBody()->GetContactList(); edge; edge = edge->next)
 		{
-			if (edge->contact->GetFixtureA() == bossFightTrigger && edge->contact->GetFixtureB()->GetUserData().pointer == PLAYER
-				|| edge->contact->GetFixtureB()->GetUserData().pointer == PLAYER && edge->contact->GetFixtureA() == bossFightTrigger)
+			if (edge->contact->GetFixtureA() == bossFightTrigger 
+					&& edge->contact->GetFixtureB()->GetUserData().pointer == PLAYER
+				|| edge->contact->GetFixtureB()->GetUserData().pointer == PLAYER 
+					&& edge->contact->GetFixtureA() == bossFightTrigger)
 			{
 				for (size_t i = 0; i < bossFightArena.doors.size(); i++)
 				{
@@ -28,9 +30,12 @@ void BossFight::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 					doorRB.body->GetFixtureList()->SetSensor(false);
 				}
-				Player& player = reg.get<Player>((entt::entity)edge->contact->GetFixtureB()->GetBody()->GetUserData().pointer);
-				Boss& boss = reg.get<Boss>((entt::entity)player.bossBody->GetUserData().pointer);
+				entt::entity playerEntity = (entt::entity)edge->contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+				Player& player = reg.get<Player>(playerEntity);
+				entt::entity bossEntity = (entt::entity)player.bossBody->GetUserData().pointer;
+				Boss& boss = reg.get<Boss>(bossEntity);
 				boss.isBossFight = true;
+
 				bossFightArena.arenaClosed = true;
 			}
 		}

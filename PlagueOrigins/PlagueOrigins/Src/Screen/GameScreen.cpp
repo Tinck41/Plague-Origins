@@ -31,7 +31,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
 	testEntity.AddComponent<Inventory>(222);
 	testEntity.AddComponent<Player>();
-	testEntity.AddComponent<Dialogue>();
+	testEntity.AddComponent<Dialogue>(testEntity.GetComponent<RigidBody>().body, 75.f);
 
 	testEntity.AddComponent<Stats>(config.playerStats);
 	auto playerStats = testEntity.GetComponent<Stats>();
@@ -75,7 +75,7 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Movement>(500.f);
 	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop, FRIENDLY_NPC);
 	bishop.AddComponent<Tag>("Bishop");
-	bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
+	//bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
 	bishop.AddComponent<SMcomponent>(new BishopIdleState(bishop));
 
 	bishop.AddComponent<Stats>(config.bishopStats);

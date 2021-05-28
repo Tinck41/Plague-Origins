@@ -14,21 +14,56 @@ void DialogueSystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 
 void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
-	auto view = reg.view<Dialogue, PlayerInput>();
+	auto view = reg.view<Dialogue, PlayerInput, RigidBody>();
 	for (auto entity : view)
 	{
 		Dialogue& dialogue = reg.get<Dialogue>(entity);
 		PlayerInput& playerInput = reg.get<PlayerInput>(entity);
-		if (playerInput.fReleased)
+		RigidBody& rigidBody = reg.get<RigidBody>(entity);
+
+		b2Fixture* interactionZone = rigidBody.body->GetFixtureList();
+		while (interactionZone->GetUserData().pointer != INTERACTION_ZONE)
 		{
-			dialogueSwitch(dialogue);
+			interactionZone = interactionZone->GetNext();
 		}
-		
-		if (playerInput.LMBreleased && dialogue.state == 1)
+
+		bool playerFound = false;
+
+		for (b2ContactEdge* edge = interactionZone->GetBody()->GetContactList(); edge; edge = edge->next)
 		{
-			if (gui.get<tgui::Button>("upgradeStatsButton")->isMouseDown()) dialogue.state = 2;
-			if (gui.get<tgui::Button>("tradeButton")->isMouseDown()) dialogue.state = 3;
-			if (gui.get<tgui::Button>("exitButton")->isMouseDown()) dialogue.state = 0;
+			if (edge->contact->GetFixtureA()->GetUserData().pointer == FRIENDLY_NPC
+					&& edge->contact->GetFixtureB()->GetUserData().pointer == INTERACTION_ZONE
+				|| edge->contact->GetFixtureA()->GetUserData().pointer == INTERACTION_ZONE
+					&& edge->contact->GetFixtureB()->GetUserData().pointer == FRIENDLY_NPC)
+			{
+				playerFound = true;
+				std::cout << "in zone\n";
+				if (playerInput.fReleased)
+				{
+					std::cout << "START\n";
+					dialogue.isInteracting = true;
+					dialogueSwitch(dialogue);
+				}
+
+				if (playerInput.LMBreleased && dialogue.state == 1)
+				{
+					if (gui.get<tgui::Button>("upgradeStatsButton")->isMouseDown()) dialogue.state = 2;
+					if (gui.get<tgui::Button>("tradeButton")->isMouseDown()) dialogue.state = 3;
+					if (gui.get<tgui::Button>("exitButton")->isMouseDown())
+					{
+						std::cout << "END ON BUTTON\n";
+						dialogue.state = 0;
+						dialogue.isInteracting = false;
+					}
+				}
+			}
+		}
+
+		if (!playerFound)
+		{
+			std::cout << "END BY WALKING AWAY\n";
+			dialogue.state = 0;
+			dialogue.isInteracting = false;
 		}
 	}
 }

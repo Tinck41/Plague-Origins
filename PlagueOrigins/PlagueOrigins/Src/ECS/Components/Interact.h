@@ -7,12 +7,13 @@ struct Interact
     Interact(b2Body* body, float radius, std::string text)
     {
         b2CircleShape circleShape;
-        b2FixtureDef myFixtureDef;
+        b2FixtureDef fixtureDef;
         radius = radius / 30.f;;
+        fixtureDef.userData.pointer = INTERACTION_ZONE;
         circleShape.m_radius = radius;
-        myFixtureDef.shape = &circleShape;
-        myFixtureDef.isSensor = true;
-        body->CreateFixture(&myFixtureDef);
+        fixtureDef.shape = &circleShape;
+        fixtureDef.isSensor = true;
+        body->CreateFixture(&fixtureDef);
 
         interactionZone.setRadius(30.f);
         interactionZone.setFillColor(sf::Color::Red);
