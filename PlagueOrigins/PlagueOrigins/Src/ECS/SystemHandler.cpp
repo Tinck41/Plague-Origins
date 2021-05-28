@@ -27,6 +27,7 @@ SystemHandler::SystemHandler()
 	auto overlaySystem		= new OverlaySystem();
 	auto inventorySystem	= new InventorySystem();
 	auto dialogueSystem		= new DialogueSystem();
+	auto effectsSysten		= new EffectsSystem();
 
 	// Update systems
 	updatableSystems.push_back(inputSystem);
@@ -52,6 +53,7 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(overlaySystem);
 	updatableSystems.push_back(inventorySystem);
 	updatableSystems.push_back(dialogueSystem);
+	updatableSystems.push_back(effectsSysten);
 
 	// Render systems
 	renderableSystems.push_back(animationSystem);
@@ -72,8 +74,6 @@ SystemHandler::SystemHandler()
 	onCreateSystems.push_back(overlaySystem);
 	onCreateSystems.push_back(inventorySystem);
 	onCreateSystems.push_back(dialogueSystem);
-
-	// Update && render && onCreate systems
 }
 
 SystemHandler::~SystemHandler()

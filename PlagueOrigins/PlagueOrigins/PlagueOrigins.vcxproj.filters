@@ -89,6 +89,7 @@
     <ClCompile Include="Src\ECS\Systems\HealthSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\EssenceSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\OverlaySystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\EffectsSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -231,7 +232,12 @@
     <ClInclude Include="Src\ECS\Components\Item.h" />
     <ClInclude Include="Src\ECS\Components\Description.h" />
     <ClInclude Include="Src\ECS\Components\Icon.h" />
-    <ClInclude Include="Src\ECS\Components\Equipped.h" />
+    <ClInclude Include="Src\ECS\Components\HealthBoost.h" />
+    <ClInclude Include="Src\ECS\Systems\EffectsSystem.h" />
+    <ClInclude Include="Src\ECS\Components\Equiped.h" />
+    <ClInclude Include="Src\ECS\Components\ItemOwner.h" />
+    <ClInclude Include="Src\ECS\Components\JustEquiped.h" />
+    <ClInclude Include="Src\ECS\Components\JustUnequiped.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

@@ -19,6 +19,8 @@ void InventorySystem::update(entt::registry& reg, tgui::GuiSFML& gui, const floa
 	auto view = reg.view<Inventory>();
 	for (auto entity : view) 
 	{
+		Inventory& inventory = reg.get<Inventory>(entity);
+
 
 	}
 }
@@ -273,8 +275,9 @@ void InventorySystem::equipItem(entt::registry& reg, tgui::Panel::Ptr inventory,
 		Inventory& inventoryComp = reg.get<Inventory>(entity);
 		if (itemId >= inventoryComp.items.size()) return;
 		Item& item = reg.get<Item>(entt::entity(inventoryComp.items[itemId]));
-
-		item.isEquiped = true;
+		
+		reg.emplace<JustEquiped>(entt::entity(inventoryComp.items[itemId]));
+		reg.emplace<Equiped>(entt::entity(inventoryComp.items[itemId]));
 
 		if (item.type == RING)
 		{
@@ -319,7 +322,8 @@ void InventorySystem::unequipItem(entt::registry& reg, tgui::Panel::Ptr inventor
 			if (itemId >= inventoryComp.quickSlots.size()) return;
 			Item& item = reg.get<Item>(entt::entity(inventoryComp.quickSlots[itemId]));
 
-			item.isEquiped = false;
+			reg.emplace<JustUnequiped>(entt::entity(inventoryComp.quickSlots[itemId]));
+			reg.remove<Equiped>(entt::entity(inventoryComp.quickSlots[itemId]));
 
 			inventoryComp.items.push_back(inventoryComp.quickSlots[itemId]);
 			inventoryComp.quickSlots.erase(inventoryComp.quickSlots.begin() + itemId, inventoryComp.quickSlots.begin() + itemId + 1);
@@ -334,7 +338,8 @@ void InventorySystem::unequipItem(entt::registry& reg, tgui::Panel::Ptr inventor
 			if (itemId >= inventoryComp.ringSlots.size()) return;
 			Item& item = reg.get<Item>(entt::entity(inventoryComp.ringSlots[itemId]));
 
-			item.isEquiped = false;
+			reg.emplace<JustUnequiped>(entt::entity(inventoryComp.ringSlots[itemId]));
+			reg.remove<Equiped>(entt::entity(inventoryComp.ringSlots[itemId]));
 
 			inventoryComp.items.push_back(inventoryComp.ringSlots[itemId]);
 			inventoryComp.ringSlots.erase(inventoryComp.ringSlots.begin() + itemId, inventoryComp.ringSlots.begin() + itemId + 1);

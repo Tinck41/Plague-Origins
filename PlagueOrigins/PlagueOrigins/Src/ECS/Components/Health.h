@@ -11,9 +11,13 @@ struct Health
 	{
 		this->maxHealth = VIT * 20.f;
 		this->curhealth = VIT * 20.f;
+
+		baseHealth = maxHealth;
+
 		std::cout << maxHealth << " maxHealth\n";
 	}
 	
+	float baseHealth;
 	float maxHealth;
 	float curhealth;
 };

@@ -160,6 +160,7 @@
     <ClCompile Include="Src\ECS\Systems\BossFight.cpp" />
     <ClCompile Include="Src\ECS\Systems\DialogueSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\DisposalSystem.cpp" />
+    <ClCompile Include="Src\ECS\Systems\EffectsSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\HealthSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\EssenceSystem.cpp" />
     <ClCompile Include="Src\ECS\Systems\InventorySystem.cpp" />
@@ -229,9 +230,13 @@
     <ClInclude Include="Src\ECS\Components\BossFightArena.h" />
     <ClInclude Include="Src\ECS\Components\Description.h" />
     <ClInclude Include="Src\ECS\Components\Dialogue.h" />
-    <ClInclude Include="Src\ECS\Components\Equipped.h" />
+    <ClInclude Include="Src\ECS\Components\Equiped.h" />
+    <ClInclude Include="Src\ECS\Components\HealthBoost.h" />
     <ClInclude Include="Src\ECS\Components\Icon.h" />
     <ClInclude Include="Src\ECS\Components\Item.h" />
+    <ClInclude Include="Src\ECS\Components\ItemOwner.h" />
+    <ClInclude Include="Src\ECS\Components\JustEquiped.h" />
+    <ClInclude Include="Src\ECS\Components\JustUnequiped.h" />
     <ClInclude Include="Src\ECS\Components\PlayerTemporal.h" />
     <ClInclude Include="Src\ECS\Components\Stamina.h" />
     <ClInclude Include="Src\ECS\Components\Stats.h" />
@@ -243,6 +248,7 @@
     <ClInclude Include="Src\ECS\Components\Inventory.h" />
     <ClInclude Include="Src\ECS\Systems\BossFight.h" />
     <ClInclude Include="Src\ECS\Systems\DialogueSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\EffectsSystem.h" />
     <ClInclude Include="Src\ECS\Systems\HealthSystem.h" />
     <ClInclude Include="Src\ECS\Systems\EssenceSystem.h" />
     <ClInclude Include="Src\ECS\Systems\InventorySystem.h" />

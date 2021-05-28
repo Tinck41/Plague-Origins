@@ -1,6 +1,6 @@
 #pragma once
 
-struct Equipped
+struct JustEquiped
 {
 
 };

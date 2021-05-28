@@ -24,7 +24,11 @@
 #include "Components/Item.h"
 #include "Components/Description.h"
 #include "Components/Icon.h"
-#include "Components/Equipped.h"
+#include "Components/ItemOwner.h"
+#include "Components/JustEquiped.h"
+#include "Components/JustUnequiped.h"
+#include "Components/Equiped.h"
+#include "Components/HealthBoost.h"
 
 #include "Components/PlayerTemporal.h"
 #include "Components/Dialogue.h"
