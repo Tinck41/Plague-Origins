@@ -19,7 +19,8 @@ void BossFight::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 		for (b2ContactEdge* edge = bossFightTrigger->GetBody()->GetContactList(); edge; edge = edge->next)
 		{
-			if (edge->contact->GetFixtureA() == bossFightTrigger && edge->contact->GetFixtureB()->GetUserData().pointer == PLAYER)
+			if (edge->contact->GetFixtureA() == bossFightTrigger && edge->contact->GetFixtureB()->GetUserData().pointer == PLAYER
+				|| edge->contact->GetFixtureB()->GetUserData().pointer == PLAYER && edge->contact->GetFixtureA() == bossFightTrigger)
 			{
 				for (size_t i = 0; i < bossFightArena.doors.size(); i++)
 				{

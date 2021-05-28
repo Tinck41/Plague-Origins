@@ -90,6 +90,7 @@ GameScreen::GameScreen()
 	boss.AddComponent<Animator>();
 	boss.AddComponent<Movement>(300.f);
 	boss.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2400.f, 8000.f), true, boss, ENEMY_NPC);
+	boss.AddComponent<Aggresion>(boss.GetComponent<RigidBody>().body, 0.f, 0.f);
 	boss.AddComponent<Tag>("Boss");
 	boss.AddComponent<ActorAudioSource>();
 	boss.AddComponent<SMcomponent>(new BossIdleState(boss));

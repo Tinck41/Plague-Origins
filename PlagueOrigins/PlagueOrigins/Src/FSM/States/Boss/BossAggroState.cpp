@@ -29,7 +29,7 @@ void BossAggroState::update(const float& dt)
 			new BossDeathState(owner));
 		std::cout << "";
 	}
-	else if (!owner.GetComponent<Aggresion>().isAggresive)
+	else if (!owner.GetComponent<Boss>().isBossFight)
 	{
 		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
 		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,

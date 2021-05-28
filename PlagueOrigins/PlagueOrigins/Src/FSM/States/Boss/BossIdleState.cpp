@@ -29,7 +29,10 @@ void BossIdleState::update(const float& dt)
 	//TO-DO
 	else if (owner.GetComponent<Boss>().isBossFight)
 	{
-		owner.AddComponent<Aggresion>(owner.GetComponent<RigidBody>().body, 3000.f, 360.f);
+		//owner.AddComponent<Aggresion>(owner.GetComponent<RigidBody>().body, 3000.f, 360.f);
+		Aggresion& aggresion = owner.GetComponent<Aggresion>();
+		aggresion.radius = 3000.f;
+		aggresion.angle = 360.f;
 		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
 		playerStates.currentState = playerStates.changeState(playerStates.currentState,
 			new BossAggroState(owner));

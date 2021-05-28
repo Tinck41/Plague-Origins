@@ -70,7 +70,7 @@ void AggroSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& d
 					aggresion.vectorToTarget.y = normalizedVectorToPlayer.y;
 					break;
 				}
-				else if (angle > 60.f)
+				else if (angle > aggresion.angle)
 				{
 					aggresion.isAggresive = false;
 				}
