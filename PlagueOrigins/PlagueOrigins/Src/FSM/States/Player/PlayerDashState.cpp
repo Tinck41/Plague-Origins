@@ -68,6 +68,13 @@ void PlayerDashState::update(const float& dt)
 			stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 				new PlayerIdleState(owner));
 		}
+		else if (owner.GetComponent<Dialogue>().isInteracting)
+		{
+			SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+			stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
+				new PlayerInteractState(owner));
+			std::cout << "";
+		}
 	}
 	
 }

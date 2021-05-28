@@ -49,7 +49,7 @@ void PlayerIdleState::update(const float& dt)
 	{
 		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
 		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
-			new PlayerMoveState(owner));
+			new PlayerInteractState(owner));
 		std::cout << "";
 	}
 
