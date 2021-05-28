@@ -12,7 +12,6 @@
 #include "Components/Stats.h"
 #include "Components/Tag.h"
 #include "Components/Transform.h"
-#include "Components/Interact.h"
 #include "Components/ActorAudioSource.h"
 #include "Components/AmbienceAudioSource.h"
 #include "Components/Aggresion.h"

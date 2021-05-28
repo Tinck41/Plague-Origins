@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "DialogueSystem.h"
+#include "StatsSystem.h"
 
 DialogueSystem::DialogueSystem()
 {
@@ -14,21 +15,128 @@ void DialogueSystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 
 void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
-	auto view = reg.view<Dialogue, PlayerInput>();
+	auto view = reg.view<Dialogue, PlayerInput, RigidBody, Stats>();
 	for (auto entity : view)
 	{
 		Dialogue& dialogue = reg.get<Dialogue>(entity);
 		PlayerInput& playerInput = reg.get<PlayerInput>(entity);
-		if (playerInput.fReleased)
+		RigidBody& rigidBody = reg.get<RigidBody>(entity);
+
+		if (dialogue.state == 2)
 		{
-			dialogueSwitch(dialogue);
+			updateStats(reg, gui, entity);
 		}
-		
-		if (playerInput.LMBreleased && dialogue.state == 1)
+
+		b2Fixture* interactionZone = rigidBody.body->GetFixtureList();
+		while (interactionZone->GetUserData().pointer != INTERACTION_ZONE)
 		{
-			if (gui.get<tgui::Button>("upgradeStatsButton")->isMouseDown()) dialogue.state = 2;
-			if (gui.get<tgui::Button>("tradeButton")->isMouseDown()) dialogue.state = 3;
-			if (gui.get<tgui::Button>("exitButton")->isMouseDown()) dialogue.state = 0;
+			interactionZone = interactionZone->GetNext();
+		}
+
+		bool playerFound = false;
+
+		for (b2ContactEdge* edge = interactionZone->GetBody()->GetContactList(); edge; edge = edge->next)
+		{
+			if (edge->contact->GetFixtureA()->GetUserData().pointer == FRIENDLY_NPC
+					&& edge->contact->GetFixtureB()->GetUserData().pointer == INTERACTION_ZONE
+				|| edge->contact->GetFixtureA()->GetUserData().pointer == INTERACTION_ZONE
+					&& edge->contact->GetFixtureB()->GetUserData().pointer == FRIENDLY_NPC)
+			{
+				//entt::entity bishop = (entt::entity)edge->contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+				playerFound = true;
+				if (playerInput.fReleased)
+				{
+					dialogue.isInteracting = true;
+					reg.get<Dialogue>(dialogue.bishop).isInteracting = true;
+					dialogueSwitch(dialogue);
+				}
+				//main
+				if (playerInput.LMBreleased && dialogue.state == 1)
+				{
+					if (gui.get<tgui::Button>("upgradeStatsButton")->isMouseDown()) dialogue.state = 2;
+					if (gui.get<tgui::Button>("tradeButton")->isMouseDown()) dialogue.state = 3;
+					if (gui.get<tgui::Button>("exitButton")->isMouseDown()) dialogue.state = 0;
+				}
+				//increase stats
+				if (playerInput.LMBreleased && dialogue.state == 2)
+				{
+					StatsSystem statsSystem;
+					Stats& stats = reg.get<Stats>(entity);
+					Inventory& essence = reg.get<Inventory>(entity);
+					if (gui.get<tgui::Button>("VITbutton")->isMouseDown())
+					{
+						statsSystem.increaseChar(reg, entity, stats, essence, VIT);
+						updateStats(reg, gui, entity);
+					}
+					else if (gui.get<tgui::Button>("STRbutton")->isMouseDown())
+					{
+						statsSystem.increaseChar(reg, entity, stats, essence, STR);
+						updateStats(reg, gui, entity);
+					}
+					else if (gui.get<tgui::Button>("ENDbutton")->isMouseDown())
+					{
+						statsSystem.increaseChar(reg, entity, stats, essence, END);
+						updateStats(reg, gui, entity);
+					}
+					else if (gui.get<tgui::Button>("AGIbutton")->isMouseDown())
+					{
+						statsSystem.increaseChar(reg, entity, stats, essence, AGI);
+						updateStats(reg, gui, entity);
+					}
+					else if (gui.get<tgui::Button>("INTbutton")->isMouseDown())
+					{
+						statsSystem.increaseChar(reg, entity, stats, essence, INTT);
+						updateStats(reg, gui, entity);
+					}
+				}
+				//decrease stats
+				if (playerInput.RMBreleased && dialogue.state == 2 && config.isFullscreen)
+				{
+					sf::Vector2f mousePos = sf::Vector2f(
+						sf::Mouse::getPosition().x / 1920.f * 2560.f - 650.f, 
+						sf::Mouse::getPosition().y / 1920.f * 2560.f - 285.f
+					);
+					StatsSystem statsSystem;
+					Stats& stats = reg.get<Stats>(entity);
+					Inventory& essence = reg.get<Inventory>(entity);
+					if (gui.get<tgui::Button>("VITbutton")->isMouseOnWidget(mousePos))
+					{
+						statsSystem.decreaseChar(reg, entity, stats, essence, VIT);
+						updateStats(reg, gui, entity);
+					}
+					else if (gui.get<tgui::Button>("STRbutton")->isMouseOnWidget(mousePos))
+					{
+						statsSystem.decreaseChar(reg, entity, stats, essence, STR);
+						updateStats(reg, gui, entity);
+					}
+					else if (gui.get<tgui::Button>("ENDbutton")->isMouseOnWidget(mousePos))
+					{
+						statsSystem.decreaseChar(reg, entity, stats, essence, END);
+						updateStats(reg, gui, entity);
+					}
+					else if (gui.get<tgui::Button>("AGIbutton")->isMouseOnWidget(mousePos))
+					{
+						statsSystem.decreaseChar(reg, entity, stats, essence, AGI);
+						updateStats(reg, gui, entity);
+					}
+					else if (gui.get<tgui::Button>("INTbutton")->isMouseOnWidget(mousePos))
+					{
+						statsSystem.decreaseChar(reg, entity, stats, essence, INTT);
+						updateStats(reg, gui, entity);
+					}
+				}
+			}
+		}
+
+		if (!playerFound)
+		{
+			dialogue.state = 0;
+		}
+
+		if (dialogue.state == 0)
+		{
+			dialogue.isInteracting = false;
+			reg.get<Dialogue>(dialogue.bishop).isInteracting = false;
 		}
 	}
 }
@@ -81,4 +189,39 @@ void DialogueSystem::dialogueSwitch(Dialogue& dialogue)
 	{
 		dialogue.state = 0;
 	}
+}
+
+void DialogueSystem::updateStats(entt::registry& reg, tgui::GuiSFML& gui, entt::entity player)
+{
+	StatsSystem statsSystem;
+	Inventory& essence = reg.get<Inventory>(player);
+	Stats& stats = reg.get<Stats>(player);
+	Health& health = reg.get<Health>(player);
+	Attack& attack = reg.get<Attack>(player);
+	Stamina& stamina = reg.get<Stamina>(player);
+	Dash& dash = reg.get<Dash>(player);
+
+	gui.get<tgui::Label>("EScur")->setText((tgui::String)essence.essence);
+	gui.get<tgui::Label>("VITcur")->setText((tgui::String)stats.VIT);
+	gui.get<tgui::Label>("STRcur")->setText((tgui::String)stats.STR);
+	gui.get<tgui::Label>("ENDcur")->setText((tgui::String)stats.END);
+	gui.get<tgui::Label>("AGIcur")->setText((tgui::String)stats.AGI);
+	gui.get<tgui::Label>("INTcur")->setText((tgui::String)stats.INT);
+
+	gui.get<tgui::Label>("ESnew")->setText((tgui::String)(essence.essence - stats.upgradeCost));
+	gui.get<tgui::Label>("VITnew")->setText((tgui::String)(stats.VIT+1));
+	gui.get<tgui::Label>("STRnew")->setText((tgui::String)(stats.STR+1));
+	gui.get<tgui::Label>("ENDnew")->setText((tgui::String)(stats.END+1));
+	gui.get<tgui::Label>("AGInew")->setText((tgui::String)(stats.AGI+1));
+	gui.get<tgui::Label>("INTnew")->setText((tgui::String)(stats.INT+1));
+
+	gui.get<tgui::Label>("HPcur")->setText((tgui::String)health.maxHealth);
+	gui.get<tgui::Label>("DMGcur")->setText((tgui::String)attack.damage);
+	gui.get<tgui::Label>("STMcur")->setText((tgui::String)stamina.maxStamina);
+	gui.get<tgui::Label>("DCDcur")->setText((tgui::String)dash.cooldownTime);
+
+	gui.get<tgui::Label>("HPnew")->setText((tgui::String)statsSystem.newHp(stats, 1));
+	gui.get<tgui::Label>("DMGnew")->setText((tgui::String)statsSystem.newDamage(stats, 1));
+	gui.get<tgui::Label>("STMnew")->setText((tgui::String)statsSystem.newStamina(stats, 1));
+	gui.get<tgui::Label>("DCDnew")->setText((tgui::String)statsSystem.newDashCD(stats, 1));
 }

@@ -8,42 +8,33 @@ BishopInteractState::BishopInteractState(Entity& owner) :
 
 void BishopInteractState::enter()
 {
-	std::cout << "DIALOGUE START\n";
+	std::cout << "BISHOP INTERACT\n";
 	Animator& animator = owner.GetComponent<Animator>();
 
 	animator.previousAnimation = animator.currentAnimation;
-	animator.currentAnimation = IDLE;
-
-	owner.GetComponent<Interact>().isInteracting = true;
+	animator.currentAnimation = INTERACT;
 }
 
 void BishopInteractState::update(const float& dt)
 {
-	if (owner.GetComponent<Health>().curhealth <= 0)
-	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
-			new BishopDeathState(owner));
-		std::cout << "";
-	}
+	//if (owner.GetComponent<Health>().curhealth <= 0)
+	//{
+	//	SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+	//	stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
+	//		new BishopDeathState(owner));
+	//	std::cout << "";
+	//}
 	//END OF INTERACTION
-	else if (owner.GetComponent<Interact>().isInteracting == false)
+	if (owner.GetComponent<Dialogue>().isInteracting == false)
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new BishopIdleState(owner));
 		std::cout << "";
-	}
-	else
-	{
-		Animator& animator = owner.GetComponent<Animator>();
-
-		animator.previousAnimation = animator.currentAnimation;
-		animator.currentAnimation = IDLE;
 	}
 }
 
 void BishopInteractState::exit()
 {
-	std::cout << "DIALOGUE END\n";
+	std::cout << "bishop end of interact state\n";
 }

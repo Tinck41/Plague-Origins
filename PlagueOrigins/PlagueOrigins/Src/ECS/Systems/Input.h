@@ -27,5 +27,6 @@ class Input :
 	void checkR(PlayerInput& input);
 	void checkSpace(PlayerInput& input);
 	void checkLMB(PlayerInput& input);
+	void checkRMB(PlayerInput& input);
 	void checkEsc(PlayerInput& input);
 };

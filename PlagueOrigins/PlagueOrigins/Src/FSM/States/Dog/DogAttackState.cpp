@@ -24,8 +24,8 @@ void DogAttackState::update(const float& dt)
 {
     if (owner.GetComponent<Health>().curhealth <= 0)
     {
-        SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-        playerStates.currentState = playerStates.changeState(playerStates.currentState,
+        SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+        stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
             new DogDeathState(owner));
         std::cout << "";
     }
@@ -45,15 +45,15 @@ void DogAttackState::update(const float& dt)
         }
         else if (owner.GetComponent<Aggresion>().isAggresive)
         {
-            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-            playerStates.currentState = playerStates.changeState(playerStates.currentState,
+            SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+            stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
                 new DogAggroState(owner));
             std::cout << "";
         }
         else
         {
-            SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-            playerStates.currentState = playerStates.changeState(playerStates.currentState,
+            SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+            stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
                 new DogIdleState(owner));
             std::cout << "";
         }

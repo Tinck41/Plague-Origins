@@ -24,8 +24,8 @@ void BossIdleState::update(const float& dt)
 {
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new BossDeathState(owner));
 		std::cout << "";
 	}
@@ -33,15 +33,15 @@ void BossIdleState::update(const float& dt)
 	else if (owner.GetComponent<Boss>().isBossFight)
 	{
 		owner.AddComponent<Aggresion>(owner.GetComponent<RigidBody>().body, 3000.f, 360.f);
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new BossAggroState(owner));
 		std::cout << "";
 	}
 	//else if (owner.GetComponent<Movement>().direction != sf::Vector2f(0, 0))
 	//{
-	//	SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-	//	playerStates.currentState = playerStates.changeState(playerStates.currentState,
+	//	SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+	//	stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 	//		new BossMoveState(owner));
 	//	std::cout << "";
 	//}

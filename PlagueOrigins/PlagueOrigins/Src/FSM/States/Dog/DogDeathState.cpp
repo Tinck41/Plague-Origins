@@ -27,7 +27,6 @@ void DogDeathState::update(const float& dt)
 	if (now - last >= delay)
 	{
 		//dispose
-		std::cout << "dispose true\n";
 		owner.GetComponent<Dispose>().toDispose = true;
 	}
 }

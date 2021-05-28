@@ -1,60 +1,106 @@
 #include "stdafx.h"
 #include "StatsSystem.h"
 
-void StatsSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
+float StatsSystem::newHp(Stats& stats, int value)
 {
-	
+    return (stats.VIT + value) * 20.f;
 }
 
-void StatsSystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
+float StatsSystem::newStamina(Stats& stats, int value)
 {
-	
+    return (stats.END + value) * 10.f;
 }
 
-void StatsSystem::increaseChar(Stats& stats, int value, charName charName)
+float StatsSystem::newDamage(Stats& stats, int value)
 {
+    return (stats.STR + value) * 5.0f;
+}
+
+float StatsSystem::newDashCD(Stats& stats, int value)
+{
+    return 10.f / (stats.AGI + value) + 1.f;
+}
+
+void StatsSystem::increaseChar(entt::registry& reg, entt::entity player, Stats& stats, Inventory& essence, charName charName)
+{
+    if (essence.essence >= stats.upgradeCost)
+    {
+        Health& health = reg.get<Health>(player);
+        Stamina& stamina = reg.get<Stamina>(player);
+        Attack& attack = reg.get<Attack>(player);
+        Dash& dash = reg.get<Dash>(player);
+        switch (charName)
+        {
+        case charName::VIT:
+            health.maxHealth = newHp(stats,1);
+            stats.VIT++;
+            break;
+        case charName::END:
+            stamina.maxStamina = newStamina(stats,1);
+            stats.END++;
+            break;
+        case charName::STR:
+            attack.damage = newDamage(stats,1);
+            stats.STR++;
+            break;
+        case charName::AGI:
+            dash.cooldownTime = newDashCD(stats,1);
+            stats.AGI++;
+            break;
+        case charName::INTT:
+            stats.INT++;
+            break;
+        default:
+            break;
+        }
+        essence.essence -= stats.upgradeCost;
+        stats.upgradeCost = -1100 + (stats.VIT + stats.END + stats.STR + stats.AGI) * 30;
+    }
+}
+
+void StatsSystem::decreaseChar(entt::registry& reg, entt::entity player, Stats& stats, Inventory& essence, charName charName)
+{
+    Health& health = reg.get<Health>(player);
+    Stamina& stamina = reg.get<Stamina>(player);
+    Attack& attack = reg.get<Attack>(player);
+    Dash& dash = reg.get<Dash>(player);
     switch (charName)
     {
     case charName::VIT:
-        stats.VIT += value;
+        if (stats.VIT > 1) 
+        {
+            health.maxHealth = newHp(stats,-1);
+            stats.VIT--;
+        }
         break;
     case charName::END:
-        stats.END += value;
+        if (stats.END > 1)
+        {
+            stamina.maxStamina = newStamina(stats, -1);
+            stats.END--;
+        }
         break;
     case charName::STR:
-        stats.STR += value;
+        if (stats.STR > 1)
+        {
+            attack.damage = newDamage(stats, -1);
+            stats.STR--;
+        }
         break;
     case charName::AGI:
-        stats.AGI += value;
+        if (stats.AGI > 1)
+        {
+            dash.cooldownTime = newDashCD(stats, -1);
+            stats.AGI--;
+        }
         break;
     case charName::INTT:
-        stats.INT += value;
+        if (stats.INT > 1)
+            stats.INT--;
         break;
     default:
         break;
     }
-}
-
-void StatsSystem::decreaseChar(Stats& stats, int value, charName charName)
-{
-    switch (charName)
-    {
-    case charName::VIT:
-        stats.VIT -= value;
-        break;
-    case charName::END:
-        stats.END -= value;
-        break;
-    case charName::STR:
-        stats.STR -= value;
-        break;
-    case charName::AGI:
-        stats.AGI -= value;
-        break;
-    case charName::INTT:
-        stats.INT -= value;
-        break;
-    default:
-        break;
-    }
+    essence.essence += stats.upgradeCost;
+    stats.upgradeCost = -1100 + (stats.VIT + stats.END + stats.STR + stats.AGI) * 30;
 }

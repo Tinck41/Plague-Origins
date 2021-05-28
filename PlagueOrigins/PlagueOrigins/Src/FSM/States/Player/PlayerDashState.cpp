@@ -40,34 +40,40 @@ void PlayerDashState::update(const float& dt)
 	}
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new PlayerDeathState(owner));
 		std::cout << "";
 	}
-	//else if (owner.GetComponent<Animator>().armatureDisplay->getAnimation()->isCompleted())
 	else if (!owner.GetComponent<Dash>().isDashing)
 	{
 		std::cout << "dash animation completed\n";
 		if (owner.GetComponent<Attack>().isAttacking)
 		{
-			SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-			playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+			stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 				new PlayerAttackState(owner));
 			std::cout << "";
 		}
 		else if (owner.GetComponent<Movement>().direction != sf::Vector2f(0, 0))
 		{
-			SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-			playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+			stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 				new PlayerMoveState(owner));
 			std::cout << "";
 		}
 		else if (owner.GetComponent<Movement>().direction == sf::Vector2f(0, 0))
 		{
-			SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-			playerStates.currentState = playerStates.changeState(playerStates.currentState,
+			SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+			stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 				new PlayerIdleState(owner));
+		}
+		else if (owner.GetComponent<Dialogue>().isInteracting)
+		{
+			SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+			stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
+				new PlayerInteractState(owner));
+			std::cout << "";
 		}
 	}
 	

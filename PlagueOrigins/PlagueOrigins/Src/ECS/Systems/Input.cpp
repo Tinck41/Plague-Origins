@@ -26,8 +26,6 @@ void Input::movementInput(PlayerInput& input)
 	checkA(input);
 	checkS(input);
 	checkD(input);
-	checkF(input);
-	checkR(input);
 	checkSpace(input);
 }
 
@@ -55,6 +53,15 @@ void Input::menuInput(PlayerInput& input)
 
 void Input::interactionInput(PlayerInput& input)
 {
+	if (!input.canCheckForInteraction)
+	{
+		resetInteractionInput(input);
+		return;
+	}
+
+	checkR(input);
+	checkF(input);
+	checkRMB(input);
 }
 
 void Input::resetMovementInput(PlayerInput& input)
@@ -100,6 +107,14 @@ void Input::resetInteractionInput(PlayerInput& input)
 	input.fPressed = false;
 	input.fWasPressed = false;
 	input.fReleased = false;
+
+	input.rPressed = false;
+	input.rWasPressed = false;
+	input.rReleased = false;
+
+	input.RMBpressed = false;
+	input.RMBwasPressed = false;
+	input.RMBreleased = false;
 }
 
 void Input::checkW(PlayerInput& input)
@@ -323,6 +338,34 @@ void Input::checkLMB(PlayerInput& input)
 		input.LMBwasPressed = false;
 		input.LMBpressed = false;
 		input.LMBreleased = false;
+	}
+}
+
+void Input::checkRMB(PlayerInput& input)
+{
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && !input.RMBpressed)
+	{
+		input.RMBwasPressed = true;
+		input.RMBpressed = true;
+		input.RMBreleased = false;
+	}
+	else if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+	{
+		input.RMBwasPressed = false;
+		input.RMBpressed = true;
+		input.RMBreleased = false;
+	}
+	else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && input.RMBpressed)
+	{
+		input.RMBwasPressed = false;
+		input.RMBpressed = false;
+		input.RMBreleased = true;
+	}
+	else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+	{
+		input.RMBwasPressed = false;
+		input.RMBpressed = false;
+		input.RMBreleased = false;
 	}
 }
 

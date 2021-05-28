@@ -24,8 +24,8 @@ void DogAggroState::update(const float& dt)
 {
 	if (owner.GetComponent<Health>().curhealth <= 0)
 	{
-		SMcomponent& playerStates = owner.GetComponent<SMcomponent>();
-		playerStates.currentState = playerStates.changeState(playerStates.currentState,
+		SMcomponent& stateMachine = owner.GetComponent<SMcomponent>();
+		stateMachine.currentState = stateMachine.changeState(stateMachine.currentState,
 			new DogDeathState(owner));
 		std::cout << "";
 	}
@@ -55,20 +55,6 @@ void DogAggroState::update(const float& dt)
 		animator.previousFaceDirection = animator.currentFaceDirection;
 		animator.currentFaceDirection = movement.direction;
 	}
-	//else if (owner.getCombatComponent()->isInAttackRange())
-	//{
-	//	owner.getStateMachine()->changeState(new NPCDogAttackState(owner));
-	//}
-	//else if (owner.getCombatComponent()->isDead())
-	//{
-	//	owner.getStateMachine()->changeState(new NPCDogDeathState(owner));
-	//}
-	//else
-	//{
-	//	target = owner.getCombatComponent()->getPlayerPosition();
-	//	owner.getMover()->move(dt, owner.getPatrol()->directRoute(target));
-	//	this->owner.getAnimator()->setAnimation(animationName::MOVE, this->owner.getPatrol()->getDirection());
-	//}
 }
 
 void DogAggroState::exit()

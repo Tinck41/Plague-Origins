@@ -3,7 +3,7 @@
   "font": "./Assets/Fonts/FreeSans.ttf",
   "fps": 60,
   "window": {
-    "fullscreen": false,
+    "fullscreen": true,
     "width": 1280,
     "height": 720,
     "uiWidth": 2560,
@@ -54,7 +54,7 @@
     }
   },
   "bishop": {
-    "scale": 0.22,
+    "scale": 0.5,
     "hitbox": {
       "width": 100,
       "height": 150
