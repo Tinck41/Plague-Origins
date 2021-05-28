@@ -14,6 +14,8 @@ private:
 	Entity testEntity;
 	Entity npcEntity;
 	Entity bishop;
+	
+	Entity screenManager;
 
 	tgui::GuiSFML gui;
 

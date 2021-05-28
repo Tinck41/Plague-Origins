@@ -46,5 +46,6 @@
 #include "Src/Global/Config.h"
 #include "Src/Utility/PhysicsWorld.h"
 #include "Characteristics.h"
+#include "Src/Screen/ScreenTypes.h"
 
 extern Config config;

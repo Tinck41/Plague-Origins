@@ -143,7 +143,7 @@ Panel.essenceBar {
 
 Panel.menuButtons {
     Position = (40, 40);
-    Size = (110, 470);
+    Size = (112, 470);
 
     Renderer {
         BackgroundColor = #FFFFFF00;
@@ -1112,6 +1112,7 @@ Panel.tradePanel {
 Panel.unfoldedInventory {
     Position = (210, 40);
     Size = (1869, 1028);
+    Visible = false;
 
     Renderer {
         BackgroundColor = white;
@@ -1187,17 +1188,16 @@ Panel.unfoldedInventory {
     Panel.itemActions {
         Position = (410, 190);
         Size = (450, 250);
-        Visible = false;
 
         Renderer {
             BackgroundColor = white;
             BorderColor = black;
-            TextureBackground = "mainDialogueBox.png" Smooth;
+            TextureBackground = "invDialogueBox.png" Smooth;
         }
 
         Button.Button1 {
-            Position = (26, 24);
-            Size = (400, 52);
+            Position = (25, 36);
+            Size = (401, 73);
             TextSize = 30;
 
             Renderer {
@@ -1226,8 +1226,8 @@ Panel.unfoldedInventory {
         }
 
         Button.Button2 {
-            Position = (26, 99);
-            Size = (400, 52);
+            Position = (25, 142);
+            Size = (401, 73);
             TextSize = 30;
 
             Renderer {
@@ -1254,35 +1254,78 @@ Panel.unfoldedInventory {
                 TextureHover = None;
             }
         }
+    }
+}
 
-        Button.Button3 {
-            Position = (26, 174);
-            Size = (400, 52);
-            TextSize = 30;
+Panel.settingsPanel {
+    Position = (152, 392);
+    Size = (550, 230);
 
-            Renderer {
-                BackgroundColor = transparent;
-                BackgroundColorDisabled = #E6E6E6;
-                BackgroundColorDown = black;
-                BackgroundColorHover = #3C3C3C;
-                BorderColor = #3C3C3C;
-                BorderColorDisabled = #7D7D7D;
-                BorderColorDown = black;
-                BorderColorFocused = #1E1EB4;
-                BorderColorHover = black;
-                Borders = (0, 0, 0, 0);
-                TextColor = white;
-                TextColorDisabled = #7D7D7D;
-                TextColorDown = black;
-                TextColorHover = black;
-                Texture = None;
-                TextureDisabled = None;
-                TextureDown = None;
-                TextureDownFocused = None;
-                TextureDownHover = None;
-                TextureFocused = None;
-                TextureHover = None;
-            }
+    Renderer {
+        BackgroundColor = white;
+        BorderColor = black;
+        TextureBackground = "invDialogueBox.png" Smooth;
+    }
+
+    Button.mainMenuButton {
+        Position = (30, 32);
+        Size = (490, 68.6667);
+        Text = "Main Menu";
+        TextSize = 33;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorHover = #00000065;
+            BorderColor = #3C3C3C;
+            BorderColorDisabled = #7D7D7D;
+            BorderColorDown = black;
+            BorderColorFocused = #1E1EB4;
+            BorderColorHover = black;
+            Borders = (0, 0, 0, 0);
+            TextColor = white;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = white;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+
+    Button.exitGameButton {
+        Position = (30, 130);
+        Size = (490, 72);
+        Text = "Exit Game";
+        TextSize = 33;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorHover = #00000065;
+            BorderColor = #3C3C3C;
+            BorderColorDisabled = #7D7D7D;
+            BorderColorDown = black;
+            BorderColorFocused = #1E1EB4;
+            BorderColorHover = black;
+            Borders = (0, 0, 0, 0);
+            TextColor = white;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = white;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
         }
     }
 }

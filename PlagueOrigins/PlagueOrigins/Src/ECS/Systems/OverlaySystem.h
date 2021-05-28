@@ -15,4 +15,9 @@ public:
 	virtual void onCreate(entt::registry& reg, tgui::GuiSFML& gui) override;
 	virtual void update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt) override;
 	virtual void render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui) override;
+private:
+	void onInventoryButtonClick(entt::registry& reg, tgui::GuiSFML& gui);
+	void onSettingsButtonClick(entt::registry& reg, tgui::GuiSFML& gui);
+	void onExitButtonClick(entt::registry& reg, tgui::GuiSFML& gui);
+	void onMainMenuButtonClick(entt::registry& reg, tgui::GuiSFML& gui);
 };

@@ -7,8 +7,6 @@ InventorySystem::InventorySystem()
 
 void InventorySystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 {
-	gui.get<tgui::Panel>("menuButtons")->get<tgui::Button>("inventoryButton")->onClick(&InventorySystem::unfoldInventory, this, std::ref(gui));
-
 	createInventorySlots(reg, gui);
 	createQuickSlots(reg, gui);
 	createRingSlots(reg, gui);
@@ -115,18 +113,6 @@ void InventorySystem::render(entt::registry& reg, sf::RenderWindow& window, tgui
 			}
 		}
 	}
-}
-
-void InventorySystem::unfoldInventory(tgui::GuiSFML& gui)
-{
-	bool isVisable = gui.get<tgui::Panel>("unfoldedInventory")->isVisible();
-
-	gui.get<tgui::Panel>("unfoldedInventory")->setVisible(!isVisable);
-
-	gui.get<tgui::Label>("itemName")->setText("");
-	gui.get<tgui::Label>("itemDescription")->setText("");
-
-	gui.get<tgui::Panel>("itemActions")->setVisible(false);
 }
 
 void InventorySystem::createInventorySlots(entt::registry& reg, tgui::GuiSFML& gui)
@@ -248,10 +234,9 @@ void InventorySystem::rightClickOnInventorySlot(entt::registry& reg, tgui::Panel
 		btn->onMouseRelease.disconnectAll();
 		btn->onMouseRelease(&InventorySystem::unequipItem, this, std::ref(reg), inventory, slot);
 	}
-	itemActions->get<tgui::Button>("Button2")->setText("idk");
-	itemActions->get<tgui::Button>("Button3")->setText("Remove");
-	itemActions->get<tgui::Button>("Button3")->onMouseRelease.disconnectAll();
-	itemActions->get<tgui::Button>("Button3")->onMouseRelease(&InventorySystem::removeItem, this, std::ref(reg), inventory, slot);
+	itemActions->get<tgui::Button>("Button2")->setText("Remove");
+	itemActions->get<tgui::Button>("Button2")->onMouseRelease.disconnectAll();
+	itemActions->get<tgui::Button>("Button2")->onMouseRelease(&InventorySystem::removeItem, this, std::ref(reg), inventory, slot);
 
 	inventory->get<tgui::Panel>("itemActions")->setVisible(!isVisable);
 }

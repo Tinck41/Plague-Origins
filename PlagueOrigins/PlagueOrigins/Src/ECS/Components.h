@@ -29,6 +29,7 @@
 #include "Components/JustUnequiped.h"
 #include "Components/Equiped.h"
 #include "Components/HealthBoost.h"
+#include "Components/CurrentScreen.h"
 
 #include "Components/PlayerTemporal.h"
 #include "Components/Dialogue.h"

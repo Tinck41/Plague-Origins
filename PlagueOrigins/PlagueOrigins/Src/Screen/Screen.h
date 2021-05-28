@@ -3,13 +3,6 @@
 #include "Src/ECS/SystemHandler.h"
 #include "entt.hpp"
 
-enum class ScreenType {
-	LOADING,
-	GAME,
-	MAIN_MENU,
-	EXIT
-};
-
 class Screen
 {
 public:

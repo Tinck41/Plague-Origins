@@ -14,6 +14,9 @@ GameScreen::GameScreen()
 	mapLoader.~TilemapParser();
 
 	gui.loadWidgetsFromFile("./Assets/UI/Game.txt");
+
+	screenManager = Entity(registry.create(), this);
+	screenManager.AddComponent<CurrentScreen>(ScreenType::GAME);
 	
 	testEntity = Entity(registry.create(), this);
 	testEntity.AddComponent<Transform>();
@@ -136,6 +139,6 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 		window.setView(camera.camera);
 	}
 
-	return ScreenType::GAME;
+	return (ScreenType)screenManager.GetComponent<CurrentScreen>().type;
 }
 

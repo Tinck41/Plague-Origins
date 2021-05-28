@@ -238,6 +238,8 @@
     <ClInclude Include="Src\ECS\Components\ItemOwner.h" />
     <ClInclude Include="Src\ECS\Components\JustEquiped.h" />
     <ClInclude Include="Src\ECS\Components\JustUnequiped.h" />
+    <ClInclude Include="Src\ECS\Components\CurrentScreen.h" />
+    <ClInclude Include="Src\Screen\ScreenTypes.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">
