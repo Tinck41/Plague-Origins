@@ -6,7 +6,7 @@
 
 struct Aggresion
 {
-	Aggresion(b2Body* body, float radius)
+	Aggresion(b2Body* body, float radius, float angle)
 	{
 		b2CircleShape attackShape;
 		b2FixtureDef fixtureDef;
@@ -17,9 +17,11 @@ struct Aggresion
 		body->CreateFixture(&fixtureDef);
 
 		this->radius = radius;
+		this->angle = angle;
 		distanceToTarget = radius + 1.f;
 	}
 	float radius;
+	float angle;
 
 	bool isAggresive = false;
 	sf::Vector2f vectorToTarget;
