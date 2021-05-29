@@ -62,7 +62,6 @@ void Animation::playMovementAnimation(Animator& animator, Tag& tag)
 		animator.currentAnimationDurationLeft = sf::seconds(0.f).asMilliseconds();
 		armatureDisplay = nullptr;
 		delete armatureDisplay;
-		//animator.armatureDisplay->getAnimation()->fadeIn("Run", 0.3f, -1, 0, "hero", dragonBones::AnimationFadeOutMode::SameLayerAndGroup);
 	}
 }
 
@@ -130,7 +129,6 @@ void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 	}
 	if (armatureDisplay != nullptr)
 	{
-		//animator.armatureDisplay->getAnimation()->fadeIn("Attack", 0.2f, 1);
 		if (armatureDisplay != nullptr)
 		{
 			animator.armatureDisplay = armatureDisplay;
@@ -186,7 +184,6 @@ void Animation::playDeathAnimation(Animator& animator, Tag& tag)
 		armatureDisplay = nullptr;
 		delete armatureDisplay;
 	}
-	//animator.armatureDisplay->getAnimation()->fadeIn("Die", 1.f, 1);
 }
 
 void Animation::playDashAnimation(Animator& animator, Tag& tag)
@@ -284,8 +281,6 @@ void Animation::setAnimation(Animator& animator, Tag& tag)
 
 	if (animator.previousFaceDirection != animator.currentFaceDirection || animator.previousAnimation != animator.currentAnimation)
 	{
-		//std::cout << "previousFaceDirection: " << animator.previousFaceDirection.x << " " << animator.previousFaceDirection.y << "\n";
-		//std::cout << "currentFaceDirection: " << animator.currentFaceDirection.x << " " << animator.currentFaceDirection.y << "\n";
 		if (animator.previousFaceDirection.x >= 0 && animator.currentFaceDirection.x <= 0
 			|| animator.previousFaceDirection.x <= 0 && animator.currentFaceDirection.x >= 0
 			|| animator.previousAnimation != animator.currentAnimation

@@ -11,12 +11,18 @@ class GameScreen :
     public Screen
 {
 private:
-	Entity testEntity;
-	Entity npcEntity;
-	Entity bishop;
-	
 	Entity screenManager;
-	Entity boss;
+	Entity playerEnt;
+	Entity bishopEnt1;
+	Entity bishopEnt2;
+	Entity bossEnt;
+	Entity dogEnt1;
+	Entity dogEnt2;
+	Entity dogEnt3;
+	Entity dogEnt4;
+	Entity dogEnt5;
+	Entity dogEnt6;
+	Entity dogEnt7;
 
 	tgui::GuiSFML gui;
 
