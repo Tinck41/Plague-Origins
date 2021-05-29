@@ -54,7 +54,7 @@ void StatsSystem::increaseChar(entt::registry& reg, entt::entity player, Stats& 
             break;
         }
         essence.essence -= stats.upgradeCost;
-        stats.upgradeCost = -1100 + (stats.VIT + stats.END + stats.STR + stats.AGI) * 30;
+        stats.upgradeCost = -950 + (stats.VIT + stats.END + stats.STR + stats.AGI) * 25;
     }
 }
 
@@ -102,5 +102,5 @@ void StatsSystem::decreaseChar(entt::registry& reg, entt::entity player, Stats& 
         break;
     }
     essence.essence += stats.upgradeCost;
-    stats.upgradeCost = -1100 + (stats.VIT + stats.END + stats.STR + stats.AGI) * 30;
+    stats.upgradeCost = -950 + (stats.VIT + stats.END + stats.STR + stats.AGI) * 25;
 }

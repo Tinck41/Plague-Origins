@@ -11,6 +11,9 @@ void DogDeathState::enter()
 {
 	//std::cout << "Dog Death State\n";
 	Animator& animator = owner.GetComponent<Animator>();
+	Dispose& dispose = owner.GetComponent<Dispose>();
+
+	dispose.isDead = true;
 
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = DIE;

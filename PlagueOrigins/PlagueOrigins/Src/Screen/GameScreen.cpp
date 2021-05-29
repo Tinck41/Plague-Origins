@@ -21,27 +21,27 @@ GameScreen::GameScreen()
 	screenManager.AddComponent<CurrentScreen>(ScreenType::GAME);
 
 	//PLAYER
-	testEntity = Entity(registry.create(), this);
-	testEntity.AddComponent<Transform>();
-	testEntity.AddComponent<PlayerInput>();
-	testEntity.AddComponent<ActorAudioSource>();
-	testEntity.AddComponent<Animator>(config.playerScale);
-	testEntity.AddComponent<Movement>(config.playerSpeed);
-	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity, PLAYER);
-	testEntity.AddComponent<Tag>("Hero");
-	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
-	testEntity.AddComponent<Vampire>();
-	testEntity.AddComponent<SMcomponent>(new PlayerIdleState(testEntity));
-	testEntity.AddComponent<Inventory>();
-	testEntity.AddComponent<Player>();
-	testEntity.AddComponent<Dialogue>(testEntity.GetComponent<RigidBody>().body, 75.f);
+	playerEnt = Entity(registry.create(), this);
+	playerEnt.AddComponent<Transform>();
+	playerEnt.AddComponent<PlayerInput>();
+	playerEnt.AddComponent<ActorAudioSource>();
+	playerEnt.AddComponent<Animator>(config.playerScale);
+	playerEnt.AddComponent<Movement>(config.playerSpeed);
+	playerEnt.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(2025.f, 8215.f), true, playerEnt, PLAYER);
+	playerEnt.AddComponent<Tag>("Hero");
+	playerEnt.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
+	playerEnt.AddComponent<Vampire>();
+	playerEnt.AddComponent<SMcomponent>(new PlayerIdleState(playerEnt));
+	playerEnt.AddComponent<Inventory>();
+	playerEnt.AddComponent<Player>();
+	playerEnt.AddComponent<Dialogue>(playerEnt.GetComponent<RigidBody>().body, 75.f);
 
-	testEntity.AddComponent<Stats>(config.playerStats);
-	auto playerStats = testEntity.GetComponent<Stats>();
-	testEntity.AddComponent<Health>(playerStats.VIT);
-	testEntity.AddComponent<Stamina>(playerStats.END);
-	testEntity.AddComponent<Attack>(testEntity.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange);
-	testEntity.AddComponent<Dash>(playerStats.AGI);
+	playerEnt.AddComponent<Stats>(config.playerStats);
+	auto playerStats = playerEnt.GetComponent<Stats>();
+	playerEnt.AddComponent<Health>(playerStats.VIT);
+	playerEnt.AddComponent<Stamina>(playerStats.END);
+	playerEnt.AddComponent<Attack>(playerEnt.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange);
+	playerEnt.AddComponent<Dash>(playerStats.AGI);
 
 
 	//AMBIENT AUDIO
@@ -50,81 +50,227 @@ GameScreen::GameScreen()
 
 	Entity ring1 = Entity(registry.create(), this);
 	ring1.AddComponent<Item>("Broken ring", RING);
-	ring1.AddComponent<ItemOwner>(testEntity);
+	ring1.AddComponent<ItemOwner>(playerEnt);
 	ring1.AddComponent<Description>("It's absolutely trash... Why are you carrying that?");
 	ring1.AddComponent<Icon>("./Assets/UI/trashRing.png");
 	ring1.AddComponent<HealthBoost>(-0.1f);
 
 	Entity ring2 = Entity(registry.create(), this);
 	ring2.AddComponent<Item>("Health ring", RING);
-	ring2.AddComponent<ItemOwner>(testEntity);
+	ring2.AddComponent<ItemOwner>(playerEnt);
 	ring2.AddComponent<Description>("Ring with a dull red stone.\n\nIncreases owner health.");
 	ring2.AddComponent<Icon>("./Assets/UI/healthRing.png");
 	ring2.AddComponent<HealthBoost>(.2f);
 
-	testEntity.GetComponent<Inventory>().items.push_back(ring1);
-	testEntity.GetComponent<Inventory>().items.push_back(ring2);
+	playerEnt.GetComponent<Inventory>().items.push_back(ring1);
+	playerEnt.GetComponent<Inventory>().items.push_back(ring2);
 
+	//BISHOPS
 
-	//DOG
-	npcEntity = Entity(registry.create(), this);
-	npcEntity.AddComponent<Transform>();
-	npcEntity.AddComponent<Animator>(config.dogScale);
-	npcEntity.AddComponent<Movement>(300.f);
-	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
-	npcEntity.AddComponent<Aggresion>(npcEntity.GetComponent<RigidBody>().body, 300.f, 60.f);
-	npcEntity.AddComponent<Tag>("Dog");
-	npcEntity.AddComponent<ActorAudioSource>();
-	npcEntity.AddComponent<SMcomponent>(new DogIdleState(npcEntity));
-	std::vector<sf::Vector2f> waypoints;
-	waypoints.push_back(sf::Vector2f(615.f,615.f));
-	waypoints.push_back(sf::Vector2f(615.f,915.f));
-	npcEntity.AddComponent<Patrol>(waypoints);
-	npcEntity.AddComponent<Dispose>();
+	//bishop1
+	bishopEnt1 = Entity(registry.create(), this);
+	bishopEnt1.AddComponent<Transform>();
+	bishopEnt1.AddComponent<Animator>(config.bishopScale);
+	bishopEnt1.AddComponent<Movement>(500.f);
+	bishopEnt1.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2250.f, 7960.f), false, bishopEnt1, FRIENDLY_NPC);
+	bishopEnt1.AddComponent<Tag>("Bishop");
+	bishopEnt1.AddComponent<Dialogue>(bishopEnt1.GetComponent<RigidBody>().body, 75.f);
+	bishopEnt1.AddComponent<SMcomponent>(new BishopIdleState(bishopEnt1));
 
-	npcEntity.AddComponent<Stats>(config.dogStats);
-	auto dogStats = npcEntity.GetComponent<Stats>();
-	npcEntity.AddComponent<Health>(dogStats.VIT);
-	npcEntity.AddComponent<Attack>(npcEntity.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+	bishopEnt1.AddComponent<Stats>(config.bishopStats);
+	auto bishopStats = bishopEnt1.GetComponent<Stats>();
+	bishopEnt1.AddComponent<Health>(bishopStats.VIT);
 
+	//bishop2
+	bishopEnt2 = Entity(registry.create(), this);
+	bishopEnt2.AddComponent<Transform>();
+	bishopEnt2.AddComponent<Animator>(config.bishopScale);
+	bishopEnt2.AddComponent<Movement>(500.f);
+	bishopEnt2.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8800.f, 5770.f), false, bishopEnt2, FRIENDLY_NPC);
+	bishopEnt2.AddComponent<Tag>("Bishop");
+	bishopEnt2.AddComponent<Dialogue>(bishopEnt2.GetComponent<RigidBody>().body, 75.f);
+	bishopEnt2.AddComponent<SMcomponent>(new BishopIdleState(bishopEnt2));
 
-	//BISHOP
-	bishop = Entity(registry.create(), this);
-	bishop.AddComponent<Transform>();
-	bishop.AddComponent<Animator>(config.bishopScale);
-	bishop.AddComponent<Movement>(500.f);
-	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop, FRIENDLY_NPC);
-	bishop.AddComponent<Tag>("Bishop");
-	//bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
-	bishop.AddComponent<Dialogue>(bishop.GetComponent<RigidBody>().body, 75.f);
-	bishop.AddComponent<SMcomponent>(new BishopIdleState(bishop));
-
-	bishop.AddComponent<Stats>(config.bishopStats);
-	auto bishopStats = bishop.GetComponent<Stats>();
-	bishop.AddComponent<Health>(bishopStats.VIT);
-
+	bishopEnt2.AddComponent<Stats>(config.bishopStats);
+	bishopStats = bishopEnt2.GetComponent<Stats>();
+	bishopEnt2.AddComponent<Health>(bishopStats.VIT);
 
 	//BOSS
-	boss = Entity(registry.create(), this);
-	boss.AddComponent<Transform>();
-	boss.AddComponent<Animator>(config.bossScale);
-	boss.AddComponent<Movement>(300.f);
-	boss.AddComponent<RigidBody>(sf::Vector2f(75.f, 135.f), sf::Vector2f(2400.f, 8000.f), true, boss, ENEMY_NPC);
-	boss.AddComponent<Tag>("Boss");
-	boss.AddComponent<ActorAudioSource>();
-	boss.AddComponent<SMcomponent>(new BossIdleState(boss));
-	boss.AddComponent<Dispose>();
-	boss.AddComponent<Boss>();
+	bossEnt = Entity(registry.create(), this);
+	bossEnt.AddComponent<Transform>();
+	bossEnt.AddComponent<Animator>(config.bossScale);
+	bossEnt.AddComponent<Movement>(300.f);
+	bossEnt.AddComponent<RigidBody>(sf::Vector2f(75.f, 135.f), sf::Vector2f(8200.f, 9000.f), true, bossEnt, ENEMY_NPC);
+	bossEnt.AddComponent<Tag>("Boss");
+	bossEnt.AddComponent<ActorAudioSource>();
+	bossEnt.AddComponent<SMcomponent>(new BossIdleState(bossEnt));
+	bossEnt.AddComponent<Dispose>();
+	bossEnt.AddComponent<Boss>();
 
-	boss.AddComponent<Stats>(config.bossStats);
-	auto bossStats = boss.GetComponent<Stats>();
-	boss.AddComponent<Health>(bossStats.VIT);
-	boss.AddComponent<Attack>(boss.GetComponent<RigidBody>().body, bossStats.STR, config.bossAttackRange);
+	bossEnt.AddComponent<Stats>(config.bossStats);
+	auto bossStats = bossEnt.GetComponent<Stats>();
+	bossEnt.AddComponent<Health>(bossStats.VIT);
+	bossEnt.AddComponent<Attack>(bossEnt.GetComponent<RigidBody>().body, bossStats.STR, config.bossAttackRange);
 
 	//TO-DO find other solution
 	//add pointer to boss body
-	testEntity.GetComponent<Player>().bossBody = boss.GetComponent<RigidBody>().body;
-	testEntity.GetComponent<Dialogue>().bishop = bishop;
+	playerEnt.GetComponent<Player>().bossBody = bossEnt.GetComponent<RigidBody>().body;
+	playerEnt.GetComponent<Dialogue>().bishop1 = bishopEnt1;
+	playerEnt.GetComponent<Dialogue>().bishop2 = bishopEnt2;
+
+	//DOGS
+
+	std::vector<sf::Vector2f> waypoints;
+	//DOG1
+	dogEnt1 = Entity(registry.create(), this);
+	dogEnt1.AddComponent<Transform>();
+	dogEnt1.AddComponent<Animator>(config.dogScale);
+	dogEnt1.AddComponent<Movement>(300.f);
+	dogEnt1.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2615.f, 11100.f), true, dogEnt1, ENEMY_NPC);
+	dogEnt1.AddComponent<Aggresion>(dogEnt1.GetComponent<RigidBody>().body, 300.f, 60.f);
+	dogEnt1.AddComponent<Tag>("Dog");
+	dogEnt1.AddComponent<ActorAudioSource>();
+	dogEnt1.AddComponent<SMcomponent>(new DogIdleState(dogEnt1));
+	waypoints.push_back(sf::Vector2f(2615.f, 11100.f));
+	waypoints.push_back(sf::Vector2f(4160.f, 11100.f));
+	dogEnt1.AddComponent<Patrol>(waypoints);
+	waypoints.clear();
+	dogEnt1.AddComponent<Dispose>();
+
+	dogEnt1.AddComponent<Stats>(config.dogStats);
+	auto dogStats = dogEnt1.GetComponent<Stats>();
+	dogEnt1.AddComponent<Health>(dogStats.VIT);
+	dogEnt1.AddComponent<Attack>(dogEnt1.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+
+	//DOG 2
+	dogEnt2 = Entity(registry.create(), this);
+	dogEnt2.AddComponent<Transform>();
+	dogEnt2.AddComponent<Animator>(config.dogScale);
+	dogEnt2.AddComponent<Movement>(300.f);
+	dogEnt2.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(4750.f, 11100.f), true, dogEnt2, ENEMY_NPC);
+	dogEnt2.AddComponent<Aggresion>(dogEnt2.GetComponent<RigidBody>().body, 300.f, 60.f);
+	dogEnt2.AddComponent<Tag>("Dog");
+	dogEnt2.AddComponent<ActorAudioSource>();
+	dogEnt2.AddComponent<SMcomponent>(new DogIdleState(dogEnt2));
+	waypoints.push_back(sf::Vector2f(4750.f, 11100.f));
+	waypoints.push_back(sf::Vector2f(4750.f, 10500.f));
+	dogEnt2.AddComponent<Patrol>(waypoints);
+	waypoints.clear();
+	dogEnt2.AddComponent<Dispose>();
+
+	dogEnt2.AddComponent<Stats>(config.dogStats);
+	dogStats = dogEnt2.GetComponent<Stats>();
+	dogEnt2.AddComponent<Health>(dogStats.VIT);
+	dogEnt2.AddComponent<Attack>(dogEnt2.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+
+	//DOG 3
+	dogEnt3 = Entity(registry.create(), this);
+	dogEnt3.AddComponent<Transform>();
+	dogEnt3.AddComponent<Animator>(config.dogScale);
+	dogEnt3.AddComponent<Movement>(300.f);
+	dogEnt3.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(5580.f, 7000.f), true, dogEnt3, ENEMY_NPC);
+	dogEnt3.AddComponent<Aggresion>(dogEnt3.GetComponent<RigidBody>().body, 300.f, 60.f);
+	dogEnt3.AddComponent<Tag>("Dog");
+	dogEnt3.AddComponent<ActorAudioSource>();
+	dogEnt3.AddComponent<SMcomponent>(new DogIdleState(dogEnt3));
+	waypoints.push_back(sf::Vector2f(5580.f, 7100.f));
+	waypoints.push_back(sf::Vector2f(5580.f, 6200.f));
+	dogEnt3.AddComponent<Patrol>(waypoints);
+	waypoints.clear();
+	dogEnt3.AddComponent<Dispose>();
+
+	dogEnt3.AddComponent<Stats>(config.dogStats);
+	dogStats = dogEnt3.GetComponent<Stats>();
+	dogEnt3.AddComponent<Health>(dogStats.VIT);
+	dogEnt3.AddComponent<Attack>(dogEnt3.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+
+	//DOG 4
+	dogEnt4 = Entity(registry.create(), this);
+	dogEnt4.AddComponent<Transform>();
+	dogEnt4.AddComponent<Animator>(config.dogScale);
+	dogEnt4.AddComponent<Movement>(300.f);
+	dogEnt4.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(5450.f, 3650.f), true, dogEnt4, ENEMY_NPC);
+	dogEnt4.AddComponent<Aggresion>(dogEnt4.GetComponent<RigidBody>().body, 300.f, 60.f);
+	dogEnt4.AddComponent<Tag>("Dog");
+	dogEnt4.AddComponent<ActorAudioSource>();
+	dogEnt4.AddComponent<SMcomponent>(new DogIdleState(dogEnt4));
+	waypoints.push_back(sf::Vector2f(5450.f, 3650.f));
+	waypoints.push_back(sf::Vector2f(5220.f, 3650.f));
+	waypoints.push_back(sf::Vector2f(5220.f, 3900.f));
+	waypoints.push_back(sf::Vector2f(5220.f, 3650.f));
+	dogEnt4.AddComponent<Patrol>(waypoints);
+	waypoints.clear();
+	dogEnt4.AddComponent<Dispose>();
+
+	dogEnt4.AddComponent<Stats>(config.dogStats);
+	dogStats = dogEnt4.GetComponent<Stats>();
+	dogEnt4.AddComponent<Health>(dogStats.VIT);
+	dogEnt4.AddComponent<Attack>(dogEnt4.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+
+	//DOG 5
+	dogEnt5 = Entity(registry.create(), this);
+	dogEnt5.AddComponent<Transform>();
+	dogEnt5.AddComponent<Animator>(config.dogScale);
+	dogEnt5.AddComponent<Movement>(300.f);
+	dogEnt5.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(6500.f, 3650.f), true, dogEnt5, ENEMY_NPC);
+	dogEnt5.AddComponent<Aggresion>(dogEnt5.GetComponent<RigidBody>().body, 300.f, 60.f);
+	dogEnt5.AddComponent<Tag>("Dog");
+	dogEnt5.AddComponent<ActorAudioSource>();
+	dogEnt5.AddComponent<SMcomponent>(new DogIdleState(dogEnt5));
+	waypoints.push_back(sf::Vector2f(7000.f, 3650.f));
+	waypoints.push_back(sf::Vector2f(7500.f, 3650.f));
+	dogEnt5.AddComponent<Patrol>(waypoints);
+	waypoints.clear();
+	dogEnt5.AddComponent<Dispose>();
+
+	dogEnt5.AddComponent<Stats>(config.dogStats);
+	dogStats = dogEnt5.GetComponent<Stats>();
+	dogEnt5.AddComponent<Health>(dogStats.VIT);
+	dogEnt5.AddComponent<Attack>(dogEnt5.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+
+	//DOG 6
+	dogEnt6 = Entity(registry.create(), this);
+	dogEnt6.AddComponent<Transform>();
+	dogEnt6.AddComponent<Animator>(config.dogScale);
+	dogEnt6.AddComponent<Movement>(300.f);
+	dogEnt6.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8170.f, 4500.f), true, dogEnt6, ENEMY_NPC);
+	dogEnt6.AddComponent<Aggresion>(dogEnt6.GetComponent<RigidBody>().body, 300.f, 60.f);
+	dogEnt6.AddComponent<Tag>("Dog");
+	dogEnt6.AddComponent<ActorAudioSource>();
+	dogEnt6.AddComponent<SMcomponent>(new DogIdleState(dogEnt6));
+	waypoints.push_back(sf::Vector2f(7450.f, 3900.f));
+	waypoints.push_back(sf::Vector2f(8170.f, 3900.f));
+	waypoints.push_back(sf::Vector2f(8170.f, 4300.f));
+	waypoints.push_back(sf::Vector2f(8170.f, 3900.f));
+	dogEnt6.AddComponent<Patrol>(waypoints);
+	waypoints.clear();
+	dogEnt6.AddComponent<Dispose>();
+
+	dogEnt6.AddComponent<Stats>(config.dogStats);
+	dogStats = dogEnt6.GetComponent<Stats>();
+	dogEnt6.AddComponent<Health>(dogStats.VIT);
+	dogEnt6.AddComponent<Attack>(dogEnt6.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+
+	//DOG 7
+	dogEnt7 = Entity(registry.create(), this);
+	dogEnt7.AddComponent<Transform>();
+	dogEnt7.AddComponent<Animator>(config.dogScale);
+	dogEnt7.AddComponent<Movement>(300.f);
+	dogEnt7.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8200.f, 6000.f), true, dogEnt7, ENEMY_NPC);
+	dogEnt7.AddComponent<Aggresion>(dogEnt7.GetComponent<RigidBody>().body, 300.f, 60.f);
+	dogEnt7.AddComponent<Tag>("Dog");
+	dogEnt7.AddComponent<ActorAudioSource>();
+	dogEnt7.AddComponent<SMcomponent>(new DogIdleState(dogEnt7));
+	waypoints.push_back(sf::Vector2f(8200.f, 6000.f));
+	waypoints.push_back(sf::Vector2f(8200.f, 6680.f));
+	dogEnt7.AddComponent<Patrol>(waypoints);
+	waypoints.clear();
+	dogEnt7.AddComponent<Dispose>();
+
+	dogEnt7.AddComponent<Stats>(config.dogStats);
+	dogStats = dogEnt7.GetComponent<Stats>();
+	dogEnt7.AddComponent<Health>(dogStats.VIT);
+	dogEnt7.AddComponent<Attack>(dogEnt7.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
 
 	systems.onCreate(registry, gui);
 }

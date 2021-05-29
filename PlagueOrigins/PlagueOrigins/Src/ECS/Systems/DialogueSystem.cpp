@@ -47,7 +47,8 @@ void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float
 				if (playerInput.fReleased)
 				{
 					dialogue.isInteracting = true;
-					reg.get<Dialogue>(dialogue.bishop).isInteracting = true;
+					reg.get<Dialogue>(dialogue.bishop1).isInteracting = true;
+					reg.get<Dialogue>(dialogue.bishop2).isInteracting = true;
 					dialogueSwitch(dialogue);
 				}
 				//main
@@ -136,7 +137,8 @@ void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float
 		if (dialogue.state == 0)
 		{
 			dialogue.isInteracting = false;
-			reg.get<Dialogue>(dialogue.bishop).isInteracting = false;
+			reg.get<Dialogue>(dialogue.bishop1).isInteracting = false;
+			reg.get<Dialogue>(dialogue.bishop2).isInteracting = false;
 		}
 	}
 }

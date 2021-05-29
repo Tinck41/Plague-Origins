@@ -10,7 +10,7 @@ struct Stats
 		STR = stats[2];
 		AGI = stats[3];
 		INT = stats[4];
-		upgradeCost = -1100 + (VIT + END + STR + AGI) * 30;
+		upgradeCost = -950 + (VIT + END + STR + AGI) * 25;
 	}
     //vitality - max hp
 	//endurance - max stamina
