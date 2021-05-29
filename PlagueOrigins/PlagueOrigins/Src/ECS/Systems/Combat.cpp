@@ -20,8 +20,6 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 				return;
 			}
 
-			attack.attackCircle.setFillColor(sf::Color::Red);
-
  			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
 			while (attackCircle->GetUserData().pointer != ATTACK_RADIUS)
 			{
