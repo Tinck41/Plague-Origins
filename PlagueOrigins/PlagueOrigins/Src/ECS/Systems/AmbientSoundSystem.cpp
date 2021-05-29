@@ -5,6 +5,7 @@ AmbientSoundSystem::AmbientSoundSystem()
 {
 	windBuffer.loadFromFile("./Assets/SFX/WindAmbience.wav");
 	torchBuffer.loadFromFile("./Assets/SFX/FireTorchSoundMono.wav");
+	bossFightBuffer.loadFromFile("./Assets/SFX/BossFightMusic.wav");
 }
 
 void AmbientSoundSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
@@ -43,6 +44,23 @@ void AmbientSoundSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const f
 		else if (!audioSource.loopTorchSound)
 		{
 			audioSource.torchSound.setLoop(false);
+		}
+
+		if (audioSource.playBossFightSound)
+		{
+			sf::Sound& sound = audioSource.bossFightSound;
+			sound.setBuffer(bossFightBuffer);
+			sound.setLoop(true);
+			sound.play();
+			sound.setVolume(0.5f);
+			audioSource.playBossFightSound = false;
+			audioSource.loopBossFightSound = true;
+		}
+		else if (!audioSource.loopBossFightSound)
+		{
+			sf::Sound& sound = audioSource.bossFightSound;
+			sound.stop();
+			sound.setLoop(false);
 		}
 	}
 }

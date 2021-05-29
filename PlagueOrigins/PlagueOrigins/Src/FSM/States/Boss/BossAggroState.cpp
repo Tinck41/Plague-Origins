@@ -13,6 +13,11 @@ void BossAggroState::enter()
 	Aggresion& aggresion = owner.GetComponent<Aggresion>();
 	Animator& animator = owner.GetComponent<Animator>();
 
+	if (aggresion.vectorToTarget == sf::Vector2f(0.f, 0.f))
+	{
+		aggresion.vectorToTarget = owner.GetComponent<Boss>().normVector;
+	}
+
 	movement.direction = aggresion.vectorToTarget;
 	animator.previousAnimation = animator.currentAnimation;
 	animator.currentAnimation = MOVE;

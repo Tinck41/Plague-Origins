@@ -15,4 +15,5 @@ public:
 private:
 	sf::SoundBuffer windBuffer;
 	sf::SoundBuffer torchBuffer;
+	sf::SoundBuffer bossFightBuffer;
 };
