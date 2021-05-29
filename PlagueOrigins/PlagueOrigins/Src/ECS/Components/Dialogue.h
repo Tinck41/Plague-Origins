@@ -27,7 +27,8 @@ struct Dialogue
 	* 2 - upgrade
 	* 3 - trade
 	*/
-    entt::entity bishop;
+    entt::entity bishop1;
+    entt::entity bishop2;
     sf::CircleShape interactionZone;
     float radius;
     int state;
