@@ -153,7 +153,7 @@ GameScreen::GameScreen()
 	dogEnt2.AddComponent<ActorAudioSource>();
 	dogEnt2.AddComponent<SMcomponent>(new DogIdleState(dogEnt2));
 	waypoints.push_back(sf::Vector2f(4750.f, 11100.f));
-	waypoints.push_back(sf::Vector2f(4750.f, 9600.f));
+	waypoints.push_back(sf::Vector2f(4750.f, 10500.f));
 	dogEnt2.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
 	dogEnt2.AddComponent<Dispose>();
@@ -174,7 +174,7 @@ GameScreen::GameScreen()
 	dogEnt3.AddComponent<ActorAudioSource>();
 	dogEnt3.AddComponent<SMcomponent>(new DogIdleState(dogEnt3));
 	waypoints.push_back(sf::Vector2f(5580.f, 7100.f));
-	waypoints.push_back(sf::Vector2f(5580.f, 5000.f));
+	waypoints.push_back(sf::Vector2f(5580.f, 6200.f));
 	dogEnt3.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
 	dogEnt3.AddComponent<Dispose>();
@@ -217,7 +217,7 @@ GameScreen::GameScreen()
 	dogEnt5.AddComponent<Tag>("Dog");
 	dogEnt5.AddComponent<ActorAudioSource>();
 	dogEnt5.AddComponent<SMcomponent>(new DogIdleState(dogEnt5));
-	waypoints.push_back(sf::Vector2f(6500.f, 3650.f));
+	waypoints.push_back(sf::Vector2f(7000.f, 3650.f));
 	waypoints.push_back(sf::Vector2f(7500.f, 3650.f));
 	dogEnt5.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
@@ -240,7 +240,7 @@ GameScreen::GameScreen()
 	dogEnt6.AddComponent<SMcomponent>(new DogIdleState(dogEnt6));
 	waypoints.push_back(sf::Vector2f(7450.f, 3900.f));
 	waypoints.push_back(sf::Vector2f(8170.f, 3900.f));
-	waypoints.push_back(sf::Vector2f(8170.f, 4500.f));
+	waypoints.push_back(sf::Vector2f(8170.f, 4300.f));
 	waypoints.push_back(sf::Vector2f(8170.f, 3900.f));
 	dogEnt6.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
