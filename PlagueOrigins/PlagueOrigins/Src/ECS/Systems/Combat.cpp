@@ -58,14 +58,16 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 							if (receiverHealth.curhealth <= 0
 								&& reg.all_of<Tag>(receiverEntity)
-								&& reg.all_of<Inventory>(entity))
+								&& reg.all_of<Inventory>(entity)
+								&& reg.all_of<Dispose>(receiverEntity))
 							{
 								Tag& attackerTag = reg.get<Tag>(entity);
 								Tag& receiverTag = reg.get<Tag>(receiverEntity);
+								Dispose& dispose = reg.get<Dispose>(receiverEntity);
 
-								if (attackerTag.name == "Hero" && receiverTag.name == "Dog")
+								if (attackerTag.name == "Hero" && receiverTag.name == "Dog" && !dispose.isDead)
 								{
-									reg.get<Inventory>(entity).essence += 100.f;
+									reg.get<Inventory>(entity).essence += 350.f;
 								}
 							}
 							
