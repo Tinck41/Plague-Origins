@@ -3,7 +3,7 @@
   "font": "./Assets/Fonts/FreeSans.ttf",
   "fps": 60,
   "window": {
-    "fullscreen": true,
+    "fullscreen": false,
     "width": 1280,
     "height": 720,
     "uiWidth": 2560,

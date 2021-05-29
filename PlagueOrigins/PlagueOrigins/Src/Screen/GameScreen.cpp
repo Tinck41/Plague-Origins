@@ -109,7 +109,7 @@ GameScreen::GameScreen()
 	boss.AddComponent<Transform>();
 	boss.AddComponent<Animator>(config.bossScale);
 	boss.AddComponent<Movement>(300.f);
-	boss.AddComponent<RigidBody>(sf::Vector2f(75.f, 135.f), sf::Vector2f(2400.f, 8000.f), true, boss, ENEMY_NPC);
+	boss.AddComponent<RigidBody>(sf::Vector2f(75.f, 135.f), sf::Vector2f(8200.f, 9000.f), true, boss, ENEMY_NPC);
 	boss.AddComponent<Tag>("Boss");
 	boss.AddComponent<ActorAudioSource>();
 	boss.AddComponent<SMcomponent>(new BossIdleState(boss));

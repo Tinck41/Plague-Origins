@@ -58,8 +58,8 @@ void Animation::playMovementAnimation(Animator& animator, Tag& tag)
 	{
 		animator.armatureDisplay = armatureDisplay;
 		animator.armatureDisplay->getAnimation()->play("Run");
-		animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("Run")->_duration;
-		animator.currentAnimationDurationLeft = sf::milliseconds(animator.currentAnimationDuration);
+		animator.currentAnimationDuration = sf::seconds(armatureDisplay->getAnimation()->getState("Run")->_duration).asMilliseconds();
+		animator.currentAnimationDurationLeft = sf::seconds(0.f).asMilliseconds();
 		armatureDisplay = nullptr;
 		delete armatureDisplay;
 		//animator.armatureDisplay->getAnimation()->fadeIn("Run", 0.3f, -1, 0, "hero", dragonBones::AnimationFadeOutMode::SameLayerAndGroup);
@@ -96,8 +96,8 @@ void Animation::playIdleAnimation(Animator& animator, Tag& tag)
 	{
 		animator.armatureDisplay = armatureDisplay;
 		animator.armatureDisplay->getAnimation()->play("Idle");
-		animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("Idle")->_duration;
-		animator.currentAnimationDurationLeft = sf::milliseconds(animator.currentAnimationDuration);
+		animator.currentAnimationDuration = sf::seconds(armatureDisplay->getAnimation()->getState("Idle")->_duration).asMilliseconds();
+		animator.currentAnimationDurationLeft = sf::seconds(0.f).asMilliseconds();
 		armatureDisplay = nullptr;
 		delete armatureDisplay;
 	}
@@ -137,14 +137,14 @@ void Animation::playAttackAnimation(Animator& animator, Tag& tag)
 			if (tag.name == "Hero")
 			{
 				animator.armatureDisplay->getAnimation()->play("Attack", 1);
-				animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("Attack")->_duration;
+				animator.currentAnimationDuration = sf::seconds(armatureDisplay->getAnimation()->getState("Attack")->_duration).asMilliseconds();
 			}
 			else if (tag.name == "Dog" || tag.name == "Boss")
 			{
 				animator.armatureDisplay->getAnimation()->play("Attack0", 1);
-				animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("Attack0")->_duration;
+				animator.currentAnimationDuration = sf::seconds(armatureDisplay->getAnimation()->getState("Attack0")->_duration).asMilliseconds();
 			}
-			animator.currentAnimationDurationLeft = sf::milliseconds(animator.currentAnimationDuration);
+			animator.currentAnimationDurationLeft = sf::seconds(0.f).asMilliseconds();
 			armatureDisplay = nullptr;
 			delete armatureDisplay;
 		}
@@ -181,8 +181,8 @@ void Animation::playDeathAnimation(Animator& animator, Tag& tag)
 	{
 		animator.armatureDisplay = armatureDisplay;
 		animator.armatureDisplay->getAnimation()->play("Die", 1);
-		animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("Die")->_duration;
-		animator.currentAnimationDurationLeft = sf::milliseconds(animator.currentAnimationDuration);
+		animator.currentAnimationDuration = sf::seconds(armatureDisplay->getAnimation()->getState("Die")->_duration).asMilliseconds();
+		animator.currentAnimationDurationLeft = sf::seconds(0.f).asMilliseconds();
 		armatureDisplay = nullptr;
 		delete armatureDisplay;
 	}
@@ -219,8 +219,8 @@ void Animation::playDashAnimation(Animator& animator, Tag& tag)
 	{
 		animator.armatureDisplay = armatureDisplay;
 		animator.armatureDisplay->getAnimation()->play("Dash");
-		animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("Dash")->_duration;
-		animator.currentAnimationDurationLeft = sf::milliseconds(animator.currentAnimationDuration);
+		animator.currentAnimationDuration = sf::seconds(armatureDisplay->getAnimation()->getState("Dash")->_duration).asMilliseconds();
+		animator.currentAnimationDurationLeft = sf::seconds(0.f).asMilliseconds();
 		armatureDisplay = nullptr;
 		delete armatureDisplay;
 	}
@@ -256,8 +256,8 @@ void Animation::playInteractionAnimation(Animator& animator, Tag& tag)
 	{
 		animator.armatureDisplay = armatureDisplay;
 		animator.armatureDisplay->getAnimation()->play("LevelUp");
-		animator.currentAnimationDuration = armatureDisplay->getAnimation()->getState("LevelUp")->_duration;
-		animator.currentAnimationDurationLeft = sf::milliseconds(animator.currentAnimationDuration);
+		animator.currentAnimationDuration = sf::seconds(armatureDisplay->getAnimation()->getState("LevelUp")->_duration).asMilliseconds();
+		animator.currentAnimationDurationLeft = sf::seconds(0.f).asMilliseconds();
 		armatureDisplay = nullptr;
 		delete armatureDisplay;
 	}
@@ -331,13 +331,13 @@ void Animation::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 		setAnimation(animator, tag);
 
-		if (animator.currentAnimationDurationLeft >= sf::milliseconds(animator.currentAnimationDuration))
+		if (animator.armatureDisplay->getAnimation()->isCompleted())
 		{
-			animator.currentAnimationDurationLeft = sf::milliseconds(0.f);
+			animator.currentAnimationDurationLeft = sf::seconds(0).asMilliseconds();
 		}
 		else
 		{
-			animator.currentAnimationDurationLeft += sf::milliseconds(dt);
+			animator.currentAnimationDurationLeft += sf::seconds(dt).asMilliseconds();
 		}
 
 		if (animator.armatureDisplay != nullptr)

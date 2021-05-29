@@ -21,7 +21,6 @@ void PlayerAttackState::enter()
     owner.RemoveComponent<Movement>();
 
     Attack& attack = owner.GetComponent<Attack>();
-    attack.isAttacking = true;
 
     Stamina& stamina = owner.GetComponent<Stamina>();
     stamina.curStamina -= attack.staminaCost;

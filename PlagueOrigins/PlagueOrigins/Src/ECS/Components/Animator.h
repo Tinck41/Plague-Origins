@@ -31,6 +31,6 @@ struct Animator
 	float scale;
 	sf::RenderStates states;
 
-	float currentAnimationDuration;
-	sf::Time currentAnimationDurationLeft;
+	sf::Int32 currentAnimationDuration;
+	sf::Int32 currentAnimationDurationLeft;
 };

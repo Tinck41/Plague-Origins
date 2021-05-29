@@ -29,18 +29,18 @@ SystemHandler::SystemHandler()
 
 	// Update systems
 	updatableSystems.push_back(inputSystem);
+	updatableSystems.push_back(animationSystem);
+	updatableSystems.push_back(combatSystem);
+	updatableSystems.push_back(aggroSystem);
 	updatableSystems.push_back(controllerSystem);
 	updatableSystems.push_back(FSMSystem);
-	updatableSystems.push_back(animationSystem);
 	updatableSystems.push_back(physicsSystem);
-	updatableSystems.push_back(combatSystem);
 	updatableSystems.push_back(vampiringSystem);
 	updatableSystems.push_back(cameraSystem);
 	updatableSystems.push_back(motionSystem);
 	updatableSystems.push_back(actorSoundSystem);
 	updatableSystems.push_back(healthSystem);
 	updatableSystems.push_back(ambientSoundSystem);
-	updatableSystems.push_back(aggroSystem);
 	updatableSystems.push_back(patrolSystem);
 	updatableSystems.push_back(disposalSystem);
 	updatableSystems.push_back(bossFightSystem);
