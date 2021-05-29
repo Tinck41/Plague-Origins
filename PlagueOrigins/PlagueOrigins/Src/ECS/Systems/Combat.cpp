@@ -15,10 +15,12 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 		if (attack.isAttacking)
 		{
 			if (sf::seconds(animator.currentAnimationDurationLeft).asMilliseconds() <
-				sf::seconds(animator.currentAnimationDuration / 2.f).asMilliseconds())
+				sf::seconds(animator.currentAnimationDuration / 1.5f).asMilliseconds())
 			{
 				return;
 			}
+
+			attack.attackCircle.setFillColor(sf::Color::Red);
 
  			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();
 			while (attackCircle->GetUserData().pointer != ATTACK_RADIUS)
@@ -36,11 +38,12 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 					sf::Vector2f vec1{ bodyA->GetPosition().x * 30.f, bodyA->GetPosition().y * 30.f };
 					vec1 = vec1 - transform.position;
+					float vec1Magnitude = std::sqrtf(vec1.x * vec1.x + vec1.y * vec1.y);
 					sf::Vector2f vec2{ animator.currentFaceDirection.x, animator.currentFaceDirection.y };
 
 					float angle = PhysicsWorld::angleBetween(vec1, vec2);
 
-					if (angle <= 45.f)
+					if (angle <= 45.f && vec1Magnitude < attack.radius)
 					{
 						auto receiverEntity = (entt::entity)bodyA->GetUserData().pointer;
 						if (reg.all_of<Health>(receiverEntity))

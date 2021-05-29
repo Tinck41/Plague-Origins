@@ -62,7 +62,6 @@ void PlayerMoveState::update(const float& dt)
 		Animator& animator = owner.GetComponent<Animator>();
 		Movement& movement = owner.GetComponent<Movement>();
 		Transform& transform = owner.GetComponent<Transform>();
-		std::cout << transform.position.x << " " << transform.position.y << " : player pos\n";
 		animator.currentFaceDirection = movement.direction;
 	}
 }
