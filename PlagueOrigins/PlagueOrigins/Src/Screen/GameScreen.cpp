@@ -27,7 +27,7 @@ GameScreen::GameScreen()
 	testEntity.AddComponent<ActorAudioSource>();
 	testEntity.AddComponent<Animator>(config.playerScale);
 	testEntity.AddComponent<Movement>(config.playerSpeed);
-	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(315.f, 615.f), true, testEntity, PLAYER);
+	testEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(2055.f, 8415.f), true, testEntity, PLAYER);
 	testEntity.AddComponent<Tag>("Hero");
 	testEntity.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	testEntity.AddComponent<Vampire>();
@@ -71,14 +71,14 @@ GameScreen::GameScreen()
 	npcEntity.AddComponent<Transform>();
 	npcEntity.AddComponent<Animator>(config.dogScale);
 	npcEntity.AddComponent<Movement>(300.f);
-	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(615.f, 615.f), true, npcEntity, ENEMY_NPC);
+	npcEntity.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2615.f, 11100.f), true, npcEntity, ENEMY_NPC);
 	npcEntity.AddComponent<Aggresion>(npcEntity.GetComponent<RigidBody>().body, 300.f, 60.f);
 	npcEntity.AddComponent<Tag>("Dog");
 	npcEntity.AddComponent<ActorAudioSource>();
 	npcEntity.AddComponent<SMcomponent>(new DogIdleState(npcEntity));
 	std::vector<sf::Vector2f> waypoints;
-	waypoints.push_back(sf::Vector2f(615.f,615.f));
-	waypoints.push_back(sf::Vector2f(615.f,915.f));
+	waypoints.push_back(sf::Vector2f(2615.f,11100.f));
+	waypoints.push_back(sf::Vector2f(4160.f, 11100.f));
 	npcEntity.AddComponent<Patrol>(waypoints);
 	npcEntity.AddComponent<Dispose>();
 
@@ -93,7 +93,7 @@ GameScreen::GameScreen()
 	bishop.AddComponent<Transform>();
 	bishop.AddComponent<Animator>(config.bishopScale);
 	bishop.AddComponent<Movement>(500.f);
-	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(415.f, 615.f), false, bishop, FRIENDLY_NPC);
+	bishop.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2250.f, 8060.f), false, bishop, FRIENDLY_NPC);
 	bishop.AddComponent<Tag>("Bishop");
 	//bishop.AddComponent<Interact>(bishop.GetComponent<RigidBody>().body, 30.f, "Press F to pay respect");
 	bishop.AddComponent<Dialogue>(bishop.GetComponent<RigidBody>().body, 75.f);
