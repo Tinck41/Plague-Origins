@@ -242,6 +242,7 @@
     <ClInclude Include="Src\ECS\Components\ItemOwner.h" />
     <ClInclude Include="Src\ECS\Components\JustEquiped.h" />
     <ClInclude Include="Src\ECS\Components\JustUnequiped.h" />
+    <ClInclude Include="Src\ECS\Components\NPC.h" />
     <ClInclude Include="Src\ECS\Components\PlayerTemporal.h" />
     <ClInclude Include="Src\ECS\Components\Stamina.h" />
     <ClInclude Include="Src\ECS\Components\Stats.h" />

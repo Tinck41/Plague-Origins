@@ -29,6 +29,7 @@
 #include "Components/Equiped.h"
 #include "Components/HealthBoost.h"
 #include "Components/CurrentScreen.h"
+#include "Components/NPC.h"
 
 #include "Components/PlayerTemporal.h"
 #include "Components/BossTemporal.h"

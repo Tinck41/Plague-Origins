@@ -247,6 +247,7 @@
     <ClInclude Include="Src\FSM\States\Boss\BossDeathState.h" />
     <ClInclude Include="Src\FSM\States\Boss\BossAggroState.h" />
     <ClInclude Include="Src\ECS\Components\BossTemporal.h" />
+    <ClInclude Include="Src\ECS\Components\NPC.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

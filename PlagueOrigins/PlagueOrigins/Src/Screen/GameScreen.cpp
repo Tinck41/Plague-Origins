@@ -27,7 +27,7 @@ GameScreen::GameScreen()
 	playerEnt.AddComponent<ActorAudioSource>();
 	playerEnt.AddComponent<Animator>(config.playerScale);
 	playerEnt.AddComponent<Movement>(config.playerSpeed);
-	playerEnt.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(8193.f, 6348.f), true, playerEnt, PLAYER, OBSTACLE | ATTACK_RADIUS);
+	playerEnt.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(8700.f, 5770.f), true, playerEnt, PLAYER, OBSTACLE | ATTACK_RADIUS);
 	playerEnt.AddComponent<Tag>("Hero");
 	playerEnt.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	playerEnt.AddComponent<Vampire>();
@@ -40,7 +40,7 @@ GameScreen::GameScreen()
 	auto playerStats = playerEnt.GetComponent<Stats>();
 	playerEnt.AddComponent<Health>(playerStats.VIT);
 	playerEnt.AddComponent<Stamina>(playerStats.END);
-	playerEnt.AddComponent<Attack>(playerEnt.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange, ENEMY_NPC);
+	playerEnt.AddComponent<Attack>(playerEnt.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange, ENEMY_NPC | FRIENDLY_NPC);
 	playerEnt.AddComponent<Dash>(playerStats.AGI);
 
 
@@ -76,6 +76,7 @@ GameScreen::GameScreen()
 	bishopEnt1.AddComponent<Tag>("Bishop");
 	bishopEnt1.AddComponent<Dialogue>(bishopEnt1.GetComponent<RigidBody>().body, 75.f);
 	bishopEnt1.AddComponent<SMcomponent>(new BishopIdleState(bishopEnt1));
+	registry.emplace<NPC>(bishopEnt1);
 
 	bishopEnt1.AddComponent<Stats>(config.bishopStats);
 	auto bishopStats = bishopEnt1.GetComponent<Stats>();
@@ -90,6 +91,7 @@ GameScreen::GameScreen()
 	bishopEnt2.AddComponent<Tag>("Bishop");
 	bishopEnt2.AddComponent<Dialogue>(bishopEnt2.GetComponent<RigidBody>().body, 75.f);
 	bishopEnt2.AddComponent<SMcomponent>(new BishopIdleState(bishopEnt2));
+	registry.emplace<NPC>(bishopEnt2);
 
 	bishopEnt2.AddComponent<Stats>(config.bishopStats);
 	bishopStats = bishopEnt2.GetComponent<Stats>();
@@ -106,6 +108,7 @@ GameScreen::GameScreen()
 	bossEnt.AddComponent<SMcomponent>(new BossIdleState(bossEnt));
 	bossEnt.AddComponent<Dispose>();
 	bossEnt.AddComponent<Boss>();
+	registry.emplace<NPC>(bossEnt);
 
 	bossEnt.AddComponent<Stats>(config.bossStats);
 	auto bossStats = bossEnt.GetComponent<Stats>();
@@ -136,6 +139,7 @@ GameScreen::GameScreen()
 	dogEnt1.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
 	dogEnt1.AddComponent<Dispose>();
+	registry.emplace<NPC>(dogEnt1);
 
 	dogEnt1.AddComponent<Stats>(config.dogStats);
 	auto dogStats = dogEnt1.GetComponent<Stats>();
@@ -157,6 +161,7 @@ GameScreen::GameScreen()
 	dogEnt2.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
 	dogEnt2.AddComponent<Dispose>();
+	registry.emplace<NPC>(dogEnt2);
 
 	dogEnt2.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt2.GetComponent<Stats>();
@@ -178,6 +183,7 @@ GameScreen::GameScreen()
 	dogEnt3.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
 	dogEnt3.AddComponent<Dispose>();
+	registry.emplace<NPC>(dogEnt3);
 
 	dogEnt3.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt3.GetComponent<Stats>();
@@ -201,6 +207,7 @@ GameScreen::GameScreen()
 	dogEnt4.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
 	dogEnt4.AddComponent<Dispose>();
+	registry.emplace<NPC>(dogEnt4);
 
 	dogEnt4.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt4.GetComponent<Stats>();
@@ -222,6 +229,7 @@ GameScreen::GameScreen()
 	dogEnt5.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
 	dogEnt5.AddComponent<Dispose>();
+	registry.emplace<NPC>(dogEnt5);
 
 	dogEnt5.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt5.GetComponent<Stats>();
@@ -245,6 +253,7 @@ GameScreen::GameScreen()
 	dogEnt6.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
 	dogEnt6.AddComponent<Dispose>();
+	registry.emplace<NPC>(dogEnt6);
 
 	dogEnt6.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt6.GetComponent<Stats>();
@@ -266,6 +275,7 @@ GameScreen::GameScreen()
 	dogEnt7.AddComponent<Patrol>(waypoints);
 	waypoints.clear();
 	dogEnt7.AddComponent<Dispose>();
+	registry.emplace<NPC>(dogEnt7);
 
 	dogEnt7.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt7.GetComponent<Stats>();
