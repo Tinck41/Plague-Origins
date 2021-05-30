@@ -14,6 +14,8 @@ struct Aggresion
 		fixtureDef.userData.pointer = ENEMY_AGGRO_RADIUS;
 		fixtureDef.shape = &aggroShape;
 		fixtureDef.isSensor = true;
+		fixtureDef.filter.categoryBits = ENEMY_AGGRO_RADIUS;
+		fixtureDef.filter.maskBits = PLAYER;
 		body->CreateFixture(&fixtureDef);
 
 		this->radius = radius;

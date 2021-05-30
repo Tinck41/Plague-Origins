@@ -7,7 +7,7 @@
 
 struct Attack
 {
-	Attack(b2Body* body, int STR, float radius)
+	Attack(b2Body* body, int STR, float radius, uint16 maskBits)
 	{
         b2CircleShape attackShape;
         b2FixtureDef fixtureDef;
@@ -15,7 +15,9 @@ struct Attack
 		fixtureDef.shape = &attackShape;
 		fixtureDef.isSensor = true;
 		fixtureDef.userData.pointer = ATTACK_RADIUS;
-        body->CreateFixture(&fixtureDef);
+		fixtureDef.filter.categoryBits = ATTACK_RADIUS;
+		fixtureDef.filter.maskBits = maskBits;
+		body->CreateFixture(&fixtureDef);
 
 		damage = STR*5.f;
 		this->radius = radius;

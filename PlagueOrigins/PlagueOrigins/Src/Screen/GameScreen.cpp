@@ -27,7 +27,7 @@ GameScreen::GameScreen()
 	playerEnt.AddComponent<ActorAudioSource>();
 	playerEnt.AddComponent<Animator>(config.playerScale);
 	playerEnt.AddComponent<Movement>(config.playerSpeed);
-	playerEnt.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(8193.f, 6348.f), true, playerEnt, PLAYER);
+	playerEnt.AddComponent<RigidBody>(sf::Vector2f(50.f, 150.f), sf::Vector2f(8193.f, 6348.f), true, playerEnt, PLAYER, OBSTACLE | ATTACK_RADIUS);
 	playerEnt.AddComponent<Tag>("Hero");
 	playerEnt.AddComponent<CameraTarget>(sf::Vector2f(config.width(), config.height()), map.getSize());
 	playerEnt.AddComponent<Vampire>();
@@ -40,7 +40,7 @@ GameScreen::GameScreen()
 	auto playerStats = playerEnt.GetComponent<Stats>();
 	playerEnt.AddComponent<Health>(playerStats.VIT);
 	playerEnt.AddComponent<Stamina>(playerStats.END);
-	playerEnt.AddComponent<Attack>(playerEnt.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange);
+	playerEnt.AddComponent<Attack>(playerEnt.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange, ENEMY_NPC);
 	playerEnt.AddComponent<Dash>(playerStats.AGI);
 
 
@@ -72,7 +72,7 @@ GameScreen::GameScreen()
 	bishopEnt1.AddComponent<Transform>();
 	bishopEnt1.AddComponent<Animator>(config.bishopScale);
 	bishopEnt1.AddComponent<Movement>(500.f);
-	bishopEnt1.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2250.f, 7960.f), false, bishopEnt1, FRIENDLY_NPC);
+	bishopEnt1.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2250.f, 7960.f), false, bishopEnt1, FRIENDLY_NPC, OBSTACLE | ATTACK_RADIUS);
 	bishopEnt1.AddComponent<Tag>("Bishop");
 	bishopEnt1.AddComponent<Dialogue>(bishopEnt1.GetComponent<RigidBody>().body, 75.f);
 	bishopEnt1.AddComponent<SMcomponent>(new BishopIdleState(bishopEnt1));
@@ -86,7 +86,7 @@ GameScreen::GameScreen()
 	bishopEnt2.AddComponent<Transform>();
 	bishopEnt2.AddComponent<Animator>(config.bishopScale);
 	bishopEnt2.AddComponent<Movement>(500.f);
-	bishopEnt2.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8800.f, 5770.f), false, bishopEnt2, FRIENDLY_NPC);
+	bishopEnt2.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8800.f, 5770.f), false, bishopEnt2, FRIENDLY_NPC, OBSTACLE | ATTACK_RADIUS);
 	bishopEnt2.AddComponent<Tag>("Bishop");
 	bishopEnt2.AddComponent<Dialogue>(bishopEnt2.GetComponent<RigidBody>().body, 75.f);
 	bishopEnt2.AddComponent<SMcomponent>(new BishopIdleState(bishopEnt2));
@@ -100,7 +100,7 @@ GameScreen::GameScreen()
 	bossEnt.AddComponent<Transform>();
 	bossEnt.AddComponent<Animator>(config.bossScale);
 	bossEnt.AddComponent<Movement>(300.f);
-	bossEnt.AddComponent<RigidBody>(sf::Vector2f(75.f, 135.f), sf::Vector2f(8200.f, 9000.f), true, bossEnt, ENEMY_NPC);
+	bossEnt.AddComponent<RigidBody>(sf::Vector2f(75.f, 135.f), sf::Vector2f(8200.f, 9000.f), true, bossEnt, ENEMY_NPC, OBSTACLE | ATTACK_RADIUS);
 	bossEnt.AddComponent<Tag>("Boss");
 	bossEnt.AddComponent<ActorAudioSource>();
 	bossEnt.AddComponent<SMcomponent>(new BossIdleState(bossEnt));
@@ -110,7 +110,7 @@ GameScreen::GameScreen()
 	bossEnt.AddComponent<Stats>(config.bossStats);
 	auto bossStats = bossEnt.GetComponent<Stats>();
 	bossEnt.AddComponent<Health>(bossStats.VIT);
-	bossEnt.AddComponent<Attack>(bossEnt.GetComponent<RigidBody>().body, bossStats.STR, config.bossAttackRange);
+	bossEnt.AddComponent<Attack>(bossEnt.GetComponent<RigidBody>().body, bossStats.STR, config.bossAttackRange, PLAYER);
 
 	//TO-DO find other solution
 	//add pointer to boss body
@@ -126,7 +126,7 @@ GameScreen::GameScreen()
 	dogEnt1.AddComponent<Transform>();
 	dogEnt1.AddComponent<Animator>(config.dogScale);
 	dogEnt1.AddComponent<Movement>(300.f);
-	dogEnt1.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2615.f, 11100.f), true, dogEnt1, ENEMY_NPC);
+	dogEnt1.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2615.f, 11100.f), true, dogEnt1, ENEMY_NPC, OBSTACLE | ATTACK_RADIUS);
 	dogEnt1.AddComponent<Aggresion>(dogEnt1.GetComponent<RigidBody>().body, 300.f, 60.f);
 	dogEnt1.AddComponent<Tag>("Dog");
 	dogEnt1.AddComponent<ActorAudioSource>();
@@ -140,14 +140,14 @@ GameScreen::GameScreen()
 	dogEnt1.AddComponent<Stats>(config.dogStats);
 	auto dogStats = dogEnt1.GetComponent<Stats>();
 	dogEnt1.AddComponent<Health>(dogStats.VIT);
-	dogEnt1.AddComponent<Attack>(dogEnt1.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+	dogEnt1.AddComponent<Attack>(dogEnt1.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange, PLAYER);
 
 	//DOG 2
 	dogEnt2 = Entity(registry.create(), this);
 	dogEnt2.AddComponent<Transform>();
 	dogEnt2.AddComponent<Animator>(config.dogScale);
 	dogEnt2.AddComponent<Movement>(300.f);
-	dogEnt2.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(4750.f, 11100.f), true, dogEnt2, ENEMY_NPC);
+	dogEnt2.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(4750.f, 11100.f), true, dogEnt2, ENEMY_NPC, OBSTACLE | ATTACK_RADIUS);
 	dogEnt2.AddComponent<Aggresion>(dogEnt2.GetComponent<RigidBody>().body, 300.f, 60.f);
 	dogEnt2.AddComponent<Tag>("Dog");
 	dogEnt2.AddComponent<ActorAudioSource>();
@@ -161,14 +161,14 @@ GameScreen::GameScreen()
 	dogEnt2.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt2.GetComponent<Stats>();
 	dogEnt2.AddComponent<Health>(dogStats.VIT);
-	dogEnt2.AddComponent<Attack>(dogEnt2.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+	dogEnt2.AddComponent<Attack>(dogEnt2.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange, PLAYER);
 
 	//DOG 3
 	dogEnt3 = Entity(registry.create(), this);
 	dogEnt3.AddComponent<Transform>();
 	dogEnt3.AddComponent<Animator>(config.dogScale);
 	dogEnt3.AddComponent<Movement>(300.f);
-	dogEnt3.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(5580.f, 7000.f), true, dogEnt3, ENEMY_NPC);
+	dogEnt3.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(5580.f, 7000.f), true, dogEnt3, ENEMY_NPC, OBSTACLE | ATTACK_RADIUS);
 	dogEnt3.AddComponent<Aggresion>(dogEnt3.GetComponent<RigidBody>().body, 300.f, 60.f);
 	dogEnt3.AddComponent<Tag>("Dog");
 	dogEnt3.AddComponent<ActorAudioSource>();
@@ -182,14 +182,14 @@ GameScreen::GameScreen()
 	dogEnt3.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt3.GetComponent<Stats>();
 	dogEnt3.AddComponent<Health>(dogStats.VIT);
-	dogEnt3.AddComponent<Attack>(dogEnt3.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+	dogEnt3.AddComponent<Attack>(dogEnt3.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange, PLAYER);
 
 	//DOG 4
 	dogEnt4 = Entity(registry.create(), this);
 	dogEnt4.AddComponent<Transform>();
 	dogEnt4.AddComponent<Animator>(config.dogScale);
 	dogEnt4.AddComponent<Movement>(300.f);
-	dogEnt4.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(5450.f, 3650.f), true, dogEnt4, ENEMY_NPC);
+	dogEnt4.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(5450.f, 3650.f), true, dogEnt4, ENEMY_NPC, OBSTACLE | ATTACK_RADIUS);
 	dogEnt4.AddComponent<Aggresion>(dogEnt4.GetComponent<RigidBody>().body, 300.f, 60.f);
 	dogEnt4.AddComponent<Tag>("Dog");
 	dogEnt4.AddComponent<ActorAudioSource>();
@@ -205,14 +205,14 @@ GameScreen::GameScreen()
 	dogEnt4.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt4.GetComponent<Stats>();
 	dogEnt4.AddComponent<Health>(dogStats.VIT);
-	dogEnt4.AddComponent<Attack>(dogEnt4.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+	dogEnt4.AddComponent<Attack>(dogEnt4.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange, PLAYER);
 
 	//DOG 5
 	dogEnt5 = Entity(registry.create(), this);
 	dogEnt5.AddComponent<Transform>();
 	dogEnt5.AddComponent<Animator>(config.dogScale);
 	dogEnt5.AddComponent<Movement>(300.f);
-	dogEnt5.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(6500.f, 3650.f), true, dogEnt5, ENEMY_NPC);
+	dogEnt5.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(6500.f, 3650.f), true, dogEnt5, ENEMY_NPC, OBSTACLE | ATTACK_RADIUS);
 	dogEnt5.AddComponent<Aggresion>(dogEnt5.GetComponent<RigidBody>().body, 300.f, 60.f);
 	dogEnt5.AddComponent<Tag>("Dog");
 	dogEnt5.AddComponent<ActorAudioSource>();
@@ -226,14 +226,14 @@ GameScreen::GameScreen()
 	dogEnt5.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt5.GetComponent<Stats>();
 	dogEnt5.AddComponent<Health>(dogStats.VIT);
-	dogEnt5.AddComponent<Attack>(dogEnt5.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+	dogEnt5.AddComponent<Attack>(dogEnt5.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange, PLAYER);
 
 	//DOG 6
 	dogEnt6 = Entity(registry.create(), this);
 	dogEnt6.AddComponent<Transform>();
 	dogEnt6.AddComponent<Animator>(config.dogScale);
 	dogEnt6.AddComponent<Movement>(300.f);
-	dogEnt6.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8170.f, 4500.f), true, dogEnt6, ENEMY_NPC);
+	dogEnt6.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8170.f, 4500.f), true, dogEnt6, ENEMY_NPC, OBSTACLE | ATTACK_RADIUS);
 	dogEnt6.AddComponent<Aggresion>(dogEnt6.GetComponent<RigidBody>().body, 300.f, 60.f);
 	dogEnt6.AddComponent<Tag>("Dog");
 	dogEnt6.AddComponent<ActorAudioSource>();
@@ -249,14 +249,14 @@ GameScreen::GameScreen()
 	dogEnt6.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt6.GetComponent<Stats>();
 	dogEnt6.AddComponent<Health>(dogStats.VIT);
-	dogEnt6.AddComponent<Attack>(dogEnt6.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+	dogEnt6.AddComponent<Attack>(dogEnt6.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange, PLAYER);
 
 	//DOG 7
 	dogEnt7 = Entity(registry.create(), this);
 	dogEnt7.AddComponent<Transform>();
 	dogEnt7.AddComponent<Animator>(config.dogScale);
 	dogEnt7.AddComponent<Movement>(300.f);
-	dogEnt7.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8200.f, 6000.f), true, dogEnt7, ENEMY_NPC);
+	dogEnt7.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8200.f, 6000.f), true, dogEnt7, ENEMY_NPC, OBSTACLE | ATTACK_RADIUS);
 	dogEnt7.AddComponent<Aggresion>(dogEnt7.GetComponent<RigidBody>().body, 300.f, 60.f);
 	dogEnt7.AddComponent<Tag>("Dog");
 	dogEnt7.AddComponent<ActorAudioSource>();
@@ -270,7 +270,7 @@ GameScreen::GameScreen()
 	dogEnt7.AddComponent<Stats>(config.dogStats);
 	dogStats = dogEnt7.GetComponent<Stats>();
 	dogEnt7.AddComponent<Health>(dogStats.VIT);
-	dogEnt7.AddComponent<Attack>(dogEnt7.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange);
+	dogEnt7.AddComponent<Attack>(dogEnt7.GetComponent<RigidBody>().body, dogStats.STR, config.dogAttackRange, PLAYER);
 
 	systems.onCreate(registry, gui);
 }

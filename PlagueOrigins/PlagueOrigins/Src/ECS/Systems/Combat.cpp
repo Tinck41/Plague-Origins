@@ -17,7 +17,7 @@ void Combat::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 			if (sf::seconds(animator.currentAnimationDurationLeft).asMilliseconds() <
 				sf::seconds(animator.currentAnimationDuration / 1.5f).asMilliseconds())
 			{
-				return;
+				continue;
 			}
 
  			b2Fixture* attackCircle = rigidBody.body->GetFixtureList();

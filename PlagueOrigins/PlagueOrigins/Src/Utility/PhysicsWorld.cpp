@@ -27,17 +27,17 @@ void PhysicsWorld::updateInternal(const float& dt)
     }
 }
 
-b2Body* PhysicsWorld::createRectangleBody(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner, uint16 categoryBits)
+b2Body* PhysicsWorld::createRectangleBody(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner, uint16 categoryBits, uint16 maskBits)
 {
-    return get().createRectangleBodyInternal(position, size, isDynamic, owner, categoryBits);
+    return get().createRectangleBodyInternal(position, size, isDynamic, owner, categoryBits, maskBits);
 }
 
-b2Body* PhysicsWorld::createCircleBody(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits)
+b2Body* PhysicsWorld::createCircleBody(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits, uint16 maskBits)
 {
-    return get().createCircleBodyInternal(position, radius, isDynamic, owner, categoryBits);
+    return get().createCircleBodyInternal(position, radius, isDynamic, owner, categoryBits, maskBits);
 }
 
-b2Body* PhysicsWorld::createRectangleBodyInternal(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner, uint16 categoryBits)
+b2Body* PhysicsWorld::createRectangleBodyInternal(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner, uint16 categoryBits, uint16 maskBits)
 {
     b2Body* body;
     b2BodyDef bodyDef;
@@ -58,15 +58,15 @@ b2Body* PhysicsWorld::createRectangleBodyInternal(sf::Vector2f position, sf::Vec
     FixtureDef.restitution = 0.f;
     FixtureDef.userData.pointer = categoryBits;
 
-    //FixtureDef.filter.categoryBits = categoryBits;  // I'm <...> 
-    //FixtureDef.filter.maskBits = maskBits;          // I collide with <...>
+    FixtureDef.filter.categoryBits  = categoryBits;     // I'm <...> 
+    FixtureDef.filter.maskBits      = maskBits;         // I collide with <...>
 
     body->CreateFixture(&FixtureDef);
 
     return body;
 }
 
-b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits)
+b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits, uint16 maskBits)
 {
     b2Body* body;
     b2BodyDef bodyDef;
@@ -87,8 +87,8 @@ b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radi
     FixtureDef.restitution = 0.f;
     FixtureDef.userData.pointer = categoryBits;
 
-    //FixtureDef.filter.categoryBits = categoryBits;  // I'm <...> 
-    //FixtureDef.filter.maskBits = maskBits;          // I collide with <...>
+    FixtureDef.filter.categoryBits  = categoryBits;     // I'm <...> 
+    FixtureDef.filter.maskBits      = maskBits;         // I collide with <...>
 
     body->CreateFixture(&FixtureDef);
 

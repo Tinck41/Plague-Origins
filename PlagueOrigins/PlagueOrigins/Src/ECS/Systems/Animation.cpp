@@ -344,14 +344,50 @@ void Animation::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 
 void Animation::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
-	auto view = reg.view<Animator>();
-	for (auto entity : view)
+	std::list<Animator> sortedObjects;
+	std::list<Tag> sortedTags;
+	float playerYPosition = 0;
+
+	auto playerView = reg.view<PlayerInput, Animator, Transform, Tag, RigidBody>();
+	for (auto entity : playerView)
 	{
+		Tag& tag = reg.get<Tag>(entity);
+		Transform& transform = reg.get<Transform>(entity);
+		RigidBody& rigidBody = reg.get<RigidBody>(entity);
 		Animator& animator = reg.get<Animator>(entity);
 
-		if (animator.armatureDisplay != nullptr)
+		playerYPosition = transform.position.y + rigidBody.size.y / 2.f;
+		sortedObjects.push_back(animator);
+		sortedTags.push_back(tag);
+	}
+
+	auto view = reg.view<Animator, Transform, RigidBody, Tag, Aggresion>();
+	for (auto entity : view)
+	{
+		Tag& tag = reg.get<Tag>(entity);
+		RigidBody& rigidBody = reg.get<RigidBody>(entity);
+		Animator& animator = reg.get<Animator>(entity);
+		Transform& transform = reg.get<Transform>(entity);
+
+		float entityYPosition = transform.position.y + rigidBody.size.y / 2.f;
+
+		if (playerYPosition > entityYPosition)
 		{
-			window.draw(*animator.armatureDisplay, animator.states);
+			sortedObjects.emplace_front(animator);
+			sortedTags.emplace_front(tag);
+		}
+		else
+		{
+			sortedObjects.emplace_back(animator);
+			sortedTags.emplace_back(tag);
+		}
+	}
+
+	for (auto i = sortedObjects.begin(); i != sortedObjects.end(); i++)
+	{
+		if (i->armatureDisplay != nullptr)
+		{
+			window.draw(*i->armatureDisplay, i->states);
 		}
 	}
 }

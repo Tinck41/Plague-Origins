@@ -1,17 +1,57 @@
 #include "stdafx.h"
 #include "HealthSystem.h"
 
-void HealthSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
+void HealthSystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 {
-	auto view = reg.view<Health, PlayerInput>();
+	auto view = reg.view<RigidBody, Health, Transform, Tag>();
 	for (auto entity : view)
 	{
+		tgui::Theme theme{ "../AdditionalLibraries/TGUI-0.9/gui-builder/themes/Black.txt" };
 
+		RigidBody& rigidBody = reg.get<RigidBody>(entity);
+		Health& health = reg.get<Health>(entity);
+		Transform& transform = reg.get<Transform>(entity);
+		Tag& tag = reg.get<Tag>(entity);
+
+		if (tag.name == "Hero" || tag.name == "Bishop") continue;
+
+		tgui::ProgressBar::Ptr healthBar = tgui::ProgressBar::create();
+		
+		healthBar->getRenderer()->setBorders(3.f);
+		healthBar->getRenderer()->setBackgroundColor(tgui::Color::Transparent);
+		healthBar->getRenderer()->setFillColor(tgui::Color::Red);
+		healthBar->setMaximum(100);
+		healthBar->setSize(rigidBody.size.x * 2.f, 15.f);
+		healthBar->setPosition(transform.position.x, transform.position.y);
+		healthBar->moveToBack();
+		healthBar->setVisible(true);
+
+		std::string widgetName = std::to_string(uint32_t(entity)) + "healthBar";
+
+		gui.add(healthBar, widgetName);
+	}
+}
+
+void HealthSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
+{
+	auto view = reg.view<RigidBody, Health, Transform, Tag>();
+	for (auto entity : view)
+	{
+		RigidBody& rigidBody = reg.get<RigidBody>(entity);
+		Health& health = reg.get<Health>(entity);
+		Transform& transform = reg.get<Transform>(entity);
+		Tag& tag = reg.get<Tag>(entity);
+
+		if (tag.name == "Hero" || tag.name == "Bishop") continue;
+
+		std::string widgetName = std::to_string(uint32_t(entity)) + "healthBar";
+		auto healthBar = gui.get<tgui::ProgressBar>(widgetName);
 	}
 }
 
 void HealthSystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
+
 	auto view = reg.view<Health, PlayerInput>();
 	for (auto entity : view)
 	{
@@ -26,4 +66,29 @@ void HealthSystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::G
 
 		healthBar->setValue(healthValue);
 	}
+
+	auto mobsView = reg.view<Health, Transform, Tag>();
+	for (auto entity : mobsView)
+	{
+		Health& health = reg.get<Health>(entity);
+		Transform& transform = reg.get<Transform>(entity);
+		Tag& tag = reg.get<Tag>(entity);
+
+		if (tag.name == "Hero" || tag.name == "Bishop") continue;
+
+		std::string widgetName = std::to_string(uint32_t(entity)) + "healthBar";
+
+		auto healthBar = gui.get<tgui::ProgressBar>(widgetName);
+		float healthValue = health.curhealth * 100.f / health.maxHealth;
+
+		healthBar->setValue(healthValue);
+
+		std::cout << healthBar->getOrigin().x << " " << healthBar->getOrigin().y << "\n";
+
+		healthBar->setPosition(
+			transform.position.x - window.getView().getCenter().x + window.getSize().x / 2.f,
+			transform.position.y - window.getView().getCenter().y + window.getSize().y / 2.f
+		);
+	}
 }
+

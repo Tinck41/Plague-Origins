@@ -33,8 +33,8 @@ public:
 
 	static void update(const float& dt) { get().updateInternal(dt); }
 
-	static b2Body* createRectangleBody(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner, uint16 categoryBits);
-	static b2Body* createCircleBody(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits);
+	static b2Body* createRectangleBody(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner, uint16 categoryBits, uint16 maskBits);
+	static b2Body* createCircleBody(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits, uint16 maskBits);
 
 	static b2World* getWorld() { return get().world; }
 
@@ -48,6 +48,6 @@ private:
 
 	void updateInternal(const float& dt);
 
-	b2Body* createRectangleBodyInternal(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner, uint16 categoryBits);
-	b2Body* createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits);
+	b2Body* createRectangleBodyInternal(sf::Vector2f position, sf::Vector2f size, bool isDynamic, entt::entity owner, uint16 categoryBits, uint16 maskBits);
+	b2Body* createCircleBodyInternal(sf::Vector2f position, float radius, bool isDynamic, entt::entity owner, uint16 categoryBits, uint16 maskBits);
 };

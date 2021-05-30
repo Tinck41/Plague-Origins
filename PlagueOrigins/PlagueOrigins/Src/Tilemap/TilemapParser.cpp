@@ -225,7 +225,7 @@ void TilemapParser::parseTileMapObjects()
 				float y = jsonReader["layers"][i]["objects"][j]["y"];
 				
 				Entity object = Entity(registry->create(), screen);
-				PhysicsWorld::createRectangleBody(sf::Vector2f(x, y), sf::Vector2f(width, height), false, object, OBSTACLE);
+				PhysicsWorld::createRectangleBody(sf::Vector2f(x, y), sf::Vector2f(width, height), false, object, OBSTACLE, PLAYER | ENEMY_NPC);
 			}
 		}
 	}
@@ -276,7 +276,7 @@ void TilemapParser::parseBossFightTriggers()
 				float height	= jsonReader["layers"][i]["objects"][j]["height"];
 
 				bossFightTrigger.AddComponent<BossFightArena>();
-				bossFightTrigger.AddComponent<RigidBody>(sf::Vector2f(width, height), sf::Vector2f(x, y), false, bossFightTrigger, BOSS_FIGHT_TRIGGER)
+				bossFightTrigger.AddComponent<RigidBody>(sf::Vector2f(width, height), sf::Vector2f(x, y), false, bossFightTrigger, BOSS_FIGHT_TRIGGER, PLAYER)
 					.body->GetFixtureList()->SetSensor(true);
 
 				uint8_t propertiesCount = 4;
@@ -292,7 +292,7 @@ void TilemapParser::parseBossFightTriggers()
 					float doorX			= jsonReader["layers"][i]["objects"][j]["properties"][2 + param]["value"];
 					float doorY			= jsonReader["layers"][i]["objects"][j]["properties"][3 + param]["value"];
 
-					door.AddComponent<RigidBody>(sf::Vector2f(doorWidth, doorHeight), sf::Vector2f(doorX, doorY), false, door, OBSTACLE)
+					door.AddComponent<RigidBody>(sf::Vector2f(doorWidth, doorHeight), sf::Vector2f(doorX, doorY), false, door, OBSTACLE, PLAYER | ENEMY_NPC)
 						.body->GetFixtureList()->SetSensor(true);
 
 					bossFightTrigger.GetComponent<BossFightArena>().doors.push_back(door);

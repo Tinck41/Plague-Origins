@@ -68,6 +68,7 @@ SystemHandler::SystemHandler()
 	onCreateSystems.push_back(overlaySystem);
 	onCreateSystems.push_back(inventorySystem);
 	onCreateSystems.push_back(dialogueSystem);
+	onCreateSystems.push_back(healthSystem);
 }
 
 SystemHandler::~SystemHandler()
