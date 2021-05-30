@@ -72,7 +72,7 @@ GameScreen::GameScreen()
 	bishopEnt1.AddComponent<Transform>();
 	bishopEnt1.AddComponent<Animator>(config.bishopScale);
 	bishopEnt1.AddComponent<Movement>(500.f);
-	bishopEnt1.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2250.f, 7960.f), false, bishopEnt1, FRIENDLY_NPC, OBSTACLE | ATTACK_RADIUS);
+	bishopEnt1.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(2250.f, 7960.f), false, bishopEnt1, FRIENDLY_NPC, OBSTACLE | ATTACK_RADIUS | INTERACTION_ZONE);
 	bishopEnt1.AddComponent<Tag>("Bishop");
 	bishopEnt1.AddComponent<Dialogue>(bishopEnt1.GetComponent<RigidBody>().body, 75.f);
 	bishopEnt1.AddComponent<SMcomponent>(new BishopIdleState(bishopEnt1));
@@ -87,7 +87,7 @@ GameScreen::GameScreen()
 	bishopEnt2.AddComponent<Transform>();
 	bishopEnt2.AddComponent<Animator>(config.bishopScale);
 	bishopEnt2.AddComponent<Movement>(500.f);
-	bishopEnt2.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8800.f, 5770.f), false, bishopEnt2, FRIENDLY_NPC, OBSTACLE | ATTACK_RADIUS);
+	bishopEnt2.AddComponent<RigidBody>(sf::Vector2f(50.f, 50.f), sf::Vector2f(8800.f, 5770.f), false, bishopEnt2, FRIENDLY_NPC, OBSTACLE | ATTACK_RADIUS | INTERACTION_ZONE);
 	bishopEnt2.AddComponent<Tag>("Bishop");
 	bishopEnt2.AddComponent<Dialogue>(bishopEnt2.GetComponent<RigidBody>().body, 75.f);
 	bishopEnt2.AddComponent<SMcomponent>(new BishopIdleState(bishopEnt2));

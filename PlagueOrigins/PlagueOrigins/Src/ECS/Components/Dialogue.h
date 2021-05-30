@@ -11,6 +11,8 @@ struct Dialogue
         circleShape.m_radius = radius;
         fixtureDef.shape = &circleShape;
         fixtureDef.isSensor = true;
+        fixtureDef.filter.categoryBits = INTERACTION_ZONE;
+        fixtureDef.filter.maskBits = FRIENDLY_NPC;
         body->CreateFixture(&fixtureDef);
 
         interactionZone.setRadius(30.f);
