@@ -9,7 +9,11 @@ void BossFight::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 		BossFightArena& bossFightArena = reg.get<BossFightArena>(entity);
 		RigidBody& rigidBody = reg.get<RigidBody>(entity);
 
-		checkForWin(reg);
+		if (bossFightArena.bossIsDead || bossFightArena.playerIsDead) return;
+
+		checkForTrigger(reg);
+		checkBoss(reg, bossFightArena);
+		checkPlayer(reg, bossFightArena);
 
 		if (bossFightArena.arenaClosed) return;
 
@@ -55,7 +59,7 @@ void BossFight::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 	}
 }
 
-void BossFight::checkForWin(entt::registry& reg)
+void BossFight::checkForTrigger(entt::registry& reg)
 {
 	auto view = reg.view<Boss>();
 	for (auto entity : view)
@@ -65,6 +69,36 @@ void BossFight::checkForWin(entt::registry& reg)
 		if (!boss.isBossFight)
 		{
 			setBossFightMusic(reg, false);
+		}
+	}
+}
+
+void BossFight::checkBoss(entt::registry& reg, BossFightArena& bossFightArena)
+{
+	auto view = reg.view<Boss, Health>();
+	for (auto entity : view)
+	{
+		Health& health = reg.get<Health>(entity);
+
+		if (health.curhealth <= 0)
+		{
+			bossFightArena.bossIsDead = true;
+			std::cout << "boss is dead\n";
+		}
+	}
+}
+
+void BossFight::checkPlayer(entt::registry& reg, BossFightArena& bossFightArena)
+{
+	auto view = reg.view<Player, Health>();
+	for (auto entity : view)
+	{
+		Health& health = reg.get<Health>(entity);
+
+		if (health.curhealth <= 0)
+		{
+			bossFightArena.playerIsDead = true;
+			std::cout << "player is dead\n";
 		}
 	}
 }

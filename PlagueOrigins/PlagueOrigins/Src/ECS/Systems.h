@@ -26,3 +26,4 @@
 #include "Systems/EssenceSystem.h"
 #include "Systems/OverlaySystem.h"
 #include "Systems/EffectsSystem.h"
+#include "Systems/RestartSystem.h"

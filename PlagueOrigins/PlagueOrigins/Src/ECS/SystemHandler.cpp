@@ -25,7 +25,8 @@ SystemHandler::SystemHandler()
 	auto overlaySystem		= new OverlaySystem();
 	auto inventorySystem	= new InventorySystem();
 	auto dialogueSystem		= new DialogueSystem();
-	auto effectsSysten		= new EffectsSystem();
+	auto effectsSystem		= new EffectsSystem();
+	auto restartSystem		= new RestartSystem();
 
 	// Update systems
 	updatableSystems.push_back(inputSystem);
@@ -49,7 +50,8 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(overlaySystem);
 	updatableSystems.push_back(inventorySystem);
 	updatableSystems.push_back(dialogueSystem);
-	updatableSystems.push_back(effectsSysten);
+	updatableSystems.push_back(effectsSystem);
+	updatableSystems.push_back(restartSystem);
 
 	// Render systems
 	renderableSystems.push_back(animationSystem);

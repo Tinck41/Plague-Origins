@@ -48,7 +48,6 @@ void PatrolSystem::nextWaypoint(Patrol& patrol, Transform& transform)
 
 void PatrolSystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
-	window.draw(marker);
 }
 
 void PatrolSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
@@ -59,7 +58,6 @@ void PatrolSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& 
 		Movement& movement = reg.get<Movement>(entity);
 		Patrol& patrol = reg.get<Patrol>(entity);
 		Transform& transform = reg.get<Transform>(entity);
-		marker.setPosition(sf::Vector2f(transform.position.x + marker.getRadius(),transform.position.y + marker.getRadius()));
 		dirToNext(movement, patrol, transform);
 		nextWaypoint(patrol, transform);
 	}

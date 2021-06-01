@@ -12,6 +12,7 @@ class GameScreen :
 {
 private:
 	Entity screenManager;
+
 	Entity playerEnt;
 	Entity bishopEnt1;
 	Entity bishopEnt2;
