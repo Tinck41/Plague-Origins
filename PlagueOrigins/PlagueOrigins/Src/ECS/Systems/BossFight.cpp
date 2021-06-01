@@ -83,7 +83,6 @@ void BossFight::checkBoss(entt::registry& reg, BossFightArena& bossFightArena)
 		if (health.curhealth <= 0)
 		{
 			bossFightArena.bossIsDead = true;
-			std::cout << "boss is dead\n";
 		}
 	}
 }
@@ -98,7 +97,6 @@ void BossFight::checkPlayer(entt::registry& reg, BossFightArena& bossFightArena)
 		if (health.curhealth <= 0)
 		{
 			bossFightArena.playerIsDead = true;
-			std::cout << "player is dead\n";
 		}
 	}
 }
@@ -112,5 +110,6 @@ void BossFight::setBossFightMusic(entt::registry& reg, bool playMusic)
 
 		soundSource.playBossFightSound = playMusic;
 		soundSource.loopBossFightSound = playMusic;
+		soundSource.bossFightSound.setVolume(20.f);
 	}
 }
