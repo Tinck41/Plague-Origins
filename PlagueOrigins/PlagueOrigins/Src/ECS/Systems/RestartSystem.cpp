@@ -14,7 +14,16 @@ void RestartSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 			for (auto manager : screenManager)
 			{
 				CurrentScreen& currentScreen = reg.get<CurrentScreen>(manager);
-				currentScreen.type = ScreenType::LOSS;
+				currentScreen.gameOver = true;
+				gui.get<tgui::Label>("winLabel")->setVisible(true);
+				if (gui.get<tgui::Button>("retryButton")->isMouseDown())
+				{
+					setRetryButton(currentScreen);
+				}
+				if (gui.get<tgui::Button>("exit2Button")->isMouseDown())
+				{
+					setExitButton(currentScreen);
+				}
 			}
 		}
 		else if (bossFightArena.bossIsDead)
@@ -23,8 +32,29 @@ void RestartSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 			for (auto manager : screenManager)
 			{
 				CurrentScreen& currentScreen = reg.get<CurrentScreen>(manager);
-				currentScreen.type = ScreenType::WIN;
+				currentScreen.gameOver = true;
+				gui.get<tgui::Label>("winLabel")->setVisible(true);
+				if (gui.get<tgui::Button>("retryButton")->isMouseDown())
+				{
+					setRetryButton(currentScreen);
+				}
+				if (gui.get<tgui::Button>("exit2Button")->isMouseDown())
+				{
+					setExitButton(currentScreen);
+				}
 			}
 		}
 	}
+}
+
+void RestartSystem::setRetryButton(CurrentScreen& currentScreen)
+{
+	currentScreen.gameOver = false;
+	currentScreen.restart = true;
+}
+
+void RestartSystem::setExitButton(CurrentScreen& currentScreen)
+{
+	currentScreen.gameOver = false;
+	currentScreen.exit = true;
 }

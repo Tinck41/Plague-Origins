@@ -14,8 +14,6 @@ void ScreenHandler::initScreens()
 	{
 		{ GameScreen::screenType, new GameScreen() },
 		{ MainMenuScreen::screenType, new MainMenuScreen() },
-		{ VictoryScreen::screenType, new VictoryScreen() },
-		{ LossScreen::screenType, new LossScreen() },
 	};
 }
 

@@ -3,8 +3,6 @@
 #include "Screen.h"
 #include "GameScreen.h"
 #include "MainMenuScreen.h"
-#include "VictoryScreen.h"
-#include "LossScreen.h"
 
 class ScreenHandler
 {
