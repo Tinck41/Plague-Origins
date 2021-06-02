@@ -94,8 +94,6 @@
     <ClCompile Include="Src\FSM\States\Boss\BossIdleState.cpp" />
     <ClCompile Include="Src\FSM\States\Boss\BossAttackState.cpp" />
     <ClCompile Include="Src\ECS\Systems\RestartSystem.cpp" />
-    <ClCompile Include="Src\Screen\VictoryScreen.cpp" />
-    <ClCompile Include="Src\Screen\LossScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -252,8 +250,6 @@
     <ClInclude Include="Src\ECS\Components\BossTemporal.h" />
     <ClInclude Include="Src\ECS\Components\NPC.h" />
     <ClInclude Include="Src\ECS\Systems\RestartSystem.h" />
-    <ClInclude Include="Src\Screen\VictoryScreen.h" />
-    <ClInclude Include="Src\Screen\LossScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

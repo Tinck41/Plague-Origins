@@ -25,6 +25,9 @@ private:
 	Entity dogEnt6;
 	Entity dogEnt7;
 
+	Entity ring1;
+	Entity ring2;
+
 	tgui::GuiSFML gui;
 
 	TilemapParser mapLoader;
@@ -34,6 +37,9 @@ public:
 
 	GameScreen();
 	~GameScreen();
+
+	void exit();
+	void start();
 
     void update(const float& dt);
 	ScreenType render(sf::RenderWindow&);
