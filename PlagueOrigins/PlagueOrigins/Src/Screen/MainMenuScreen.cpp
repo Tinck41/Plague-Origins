@@ -6,7 +6,7 @@ MainMenuScreen::MainMenuScreen()
 	mainThemeBuffer.loadFromFile("./Assets/SFX/MainMenuTheme.wav");
 	mainTheme.setBuffer(mainThemeBuffer);
 	mainTheme.setLoop(true);
-	mainTheme.setVolume(20.f);
+	mainTheme.setVolume(10.f);
 	mainTheme.play();
 
 	gui.loadWidgetsFromFile("./Assets/UI/Main_menu.txt");

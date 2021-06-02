@@ -78,5 +78,6 @@ void BossFight::setBossFightMusic(entt::registry& reg, bool playMusic)
 
 		soundSource.playBossFightSound = playMusic;
 		soundSource.loopBossFightSound = playMusic;
+		soundSource.bossFightSound.setVolume(10.f);
 	}
 }
