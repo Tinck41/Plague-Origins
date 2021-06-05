@@ -19,5 +19,4 @@ private:
 	void onInventoryButtonClick(entt::registry& reg, tgui::GuiSFML& gui);
 	void onSettingsButtonClick(entt::registry& reg, tgui::GuiSFML& gui);
 	void onExitButtonClick(entt::registry& reg, tgui::GuiSFML& gui);
-	void onMainMenuButtonClick(entt::registry& reg, tgui::GuiSFML& gui);
 };

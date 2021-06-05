@@ -45,7 +45,7 @@ Panel.statusBar {
     ProgressBar.healthBar {
         Maximum = 100;
         Minimum = 0;
-        Position = (155, 31);
+        Position = (155, 46);
         Size = (598, 19);
         TextSize = 13;
         Value = 100;
@@ -68,7 +68,7 @@ Panel.statusBar {
     ProgressBar.staminaBar {
         Maximum = 100;
         Minimum = 0;
-        Position = (155, 66);
+        Position = (155, 82);
         Size = (448, 19);
         TextSize = 13;
         Value = 100;
@@ -78,26 +78,6 @@ Panel.statusBar {
             BorderColor = black;
             Borders = (0, 0, 0, 0);
             FillColor = #0CFF4D76;
-            TextColor = #3C3C3C;
-            TextColorFilled = white;
-            TextureBackground = None;
-            TextureFill = None;
-        }
-    }
-
-    ProgressBar.ProgressBar1 {
-        Maximum = 100;
-        Minimum = 0;
-        Position = (155, 100);
-        Size = (368, 19);
-        TextSize = 13;
-        Value = 100;
-
-        Renderer {
-            BackgroundColor = transparent;
-            BorderColor = black;
-            Borders = (1, 1, 1, 1);
-            FillColor = #AF0BFF80;
             TextColor = #3C3C3C;
             TextColorFilled = white;
             TextureBackground = None;
@@ -143,8 +123,7 @@ Panel.essenceBar {
 
 Panel.menuButtons {
     Position = (40, 40);
-    Size = (112, 470);
-    Visible = false;
+    Size = (112, 237);
 
     Renderer {
         BackgroundColor = #FFFFFF00;
@@ -152,71 +131,9 @@ Panel.menuButtons {
         TextureBackground = "./minimizedInventory.png" Smooth;
     }
 
-    Button.playerButton {
-        Position = (10, 10);
-        Size = (100, 100);
-        TextSize = 13;
-
-        Renderer {
-            BackgroundColor = #F5F5F500;
-            BackgroundColorDisabled = #E6E6E6;
-            BackgroundColorDown = #EBEBEB;
-            BackgroundColorFocused = #00000065;
-            BackgroundColorHover = #00000065;
-            BorderColor = #3C3C3C00;
-            BorderColorDisabled = #7D7D7D00;
-            BorderColorDown = transparent;
-            BorderColorFocused = transparent;
-            BorderColorHover = transparent;
-            Borders = (1, 1, 1, 1);
-            TextColor = #3C3C3C;
-            TextColorDisabled = #7D7D7D;
-            TextColorDown = black;
-            TextColorHover = black;
-            Texture = None;
-            TextureDisabled = None;
-            TextureDown = None;
-            TextureDownFocused = None;
-            TextureDownHover = None;
-            TextureFocused = None;
-            TextureHover = None;
-        }
-    }
-
     Button.inventoryButton {
-        Position = (10, 130);
-        Size = (100, 102);
-        TextSize = 13;
-
-        Renderer {
-            BackgroundColor = #F5F5F500;
-            BackgroundColorDisabled = #E6E6E6;
-            BackgroundColorDown = #EBEBEB;
-            BackgroundColorFocused = #00000065;
-            BackgroundColorHover = #00000065;
-            BorderColor = #3C3C3C00;
-            BorderColorDisabled = #7D7D7D00;
-            BorderColorDown = transparent;
-            BorderColorFocused = transparent;
-            BorderColorHover = transparent;
-            Borders = (1, 1, 1, 1);
-            TextColor = #3C3C3C;
-            TextColorDisabled = #7D7D7D;
-            TextColorDown = black;
-            TextColorHover = black;
-            Texture = None;
-            TextureDisabled = None;
-            TextureDown = None;
-            TextureDownFocused = None;
-            TextureDownHover = None;
-            TextureFocused = None;
-            TextureHover = None;
-        }
-    }
-
-    Button.statsButton {
-        Position = (10, 240);
-        Size = (100, 112);
+        Position = (10, 11);
+        Size = (95, 99);
         TextSize = 13;
 
         Renderer {
@@ -246,8 +163,8 @@ Panel.menuButtons {
     }
 
     Button.settingsButton {
-        Position = (10, 360);
-        Size = (100, 102);
+        Position = (9, 126);
+        Size = (95, 100);
         TextSize = 13;
 
         Renderer {
@@ -278,8 +195,8 @@ Panel.menuButtons {
 }
 
 Panel.mainDialoguePanel {
-    Position = (830, 470);
-    Size = (900, 500);
+    Position = (830, 470 + 75);
+    Size = (900, 350);
     Visible = false;
 
     Renderer {
@@ -289,7 +206,7 @@ Panel.mainDialoguePanel {
     }
 
     Picture.mainDialoguePic {
-        Size = (900, 500);
+        Size = (900, 350);
 
         Renderer {
             Texture = "./mainDialogueBox.png" Smooth;
@@ -819,297 +736,6 @@ Panel.upgradeStatsPanel {
     }
 }
 
-Panel.tradePanel {
-    Position = (846, 335);
-    Size = (867, 770);
-    Visible = false;
-
-    Renderer {
-        BackgroundColor = #FFFFFF00;
-        BorderColor = black;
-        TextureBackground = None;
-    }
-
-    Picture.tradingPic {
-        Size = (867, 770);
-
-        Renderer {
-            Texture = "./tradingBox.png" Smooth;
-            TransparentTexture = false;
-        }
-    }
-
-    Label.tradingHeader {
-        HorizontalAlignment = Center;
-        Position = (50, 50);
-        Renderer = &1;
-        Size = (767, 50);
-        Text = Trade;
-        TextSize = 36;
-    }
-
-    Label.tradeESlabel {
-        Position = (80, 135);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (150, 50);
-        Text = "Essence:";
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.tradeEScur {
-        HorizontalAlignment = Center;
-        Position = (230, 135);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (120, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.ar11 {
-        HorizontalAlignment = Center;
-        Position = (360, 135);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = "=>";
-        TextSize = 25;
-        VerticalAlignment = Center;
-    }
-
-    Label.tradeESnew {
-        HorizontalAlignment = Center;
-        Position = (490, 135);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Button.itemButton1 {
-        Position = (52, 221);
-        Renderer = &2;
-        Size = (194, 195);
-        TextSize = 13;
-    }
-
-    Button.itemButton2 {
-        Position = (52, 471);
-        Renderer = &2;
-        Size = (195, 196);
-        TextSize = 13;
-    }
-
-    Label.item1Name {
-        Position = (277, 220);
-        Renderer = &1;
-        Size = (540, 50);
-        Text = Name;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.item1Effects {
-        Position = (277, 270);
-        Renderer = &1;
-        Size = (540, 50);
-        Text = "Effects:";
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.i1e1ATR {
-        Position = (277, 320);
-        Renderer = &1;
-        Size = (170, 50);
-        Text = "HP:";
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.i1e2ATR {
-        Position = (277, 370);
-        Renderer = &1;
-        Size = (170, 50);
-        Text = "Damage:";
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.i1e1ATRcur {
-        HorizontalAlignment = Center;
-        Position = (447, 320);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.ar12 {
-        HorizontalAlignment = Center;
-        Position = (550, 320);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = "=>";
-        TextSize = 25;
-        VerticalAlignment = Center;
-    }
-
-    Label.i1e1ATRnew {
-        HorizontalAlignment = Center;
-        Position = (657, 320);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.i1e2ATRcur {
-        HorizontalAlignment = Center;
-        Position = (447, 370);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.ar13 {
-        HorizontalAlignment = Center;
-        Position = (550, 370);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = "=>";
-        TextSize = 25;
-        VerticalAlignment = Center;
-    }
-
-    Label.i1e2ATRnew {
-        HorizontalAlignment = Center;
-        Position = (657, 370);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.item2Name {
-        Position = (277, 470);
-        Renderer = &1;
-        Size = (540, 50);
-        Text = Name;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.item2Effects {
-        Position = (277, 520);
-        Renderer = &1;
-        Size = (540, 50);
-        Text = "Effects:";
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.i2e1ATR {
-        Position = (277, 570);
-        Renderer = &1;
-        Size = (170, 50);
-        Text = Stamina;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.i2e1ATRcur {
-        HorizontalAlignment = Center;
-        Position = (447, 570);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.ar14 {
-        HorizontalAlignment = Center;
-        Position = (550, 570);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = "=>";
-        TextSize = 25;
-        VerticalAlignment = Center;
-    }
-
-    Label.i2e1ATRnew {
-        HorizontalAlignment = Center;
-        Position = (657, 570);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.i2e2ATR {
-        Position = (277, 620);
-        Renderer = &1;
-        Size = (170, 50);
-        Text = "Damage:";
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.i2e2ATRcur {
-        HorizontalAlignment = Center;
-        Position = (447, 620);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-
-    Label.ar15 {
-        HorizontalAlignment = Center;
-        Position = (550, 620);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = "=>";
-        TextSize = 25;
-        VerticalAlignment = Center;
-    }
-
-    Label.i2e2ATRnew {
-        HorizontalAlignment = Center;
-        Position = (657, 620);
-        Renderer = &1;
-        ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
-        TextSize = 30;
-        VerticalAlignment = Center;
-    }
-}
-
 Panel.unfoldedInventory {
     Position = (210, 40);
     Size = (1869, 1028);
@@ -1193,7 +819,7 @@ Panel.unfoldedInventory {
         Renderer {
             BackgroundColor = white;
             BorderColor = black;
-            TextureBackground = "invDialogueBox.png" Smooth;
+            TextureBackground = "mainDialogueBox.png" Smooth;
         }
 
         Button.Button1 {
@@ -1259,8 +885,8 @@ Panel.unfoldedInventory {
 }
 
 Panel.settingsPanel {
-    Position = (152, 392);
-    Size = (550, 230);
+    Position = (152, 157);
+    Size = (550, 180);
     Visible = false;
 
     Renderer {
@@ -1269,39 +895,8 @@ Panel.settingsPanel {
         TextureBackground = "invDialogueBox.png" Smooth;
     }
 
-    Button.mainMenuButton {
-        Position = (30, 32);
-        Size = (490, 68.6667);
-        Text = "Main Menu";
-        TextSize = 33;
-
-        Renderer {
-            BackgroundColor = transparent;
-            BackgroundColorDisabled = #E6E6E6;
-            BackgroundColorDown = #EBEBEB;
-            BackgroundColorHover = #00000065;
-            BorderColor = #3C3C3C;
-            BorderColorDisabled = #7D7D7D;
-            BorderColorDown = black;
-            BorderColorFocused = #1E1EB4;
-            BorderColorHover = black;
-            Borders = (0, 0, 0, 0);
-            TextColor = white;
-            TextColorDisabled = #7D7D7D;
-            TextColorDown = black;
-            TextColorHover = white;
-            Texture = None;
-            TextureDisabled = None;
-            TextureDown = None;
-            TextureDownFocused = None;
-            TextureDownHover = None;
-            TextureFocused = None;
-            TextureHover = None;
-        }
-    }
-
     Button.exitGameButton {
-        Position = (30, 130);
+        Position = (30, 54);
         Size = (490, 72);
         Text = "Exit Game";
         TextSize = 33;

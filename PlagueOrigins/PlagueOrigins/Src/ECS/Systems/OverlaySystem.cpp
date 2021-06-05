@@ -9,12 +9,10 @@ void OverlaySystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 
 	auto inventoryButton	= gui.get<tgui::Panel>("menuButtons")->get<tgui::Button>("inventoryButton");
 	auto settginButton		= gui.get<tgui::Panel>("menuButtons")->get<tgui::Button>("settingsButton");
-	auto mainMenuButton		= gui.get<tgui::Panel>("settingsPanel")->get<tgui::Button>("mainMenuButton");
 	auto exitButton			= gui.get<tgui::Panel>("settingsPanel")->get<tgui::Button>("exitGameButton");
 
 	inventoryButton->onMouseRelease(&OverlaySystem::onInventoryButtonClick, this, std::ref(reg), std::ref(gui));
 	settginButton->onMouseRelease(&OverlaySystem::onSettingsButtonClick, this, std::ref(reg), std::ref(gui));
-	mainMenuButton->onMouseRelease(&OverlaySystem::onMainMenuButtonClick, this, std::ref(reg), std::ref(gui));
 	exitButton->onMouseRelease(&OverlaySystem::onExitButtonClick, this, std::ref(reg), std::ref(gui));
 }
 	
@@ -27,6 +25,19 @@ void OverlaySystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 
 		if (input.escReleased)
 		{
+			if (gui.get<tgui::Panel>("upgradeStatsPanel")->isVisible())
+			{
+				gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(false);
+				gui.get<tgui::Panel>("menuButtons")->setVisible(false);
+				break;
+			}
+			else if (gui.get<tgui::Panel>("mainDialoguePanel")->isVisible())
+			{
+				gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(false);
+				gui.get<tgui::Panel>("menuButtons")->setVisible(false);
+				break;
+			}
+
 			if (gui.get<tgui::Panel>("unfoldedInventory")->isVisible())
 			{
 				tgui::Panel::Ptr inventoryPanel = gui.get<tgui::Panel>("unfoldedInventory");
@@ -103,16 +114,4 @@ void OverlaySystem::onExitButtonClick(entt::registry& reg, tgui::GuiSFML& gui)
 
 		currentScreen.type = ScreenType::EXIT;
 	}
-}
-
-void OverlaySystem::onMainMenuButtonClick(entt::registry& reg, tgui::GuiSFML& gui)
-{
-	// Dangerous shit...
-	//auto view = reg.view<CurrentScreen>();
-	//for (auto entity : view)
-	//{
-	//	CurrentScreen& currentScreen = reg.get<CurrentScreen>(entity);
-
-	//	currentScreen.type = ScreenType::MAIN_MENU;
-	//}
 }

@@ -17,4 +17,8 @@ public:
 private:
 	void dialogueSwitch(Dialogue& dialogue);
 	void updateStats(entt::registry& reg, tgui::GuiSFML& gui, entt::entity player);
+
+	void onUpgradeClick(entt::registry& reg, tgui::GuiSFML& gui);
+	void onStatClick(entt::registry& reg, tgui::GuiSFML& gui, unsigned int stat);
+	void onExitClick(entt::registry& reg, tgui::GuiSFML& gui);
 };

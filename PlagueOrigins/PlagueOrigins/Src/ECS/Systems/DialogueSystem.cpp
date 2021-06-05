@@ -10,7 +10,24 @@ void DialogueSystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 {
 	gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(false);
 	gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(false);
-	gui.get<tgui::Panel>("tradePanel")->setVisible(false);
+
+	auto upgradeButton = gui.get<tgui::Panel>("mainDialoguePanel")->get<tgui::Button>("upgradeStatsButton");
+	auto exitButton = gui.get<tgui::Panel>("mainDialoguePanel")->get<tgui::Button>("exitButton");
+
+	auto VITbutton = gui.get<tgui::Panel>("upgradeStatsPanel")->get<tgui::Button>("VITbutton");
+	auto STRbutton = gui.get<tgui::Panel>("upgradeStatsPanel")->get<tgui::Button>("STRbutton");
+	auto ENDbutton = gui.get<tgui::Panel>("upgradeStatsPanel")->get<tgui::Button>("ENDbutton");
+	auto AGIbutton = gui.get<tgui::Panel>("upgradeStatsPanel")->get<tgui::Button>("AGIbutton");
+	auto INTbutton = gui.get<tgui::Panel>("upgradeStatsPanel")->get<tgui::Button>("INTbutton");
+
+	upgradeButton->onMouseRelease(&DialogueSystem::onUpgradeClick, this, std::ref(reg), std::ref(gui));
+	exitButton->onMouseRelease(&DialogueSystem::onExitClick, this, std::ref(reg), std::ref(gui));
+	VITbutton->onMouseRelease(&DialogueSystem::onStatClick, this, std::ref(reg), std::ref(gui), VIT);
+	STRbutton->onMouseRelease(&DialogueSystem::onStatClick, this, std::ref(reg), std::ref(gui), STR);
+	ENDbutton->onMouseRelease(&DialogueSystem::onStatClick, this, std::ref(reg), std::ref(gui), END);
+	AGIbutton->onMouseRelease(&DialogueSystem::onStatClick, this, std::ref(reg), std::ref(gui), AGI);
+	INTbutton->onMouseRelease(&DialogueSystem::onStatClick, this, std::ref(reg), std::ref(gui), INTT);
+
 }
 
 void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
@@ -22,18 +39,16 @@ void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float
 		PlayerInput& playerInput = reg.get<PlayerInput>(entity);
 		RigidBody& rigidBody = reg.get<RigidBody>(entity);
 
-		if (dialogue.state == 2)
-		{
-			updateStats(reg, gui, entity);
-		}
+		//if (dialogue.state == 2)
+		//{
+		//	updateStats(reg, gui, entity);
+		//}
 
 		b2Fixture* interactionZone = rigidBody.body->GetFixtureList();
 		while (interactionZone->GetUserData().pointer != INTERACTION_ZONE)
 		{
 			interactionZone = interactionZone->GetNext();
 		}
-
-		bool playerFound = false;
 
 		for (b2ContactEdge* edge = interactionZone->GetBody()->GetContactList(); edge; edge = edge->next)
 		{
@@ -42,99 +57,17 @@ void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float
 				|| edge->contact->GetFixtureA()->GetUserData().pointer == INTERACTION_ZONE
 					&& edge->contact->GetFixtureB()->GetUserData().pointer == FRIENDLY_NPC)
 			{
-				//entt::entity bishop = (entt::entity)edge->contact->GetFixtureB()->GetBody()->GetUserData().pointer;
-				playerFound = true;
 				if (playerInput.fReleased)
 				{
 					dialogue.isInteracting = true;
 					reg.get<Dialogue>(dialogue.bishop1).isInteracting = true;
 					reg.get<Dialogue>(dialogue.bishop2).isInteracting = true;
-					dialogueSwitch(dialogue);
-				}
-				//main
-				if (playerInput.LMBreleased && dialogue.state == 1)
-				{
-					if (gui.get<tgui::Button>("upgradeStatsButton")->isMouseDown()) dialogue.state = 2;
-					if (gui.get<tgui::Button>("tradeButton")->isMouseDown()) dialogue.state = 3;
-					if (gui.get<tgui::Button>("exitButton")->isMouseDown()) dialogue.state = 0;
-				}
-				//increase stats
-				if (playerInput.LMBreleased && dialogue.state == 2)
-				{
-					StatsSystem statsSystem;
-					Stats& stats = reg.get<Stats>(entity);
-					Inventory& essence = reg.get<Inventory>(entity);
-					if (gui.get<tgui::Button>("VITbutton")->isMouseDown())
-					{
-						statsSystem.increaseChar(reg, entity, stats, essence, VIT);
-						updateStats(reg, gui, entity);
-					}
-					else if (gui.get<tgui::Button>("STRbutton")->isMouseDown())
-					{
-						statsSystem.increaseChar(reg, entity, stats, essence, STR);
-						updateStats(reg, gui, entity);
-					}
-					else if (gui.get<tgui::Button>("ENDbutton")->isMouseDown())
-					{
-						statsSystem.increaseChar(reg, entity, stats, essence, END);
-						updateStats(reg, gui, entity);
-					}
-					else if (gui.get<tgui::Button>("AGIbutton")->isMouseDown())
-					{
-						statsSystem.increaseChar(reg, entity, stats, essence, AGI);
-						updateStats(reg, gui, entity);
-					}
-					else if (gui.get<tgui::Button>("INTbutton")->isMouseDown())
-					{
-						statsSystem.increaseChar(reg, entity, stats, essence, INTT);
-						updateStats(reg, gui, entity);
-					}
-				}
-				//decrease stats
-				if (playerInput.RMBreleased && dialogue.state == 2 && config.isFullscreen)
-				{
-					sf::Vector2f mousePos = sf::Vector2f(
-						sf::Mouse::getPosition().x / 1920.f * 2560.f - 650.f, 
-						sf::Mouse::getPosition().y / 1920.f * 2560.f - 285.f
-					);
-					StatsSystem statsSystem;
-					Stats& stats = reg.get<Stats>(entity);
-					Inventory& essence = reg.get<Inventory>(entity);
-					if (gui.get<tgui::Button>("VITbutton")->isMouseOnWidget(mousePos))
-					{
-						statsSystem.decreaseChar(reg, entity, stats, essence, VIT);
-						updateStats(reg, gui, entity);
-					}
-					else if (gui.get<tgui::Button>("STRbutton")->isMouseOnWidget(mousePos))
-					{
-						statsSystem.decreaseChar(reg, entity, stats, essence, STR);
-						updateStats(reg, gui, entity);
-					}
-					else if (gui.get<tgui::Button>("ENDbutton")->isMouseOnWidget(mousePos))
-					{
-						statsSystem.decreaseChar(reg, entity, stats, essence, END);
-						updateStats(reg, gui, entity);
-					}
-					else if (gui.get<tgui::Button>("AGIbutton")->isMouseOnWidget(mousePos))
-					{
-						statsSystem.decreaseChar(reg, entity, stats, essence, AGI);
-						updateStats(reg, gui, entity);
-					}
-					else if (gui.get<tgui::Button>("INTbutton")->isMouseOnWidget(mousePos))
-					{
-						statsSystem.decreaseChar(reg, entity, stats, essence, INTT);
-						updateStats(reg, gui, entity);
-					}
+					gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(true);
 				}
 			}
 		}
 
-		if (!playerFound)
-		{
-			dialogue.state = 0;
-		}
-
-		if (dialogue.state == 0)
+		if (!gui.get<tgui::Panel>("mainDialoguePanel")->isVisible())
 		{
 			dialogue.isInteracting = false;
 			reg.get<Dialogue>(dialogue.bishop1).isInteracting = false;
@@ -145,36 +78,28 @@ void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float
 
 void DialogueSystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
-	auto view = reg.view<Dialogue>();
-	for (auto entity : view)
-	{
-		Dialogue& dialogue = reg.get<Dialogue>(entity);
-		switch (dialogue.state)
-		{
-		case 0:
-			gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(false);
-			gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(false);
-			gui.get<tgui::Panel>("tradePanel")->setVisible(false);
-			break;
-		case 1:
-			gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(true);
-			gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(false);
-			gui.get<tgui::Panel>("tradePanel")->setVisible(false);
-			break;
-		case 2:
-			gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(false);
-			gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(true);
-			gui.get<tgui::Panel>("tradePanel")->setVisible(false);
-		break;
-		case 3:
-			gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(false);
-			gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(false);
-			gui.get<tgui::Panel>("tradePanel")->setVisible(true);
-		break;
-		default:
-			break;
-		}
-	}
+	//auto view = reg.view<Dialogue>();
+	//for (auto entity : view)
+	//{
+	//	Dialogue& dialogue = reg.get<Dialogue>(entity);
+	//	switch (dialogue.state)
+	//	{
+	//	case 0:
+	//		gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(false);
+	//		gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(false);
+	//		break;
+	//	case 1:
+	//		gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(true);
+	//		gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(false);
+	//		break;
+	//	case 2:
+	//		gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(false);
+	//		gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(true);
+	//	break;
+	//	default:
+	//		break;
+	//	}
+	//}
 }
 
 void DialogueSystem::dialogueSwitch(Dialogue& dialogue)
@@ -210,7 +135,14 @@ void DialogueSystem::updateStats(entt::registry& reg, tgui::GuiSFML& gui, entt::
 	gui.get<tgui::Label>("AGIcur")->setText((tgui::String)stats.AGI);
 	gui.get<tgui::Label>("INTcur")->setText((tgui::String)stats.INT);
 
-	gui.get<tgui::Label>("ESnew")->setText((tgui::String)(essence.essence - stats.upgradeCost));
+	if (essence.essence >= stats.upgradeCost)
+	{
+		gui.get<tgui::Label>("ESnew")->setText((tgui::String)(essence.essence - stats.upgradeCost));
+	}
+	else
+	{
+		gui.get<tgui::Label>("ESnew")->setText("Not enough essence.");
+	}
 	gui.get<tgui::Label>("VITnew")->setText((tgui::String)(stats.VIT+1));
 	gui.get<tgui::Label>("STRnew")->setText((tgui::String)(stats.STR+1));
 	gui.get<tgui::Label>("ENDnew")->setText((tgui::String)(stats.END+1));
@@ -226,4 +158,36 @@ void DialogueSystem::updateStats(entt::registry& reg, tgui::GuiSFML& gui, entt::
 	gui.get<tgui::Label>("DMGnew")->setText((tgui::String)statsSystem.newDamage(stats, 1));
 	gui.get<tgui::Label>("STMnew")->setText((tgui::String)statsSystem.newStamina(stats, 1));
 	gui.get<tgui::Label>("DCDnew")->setText((tgui::String)statsSystem.newDashCD(stats, 1));
+}
+
+void DialogueSystem::onUpgradeClick(entt::registry& reg, tgui::GuiSFML& gui)
+{
+	auto view = reg.view<Player>();
+	for (auto& entity : view)
+	{
+		bool isVisible = gui.get<tgui::Panel>("upgradeStatsPanel")->isVisible();
+
+		gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(!isVisible);
+
+		updateStats(reg, gui, entity);
+	}
+}
+
+void DialogueSystem::onExitClick(entt::registry& reg, tgui::GuiSFML& gui)
+{
+	bool isVisible = gui.get<tgui::Panel>("mainDialoguePanel")->isVisible();
+	gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(!isVisible);
+}
+
+void DialogueSystem::onStatClick(entt::registry& reg, tgui::GuiSFML& gui, unsigned int stat)
+{
+	auto view = reg.view<Player>();
+	for (auto& entity : view)
+	{
+		StatsSystem statsSystem;
+		Stats& stats = reg.get<Stats>(entity);
+		Inventory& essence = reg.get<Inventory>(entity);
+		statsSystem.increaseChar(reg, entity, stats, essence, (charName)stat);
+		updateStats(reg, gui, entity);
+	}
 }

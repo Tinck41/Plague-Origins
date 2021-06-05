@@ -14,6 +14,9 @@ GameScreen::GameScreen()
 	}
 	mapLoader.~TilemapParser();
 
+	// AMBIENT AUDIO
+	Entity ambient = Entity(registry.create(), this);
+	ambient.AddComponent<AmbienceAudioSource>();
 
 	start();
 }
@@ -71,9 +74,6 @@ void GameScreen::start()
 	playerEnt.AddComponent<Attack>(playerEnt.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange, ENEMY_NPC | FRIENDLY_NPC);
 	playerEnt.AddComponent<Dash>(playerStats.AGI);
 
-	playerEnt.GetComponent<Inventory>().items.push_back(ring1);
-	playerEnt.GetComponent<Inventory>().items.push_back(ring2);
-
 	//BISHOPS
 
 	//bishop1
@@ -129,6 +129,24 @@ void GameScreen::start()
 	playerEnt.GetComponent<Player>().bossBody = bossEnt.GetComponent<RigidBody>().body;
 	playerEnt.GetComponent<Dialogue>().bishop1 = bishopEnt1;
 	playerEnt.GetComponent<Dialogue>().bishop2 = bishopEnt2;
+	
+	// RINGS
+	ring1 = Entity(registry.create(), this);
+	ring1.AddComponent<Item>("Broken ring", RING);
+	ring1.AddComponent<ItemOwner>(playerEnt);
+	ring1.AddComponent<Description>("It's absolutely trash... Why are you carrying that?");
+	ring1.AddComponent<Icon>("./Assets/UI/trashRing.png");
+	ring1.AddComponent<HealthBoost>(-0.1f);
+
+	ring2 = Entity(registry.create(), this);
+	ring2.AddComponent<Item>("Health ring", RING);
+	ring2.AddComponent<ItemOwner>(playerEnt);
+	ring2.AddComponent<Description>("Ring with a dull red stone.\n\nIncreases owner health.");
+	ring2.AddComponent<Icon>("./Assets/UI/healthRing.png");
+	ring2.AddComponent<HealthBoost>(.2f);
+
+	playerEnt.GetComponent<Inventory>().items.push_back(ring1);
+	playerEnt.GetComponent<Inventory>().items.push_back(ring2);
 
 	//DOGS
 
