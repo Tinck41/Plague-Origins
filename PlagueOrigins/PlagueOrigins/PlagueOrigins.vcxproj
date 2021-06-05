@@ -261,6 +261,7 @@
     <ClInclude Include="Src\ECS\Systems\InventorySystem.h" />
     <ClInclude Include="Src\ECS\Components\Patrol.h" />
     <ClInclude Include="Src\ECS\Systems\DisposalSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\IOnDestroySystem.h" />
     <ClInclude Include="Src\ECS\Systems\OverlaySystem.h" />
     <ClInclude Include="Src\ECS\Systems\PatrolSystem.h" />
     <ClInclude Include="Src\ECS\Systems\RestartSystem.h" />

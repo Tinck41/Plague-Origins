@@ -17,7 +17,7 @@ void OverlaySystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 	mainMenuButton->onMouseRelease(&OverlaySystem::onMainMenuButtonClick, this, std::ref(reg), std::ref(gui));
 	exitButton->onMouseRelease(&OverlaySystem::onExitButtonClick, this, std::ref(reg), std::ref(gui));
 }
-
+	
 void OverlaySystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 {
 	auto view = reg.view<PlayerInput>();

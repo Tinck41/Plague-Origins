@@ -49,7 +49,7 @@ void HealthSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& 
 
 		healthBar->setPosition(transform.position.x - rigidBody.size.x / 2.f, transform.position.y - rigidBody.size.y / 0.7f);
 
-		if (health.curhealth == health.maxHealth)
+		if (health.curhealth == health.maxHealth || health.curhealth <= 0)
 		{
 			healthBar->setVisible(false);
 		}
@@ -95,6 +95,23 @@ void HealthSystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::G
 		healthBar->setValue(healthValue);
 
 		healthBar->setPosition(gui.mapPixelToView(window.mapCoordsToPixel(healthBar->getPosition()).x, window.mapCoordsToPixel(healthBar->getPosition()).y));
+	}
+}
+
+void HealthSystem::onDestroy(entt::registry& reg, tgui::GuiSFML& gui)
+{
+	auto view = reg.view<Health, Tag>();
+	for (auto& entity : view)
+	{
+		Health& health = reg.get<Health>(entity);
+		Tag& tag = reg.get<Tag>(entity);
+
+		if (tag.name == "Hero") continue;
+
+		std::string widgetName = std::to_string(uint32_t(entity)) + "healthBar";
+		auto healthBar = gui.get<tgui::ProgressBar>(widgetName);
+
+		gui.remove(healthBar);
 	}
 }
 

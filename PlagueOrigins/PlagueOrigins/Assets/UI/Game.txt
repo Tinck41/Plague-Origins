@@ -1,4 +1,12 @@
 Renderer.1 {
+    BackgroundColor = transparent;
+    BorderColor = #3C3C3C;
+    Borders = (0, 0, 0, 0);
+    TextColor = #7D7D7D;
+    TextureBackground = None;
+}
+
+Renderer.2 {
     BackgroundColor = #FFFFFF00;
     BackgroundColorDisabled = transparent;
     BackgroundColorDown = transparent;
@@ -21,14 +29,6 @@ Renderer.1 {
     TextureDownHover = None;
     TextureFocused = None;
     TextureHover = None;
-}
-
-Renderer.2 {
-    BackgroundColor = transparent;
-    BorderColor = #3C3C3C;
-    Borders = (0, 0, 0, 0);
-    TextColor = #7D7D7D;
-    TextureBackground = None;
 }
 
 Panel.statusBar {
@@ -299,7 +299,7 @@ Panel.mainDialoguePanel {
 
     Button.upgradeStatsButton {
         Position = (50, 50);
-        Renderer = &1;
+        Renderer = &2;
         Size = (800, 100);
         Text = "Upgrade stats";
         TextSize = 35;
@@ -307,7 +307,7 @@ Panel.mainDialoguePanel {
 
     Button.tradeButton {
         Position = (50, 200);
-        Renderer = &1;
+        Renderer = &2;
         Size = (800, 100);
         Text = Trade;
         TextSize = 35;
@@ -315,7 +315,7 @@ Panel.mainDialoguePanel {
 
     Button.exitButton {
         Position = (50, 350);
-        Renderer = &1;
+        Renderer = &2;
         Size = (800, 100);
         Text = Exit;
         TextSize = 35;
@@ -344,7 +344,7 @@ Panel.upgradeStatsPanel {
 
     Button.VITbutton {
         Position = (51, 221);
-        Renderer = &1;
+        Renderer = &2;
         Size = (195, 98);
         Text = Vitality;
         TextSize = 25;
@@ -352,7 +352,7 @@ Panel.upgradeStatsPanel {
 
     Button.STRbutton {
         Position = (51, 346);
-        Renderer = &1;
+        Renderer = &2;
         Size = (195, 98);
         Text = Strength;
         TextSize = 25;
@@ -360,7 +360,7 @@ Panel.upgradeStatsPanel {
 
     Button.ENDbutton {
         Position = (51, 471);
-        Renderer = &1;
+        Renderer = &2;
         Size = (195, 98);
         Text = Endurance;
         TextSize = 25;
@@ -368,7 +368,7 @@ Panel.upgradeStatsPanel {
 
     Button.AGIbutton {
         Position = (51, 596);
-        Renderer = &1;
+        Renderer = &2;
         Size = (195, 98);
         Text = Agility;
         TextSize = 25;
@@ -376,7 +376,7 @@ Panel.upgradeStatsPanel {
 
     Button.INTbutton {
         Position = (51, 722);
-        Renderer = &1;
+        Renderer = &2;
         Size = (195, 98);
         Text = Intelligence;
         TextSize = 25;
@@ -385,7 +385,7 @@ Panel.upgradeStatsPanel {
     Label.VITcur {
         HorizontalAlignment = Center;
         Position = (250, 220);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 100.258);
         Text = 5;
@@ -396,7 +396,7 @@ Panel.upgradeStatsPanel {
     Label.STRcur {
         HorizontalAlignment = Center;
         Position = (250, 350);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 90.258);
         Text = 5;
@@ -407,7 +407,7 @@ Panel.upgradeStatsPanel {
     Label.ENDcur {
         HorizontalAlignment = Center;
         Position = (250, 470);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 100.258);
         Text = 5;
@@ -418,7 +418,7 @@ Panel.upgradeStatsPanel {
     Label.AGIcur {
         HorizontalAlignment = Center;
         Position = (250, 600);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 90.258);
         Text = 5;
@@ -429,7 +429,7 @@ Panel.upgradeStatsPanel {
     Label.INTcur {
         HorizontalAlignment = Center;
         Position = (250, 720);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 100.258);
         Text = 5;
@@ -440,7 +440,7 @@ Panel.upgradeStatsPanel {
     Label.VITnew {
         HorizontalAlignment = Center;
         Position = (490, 220);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 100.258);
         Text = 5;
@@ -451,7 +451,7 @@ Panel.upgradeStatsPanel {
     Label.STRnew {
         HorizontalAlignment = Center;
         Position = (490, 350);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 90.258);
         Text = 5;
@@ -462,7 +462,7 @@ Panel.upgradeStatsPanel {
     Label.ENDnew {
         HorizontalAlignment = Center;
         Position = (490, 470);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 100.258);
         Text = 5;
@@ -473,7 +473,7 @@ Panel.upgradeStatsPanel {
     Label.AGInew {
         HorizontalAlignment = Center;
         Position = (490, 600);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 90.258);
         Text = 5;
@@ -484,7 +484,7 @@ Panel.upgradeStatsPanel {
     Label.INTnew {
         HorizontalAlignment = Center;
         Position = (490, 720);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 100.258);
         Text = 5;
@@ -495,7 +495,7 @@ Panel.upgradeStatsPanel {
     Label.ar2 {
         HorizontalAlignment = Center;
         Position = (360, 220);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 100.258);
         Text = "=>";
@@ -506,7 +506,7 @@ Panel.upgradeStatsPanel {
     Label.ar3 {
         HorizontalAlignment = Center;
         Position = (360, 350);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 90.258);
         Text = "=>";
@@ -517,7 +517,7 @@ Panel.upgradeStatsPanel {
     Label.ar4 {
         HorizontalAlignment = Center;
         Position = (360, 470);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 100.258);
         Text = "=>";
@@ -528,7 +528,7 @@ Panel.upgradeStatsPanel {
     Label.ar5 {
         HorizontalAlignment = Center;
         Position = (360, 600);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 90.258);
         Text = "=>";
@@ -539,7 +539,7 @@ Panel.upgradeStatsPanel {
     Label.ar6 {
         HorizontalAlignment = Center;
         Position = (360, 720);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 100.258);
         Text = "=>";
@@ -550,7 +550,7 @@ Panel.upgradeStatsPanel {
     Label.ESlabel {
         HorizontalAlignment = Center;
         Position = (51, 155);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (195, 50);
         Text = Essence;
@@ -561,7 +561,7 @@ Panel.upgradeStatsPanel {
     Label.EScur {
         HorizontalAlignment = Center;
         Position = (250, 155);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -572,7 +572,7 @@ Panel.upgradeStatsPanel {
     Label.ar1 {
         HorizontalAlignment = Center;
         Position = (360, 155);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -583,7 +583,7 @@ Panel.upgradeStatsPanel {
     Label.ESnew {
         HorizontalAlignment = Center;
         Position = (490, 155);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -594,7 +594,7 @@ Panel.upgradeStatsPanel {
     Label.Header {
         HorizontalAlignment = Center;
         Position = (50, 35);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (1250, 50);
         Text = "Stats upgrade";
@@ -604,7 +604,7 @@ Panel.upgradeStatsPanel {
 
     Label.HPlabel {
         Position = (700, 155);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (130, 50);
         Text = "HP:";
@@ -615,7 +615,7 @@ Panel.upgradeStatsPanel {
     Label.HPcur {
         HorizontalAlignment = Center;
         Position = (830, 155);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -626,7 +626,7 @@ Panel.upgradeStatsPanel {
     Label.ar7 {
         HorizontalAlignment = Center;
         Position = (930, 155);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -637,7 +637,7 @@ Panel.upgradeStatsPanel {
     Label.HPnew {
         HorizontalAlignment = Center;
         Position = (1030, 155);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -647,7 +647,7 @@ Panel.upgradeStatsPanel {
 
     Label.DMGlabel {
         Position = (700, 235);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (130, 50);
         Text = "Damage:";
@@ -657,7 +657,7 @@ Panel.upgradeStatsPanel {
 
     Label.STMlabel {
         Position = (700, 335);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (130, 50);
         Text = "Stamina:";
@@ -667,7 +667,7 @@ Panel.upgradeStatsPanel {
 
     Label.DCDlabel {
         Position = (700, 435);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (130, 50);
         Text = "Dash CD:";
@@ -678,7 +678,7 @@ Panel.upgradeStatsPanel {
     Label.DMGcur {
         HorizontalAlignment = Center;
         Position = (830, 235);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -689,7 +689,7 @@ Panel.upgradeStatsPanel {
     Label.STMcur {
         HorizontalAlignment = Center;
         Position = (830, 335);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -700,7 +700,7 @@ Panel.upgradeStatsPanel {
     Label.DCDcur {
         HorizontalAlignment = Center;
         Position = (830, 435);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -711,7 +711,7 @@ Panel.upgradeStatsPanel {
     Label.ar8 {
         HorizontalAlignment = Center;
         Position = (930, 235);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -722,7 +722,7 @@ Panel.upgradeStatsPanel {
     Label.ar9 {
         HorizontalAlignment = Center;
         Position = (930, 335);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -733,7 +733,7 @@ Panel.upgradeStatsPanel {
     Label.ar10 {
         HorizontalAlignment = Center;
         Position = (930, 435);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -744,7 +744,7 @@ Panel.upgradeStatsPanel {
     Label.DMGnew {
         HorizontalAlignment = Center;
         Position = (1030, 235);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -755,7 +755,7 @@ Panel.upgradeStatsPanel {
     Label.STMnew {
         HorizontalAlignment = Center;
         Position = (1030, 335);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -766,7 +766,7 @@ Panel.upgradeStatsPanel {
     Label.DCDnew {
         HorizontalAlignment = Center;
         Position = (1030, 435);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -778,7 +778,7 @@ Panel.upgradeStatsPanel {
         HorizontalAlignment = Center;
         MouseCursor = NotAllowed;
         Position = (240, 100);
-        Renderer = &2;
+        Renderer = &1;
         Size = (120, 40);
         Text = "Current:";
         TextSize = 25;
@@ -789,7 +789,7 @@ Panel.upgradeStatsPanel {
         HorizontalAlignment = Center;
         MouseCursor = NotAllowed;
         Position = (480, 100);
-        Renderer = &2;
+        Renderer = &1;
         Size = (120, 40);
         Text = "Result:";
         TextSize = 25;
@@ -800,7 +800,7 @@ Panel.upgradeStatsPanel {
         HorizontalAlignment = Center;
         MouseCursor = NotAllowed;
         Position = (820, 100);
-        Renderer = &2;
+        Renderer = &1;
         Size = (120, 40);
         Text = "Current:";
         TextSize = 25;
@@ -811,7 +811,7 @@ Panel.upgradeStatsPanel {
         HorizontalAlignment = Center;
         MouseCursor = NotAllowed;
         Position = (1020, 100);
-        Renderer = &2;
+        Renderer = &1;
         Size = (120, 40);
         Text = "Result:";
         TextSize = 25;
@@ -842,7 +842,7 @@ Panel.tradePanel {
     Label.tradingHeader {
         HorizontalAlignment = Center;
         Position = (50, 50);
-        Renderer = &2;
+        Renderer = &1;
         Size = (767, 50);
         Text = Trade;
         TextSize = 36;
@@ -850,7 +850,7 @@ Panel.tradePanel {
 
     Label.tradeESlabel {
         Position = (80, 135);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (150, 50);
         Text = "Essence:";
@@ -861,7 +861,7 @@ Panel.tradePanel {
     Label.tradeEScur {
         HorizontalAlignment = Center;
         Position = (230, 135);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (120, 50);
         Text = 5;
@@ -872,7 +872,7 @@ Panel.tradePanel {
     Label.ar11 {
         HorizontalAlignment = Center;
         Position = (360, 135);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -883,7 +883,7 @@ Panel.tradePanel {
     Label.tradeESnew {
         HorizontalAlignment = Center;
         Position = (490, 135);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -893,21 +893,21 @@ Panel.tradePanel {
 
     Button.itemButton1 {
         Position = (52, 221);
-        Renderer = &1;
+        Renderer = &2;
         Size = (194, 195);
         TextSize = 13;
     }
 
     Button.itemButton2 {
         Position = (52, 471);
-        Renderer = &1;
+        Renderer = &2;
         Size = (195, 196);
         TextSize = 13;
     }
 
     Label.item1Name {
         Position = (277, 220);
-        Renderer = &2;
+        Renderer = &1;
         Size = (540, 50);
         Text = Name;
         TextSize = 30;
@@ -916,7 +916,7 @@ Panel.tradePanel {
 
     Label.item1Effects {
         Position = (277, 270);
-        Renderer = &2;
+        Renderer = &1;
         Size = (540, 50);
         Text = "Effects:";
         TextSize = 30;
@@ -925,7 +925,7 @@ Panel.tradePanel {
 
     Label.i1e1ATR {
         Position = (277, 320);
-        Renderer = &2;
+        Renderer = &1;
         Size = (170, 50);
         Text = "HP:";
         TextSize = 30;
@@ -934,7 +934,7 @@ Panel.tradePanel {
 
     Label.i1e2ATR {
         Position = (277, 370);
-        Renderer = &2;
+        Renderer = &1;
         Size = (170, 50);
         Text = "Damage:";
         TextSize = 30;
@@ -944,7 +944,7 @@ Panel.tradePanel {
     Label.i1e1ATRcur {
         HorizontalAlignment = Center;
         Position = (447, 320);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -955,7 +955,7 @@ Panel.tradePanel {
     Label.ar12 {
         HorizontalAlignment = Center;
         Position = (550, 320);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -966,7 +966,7 @@ Panel.tradePanel {
     Label.i1e1ATRnew {
         HorizontalAlignment = Center;
         Position = (657, 320);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -977,7 +977,7 @@ Panel.tradePanel {
     Label.i1e2ATRcur {
         HorizontalAlignment = Center;
         Position = (447, 370);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -988,7 +988,7 @@ Panel.tradePanel {
     Label.ar13 {
         HorizontalAlignment = Center;
         Position = (550, 370);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -999,7 +999,7 @@ Panel.tradePanel {
     Label.i1e2ATRnew {
         HorizontalAlignment = Center;
         Position = (657, 370);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -1009,7 +1009,7 @@ Panel.tradePanel {
 
     Label.item2Name {
         Position = (277, 470);
-        Renderer = &2;
+        Renderer = &1;
         Size = (540, 50);
         Text = Name;
         TextSize = 30;
@@ -1018,7 +1018,7 @@ Panel.tradePanel {
 
     Label.item2Effects {
         Position = (277, 520);
-        Renderer = &2;
+        Renderer = &1;
         Size = (540, 50);
         Text = "Effects:";
         TextSize = 30;
@@ -1027,7 +1027,7 @@ Panel.tradePanel {
 
     Label.i2e1ATR {
         Position = (277, 570);
-        Renderer = &2;
+        Renderer = &1;
         Size = (170, 50);
         Text = Stamina;
         TextSize = 30;
@@ -1037,7 +1037,7 @@ Panel.tradePanel {
     Label.i2e1ATRcur {
         HorizontalAlignment = Center;
         Position = (447, 570);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -1048,7 +1048,7 @@ Panel.tradePanel {
     Label.ar14 {
         HorizontalAlignment = Center;
         Position = (550, 570);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -1059,7 +1059,7 @@ Panel.tradePanel {
     Label.i2e1ATRnew {
         HorizontalAlignment = Center;
         Position = (657, 570);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -1069,7 +1069,7 @@ Panel.tradePanel {
 
     Label.i2e2ATR {
         Position = (277, 620);
-        Renderer = &2;
+        Renderer = &1;
         Size = (170, 50);
         Text = "Damage:";
         TextSize = 30;
@@ -1079,7 +1079,7 @@ Panel.tradePanel {
     Label.i2e2ATRcur {
         HorizontalAlignment = Center;
         Position = (447, 620);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -1090,7 +1090,7 @@ Panel.tradePanel {
     Label.ar15 {
         HorizontalAlignment = Center;
         Position = (550, 620);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = "=>";
@@ -1101,7 +1101,7 @@ Panel.tradePanel {
     Label.i2e2ATRnew {
         HorizontalAlignment = Center;
         Position = (657, 620);
-        Renderer = &2;
+        Renderer = &1;
         ScrollbarPolicy = Never;
         Size = (100, 50);
         Text = 5;
@@ -1348,6 +1348,7 @@ Panel.gameOverPanel {
         Text = "You were slained by The Plague.\nHumanity now have no hope...";
         TextSize = 72;
         VerticalAlignment = Center;
+        Visible = false;
 
         Renderer {
             BackgroundColor = transparent;
@@ -1364,6 +1365,7 @@ Panel.gameOverPanel {
         Text = "The Plague was stopped\nwith the help of mighty protagonist";
         TextSize = 72;
         VerticalAlignment = Center;
+        Visible = false;
 
         Renderer {
             BackgroundColor = transparent;
@@ -1375,7 +1377,7 @@ Panel.gameOverPanel {
     }
 
     Button.retryButton {
-        Position = (560, 740);
+        Position = (830, 960);
         Size = (300, 90);
         Text = Retry;
         TextSize = 50;
@@ -1407,7 +1409,7 @@ Panel.gameOverPanel {
     }
 
     Button.exit2Button {
-        Position = (1060, 740);
+        Position = (1430, 960);
         Size = (300, 90);
         Text = Exit;
         TextSize = 50;

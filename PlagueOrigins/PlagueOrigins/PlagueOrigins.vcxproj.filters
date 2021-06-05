@@ -250,6 +250,7 @@
     <ClInclude Include="Src\ECS\Components\BossTemporal.h" />
     <ClInclude Include="Src\ECS\Components\NPC.h" />
     <ClInclude Include="Src\ECS\Systems\RestartSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\IOnDestroySystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

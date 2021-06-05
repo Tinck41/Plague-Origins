@@ -48,7 +48,7 @@ b2Body* PhysicsWorld::createRectangleBodyInternal(sf::Vector2f position, sf::Vec
 
     bodyDef.position = b2Vec2((position.x + size.x / 2) / SCALE, (position.y + size.y / 2) / SCALE);
     bodyDef.fixedRotation = true;
-    bodyDef.userData.pointer = (uint16)owner;
+    bodyDef.userData.pointer = (uint32_t)owner;
     body = world->CreateBody(&bodyDef);
 
     Shape.SetAsBox((size.x / 2) / SCALE, (size.y / 2) / SCALE);
@@ -77,7 +77,7 @@ b2Body* PhysicsWorld::createCircleBodyInternal(sf::Vector2f position, float radi
 
     bodyDef.position = b2Vec2((position.x + radius / 2) / SCALE, (position.y + radius / 2) / SCALE);
     bodyDef.fixedRotation = true;
-    bodyDef.userData.pointer = (uint16)owner;
+    bodyDef.userData.pointer = (uint32_t)owner;
     body = world->CreateBody(&bodyDef);
 
     Shape.m_radius = radius / SCALE;

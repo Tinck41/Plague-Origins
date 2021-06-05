@@ -71,6 +71,10 @@ SystemHandler::SystemHandler()
 	onCreateSystems.push_back(inventorySystem);
 	onCreateSystems.push_back(dialogueSystem);
 	onCreateSystems.push_back(healthSystem);
+
+	// OnDestroy systems
+	onDestroySystems.push_back(healthSystem);
+	onDestroySystems.push_back(physicsSystem);
 }
 
 SystemHandler::~SystemHandler()
@@ -102,5 +106,13 @@ void SystemHandler::render(entt::registry& reg, sf::RenderWindow& window, tgui::
 	for (auto& system : renderableSystems)
 	{
 		system->render(reg, window, gui);
+	}
+}
+
+void SystemHandler::onDestroy(entt::registry& reg, tgui::GuiSFML& gui)
+{
+	for (auto& system : onDestroySystems)
+	{
+		system->onDestroy(reg, gui);
 	}
 }

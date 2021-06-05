@@ -13,10 +13,10 @@ void RestartSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 			auto screenManager = reg.view<CurrentScreen>();
 			for (auto manager : screenManager)
 			{
-				std::cout << "player is dead\n";
 				CurrentScreen& currentScreen = reg.get<CurrentScreen>(manager);
 				currentScreen.gameOver = true;
 				gui.get<tgui::Panel>("gameOverPanel")->setVisible(true);
+				gui.get<tgui::Label>("winLabel")->setVisible(false);
 				gui.get<tgui::Label>("lossLabel")->setVisible(true);
 				if (gui.get<tgui::Button>("retryButton")->isMouseDown())
 				{
@@ -45,7 +45,6 @@ void RestartSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float&
 			auto screenManager = reg.view<CurrentScreen>();
 			for (auto manager : screenManager)
 			{
-				std::cout << "boss is dead\n";
 				CurrentScreen& currentScreen = reg.get<CurrentScreen>(manager);
 				currentScreen.gameOver = true;
 				gui.get<tgui::Panel>("gameOverPanel")->setVisible(true);
