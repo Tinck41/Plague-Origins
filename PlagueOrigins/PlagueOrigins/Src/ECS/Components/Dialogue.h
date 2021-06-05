@@ -27,7 +27,6 @@ struct Dialogue
 	* 0 - closed
 	* 1 - main
 	* 2 - upgrade
-	* 3 - trade
 	*/
     entt::entity bishop1;
     entt::entity bishop2;

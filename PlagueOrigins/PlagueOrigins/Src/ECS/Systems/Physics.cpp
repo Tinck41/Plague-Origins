@@ -30,3 +30,16 @@ void Physics::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFM
 		}
 	}
 }
+
+void Physics::onDestroy(entt::registry& reg, tgui::GuiSFML& gui)
+{
+	auto view = reg.view<RigidBody, Transform>();
+	for (auto& entity : view) 
+	{
+		RigidBody& rigidBody = reg.get<RigidBody>(entity);
+
+		b2Body* body = rigidBody.body;
+		body->GetWorld()->DestroyBody(body);
+		reg.destroy(entity);
+	}
+}

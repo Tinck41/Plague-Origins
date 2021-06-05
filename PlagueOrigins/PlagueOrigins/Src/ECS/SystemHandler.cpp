@@ -25,7 +25,8 @@ SystemHandler::SystemHandler()
 	auto overlaySystem		= new OverlaySystem();
 	auto inventorySystem	= new InventorySystem();
 	auto dialogueSystem		= new DialogueSystem();
-	auto effectsSysten		= new EffectsSystem();
+	auto effectsSystem		= new EffectsSystem();
+	auto restartSystem		= new RestartSystem();
 
 	// Update systems
 	updatableSystems.push_back(inputSystem);
@@ -49,7 +50,8 @@ SystemHandler::SystemHandler()
 	updatableSystems.push_back(overlaySystem);
 	updatableSystems.push_back(inventorySystem);
 	updatableSystems.push_back(dialogueSystem);
-	updatableSystems.push_back(effectsSysten);
+	updatableSystems.push_back(effectsSystem);
+	updatableSystems.push_back(restartSystem);
 
 	// Render systems
 	renderableSystems.push_back(animationSystem);
@@ -69,6 +71,10 @@ SystemHandler::SystemHandler()
 	onCreateSystems.push_back(inventorySystem);
 	onCreateSystems.push_back(dialogueSystem);
 	onCreateSystems.push_back(healthSystem);
+
+	// OnDestroy systems
+	onDestroySystems.push_back(healthSystem);
+	onDestroySystems.push_back(physicsSystem);
 }
 
 SystemHandler::~SystemHandler()
@@ -100,5 +106,13 @@ void SystemHandler::render(entt::registry& reg, sf::RenderWindow& window, tgui::
 	for (auto& system : renderableSystems)
 	{
 		system->render(reg, window, gui);
+	}
+}
+
+void SystemHandler::onDestroy(entt::registry& reg, tgui::GuiSFML& gui)
+{
+	for (auto& system : onDestroySystems)
+	{
+		system->onDestroy(reg, gui);
 	}
 }

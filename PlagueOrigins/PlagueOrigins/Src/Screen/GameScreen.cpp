@@ -14,10 +14,41 @@ GameScreen::GameScreen()
 	}
 	mapLoader.~TilemapParser();
 
+	// AMBIENT AUDIO
+	Entity ambient = Entity(registry.create(), this);
+	ambient.AddComponent<AmbienceAudioSource>();
+
+	start();
+}
+
+GameScreen::~GameScreen()
+{
+
+}
+
+void GameScreen::exit()
+{
+	//registry.clear<Health>();
+
+	registry.destroy(playerEnt);
+	registry.destroy(bishopEnt1);
+	registry.destroy(bishopEnt2);
+	registry.destroy(bossEnt);
+	registry.destroy(dogEnt1);
+	registry.destroy(dogEnt2);
+	registry.destroy(dogEnt3);
+	registry.destroy(dogEnt4);
+	registry.destroy(dogEnt5);
+	registry.destroy(dogEnt6);
+	registry.destroy(dogEnt7);
+}
+
+void GameScreen::start()
+{
 	gui.loadWidgetsFromFile("./Assets/UI/Game.txt");
 
 	screenManager = Entity(registry.create(), this);
-	
+
 	screenManager.AddComponent<CurrentScreen>(ScreenType::GAME);
 
 	//PLAYER
@@ -42,28 +73,6 @@ GameScreen::GameScreen()
 	playerEnt.AddComponent<Stamina>(playerStats.END);
 	playerEnt.AddComponent<Attack>(playerEnt.GetComponent<RigidBody>().body, playerStats.STR, config.playerAttackRange, ENEMY_NPC | FRIENDLY_NPC);
 	playerEnt.AddComponent<Dash>(playerStats.AGI);
-
-
-	//AMBIENT AUDIO
-	Entity ambient = Entity(registry.create(), this);
-	ambient.AddComponent<AmbienceAudioSource>();
-
-	Entity ring1 = Entity(registry.create(), this);
-	ring1.AddComponent<Item>("Broken ring", RING);
-	ring1.AddComponent<ItemOwner>(playerEnt);
-	ring1.AddComponent<Description>("It's absolutely trash... Why are you carrying that?");
-	ring1.AddComponent<Icon>("./Assets/UI/trashRing.png");
-	ring1.AddComponent<HealthBoost>(-0.1f);
-
-	Entity ring2 = Entity(registry.create(), this);
-	ring2.AddComponent<Item>("Health ring", RING);
-	ring2.AddComponent<ItemOwner>(playerEnt);
-	ring2.AddComponent<Description>("Ring with a dull red stone.\n\nIncreases owner health.");
-	ring2.AddComponent<Icon>("./Assets/UI/healthRing.png");
-	ring2.AddComponent<HealthBoost>(.2f);
-
-	playerEnt.GetComponent<Inventory>().items.push_back(ring1);
-	playerEnt.GetComponent<Inventory>().items.push_back(ring2);
 
 	//BISHOPS
 
@@ -120,6 +129,24 @@ GameScreen::GameScreen()
 	playerEnt.GetComponent<Player>().bossBody = bossEnt.GetComponent<RigidBody>().body;
 	playerEnt.GetComponent<Dialogue>().bishop1 = bishopEnt1;
 	playerEnt.GetComponent<Dialogue>().bishop2 = bishopEnt2;
+	
+	// RINGS
+	ring1 = Entity(registry.create(), this);
+	ring1.AddComponent<Item>("Broken ring", RING);
+	ring1.AddComponent<ItemOwner>(playerEnt);
+	ring1.AddComponent<Description>("It's absolutely trash... Why are you carrying that?");
+	ring1.AddComponent<Icon>("./Assets/UI/trashRing.png");
+	ring1.AddComponent<HealthBoost>(-0.1f);
+
+	ring2 = Entity(registry.create(), this);
+	ring2.AddComponent<Item>("Health ring", RING);
+	ring2.AddComponent<ItemOwner>(playerEnt);
+	ring2.AddComponent<Description>("Ring with a dull red stone.\n\nIncreases owner health.");
+	ring2.AddComponent<Icon>("./Assets/UI/healthRing.png");
+	ring2.AddComponent<HealthBoost>(.2f);
+
+	playerEnt.GetComponent<Inventory>().items.push_back(ring1);
+	playerEnt.GetComponent<Inventory>().items.push_back(ring2);
 
 	//DOGS
 
@@ -285,13 +312,17 @@ GameScreen::GameScreen()
 	systems.onCreate(registry, gui);
 }
 
-GameScreen::~GameScreen()
-{
-
-}
-
 void GameScreen::update(const float& dt)
 {
+	auto manager = screenManager.GetComponent<CurrentScreen>();
+	if (manager.restart)
+	{
+		//exit();
+		systems.onDestroy(registry, gui);
+		start();
+		manager.restart = false;
+		return;
+	}
 	map.update(dt);
 	GlobalFactory::Instance().factory.update(dt);
 	systems.update(registry, gui, dt);
@@ -305,7 +336,7 @@ ScreenType GameScreen::render(sf::RenderWindow& window)
 	sf::Event event;
 	while (window.pollEvent(event))
 	{
-		if (event.type == sf::Event::Closed)
+		if (event.type == sf::Event::Closed || screenManager.GetComponent<CurrentScreen>().exit)
 			window.close();
 		
 		gui.handleEvent(event);

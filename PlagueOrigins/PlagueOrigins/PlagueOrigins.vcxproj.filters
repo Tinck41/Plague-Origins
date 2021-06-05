@@ -93,6 +93,7 @@
     <ClCompile Include="Src\FSM\States\Boss\BossDeathState.cpp" />
     <ClCompile Include="Src\FSM\States\Boss\BossIdleState.cpp" />
     <ClCompile Include="Src\FSM\States\Boss\BossAttackState.cpp" />
+    <ClCompile Include="Src\ECS\Systems\RestartSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Core\Game.h" />
@@ -248,6 +249,8 @@
     <ClInclude Include="Src\FSM\States\Boss\BossAggroState.h" />
     <ClInclude Include="Src\ECS\Components\BossTemporal.h" />
     <ClInclude Include="Src\ECS\Components\NPC.h" />
+    <ClInclude Include="Src\ECS\Systems\RestartSystem.h" />
+    <ClInclude Include="Src\ECS\Systems\IOnDestroySystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Tilemap">

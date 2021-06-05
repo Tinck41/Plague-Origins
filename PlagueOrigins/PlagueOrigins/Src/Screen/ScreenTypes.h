@@ -5,5 +5,7 @@ enum ScreenType
 	LOADING,
 	GAME,
 	MAIN_MENU,
-	EXIT
+	EXIT,
+	WIN,
+	LOSS
 };

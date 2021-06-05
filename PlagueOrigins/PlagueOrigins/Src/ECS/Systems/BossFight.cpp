@@ -9,7 +9,11 @@ void BossFight::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 		BossFightArena& bossFightArena = reg.get<BossFightArena>(entity);
 		RigidBody& rigidBody = reg.get<RigidBody>(entity);
 
-		checkForWin(reg);
+		checkForTrigger(reg);
+		checkBoss(reg, bossFightArena);
+		checkPlayer(reg, bossFightArena);
+
+		if (bossFightArena.bossIsDead || bossFightArena.playerIsDead) return;
 
 		if (bossFightArena.arenaClosed) return;
 
@@ -55,7 +59,7 @@ void BossFight::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)
 	}
 }
 
-void BossFight::checkForWin(entt::registry& reg)
+void BossFight::checkForTrigger(entt::registry& reg)
 {
 	auto view = reg.view<Boss>();
 	for (auto entity : view)
@@ -69,6 +73,59 @@ void BossFight::checkForWin(entt::registry& reg)
 	}
 }
 
+void BossFight::checkBoss(entt::registry& reg, BossFightArena& bossFightArena)
+{
+	auto view = reg.view<Boss, Health>();
+	for (auto entity : view)
+	{
+		Health& health = reg.get<Health>(entity);
+		Boss& boss = reg.get<Boss>(entity);
+
+		if (health.curhealth <= 0)
+		{
+			bossFightArena.bossIsDead = true;
+			bossFightArena.arenaClosed = false;
+			for (size_t i = 0; i < bossFightArena.doors.size(); i++)
+			{
+				RigidBody& doorRB = reg.get<RigidBody>(entt::entity(bossFightArena.doors[i]));
+
+				doorRB.body->GetFixtureList()->SetSensor(true);
+			}
+			boss.isBossFight = false;
+			setBossFightMusic(reg, false);
+		}
+		else
+		{
+			bossFightArena.bossIsDead = false;
+		}
+	}
+}
+
+void BossFight::checkPlayer(entt::registry& reg, BossFightArena& bossFightArena)
+{
+	auto view = reg.view<Player, Health>();
+	for (auto entity : view)
+	{
+		Health& health = reg.get<Health>(entity);
+
+		if (health.curhealth <= 0)
+		{
+			bossFightArena.arenaClosed = false;
+			for (size_t i = 0; i < bossFightArena.doors.size(); i++)
+			{
+				RigidBody& doorRB = reg.get<RigidBody>(entt::entity(bossFightArena.doors[i]));
+
+				doorRB.body->GetFixtureList()->SetSensor(true);
+			}
+			bossFightArena.playerIsDead = true;
+		}
+		else
+		{
+			bossFightArena.playerIsDead = false;
+		}
+	}
+}
+
 void BossFight::setBossFightMusic(entt::registry& reg, bool playMusic)
 {
 	auto view = reg.view<AmbienceAudioSource>();
@@ -78,6 +135,6 @@ void BossFight::setBossFightMusic(entt::registry& reg, bool playMusic)
 
 		soundSource.playBossFightSound = playMusic;
 		soundSource.loopBossFightSound = playMusic;
-		soundSource.bossFightSound.setVolume(10.f);
+		soundSource.bossFightSound.setVolume(5.f);
 	}
 }
