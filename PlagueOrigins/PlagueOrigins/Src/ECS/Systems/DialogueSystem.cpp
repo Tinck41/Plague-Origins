@@ -78,28 +78,7 @@ void DialogueSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float
 
 void DialogueSystem::render(entt::registry& reg, sf::RenderWindow& window, tgui::GuiSFML& gui)
 {
-	//auto view = reg.view<Dialogue>();
-	//for (auto entity : view)
-	//{
-	//	Dialogue& dialogue = reg.get<Dialogue>(entity);
-	//	switch (dialogue.state)
-	//	{
-	//	case 0:
-	//		gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(false);
-	//		gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(false);
-	//		break;
-	//	case 1:
-	//		gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(true);
-	//		gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(false);
-	//		break;
-	//	case 2:
-	//		gui.get<tgui::Panel>("mainDialoguePanel")->setVisible(false);
-	//		gui.get<tgui::Panel>("upgradeStatsPanel")->setVisible(true);
-	//	break;
-	//	default:
-	//		break;
-	//	}
-	//}
+
 }
 
 void DialogueSystem::dialogueSwitch(Dialogue& dialogue)
@@ -141,7 +120,7 @@ void DialogueSystem::updateStats(entt::registry& reg, tgui::GuiSFML& gui, entt::
 	}
 	else
 	{
-		gui.get<tgui::Label>("ESnew")->setText("Not enough essence.");
+		gui.get<tgui::Label>("ESnew")->setText("Not enough.");
 	}
 	gui.get<tgui::Label>("VITnew")->setText((tgui::String)(stats.VIT+1));
 	gui.get<tgui::Label>("STRnew")->setText((tgui::String)(stats.STR+1));

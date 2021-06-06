@@ -222,16 +222,8 @@ Panel.mainDialoguePanel {
         TextSize = 35;
     }
 
-    Button.tradeButton {
-        Position = (50, 200);
-        Renderer = &2;
-        Size = (800, 100);
-        Text = Trade;
-        TextSize = 35;
-    }
-
     Button.exitButton {
-        Position = (50, 350);
+        Position = (50, 201);
         Renderer = &2;
         Size = (800, 100);
         Text = Exit;
@@ -499,11 +491,11 @@ Panel.upgradeStatsPanel {
 
     Label.ESnew {
         HorizontalAlignment = Center;
-        Position = (490, 155);
+        Position = (490, 145);
         Renderer = &1;
         ScrollbarPolicy = Never;
-        Size = (100, 50);
-        Text = 5;
+        Size = (100, 71);
+        Text = "Not enough";
         TextSize = 25;
         VerticalAlignment = Center;
     }
