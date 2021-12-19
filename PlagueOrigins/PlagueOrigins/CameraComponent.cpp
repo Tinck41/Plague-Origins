@@ -10,7 +10,6 @@ CameraComponent::CameraComponent()
 
 void CameraComponent::update(sf::Vector2f center)
 {
-	updateSize();
 	sf::Vector2f offset = sf::Vector2f(0, 0);
 	sf::Vector2f size = camera->getSize();
 	sf::Vector2f halfSize = sf::Vector2f(size.x / 2, size.y / 2);
@@ -33,18 +32,6 @@ void CameraComponent::update(sf::Vector2f center)
 		offset.y -= halfSize.y - distanceToBottom;
 	}
 	camera->setCenter(center.x + offset.x, center.y + offset.y);
-}
-
-void CameraComponent::updateSize()
-{
-	if (sf::Mouse::isButtonPressed(sf::Mouse::XButton1))
-	{
-		camera->zoom(0.98);
-	}
-	if (sf::Mouse::isButtonPressed(sf::Mouse::XButton2)) 
-	{
-		camera->zoom(1.02);
-	}
 }
 
 void CameraComponent::setViewport(sf::RenderWindow& window)
