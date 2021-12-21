@@ -8,7 +8,7 @@ workspace "Plague-Origins"
         "Dist"
     }
 
-outputdir = "%{cfg.buildcfg}_%{cfg.system}-%{cfg.arhictecture}" 
+outputdir = "%{cfg.buildcfg}_%{cfg.system}-%{cfg.architecture}" 
 
 include "vendor/imgui"
 include "vendor/imguiSFML"
