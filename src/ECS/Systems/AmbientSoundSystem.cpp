@@ -3,9 +3,9 @@
 
 AmbientSoundSystem::AmbientSoundSystem()
 {
-	windBuffer.loadFromFile("./Assets/SFX/WindAmbience.wav");
-	torchBuffer.loadFromFile("./Assets/SFX/FireTorchSoundMono.wav");
-	bossFightBuffer.loadFromFile("./Assets/SFX/BossFightMusicV2.wav");
+	windBuffer.loadFromFile("./assets/SFX/WindAmbience.wav");
+	torchBuffer.loadFromFile("./assets/SFX/FireTorchSoundMono.wav");
+	bossFightBuffer.loadFromFile("./assets/SFX/BossFightMusicV2.wav");
 }
 
 void AmbientSoundSystem::update(entt::registry& reg, tgui::GuiSFML& gui, const float& dt)

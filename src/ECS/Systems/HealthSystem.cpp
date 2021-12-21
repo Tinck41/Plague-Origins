@@ -6,7 +6,7 @@ void HealthSystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)
 	auto view = reg.view<RigidBody, Health, Transform, Tag>();
 	for (auto entity : view)
 	{
-		tgui::Theme theme{ "../vendor/TGUI-0.9/gui-builder/themes/Black.txt" };
+		tgui::Theme theme{ "./vendor/TGUI-0.9/gui-builder/themes/Black.txt" };
 
 		RigidBody& rigidBody = reg.get<RigidBody>(entity);
 		Health& health = reg.get<Health>(entity);

@@ -3,13 +3,13 @@
 
 MainMenuScreen::MainMenuScreen()
 {
-	mainThemeBuffer.loadFromFile("./Assets/SFX/MainMenuTheme.wav");
+	mainThemeBuffer.loadFromFile("./assets/SFX/MainMenuTheme.wav");
 	mainTheme.setBuffer(mainThemeBuffer);
 	mainTheme.setLoop(true);
-	mainTheme.setVolume(1.f);
+	mainTheme.setVolume(50.f);
 	mainTheme.play();
 
-	gui.loadWidgetsFromFile("./Assets/UI/Main_menu.txt");
+	gui.loadWidgetsFromFile("./assets/UI/Main_menu.txt");
 	gui.get<tgui::Button>("newGame")->onClick(&MainMenuScreen::setGameScreen, this);
 	gui.get<tgui::Button>("quit")->onClick(&MainMenuScreen::setExitScreen, this);
 }

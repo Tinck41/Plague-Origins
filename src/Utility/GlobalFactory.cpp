@@ -6,26 +6,26 @@ GlobalFactory::GlobalFactory()
 {
 	//LOAD TO FACTORY
 	//TEXTURES
-	heroAnim.loadFromFile("./Assets/Animation/heroAnim/heroAnim_tex.png");
-	dogAnim.loadFromFile("./Assets/Animation/dogAnim/dogAnim_tex.png");
-	bishopAnim.loadFromFile("./Assets/Animation/bishopAnim/bishopAnim_tex.png");
-	bossAnim.loadFromFile("./Assets/Animation/bossAnim/bossAnim_tex.png");
+	heroAnim.loadFromFile("./assets/Animation/heroAnim/heroAnim_tex.png");
+	dogAnim.loadFromFile("./assets/Animation/dogAnim/dogAnim_tex.png");
+	bishopAnim.loadFromFile("./assets/Animation/bishopAnim/bishopAnim_tex.png");
+	bossAnim.loadFromFile("./assets/Animation/bossAnim/bossAnim_tex.png");
 
 	//HERO
-	factory.loadDragonBonesData("./Assets/Animation/heroAnim/heroAnim_ske.json");
-	factory.loadTextureAtlasData("./Assets/Animation/heroAnim/heroAnim_tex.json", &heroAnim);
+	factory.loadDragonBonesData("./assets/Animation/heroAnim/heroAnim_ske.json");
+	factory.loadTextureAtlasData("./assets/Animation/heroAnim/heroAnim_tex.json", &heroAnim);
 
 	//DOG
-	factory.loadDragonBonesData("./Assets/Animation/dogAnim/dogAnim_ske.json");
-	factory.loadTextureAtlasData("./Assets/Animation/dogAnim/dogAnim_tex.json", &dogAnim);
+	factory.loadDragonBonesData("./assets/Animation/dogAnim/dogAnim_ske.json");
+	factory.loadTextureAtlasData("./assets/Animation/dogAnim/dogAnim_tex.json", &dogAnim);
 
 	//BISHOP
-	factory.loadDragonBonesData("./Assets/Animation/bishopAnim/bishopAnim_ske.json");
-	factory.loadTextureAtlasData("./Assets/Animation/bishopAnim/bishopAnim_tex.json", &bishopAnim);
+	factory.loadDragonBonesData("./assets/Animation/bishopAnim/bishopAnim_ske.json");
+	factory.loadTextureAtlasData("./assets/Animation/bishopAnim/bishopAnim_tex.json", &bishopAnim);
 
 	//BOSS
-	factory.loadDragonBonesData("./Assets/Animation/bossAnim/bossAnim_ske.json");
-	factory.loadTextureAtlasData("./Assets/Animation/bossAnim/bossAnim_tex.json", &bossAnim);
+	factory.loadDragonBonesData("./assets/Animation/bossAnim/bossAnim_ske.json");
+	factory.loadTextureAtlasData("./assets/Animation/bossAnim/bossAnim_tex.json", &bossAnim);
 }
 
 GlobalFactory& GlobalFactory::Instance()

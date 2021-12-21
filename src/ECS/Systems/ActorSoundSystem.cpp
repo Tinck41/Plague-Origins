@@ -3,11 +3,11 @@
 
 ActorSoundSystem::ActorSoundSystem()
 {
-	playerAttackBuffer.loadFromFile("./Assets/SFX/PlayerAttack.wav");
-	playerFootStepBuffer.loadFromFile("./Assets/SFX/PlayerFootStep.wav");
-	playerGetHitBuffer.loadFromFile("./Assets/SFX/GetHit.wav");
+	playerAttackBuffer.loadFromFile("./assets/SFX/PlayerAttack.wav");
+	playerFootStepBuffer.loadFromFile("./assets/SFX/PlayerFootStep.wav");
+	playerGetHitBuffer.loadFromFile("./assets/SFX/GetHit.wav");
 
-	dogGetHitBuffer.loadFromFile("./Assets/SFX/GetHit.wav");
+	dogGetHitBuffer.loadFromFile("./assets/SFX/GetHit.wav");
 }
 
 void ActorSoundSystem::onCreate(entt::registry& reg, tgui::GuiSFML& gui)

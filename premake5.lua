@@ -16,12 +16,12 @@ include "vendor/dragonBones"
 include "vendor/box2d"
 
 project "Plague-Origins"
-    location "Plague-Origins"
+    location "./"
     kind "ConsoleApp"
     language "C++"
 
-    targetdir ("bin/" .. outputdir .. "%{prj.name}")
-    objdir ("bin-int/" .. outputdir .. "%{prj.name}")
+    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
     pchheader "stdafx.h"
     pchsource "src/stdafx.cpp"
@@ -78,6 +78,11 @@ project "Plague-Origins"
         {
             "SFML_STATIC",
             "TGUI_STATIC"
+        }
+
+        postbuildcommands
+        {
+            ("{COPY} %{prj.location.relpath}openal32.dll %{cfg.targetdir}"),
         }
     
     filter "configurations:Debug"
