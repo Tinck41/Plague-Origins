@@ -90,7 +90,7 @@ project "Plague-Origins"
             "sfml-network-s-d.lib",
             "sfml-system-s-d.lib",
             "sfml-window-s-d.lib",
-            "tgui-d.lib"
+            "tgui-s-d.lib"
         }
     
     filter "configurations:Release"

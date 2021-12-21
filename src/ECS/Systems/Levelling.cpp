@@ -2,7 +2,6 @@
 
 #include "Levelling.h"
 
-#include "ECS/Components/Stats.h"
 
 float Levelling::Hp()
 {
@@ -44,22 +43,21 @@ void Levelling::increaseChar(Stats& stats, unsigned int value, charName charName
     switch (charName)
     {
     case charName::VIT:
-        VIT += value;
+        stats.VIT += value;
         break;
     case charName::END:
-        END += value;
+        stats.END += value;
         break;
     case charName::STR:
-        STR += value;
+        stats.STR += value;
         break;
     case charName::AGI:
-        AGI += value;
+        stats.AGI += value;
         break;
     case charName::INTT:
-        INTT += value;
+        stats.INT += value;
         break;
     case charName::HUM:
-        HUM += value;
         break;
     default:
         break;
@@ -71,22 +69,21 @@ void Levelling::decreaseChar(Stats& stats, unsigned int value, charName charName
     switch (charName)
     {
     case charName::VIT:
-        VIT -= value;
+        stats.VIT -= value;
         break;
     case charName::END:
-        END -= value;
+        stats.END -= value;
         break;
     case charName::STR:
-        STR -= value;
+        stats.STR -= value;
         break;
     case charName::AGI:
-        AGI -= value;
+        stats.AGI -= value;
         break;
     case charName::INTT:
-        INTT -= value;
+        stats.INT -= value;
         break;
     case charName::HUM:
-        HUM -= value;
         break;
     default:
         break;
