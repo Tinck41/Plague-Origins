@@ -1,9 +1,1 @@
-[submodule "vendor/imgui"]
-	path = vendor/imgui
-	url = https://github.com/ocornut/imgui
-[submodule "vendor/imguiSFML"]
-	path = vendor/imguiSFML
-	url = https://github.com/eliasdaler/imgui-sfml
-[submodule "vendor/box2d"]
-	path = vendor/box2d
-	url = https://github.com/erincatto/box2d
+
