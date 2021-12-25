@@ -11,7 +11,7 @@ workspace "Plague-Origins"
 outputdir = "%{cfg.buildcfg}_%{cfg.system}-%{cfg.architecture}" 
 
 include "vendor/imgui"
-include "vendor/imguiSFML"
+include "vendor/imgui-sfml"
 include "vendor/dragonBones"
 include "vendor/box2d"
 
@@ -39,7 +39,7 @@ project "Plague-Origins"
         "vendor/EnTT/include",
         "vendor/SFML-2.5.1/include",
         "vendor/imgui",
-        "vendor/imguiSFML",
+        "vendor/imgui-sfml",
         "vendor/TGUI-0.9/include",
         "vendor/json/single_include/nlohmann",
         "vendor/box2d/include"
