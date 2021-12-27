@@ -19,6 +19,7 @@ Plague-Origins
 *.sln
 *.vcxproj
 *.filters
+*.ini
 
 # Mono auto generated files
 mono_crash.*

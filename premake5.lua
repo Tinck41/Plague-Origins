@@ -1,5 +1,6 @@
 workspace "Plague-Origins"
     architecture "x86"
+    startproject "Plague-Origins"
 
     configurations
     {
@@ -17,7 +18,7 @@ include "vendor/box2d"
 
 project "Plague-Origins"
     location "./"
-    kind "ConsoleApp"
+    kind "WindowedApp"
     language "C++"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -108,6 +109,7 @@ project "Plague-Origins"
             "sfml-network-s.lib",
             "sfml-system-s.lib",
             "sfml-window-s.lib",
+            "sfml-main.lib",
             "tgui-s.lib"
         }
     
@@ -121,5 +123,6 @@ project "Plague-Origins"
             "sfml-network-s.lib",
             "sfml-system-s.lib",
             "sfml-window-s.lib",
+            "sfml-main.lib",
             "tgui-s.lib"
         }
