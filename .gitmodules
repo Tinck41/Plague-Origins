@@ -1,10 +1,1 @@
 
-[submodule "vendor/box2d"]
-	path = vendor/box2d
-	url = https://github.com/Tinck41/box2d
-[submodule "vendor/imgui"]
-	path = vendor/imgui
-	url = https://github.com/Tinck41/imgui
-[submodule "vendor/imgui-sfml"]
-	path = vendor/imgui-sfml
-	url = https://github.com/Tinck41/imgui-sfml

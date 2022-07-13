@@ -3,8 +3,8 @@
 #include <windows.h>
 #include "Game.h"
 
-//int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR, int)
-int main()
+int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR, int)
+//int main()
 {
 	tgui::setBackend(std::make_shared<tgui::BackendSFML>());
 	Game game;
