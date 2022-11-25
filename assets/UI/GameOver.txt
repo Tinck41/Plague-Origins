@@ -1,0 +1,105 @@
+Panel.gameOverPanel {
+    Size = (1920, 1080);
+
+    Renderer {
+        BackgroundColor = black;
+        BorderColor = black;
+        TextureBackground = None;
+    }
+
+    Label.lossLabel {
+        HorizontalAlignment = Center;
+        Size = (1920, 1080);
+        Text = "You were slained by The Plague.\nHumanity now have no hope...";
+        TextSize = 72;
+        VerticalAlignment = Center;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = #A22C24;
+            TextureBackground = None;
+        }
+    }
+
+    Label.winLabel {
+        HorizontalAlignment = Center;
+        Size = (1920, 1080);
+        Text = "The Plague was stopped\nwith the help of mighty protagonist";
+        TextSize = 72;
+        VerticalAlignment = Center;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = #7D7D7D;
+            TextureBackground = None;
+        }
+    }
+
+    Button.retryButton {
+        Position = (560, 740);
+        Size = (300, 90);
+        Text = Retry;
+        TextSize = 50;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BackgroundColorDisabled = transparent;
+            BackgroundColorDown = transparent;
+            BackgroundColorFocused = transparent;
+            BackgroundColorHover = #F5F5F580;
+            BorderColor = #F5F5F580;
+            BorderColorDisabled = transparent;
+            BorderColorDown = #F5F5F5;
+            BorderColorFocused = transparent;
+            BorderColorHover = #F5F5F5;
+            Borders = (2, 2, 2, 2);
+            TextColor = #7D7D7D;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = white;
+            TextColorHover = white;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+
+    Button.exit2Button {
+        Position = (1060, 740);
+        Size = (300, 90);
+        Text = Exit;
+        TextSize = 50;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BackgroundColorDisabled = transparent;
+            BackgroundColorDown = transparent;
+            BackgroundColorFocused = transparent;
+            BackgroundColorHover = #F5F5F580;
+            BorderColor = #F5F5F580;
+            BorderColorDisabled = transparent;
+            BorderColorDown = #F5F5F5;
+            BorderColorFocused = transparent;
+            BorderColorHover = #F5F5F5;
+            Borders = (2, 2, 2, 2);
+            TextColor = #7D7D7D;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = white;
+            TextColorHover = white;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+}

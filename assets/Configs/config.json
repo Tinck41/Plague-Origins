@@ -1,0 +1,86 @@
+{
+  "title": "Plague: Origins",
+  "font": "./Assets/Fonts/FreeSans.ttf",
+  "fps": 60,
+  "window": {
+    "fullscreen": false,
+    "width": 1280,
+    "height": 720,
+    "uiWidth": 2560,
+    "uiHeight": 1440
+  },
+  "inventory": {
+    "inventorySlotsX": 5,
+    "inventorySlotsY": 2,
+    "quickSlotsX": 3,
+    "quickSlotsY": 2,
+    "ringSlotsX": 2,
+    "ringSlotsY": 2,
+    "slotWidth": 140,
+    "slotHeight": 140,
+    "slotMarginLeft": 47.5,
+    "slotMarginTop": 67
+  },
+  "player": {
+    "speed": 500,
+    "scale": 0.2,
+    "hitbox": {
+      "width": 100,
+      "height": 150
+    },
+    "range": 175,
+    "stats": {
+      "vit": 10,
+      "end": 10,
+      "str": 10,
+      "agi": 10,
+      "int": 10
+    }
+  },
+  "dog": {
+    "speed": 200,
+    "scale": 0.3,
+    "range": 150,
+    "hitbox": {
+      "width": 100,
+      "height": 150
+    },
+    "stats": {
+      "vit": 5,
+      "end": 5,
+      "str": 1,
+      "agi": 5,
+      "int": 1
+    }
+  },
+  "bishop": {
+    "scale": 0.5,
+    "hitbox": {
+      "width": 100,
+      "height": 150
+    },
+    "stats": {
+      "vit": 5,
+      "end": 5,
+      "str": 5,
+      "agi": 5,
+      "int": 5
+    }
+  },
+  "boss": {
+    "speed": 200,
+    "scale": 0.3,
+    "range": 150,
+    "hitbox": {
+      "width": 100,
+      "height": 150
+    },
+    "stats": {
+      "vit": 12,
+      "end": 5,
+      "str": 12,
+      "agi": 5,
+      "int": 1
+    }
+  }
+}

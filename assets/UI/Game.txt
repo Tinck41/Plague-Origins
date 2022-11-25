@@ -1,0 +1,1029 @@
+Renderer.1 {
+    BackgroundColor = transparent;
+    BorderColor = #3C3C3C;
+    Borders = (0, 0, 0, 0);
+    TextColor = #7D7D7D;
+    TextureBackground = None;
+}
+
+Renderer.2 {
+    BackgroundColor = #FFFFFF00;
+    BackgroundColorDisabled = transparent;
+    BackgroundColorDown = transparent;
+    BackgroundColorFocused = transparent;
+    BackgroundColorHover = #FFFFFF0A;
+    BorderColor = transparent;
+    BorderColorDisabled = transparent;
+    BorderColorDown = transparent;
+    BorderColorFocused = transparent;
+    BorderColorHover = #FFFFFFA0;
+    Borders = (2, 2, 2, 2);
+    TextColor = #7D7D7D;
+    TextColorDisabled = #7D7D7D;
+    TextColorDown = white;
+    TextColorHover = white;
+    Texture = None;
+    TextureDisabled = None;
+    TextureDown = None;
+    TextureDownFocused = None;
+    TextureDownHover = None;
+    TextureFocused = None;
+    TextureHover = None;
+}
+
+Panel.statusBar {
+    Position = (25, 25);
+    Size = (805, 146.56);
+
+    Renderer {
+        BackgroundColor = white;
+        BorderColor = black;
+        TextureBackground = "./statusBar.png" Smooth;
+        TransparentTexture = true;
+    }
+
+    ProgressBar.healthBar {
+        Maximum = 100;
+        Minimum = 0;
+        Position = (155, 46);
+        Size = (598, 19);
+        TextSize = 13;
+        Value = 100;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = black;
+            Borders = (0, 0, 0, 0);
+            FillColor = #FF00006F;
+            Opacity = 1;
+            OpacityDisabled = -1;
+            TextColor = #3C3C3C;
+            TextColorFilled = white;
+            TextureBackground = None;
+            TextureFill = None;
+            TransparentTexture = false;
+        }
+    }
+
+    ProgressBar.staminaBar {
+        Maximum = 100;
+        Minimum = 0;
+        Position = (155, 82);
+        Size = (448, 19);
+        TextSize = 13;
+        Value = 100;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = black;
+            Borders = (0, 0, 0, 0);
+            FillColor = #0CFF4D76;
+            TextColor = #3C3C3C;
+            TextColorFilled = white;
+            TextureBackground = None;
+            TextureFill = None;
+        }
+    }
+}
+
+Panel.essenceBar {
+    Position = (2130, 1317.5);
+    Size = (404, 101);
+
+    Renderer {
+        BackgroundColor = white;
+        BorderColor = black;
+        TextureBackground = "./essenceBar.png" Smooth;
+        TransparentTexture = true;
+    }
+
+    TextArea.essenceBarText {
+        HorizontalScrollbarPolicy = Never;
+        MaximumCharacters = 15;
+        Position = (30, 22);
+        Size = (388, 65);
+        Text = 0;
+        TextSize = 45;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = black;
+            Borders = (0, 0, 0, 0);
+            CaretColor = black;
+            CaretWidth = 1;
+            DefaultTextColor = #A0A0A0;
+            Padding = (0, 0, 0, 0);
+            SelectedTextBackgroundColor = #006EFF;
+            SelectedTextColor = white;
+            TextColor = white;
+            TextureBackground = None;
+        }
+    }
+}
+
+Panel.menuButtons {
+    Position = (40, 40);
+    Size = (112, 237);
+
+    Renderer {
+        BackgroundColor = #FFFFFF00;
+        BorderColor = black;
+        TextureBackground = "./minimizedInventory.png" Smooth;
+    }
+
+    Button.inventoryButton {
+        Position = (10, 11);
+        Size = (95, 99);
+        TextSize = 13;
+
+        Renderer {
+            BackgroundColor = #F5F5F500;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorFocused = #00000065;
+            BackgroundColorHover = #00000065;
+            BorderColor = #3C3C3C00;
+            BorderColorDisabled = #7D7D7D00;
+            BorderColorDown = transparent;
+            BorderColorFocused = transparent;
+            BorderColorHover = transparent;
+            Borders = (1, 1, 1, 1);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+
+    Button.settingsButton {
+        Position = (9, 126);
+        Size = (95, 100);
+        TextSize = 13;
+
+        Renderer {
+            BackgroundColor = #F5F5F500;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorFocused = #00000065;
+            BackgroundColorHover = #00000065;
+            BorderColor = #3C3C3C00;
+            BorderColorDisabled = #7D7D7D00;
+            BorderColorDown = transparent;
+            BorderColorFocused = transparent;
+            BorderColorHover = transparent;
+            Borders = (1, 1, 1, 1);
+            TextColor = #3C3C3C;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = black;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+}
+
+Panel.mainDialoguePanel {
+    Position = (830, 470 + 75);
+    Size = (900, 350);
+    Visible = false;
+
+    Renderer {
+        BackgroundColor = #FFFFFF00;
+        BorderColor = black;
+        TextureBackground = None;
+    }
+
+    Picture.mainDialoguePic {
+        Size = (900, 350);
+
+        Renderer {
+            Texture = "./mainDialogueBox.png" Smooth;
+            TransparentTexture = false;
+        }
+    }
+
+    Button.upgradeStatsButton {
+        Position = (50, 50);
+        Renderer = &2;
+        Size = (800, 100);
+        Text = "Upgrade stats";
+        TextSize = 35;
+    }
+
+    Button.exitButton {
+        Position = (50, 201);
+        Renderer = &2;
+        Size = (800, 100);
+        Text = Exit;
+        TextSize = 35;
+    }
+}
+
+Panel.upgradeStatsPanel {
+    Position = (605, 285);
+    Size = (1350, 870);
+    Visible = false;
+
+    Renderer {
+        BackgroundColor = #FFFFFF00;
+        BorderColor = black;
+        TextureBackground = None;
+    }
+
+    Picture.upgradeStatsPic {
+        Size = (1350, 870);
+
+        Renderer {
+            Texture = "./upgradeStatsBox.png" Smooth;
+            TransparentTexture = false;
+        }
+    }
+
+    Button.VITbutton {
+        Position = (51, 221);
+        Renderer = &2;
+        Size = (195, 98);
+        Text = Vitality;
+        TextSize = 25;
+    }
+
+    Button.STRbutton {
+        Position = (51, 346);
+        Renderer = &2;
+        Size = (195, 98);
+        Text = Strength;
+        TextSize = 25;
+    }
+
+    Button.ENDbutton {
+        Position = (51, 471);
+        Renderer = &2;
+        Size = (195, 98);
+        Text = Endurance;
+        TextSize = 25;
+    }
+
+    Button.AGIbutton {
+        Position = (51, 596);
+        Renderer = &2;
+        Size = (195, 98);
+        Text = Agility;
+        TextSize = 25;
+    }
+
+    Button.INTbutton {
+        Position = (51, 722);
+        Renderer = &2;
+        Size = (195, 98);
+        Text = Intelligence;
+        TextSize = 25;
+    }
+
+    Label.VITcur {
+        HorizontalAlignment = Center;
+        Position = (250, 220);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 100.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.STRcur {
+        HorizontalAlignment = Center;
+        Position = (250, 350);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 90.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ENDcur {
+        HorizontalAlignment = Center;
+        Position = (250, 470);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 100.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.AGIcur {
+        HorizontalAlignment = Center;
+        Position = (250, 600);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 90.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.INTcur {
+        HorizontalAlignment = Center;
+        Position = (250, 720);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 100.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.VITnew {
+        HorizontalAlignment = Center;
+        Position = (490, 220);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 100.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.STRnew {
+        HorizontalAlignment = Center;
+        Position = (490, 350);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 90.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ENDnew {
+        HorizontalAlignment = Center;
+        Position = (490, 470);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 100.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.AGInew {
+        HorizontalAlignment = Center;
+        Position = (490, 600);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 90.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.INTnew {
+        HorizontalAlignment = Center;
+        Position = (490, 720);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 100.258);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar2 {
+        HorizontalAlignment = Center;
+        Position = (360, 220);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 100.258);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar3 {
+        HorizontalAlignment = Center;
+        Position = (360, 350);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 90.258);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar4 {
+        HorizontalAlignment = Center;
+        Position = (360, 470);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 100.258);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar5 {
+        HorizontalAlignment = Center;
+        Position = (360, 600);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 90.258);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar6 {
+        HorizontalAlignment = Center;
+        Position = (360, 720);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 100.258);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ESlabel {
+        HorizontalAlignment = Center;
+        Position = (51, 155);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (195, 50);
+        Text = Essence;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.EScur {
+        HorizontalAlignment = Center;
+        Position = (250, 155);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar1 {
+        HorizontalAlignment = Center;
+        Position = (360, 155);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ESnew {
+        HorizontalAlignment = Center;
+        Position = (490, 145);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 71);
+        Text = "Not enough";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.Header {
+        HorizontalAlignment = Center;
+        Position = (50, 35);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (1250, 50);
+        Text = "Stats upgrade";
+        TextSize = 36;
+        VerticalAlignment = Center;
+    }
+
+    Label.HPlabel {
+        Position = (700, 155);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (130, 50);
+        Text = "HP:";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.HPcur {
+        HorizontalAlignment = Center;
+        Position = (830, 155);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar7 {
+        HorizontalAlignment = Center;
+        Position = (930, 155);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.HPnew {
+        HorizontalAlignment = Center;
+        Position = (1030, 155);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.DMGlabel {
+        Position = (700, 235);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (130, 50);
+        Text = "Damage:";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.STMlabel {
+        Position = (700, 335);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (130, 50);
+        Text = "Stamina:";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.DCDlabel {
+        Position = (700, 435);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (130, 50);
+        Text = "Dash CD:";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.DMGcur {
+        HorizontalAlignment = Center;
+        Position = (830, 235);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.STMcur {
+        HorizontalAlignment = Center;
+        Position = (830, 335);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.DCDcur {
+        HorizontalAlignment = Center;
+        Position = (830, 435);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar8 {
+        HorizontalAlignment = Center;
+        Position = (930, 235);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar9 {
+        HorizontalAlignment = Center;
+        Position = (930, 335);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.ar10 {
+        HorizontalAlignment = Center;
+        Position = (930, 435);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = "=>";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.DMGnew {
+        HorizontalAlignment = Center;
+        Position = (1030, 235);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.STMnew {
+        HorizontalAlignment = Center;
+        Position = (1030, 335);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.DCDnew {
+        HorizontalAlignment = Center;
+        Position = (1030, 435);
+        Renderer = &1;
+        ScrollbarPolicy = Never;
+        Size = (100, 50);
+        Text = 5;
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.Label1 {
+        HorizontalAlignment = Center;
+        MouseCursor = NotAllowed;
+        Position = (240, 100);
+        Renderer = &1;
+        Size = (120, 40);
+        Text = "Current:";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.Label2 {
+        HorizontalAlignment = Center;
+        MouseCursor = NotAllowed;
+        Position = (480, 100);
+        Renderer = &1;
+        Size = (120, 40);
+        Text = "Result:";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.Label3 {
+        HorizontalAlignment = Center;
+        MouseCursor = NotAllowed;
+        Position = (820, 100);
+        Renderer = &1;
+        Size = (120, 40);
+        Text = "Current:";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+
+    Label.Label4 {
+        HorizontalAlignment = Center;
+        MouseCursor = NotAllowed;
+        Position = (1020, 100);
+        Renderer = &1;
+        Size = (120, 40);
+        Text = "Result:";
+        TextSize = 25;
+        VerticalAlignment = Center;
+    }
+}
+
+Panel.unfoldedInventory {
+    Position = (210, 40);
+    Size = (1869, 1028);
+    Visible = false;
+
+    Renderer {
+        BackgroundColor = white;
+        BorderColor = black;
+        TextureBackground = "unfoldedInventory.png" Smooth;
+    }
+
+    Panel.miniInventory {
+        Position = (82, 188);
+        Size = (890, 347);
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = black;
+            Borders = (0, 0, 0, 0);
+            TextureBackground = None;
+        }
+    }
+
+    Panel.quickAction {
+        Position = (82, 618);
+        Size = (515, 347);
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = black;
+            Borders = (0, 0, 0, 0);
+            TextureBackground = None;
+        }
+    }
+
+    Panel.ringEquiped {
+        Position = (641, 618);
+        Size = (331, 347);
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = black;
+            Borders = (0, 0, 0, 0);
+            TextureBackground = None;
+        }
+    }
+
+    Label.itemDescription {
+        Position = (1040, 170);
+        Size = (750, 533.484);
+        TextSize = 33;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            Opacity = 1;
+            TextColor = white;
+            TextureBackground = None;
+        }
+    }
+
+    Label.itemName {
+        Position = (1040, 60);
+        Size = (750, 57);
+        TextSize = 43;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = white;
+            TextureBackground = None;
+        }
+    }
+
+    Panel.itemActions {
+        Position = (410, 190);
+        Size = (450, 250);
+
+        Renderer {
+            BackgroundColor = white;
+            BorderColor = black;
+            TextureBackground = "mainDialogueBox.png" Smooth;
+        }
+
+        Button.Button1 {
+            Position = (25, 36);
+            Size = (401, 73);
+            TextSize = 30;
+
+            Renderer {
+                BackgroundColor = transparent;
+                BackgroundColorDisabled = #E6E6E6;
+                BackgroundColorDown = black;
+                BackgroundColorHover = #3C3C3C;
+                BorderColor = #3C3C3C;
+                BorderColorDisabled = #7D7D7D;
+                BorderColorDown = black;
+                BorderColorFocused = #1E1EB4;
+                BorderColorHover = black;
+                Borders = (0, 0, 0, 0);
+                TextColor = white;
+                TextColorDisabled = #7D7D7D;
+                TextColorDown = black;
+                TextColorHover = black;
+                Texture = None;
+                TextureDisabled = None;
+                TextureDown = None;
+                TextureDownFocused = None;
+                TextureDownHover = None;
+                TextureFocused = None;
+                TextureHover = None;
+            }
+        }
+
+        Button.Button2 {
+            Position = (25, 142);
+            Size = (401, 73);
+            TextSize = 30;
+
+            Renderer {
+                BackgroundColor = transparent;
+                BackgroundColorDisabled = #E6E6E6;
+                BackgroundColorDown = black;
+                BackgroundColorHover = #3C3C3C;
+                BorderColor = #3C3C3C;
+                BorderColorDisabled = #7D7D7D;
+                BorderColorDown = black;
+                BorderColorFocused = #1E1EB4;
+                BorderColorHover = black;
+                Borders = (0, 0, 0, 0);
+                TextColor = white;
+                TextColorDisabled = #7D7D7D;
+                TextColorDown = black;
+                TextColorHover = black;
+                Texture = None;
+                TextureDisabled = None;
+                TextureDown = None;
+                TextureDownFocused = None;
+                TextureDownHover = None;
+                TextureFocused = None;
+                TextureHover = None;
+            }
+        }
+    }
+}
+
+Panel.settingsPanel {
+    Position = (152, 157);
+    Size = (550, 180);
+    Visible = false;
+
+    Renderer {
+        BackgroundColor = white;
+        BorderColor = black;
+        TextureBackground = "invDialogueBox.png" Smooth;
+    }
+
+    Button.exitGameButton {
+        Position = (30, 54);
+        Size = (490, 72);
+        Text = "Exit Game";
+        TextSize = 33;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BackgroundColorDisabled = #E6E6E6;
+            BackgroundColorDown = #EBEBEB;
+            BackgroundColorHover = #00000065;
+            BorderColor = #3C3C3C;
+            BorderColorDisabled = #7D7D7D;
+            BorderColorDown = black;
+            BorderColorFocused = #1E1EB4;
+            BorderColorHover = black;
+            Borders = (0, 0, 0, 0);
+            TextColor = white;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = black;
+            TextColorHover = white;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+}
+
+Panel.gameOverPanel {
+    Size = (2560, 1440);
+    Visible = false;
+
+    Renderer {
+        BackgroundColor = black;
+        BorderColor = black;
+        TextureBackground = None;
+    }
+
+    Label.lossLabel {
+        HorizontalAlignment = Center;
+        Size = (2560, 1400);
+        Text = "You were slained by The Plague.\nHumanity now have no hope...";
+        TextSize = 72;
+        VerticalAlignment = Center;
+        Visible = false;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = #A22C24;
+            TextureBackground = None;
+        }
+    }
+
+    Label.winLabel {
+        HorizontalAlignment = Center;
+        Size = (2560, 1400);
+        Text = "The Plague was stopped\nwith the help of mighty protagonist";
+        TextSize = 72;
+        VerticalAlignment = Center;
+        Visible = false;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BorderColor = #3C3C3C;
+            Borders = (0, 0, 0, 0);
+            TextColor = #7D7D7D;
+            TextureBackground = None;
+        }
+    }
+
+    Button.retryButton {
+        Position = (830, 960);
+        Size = (300, 90);
+        Text = Retry;
+        TextSize = 50;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BackgroundColorDisabled = transparent;
+            BackgroundColorDown = transparent;
+            BackgroundColorFocused = transparent;
+            BackgroundColorHover = #F5F5F580;
+            BorderColor = #F5F5F580;
+            BorderColorDisabled = transparent;
+            BorderColorDown = #F5F5F5;
+            BorderColorFocused = transparent;
+            BorderColorHover = #F5F5F5;
+            Borders = (2, 2, 2, 2);
+            TextColor = #7D7D7D;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = white;
+            TextColorHover = white;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+
+    Button.exit2Button {
+        Position = (1430, 960);
+        Size = (300, 90);
+        Text = Exit;
+        TextSize = 50;
+
+        Renderer {
+            BackgroundColor = transparent;
+            BackgroundColorDisabled = transparent;
+            BackgroundColorDown = transparent;
+            BackgroundColorFocused = transparent;
+            BackgroundColorHover = #F5F5F580;
+            BorderColor = #F5F5F580;
+            BorderColorDisabled = transparent;
+            BorderColorDown = #F5F5F5;
+            BorderColorFocused = transparent;
+            BorderColorHover = #F5F5F5;
+            Borders = (2, 2, 2, 2);
+            TextColor = #7D7D7D;
+            TextColorDisabled = #7D7D7D;
+            TextColorDown = white;
+            TextColorHover = white;
+            Texture = None;
+            TextureDisabled = None;
+            TextureDown = None;
+            TextureDownFocused = None;
+            TextureDownHover = None;
+            TextureFocused = None;
+            TextureHover = None;
+        }
+    }
+}
